@@ -22,6 +22,10 @@ SenchaInspector.HomePanel.prototype = {
                                  '<input type="button" class="btn" value="Update" id="check-framework-btn" />';
     },
     
+    index: function() {
+        this.element.innerHTML = '';
+    },
+    
     onElementClick: function(e) {
         if (e.target.id === 'check-framework-btn') {
             e.stopEvent();

@@ -61,13 +61,21 @@ SenchaInspector.Viewport.prototype = {
     },
     
     onCheckFramework: function() {
-        var me = this;
-        
+        var selectedItem,
+            me = this;
+            
         SenchaInspector.InspectedWindow.getFrameworkVersion(function(versions) {
             if (!versions) {
+                selectedItem= me.element.querySelector('.selected');
+                if (selectedItem) {
+                    selectedItem.removeStyleClass('selected');
+                }
+            
+                me.element.setAttribute('disabled', 'disabled');
                 me.renderPanel('home').showFrameworkNotFound();
             }
             else {
+                me.renderPanel('home').index();
                 me.element.removeAttribute('disabled');
             }
         });
@@ -122,6 +130,6 @@ SenchaInspector.Viewport.prototype = {
             renderedPanels[i].onreload();
         }
         
-        me.onCheckFramework();
+        this.onCheckFramework();
     }
 };
