@@ -16,7 +16,7 @@ Features
 
 Known Issues
 ------------
-Component highlighting is executed by injecting a <div> into the page. We're trying to use the same approach of dev tools.
+Component highlighting is executed by injecting a &lt;div&gt; into the page. We're trying to use the same approach of dev tools.
 
 Contributing
 ------------
