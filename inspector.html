@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sencha Inspector</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/app.css" />
+	
+	<script type="text/javascript" src="utilities.js"></script>
+	<script type="text/javascript" src="DOMExtension.js"></script>
+	<script type="text/javascript" src="treeoutline.js"></script>
+	
+	<script type="text/javascript" src="Core.js"></script>
+	
+	<!-- Switch InspectedWindow by InspectedWindowMock for development -->
+	<script type="text/javascript" src="InspectedWindow.js"></script>	
+	<!--<script type="text/javascript" src="InspectedWindowMock.js"></script>-->
+		
+	<script type="text/javascript" src="EventBus.js"></script>
+	<script type="text/javascript" src="Panel.js"></script>
+	<script type="text/javascript" src="HomePanel.js"></script>
+	<script type="text/javascript" src="ComponentsPanel.js"></script>
+	<script type="text/javascript" src="ComponentPropertiesSection.js"></script>
+	<script type="text/javascript" src="StoresPanel.js"></script>
+	<script type="text/javascript" src="Viewport.js"></script>
+	
+	<script type="text/javascript" src="inspector.js"></script>
+</head>
+<body class="dock-to-bottom platform-mac platform-mac-lion port-unknown remote">
+	<ul class="west-panel" disabled="disabled">
+		<li class="list-item" data-panel="components">
+			<img src="resources/images/nav-components.png" class="icon">
+			<span class="title">Components</span>
+			<i data-action="refresh" class="button refresh"></i>
+		</li>
+		
+		<!-- Next feature: store -->
+		<li class="list-item" data-panel="stores" style="display: none;">
+			<img src="resources/images/nav-stores.png" class="icon">
+			<span class="title">Stores</span>
+			<i data-action="refresh" class="button refresh"></i>
+		</li>
+	</ul>
+</body>
+</html>

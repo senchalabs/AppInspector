@@ -1,0 +1,79 @@
+// 
+// VIEWPORT
+// ------------------------
+
+body {
+  padding-left: 200px;
+}
+
+
+// West Navigation Panel
+// ---------------------
+.west-panel {
+  width: 200px;
+  border-right: 1px solid rgb(64%, 64%, 64%);
+  background-color: rgb(214, 221, 229);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  &[disabled] {
+    .list-item {
+      opacity: 0.5;
+    }
+  }
+  
+  .list-item {
+    height: 36px;
+    padding: 0 5px 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 34px;
+    border-top: 1px solid transparent;
+    &.selected {
+      color: white;
+      border-top: 1px solid rgb(68, 128, 200);
+      background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(92, 147, 213)), to(rgb(21, 83, 170)));
+      text-shadow: rgba(0, 0, 0, 0.33) 1px 1px 0;
+      .button {
+        display: inline-block;
+      }
+    }
+  }
+  
+  .icon {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-top: 1px;
+    margin-right: 3px;
+  }
+  
+  .button {
+    width: 23px;
+    height: 17px;
+    float: right;
+    margin-top: 9px;
+    display: none;
+  }
+  .refresh {
+    background-image: url(../images/paneRefreshButtons.png);
+    &:hover {
+      background-position: -23px 0;
+    }
+    &:active {
+      background-position: -46px 0;
+    }
+  }
+}
+
+
+// Body Panels
+// ---------------------
+.panel {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
