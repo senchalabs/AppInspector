@@ -15,8 +15,23 @@ SenchaInspector.Viewport = function()
     };
     me.renderedPanels = [];
     
+    // check framework
     SenchaInspector.EventBus.addEventListener('check-framework', me.onCheckFramework.bind(me));
     me.onCheckFramework();
+
+    // connect to background
+    if (window.chrome) {
+        var port = chrome.runtime.connect({name: 'sencha-inspector'});
+        port.postMessage({
+            action: 'connect',
+            tabId: chrome.devtools.inspectedWindow.tabId
+        });
+        port.onMessage.addListener(function(msg) {
+            if (msg === 'refresh') {
+                me.onInspectedWindowRefresh();
+            }
+        });
+    }
 };
 
 SenchaInspector.Viewport.prototype = {
@@ -98,39 +113,15 @@ SenchaInspector.Viewport.prototype = {
         return null;
     },
     
-    
-    updateProperties: function()
-    {
-        var propertiesSidebarPane = this.sidebarPanes.properties;
-        propertiesSidebarPane.update(this.selectedDOMNode());
-        propertiesSidebarPane.needsUpdate = false;
-    },
-    
-    selectedDOMNode: function()
-    {
-        return {
-            '__identifier'      : "_15",
-            '_attributes'       : [],
-            '_attributesMap'    : {},
-            '_childNodeCount'   : 0,
-            '_children'         : [],
-            '_descendantUserPropertyCounters': {},
-            '_domAgent': null,
-            '_isInShadowTree': false,
-            '_localName': "body",
-            '_nodeName': "BODY",
-            '_nodeType': 1,
-            '_nodeValue': "",
-            '_shadowRoots': [],
-            '_userProperties': {},
-            'firstChild': null,
-            'id': 283,
-            'index': 1,
-            'lastChild': null,
-            'nextSibling': null,
-            'ownerDocument': null,
-            'parentNode': null,
-            'previousSibling': null
-        };
+    onInspectedWindowRefresh: function() {
+        var i = 0,
+            renderedPanels = this.renderedPanels,
+            len = renderedPanels.length;
+                
+        for (; i < len; i++) {
+            renderedPanels[i].onreload();
+        }
+        
+        me.onCheckFramework();
     }
 };

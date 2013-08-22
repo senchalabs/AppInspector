@@ -32,6 +32,10 @@ SenchaInspector.ComponentsPanel.prototype = {
         }, 200);
     },
     
+    onreload: function() {
+        this.treeOutline.removeChildren();
+    },
+    
     __proto__: SenchaInspector.Panel.prototype
 };
 

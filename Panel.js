@@ -36,5 +36,9 @@ SenchaInspector.Panel.prototype = {
     
     refresh: function() {
         this.load();
+    },
+    
+    onreload: function() {
+        //to be implemented
     }
 };
