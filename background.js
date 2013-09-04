@@ -1,6 +1,6 @@
 // monitor page refresh
 chrome.runtime.onConnect.addListener(function(port) {
-    if (port.name === 'sencha-inspector') {
+    if (port.name === 'app-inspector') {
         port.onMessage.addListener(function(msg) {
             if (msg.action === 'connect') {
                 var onUpdated = function(tabId) {
@@ -8,6 +8,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                         port.postMessage('refresh');
                     }
                 };
+                
                 chrome.tabs.onUpdated.addListener(onUpdated);
                 port.onDisconnect.addListener(function() {
                     chrome.tabs.onUpdated.removeListener(respond);

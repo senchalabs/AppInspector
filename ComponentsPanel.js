@@ -1,18 +1,18 @@
 /**
  * @constructor
- * @extends {SenchaInspector.Panel}
+ * @extends {AppInspector.Panel}
  */
-SenchaInspector.ComponentsPanel = function() {
+AppInspector.ComponentsPanel = function() {
     var me = this;
         
-    SenchaInspector.Panel.apply(me, arguments);
+    AppInspector.Panel.apply(me, arguments);
     
     // create tree outline
-    me.treeOutline = new SenchaInspector.ComponentsTreeOutline(true);
+    me.treeOutline = new AppInspector.ComponentsTreeOutline(true);
     me.element.appendChild(me.treeOutline.element);
 };
 
-SenchaInspector.ComponentsPanel.prototype = {
+AppInspector.ComponentsPanel.prototype = {
     panelId: 'components',
     
     load: function() {
@@ -20,13 +20,13 @@ SenchaInspector.ComponentsPanel.prototype = {
         treeOutline.removeChildren();
         
         window.setTimeout(function() {
-            SenchaInspector.InspectedWindow.getComponentTree(function(components) {
+            AppInspector.InspectedWindow.getComponentTree(function(components) {
                 var title,
                     i = 0,
                     len = components.length;
 
                 for (; i < len; i++) {
-                    treeOutline.appendChild(new SenchaInspector.ComponentTreeElement(components[i]));
+                    treeOutline.appendChild(new AppInspector.ComponentTreeElement(components[i]));
                 }
             });
         }, 200);
@@ -36,7 +36,7 @@ SenchaInspector.ComponentsPanel.prototype = {
         this.treeOutline.removeChildren();
     },
     
-    __proto__: SenchaInspector.Panel.prototype
+    __proto__: AppInspector.Panel.prototype
 };
 
 
@@ -44,7 +44,7 @@ SenchaInspector.ComponentsPanel.prototype = {
  * @constructor
  * @extends {TreeOutline}
  */
-SenchaInspector.ComponentsTreeOutline = function()
+AppInspector.ComponentsTreeOutline = function()
 {
     var element,
         me = this;
@@ -58,7 +58,7 @@ SenchaInspector.ComponentsTreeOutline = function()
     TreeOutline.call(this, this.element);
 };
 
-SenchaInspector.ComponentsTreeOutline.prototype = {
+AppInspector.ComponentsTreeOutline.prototype = {
 
     treeElementFromEvent: function(event)
     {
@@ -102,7 +102,7 @@ SenchaInspector.ComponentsTreeOutline.prototype = {
             this._previousHoveredElement = element;
         }
         
-        SenchaInspector.InspectedWindow.highlightDOMNode(element && element.representedObject ? element.representedObject.id : 0);
+        AppInspector.InspectedWindow.highlightDOMNode(element && element.representedObject ? element.representedObject.id : 0);
     },
 
     onmouseout: function(event)
@@ -116,7 +116,7 @@ SenchaInspector.ComponentsTreeOutline.prototype = {
             delete this._previousHoveredElement;
         }
         
-        SenchaInspector.InspectedWindow.hideDOMNodeHighlight();
+        AppInspector.InspectedWindow.hideDOMNodeHighlight();
     },
     
     __proto__: TreeOutline.prototype
@@ -127,7 +127,7 @@ SenchaInspector.ComponentsTreeOutline.prototype = {
  * @constructor
  * @extends {TreeElement}
  */
-SenchaInspector.ComponentTreeElement = function(component)
+AppInspector.ComponentTreeElement = function(component)
 {
     var title = '<span class="dark-magenta">'+component.xclass+'</span> '+
                 '<span class="dark-sienna">(';
@@ -139,7 +139,7 @@ SenchaInspector.ComponentTreeElement = function(component)
     TreeElement.call(this, title, component, !!component.items);
 };
 
-SenchaInspector.ComponentTreeElement.prototype = {
+AppInspector.ComponentTreeElement.prototype = {
     
     get hovered()
     {
@@ -173,7 +173,7 @@ SenchaInspector.ComponentTreeElement.prototype = {
             i = 0;
             
         for (; i < len; i++) {
-            this.appendChild(new SenchaInspector.ComponentTreeElement(items[i]));
+            this.appendChild(new AppInspector.ComponentTreeElement(items[i]));
         }
     },
     
@@ -196,7 +196,7 @@ SenchaInspector.ComponentTreeElement.prototype = {
     {
         this.treeOutline.suppressRevealAndSelect = true;
         if (selectedByUser){
-            SenchaInspector.InspectedWindow.highlightDOMNode(this.representedObject ? this.representedObject.id : 0);
+            AppInspector.InspectedWindow.highlightDOMNode(this.representedObject ? this.representedObject.id : 0);
         }
         this.updateSelection();
         this.treeOutline.suppressRevealAndSelect = false;

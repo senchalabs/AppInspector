@@ -1,6 +1,6 @@
-Sencha Chrome Inspector
+App Inspector for Sencha™
 =======================
-Chrome Dev Tools extension for debugging Sencha applications.
+Google Chrome™ Dev Tools extension for debugging Sencha applications.
 
 This is a great tool to debug your Sencha Application. It allows you to better understand the component tree and get yourself
 oriented faster.
@@ -16,7 +16,9 @@ Features
 
 Known Issues
 ------------
-Component highlighting is executed by injecting a &lt;div&gt; into the page. We're trying to use the same approach of dev tools.
+There are some APIs from Dev Tools that are not fully exposed, so the App Inspector uses some work arounds:
+ - Component highlighting is executed by injecting a &lt;div&gt; into the page.
+ - DOM modifications (add/remove/move components) do not reflect automatically on the App Inspector. That's why we have a "reload" icon on the side panel.
 
 Contributing
 ------------
@@ -25,3 +27,6 @@ This is a community project, so feel free to fork it. Pull requests with bug fix
 Since debugging the Sencha Panel is difficult, you can switch InspectorWindow.js by InspectorWindowMockup.js. This is the only
 part that depends on the Chrome Dev Tools shell. All the rest is pure HTML, CSS & JS. After switching this file you can open
 inspector.html and debug with Dev Tools itself.
+
+Also, if you detach the Chrome Dev Tools and press Cmd+Alt+I or Ctrl+Alt+I, a new instance of the Chrome Dev Tools will open to inspect
+the previously opened Dev Tools. This way you can inspect the Dev Tools with the Dev Tools. (sounds confusing but it works!)

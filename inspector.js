@@ -2,5 +2,5 @@
  * Page Load
  */
 window.addEventListener('DOMContentLoaded', function() {
-    new SenchaInspector.Viewport();
+    new AppInspector.Viewport();
 });

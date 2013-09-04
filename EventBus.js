@@ -1,4 +1,4 @@
-SenchaInspector.EventBus = {
+AppInspector.EventBus = {
     _listeners: {},
     
     addEventListener: function(eventName, callback) {

@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-SenchaInspector.Viewport = function()
+AppInspector.Viewport = function()
 {
     var me = this;
     
@@ -16,12 +16,13 @@ SenchaInspector.Viewport = function()
     me.renderedPanels = [];
     
     // check framework
-    SenchaInspector.EventBus.addEventListener('check-framework', me.onCheckFramework.bind(me));
+    AppInspector.EventBus.addEventListener('check-framework', me.onCheckFramework.bind(me));
     me.onCheckFramework();
 
     // connect to background
-    if (window.chrome) {
-        var port = chrome.runtime.connect({name: 'sencha-inspector'});
+    if (window.chrome && chrome.runtime) {
+        var port = chrome.runtime.connect({name: 'app-inspector'});
+        
         port.postMessage({
             action: 'connect',
             tabId: chrome.devtools.inspectedWindow.tabId
@@ -34,7 +35,7 @@ SenchaInspector.Viewport = function()
     }
 };
 
-SenchaInspector.Viewport.prototype = {
+AppInspector.Viewport.prototype = {
     
     onElementClick: function(e) {
         var action      = e.target.getAttribute('data-action'),
@@ -64,7 +65,7 @@ SenchaInspector.Viewport.prototype = {
         var selectedItem,
             me = this;
             
-        SenchaInspector.InspectedWindow.getFrameworkVersion(function(versions) {
+        AppInspector.InspectedWindow.getFrameworkVersion(function(versions) {
             if (!versions) {
                 selectedItem= me.element.querySelector('.selected');
                 if (selectedItem) {
@@ -92,7 +93,7 @@ SenchaInspector.Viewport.prototype = {
         panel = this.getRenderedPanelById(panelId);
         
         if (!panel) {
-            panelClass = SenchaInspector[this.panels[panelId]];
+            panelClass = AppInspector[this.panels[panelId]];
             panel = new panelClass(document.body);
             panel.panelId = panelId;
             this.renderedPanels.push(panel);

@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-SenchaInspector.Panel = function(renderTo)
+AppInspector.Panel = function(renderTo)
 {
     this.element = document.createElement("div");
     this.element.addStyleClass('panel');
@@ -19,7 +19,7 @@ SenchaInspector.Panel = function(renderTo)
     renderTo.appendChild(this.element);
 };
 
-SenchaInspector.Panel.prototype = {
+AppInspector.Panel.prototype = {
     
     //defined by children
     panelId: null, 

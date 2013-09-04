@@ -1,16 +1,30 @@
 /**
  * @constructor
  */
-SenchaInspector.InspectedWindow = {
+AppInspector.InspectedWindow = {
 
     getFrameworkVersion: function(callback) 
     {
         function injectedGetFrameworkVersion() {
+            var version;
+            
             if (!window.Ext) {
                 return null;
             }
+            
+            // ext 4 and touch
+            if (Ext.versions) {
+                version = Ext.versions;
+            }
+            //ext 3
+            else if (Ext.versionDetail) {
+                version = {
+                    core: Ext.versionDetail,
+                    extjs: Ext.versionDetail
+                };
+            }
 
-            return window.Ext.versions;
+            return version;
         }
 
         chrome.devtools.inspectedWindow.eval("(" + injectedGetFrameworkVersion + ")()", function(result, isException) 
@@ -31,9 +45,11 @@ SenchaInspector.InspectedWindow = {
                 mountComponent = function(cmp) {
                     var items = [],
                         result = {
-                            xclass: Ext.getClassName(cmp),
-                            xtype: cmp.getXType ? cmp.getXType() : cmp.xtype,
-                            id: cmp.getId()
+                            xclass  : Ext.getClassName  ? Ext.getClassName(cmp) : "",
+                            xtype   : cmp.getXType      ? cmp.getXType()        : cmp.xtype,
+                            id      : cmp.getId         ? cmp.getId()           : cmp.id,
+                            itemId  : cmp.getItemId     ? cmp.getItemId()       : cmp.itemId,
+                            name    : cmp.getName       ? cmp.getName()         : cmp.name
                         }; 
                     
                     if (cmp.items) {
@@ -52,12 +68,12 @@ SenchaInspector.InspectedWindow = {
                     }
                 };
             
-            // ext
+            // ext 4
             if (Ext.ComponentMgr.each) {
                 Ext.ComponentMgr.each(eachComponent);
             }
             
-            // touch
+            // touch and ext 3
             else if (Ext.ComponentMgr.all && Ext.ComponentMgr.all.map) {
                 map = Ext.ComponentMgr.all.map;
                 for (id in map) {
@@ -67,7 +83,7 @@ SenchaInspector.InspectedWindow = {
 
             return componentTree;
         }
-        injectedGetComponentTree();
+
         chrome.devtools.inspectedWindow.eval("(" + injectedGetComponentTree + ")()", function(result, isException) 
         {
             callback(isException ? null : result);

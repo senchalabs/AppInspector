@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "minimum_chrome_version": "20.0",    
     
-    "name": "Sencha Inspector",
-    "description": "Google Chrome™ Dev Tools extension for debugging Sencha applications.",
+    "name": "App Inspector for Sencha™",
+    "description": "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
     "version": "1.0",
     "icons": { 
         "128"   : "resources/images/icon_128.png",

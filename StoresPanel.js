@@ -1,18 +1,18 @@
 /**
  * @constructor
- * @extends {SenchaInspector.Panel}
+ * @extends {AppInspector.Panel}
  */
-SenchaInspector.StoresPanel = function()
+AppInspector.StoresPanel = function()
 {
-    SenchaInspector.Panel.apply(this, arguments);
+    AppInspector.Panel.apply(this, arguments);
 };
 
-SenchaInspector.StoresPanel.prototype = {
+AppInspector.StoresPanel.prototype = {
     panelId: 'stores',
     
     load: function() {
         
     },
     
-    __proto__: SenchaInspector.Panel.prototype
+    __proto__: AppInspector.Panel.prototype
 };

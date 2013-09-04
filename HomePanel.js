@@ -1,16 +1,16 @@
 /**
  * @constructor
- * @extends {SenchaInspector.HomePanel}
+ * @extends {AppInspector.HomePanel}
  */
-SenchaInspector.HomePanel = function()
+AppInspector.HomePanel = function()
 {
     var me = this;
     
-    SenchaInspector.Panel.apply(me, arguments);
+    AppInspector.Panel.apply(me, arguments);
     me.element.addEventListener('click', me.onElementClick.bind(me), false);
 };
 
-SenchaInspector.HomePanel.prototype = {
+AppInspector.HomePanel.prototype = {
     panelId: 'home',
     
     load: function() {
@@ -31,10 +31,10 @@ SenchaInspector.HomePanel.prototype = {
             e.stopEvent();
             this.element.innerHTML = '<h1>Updating...</h1>';
             window.setTimeout(function() {
-                SenchaInspector.EventBus.fireEvent('check-framework');
+                AppInspector.EventBus.fireEvent('check-framework');
             }, 700);    
         }
     },
     
-    __proto__: SenchaInspector.Panel.prototype
+    __proto__: AppInspector.Panel.prototype
 };

@@ -2,7 +2,7 @@
  * Not the real InspectedWindow. Only use this for development.
  * @constructor
  */
-SenchaInspector.InspectedWindow = {
+AppInspector.InspectedWindow = {
 
     getFrameworkVersion: function(callback) 
     {
