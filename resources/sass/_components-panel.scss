@@ -1,6 +1,23 @@
 .components-panel {
-  overflow: auto;
+  .box-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include display-box;
+    @include box-orient(horizontal);
+    @include box-align(stretch);
+  }
   .components-tree {
-    padding: 2px 6px;
+    @include box-flex(1);
+    overflow: auto;
+    max-height: 100%
+  }
+  .component-properties-panel {
+    @include box-flex(0);
+    width: 350px;
+    overflow: auto;
+    max-height: 100%
   }
 }

@@ -1,5 +1,5 @@
 /**
- * @constructor
+ * under development
  * @extends {AppInspector.Panel}
  */
 AppInspector.StoresPanel = function()

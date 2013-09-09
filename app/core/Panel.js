@@ -1,20 +1,12 @@
 /**
- * @constructor
+ * Base class for Panels
  */
 AppInspector.Panel = function(renderTo)
 {
     this.element = document.createElement("div");
     this.element.addStyleClass('panel');
     this.element.addStyleClass(this.panelId + '-panel');
-    
     this.element.__view = this;
-    this._visible = true;
-    this._isRoot = false;
-    this._isShowing = false;
-    this._children = [];
-    this._hideOnDetach = false;
-    this._cssFiles = [];
-    this._notificationDepth = 0;
     
     renderTo.appendChild(this.element);
 };
@@ -24,6 +16,7 @@ AppInspector.Panel.prototype = {
     //defined by children
     panelId: null, 
     load: null,
+    onreload: function() {},
     
     show: function() {
         this.element.style.display = 'block';
@@ -36,9 +29,5 @@ AppInspector.Panel.prototype = {
     
     refresh: function() {
         this.load();
-    },
-    
-    onreload: function() {
-        //to be implemented
     }
 };

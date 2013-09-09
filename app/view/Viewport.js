@@ -1,5 +1,6 @@
 /**
- * @constructor
+ * Boostrap the application, creating the navigation, panels and checking if
+ * a Sencha framework is available on the inspected window.
  */
 AppInspector.Viewport = function()
 {

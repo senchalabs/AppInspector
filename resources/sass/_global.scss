@@ -115,14 +115,20 @@ ol {
       right: 0;
       height: 15px;
       z-index: -1;
+      margin-top: -1px;
     }
     &.hovered .selection {
       background: rgba(56, 121, 217, 0.1);
       display: block;
     }
-    &.selected .selection {
-      background: rgb(212, 212, 212);
-      display: block;
+    &.selected {
+      .selection {
+        background: rgb(56, 121, 217);
+        display: block;
+      }
+      span {
+        color: #FFF;
+      }
     }
   }
   ol {

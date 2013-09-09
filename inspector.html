@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>App Inspector for Sencha&trade;</title>
+	<title>App Inspector for Sencha</title>
 	<link rel="stylesheet" type="text/css" href="resources/css/app.css" />
 	
 	<script type="text/javascript" src="devtools/utilities.js"></script>
 	<script type="text/javascript" src="devtools/DOMExtension.js"></script>
 	<script type="text/javascript" src="devtools/treeoutline.js"></script>
 	
-	<script type="text/javascript" src="Core.js"></script>
-	
-	<!-- Switch InspectedWindow by InspectedWindowMock for development -->
-	<!--<script type="text/javascript" src="InspectedWindowMock.js"></script>-->	
-	<script type="text/javascript" src="InspectedWindow.js"></script>
-		
-	<script type="text/javascript" src="EventBus.js"></script>
-	<script type="text/javascript" src="Panel.js"></script>
-	<script type="text/javascript" src="HomePanel.js"></script>
-	<script type="text/javascript" src="ComponentsPanel.js"></script>
-	<script type="text/javascript" src="StoresPanel.js"></script>
-	<script type="text/javascript" src="Viewport.js"></script>
+	<script type="text/javascript" src="app/core/Core.js"></script>
+	<script type="text/javascript" src="app/core/EventBus.js"></script>
+	<script type="text/javascript" src="app/core/Panel.js"></script>
+	<script type="text/javascript" src="app/api/InspectedWindow.js"></script>
+	<script type="text/javascript" src="app/view/components/ComponentsPanel.js"></script>
+	<script type="text/javascript" src="app/view/components/ComponentPropertiesPanel.js"></script>
+	<script type="text/javascript" src="app/view/HomePanel.js"></script>
+	<script type="text/javascript" src="app/view/stores/StoresPanel.js"></script>
+	<script type="text/javascript" src="app/view/Viewport.js"></script>
 	
 	<script type="text/javascript" src="inspector.js"></script>
 </head>
-<body class="dock-to-bottom platform-mac platform-mac-lion port-unknown remote">
+<body>
 	<ul class="west-panel" disabled="disabled">
 		<li class="list-item" data-panel="components">
 			<img src="resources/images/nav-components.png" class="icon">

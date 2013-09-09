@@ -1,5 +1,6 @@
 /**
- * @constructor
+ * Displays the Component Tree
+ * 
  * @extends {AppInspector.Panel}
  */
 AppInspector.ComponentsPanel = function() {
@@ -7,11 +8,18 @@ AppInspector.ComponentsPanel = function() {
         
     AppInspector.Panel.apply(me, arguments);
     
+    var boxElement = document.createElement('div');
+    boxElement.className = 'box-wrapper';
+    
     // create tree outline
-    me.treeOutline = new AppInspector.ComponentsTreeOutline(true);
-    me.element.appendChild(me.treeOutline.element);
+    me.treeOutline = new AppInspector.ComponentsTreeOutline();
+    boxElement.appendChild(me.treeOutline.element);
+    
+    // create properties panel
+    me.propertiesPanel = new AppInspector.ComponentPropertiesPanel(boxElement);
+    
+    me.element.appendChild(boxElement);
 };
-
 AppInspector.ComponentsPanel.prototype = {
     panelId: 'components',
     
@@ -29,7 +37,7 @@ AppInspector.ComponentsPanel.prototype = {
                     treeOutline.appendChild(new AppInspector.ComponentTreeElement(components[i]));
                 }
             });
-        }, 200);
+        }, 200); // give some user feedback
     },
     
     onreload: function() {
@@ -39,13 +47,11 @@ AppInspector.ComponentsPanel.prototype = {
     __proto__: AppInspector.Panel.prototype
 };
 
-
 /**
- * @constructor
+ * Defines the Tree View for Component Inspector.
  * @extends {TreeOutline}
  */
-AppInspector.ComponentsTreeOutline = function()
-{
+AppInspector.ComponentsTreeOutline = function() {
     var element,
         me = this;
     
@@ -60,38 +66,39 @@ AppInspector.ComponentsTreeOutline = function()
 
 AppInspector.ComponentsTreeOutline.prototype = {
 
-    treeElementFromEvent: function(event)
-    {
-        var scrollContainer = this.element.parentElement;
+    treeElementFromEvent: function(event){
+        var element,
+            scrollContainer = this.element,
 
-        // We choose this X coordinate based on the knowledge that our list
-        // items extend at least to the right edge of the outer <ol> container.
-        // In the no-word-wrap mode the outer <ol> may be wider than the tree container
-        // (and partially hidden), in which case we are left to use only its right boundary.
-        var x = scrollContainer.totalOffsetLeft() + scrollContainer.offsetWidth - 36;
+            // We choose this X coordinate based on the knowledge that our list
+            // items extend at least to the right edge of the outer <ol> container.
+            // In the no-word-wrap mode the outer <ol> may be wider than the tree container
+            // (and partially hidden), in which case we are left to use only its right boundary.
+            x = scrollContainer.totalOffsetLeft() + scrollContainer.offsetWidth - 36,
+            y = event.pageY,
 
-        var y = event.pageY;
+            // Our list items have 1-pixel cracks between them vertically. We avoid
+            // the cracks by checking slightly above and slightly below the mouse
+            // and seeing if we hit the same element each time.
+            elementUnderMouse = this.treeElementFromPoint(x, y),
+            elementAboveMouse = this.treeElementFromPoint(x, y - 2);
 
-        // Our list items have 1-pixel cracks between them vertically. We avoid
-        // the cracks by checking slightly above and slightly below the mouse
-        // and seeing if we hit the same element each time.
-        var elementUnderMouse = this.treeElementFromPoint(x, y);
-        var elementAboveMouse = this.treeElementFromPoint(x, y - 2);
-        var element;
-        if (elementUnderMouse === elementAboveMouse)
+        if (elementUnderMouse === elementAboveMouse) {
             element = elementUnderMouse;
-        else
+        }
+        else {
             element = this.treeElementFromPoint(x, y + 2);
+        }
 
         return element;
     },
         
-    onmousemove: function(event)
-    {
+    onmousemove: function(event) {
         var element = this.treeElementFromEvent(event);
-        if (element && this._previousHoveredElement === element)
+        if (element && this._previousHoveredElement === element){
             return;
-
+        }
+        
         if (this._previousHoveredElement) {
             this._previousHoveredElement.hovered = false;
             delete this._previousHoveredElement;
@@ -105,12 +112,12 @@ AppInspector.ComponentsTreeOutline.prototype = {
         AppInspector.InspectedWindow.highlightDOMNode(element && element.representedObject ? element.representedObject.id : 0);
     },
 
-    onmouseout: function(event)
-    {
+    onmouseout: function(event) {
         var nodeUnderMouse = document.elementFromPoint(event.pageX, event.pageY);
-        if (nodeUnderMouse && nodeUnderMouse.isDescendant(this.element))
+        if (nodeUnderMouse && nodeUnderMouse.isDescendant(this.element)){
             return;
-
+        }
+        
         if (this._previousHoveredElement) {
             this._previousHoveredElement.hovered = false;
             delete this._previousHoveredElement;
@@ -122,9 +129,8 @@ AppInspector.ComponentsTreeOutline.prototype = {
     __proto__: TreeOutline.prototype
 };
 
-
 /**
- * @constructor
+ * Defines a Tree Element node inside Components Tree View
  * @extends {TreeElement}
  */
 AppInspector.ComponentTreeElement = function(component)
@@ -138,26 +144,25 @@ AppInspector.ComponentTreeElement = function(component)
     
     TreeElement.call(this, title, component, !!component.items);
 };
-
 AppInspector.ComponentTreeElement.prototype = {
     
-    get hovered()
-    {
+    get hovered() {
         return this._hovered;
     },
 
-    set hovered(x)
-    {
-        if (this._hovered === x)
+    set hovered(x) {
+        if (this._hovered === x){
             return;
-
+        }
+        
         this._hovered = x;
 
         if (this.listItemElement) {
             if (x) {
                 this.updateSelection();
                 this.listItemElement.addStyleClass("hovered");
-            } else {
+            } 
+            else {
                 this.listItemElement.removeStyleClass("hovered");
             }
         }
@@ -168,43 +173,44 @@ AppInspector.ComponentTreeElement.prototype = {
             return;
         }
         
-        var items = this.representedObject.items||[],
-            len = items.length,
-            i = 0;
+        var items   = this.representedObject.items||[],
+            len     = items.length,
+            i       = 0;
             
         for (; i < len; i++) {
             this.appendChild(new AppInspector.ComponentTreeElement(items[i]));
         }
     },
     
-    onattach: function()
-    {
+    onattach: function() {
         if (this._hovered) {
             this.updateSelection();
             this.listItemElement.addStyleClass("hovered");
         }
     },
     
-    ondblclick: function(event)
-    {
+    ondblclick: function(event) {
         if (this.hasChildren && !this.expanded) {
             this.expand();
         }
     },
     
-    onselect: function(selectedByUser)
-    {
+    onselect: function(selectedByUser) {
+        var cmpId = this.representedObject ? this.representedObject.id : 0;
+        
         this.treeOutline.suppressRevealAndSelect = true;
         if (selectedByUser){
-            AppInspector.InspectedWindow.highlightDOMNode(this.representedObject ? this.representedObject.id : 0);
+            AppInspector.InspectedWindow.highlightDOMNode(cmpId);
         }
         this.updateSelection();
         this.treeOutline.suppressRevealAndSelect = false;
+        
+        AppInspector.EventBus.fireEvent('component-selected', cmpId);
+        
         return true;
     },
     
-    updateSelection: function()
-    {
+    updateSelection: function() {
         var listItemElement = this.listItemElement;
         if (!listItemElement)
             return;

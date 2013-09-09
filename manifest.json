@@ -6,8 +6,9 @@
     "description": "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
     "version": "1.0",
     "icons": { 
-        "128"   : "resources/images/icon_128.png",
-        "48"    : "resources/images/icon_48.png" 
+        "128"   : "resources/images/icon-128x128.png",
+        "48"    : "resources/images/icon-48x48.png",
+        "16"    : "resources/images/icon-16x16.png"
     },
     
     "background": {

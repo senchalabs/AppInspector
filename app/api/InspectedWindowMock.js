@@ -1,12 +1,15 @@
 /**
- * Not the real InspectedWindow. Only use this for development.
- * @constructor
+ * In case any developer needs to open inspector.html directly on a browser, outside the
+ * chrome dev tools context, this JS will be automatically loaded by InspectedWindow.js
+ * to keep the inspector usable with mock data.
+ * 
+ * For every API created here, add a correspondant on InspectedWindow.js.
  */
 AppInspector.InspectedWindow = {
-
+    isMock: true,
+    
     getFrameworkVersion: function(callback) 
     {
-        // callback(null);
         callback({
             "core": {
                 "shortVersion": "410",
@@ -49,6 +52,46 @@ AppInspector.InspectedWindow = {
             xclass: 'Ext.menu.Menu',
             xtype: 'menu',
             id: 'menu-1001'
+        }]);
+    },
+    
+    getComponent: function(cmpId, callback) {
+        callback([{
+            "key": "initialConfig",
+            "value": "Object",
+            "type": "object"
+        }, {
+            "key": "events",
+            "value": "Object",
+            "type": "object"
+        }, {
+            "key": "autoGenId",
+            "value": "true",
+            "type": "bool"
+        }, {
+            "key": "id",
+            "value": "messagebox-1001",
+            "type": "string"
+        }, {
+            "key": "componentLayout",
+            "value": "Object",
+            "type": "object"
+        }, {
+            "key": "componentCls",
+            "value": "x-window",
+            "type": "string"
+        }, {
+            "key": "protoEl",
+            "value": "Object",
+            "type": "object"
+        }]);
+    },
+    
+    getComponentProperty: function(cmpId, key, callback) {
+        callback([{
+            "key"   : "__proto__",
+            "value" : "Object",
+            "type"  : "object"
         }]);
     },
     

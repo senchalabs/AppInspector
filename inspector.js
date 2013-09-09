@@ -2,5 +2,7 @@
  * Page Load
  */
 window.addEventListener('DOMContentLoaded', function() {
-    new AppInspector.Viewport();
+    AppInspector.InspectedWindow.checkAPI(function() {
+        new AppInspector.Viewport();
+    });
 });

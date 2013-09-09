@@ -1,9 +1,6 @@
-App Inspector for Sencha™
+App Inspector for Sencha
 =======================
-Google Chrome™ Dev Tools extension for debugging Sencha applications.
-
-This is a great tool to debug your Sencha Application. It allows you to better understand the component tree and get yourself
-oriented faster.
+Google Chrome™ Dev Tools extension for debugging Sencha™ applications.
 
 <a href="https://chrome.google.com/webstore/detail/sencha-inspector/pbeapidedgdpniokbedbfbaacglkceae">![Available on Chrome Store](https://developers.google.com/chrome/web-store/images/branding/ChromeWebStore_BadgeWBorder_v2_206x58.png)</a>
 
@@ -13,10 +10,22 @@ Features
  - Creates a new Sencha Panel displaying the component tree
  - Hovering the component tree will highlight the component on the screen
  - You can use the keyboard to navigate trough the component tree
+ - Component Properties Side-Panel provides a deep view into each component
+ 
+Architecture
+------------
+This Chrome extension has 3 pieces:
+
+ - background: a page that works on the background and coordinates communication between tabs and the inspector
+ - devtools: bootstrap the dev tools extension, adding panels on the element tab and the new Sencha tab
+ - inspector: the App Inspector itself. It's rendered in an iframe inside dev tools
+
+Read more on [chrome.devtools.* APIs](http://developer.chrome.com/extensions/devtools.html) and [Getting Started: Building a Chrome Extension](http://developer.chrome.com/extensions/getstarted.html).
 
 Known Issues
 ------------
 There are some APIs from Dev Tools that are not fully exposed, so the App Inspector uses some work arounds:
+
  - Component highlighting is executed by injecting a &lt;div&gt; into the page.
  - DOM modifications (add/remove/move components) do not reflect automatically on the App Inspector. That's why we have a "reload" icon on the side panel.
 

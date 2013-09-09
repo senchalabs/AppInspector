@@ -1,0 +1,1 @@
+The "Stores Inspector" is under development.

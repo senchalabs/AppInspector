@@ -1,6 +1,7 @@
 /**
- * @constructor
- * @extends {AppInspector.HomePanel}
+ * The initial panel.
+ * 
+ * @extends {AppInspector.Panel}
  */
 AppInspector.HomePanel = function()
 {
@@ -9,7 +10,6 @@ AppInspector.HomePanel = function()
     AppInspector.Panel.apply(me, arguments);
     me.element.addEventListener('click', me.onElementClick.bind(me), false);
 };
-
 AppInspector.HomePanel.prototype = {
     panelId: 'home',
     
