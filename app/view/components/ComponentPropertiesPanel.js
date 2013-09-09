@@ -12,6 +12,7 @@ AppInspector.ComponentPropertiesPanel = function() {
     // create tree outline
     me.treeOutline = new AppInspector.ComponentPropertiesOutline();
     me.element.appendChild(me.treeOutline.element);
+    me.element.addStyleClass('component-properties-panel');
     
     // listen for event
     AppInspector.EventBus.addEventListener('component-selected', me.onComponentSelected.bind(me));

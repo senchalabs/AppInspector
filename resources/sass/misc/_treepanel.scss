@@ -1,0 +1,71 @@
+// tree panels
+.treepanel {
+  li {
+    margin-top: 2px;
+    margin-left: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-user-select: text;
+    cursor: default;
+    padding-top: 2px;
+    line-height: 12px;
+    &.parent {
+      margin-left: 1px;
+      &::before {
+        -webkit-user-select: none;
+        background-image: url(../images/statusbarButtonGlyphs.png);
+        background-size: 320px 120px;
+        background-position: -4px -96px;
+        opacity: 0.5;
+        content: "a";
+        width: 8px;
+        float: left;
+        margin-right: 4px;
+        color: transparent;
+        text-shadow: none;
+        @media (-webkit-min-device-pixel-ratio: 1.5) {
+          background-image: url(Images/statusbarButtonGlyphs2x.png);
+        }
+      }
+      &.expanded::before {
+      background-position: -20px -96px;
+      }
+    }
+    .info {
+      padding-top: 4px;
+      padding-bottom: 3px;
+    }
+    .selection {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 15px;
+      z-index: -1;
+      margin-top: -1px;
+    }
+    &.hovered .selection {
+      background: rgba(56, 121, 217, 0.1);
+      display: block;
+    }
+    &.selected {
+      .selection {
+        background: rgb(56, 121, 217);
+        display: block;
+      }
+      span {
+        color: #FFF;
+      }
+    }
+  }
+  ol {
+    display: none;
+    margin: 0;
+    -webkit-padding-start: 12px;
+    list-style: none;
+    &.expanded {
+      display: block;
+    }
+  }
+}

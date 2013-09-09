@@ -103,13 +103,18 @@ AppInspector.ComponentsTreeOutline.prototype = {
             this._previousHoveredElement.hovered = false;
             delete this._previousHoveredElement;
         }
-
+        
         if (element) {
             element.hovered = true;
             this._previousHoveredElement = element;
         }
         
-        AppInspector.InspectedWindow.highlightDOMNode(element && element.representedObject ? element.representedObject.id : 0);
+        if (element && element.representedObject) {
+            AppInspector.InspectedWindow.highlightDOMNode(element.representedObject.id);
+        }
+        else {
+            AppInspector.InspectedWindow.hideDOMNodeHighlight();
+        }
     },
 
     onmouseout: function(event) {
@@ -142,7 +147,7 @@ AppInspector.ComponentTreeElement = function(component)
     }
     title += 'id=<span class="dark-blue">'+component.id+'</span>)</span>';
     
-    TreeElement.call(this, title, component, !!component.items);
+    TreeElement.call(this, title, component, component.items && component.items.length ? true : false);
 };
 AppInspector.ComponentTreeElement.prototype = {
     

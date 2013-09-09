@@ -249,7 +249,7 @@ AppInspector.InspectedWindow = {
             var elHighlight = Ext.get('_inspector_hightlightel');
     
             if (elHighlight) {
-                elHighlight.remove();
+                Ext.destroy(elHighlight);
             }
         }     
         
