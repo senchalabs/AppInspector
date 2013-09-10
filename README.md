@@ -2,7 +2,7 @@ App Inspector for Sencha
 =======================
 Google Chrome™ Dev Tools extension for debugging Sencha™ applications.
 
-<a href="https://chrome.google.com/webstore/detail/sencha-inspector/pbeapidedgdpniokbedbfbaacglkceae">![Available on Chrome Store](https://developers.google.com/chrome/web-store/images/branding/ChromeWebStore_BadgeWBorder_v2_206x58.png)</a>
+<a href="https://chrome.google.com/webstore/detail/app-inspector-for-sencha/pbeapidedgdpniokbedbfbaacglkceae">![Available on Chrome Store](https://developers.google.com/chrome/web-store/images/branding/ChromeWebStore_BadgeWBorder_v2_206x58.png)</a>
 
 Features
 --------

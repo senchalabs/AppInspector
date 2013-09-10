@@ -2,13 +2,13 @@
     "manifest_version": 2,
     "minimum_chrome_version": "20.0",    
     
-    "name": "App Inspector for Sencha™",
+    "name": "App Inspector for Sencha",
     "description": "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
-    "version": "1.0",
+    "version": "1.1.1",
     "icons": { 
-        "128"   : "resources/images/icon-128x128.png",
+        "16"    : "resources/images/icon-16x16.png",
         "48"    : "resources/images/icon-48x48.png",
-        "16"    : "resources/images/icon-16x16.png"
+        "128"   : "resources/images/icon-128x128.png"
     },
     
     "background": {
