@@ -13,6 +13,7 @@ Ext.define('AI.Application', {
     ],
 
     controllers: [
+        'Main',
         'Stores'
     ],
 

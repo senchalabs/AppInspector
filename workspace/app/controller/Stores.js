@@ -21,7 +21,6 @@ Ext.define('AI.controller.Stores', {
 
         var getStoresFromInspectedWindow = function () {
             if (!window.Ext) {
-                alert('No Ext');
                 return null;
             }
 

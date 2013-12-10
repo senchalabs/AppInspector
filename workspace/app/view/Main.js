@@ -4,7 +4,8 @@ Ext.define('AI.view.Main', {
         'Ext.tab.Panel',
         'Ext.layout.container.Border',
 
-        'AI.view.StoreInspector'
+        'AI.view.StoreInspector',
+        'AI.view.AppInfo'
     ],
 
     xtype : 'app-main',
@@ -14,12 +15,10 @@ Ext.define('AI.view.Main', {
     },
 
     items : [
-//        {
-//            region : 'west',
-//            xtype  : 'panel',
-//            title  : 'west',
-//            width  : 150
-//        },
+        {
+            region    : 'north',
+            xtype     : 'ai-view-appinfo'
+        },
         {
             region : 'center',
             xtype  : 'tabpanel',
