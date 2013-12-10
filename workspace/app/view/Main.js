@@ -1,26 +1,33 @@
 Ext.define('AI.view.Main', {
-    extend: 'Ext.container.Container',
-    requires:[
+    extend   : 'Ext.container.Container',
+    requires : [
         'Ext.tab.Panel',
-        'Ext.layout.container.Border'
-    ],
-    
-    xtype: 'app-main',
+        'Ext.layout.container.Border',
 
-    layout: {
-        type: 'border'
+        'AI.view.StoreInspector'
+    ],
+
+    xtype : 'app-main',
+
+    layout : {
+        type : 'border'
     },
 
-    items: [{
-        region: 'west',
-        xtype: 'panel',
-        title: 'west',
-        width: 150
-    },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Center Tab 1'
-        }]
-    }]
+    items : [
+//        {
+//            region : 'west',
+//            xtype  : 'panel',
+//            title  : 'west',
+//            width  : 150
+//        },
+        {
+            region : 'center',
+            xtype  : 'tabpanel',
+            items  : [
+                {
+                    xtype : 'ai-view-storeinspector'
+                }
+            ]
+        }
+    ]
 });

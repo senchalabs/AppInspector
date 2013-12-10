@@ -1,6 +1,11 @@
 Ext.define('AI.Application', {
     name: 'AI',
 
+    requires : [
+        'Ext.window.MessageBox',
+        'AI.util.Error'
+    ],
+
     extend: 'Ext.app.Application',
 
     views: [
@@ -8,7 +13,7 @@ Ext.define('AI.Application', {
     ],
 
     controllers: [
-        // TODO: add controllers here
+        'Stores'
     ],
 
     stores: [

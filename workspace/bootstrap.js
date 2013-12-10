@@ -13,7 +13,12 @@ Ext.Loader.addClassPathMappings({
 Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
   "AI.controller.Main": [],
+  "AI.controller.Stores": [],
+  "AI.model.Store": [],
+  "AI.store.Stores": [],
+  "AI.util.Error": [],
   "AI.view.Main": [],
+  "AI.view.StoreInspector": [],
   "AI.view.Viewport": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -835,8 +840,15 @@ Ext.ClassManager.addNameAlternateMappings({
 Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
   "AI.controller.Main": [],
+  "AI.controller.Stores": [],
+  "AI.model.Store": [],
+  "AI.store.Stores": [],
+  "AI.util.Error": [],
   "AI.view.Main": [
     "widget.app-main"
+  ],
+  "AI.view.StoreInspector": [
+    "widget.ai-view-storeinspector"
   ],
   "AI.view.Viewport": [],
   "Ext.AbstractComponent": [],
