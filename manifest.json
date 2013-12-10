@@ -17,6 +17,8 @@
     },
 
     "devtools_page" : "devtools-page.html",
+
+    //for debugging
     "options_page"  : "workspace/index.html",
 
     "content_security_policy" : "script-src 'self' 'unsafe-eval'; object-src 'self'",
