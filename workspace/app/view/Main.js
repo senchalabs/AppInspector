@@ -6,7 +6,8 @@ Ext.define('AI.view.Main', {
 
         'AI.view.store.List',
         'AI.view.AppInfo',
-        'AI.view.profile.Overnesting'
+        'AI.view.profile.Overnesting',
+        'AI.view.profile.BoxLayouts'
     ],
 
     xtype : 'app-main',
@@ -29,6 +30,9 @@ Ext.define('AI.view.Main', {
                 },
                 {
                     xtype : 'ai-view-profile-overnesting'
+                },
+                {
+                    xtype : 'ai-view-profile-boxlayouts'
                 }
             ]
         }

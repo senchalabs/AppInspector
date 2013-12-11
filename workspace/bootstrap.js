@@ -25,6 +25,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.AppInfo": [],
   "AI.view.Main": [],
   "AI.view.Viewport": [],
+  "AI.view.profile.BoxLayouts": [],
   "AI.view.profile.Overnesting": [],
   "AI.view.store.List": [],
   "AI.view.store.Records": [],
@@ -864,6 +865,9 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.app-main"
   ],
   "AI.view.Viewport": [],
+  "AI.view.profile.BoxLayouts": [
+    "widget.ai-view-profile-boxlayouts"
+  ],
   "AI.view.profile.Overnesting": [
     "widget.ai-view-profile-overnesting"
   ],

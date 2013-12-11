@@ -8,8 +8,17 @@ Ext.define('AI.controller.Profile', {
                 'select'      : this.onSelectOvernestedComponent
             },
 
-            'button#Profile' : {
+            'button#ProfileOvernesting' : {
                 click : this.onOvernestedProfileClick
+            },
+
+            'ai-view-profile-boxlayouts' : {
+                'afterrender' : this.onOvernestedGridRender,
+                'select'      : this.onSelectOvernestedComponent
+            },
+
+            'button#ProfileBoxLayouts' : {
+                click : this.onNestedBoxLayoutsClick
             }
         });
     },
@@ -62,18 +71,77 @@ Ext.define('AI.controller.Profile', {
         );
     },
 
-    onSelectOvernestedComponent : function(selModel, record, index, eOpts) {
+    onSelectOvernestedComponent : function (selModel, record, index, eOpts) {
         var highlightOvernestedInInspectedWindow = function (id) {
             Ext.getCmp(id).el.frame('red');
         };
 
         chrome.devtools.inspectedWindow.eval(
-            '(' + highlightOvernestedInInspectedWindow + ')("' + record.get('id')  + '")',
+            '(' + highlightOvernestedInInspectedWindow + ')("' + record.get('id') + '")',
             function (components, isException) {
                 if (isException) {
                     AI.util.parseException(isException);
                     return;
                 }
+            }
+        );
+    },
+
+    onNestedBoxLayoutsClick : function(btn) {
+        var grid = btn.up('ai-view-profile-boxlayouts'),
+            store = grid.getStore();
+
+        store.removeAll();
+        grid.setLoading('Profiling for overnested box layouts...');
+
+        var getNestedBoxLayoutsFromInspectedWindow = function () {
+            var components = [];
+            var isContainer = function (c) {
+                return (c.isContainer &&
+                        !c.isHeader &&
+                        !c.isXType('tablepanel') &&
+                        !c.isXType('headercontainer') &&
+                        !c.hasCls('x-fieldset-header') &&
+                        c.items.items.length > 0);
+            };
+
+            var isBoxLayout = function (c) {
+                return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
+            };
+            Ext.ComponentManager.each(function (id) {
+                var cmp = Ext.getCmp(id),
+                    child;
+
+                if (isContainer(cmp) && isBoxLayout(cmp)) {
+                    child = cmp.items.getAt(0);
+
+                    if (isContainer(child) && isBoxLayout(child)) {
+                        components.push({
+                            id    : cmp.id,
+                            xtype : cmp.xtype
+                        });
+                    }
+                }
+            });
+
+            return components;
+        };
+
+        chrome.devtools.inspectedWindow.eval(
+            '(' + getNestedBoxLayoutsFromInspectedWindow + ')()',
+            function (components, isException) {
+                if (isException) {
+                    AI.util.parseException(isException);
+                    return;
+                }
+
+                Ext.each(components, function (component) {
+                    var model = Ext.create('AI.model.Overnested', component);
+
+                    store.add(model);
+                });
+
+                grid.setLoading(false);
             }
         );
     }

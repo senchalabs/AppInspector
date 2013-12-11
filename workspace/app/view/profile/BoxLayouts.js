@@ -1,13 +1,13 @@
-Ext.define('AI.view.profile.Overnesting', {
+Ext.define('AI.view.profile.BoxLayouts', {
     extend : 'Ext.grid.Panel',
-    xtype  : 'ai-view-profile-overnesting',
+    xtype  : 'ai-view-profile-boxlayouts',
 
     requires : [
         'Ext.toolbar.Toolbar',
         'Ext.button.Button'
     ],
 
-    title : 'Overnested Components',
+    title : 'Overnested Box Layouts',
 
     dockedItems : [
         {
@@ -16,7 +16,7 @@ Ext.define('AI.view.profile.Overnesting', {
             items : [
                 {
                     xtype  : 'button',
-                    itemId : 'ProfileOvernesting',
+                    itemId : 'ProfileBoxLayouts',
                     text   : 'Profile'
                 }
             ]
