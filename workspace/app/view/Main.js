@@ -4,7 +4,7 @@ Ext.define('AI.view.Main', {
         'Ext.tab.Panel',
         'Ext.layout.container.Border',
 
-        'AI.view.StoreInspector',
+        'AI.view.store.List',
         'AI.view.AppInfo'
     ],
 
@@ -24,7 +24,7 @@ Ext.define('AI.view.Main', {
             xtype  : 'tabpanel',
             items  : [
                 {
-                    xtype : 'ai-view-storeinspector'
+                    xtype : 'ai-view-store-list'
                 }
             ]
         }

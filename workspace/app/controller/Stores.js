@@ -7,15 +7,23 @@ Ext.define('AI.controller.Stores', {
 
     init : function () {
         this.control({
-            'ai-view-storeinspector' : {
+            'ai-view-store-list' : {
                 'activate' : this.onStoreGridActivate
+            },
+
+            'gridpanel#StoreList' : {
+                'select'   : this.onStoreGridSelection
+            },
+
+            'gridpanel#RecordList' : {
+                'select'   : this.onRecordGridSelection
             }
         });
     },
 
     onStoreGridActivate : function (view, eOpts) {
         var newStore = Ext.create('AI.store.Stores', {}),
-            grid = view.down('gridpanel');
+            grid = view.down('#StoreList');
 
         grid.reconfigure(newStore);
 
@@ -51,5 +59,53 @@ Ext.define('AI.controller.Stores', {
                 });
             }
         );
+    },
+
+    onStoreGridSelection : function(selModel, record, index, eOpts) {
+        var newStore = Ext.create('AI.store.Records', {}),
+            parent = Ext.ComponentQuery.query('ai-view-store-records')[0],
+            grid = parent.down('#RecordList'),
+            propertyGrid = parent.down('#RecordDetail');
+
+        grid.reconfigure(newStore);
+        propertyGrid.setSource({});
+
+        var getRecordsFromInspectedWindow = function (storeId) {
+            var records = [],
+                store = Ext.getStore(storeId);
+
+            store.each(function (record) {
+                records.push({
+                    id        : record.get('id'),
+                    modelData : record.data,
+                    rawData   : record.raw
+                });
+            });
+
+            return records;
+        };
+
+        chrome.devtools.inspectedWindow.eval(
+            '(' + getRecordsFromInspectedWindow + ')("' + record.get('id') + '")',
+            function (records, isException) {
+                if (isException) {
+                    AI.util.parseException(isException);
+                    return;
+                }
+
+                Ext.each(records, function (record) {
+                    var model = Ext.create('AI.model.Record', record);
+
+                    newStore.add(model);
+                });
+            }
+        );
+    },
+
+    onRecordGridSelection : function(selModel, record, index, eOpts) {
+        var parent = Ext.ComponentQuery.query('ai-view-store-records')[0],
+            propertyGrid = parent.down('#RecordDetail');
+
+        propertyGrid.setSource(record.raw.modelData);
     }
 });

@@ -14,13 +14,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
   "AI.controller.Main": [],
   "AI.controller.Stores": [],
+  "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.store.Records": [],
   "AI.store.Stores": [],
   "AI.util.Error": [],
   "AI.view.AppInfo": [],
   "AI.view.Main": [],
-  "AI.view.StoreInspector": [],
   "AI.view.Viewport": [],
+  "AI.view.store.List": [],
+  "AI.view.store.Records": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -842,7 +845,9 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
   "AI.controller.Main": [],
   "AI.controller.Stores": [],
+  "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.store.Records": [],
   "AI.store.Stores": [],
   "AI.util.Error": [],
   "AI.view.AppInfo": [
@@ -851,10 +856,13 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.Main": [
     "widget.app-main"
   ],
-  "AI.view.StoreInspector": [
-    "widget.ai-view-storeinspector"
-  ],
   "AI.view.Viewport": [],
+  "AI.view.store.List": [
+    "widget.ai-view-store-list"
+  ],
+  "AI.view.store.Records": [
+    "widget.ai-view-store-records"
+  ],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],

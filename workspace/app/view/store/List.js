@@ -1,9 +1,10 @@
-Ext.define('AI.view.StoreInspector', {
+Ext.define('AI.view.store.List', {
     extend : 'Ext.container.Container',
-    xtype  : 'ai-view-storeinspector',
+    xtype  : 'ai-view-store-list',
 
     requires : [
-        'Ext.grid.Panel'
+        'Ext.grid.Panel',
+        'AI.view.store.Records'
     ],
 
     title : 'Stores',
@@ -14,6 +15,7 @@ Ext.define('AI.view.StoreInspector', {
         {
             region : 'center',
             xtype  : 'gridpanel',
+            itemId : 'StoreList',
 
             columns : [
                 {
@@ -27,6 +29,15 @@ Ext.define('AI.view.StoreInspector', {
                     width     : 100
                 }
             ]
+        },
+        {
+            xtype  : 'ai-view-store-records',
+            region : 'south',
+            height : 300,
+
+            collapsed   : false,
+            collapsible : true,
+            resizable   : true
         }
     ]
 });
