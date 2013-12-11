@@ -4,6 +4,8 @@ Ext.define('AI.view.store.List', {
 
     requires : [
         'Ext.grid.Panel',
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button',
         'AI.view.store.Records'
     ],
 
@@ -27,6 +29,20 @@ Ext.define('AI.view.store.List', {
                     text      : 'Count',
                     dataIndex : 'count',
                     width     : 100
+                }
+            ],
+
+            dockedItems : [
+                {
+                    xtype : 'toolbar',
+                    dock  : 'top',
+                    items : [
+                        {
+                            xtype  : 'button',
+                            itemId : 'RefreshStores',
+                            text   : 'Refresh List'
+                        }
+                    ]
                 }
             ]
         },

@@ -17,8 +17,18 @@ Ext.define('AI.controller.Stores', {
 
             'gridpanel#RecordList' : {
                 'select'   : this.onRecordGridSelection
-            }
+            },
+
+            'button#RefreshStores' : {
+                click : this.onRefreshStoresClick
+            },
         });
+    },
+
+    onRefreshStoresClick : function(btn) {
+        var view = btn.up('ai-view-store-list');
+
+        this.onStoreGridActivate(view);
     },
 
     onStoreGridActivate : function (view, eOpts) {
@@ -26,6 +36,7 @@ Ext.define('AI.controller.Stores', {
             grid = view.down('#StoreList');
 
         grid.reconfigure(newStore);
+        grid.setLoading('Loading stores...');
 
         var getStoresFromInspectedWindow = function () {
             if (!window.Ext) {
@@ -57,6 +68,8 @@ Ext.define('AI.controller.Stores', {
 
                     newStore.add(model);
                 });
+
+                grid.setLoading(false);
             }
         );
     },
@@ -69,6 +82,8 @@ Ext.define('AI.controller.Stores', {
 
         grid.reconfigure(newStore);
         propertyGrid.setSource({});
+
+        grid.setLoading('Loading records...');
 
         var getRecordsFromInspectedWindow = function (storeId) {
             var records = [],
@@ -98,6 +113,8 @@ Ext.define('AI.controller.Stores', {
 
                     newStore.add(model);
                 });
+
+                grid.setLoading(false);
             }
         );
     },
