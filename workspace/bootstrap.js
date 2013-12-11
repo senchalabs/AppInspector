@@ -13,15 +13,19 @@ Ext.Loader.addClassPathMappings({
 Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
   "AI.controller.Main": [],
+  "AI.controller.Profile": [],
   "AI.controller.Stores": [],
+  "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
   "AI.util.Error": [],
   "AI.view.AppInfo": [],
   "AI.view.Main": [],
   "AI.view.Viewport": [],
+  "AI.view.profile.Overnesting": [],
   "AI.view.store.List": [],
   "AI.view.store.Records": [],
   "Ext.AbstractComponent": [],
@@ -844,9 +848,12 @@ Ext.ClassManager.addNameAlternateMappings({
 Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
   "AI.controller.Main": [],
+  "AI.controller.Profile": [],
   "AI.controller.Stores": [],
+  "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
   "AI.util.Error": [],
@@ -857,6 +864,9 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.app-main"
   ],
   "AI.view.Viewport": [],
+  "AI.view.profile.Overnesting": [
+    "widget.ai-view-profile-overnesting"
+  ],
   "AI.view.store.List": [
     "widget.ai-view-store-list"
   ],

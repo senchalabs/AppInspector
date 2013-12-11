@@ -5,7 +5,8 @@ Ext.define('AI.view.Main', {
         'Ext.layout.container.Border',
 
         'AI.view.store.List',
-        'AI.view.AppInfo'
+        'AI.view.AppInfo',
+        'AI.view.profile.Overnesting'
     ],
 
     xtype : 'app-main',
@@ -16,8 +17,8 @@ Ext.define('AI.view.Main', {
 
     items : [
         {
-            region    : 'north',
-            xtype     : 'ai-view-appinfo'
+            region : 'north',
+            xtype  : 'ai-view-appinfo'
         },
         {
             region : 'center',
@@ -25,6 +26,9 @@ Ext.define('AI.view.Main', {
             items  : [
                 {
                     xtype : 'ai-view-store-list'
+                },
+                {
+                    xtype : 'ai-view-profile-overnesting'
                 }
             ]
         }
