@@ -43,7 +43,7 @@ Ext.define('AI.controller.Profile', {
                 var c = Ext.getCmp(id);
                 if (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') && c.items.items.length === 1) {
                     components.push({
-                        id    : c.id,
+                        cmpId : c.id,
                         xtype : c.xtype
                     });
                 }
@@ -87,7 +87,7 @@ Ext.define('AI.controller.Profile', {
         );
     },
 
-    onNestedBoxLayoutsClick : function(btn) {
+    onNestedBoxLayoutsClick : function (btn) {
         var grid = btn.up('ai-view-profile-boxlayouts'),
             store = grid.getStore();
 
@@ -97,11 +97,7 @@ Ext.define('AI.controller.Profile', {
         var getNestedBoxLayoutsFromInspectedWindow = function () {
             var components = [];
             var isContainer = function (c) {
-                return (c.isContainer &&
-                        !c.isHeader &&
-                        !c.isXType('tablepanel') &&
-                        !c.isXType('headercontainer') &&
-                        !c.hasCls('x-fieldset-header') &&
+                return (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') &&
                         c.items.items.length > 0);
             };
 
@@ -109,18 +105,13 @@ Ext.define('AI.controller.Profile', {
                 return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
             };
             Ext.ComponentManager.each(function (id) {
-                var cmp = Ext.getCmp(id),
-                    child;
+                var cmp = Ext.getCmp(id);
 
-                if (isContainer(cmp) && isBoxLayout(cmp)) {
-                    child = cmp.items.getAt(0);
-
-                    if (isContainer(child) && isBoxLayout(child)) {
-                        components.push({
-                            id    : cmp.id,
-                            xtype : cmp.xtype
-                        });
-                    }
+                if (isContainer(cmp) && isBoxLayout(cmp) && cmp.flex) {
+                    components.push({
+                        cmpId : cmp.id,
+                        xtype : cmp.xtype
+                    });
                 }
             });
 

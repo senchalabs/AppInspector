@@ -26,7 +26,7 @@ Ext.define('AI.view.profile.BoxLayouts', {
     columns : [
         {
             text      : 'Component ID',
-            dataIndex : 'id',
+            dataIndex : 'cmpId',
             flex      : 1
         },
         {
