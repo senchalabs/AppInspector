@@ -1,6 +1,10 @@
 Ext.define('AI.controller.Profile', {
     extend : 'Ext.app.Controller',
 
+    requires : [
+        'AI.store.Overnested'
+    ],
+
     init : function () {
         this.control({
             'ai-view-profile-overnesting' : {
@@ -77,7 +81,7 @@ Ext.define('AI.controller.Profile', {
         };
 
         chrome.devtools.inspectedWindow.eval(
-            '(' + highlightOvernestedInInspectedWindow + ')("' + record.get('id') + '")',
+            '(' + highlightOvernestedInInspectedWindow + ')("' + record.get('cmpId') + '")',
             function (components, isException) {
                 if (isException) {
                     AI.util.parseException(isException);

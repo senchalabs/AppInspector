@@ -15,7 +15,8 @@ Ext.define('AI.Application', {
     controllers: [
         'Main',
         'Stores',
-        'Profile'
+        'Profile',
+        'Component'
     ],
 
     stores: [

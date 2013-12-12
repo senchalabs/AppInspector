@@ -21,7 +21,7 @@ Ext.define('AI.controller.Stores', {
 
             'button#RefreshStores' : {
                 click : this.onRefreshStoresClick
-            },
+            }
         });
     },
 

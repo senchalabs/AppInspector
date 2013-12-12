@@ -12,12 +12,15 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
+  "AI.controller.Component": [],
   "AI.controller.Main": [],
   "AI.controller.Profile": [],
   "AI.controller.Stores": [],
+  "AI.model.Component": [],
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.store.Components": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
@@ -25,6 +28,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.AppInfo": [],
   "AI.view.Main": [],
   "AI.view.Viewport": [],
+  "AI.view.component.Panel": [],
+  "AI.view.component.Tree": [],
   "AI.view.profile.BoxLayouts": [],
   "AI.view.profile.Overnesting": [],
   "AI.view.store.List": [],
@@ -848,12 +853,15 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
+  "AI.controller.Component": [],
   "AI.controller.Main": [],
   "AI.controller.Profile": [],
   "AI.controller.Stores": [],
+  "AI.model.Component": [],
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.store.Components": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
@@ -865,6 +873,12 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.app-main"
   ],
   "AI.view.Viewport": [],
+  "AI.view.component.Panel": [
+    "widget.ai-view-component-panel"
+  ],
+  "AI.view.component.Tree": [
+    "widget.ai-view-component-tree"
+  ],
   "AI.view.profile.BoxLayouts": [
     "widget.ai-view-profile-boxlayouts"
   ],

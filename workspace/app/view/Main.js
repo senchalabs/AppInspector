@@ -7,7 +7,8 @@ Ext.define('AI.view.Main', {
         'AI.view.store.List',
         'AI.view.AppInfo',
         'AI.view.profile.Overnesting',
-        'AI.view.profile.BoxLayouts'
+        'AI.view.profile.BoxLayouts',
+        'AI.view.component.Panel'
     ],
 
     xtype : 'app-main',
@@ -25,6 +26,9 @@ Ext.define('AI.view.Main', {
             region : 'center',
             xtype  : 'tabpanel',
             items  : [
+                {
+                    xtype  : 'ai-view-component-panel'
+                },
                 {
                     xtype : 'ai-view-store-list'
                 },
