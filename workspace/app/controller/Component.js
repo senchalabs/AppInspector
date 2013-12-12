@@ -134,18 +134,10 @@ Ext.define('AI.controller.Component', {
     },
 
     onSelectComponent : function (selModel, record, index, eOpts) {
-        var highlightComponentInInspectedWindow = function (id) {
-            Ext.getCmp(id).el.frame('red');
-        };
-
-        chrome.devtools.inspectedWindow.eval(
-            '(' + highlightComponentInInspectedWindow + ')("' + record.get('cmpId') + '")',
-            function (components, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-            }
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.highlight,
+            record.get('cmpId'),
+            Ext.emptyFn
         );
     }
 });

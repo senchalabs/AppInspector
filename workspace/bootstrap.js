@@ -25,6 +25,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.store.Records": [],
   "AI.store.Stores": [],
   "AI.util.Error": [],
+  "AI.util.InspectedWindow": [],
   "AI.view.AppInfo": [],
   "AI.view.Main": [],
   "AI.view.Viewport": [],
@@ -866,6 +867,7 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.store.Records": [],
   "AI.store.Stores": [],
   "AI.util.Error": [],
+  "AI.util.InspectedWindow": [],
   "AI.view.AppInfo": [
     "widget.ai-view-appinfo"
   ],

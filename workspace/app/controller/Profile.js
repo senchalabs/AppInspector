@@ -76,18 +76,10 @@ Ext.define('AI.controller.Profile', {
     },
 
     onSelectOvernestedComponent : function (selModel, record, index, eOpts) {
-        var highlightOvernestedInInspectedWindow = function (id) {
-            Ext.getCmp(id).el.frame('red');
-        };
-
-        chrome.devtools.inspectedWindow.eval(
-            '(' + highlightOvernestedInInspectedWindow + ')("' + record.get('cmpId') + '")',
-            function (components, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-            }
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.highlight,
+            record.get('cmpId'),
+            Ext.emptyFn
         );
     },
 

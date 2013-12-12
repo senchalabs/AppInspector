@@ -3,7 +3,9 @@ Ext.define('AI.Application', {
 
     requires : [
         'Ext.window.MessageBox',
-        'AI.util.Error'
+
+        'AI.util.Error',
+        'AI.util.InspectedWindow'
     ],
 
     extend: 'Ext.app.Application',
