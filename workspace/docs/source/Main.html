@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">Ext.define('AI.controller.Main', {
+    extend : 'Ext.app.Controller',
+
+    init : function () {
+        this.control({
+            'ai-view-appinfo' : {
+                'afterrender' : this.onAppInfoRender
+            }
+        });
+    },
+
+    onAppInfoRender : function (cmp) {
+        var getInfoFromInspectedWindow = function () {
+            if (!window.Ext) {
+                return null;
+            }
+
+            var v = Ext.versions.extjs;
+
+            return {
+                'Version' : v.version
+            };
+        };
+
+        AI.util.InspectedWindow.eval(
+            getInfoFromInspectedWindow,
+            null,
+            function (data) {
+                cmp.setSource(data);
+            }
+        );
+    }
+});
+</pre>
+</body>
+</html>

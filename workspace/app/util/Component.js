@@ -4,6 +4,9 @@
 Ext.define('AI.util.Component', {
     singleton : true,
 
+    /**
+     * @returns {*}
+     */
     loadComponentTree : function () {
         var getComponentTreeNodes = function (comps) {
             var compNodes = [];

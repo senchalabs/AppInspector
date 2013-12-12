@@ -4,6 +4,9 @@
 Ext.define('AI.util.Profile', {
     singleton : true,
 
+    /**
+     * @returns {Array}
+     */
     getOvernestedComponents : function () {
         var components = [];
 
@@ -20,6 +23,9 @@ Ext.define('AI.util.Profile', {
         return components;
     },
 
+    /**
+     * @returns {Array}
+     */
     getNestedBoxLayouts : function () {
         var components = [];
         var isContainer = function (c) {

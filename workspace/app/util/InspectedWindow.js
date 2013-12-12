@@ -1,25 +1,28 @@
+/**
+ *
+ */
 Ext.define('AI.util.InspectedWindow', {
     singleton : true,
 
     /**
-     *
-     * @param id
+     * @param {String} id
      */
     highlight : function(id) {
         var cmp = Ext.getCmp(id);
 
-        if (cmp.rendered) {
-            cmp.el.frame('red');
+        if (cmp && cmp.rendered) {
+            cmp.el.frame('red', 3, { duration : 250 });
         }
     },
 
     /**
+     * @param {Function} closure
+     * @param {String} argString
+     * @param {Function} callback  A callback function passed two parameters:
      *
-     * @param closure {Function}
-     * @param argString {String}
-     * @param callback {Function} A callback function passed two parameters:
-     *     - result {any}: Whatever the closure function returns
-     *     - isException {Boolean}: whether-or-not the closure function encountered an exception
+     * - result {*}: Whatever the closure function returns
+     *
+     * - isException {Boolean}: whether-or-not the closure function encountered an exception
      */
     eval : function(closure, argString, callback) {
         var callbackFn = callback,

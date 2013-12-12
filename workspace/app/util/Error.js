@@ -1,6 +1,12 @@
+/**
+ *
+ */
 Ext.define('AI.util.Error', {
     singleton : true,
 
+    /**
+     * @param {Object} exception
+     */
     parseException : function(exception) {
         var msg = '';
         for (var key in exception) {

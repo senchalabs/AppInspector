@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='AI-util-Store'>/**
+</span> * Utility class containing methods which run in the context of the inspectedWindow
+ */
+Ext.define('AI.util.Store', {
+    singleton : true,
+
+<span id='AI-util-Store-method-getStores'>    /**
+</span>     * @returns {Array}
+     */
+    getStores : function () {
+        var stores = [];
+
+        Ext.each(Ext.StoreManager.items, function (store) {
+            stores.push({
+                id    : store.storeId,
+                count : store.getCount()
+            });
+        });
+
+        return stores;
+    },
+
+<span id='AI-util-Store-method-getRecords'>    /**
+</span>     * @param {String} storeId
+     * @returns {Array}
+     */
+    getRecords : function (storeId) {
+        var records = [],
+            store = Ext.getStore(storeId);
+
+        store.each(function (record) {
+            records.push({
+                id        : record.get('id'),
+                modelData : record.data,
+                rawData   : record.raw
+            });
+        });
+
+        return records;
+    }
+});
+</pre>
+</body>
+</html>

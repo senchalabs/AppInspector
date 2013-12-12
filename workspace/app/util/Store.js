@@ -4,6 +4,9 @@
 Ext.define('AI.util.Store', {
     singleton : true,
 
+    /**
+     * @returns {Array}
+     */
     getStores : function () {
         var stores = [];
 
@@ -17,6 +20,10 @@ Ext.define('AI.util.Store', {
         return stores;
     },
 
+    /**
+     * @param {String} storeId
+     * @returns {Array}
+     */
     getRecords : function (storeId) {
         var records = [],
             store = Ext.getStore(storeId);

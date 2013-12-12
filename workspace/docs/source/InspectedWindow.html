@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='AI-util-InspectedWindow'>/**
+</span> *
+ */
+Ext.define('AI.util.InspectedWindow', {
+    singleton : true,
+
+<span id='AI-util-InspectedWindow-method-highlight'>    /**
+</span>     * @param {String} id
+     */
+    highlight : function(id) {
+        var cmp = Ext.getCmp(id);
+
+        if (cmp &amp;&amp; cmp.rendered) {
+            cmp.el.frame('red', 3, { duration : 250 });
+        }
+    },
+
+<span id='AI-util-InspectedWindow-method-eval'>    /**
+</span>     * @param {Function} closure
+     * @param {String} argString
+     * @param {Function} callback  A callback function passed two parameters:
+     *
+     * - result {*}: Whatever the closure function returns
+     *
+     * - isException {Boolean}: whether-or-not the closure function encountered an exception
+     */
+    eval : function(closure, argString, callback) {
+        var callbackFn = callback,
+            args = '';
+
+        if (argString) {
+            args = '&quot;' + argString + '&quot;';
+        }
+
+        chrome.devtools.inspectedWindow.eval(
+            '(' + closure + ')(' + args + ')',
+            function (result, isException) {
+                if (isException) {
+                    AI.util.Error.parseException(isException);
+                    return;
+                }
+
+                callbackFn(result, isException);
+            }
+        );
+    }
+});</pre>
+</body>
+</html>
