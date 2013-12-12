@@ -24,8 +24,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
+  "AI.util.Profile": [],
+  "AI.util.Store": [],
   "AI.view.AppInfo": [],
   "AI.view.Main": [],
   "AI.view.Viewport": [],
@@ -866,8 +869,11 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
+  "AI.util.Profile": [],
+  "AI.util.Store": [],
   "AI.view.AppInfo": [
     "widget.ai-view-appinfo"
   ],

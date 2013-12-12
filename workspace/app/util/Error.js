@@ -3,7 +3,6 @@ Ext.define('AI.util.Error', {
 
     parseException : function(exception) {
         var msg = '';
-
         for (var key in exception) {
             if (exception.hasOwnProperty(key)) {
                 msg += key + ': ' + exception[key] + '\n';

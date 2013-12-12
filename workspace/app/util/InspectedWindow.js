@@ -6,7 +6,11 @@ Ext.define('AI.util.InspectedWindow', {
      * @param id
      */
     highlight : function(id) {
-        Ext.getCmp(id).el.frame('red');
+        var cmp = Ext.getCmp(id);
+
+        if (cmp.rendered) {
+            cmp.el.frame('red');
+        }
     },
 
     /**
@@ -29,7 +33,7 @@ Ext.define('AI.util.InspectedWindow', {
             '(' + closure + ')(' + args + ')',
             function (result, isException) {
                 if (isException) {
-                    AI.util.parseException(isException);
+                    AI.util.Error.parseException(isException);
                     return;
                 }
 

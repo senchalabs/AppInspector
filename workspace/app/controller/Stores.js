@@ -2,7 +2,8 @@ Ext.define('AI.controller.Stores', {
     extend : 'Ext.app.Controller',
 
     requires : [
-        'AI.store.Stores'
+        'AI.store.Stores',
+        'AI.util.Store'
     ],
 
     init : function () {
@@ -38,31 +39,10 @@ Ext.define('AI.controller.Stores', {
         grid.reconfigure(newStore);
         grid.setLoading('Loading stores...');
 
-        var getStoresFromInspectedWindow = function () {
-            if (!window.Ext) {
-                return null;
-            }
-
-            var stores = [];
-
-            Ext.each(Ext.StoreManager.items, function (store) {
-                stores.push({
-                    id    : store.storeId,
-                    count : store.getCount()
-                });
-            });
-
-            return stores;
-        };
-
-        chrome.devtools.inspectedWindow.eval(
-            '(' + getStoresFromInspectedWindow + ')()',
-            function (stores, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-
+        AI.util.InspectedWindow.eval(
+            AI.util.Store.getStores,
+            null,
+            function (stores) {
                 Ext.each(stores, function (store) {
                     var model = Ext.create('AI.model.Store', store);
 
@@ -85,29 +65,10 @@ Ext.define('AI.controller.Stores', {
 
         grid.setLoading('Loading records...');
 
-        var getRecordsFromInspectedWindow = function (storeId) {
-            var records = [],
-                store = Ext.getStore(storeId);
-
-            store.each(function (record) {
-                records.push({
-                    id        : record.get('id'),
-                    modelData : record.data,
-                    rawData   : record.raw
-                });
-            });
-
-            return records;
-        };
-
-        chrome.devtools.inspectedWindow.eval(
-            '(' + getRecordsFromInspectedWindow + ')("' + record.get('id') + '")',
+        AI.util.InspectedWindow.eval(
+            AI.util.Store.getRecords,
+            record.get('id'),
             function (records, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-
                 Ext.each(records, function (record) {
                     var model = Ext.create('AI.model.Record', record);
 

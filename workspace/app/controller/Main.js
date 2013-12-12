@@ -22,14 +22,10 @@ Ext.define('AI.controller.Main', {
             };
         };
 
-        chrome.devtools.inspectedWindow.eval(
-            '(' + getInfoFromInspectedWindow + ')()',
-            function (data, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-
+        AI.util.InspectedWindow.eval(
+            getInfoFromInspectedWindow,
+            null,
+            function (data) {
                 cmp.setSource(data);
             }
         );

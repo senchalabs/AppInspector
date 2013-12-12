@@ -2,7 +2,8 @@ Ext.define('AI.controller.Profile', {
     extend : 'Ext.app.Controller',
 
     requires : [
-        'AI.store.Overnested'
+        'AI.store.Overnested',
+        'AI.util.Profile'
     ],
 
     init : function () {
@@ -40,30 +41,10 @@ Ext.define('AI.controller.Profile', {
         store.removeAll();
         grid.setLoading('Profiling for overnested components...');
 
-        var getOvernestedFromInspectedWindow = function () {
-            var components = [];
-
-            Ext.ComponentManager.each(function (id) {
-                var c = Ext.getCmp(id);
-                if (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') && c.items.items.length === 1) {
-                    components.push({
-                        cmpId : c.id,
-                        xtype : c.xtype
-                    });
-                }
-            });
-
-            return components;
-        };
-
-        chrome.devtools.inspectedWindow.eval(
-            '(' + getOvernestedFromInspectedWindow + ')()',
-            function (components, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-
+        AI.util.InspectedWindow.eval(
+            AI.util.Profile.getOvernestedComponents,
+            null,
+            function (components) {
                 Ext.each(components, function (component) {
                     var model = Ext.create('AI.model.Overnested', component);
 
@@ -90,38 +71,10 @@ Ext.define('AI.controller.Profile', {
         store.removeAll();
         grid.setLoading('Profiling for overnested box layouts...');
 
-        var getNestedBoxLayoutsFromInspectedWindow = function () {
-            var components = [];
-            var isContainer = function (c) {
-                return (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') &&
-                        c.items.items.length > 0);
-            };
-
-            var isBoxLayout = function (c) {
-                return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
-            };
-            Ext.ComponentManager.each(function (id) {
-                var cmp = Ext.getCmp(id);
-
-                if (isContainer(cmp) && isBoxLayout(cmp) && cmp.flex) {
-                    components.push({
-                        cmpId : cmp.id,
-                        xtype : cmp.xtype
-                    });
-                }
-            });
-
-            return components;
-        };
-
-        chrome.devtools.inspectedWindow.eval(
-            '(' + getNestedBoxLayoutsFromInspectedWindow + ')()',
-            function (components, isException) {
-                if (isException) {
-                    AI.util.parseException(isException);
-                    return;
-                }
-
+        AI.util.InspectedWindow.eval(
+            AI.util.Profile.getNestedBoxLayouts,
+            null,
+            function (components) {
                 Ext.each(components, function (component) {
                     var model = Ext.create('AI.model.Overnested', component);
 
