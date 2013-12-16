@@ -1,0 +1,93 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Navigation"
+    },
+    "designerId": "f4d54eb3-4dfa-4905-94b0-5a083b8933f9",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    '#ComponentsNav' : {",
+                    "        'click' : this.onComponentsNavClick",
+                    "    },",
+                    "    '#StoresNav' : {",
+                    "        'click' : this.onStoresNavClick",
+                    "    },",
+                    "    '#ProfilesNav' : {",
+                    "        'click' : this.onProfilesNavClick",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "92bd51b2-e1df-4f5d-9e14-f547b3c6fbb7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onComponentsNavClick",
+                "implHandler": [
+                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
+                    "",
+                    "main.layout.setActiveItem(0);"
+                ]
+            },
+            "designerId": "f7200e98-a159-47bf-8595-6c74d164fef0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoresNavClick",
+                "implHandler": [
+                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
+                    "",
+                    "main.layout.setActiveItem(1);"
+                ]
+            },
+            "designerId": "86846029-0094-429e-aff2-dce970f4522f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onProfilesNavClick",
+                "implHandler": [
+                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
+                    "",
+                    "main.layout.setActiveItem(2);"
+                ]
+            },
+            "designerId": "c59156d4-6d6c-42da-a595-03a5fe4f9553"
+        }
+    ]
+}

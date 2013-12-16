@@ -1,0 +1,41 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Components",
+        "model": "Component",
+        "storeId": "Components"
+    },
+    "designerId": "fc80428c-1f26-4b31-8e73-979d8be2aa5c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Memory",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[]"
+                ]
+            },
+            "designerId": "0583de56-8834-4259-81c4-3b824a47fe0d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "f206e933-90d3-4075-b350-173f84c88826"
+                }
+            ]
+        }
+    ]
+}

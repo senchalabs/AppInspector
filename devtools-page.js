@@ -3,7 +3,7 @@
 /**
  * Sencha Panel
  */
-chrome.devtools.panels.create("Sencha", "resources/images/panel_icon.png", "workspace/index.html", function() {});
+chrome.devtools.panels.create("Sencha", "resources/images/panel_icon.png", "AppInspector/index.html", function() {});
 
 /**
  * Elements Side Panel

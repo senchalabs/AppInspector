@@ -1,0 +1,58 @@
+{
+    "name": "AppInspector",
+    "settings": {
+        "cmd": {
+            "license": "gpl",
+            "cmdVersion": "4.0.1.45",
+            "frameworkVersion": "4.2.1.883"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "urlPrefix": "",
+        "exportPath": "",
+        "spacesToIndent": 4,
+        "sdkPath": "",
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true
+    },
+    "xdsVersion": "3.0.0",
+    "xdsBuild": 1337,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000003,
+    "framework": "ext42",
+    "viewOrderMap": {
+        "view": [
+            "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62"
+        ],
+        "store": [
+            "005dfa9e-ca81-422e-ae4c-b29b432479db",
+            "96c4b9b0-4313-4f3f-b073-d054eb1d1324",
+            "fc80428c-1f26-4b31-8e73-979d8be2aa5c"
+        ],
+        "controller": [
+            "26d6c88d-7725-4c18-af80-ca851ac3ece6",
+            "f4d54eb3-4dfa-4905-94b0-5a083b8933f9"
+        ],
+        "model": [
+            "addfe23e-d0f4-4099-bc0a-c1f760ad12de",
+            "e855f3a2-b9d2-4102-8304-8574c749bc04",
+            "e8b2b694-578f-44cd-a0c4-597010d91f48",
+            "bb7971c6-0892-4d90-b857-8cb6dd2021e2"
+        ],
+        "resource": [
+            "efa3151d-f411-416b-a78d-276e3b22783a"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}
