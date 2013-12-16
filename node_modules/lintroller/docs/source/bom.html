@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">&quot;use strict&quot;;
+
+<span id='LintRoller-linters-BOM'>/**
+</span> * @class LintRoller.linters.BOM
+ *
+ * A utility that will remove all Byte-Order-Marks (BOM - \uFEFF) from a file
+ *
+ * Created automatically if a { type : 'bom' } config is passed to the linters array.
+ */
+var linter = {
+
+<span id='LintRoller-linters-BOM-cfg-options'>    /**
+</span>     * @cfg {Object}
+     * An object containing lint validation options
+     */
+    options : {
+
+    },
+
+<span id='LintRoller-linters-BOM-method-applyLintOptions'>    /**
+</span>     * @private
+     */
+    applyLintOptions : function (options) {
+        var i;
+
+        if (!options) {
+            return false;
+        }
+
+        for (i in options) {
+            if (options.hasOwnProperty(i)) {
+                this.options[i] = options[i];
+            }
+        }
+    },
+
+<span id='LintRoller-linters-BOM-method-runLinter'>    /**
+</span>     * @private
+     */
+    runLinter : function (parentModule, callback) {
+        var me = this,
+            i = 0,
+            spaces = '',
+            js;
+
+        for (i; i &lt; this.options.spaces; i++) {
+            spaces += ' ';
+        }
+
+        parentModule.log('Replaces tabs with spaces...', false);
+
+        parentModule.async.each(
+            parentModule.files,
+
+            function (file, next) {
+                js = parentModule.fs.readFileSync(file, 'utf8');
+                js = js.replace(/\uFEFF/g, '');
+
+                parentModule.fs.writeFileSync(file, js, 'utf8');
+
+                next(null);
+            },
+
+            function (e) {
+                callback();
+            }
+        );
+
+    }
+
+};
+
+module.exports = linter;</pre>
+</body>
+</html>
