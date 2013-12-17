@@ -1,0 +1,149 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Store",
+        "requires": [
+            "AI.util.Store"
+        ]
+    },
+    "designerId": "981c06a0-6e9d-48a2-a9e7-f0db46131544",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    '#StoresPanel' : {",
+                    "        'activate' : this.onStoreGridActivate",
+                    "    },",
+                    "",
+                    "    'gridpanel#StoreList' : {",
+                    "        'select'   : this.onStoreGridSelection",
+                    "    },",
+                    "",
+                    "    'gridpanel#RecordList' : {",
+                    "        'select'   : this.onRecordGridSelection",
+                    "    }",
+                    "",
+                    "//    'button#RefreshStores' : {",
+                    "//        click : this.onRefreshStoresClick",
+                    "//    }",
+                    "});"
+                ]
+            },
+            "designerId": "2b3bab6d-8fc1-4940-a576-eea390ff2456"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "panel"
+                ],
+                "fn": "onStoreGridActivate",
+                "implHandler": [
+                    "var grid = panel.down('#StoreList'),",
+                    "    gridStore = grid.getStore();",
+                    "",
+                    "gridStore.removeAll();",
+                    "",
+                    "grid.setLoading('Loading stores...');",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.Store.getStores,",
+                    "    null,",
+                    "    function (stores) {",
+                    "        Ext.each(stores, function (store) {",
+                    "            var model = Ext.create('AI.model.Store', store);",
+                    "            ",
+                    "            gridStore.add(model);",
+                    "        });",
+                    "        ",
+                    "        grid.setLoading(false);",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "9c5d9a39-9756-4555-ab6a-58420db2cd8d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "selModel, record, index, eOpts"
+                ],
+                "fn": "onStoreGridSelection",
+                "implHandler": [
+                    "var parent = Ext.ComponentQuery.query('#StoresPanel')[0],",
+                    "    grid = parent.down('#RecordList'),",
+                    "    store = grid.getStore(),",
+                    "    propertyGrid = parent.down('#RecordDetail');",
+                    "",
+                    "store.removeAll();",
+                    "propertyGrid.setSource({});",
+                    "",
+                    "grid.setLoading('Loading records...');",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.Store.getRecords,",
+                    "    record.get('id'),",
+                    "    function (records, isException) {",
+                    "        Ext.each(records, function (record) {",
+                    "            var model = Ext.create('AI.model.Record', record);",
+                    "            ",
+                    "            store.add(model);",
+                    "        });",
+                    "        ",
+                    "        grid.setLoading(false);",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "be6d2006-7858-4073-bea2-02b60d0165b1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "selModel,record,index,eOpts"
+                ],
+                "fn": "onRecordGridSelection",
+                "implHandler": [
+                    "var parent = Ext.ComponentQuery.query('#StoresPanel')[0],",
+                    "    propertyGrid = parent.down('#RecordDetail');",
+                    "",
+                    "propertyGrid.setSource(record.raw.modelData);"
+                ]
+            },
+            "designerId": "588b0ca3-e374-4de0-8a3e-37c7b7a55043"
+        }
+    ]
+}

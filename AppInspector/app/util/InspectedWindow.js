@@ -4,10 +4,14 @@
 Ext.define('AI.util.InspectedWindow', {
     singleton : true,
 
+    requires : [
+        'AI.util.Error'
+    ],
+
     /**
      * @param {String} id
      */
-    highlight : function(id) {
+    highlight : function (id) {
         var cmp = Ext.getCmp(id);
 
         if (cmp && cmp.rendered) {
@@ -24,7 +28,7 @@ Ext.define('AI.util.InspectedWindow', {
      *
      * - isException {Boolean}: whether-or-not the closure function encountered an exception
      */
-    eval : function(closure, argString, callback) {
+    eval : function (closure, argString, callback) {
         var callbackFn = callback,
             args = '';
 

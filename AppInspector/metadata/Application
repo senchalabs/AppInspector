@@ -8,13 +8,15 @@
     "userConfig": {
         "controllers": [
             "Components",
-            "Navigation"
+            "Navigation",
+            "Store"
         ],
         "name": "AI",
         "stores": [
             "Overnested",
             "Records",
-            "Components"
+            "Components",
+            "Stores"
         ],
         "views": [
             "MainView"

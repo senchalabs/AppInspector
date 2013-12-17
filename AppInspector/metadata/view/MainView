@@ -9,7 +9,14 @@
         "designer|initialView": true,
         "designer|userClassName": "MainView",
         "itemId": "mainView",
-        "layout": "border"
+        "layout": "border",
+        "requires": [
+            "Ext.layout.container.Border",
+            "Ext.layout.container.Card",
+            "Ext.tree.Panel",
+            "Ext.grid.Panel",
+            "Ext.grid.property.Grid"
+        ]
     },
     "designerId": "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62",
     "cn": [
@@ -83,7 +90,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "href": null,
-                                "itemId": "ProfilesNav",
+                                "itemId": "Profiles",
                                 "text": "Profiles"
                             },
                             "designerId": "9f67ea74-e63c-4b04-b4c2-4130f7cbd1f8"
@@ -201,13 +208,150 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "container|align": "center",
-                        "container|pack": "center",
+                        "container|align": "stretch",
+                        "container|pack": null,
                         "itemId": "StoresPanel",
                         "layout": "vbox",
-                        "title": "About Us"
+                        "title": "Stores"
                     },
-                    "designerId": "daf95a82-9e4f-4afd-b806-c2cc1b902fad"
+                    "designerId": "daf95a82-9e4f-4afd-b806-c2cc1b902fad",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 300,
+                                "itemId": "StoreList",
+                                "layout|flex": null,
+                                "store": "Stores",
+                                "title": "My Grid Panel"
+                            },
+                            "designerId": "6fce872c-e09c-4357-9549-47e6fac6e089",
+                            "cn": [
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "id",
+                                        "flex": 1,
+                                        "text": "Store ID"
+                                    },
+                                    "designerId": "93f71290-53de-4dd0-a944-bfed1bb12c01"
+                                },
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "count",
+                                        "text": "Record Count"
+                                    },
+                                    "designerId": "186da1bc-77b7-4154-86d1-9176e51d3393"
+                                },
+                                {
+                                    "type": "Ext.grid.View",
+                                    "reference": {
+                                        "name": "viewConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "designerId": "2d4c4eab-d295-4cff-8aa8-554a300be38a"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "layout|flex": 1,
+                                "resizable": [
+                                    "true"
+                                ]
+                            },
+                            "designerId": "532dad53-d45d-44df-8c86-5795a1c685ba",
+                            "cn": [
+                                {
+                                    "type": "Ext.grid.Panel",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "RecordList",
+                                        "layout|flex": 1,
+                                        "store": "Records",
+                                        "title": "Store Records"
+                                    },
+                                    "designerId": "9f79eef5-b049-4bac-852c-f645c91edfe2",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.grid.column.Column",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "id",
+                                                "flex": 1,
+                                                "text": "Record ID"
+                                            },
+                                            "designerId": "a3fd2b82-f999-412e-8744-71df0c4a505b"
+                                        },
+                                        {
+                                            "type": "Ext.grid.View",
+                                            "reference": {
+                                                "name": "viewConfig",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "designerId": "4931dfca-f973-449b-b21f-2b3c5526fbee"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.grid.property.Grid",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "RecordDetail",
+                                        "layout|flex": null,
+                                        "resizable": [
+                                            "true",
+                                            ""
+                                        ],
+                                        "source": [
+                                            "{}"
+                                        ],
+                                        "title": "Record Details",
+                                        "width": 300
+                                    },
+                                    "designerId": "5366c649-9898-4417-9809-34f6905409a0"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.panel.Panel",

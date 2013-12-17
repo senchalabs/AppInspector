@@ -16,6 +16,14 @@
 Ext.define('AI.view.MainView', {
     extend: 'Ext.container.Viewport',
 
+    requires: [
+        'Ext.layout.container.Border',
+        'Ext.layout.container.Card',
+        'Ext.tree.Panel',
+        'Ext.grid.Panel',
+        'Ext.grid.property.Grid'
+    ],
+
     itemId: 'mainView',
     layout: {
         type: 'border'
@@ -51,7 +59,7 @@ Ext.define('AI.view.MainView', {
                                 },
                                 {
                                     xtype: 'menuitem',
-                                    itemId: 'ProfilesNav',
+                                    itemId: 'Profiles',
                                     text: 'Profiles'
                                 }
                             ]
@@ -108,11 +116,68 @@ Ext.define('AI.view.MainView', {
                             xtype: 'panel',
                             itemId: 'StoresPanel',
                             layout: {
-                                align: 'center',
-                                pack: 'center',
+                                align: 'stretch',
                                 type: 'vbox'
                             },
-                            title: 'About Us'
+                            title: 'Stores',
+                            items: [
+                                {
+                                    xtype: 'gridpanel',
+                                    height: 300,
+                                    itemId: 'StoreList',
+                                    title: 'My Grid Panel',
+                                    store: 'Stores',
+                                    columns: [
+                                        {
+                                            xtype: 'gridcolumn',
+                                            dataIndex: 'id',
+                                            text: 'Store ID',
+                                            flex: 1
+                                        },
+                                        {
+                                            xtype: 'gridcolumn',
+                                            dataIndex: 'count',
+                                            text: 'Record Count'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'container',
+                                    flex: 1,
+                                    resizable: true,
+                                    layout: {
+                                        align: 'stretch',
+                                        type: 'hbox'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'gridpanel',
+                                            flex: 1,
+                                            itemId: 'RecordList',
+                                            title: 'Store Records',
+                                            store: 'Records',
+                                            columns: [
+                                                {
+                                                    xtype: 'gridcolumn',
+                                                    dataIndex: 'id',
+                                                    text: 'Record ID',
+                                                    flex: 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'propertygrid',
+                                            itemId: 'RecordDetail',
+                                            width: 300,
+                                            resizable: true,
+                                            title: 'Record Details',
+                                            source: {
+                                                
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             xtype: 'panel',
