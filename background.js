@@ -10,8 +10,9 @@ chrome.runtime.onConnect.addListener(function(port) {
                 };
                 
                 chrome.tabs.onUpdated.addListener(onUpdated);
+
                 port.onDisconnect.addListener(function() {
-                    chrome.tabs.onUpdated.removeListener(respond);
+                    chrome.tabs.onUpdated.removeListener(onUpdated);
                 });
             }
         });

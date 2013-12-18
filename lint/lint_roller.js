@@ -12,8 +12,8 @@ var config = {
         '../background.js',
         '../devtools-page.js',
 
-        '../workspace/app.js',
-        '../workspace/app/'
+        '../AppInspector/app.js',
+        '../AppInspector/app/'
     ],
 
     //but ignore anything in these folders
@@ -37,7 +37,8 @@ var config = {
                 globals : {
                     'Ext'    : true,
                     'AI'     : true,
-                    'chrome' : true
+                    'chrome' : true,
+                    '$0'     : true
                 }
             }
         },
