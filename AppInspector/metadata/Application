@@ -9,17 +9,22 @@
         "controllers": [
             "Components",
             "Navigation",
-            "Store"
+            "Store",
+            "Profile"
         ],
         "name": "AI",
         "stores": [
             "Overnested",
             "Records",
             "Components",
-            "Stores"
+            "Stores",
+            "BoxLayouts"
         ],
         "views": [
-            "MainView"
+            "MainView",
+            "ComponentTree",
+            "StoreInspector",
+            "AppProfiles"
         ]
     },
     "designerId": "application"

@@ -27,9 +27,9 @@
                 "fn": "init",
                 "implHandler": [
                     "this.control({",
-                    "    '#StoresPanel' : {",
-                    "        'activate' : this.onStoreGridActivate",
-                    "    },",
+                    "//    '#StoresPanel' : {",
+                    "//        'activate' : this.onStoreGridActivate",
+                    "//    },",
                     "",
                     "    'gridpanel#StoreList' : {",
                     "        'select'   : this.onStoreGridSelection",
@@ -37,11 +37,11 @@
                     "",
                     "    'gridpanel#RecordList' : {",
                     "        'select'   : this.onRecordGridSelection",
-                    "    }",
+                    "    },",
                     "",
-                    "//    'button#RefreshStores' : {",
-                    "//        click : this.onRefreshStoresClick",
-                    "//    }",
+                    "    'button#RefreshStores' : {",
+                    "        click : this.onRefreshStoresClick",
+                    "    }",
                     "});"
                 ]
             },
@@ -73,10 +73,10 @@
                     "    function (stores) {",
                     "        Ext.each(stores, function (store) {",
                     "            var model = Ext.create('AI.model.Store', store);",
-                    "            ",
+                    "",
                     "            gridStore.add(model);",
                     "        });",
-                    "        ",
+                    "",
                     "        grid.setLoading(false);",
                     "    }",
                     ");"
@@ -144,6 +144,26 @@
                 ]
             },
             "designerId": "588b0ca3-e374-4de0-8a3e-37c7b7a55043"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onRefreshStoresClick",
+                "implHandler": [
+                    "var view = btn.up('#StoresPanel');",
+                    "",
+                    "this.onStoreGridActivate(view);"
+                ]
+            },
+            "designerId": "f0a65706-24e8-42aa-bda2-5a89a5b83939"
         }
     ]
 }

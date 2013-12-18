@@ -24,15 +24,20 @@ Ext.application({
         'Overnested',
         'Records',
         'Components',
-        'Stores'
+        'Stores',
+        'BoxLayouts'
     ],
     views: [
-        'MainView'
+        'MainView',
+        'ComponentTree',
+        'StoreInspector',
+        'AppProfiles'
     ],
     controllers: [
         'Components',
         'Navigation',
-        'Store'
+        'Store',
+        'Profile'
     ],
     name: 'AI',
 

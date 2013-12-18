@@ -28,10 +28,30 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
+  "AI.controller.Components": [],
   "AI.controller.Main": [],
   "AI.controller.Navigation": [],
+  "AI.controller.Profile": [],
+  "AI.controller.Store": [],
+  "AI.model.Component": [],
+  "AI.model.Overnested": [],
+  "AI.model.Record": [],
+  "AI.model.Store": [],
+  "AI.store.BoxLayouts": [],
+  "AI.store.Components": [],
+  "AI.store.Overnested": [],
+  "AI.store.Records": [],
+  "AI.store.Stores": [],
+  "AI.util.Component": [],
+  "AI.util.Error": [],
+  "AI.util.InspectedWindow": [],
+  "AI.util.Profile": [],
+  "AI.util.Store": [],
+  "AI.view.AppProfiles": [],
+  "AI.view.ComponentTree": [],
   "AI.view.Main": [],
   "AI.view.MainView": [],
+  "AI.view.StoreInspector": [],
   "AI.view.Viewport": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -868,12 +888,38 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
+  "AI.controller.Components": [],
   "AI.controller.Main": [],
   "AI.controller.Navigation": [],
+  "AI.controller.Profile": [],
+  "AI.controller.Store": [],
+  "AI.model.Component": [],
+  "AI.model.Overnested": [],
+  "AI.model.Record": [],
+  "AI.model.Store": [],
+  "AI.store.BoxLayouts": [],
+  "AI.store.Components": [],
+  "AI.store.Overnested": [],
+  "AI.store.Records": [],
+  "AI.store.Stores": [],
+  "AI.util.Component": [],
+  "AI.util.Error": [],
+  "AI.util.InspectedWindow": [],
+  "AI.util.Profile": [],
+  "AI.util.Store": [],
+  "AI.view.AppProfiles": [
+    "widget.appprofiles"
+  ],
+  "AI.view.ComponentTree": [
+    "widget.componenttree"
+  ],
   "AI.view.Main": [
     "widget.app-main"
   ],
   "AI.view.MainView": [],
+  "AI.view.StoreInspector": [
+    "widget.storeinspector"
+  ],
   "AI.view.Viewport": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],

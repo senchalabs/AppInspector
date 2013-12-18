@@ -22,9 +22,9 @@ Ext.define('AI.controller.Store', {
 
     init: function(application) {
         this.control({
-            '#StoresPanel' : {
-                'activate' : this.onStoreGridActivate
-            },
+        //    '#StoresPanel' : {
+        //        'activate' : this.onStoreGridActivate
+        //    },
 
             'gridpanel#StoreList' : {
                 'select'   : this.onStoreGridSelection
@@ -32,11 +32,11 @@ Ext.define('AI.controller.Store', {
 
             'gridpanel#RecordList' : {
                 'select'   : this.onRecordGridSelection
-            }
+            },
 
-        //    'button#RefreshStores' : {
-        //        click : this.onRefreshStoresClick
-        //    }
+            'button#RefreshStores' : {
+                click : this.onRefreshStoresClick
+            }
         });
     },
 
@@ -94,6 +94,12 @@ Ext.define('AI.controller.Store', {
             propertyGrid = parent.down('#RecordDetail');
 
         propertyGrid.setSource(record.raw.modelData);
+    },
+
+    onRefreshStoresClick: function(btn) {
+        var view = btn.up('#StoresPanel');
+
+        this.onStoreGridActivate(view);
     }
 
 });

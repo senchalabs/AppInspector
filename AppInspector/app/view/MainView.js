@@ -17,11 +17,11 @@ Ext.define('AI.view.MainView', {
     extend: 'Ext.container.Viewport',
 
     requires: [
+        'AI.view.ComponentTree',
+        'AI.view.StoreInspector',
+        'AI.view.AppProfiles',
         'Ext.layout.container.Border',
-        'Ext.layout.container.Card',
-        'Ext.tree.Panel',
-        'Ext.grid.Panel',
-        'Ext.grid.property.Grid'
+        'Ext.layout.container.Card'
     ],
 
     itemId: 'mainView',
@@ -59,7 +59,7 @@ Ext.define('AI.view.MainView', {
                                 },
                                 {
                                     xtype: 'menuitem',
-                                    itemId: 'Profiles',
+                                    itemId: 'ProfilesNav',
                                     text: 'Profiles'
                                 }
                             ]
@@ -75,119 +75,13 @@ Ext.define('AI.view.MainView', {
                     },
                     items: [
                         {
-                            xtype: 'treepanel',
-                            itemId: 'ComponentsPanel',
-                            title: 'Component Tree',
-                            store: 'Components',
-                            rootVisible: false,
-                            useArrows: true,
-                            viewConfig: {
-
-                            },
-                            dockedItems: [
-                                {
-                                    xtype: 'toolbar',
-                                    dock: 'top',
-                                    items: [
-                                        {
-                                            xtype: 'button',
-                                            itemId: 'RefreshComponentTree',
-                                            text: 'Refresh'
-                                        }
-                                    ]
-                                }
-                            ],
-                            columns: [
-                                {
-                                    xtype: 'treecolumn',
-                                    dataIndex: 'text',
-                                    text: 'Component ID',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    dataIndex: 'xtype',
-                                    text: 'XType',
-                                    flex: 1
-                                }
-                            ]
+                            xtype: 'componenttree'
                         },
                         {
-                            xtype: 'panel',
-                            itemId: 'StoresPanel',
-                            layout: {
-                                align: 'stretch',
-                                type: 'vbox'
-                            },
-                            title: 'Stores',
-                            items: [
-                                {
-                                    xtype: 'gridpanel',
-                                    height: 300,
-                                    itemId: 'StoreList',
-                                    title: 'My Grid Panel',
-                                    store: 'Stores',
-                                    columns: [
-                                        {
-                                            xtype: 'gridcolumn',
-                                            dataIndex: 'id',
-                                            text: 'Store ID',
-                                            flex: 1
-                                        },
-                                        {
-                                            xtype: 'gridcolumn',
-                                            dataIndex: 'count',
-                                            text: 'Record Count'
-                                        }
-                                    ]
-                                },
-                                {
-                                    xtype: 'container',
-                                    flex: 1,
-                                    resizable: true,
-                                    layout: {
-                                        align: 'stretch',
-                                        type: 'hbox'
-                                    },
-                                    items: [
-                                        {
-                                            xtype: 'gridpanel',
-                                            flex: 1,
-                                            itemId: 'RecordList',
-                                            title: 'Store Records',
-                                            store: 'Records',
-                                            columns: [
-                                                {
-                                                    xtype: 'gridcolumn',
-                                                    dataIndex: 'id',
-                                                    text: 'Record ID',
-                                                    flex: 1
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            xtype: 'propertygrid',
-                                            itemId: 'RecordDetail',
-                                            width: 300,
-                                            resizable: true,
-                                            title: 'Record Details',
-                                            source: {
-                                                
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
+                            xtype: 'storeinspector'
                         },
                         {
-                            xtype: 'panel',
-                            itemId: 'ProfilesPanel',
-                            layout: {
-                                align: 'center',
-                                pack: 'center',
-                                type: 'vbox'
-                            },
-                            title: 'Contact Us'
+                            xtype: 'appprofiles'
                         }
                     ]
                 }

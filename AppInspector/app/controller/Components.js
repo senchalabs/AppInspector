@@ -24,7 +24,7 @@ Ext.define('AI.controller.Components', {
     init: function(application) {
         this.control({
             '#ComponentsPanel' : {
-                'activate' : this.onComponentTreeActivate,
+        //        'activate' : this.onComponentTreeActivate,
                 'select'   : this.onSelectComponent
             },
 
