@@ -26,14 +26,33 @@
             "codeClass": null,
             "userConfig": {
                 "collapsible": true,
+                "container|align": "stretch",
                 "itemId": "menuPanel",
+                "layout": "vbox",
                 "layout|region": "west",
                 "layout|split": true,
                 "title": "Menu",
-                "width": 150
+                "width": 250
             },
             "designerId": "70e4bdc2-8c21-4da3-b357-bdac73847e65",
             "cn": [
+                {
+                    "type": "Ext.grid.property.Grid",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 150,
+                        "itemId": "AppDetails",
+                        "source": [
+                            "{}"
+                        ],
+                        "title": "App Details"
+                    },
+                    "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
+                },
                 {
                     "type": "Ext.menu.Menu",
                     "reference": {

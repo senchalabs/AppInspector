@@ -37,7 +37,8 @@ Ext.application({
         'Components',
         'Navigation',
         'Store',
-        'Profile'
+        'Profile',
+        'Main'
     ],
     name: 'AI',
 

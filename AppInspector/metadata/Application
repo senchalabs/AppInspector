@@ -10,7 +10,8 @@
             "Components",
             "Navigation",
             "Store",
-            "Profile"
+            "Profile",
+            "Main"
         ],
         "name": "AI",
         "stores": [

@@ -39,10 +39,23 @@ Ext.define('AI.view.MainView', {
                     region: 'west',
                     split: true,
                     itemId: 'menuPanel',
-                    width: 150,
+                    width: 250,
+                    layout: {
+                        align: 'stretch',
+                        type: 'vbox'
+                    },
                     collapsible: true,
                     title: 'Menu',
                     items: [
+                        {
+                            xtype: 'propertygrid',
+                            height: 150,
+                            itemId: 'AppDetails',
+                            title: 'App Details',
+                            source: {
+                                
+                            }
+                        },
                         {
                             xtype: 'menu',
                             floating: false,
