@@ -28,13 +28,12 @@
                 "fn": "init",
                 "implHandler": [
                     "this.control({",
-                    "    '#ComponentsPanel' : {",
-                    "//        'activate' : this.onComponentTreeActivate,",
-                    "        'select'   : this.onSelectComponent",
+                    "    '#ComponentTree' : {",
+                    "        'itemclick'   : this.onSelectComponent",
                     "    },",
                     "",
                     "    'button#RefreshComponentTree' : {",
-                    "        click : this.onRefreshComponentsClick",
+                    "        'click' : this.onRefreshComponentsClick",
                     "    }",
                     "});"
                 ]
@@ -54,7 +53,7 @@
                 ],
                 "fn": "onRefreshComponentsClick",
                 "implHandler": [
-                    "var tree = btn.up('#ComponentsPanel');",
+                    "var tree = btn.up('#ComponentTree');",
                     "",
                     "this.onComponentTreeActivate(tree);"
                 ]
@@ -86,14 +85,14 @@
                     "    function (components, isException) {",
                     "        Ext.each(components, function (cmp) {",
                     "            var model = Ext.create('AI.model.Component', cmp);",
-                    "            ",
+                    "",
                     "            nodes.push(model);",
                     "        });",
-                    "        ",
+                    "",
                     "        Ext.each(nodes, function (node) {",
                     "            root.appendChild(node);",
                     "        });",
-                    "        ",
+                    "",
                     "        tree.setLoading(false);",
                     "    }",
                     ");"
@@ -110,14 +109,33 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "selModel, record, index, eOpts"
+                    "tree, record, item, index, e, eOpts"
                 ],
                 "fn": "onSelectComponent",
                 "implHandler": [
+                    "var parent = tree.up('componentinspector'),",
+                    "    propsGrid = parent.down('#ComponentProps'),",
+                    "    methodGrid = parent.down('#ComponentMethods');",
+                    "",
                     "AI.util.InspectedWindow.eval(",
                     "    AI.util.InspectedWindow.highlight,",
                     "    record.get('cmpId'),",
                     "    Ext.emptyFn",
+                    ");",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.Component.getInspectedComponent,",
+                    "    record.get('cmpId'),",
+                    "    function(result, isException) {",
+                    "        if (result) {",
+                    "            propsGrid.setSource(result.properties);",
+                    "            methodGrid.setSource(result.methods);",
+                    "        }",
+                    "        else {",
+                    "            propsGrid.setSource({});",
+                    "            methodGrid.setSource({});",
+                    "        }",
+                    "    }",
                     ");"
                 ]
             },

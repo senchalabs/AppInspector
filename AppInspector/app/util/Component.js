@@ -81,5 +81,31 @@ Ext.define('AI.util.Component', {
         nodes = getComponentTreeNodes(top);
 
         return nodes;
+    },
+
+    /**
+     * @returns {Object/undefined}
+     */
+    getInspectedComponent : function (id) {
+        var cmp, data, key;
+
+        cmp = Ext.getCmp(id);
+
+        if (cmp) {
+            data = Object.create(null); //which sets __proto__ to undefined
+            data.properties = Object.create(null);
+            data.methods = Object.create(null);
+
+            for (key in cmp) {
+                if (typeof cmp[key] === 'function') {
+                    data.methods[key] = 'METHOD';
+                }
+                else if (typeof cmp[key] !== 'object') {
+                    data.properties[key] = cmp[key];
+                }
+            }
+        }
+
+        return data;
     }
 });

@@ -23,19 +23,18 @@ Ext.define('AI.controller.Components', {
 
     init: function(application) {
         this.control({
-            '#ComponentsPanel' : {
-        //        'activate' : this.onComponentTreeActivate,
-                'select'   : this.onSelectComponent
+            '#ComponentTree' : {
+                'itemclick'   : this.onSelectComponent
             },
 
             'button#RefreshComponentTree' : {
-                click : this.onRefreshComponentsClick
+                'click' : this.onRefreshComponentsClick
             }
         });
     },
 
     onRefreshComponentsClick: function(btn) {
-        var tree = btn.up('#ComponentsPanel');
+        var tree = btn.up('#ComponentTree');
 
         this.onComponentTreeActivate(tree);
     },
@@ -66,11 +65,30 @@ Ext.define('AI.controller.Components', {
         );
     },
 
-    onSelectComponent: function(selModel, record, index, eOpts) {
+    onSelectComponent: function(tree, record, item, index, e, eOpts) {
+        var parent = tree.up('componentinspector'),
+            propsGrid = parent.down('#ComponentProps'),
+            methodGrid = parent.down('#ComponentMethods');
+
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
             record.get('cmpId'),
             Ext.emptyFn
+        );
+
+        AI.util.InspectedWindow.eval(
+            AI.util.Component.getInspectedComponent,
+            record.get('cmpId'),
+            function(result, isException) {
+                if (result) {
+                    propsGrid.setSource(result.properties);
+                    methodGrid.setSource(result.methods);
+                }
+                else {
+                    propsGrid.setSource({});
+                    methodGrid.setSource({});
+                }
+            }
         );
     }
 

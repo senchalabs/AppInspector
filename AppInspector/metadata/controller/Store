@@ -27,20 +27,16 @@
                 "fn": "init",
                 "implHandler": [
                     "this.control({",
-                    "//    '#StoresPanel' : {",
-                    "//        'activate' : this.onStoreGridActivate",
-                    "//    },",
-                    "",
                     "    'gridpanel#StoreList' : {",
-                    "        'select'   : this.onStoreGridSelection",
+                    "        'itemclick'   : this.onStoreGridSelection",
                     "    },",
                     "",
                     "    'gridpanel#RecordList' : {",
-                    "        'select'   : this.onRecordGridSelection",
+                    "        'itemclick'   : this.onRecordGridSelection",
                     "    },",
                     "",
                     "    'button#RefreshStores' : {",
-                    "        click : this.onRefreshStoresClick",
+                    "        'click' : this.onRefreshStoresClick",
                     "    }",
                     "});"
                 ]
@@ -93,7 +89,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "selModel, record, index, eOpts"
+                    "storeGrid, record, item, index, e, eOpts"
                 ],
                 "fn": "onStoreGridSelection",
                 "implHandler": [
@@ -113,10 +109,10 @@
                     "    function (records, isException) {",
                     "        Ext.each(records, function (record) {",
                     "            var model = Ext.create('AI.model.Record', record);",
-                    "            ",
+                    "",
                     "            store.add(model);",
                     "        });",
-                    "        ",
+                    "",
                     "        grid.setLoading(false);",
                     "    }",
                     ");"
@@ -133,7 +129,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "selModel,record,index,eOpts"
+                    "grid, record, item, index, e, eOpts"
                 ],
                 "fn": "onRecordGridSelection",
                 "implHandler": [

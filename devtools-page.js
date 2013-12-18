@@ -16,9 +16,9 @@ chrome.devtools.panels.create(
 var elementsPanel = chrome.devtools.panels.elements;
 
 elementsPanel.createSidebarPane("Sencha Component", function (sidebar) {
-    function onSelectionChanged() {
+    var onSelectionChanged = function() {
         sidebar.setExpression("(" + pageDetectSenchaComponent.toString() + ")()");
-    }
+    };
 
     onSelectionChanged();
 

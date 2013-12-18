@@ -17,7 +17,7 @@ Ext.define('AI.view.MainView', {
     extend: 'Ext.container.Viewport',
 
     requires: [
-        'AI.view.ComponentTree',
+        'AI.view.ComponentInspector',
         'AI.view.StoreInspector',
         'AI.view.AppProfiles',
         'Ext.layout.container.Border',
@@ -88,7 +88,7 @@ Ext.define('AI.view.MainView', {
                     },
                     items: [
                         {
-                            xtype: 'componenttree'
+                            xtype: 'componentinspector'
                         },
                         {
                             xtype: 'storeinspector'

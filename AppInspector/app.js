@@ -29,9 +29,9 @@ Ext.application({
     ],
     views: [
         'MainView',
-        'ComponentTree',
         'StoreInspector',
-        'AppProfiles'
+        'AppProfiles',
+        'ComponentInspector'
     ],
     controllers: [
         'Components',

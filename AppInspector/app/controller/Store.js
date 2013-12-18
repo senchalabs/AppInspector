@@ -22,20 +22,16 @@ Ext.define('AI.controller.Store', {
 
     init: function(application) {
         this.control({
-        //    '#StoresPanel' : {
-        //        'activate' : this.onStoreGridActivate
-        //    },
-
             'gridpanel#StoreList' : {
-                'select'   : this.onStoreGridSelection
+                'itemclick'   : this.onStoreGridSelection
             },
 
             'gridpanel#RecordList' : {
-                'select'   : this.onRecordGridSelection
+                'itemclick'   : this.onRecordGridSelection
             },
 
             'button#RefreshStores' : {
-                click : this.onRefreshStoresClick
+                'click' : this.onRefreshStoresClick
             }
         });
     },
@@ -63,7 +59,7 @@ Ext.define('AI.controller.Store', {
         );
     },
 
-    onStoreGridSelection: function(selModel, record, index, eOpts) {
+    onStoreGridSelection: function(storeGrid, record, item, index, e, eOpts) {
         var parent = Ext.ComponentQuery.query('#StoresPanel')[0],
             grid = parent.down('#RecordList'),
             store = grid.getStore(),
@@ -89,7 +85,7 @@ Ext.define('AI.controller.Store', {
         );
     },
 
-    onRecordGridSelection: function(selModel,record,index,eOpts) {
+    onRecordGridSelection: function(grid, record, item, index, e, eOpts) {
         var parent = Ext.ComponentQuery.query('#StoresPanel')[0],
             propertyGrid = parent.down('#RecordDetail');
 

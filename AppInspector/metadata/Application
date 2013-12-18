@@ -23,9 +23,9 @@
         ],
         "views": [
             "MainView",
-            "ComponentTree",
             "StoreInspector",
-            "AppProfiles"
+            "AppProfiles",
+            "ComponentInspector"
         ]
     },
     "designerId": "application"
