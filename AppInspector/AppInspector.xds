@@ -24,10 +24,10 @@
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": true
     },
-    "xdsVersion": "3.0.0",
-    "xdsBuild": 1337,
+    "xdsVersion": "3.0.1",
+    "xdsBuild": 1343,
     "schemaVersion": 1,
-    "upgradeVersion": 300000000003,
+    "upgradeVersion": 300000000004,
     "framework": "ext42",
     "viewOrderMap": {
         "view": [
@@ -57,7 +57,8 @@
             "bb7971c6-0892-4d90-b857-8cb6dd2021e2"
         ],
         "resource": [
-            "efa3151d-f411-416b-a78d-276e3b22783a"
+            "efa3151d-f411-416b-a78d-276e3b22783a",
+            "1b164612-6ea5-4722-8816-f85b69edae67"
         ],
         "app": [
             "application"

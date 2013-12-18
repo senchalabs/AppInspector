@@ -92,6 +92,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "iconCls": "x-tbar-loading",
                                 "itemId": "RefreshStores",
                                 "layout|flex": null,
                                 "text": "Refresh"

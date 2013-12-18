@@ -24,12 +24,13 @@
             },
             "codeClass": null,
             "userConfig": {
+                "frame": true,
                 "height": 250,
                 "itemId": "ComponentTree",
                 "layout|flex": 1,
                 "rootVisible": false,
                 "store": "Components",
-                "title": "Component Tree",
+                "title": null,
                 "useArrows": true,
                 "width": 400
             },
@@ -46,7 +47,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "top"
+                        "designer|uiInterfaceName": "default-toolbar",
+                        "dock": "top",
+                        "ui": "default-toolbar"
                     },
                     "designerId": "448d07e4-7828-4572-9714-c826da12a8b7",
                     "cn": [
@@ -58,6 +61,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "iconCls": "x-tbar-loading",
                                 "itemId": "RefreshComponentTree",
                                 "layout|flex": null,
                                 "text": "Refresh"

@@ -6,11 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
+        "activeTab": 0,
         "designer|userAlias": "appprofiles",
         "designer|userClassName": "AppProfiles",
         "itemId": "ProfilesPanel",
         "tabPosition": "right",
-        "title": "Profiles"
+        "title": "Layout Profiling"
     },
     "designerId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905",
     "cn": [
@@ -94,6 +95,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "iconCls": "x-tbar-loading",
                                 "itemId": "ProfileOvernesting",
                                 "layout|flex": null,
                                 "text": "Profile"
@@ -184,6 +186,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "iconCls": "x-tbar-loading",
                                 "itemId": "ProfileBoxLayouts",
                                 "layout|flex": null,
                                 "text": "Profile"
@@ -191,6 +194,29 @@
                             "designerId": "84e5c904-18d5-4a48-86bf-9ca5b48b46de"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "Page Analyzer"
+            },
+            "designerId": "51ccd728-c32c-4d87-961a-155b60626419",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "4ab3bb60-8a94-41f9-b32a-791b20ca49a4"
                 }
             ]
         }

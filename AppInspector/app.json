@@ -2,10 +2,5 @@
    "name": "AI",
    "requires": [],
    "id": "bc5196ef-a5fb-44de-8ee6-dab48fb39101",
-   "resources": [],
-   "_architect": {
-      "_comment": "Please don't edit. This is Architect data.",
-      "resources": [],
-      "requires": []
-   }
+   "resources": []
 }

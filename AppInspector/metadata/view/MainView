@@ -25,6 +25,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "collapsed": true,
                 "collapsible": true,
                 "container|align": "stretch",
                 "itemId": "menuPanel",
@@ -54,64 +55,84 @@
                     "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
                 },
                 {
-                    "type": "Ext.menu.Menu",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "collapseFirst": null,
-                        "collapsible": null,
-                        "floating": false,
-                        "itemId": null,
-                        "width": null
+                        "icon": "resources/images/nav-components.png",
+                        "itemId": "ComponentsNav",
+                        "layout|flex": null,
+                        "scale": "large",
+                        "text": "Components"
                     },
-                    "designerId": "25abbee3-e977-4e92-bc3a-73fcf2aea764",
-                    "cn": [
-                        {
-                            "type": "Ext.menu.Item",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "href": null,
-                                "itemId": "ComponentsNav",
-                                "text": "Components"
-                            },
-                            "designerId": "2d21cd52-2bd4-4f26-99f8-ecb1b8453ece"
-                        },
-                        {
-                            "type": "Ext.menu.Item",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "href": null,
-                                "itemId": "StoresNav",
-                                "text": "Stores"
-                            },
-                            "designerId": "a9c5c2c5-e485-4719-a39d-1f3df3d72393"
-                        },
-                        {
-                            "type": "Ext.menu.Item",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "href": null,
-                                "itemId": "ProfilesNav",
-                                "text": "Profiles"
-                            },
-                            "designerId": "9f67ea74-e63c-4b04-b4c2-4130f7cbd1f8"
-                        }
-                    ]
+                    "designerId": "1d5d7375-1fc9-4265-a0a3-0da315a801cf"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "resources/images/nav-stores.png",
+                        "itemId": "StoresNav",
+                        "layout|flex": null,
+                        "scale": "large",
+                        "text": "Stores"
+                    },
+                    "designerId": "9008a98a-8590-4dee-a9a8-546868b30746"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "resources/images/nav-components.png",
+                        "itemId": "ProfilesNav",
+                        "layout|flex": null,
+                        "scale": "large",
+                        "text": "Layouts"
+                    },
+                    "designerId": "0ad2117f-378c-49de-b59a-682987b7c1d3"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "resources/images/nav-components.png",
+                        "itemId": "EventsNav",
+                        "layout|flex": null,
+                        "scale": "large",
+                        "text": "Events"
+                    },
+                    "designerId": "6e0261ea-7773-42f7-81de-8efe8d635a5c"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "resources/images/nav-components.png",
+                        "itemId": "PerformanceNav",
+                        "layout|flex": null,
+                        "scale": "large",
+                        "text": "Performance"
+                    },
+                    "designerId": "e506005f-b533-423a-95a7-a9ca25b1a51c"
                 }
             ]
         },

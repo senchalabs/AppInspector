@@ -48,7 +48,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.util.Profile": [],
   "AI.util.Store": [],
   "AI.view.AppProfiles": [],
-  "AI.view.ComponentTree": [],
+  "AI.view.ComponentInspector": [],
   "AI.view.Main": [],
   "AI.view.MainView": [],
   "AI.view.StoreInspector": [],
@@ -910,8 +910,8 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.AppProfiles": [
     "widget.appprofiles"
   ],
-  "AI.view.ComponentTree": [
-    "widget.componenttree"
+  "AI.view.ComponentInspector": [
+    "widget.componentinspector"
   ],
   "AI.view.Main": [
     "widget.app-main"
@@ -1924,6 +1924,7 @@ Ext.ClassManager.addNameAliasMappings({
 });
 Ext.setVersion("ext-theme-base", "4.2.1");
 Ext.setVersion("ext-theme-neptune", "4.2.1");
+Ext.setVersion("ext-theme-neptune-1b164612-6ea5-4722-8816-f85b69edae67", "1.0.0");
 Ext.setVersion("ext-theme-neutral", "4.2.1");
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/Component.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/panel/Panel.js");;
