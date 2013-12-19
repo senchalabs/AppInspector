@@ -26,6 +26,9 @@ Ext.define('AI.controller.Navigation', {
             },
             '#ProfilesNav' : {
                 'click' : this.onProfilesNavClick
+            },
+            '#AboutNav' : {
+                'click' : this.onAboutNavClick
             }
         });
     },
@@ -46,6 +49,12 @@ Ext.define('AI.controller.Navigation', {
         var main = Ext.ComponentQuery.query('#ContentPanel')[0];
 
         main.layout.setActiveItem(2);
+    },
+
+    onAboutNavClick: function() {
+        var main = Ext.ComponentQuery.query('#ContentPanel')[0];
+
+        main.layout.setActiveItem(3);
     }
 
 });

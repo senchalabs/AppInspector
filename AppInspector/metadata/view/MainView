@@ -133,6 +133,22 @@
                         "text": "Performance"
                     },
                     "designerId": "e506005f-b533-423a-95a7-a9ca25b1a51c"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "resources/images/nav-components.png",
+                        "itemId": "AboutNav",
+                        "scale": "large",
+                        "text": "About",
+                        "width": null
+                    },
+                    "designerId": "70ac490e-e5e7-4307-9533-bef76c6cf019"
                 }
             ]
         },
@@ -180,6 +196,27 @@
                     "codeClass": null,
                     "designerId": "d30c0179-b8bd-46bc-bb72-d404bf75931a",
                     "masterInstanceId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "AboutPanel",
+                        "loader": [
+                            "{",
+                            "    url      : 'about.html',",
+                            "    autoLoad : true",
+                            "}"
+                        ],
+                        "padding": 20,
+                        "title": null,
+                        "width": null
+                    },
+                    "designerId": "6eb530d5-4d58-43be-8042-5f681064e8de"
                 }
             ]
         }

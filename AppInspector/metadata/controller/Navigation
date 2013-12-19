@@ -32,6 +32,9 @@
                     "    },",
                     "    '#ProfilesNav' : {",
                     "        'click' : this.onProfilesNavClick",
+                    "    },",
+                    "    '#AboutNav' : {",
+                    "        'click' : this.onAboutNavClick",
                     "    }",
                     "});"
                 ]
@@ -88,6 +91,23 @@
                 ]
             },
             "designerId": "c59156d4-6d6c-42da-a595-03a5fe4f9553"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onAboutNavClick",
+                "implHandler": [
+                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
+                    "",
+                    "main.layout.setActiveItem(3);"
+                ]
+            },
+            "designerId": "cd9edc0f-0c47-4fdb-a61f-a52cec6cc792"
         }
     ]
 }

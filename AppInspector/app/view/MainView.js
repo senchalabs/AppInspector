@@ -92,6 +92,13 @@ Ext.define('AI.view.MainView', {
                             icon: 'resources/images/nav-components.png',
                             scale: 'large',
                             text: 'Performance'
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'AboutNav',
+                            icon: 'resources/images/nav-components.png',
+                            scale: 'large',
+                            text: 'About'
                         }
                     ]
                 },
@@ -109,6 +116,15 @@ Ext.define('AI.view.MainView', {
                         },
                         {
                             xtype: 'appprofiles'
+                        },
+                        {
+                            xtype: 'panel',
+                            itemId: 'AboutPanel',
+                            loader: {
+                                url: 'about.html',
+                                autoLoad: true
+                            },
+                            padding: 20
                         }
                     ]
                 }
