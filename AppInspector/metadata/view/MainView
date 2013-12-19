@@ -205,6 +205,30 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "title": "Events"
+                    },
+                    "designerId": "49cfbc48-b6c4-471d-8027-c4ac6f35bb4a"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Performance"
+                    },
+                    "designerId": "ff2e735b-0c73-40be-a82a-ca588628a190"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "itemId": "AboutPanel",
                         "loader": [
                             "{",

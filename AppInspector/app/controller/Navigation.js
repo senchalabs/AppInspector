@@ -16,6 +16,13 @@
 Ext.define('AI.controller.Navigation', {
     extend: 'Ext.app.Controller',
 
+    refs: [
+        {
+            ref: 'contentPanel',
+            selector: '#ContentPanel'
+        }
+    ],
+
     init: function(application) {
         this.control({
             '#ComponentsNav' : {
@@ -27,6 +34,12 @@ Ext.define('AI.controller.Navigation', {
             '#ProfilesNav' : {
                 'click' : this.onProfilesNavClick
             },
+            '#EventsNav' : {
+                'click' : this.onEventsNavClick
+            },
+            '#PerformanceNav' : {
+                'click' : this.onPerformanceNavClick
+            },
             '#AboutNav' : {
                 'click' : this.onAboutNavClick
             }
@@ -34,27 +47,27 @@ Ext.define('AI.controller.Navigation', {
     },
 
     onComponentsNavClick: function() {
-        var main = Ext.ComponentQuery.query('#ContentPanel')[0];
-
-        main.layout.setActiveItem(0);
+        this.getContentPanel().layout.setActiveItem(0);
     },
 
     onStoresNavClick: function() {
-        var main = Ext.ComponentQuery.query('#ContentPanel')[0];
-
-        main.layout.setActiveItem(1);
+        this.getContentPanel().layout.setActiveItem(1);
     },
 
     onProfilesNavClick: function() {
-        var main = Ext.ComponentQuery.query('#ContentPanel')[0];
-
-        main.layout.setActiveItem(2);
+        this.getContentPanel().layout.setActiveItem(2);
     },
 
     onAboutNavClick: function() {
-        var main = Ext.ComponentQuery.query('#ContentPanel')[0];
+        this.getContentPanel().layout.setActiveItem(5);
+    },
 
-        main.layout.setActiveItem(3);
+    onPerformanceNavClick: function() {
+        this.getContentPanel().layout.setActiveItem(4);
+    },
+
+    onEventsNavClick: function() {
+        this.getContentPanel().layout.setActiveItem(3);
     }
 
 });

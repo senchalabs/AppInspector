@@ -33,6 +33,12 @@
                     "    '#ProfilesNav' : {",
                     "        'click' : this.onProfilesNavClick",
                     "    },",
+                    "    '#EventsNav' : {",
+                    "        'click' : this.onEventsNavClick",
+                    "    },",
+                    "    '#PerformanceNav' : {",
+                    "        'click' : this.onPerformanceNavClick",
+                    "    },",
                     "    '#AboutNav' : {",
                     "        'click' : this.onAboutNavClick",
                     "    }",
@@ -51,9 +57,7 @@
             "userConfig": {
                 "fn": "onComponentsNavClick",
                 "implHandler": [
-                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
-                    "",
-                    "main.layout.setActiveItem(0);"
+                    "this.getContentPanel().layout.setActiveItem(0);"
                 ]
             },
             "designerId": "f7200e98-a159-47bf-8595-6c74d164fef0"
@@ -68,9 +72,7 @@
             "userConfig": {
                 "fn": "onStoresNavClick",
                 "implHandler": [
-                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
-                    "",
-                    "main.layout.setActiveItem(1);"
+                    "this.getContentPanel().layout.setActiveItem(1);"
                 ]
             },
             "designerId": "86846029-0094-429e-aff2-dce970f4522f"
@@ -85,9 +87,7 @@
             "userConfig": {
                 "fn": "onProfilesNavClick",
                 "implHandler": [
-                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
-                    "",
-                    "main.layout.setActiveItem(2);"
+                    "this.getContentPanel().layout.setActiveItem(2);"
                 ]
             },
             "designerId": "c59156d4-6d6c-42da-a595-03a5fe4f9553"
@@ -102,12 +102,53 @@
             "userConfig": {
                 "fn": "onAboutNavClick",
                 "implHandler": [
-                    "var main = Ext.ComponentQuery.query('#ContentPanel')[0];",
-                    "",
-                    "main.layout.setActiveItem(3);"
+                    "this.getContentPanel().layout.setActiveItem(5);"
                 ]
             },
             "designerId": "cd9edc0f-0c47-4fdb-a61f-a52cec6cc792"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPerformanceNavClick",
+                "implHandler": [
+                    "this.getContentPanel().layout.setActiveItem(4);"
+                ]
+            },
+            "designerId": "40ca02a4-6ed6-4beb-971b-acd4923b8566"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onEventsNavClick",
+                "implHandler": [
+                    "this.getContentPanel().layout.setActiveItem(3);"
+                ]
+            },
+            "designerId": "86359c80-9c6d-4304-a2db-dcbcc4616f6d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "contentPanel",
+                "selector": "#ContentPanel"
+            },
+            "designerId": "528b962a-bc71-485f-9529-27ec8b4b781f"
         }
     ]
 }

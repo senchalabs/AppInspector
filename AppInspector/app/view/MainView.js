@@ -119,6 +119,14 @@ Ext.define('AI.view.MainView', {
                         },
                         {
                             xtype: 'panel',
+                            title: 'Events'
+                        },
+                        {
+                            xtype: 'panel',
+                            title: 'Performance'
+                        },
+                        {
+                            xtype: 'panel',
                             itemId: 'AboutPanel',
                             loader: {
                                 url: 'about.html',
