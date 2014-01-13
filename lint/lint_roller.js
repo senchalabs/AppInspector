@@ -38,7 +38,10 @@ var config = {
                     'Ext'    : true,
                     'AI'     : true,
                     'chrome' : true,
-                    '$0'     : true
+                    '$0'     : true,
+
+                    'requestAnimationFrame' : true,
+                    'cancelAnimationFrame'  : true
                 }
             }
         },

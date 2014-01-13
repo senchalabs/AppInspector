@@ -198,16 +198,14 @@
                     "masterInstanceId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905"
                 },
                 {
-                    "type": "Ext.panel.Panel",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "title": "Events"
-                    },
-                    "designerId": "49cfbc48-b6c4-471d-8027-c4ac6f35bb4a"
+                    "designerId": "e51ab3e9-b6ea-4186-ab9f-51bee60c62f0",
+                    "masterInstanceId": "5a468293-377b-432a-9518-58ecb1365d6b"
                 },
                 {
                     "type": "Ext.panel.Panel",

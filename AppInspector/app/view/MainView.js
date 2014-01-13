@@ -20,6 +20,7 @@ Ext.define('AI.view.MainView', {
         'AI.view.ComponentInspector',
         'AI.view.StoreInspector',
         'AI.view.AppProfiles',
+        'AI.view.Events',
         'Ext.grid.property.Grid',
         'Ext.button.Button',
         'Ext.tab.Panel',
@@ -118,8 +119,7 @@ Ext.define('AI.view.MainView', {
                             xtype: 'appprofiles'
                         },
                         {
-                            xtype: 'panel',
-                            title: 'Events'
+                            xtype: 'eventgrid'
                         },
                         {
                             xtype: 'panel',

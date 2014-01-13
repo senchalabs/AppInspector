@@ -11,7 +11,11 @@
             "Navigation",
             "Store",
             "Profile",
-            "Main"
+            "Main",
+            "Events"
+        ],
+        "models": [
+            "Event"
         ],
         "name": "AI",
         "stores": [
@@ -19,13 +23,15 @@
             "Records",
             "Components",
             "Stores",
-            "BoxLayouts"
+            "BoxLayouts",
+            "Events"
         ],
         "views": [
             "MainView",
             "StoreInspector",
             "AppProfiles",
-            "ComponentInspector"
+            "ComponentInspector",
+            "Events"
         ]
     },
     "designerId": "application"
