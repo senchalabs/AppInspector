@@ -24,6 +24,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "autoScroll": true,
                 "frame": true,
                 "height": 250,
                 "itemId": "ComponentTree",

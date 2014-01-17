@@ -12,18 +12,33 @@ Ext.define('AI.util.InspectedWindow', {
      * @param {String} id
      */
     highlight : function (id) {
-        var cmp = Ext.getCmp(id);
+        var cmp = Ext.getCmp(id),
+            el  = document.getElementById('_AppInspector'),
+            box;
 
         if (cmp && cmp.rendered) {
             //Ext JS
             if (cmp.el) {
-                cmp.el.frame('red', 3, { duration : 250 });
+                box = cmp.el.getBox();
             }
 
             //Touch
             else if (cmp.element) {
                 //TODO: frame() doesn't exist
+                box = cmp.element.getBox();
             }
+
+            el.style.height = box.height + 'px';
+            el.style.width  = box.width + 'px';
+            el.style.top  = box.top + 'px';
+            el.style.left  = box.left + 'px';
+            el.style.visibility = '';
+
+            window.setTimeout(function() {
+                var el  = document.getElementById('_AppInspector');
+
+                el.style.visibility = 'hidden';
+            }, 1000);
         }
     },
 
@@ -63,6 +78,19 @@ Ext.define('AI.util.InspectedWindow', {
     getAppVersion : function() {
         if (!window.Ext) {
             return false;
+        }
+
+        if (!document.getElementById('_AppInspector')) {
+            //create a highlighting DIV for use later
+            var div = document.createElement('div');
+
+            div.setAttribute('id', '_AppInspector');
+            div.style.backgroundColor = '#f00';
+            div.style.opacity = 0.5;
+            div.style.visibility = 'hidden';
+            div.style.position = 'absolute';
+
+            document.body.appendChild(div);
         }
 
         var data = {},
