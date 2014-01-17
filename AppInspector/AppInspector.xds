@@ -24,8 +24,8 @@
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": true
     },
-    "xdsVersion": "3.0.1",
-    "xdsBuild": 1343,
+    "xdsVersion": "3.0.2",
+    "xdsBuild": 1375,
     "schemaVersion": 1,
     "upgradeVersion": 300000000004,
     "framework": "ext42",

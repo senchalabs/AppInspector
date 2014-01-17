@@ -215,18 +215,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "title": "Performance"
-                    },
-                    "designerId": "ff2e735b-0c73-40be-a82a-ca588628a190"
-                },
-                {
-                    "type": "Ext.panel.Panel",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
                         "itemId": "AboutPanel",
                         "loader": [
                             "{",

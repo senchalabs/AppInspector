@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userClassName": "Events",
         "requires": [
-            "AI.util.Events"
+            "AI.util.extjs.Events"
         ]
     },
     "designerId": "dd76bde8-9960-4b2e-991b-53d42bf48f26",
@@ -30,7 +30,7 @@
                     "    'button#RecordEvents' : {",
                     "        'click' : this.onRecordEventsClick",
                     "    },",
-                    "    ",
+                    "",
                     "    'button#StopRecording' : {",
                     "        'click' : this.onStopRecordingClick",
                     "    }",
@@ -58,11 +58,11 @@
                     "",
                     "var getEvents = function() {",
                     "    AI.util.InspectedWindow.eval(",
-                    "        AI.util.Events.recordEvents,",
+                    "        AI.util.extjs.Events.recordEvents,",
                     "        null,",
                     "        function (events) {",
                     "            store.add(events.dom);",
-                    "            ",
+                    "",
                     "            me.requestId = requestAnimationFrame(getEvents);",
                     "        }",
                     "    );",
@@ -89,7 +89,7 @@
                     "Ext.ComponentQuery.query('button#RecordEvents')[0].show();",
                     "",
                     "AI.util.InspectedWindow.eval(",
-                    "    AI.util.Events.stopEvents,",
+                    "    AI.util.extjs.Events.stopEvents,",
                     "    null,",
                     "    function () {",
                     "        cancelAnimationFrame(me.requestId);",

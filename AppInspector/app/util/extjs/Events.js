@@ -1,7 +1,7 @@
 /**
  * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.Events', {
+Ext.define('AI.util.extjs.Events', {
     singleton : true,
 
     requires : [

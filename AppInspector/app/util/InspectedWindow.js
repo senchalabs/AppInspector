@@ -47,5 +47,25 @@ Ext.define('AI.util.InspectedWindow', {
                 callbackFn(result, isException);
             }
         );
+    },
+
+    /**
+     * Function to get the framework and version of the inspected app.
+     */
+    getAppVersion : function() {
+        if (!window.Ext) {
+            return false;
+        }
+
+        var data = {},
+            key;
+
+        for (key in Ext.versions) {
+            if (Ext.versions.hasOwnProperty(key)) {
+                data[key] = Ext.versions[key].version;
+            }
+        }
+
+        return data;
     }
 });

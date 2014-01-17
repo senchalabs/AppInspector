@@ -196,29 +196,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "type": "Ext.panel.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "title": "Page Analyzer"
-            },
-            "designerId": "51ccd728-c32c-4d87-961a-155b60626419",
-            "cn": [
-                {
-                    "type": "Ext.tab.Tab",
-                    "reference": {
-                        "name": "tabConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "designerId": "4ab3bb60-8a94-41f9-b32a-791b20ca49a4"
-                }
-            ]
         }
     ]
 }
