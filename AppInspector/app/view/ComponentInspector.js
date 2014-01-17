@@ -48,6 +48,7 @@ Ext.define('AI.view.ComponentInspector', {
                     height: 250,
                     itemId: 'ComponentTree',
                     width: 400,
+                    autoScroll: true,
                     store: 'Components',
                     rootVisible: false,
                     useArrows: true,
