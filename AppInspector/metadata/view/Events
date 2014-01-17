@@ -1,0 +1,96 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "eventgrid",
+        "designer|userClassName": "Events",
+        "store": "Events",
+        "title": "Events"
+    },
+    "designerId": "5a468293-377b-432a-9518-58ecb1365d6b",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "type",
+                "text": "Type"
+            },
+            "designerId": "890b0b93-7234-4032-ba6c-614c8bedcb96"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "target",
+                "flex": 1,
+                "text": "Target"
+            },
+            "designerId": "694a7474-b335-4dc2-9561-fb853b84bda5"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "037fc65d-5897-426c-969c-4cc723122d14"
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top"
+            },
+            "designerId": "0b3f5721-4481-4449-8aaa-a97635bcba08",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "RecordEvents",
+                        "layout|flex": null,
+                        "text": "Record"
+                    },
+                    "designerId": "0c63494c-b2da-44cb-948a-4cdacd5dc5e0"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "itemId": "StopRecording",
+                        "layout|flex": null,
+                        "text": "Stop Recording"
+                    },
+                    "designerId": "9c774eea-356e-47aa-8b8f-a1782a00715a"
+                }
+            ]
+        }
+    ]
+}

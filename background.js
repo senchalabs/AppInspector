@@ -8,10 +8,11 @@ chrome.runtime.onConnect.addListener(function(port) {
                         port.postMessage('refresh');
                     }
                 };
-                
+
                 chrome.tabs.onUpdated.addListener(onUpdated);
+
                 port.onDisconnect.addListener(function() {
-                    chrome.tabs.onUpdated.removeListener(respond);
+                    chrome.tabs.onUpdated.removeListener(onUpdated);
                 });
             }
         });

@@ -1,0 +1,145 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Components",
+        "requires": [
+            "AI.util.Component",
+            "AI.util.InspectedWindow"
+        ]
+    },
+    "designerId": "26d6c88d-7725-4c18-af80-ca851ac3ece6",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    '#ComponentTree' : {",
+                    "        'itemclick'   : this.onSelectComponent",
+                    "    },",
+                    "",
+                    "    'button#RefreshComponentTree' : {",
+                    "        'click' : this.onRefreshComponentsClick",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "ed7296d7-dd95-4d7b-80ae-46ddcfdb02d6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onRefreshComponentsClick",
+                "implHandler": [
+                    "var tree = btn.up('#ComponentTree');",
+                    "",
+                    "this.onComponentTreeActivate(tree);"
+                ]
+            },
+            "designerId": "75d6e345-ece6-4770-9cee-e5ad1a2b649b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tree"
+                ],
+                "fn": "onComponentTreeActivate",
+                "implHandler": [
+                    "var nodes = [],",
+                    "    root = tree.getRootNode();",
+                    "",
+                    "tree.setLoading('Loading components...');",
+                    "root.removeAll();",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.Component.loadComponentTree,",
+                    "    null,",
+                    "    function (components, isException) {",
+                    "        Ext.each(components, function (cmp) {",
+                    "            var model = Ext.create('AI.model.Component', cmp);",
+                    "",
+                    "            nodes.push(model);",
+                    "        });",
+                    "",
+                    "        Ext.each(nodes, function (node) {",
+                    "            root.appendChild(node);",
+                    "        });",
+                    "",
+                    "        tree.setLoading(false);",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "5fd54287-6e9e-4d64-8196-f35f3f51d7c5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tree, record, item, index, e, eOpts"
+                ],
+                "fn": "onSelectComponent",
+                "implHandler": [
+                    "var parent = tree.up('componentinspector'),",
+                    "    propsGrid = parent.down('#ComponentProps'),",
+                    "    methodGrid = parent.down('#ComponentMethods');",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.InspectedWindow.highlight,",
+                    "    record.get('cmpId'),",
+                    "    Ext.emptyFn",
+                    ");",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.Component.getInspectedComponent,",
+                    "    record.get('cmpId'),",
+                    "    function(result, isException) {",
+                    "        if (result) {",
+                    "            propsGrid.setSource(result.properties);",
+                    "            methodGrid.setSource(result.methods);",
+                    "        }",
+                    "        else {",
+                    "            propsGrid.setSource({});",
+                    "            methodGrid.setSource({});",
+                    "        }",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "94fa3fe8-c359-429e-8872-d6d2cbc0c4dc"
+        }
+    ]
+}

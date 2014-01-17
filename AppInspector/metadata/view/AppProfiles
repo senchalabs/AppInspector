@@ -1,0 +1,299 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "activeTab": 0,
+        "designer|userAlias": "appprofiles",
+        "designer|userClassName": "AppProfiles",
+        "itemId": "ProfilesPanel",
+        "tabPosition": "right",
+        "title": "Layout Profiling"
+    },
+    "designerId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "Overnested",
+                "store": "Overnested",
+                "title": "Overnesting"
+            },
+            "designerId": "afad97ac-efa9-4914-b952-5faf8207d088",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "cmpId",
+                        "flex": 1,
+                        "text": "Component ID"
+                    },
+                    "designerId": "3a1d3147-0b6b-44a4-8689-fd0a6bd2a39d"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "xtype",
+                        "flex": 1,
+                        "text": "XType"
+                    },
+                    "designerId": "5512120c-a12e-486f-a73d-9dd7199558dc"
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "07017dbb-b0de-4060-920f-120d54cbb569"
+                },
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "37a07b8d-e393-4220-b388-0c62ece4fbe8"
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top"
+                    },
+                    "designerId": "ae33f661-a6ef-41e8-b704-67d08159e5b3",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "x-tbar-loading",
+                                "itemId": "ProfileOvernesting",
+                                "layout|flex": null,
+                                "text": "Profile"
+                            },
+                            "designerId": "0119db40-4aa4-46ca-b285-df821267af77"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "563d8db8-fcb6-4615-88c8-25ac160e5ad2"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "?"
+                            },
+                            "designerId": "60a5de86-96ef-4929-9d5a-c100395344bc",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "Ext.Msg.alert(",
+                                            "    'Overnesting',",
+                                            "    'Utility to find components which may be overnested inside the application.'",
+                                            ");"
+                                        ]
+                                    },
+                                    "designerId": "cfcea575-4329-417e-986d-a5e28ae4d5e5"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "BoxLayouts",
+                "store": "BoxLayouts",
+                "title": "Box Layouts"
+            },
+            "designerId": "30738f8d-0255-45e9-a009-4bdd5869ac76",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "cmpId",
+                        "flex": 1,
+                        "text": "Component ID"
+                    },
+                    "designerId": "408f2633-c0da-411d-8adb-9d0e475b70a3"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "xtype",
+                        "flex": 1,
+                        "text": "XType"
+                    },
+                    "designerId": "49bef55c-afcb-4ce6-a8a2-7e54aea8ca6e"
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "90a50b88-49e3-4891-afe5-94be01d7c7d9"
+                },
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "1c2a37a8-8e28-4d56-ab1f-24f547b3baac"
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top"
+                    },
+                    "designerId": "b49ca866-30f1-4806-85b1-9d266ac63eb4",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "x-tbar-loading",
+                                "itemId": "ProfileBoxLayouts",
+                                "layout|flex": null,
+                                "text": "Profile"
+                            },
+                            "designerId": "84e5c904-18d5-4a48-86bf-9ca5b48b46de"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "b396f70b-6f5f-4351-89cc-4baf61247ca9"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "?"
+                            },
+                            "designerId": "9e6b38c6-6b00-4180-9ff9-dada0be1774f",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "Ext.Msg.alert(",
+                                            "    'Box Layouts',",
+                                            "    'Utility to find nested box layouts inside the application which may contribute to performance issues.'",
+                                            ");"
+                                        ]
+                                    },
+                                    "designerId": "d9246067-7066-49c6-a727-1c3c4c6757dc"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

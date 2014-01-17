@@ -1,0 +1,38 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "Components",
+            "Navigation",
+            "Store",
+            "Profile",
+            "Main",
+            "Events"
+        ],
+        "models": [
+            "Event"
+        ],
+        "name": "AI",
+        "stores": [
+            "Overnested",
+            "Records",
+            "Components",
+            "Stores",
+            "BoxLayouts",
+            "Events"
+        ],
+        "views": [
+            "MainView",
+            "StoreInspector",
+            "AppProfiles",
+            "ComponentInspector",
+            "Events"
+        ]
+    },
+    "designerId": "application"
+}

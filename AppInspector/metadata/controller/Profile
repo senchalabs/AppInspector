@@ -1,0 +1,165 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Profile",
+        "requires": [
+            "AI.util.extjs.Profile",
+            "AI.util.touch.Profile"
+        ]
+    },
+    "designerId": "a813ed92-ef3f-49a7-84fd-8364784a0864",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    '#Overnested' : {",
+                    "        'select'      : this.onSelectOvernestedComponent",
+                    "    },",
+                    "",
+                    "    'button#ProfileOvernesting' : {",
+                    "        click : this.onOvernestedProfileClick",
+                    "    },",
+                    "",
+                    "    '#BoxLayouts' : {",
+                    "        'select'      : this.onSelectOvernestedComponent",
+                    "    },",
+                    "",
+                    "    'button#ProfileBoxLayouts' : {",
+                    "        click : this.onNestedBoxLayoutsClick",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "b88f16de-deeb-4ba7-aa21-1c9fade571e7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "selModel, record, index, eOpts"
+                ],
+                "fn": "onSelectOvernestedComponent",
+                "implHandler": [
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.InspectedWindow.highlight,",
+                    "    record.get('cmpId'),",
+                    "    Ext.emptyFn",
+                    ");"
+                ]
+            },
+            "designerId": "b55948d6-ae08-4b58-90d9-6f8cd3525ea0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onOvernestedProfileClick",
+                "implHandler": [
+                    "var grid = btn.up('#Overnested'),",
+                    "    store = grid.getStore();",
+                    "",
+                    "store.removeAll();",
+                    "grid.setLoading('Profiling for overnested components...');",
+                    "",
+                    "var util;",
+                    "",
+                    "if (this.getApplication().info.framework === 'ext') {",
+                    "    util = AI.util.extjs.Profile.getOvernestedComponents;",
+                    "}",
+                    "else {",
+                    "    util = AI.util.touch.Profile.getOvernestedComponents;",
+                    "}",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    util,",
+                    "    null,",
+                    "    function (components) {",
+                    "        Ext.each(components, function (component) {",
+                    "            var model = Ext.create('AI.model.Overnested', component);",
+                    "",
+                    "            store.add(model);",
+                    "        });",
+                    "",
+                    "        grid.setLoading(false);",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "4378e24b-f2b2-43dd-95e9-e224cf244956"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onNestedBoxLayoutsClick",
+                "implHandler": [
+                    "var grid = btn.up('#BoxLayouts'),",
+                    "    store = grid.getStore();",
+                    "",
+                    "store.removeAll();",
+                    "grid.setLoading('Profiling for overnested box layouts...');",
+                    "",
+                    "",
+                    "var util;",
+                    "",
+                    "if (this.getApplication().info.framework === 'ext') {",
+                    "    util = AI.util.extjs.Profile.getNestedBoxLayouts;",
+                    "}",
+                    "else {",
+                    "    util = AI.util.touch.Profile.getNestedBoxLayouts;",
+                    "}",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    util,",
+                    "    null,",
+                    "    function (components) {",
+                    "        Ext.each(components, function (component) {",
+                    "            var model = Ext.create('AI.model.Overnested', component);",
+                    "",
+                    "            store.add(model);",
+                    "        });",
+                    "",
+                    "        grid.setLoading(false);",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "8d67180b-d9d6-42d9-94bf-affd04d2b61e"
+        }
+    ]
+}

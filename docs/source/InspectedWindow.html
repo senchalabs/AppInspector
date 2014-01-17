@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='AI-util-InspectedWindow'>/**
+</span> *
+ */
+Ext.define('AI.util.InspectedWindow', {
+    singleton : true,
+
+    requires : [
+        'AI.util.Error'
+    ],
+
+<span id='AI-util-InspectedWindow-method-highlight'>    /**
+</span>     * @param {String} id
+     */
+    highlight : function (id) {
+        var cmp = Ext.getCmp(id);
+
+        if (cmp &amp;&amp; cmp.rendered) {
+            //Ext JS
+            if (cmp.el) {
+                cmp.el.frame('red', 3, { duration : 250 });
+            }
+
+            //Touch
+            else if (cmp.element) {
+                //TODO: frame() doesn't exist
+            }
+        }
+    },
+
+<span id='AI-util-InspectedWindow-method-eval'>    /**
+</span>     * @param {Function} closure
+     * @param {String} argString
+     * @param {Function} callback  A callback function passed two parameters:
+     *
+     * - result {*}: Whatever the closure function returns
+     *
+     * - isException {Boolean}: whether-or-not the closure function encountered an exception
+     */
+    eval : function (closure, argString, callback) {
+        var callbackFn = callback,
+            args = '';
+
+        if (argString) {
+            args = '&quot;' + argString + '&quot;';
+        }
+
+        chrome.devtools.inspectedWindow.eval(
+            '(' + closure + ')(' + args + ')',
+            function (result, isException) {
+                if (isException) {
+                    AI.util.Error.parseException(isException);
+                    return;
+                }
+
+                callbackFn(result, isException);
+            }
+        );
+    },
+
+<span id='AI-util-InspectedWindow-method-getAppVersion'>    /**
+</span>     * Function to get the framework and version of the inspected app.
+     */
+    getAppVersion : function() {
+        if (!window.Ext) {
+            return false;
+        }
+
+        var data = {},
+            key;
+
+        for (key in Ext.versions) {
+            if (Ext.versions.hasOwnProperty(key)) {
+                data[key] = Ext.versions[key].version;
+            }
+        }
+
+        return data;
+    }
+});</pre>
+</body>
+</html>
