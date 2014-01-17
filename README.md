@@ -7,10 +7,7 @@ Google Chrome™ Dev Tools extension for debugging Sencha™ applications.
 Features
 --------
  - Creates a new section on Dev Tools elements panel displaying properties of a given component if they match the selected DOM node.
- - Creates a new Sencha Panel displaying the component tree
- - Hovering the component tree will highlight the component on the screen
- - You can use the keyboard to navigate trough the component tree
- - Component Properties Side-Panel provides a deep view into each component
+ - Creates a new Sencha panel with a variety of debugging utilities for the Sencha Touch and Ext JS frameworks
  
 Architecture
 ------------
@@ -20,22 +17,28 @@ This Chrome extension has 3 pieces:
  - devtools: bootstrap the dev tools extension, adding panels on the element tab and the new Sencha tab
  - inspector: the App Inspector itself. It's rendered in an iframe inside dev tools
 
-Read more on [chrome.devtools.* APIs](http://developer.chrome.com/extensions/devtools.html) and [Getting Started: Building a Chrome Extension](http://developer.chrome.com/extensions/getstarted.html).
+Read more on:
+
+  - [Getting Started: Building a Chrome Extension](http://developer.chrome.com/extensions/getstarted.html).
+  - [chrome.devtools.* APIs](http://developer.chrome.com/extensions/devtools.html)
+  - [chrome.devtools.panels](http://developer.chrome.com/extensions/devtools_panels.html)
+  - [Build Chrome Apps with Sencha](http://developer.chrome.com/apps/sencha_framework.html)
 
 Known Issues
 ------------
 There are some APIs from Dev Tools that are not fully exposed, so the App Inspector uses some work arounds:
 
- - Component highlighting is executed by injecting a &lt;div&gt; into the page.
- - DOM modifications (add/remove/move components) do not reflect automatically on the App Inspector. That's why we have a "reload" icon on the side panel.
+ - Component highlighting is executed manually via CSS (Ext JS only, currently)
+ - DOM modifications (add/remove/move components) do not reflect automatically on the App Inspector, which is why we have "reload" buttons.
 
 Contributing
 ------------
 This is a community project, so feel free to fork it. Pull requests with bug fixes and new features are welcomed!
 
-Since debugging the Sencha Panel is difficult, you can switch InspectorWindow.js by InspectorWindowMockup.js. This is the only
-part that depends on the Chrome Dev Tools shell. All the rest is pure HTML, CSS & JS. After switching this file you can open
-inspector.html and debug with Dev Tools itself.
+The UI for the Sencha panel is built using:
 
-Also, if you detach the Chrome Dev Tools and press Cmd+Alt+I or Ctrl+Alt+I, a new instance of the Chrome Dev Tools will open to inspect
-the previously opened Dev Tools. This way you can inspect the Dev Tools with the Dev Tools. (sounds confusing but it works!)
+  - Sencha Architect 3.x
+  - Sencha Ext JS 4.2.x
+  - Sencha Cmd 4.x
+
+View the documentation for the Chrome-wrapped utilities under /docs/ in your browser.
