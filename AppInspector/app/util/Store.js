@@ -12,7 +12,7 @@ Ext.define('AI.util.Store', {
 
         Ext.each(Ext.StoreManager.items, function (store) {
             stores.push({
-                id    : store.storeId,
+                id    : store.storeId || store.getStoreId(), //Ext || Touch
                 count : store.getCount()
             });
         });

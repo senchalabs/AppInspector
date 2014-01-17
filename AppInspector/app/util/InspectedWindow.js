@@ -15,7 +15,15 @@ Ext.define('AI.util.InspectedWindow', {
         var cmp = Ext.getCmp(id);
 
         if (cmp && cmp.rendered) {
-            cmp.el.frame('red', 3, { duration : 250 });
+            //Ext JS
+            if (cmp.el) {
+                cmp.el.frame('red', 3, { duration : 250 });
+            }
+
+            //Touch
+            else if (cmp.element) {
+                //TODO: frame() doesn't exist
+            }
         }
     },
 
