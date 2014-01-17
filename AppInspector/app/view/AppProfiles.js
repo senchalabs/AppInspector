@@ -22,7 +22,8 @@ Ext.define('AI.view.AppProfiles', {
         'Ext.grid.column.Column',
         'Ext.grid.View',
         'Ext.tab.Tab',
-        'Ext.toolbar.Toolbar'
+        'Ext.toolbar.Toolbar',
+        'Ext.toolbar.Spacer'
     ],
 
     itemId: 'ProfilesPanel',
@@ -64,6 +65,20 @@ Ext.define('AI.view.AppProfiles', {
                                     itemId: 'ProfileOvernesting',
                                     iconCls: 'x-tbar-loading',
                                     text: 'Profile'
+                                },
+                                {
+                                    xtype: 'tbspacer',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    handler: function(button, e) {
+                                        Ext.Msg.alert(
+                                        'Overnesting',
+                                        'Utility to find components which may be overnested inside the application.'
+                                        );
+                                    },
+                                    text: '?'
                                 }
                             ]
                         }
@@ -98,6 +113,20 @@ Ext.define('AI.view.AppProfiles', {
                                     itemId: 'ProfileBoxLayouts',
                                     iconCls: 'x-tbar-loading',
                                     text: 'Profile'
+                                },
+                                {
+                                    xtype: 'tbspacer',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    handler: function(button, e) {
+                                        Ext.Msg.alert(
+                                        'Box Layouts',
+                                        'Utility to find nested box layouts inside the application which may contribute to performance issues.'
+                                        );
+                                    },
+                                    text: '?'
                                 }
                             ]
                         }

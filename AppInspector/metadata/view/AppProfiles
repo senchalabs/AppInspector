@@ -101,6 +101,55 @@
                                 "text": "Profile"
                             },
                             "designerId": "0119db40-4aa4-46ca-b285-df821267af77"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "563d8db8-fcb6-4615-88c8-25ac160e5ad2"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "?"
+                            },
+                            "designerId": "60a5de86-96ef-4929-9d5a-c100395344bc",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "Ext.Msg.alert(",
+                                            "    'Overnesting',",
+                                            "    'Utility to find components which may be overnested inside the application.'",
+                                            ");"
+                                        ]
+                                    },
+                                    "designerId": "cfcea575-4329-417e-986d-a5e28ae4d5e5"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -192,6 +241,55 @@
                                 "text": "Profile"
                             },
                             "designerId": "84e5c904-18d5-4a48-86bf-9ca5b48b46de"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "b396f70b-6f5f-4351-89cc-4baf61247ca9"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "?"
+                            },
+                            "designerId": "9e6b38c6-6b00-4180-9ff9-dada0be1774f",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "Ext.Msg.alert(",
+                                            "    'Box Layouts',",
+                                            "    'Utility to find nested box layouts inside the application which may contribute to performance issues.'",
+                                            ");"
+                                        ]
+                                    },
+                                    "designerId": "d9246067-7066-49c6-a727-1c3c4c6757dc"
+                                }
+                            ]
                         }
                     ]
                 }

@@ -39,6 +39,10 @@ Ext.define('AI.controller.Events', {
         Ext.ComponentQuery.query('button#RecordEvents')[0].hide();
         Ext.ComponentQuery.query('button#StopRecording')[0].show();
 
+        if (this.getApplication().info.framework === 'touch') {
+            Ext.Msg.alert('Not Implemented', 'This feature is not implemented yet for Sencha Touch.');
+            return;
+        }
 
         var getEvents = function() {
             AI.util.InspectedWindow.eval(
