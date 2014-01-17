@@ -32,7 +32,7 @@
                 "itemId": "StoreList",
                 "layout|flex": null,
                 "store": "Stores",
-                "title": "My Grid Panel"
+                "title": null
             },
             "designerId": "6fce872c-e09c-4357-9549-47e6fac6e089",
             "cn": [

@@ -43,7 +43,6 @@ Ext.define('AI.view.StoreInspector', {
                     xtype: 'gridpanel',
                     height: 300,
                     itemId: 'StoreList',
-                    title: 'My Grid Panel',
                     store: 'Stores',
                     columns: [
                         {

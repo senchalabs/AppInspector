@@ -37,37 +37,30 @@ Ext.define('AI.controller.Navigation', {
             '#EventsNav' : {
                 'click' : this.onEventsNavClick
             },
-            '#PerformanceNav' : {
-                'click' : this.onPerformanceNavClick
-            },
             '#AboutNav' : {
                 'click' : this.onAboutNavClick
             }
         });
     },
 
-    onComponentsNavClick: function() {
+    onAboutNavClick: function() {
         this.getContentPanel().layout.setActiveItem(0);
     },
 
-    onStoresNavClick: function() {
+    onComponentsNavClick: function() {
         this.getContentPanel().layout.setActiveItem(1);
     },
 
-    onProfilesNavClick: function() {
+    onStoresNavClick: function() {
         this.getContentPanel().layout.setActiveItem(2);
     },
 
-    onAboutNavClick: function() {
-        this.getContentPanel().layout.setActiveItem(5);
-    },
-
-    onPerformanceNavClick: function() {
-        this.getContentPanel().layout.setActiveItem(4);
+    onProfilesNavClick: function() {
+        this.getContentPanel().layout.setActiveItem(3);
     },
 
     onEventsNavClick: function() {
-        this.getContentPanel().layout.setActiveItem(3);
+        this.getContentPanel().layout.setActiveItem(4);
     }
 
 });

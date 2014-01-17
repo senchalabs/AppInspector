@@ -38,21 +38,21 @@
             "designerId": "70e4bdc2-8c21-4da3-b357-bdac73847e65",
             "cn": [
                 {
-                    "type": "Ext.grid.property.Grid",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "height": 150,
-                        "itemId": "AppDetails",
-                        "source": [
-                            "{}"
-                        ],
-                        "title": "App Details"
+                        "icon": "resources/images/nav-components.png",
+                        "itemId": "AboutNav",
+                        "layout|flex": null,
+                        "scale": "large",
+                        "text": "About",
+                        "width": null
                     },
-                    "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
+                    "designerId": "70ac490e-e5e7-4307-9533-bef76c6cf019"
                 },
                 {
                     "type": "Ext.button.Button",
@@ -117,38 +117,6 @@
                         "text": "Events"
                     },
                     "designerId": "6e0261ea-7773-42f7-81de-8efe8d635a5c"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/nav-components.png",
-                        "itemId": "PerformanceNav",
-                        "layout|flex": null,
-                        "scale": "large",
-                        "text": "Performance"
-                    },
-                    "designerId": "e506005f-b533-423a-95a7-a9ca25b1a51c"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/nav-components.png",
-                        "itemId": "AboutNav",
-                        "scale": "large",
-                        "text": "About",
-                        "width": null
-                    },
-                    "designerId": "70ac490e-e5e7-4307-9533-bef76c6cf019"
                 }
             ]
         },
@@ -167,6 +135,60 @@
             },
             "designerId": "c98c4f91-6f66-4054-8e31-2ccc2ab4f975",
             "cn": [
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "itemId": "AboutPanel",
+                        "layout": "vbox",
+                        "loader": null,
+                        "padding": 20,
+                        "title": null,
+                        "width": null
+                    },
+                    "designerId": "6eb530d5-4d58-43be-8042-5f681064e8de",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.property.Grid",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 150,
+                                "itemId": "AppDetails",
+                                "source": [
+                                    "{}"
+                                ],
+                                "title": "App Details"
+                            },
+                            "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "loader": [
+                                    "{",
+                                    "    url: 'about.html',",
+                                    "    autoLoad: true",
+                                    "}"
+                                ]
+                            },
+                            "designerId": "d27912dd-c3e5-4d6b-9ace-156f4fd74e79"
+                        }
+                    ]
+                },
                 {
                     "type": "linkedinstance",
                     "reference": {
@@ -206,27 +228,6 @@
                     "codeClass": null,
                     "designerId": "e51ab3e9-b6ea-4186-ab9f-51bee60c62f0",
                     "masterInstanceId": "5a468293-377b-432a-9518-58ecb1365d6b"
-                },
-                {
-                    "type": "Ext.panel.Panel",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "itemId": "AboutPanel",
-                        "loader": [
-                            "{",
-                            "    url      : 'about.html',",
-                            "    autoLoad : true",
-                            "}"
-                        ],
-                        "padding": 20,
-                        "title": null,
-                        "width": null
-                    },
-                    "designerId": "6eb530d5-4d58-43be-8042-5f681064e8de"
                 }
             ]
         }

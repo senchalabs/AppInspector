@@ -21,8 +21,8 @@ Ext.define('AI.view.MainView', {
         'AI.view.StoreInspector',
         'AI.view.AppProfiles',
         'AI.view.Events',
-        'Ext.grid.property.Grid',
         'Ext.button.Button',
+        'Ext.grid.property.Grid',
         'Ext.tab.Panel',
         'Ext.layout.container.Border',
         'Ext.layout.container.Card'
@@ -51,13 +51,11 @@ Ext.define('AI.view.MainView', {
                     },
                     items: [
                         {
-                            xtype: 'propertygrid',
-                            height: 150,
-                            itemId: 'AppDetails',
-                            title: 'App Details',
-                            source: {
-                                
-                            }
+                            xtype: 'button',
+                            itemId: 'AboutNav',
+                            icon: 'resources/images/nav-components.png',
+                            scale: 'large',
+                            text: 'About'
                         },
                         {
                             xtype: 'button',
@@ -86,20 +84,6 @@ Ext.define('AI.view.MainView', {
                             icon: 'resources/images/nav-components.png',
                             scale: 'large',
                             text: 'Events'
-                        },
-                        {
-                            xtype: 'button',
-                            itemId: 'PerformanceNav',
-                            icon: 'resources/images/nav-components.png',
-                            scale: 'large',
-                            text: 'Performance'
-                        },
-                        {
-                            xtype: 'button',
-                            itemId: 'AboutNav',
-                            icon: 'resources/images/nav-components.png',
-                            scale: 'large',
-                            text: 'About'
                         }
                     ]
                 },
@@ -109,6 +93,33 @@ Ext.define('AI.view.MainView', {
                     itemId: 'ContentPanel',
                     layout: 'card',
                     items: [
+                        {
+                            xtype: 'panel',
+                            itemId: 'AboutPanel',
+                            padding: 20,
+                            layout: {
+                                type: 'vbox',
+                                align: 'stretch'
+                            },
+                            items: [
+                                {
+                                    xtype: 'propertygrid',
+                                    height: 150,
+                                    itemId: 'AppDetails',
+                                    title: 'App Details',
+                                    source: {
+                                        
+                                    }
+                                },
+                                {
+                                    xtype: 'container',
+                                    loader: {
+                                        url: 'about.html',
+                                        autoLoad: true
+                                    }
+                                }
+                            ]
+                        },
                         {
                             xtype: 'componentinspector'
                         },
@@ -120,15 +131,6 @@ Ext.define('AI.view.MainView', {
                         },
                         {
                             xtype: 'eventgrid'
-                        },
-                        {
-                            xtype: 'panel',
-                            itemId: 'AboutPanel',
-                            loader: {
-                                url: 'about.html',
-                                autoLoad: true
-                            },
-                            padding: 20
                         }
                     ]
                 }

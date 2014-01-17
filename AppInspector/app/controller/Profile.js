@@ -17,7 +17,8 @@ Ext.define('AI.controller.Profile', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'AI.util.extjs.Profile'
+        'AI.util.extjs.Profile',
+        'AI.util.touch.Profile'
     ],
 
     init: function(application) {
@@ -55,8 +56,17 @@ Ext.define('AI.controller.Profile', {
         store.removeAll();
         grid.setLoading('Profiling for overnested components...');
 
+        var util;
+
+        if (this.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Profile.getOvernestedComponents;
+        }
+        else {
+            util = AI.util.touch.Profile.getOvernestedComponents;
+        }
+
         AI.util.InspectedWindow.eval(
-            AI.util.extjs.Profile.getOvernestedComponents,
+            util,
             null,
             function (components) {
                 Ext.each(components, function (component) {
@@ -77,8 +87,18 @@ Ext.define('AI.controller.Profile', {
         store.removeAll();
         grid.setLoading('Profiling for overnested box layouts...');
 
+
+        var util;
+
+        if (this.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Profile.getNestedBoxLayouts;
+        }
+        else {
+            util = AI.util.touch.Profile.getNestedBoxLayouts;
+        }
+
         AI.util.InspectedWindow.eval(
-            AI.util.extjs.Profile.getNestedBoxLayouts,
+            util,
             null,
             function (components) {
                 Ext.each(components, function (component) {

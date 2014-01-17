@@ -1,7 +1,7 @@
 /**
  * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.extjs.Component', {
+Ext.define('AI.util.Component', {
     singleton : true,
 
     /**

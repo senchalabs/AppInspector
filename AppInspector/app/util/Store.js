@@ -30,7 +30,7 @@ Ext.define('AI.util.Store', {
 
         store.each(function (record) {
             records.push({
-                id        : record.get('id'),
+                id        : record.id || record.get('id'),
                 modelData : record.data,
                 rawData   : record.raw
             });

@@ -17,7 +17,7 @@ Ext.define('AI.controller.Components', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'AI.util.extjs.Component',
+        'AI.util.Component',
         'AI.util.InspectedWindow'
     ],
 
@@ -47,7 +47,7 @@ Ext.define('AI.controller.Components', {
         root.removeAll();
 
         AI.util.InspectedWindow.eval(
-            AI.util.extjs.Component.loadComponentTree,
+            AI.util.Component.loadComponentTree,
             null,
             function (components, isException) {
                 Ext.each(components, function (cmp) {
@@ -77,7 +77,7 @@ Ext.define('AI.controller.Components', {
         );
 
         AI.util.InspectedWindow.eval(
-            AI.util.extjs.Component.getInspectedComponent,
+            AI.util.Component.getInspectedComponent,
             record.get('cmpId'),
             function(result, isException) {
                 if (result) {

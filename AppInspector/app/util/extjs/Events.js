@@ -14,7 +14,7 @@ Ext.define('AI.util.extjs.Events', {
     recordEvents : function () {
         if (!window._recorder) {
             window._recorder = new Ext.create('Ext.ux.event.Recorder', {
-                attachTo  : null
+                attachTo : null
             });
 
             window._componentEvents = [];
@@ -23,7 +23,7 @@ Ext.define('AI.util.extjs.Events', {
         }
 
         var events = {
-            dom       : window._recorder.getRecordedEvents()
+            dom : window._recorder.getRecordedEvents()
         };
 
         //clear each time so we don't duplicate
@@ -35,7 +35,7 @@ Ext.define('AI.util.extjs.Events', {
     /**
      *
      */
-    stopEvents : function() {
+    stopEvents : function () {
         if (window._recorder) {
             window._recorder.stop();
             window._recorder.clear();

@@ -28,6 +28,7 @@ Ext.define('AI.util.extjs.Profile', {
      */
     getNestedBoxLayouts : function () {
         var components = [];
+
         var isContainer = function (c) {
             return (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') &&
                     c.items.items.length > 0);
@@ -36,6 +37,7 @@ Ext.define('AI.util.extjs.Profile', {
         var isBoxLayout = function (c) {
             return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
         };
+
         Ext.ComponentManager.each(function (id) {
             var cmp = Ext.getCmp(id);
 
