@@ -1,3 +1,5 @@
 .DS_Store
 .sass-cache
 lint/error_log.txt
+AppInspector/build
+deploy

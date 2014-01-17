@@ -2,8 +2,8 @@
     "expandedState": {
         "data": false,
         "model": false,
-        "component": true,
-        "controller": true,
+        "component": false,
+        "controller": false,
         "resource": true,
         "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62": {
             "id": "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62",
