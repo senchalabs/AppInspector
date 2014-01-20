@@ -79,7 +79,7 @@ Ext.define('AI.view.ComponentInspector', {
                         },
                         {
                             xtype: 'gridcolumn',
-                            dataIndex: 'value',
+                            dataIndex: 'xtype',
                             text: 'XType'
                         }
                     ]
