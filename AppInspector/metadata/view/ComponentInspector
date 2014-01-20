@@ -102,7 +102,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "value",
+                        "dataIndex": "xtype",
                         "text": "XType"
                     },
                     "designerId": "6b8d4f75-97b2-4a1d-be09-bf11c6a4f692"
