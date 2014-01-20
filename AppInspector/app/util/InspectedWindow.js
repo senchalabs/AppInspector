@@ -24,7 +24,6 @@ Ext.define('AI.util.InspectedWindow', {
 
             //Touch
             else if (cmp.element) {
-                //TODO: frame() doesn't exist
                 box = cmp.element.getBox();
             }
 
