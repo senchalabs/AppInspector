@@ -32,7 +32,9 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             all: [
-                'Gruntfile.js'
+                'Gruntfile.js',
+                '<%= yeoman.app %>/AppInspector/app.js',
+                '<%= yeoman.app %>/AppInspector/app/**/*.js'
             ]
         },
         imagemin: {
