@@ -30,28 +30,28 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.controller.Components', {
-    extend: 'Ext.app.Controller',
+Ext.define(&#39;AI.controller.Components&#39;, {
+    extend: &#39;Ext.app.Controller&#39;,
 
     requires: [
-        'AI.util.Component',
-        'AI.util.InspectedWindow'
+        &#39;AI.util.Component&#39;,
+        &#39;AI.util.InspectedWindow&#39;
     ],
 
     init: function(application) {
         this.control({
-            '#ComponentTree' : {
-                'itemclick'   : this.onSelectComponent
+            &#39;#ComponentTree&#39; : {
+                &#39;itemclick&#39;   : this.onSelectComponent
             },
 
-            'button#RefreshComponentTree' : {
-                'click' : this.onRefreshComponentsClick
+            &#39;button#RefreshComponentTree&#39; : {
+                &#39;click&#39; : this.onRefreshComponentsClick
             }
         });
     },
 
     onRefreshComponentsClick: function(btn) {
-        var tree = btn.up('#ComponentTree');
+        var tree = btn.up(&#39;#ComponentTree&#39;);
 
         this.onComponentTreeActivate(tree);
     },
@@ -60,7 +60,7 @@ Ext.define('AI.controller.Components', {
         var nodes = [],
             root = tree.getRootNode();
 
-        tree.setLoading('Loading components...');
+        tree.setLoading(&#39;Loading components...&#39;);
         root.removeAll();
 
         AI.util.InspectedWindow.eval(
@@ -68,7 +68,7 @@ Ext.define('AI.controller.Components', {
             null,
             function (components, isException) {
                 Ext.each(components, function (cmp) {
-                    var model = Ext.create('AI.model.Component', cmp);
+                    var model = Ext.create(&#39;AI.model.Component&#39;, cmp);
 
                     nodes.push(model);
                 });
@@ -83,19 +83,19 @@ Ext.define('AI.controller.Components', {
     },
 
     onSelectComponent: function(tree, record, item, index, e, eOpts) {
-        var parent = tree.up('componentinspector'),
-            propsGrid = parent.down('#ComponentProps'),
-            methodGrid = parent.down('#ComponentMethods');
+        var parent = tree.up(&#39;componentinspector&#39;),
+            propsGrid = parent.down(&#39;#ComponentProps&#39;),
+            methodGrid = parent.down(&#39;#ComponentMethods&#39;);
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
-            record.get('cmpId'),
+            record.get(&#39;cmpId&#39;),
             Ext.emptyFn
         );
 
         AI.util.InspectedWindow.eval(
             AI.util.Component.getInspectedComponent,
-            record.get('cmpId'),
+            record.get(&#39;cmpId&#39;),
             function(result, isException) {
                 if (result) {
                     propsGrid.setSource(result.properties);

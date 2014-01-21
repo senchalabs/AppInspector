@@ -30,28 +30,28 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.store.Components', {
-    extend: 'Ext.data.TreeStore',
+Ext.define(&#39;AI.store.Components&#39;, {
+    extend: &#39;Ext.data.TreeStore&#39;,
 
     requires: [
-        'AI.model.Component',
-        'Ext.data.proxy.Memory',
-        'Ext.data.reader.Json'
+        &#39;AI.model.Component&#39;,
+        &#39;Ext.data.proxy.Memory&#39;,
+        &#39;Ext.data.reader.Json&#39;
     ],
 
     constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            model: 'AI.model.Component',
-            storeId: 'Components',
+            model: &#39;AI.model.Component&#39;,
+            storeId: &#39;Components&#39;,
             proxy: {
-                type: 'memory',
+                type: &#39;memory&#39;,
                 data: [
                     
                 ],
                 reader: {
-                    type: 'json'
+                    type: &#39;json&#39;
                 }
             }
         }, cfg)]);

@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='AI-util-touch-Profile'>/**
 </span> * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.touch.Profile', {
+Ext.define(&#39;AI.util.touch.Profile&#39;, {
     singleton : true,
 
 <span id='AI-util-touch-Profile-method-getOvernestedComponents'>    /**
@@ -30,10 +30,10 @@ Ext.define('AI.util.touch.Profile', {
 
         Ext.Array.each(all, function (c) {
             if (c.isContainer &amp;&amp; !c.isDocked() &amp;&amp;
-                !c.isXType('viewport') &amp;&amp; !c.isXType('segmentedbutton') &amp;&amp;
+                !c.isXType(&#39;viewport&#39;) &amp;&amp; !c.isXType(&#39;segmentedbutton&#39;) &amp;&amp;
 
-                //titlebar has left/right regions ('container')
-                (c.parent ? !c.parent.isXType('titlebar') : true) &amp;&amp;
+                //titlebar has left/right regions (&#39;container&#39;)
+                (c.parent ? !c.parent.isXType(&#39;titlebar&#39;) : true) &amp;&amp;
 
                 c.items.items.length === 1) {
                 components.push({
@@ -55,12 +55,12 @@ Ext.define('AI.util.touch.Profile', {
 
         var isContainer = function (c) {
             return (c.isContainer &amp;&amp; !c.isDocked() &amp;&amp;
-                    !c.isXType('viewport') &amp;&amp; !c.isXType('segmentedbutton') &amp;&amp;
+                    !c.isXType(&#39;viewport&#39;) &amp;&amp; !c.isXType(&#39;segmentedbutton&#39;) &amp;&amp;
                     c.items.items.length &gt; 0);
         };
 
         var isBoxLayout = function (c) {
-            return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
+            return (c.getLayout().type === &#39;vbox&#39; || c.getLayout().type === &#39;hbox&#39;);
         };
 
         Ext.Array.each(all, function (cmp) {

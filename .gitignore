@@ -1,5 +1,14 @@
-.DS_Store
+# folders
+.tmp
 .sass-cache
+app/AppInspector/build
+app/bower_components
+dist
+docs
+package
+temp
+test/bower_components
+
+# files
+.DS_Store
 lint/error_log.txt
-AppInspector/build
-deploy

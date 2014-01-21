@@ -18,25 +18,25 @@
   <pre class="prettyprint lang-js"><span id='AI-util-Error'>/**
 </span> *
  */
-Ext.define('AI.util.Error', {
+Ext.define(&#39;AI.util.Error&#39;, {
     singleton : true,
 
     requires : [
-        'Ext.window.MessageBox'
+        &#39;Ext.window.MessageBox&#39;
     ],
 
 <span id='AI-util-Error-method-parseException'>    /**
 </span>     * @param {Object} exception
      */
     parseException : function(exception) {
-        var msg = '';
+        var msg = &#39;&#39;;
         for (var key in exception) {
             if (exception.hasOwnProperty(key)) {
-                msg += key + ': ' + exception[key] + '\n';
+                msg += key + &#39;: &#39; + exception[key] + &#39;\n&#39;;
             }
         }
 
-        Ext.Msg.alert('isException', msg);
+        Ext.Msg.alert(&#39;isException&#39;, msg);
     }
 });</pre>
 </body>

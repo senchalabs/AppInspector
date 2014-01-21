@@ -30,23 +30,23 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.view.AppProfiles', {
-    extend: 'Ext.tab.Panel',
-    alias: 'widget.appprofiles',
+Ext.define(&#39;AI.view.AppProfiles&#39;, {
+    extend: &#39;Ext.tab.Panel&#39;,
+    alias: &#39;widget.appprofiles&#39;,
 
     requires: [
-        'Ext.grid.Panel',
-        'Ext.grid.column.Column',
-        'Ext.grid.View',
-        'Ext.tab.Tab',
-        'Ext.toolbar.Toolbar',
-        'Ext.toolbar.Spacer'
+        &#39;Ext.grid.Panel&#39;,
+        &#39;Ext.grid.column.Column&#39;,
+        &#39;Ext.grid.View&#39;,
+        &#39;Ext.tab.Tab&#39;,
+        &#39;Ext.toolbar.Toolbar&#39;,
+        &#39;Ext.toolbar.Spacer&#39;
     ],
 
-    itemId: 'ProfilesPanel',
-    title: 'Layout Profiling',
+    itemId: &#39;ProfilesPanel&#39;,
+    title: &#39;Layout Profiling&#39;,
     activeTab: 0,
-    tabPosition: 'right',
+    tabPosition: &#39;right&#39;,
 
     initComponent: function() {
         var me = this;
@@ -54,96 +54,96 @@ Ext.define('AI.view.AppProfiles', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'gridpanel',
-                    itemId: 'Overnested',
-                    title: 'Overnesting',
-                    store: 'Overnested',
+                    xtype: &#39;gridpanel&#39;,
+                    itemId: &#39;Overnested&#39;,
+                    title: &#39;Overnesting&#39;,
+                    store: &#39;Overnested&#39;,
                     columns: [
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'cmpId',
-                            text: 'Component ID',
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;cmpId&#39;,
+                            text: &#39;Component ID&#39;,
                             flex: 1
                         },
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'xtype',
-                            text: 'XType',
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;xtype&#39;,
+                            text: &#39;XType&#39;,
                             flex: 1
                         }
                     ],
                     dockedItems: [
                         {
-                            xtype: 'toolbar',
-                            dock: 'top',
+                            xtype: &#39;toolbar&#39;,
+                            dock: &#39;top&#39;,
                             items: [
                                 {
-                                    xtype: 'button',
-                                    itemId: 'ProfileOvernesting',
-                                    iconCls: 'x-tbar-loading',
-                                    text: 'Profile'
+                                    xtype: &#39;button&#39;,
+                                    itemId: &#39;ProfileOvernesting&#39;,
+                                    iconCls: &#39;x-tbar-loading&#39;,
+                                    text: &#39;Profile&#39;
                                 },
                                 {
-                                    xtype: 'tbspacer',
+                                    xtype: &#39;tbspacer&#39;,
                                     flex: 1
                                 },
                                 {
-                                    xtype: 'button',
+                                    xtype: &#39;button&#39;,
                                     handler: function(button, e) {
                                         Ext.Msg.alert(
-                                        'Overnesting',
-                                        'Utility to find components which may be overnested inside the application.'
+                                        &#39;Overnesting&#39;,
+                                        &#39;Utility to find components which may be overnested inside the application.&#39;
                                         );
                                     },
-                                    text: '?'
+                                    text: &#39;?&#39;
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    xtype: 'gridpanel',
-                    itemId: 'BoxLayouts',
-                    title: 'Box Layouts',
-                    store: 'BoxLayouts',
+                    xtype: &#39;gridpanel&#39;,
+                    itemId: &#39;BoxLayouts&#39;,
+                    title: &#39;Box Layouts&#39;,
+                    store: &#39;BoxLayouts&#39;,
                     columns: [
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'cmpId',
-                            text: 'Component ID',
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;cmpId&#39;,
+                            text: &#39;Component ID&#39;,
                             flex: 1
                         },
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'xtype',
-                            text: 'XType',
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;xtype&#39;,
+                            text: &#39;XType&#39;,
                             flex: 1
                         }
                     ],
                     dockedItems: [
                         {
-                            xtype: 'toolbar',
-                            dock: 'top',
+                            xtype: &#39;toolbar&#39;,
+                            dock: &#39;top&#39;,
                             items: [
                                 {
-                                    xtype: 'button',
-                                    itemId: 'ProfileBoxLayouts',
-                                    iconCls: 'x-tbar-loading',
-                                    text: 'Profile'
+                                    xtype: &#39;button&#39;,
+                                    itemId: &#39;ProfileBoxLayouts&#39;,
+                                    iconCls: &#39;x-tbar-loading&#39;,
+                                    text: &#39;Profile&#39;
                                 },
                                 {
-                                    xtype: 'tbspacer',
+                                    xtype: &#39;tbspacer&#39;,
                                     flex: 1
                                 },
                                 {
-                                    xtype: 'button',
+                                    xtype: &#39;button&#39;,
                                     handler: function(button, e) {
                                         Ext.Msg.alert(
-                                        'Box Layouts',
-                                        'Utility to find nested box layouts inside the application which may contribute to performance issues.'
+                                        &#39;Box Layouts&#39;,
+                                        &#39;Utility to find nested box layouts inside the application which may contribute to performance issues.&#39;
                                         );
                                     },
-                                    text: '?'
+                                    text: &#39;?&#39;
                                 }
                             ]
                         }

@@ -30,19 +30,19 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.store.Records', {
-    extend: 'Ext.data.Store',
+Ext.define(&#39;AI.store.Records&#39;, {
+    extend: &#39;Ext.data.Store&#39;,
 
     requires: [
-        'AI.model.Record'
+        &#39;AI.model.Record&#39;
     ],
 
     constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            model: 'AI.model.Record',
-            storeId: 'Records'
+            model: &#39;AI.model.Record&#39;,
+            storeId: &#39;Records&#39;
         }, cfg)]);
     }
 });</pre>

@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='AI-util-extjs-Events'>/**
 </span> * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.extjs.Events', {
+Ext.define(&#39;AI.util.extjs.Events&#39;, {
     singleton : true,
 
     requires : [
@@ -30,7 +30,7 @@ Ext.define('AI.util.extjs.Events', {
      */
     recordEvents : function () {
         if (!window._recorder) {
-            window._recorder = new Ext.create('Ext.ux.event.Recorder', {
+            window._recorder = new Ext.create(&#39;Ext.ux.event.Recorder&#39;, {
                 attachTo : null
             });
 
@@ -43,7 +43,7 @@ Ext.define('AI.util.extjs.Events', {
             dom : window._recorder.getRecordedEvents()
         };
 
-        //clear each time so we don't duplicate
+        //clear each time so we don&#39;t duplicate
         window._recorder.clear();
 
         return events;

@@ -30,19 +30,19 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.store.BoxLayouts', {
-    extend: 'Ext.data.Store',
+Ext.define(&#39;AI.store.BoxLayouts&#39;, {
+    extend: &#39;Ext.data.Store&#39;,
 
     requires: [
-        'AI.model.Overnested'
+        &#39;AI.model.Overnested&#39;
     ],
 
     constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            model: 'AI.model.Overnested',
-            storeId: 'BoxLayouts'
+            model: &#39;AI.model.Overnested&#39;,
+            storeId: &#39;BoxLayouts&#39;
         }, cfg)]);
     }
 });</pre>

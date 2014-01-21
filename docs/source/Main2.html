@@ -15,29 +15,29 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('AI.view.Main', {
-    extend: 'Ext.container.Container',
+  <pre class="prettyprint lang-js">Ext.define(&#39;AI.view.Main&#39;, {
+    extend: &#39;Ext.container.Container&#39;,
     requires:[
-        'Ext.tab.Panel',
-        'Ext.layout.container.Border'
+        &#39;Ext.tab.Panel&#39;,
+        &#39;Ext.layout.container.Border&#39;
     ],
     
-    xtype: 'app-main',
+    xtype: &#39;app-main&#39;,
 
     layout: {
-        type: 'border'
+        type: &#39;border&#39;
     },
 
     items: [{
-        region: 'west',
-        xtype: 'panel',
-        title: 'west',
+        region: &#39;west&#39;,
+        xtype: &#39;panel&#39;,
+        title: &#39;west&#39;,
         width: 150
     },{
-        region: 'center',
-        xtype: 'tabpanel',
+        region: &#39;center&#39;,
+        xtype: &#39;tabpanel&#39;,
         items:[{
-            title: 'Center Tab 1'
+            title: &#39;Center Tab 1&#39;
         }]
     }]
 });</pre>

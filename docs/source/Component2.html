@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='AI-util-Component'>/**
 </span> * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.Component', {
+Ext.define(&#39;AI.util.Component&#39;, {
     singleton : true,
 
 <span id='AI-util-Component-method-loadComponentTree'>    /**
@@ -30,9 +30,9 @@ Ext.define('AI.util.Component', {
 
             var getCompNodeForComp = function (comp) {
                 return {
-                    text     : comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
-                    cmpId    : comp.id || '',
-                    itemId   : comp.itemId || '',
+                    text     : comp.id + (comp.itemId ? &#39; (&#39; + comp.itemId + &#39;)&#39; : &#39;&#39;),
+                    cmpId    : comp.id || &#39;&#39;,
+                    itemId   : comp.itemId || &#39;&#39;,
                     xtype    : comp.xtype,
                     children : []
                 };
@@ -49,11 +49,11 @@ Ext.define('AI.util.Component', {
             Ext.each(comps, function (comp) {
                 var node = getCompNodeForComp(comp),
                     items = {
-                        text     : 'items',
+                        text     : &#39;items&#39;,
                         children : []
                     },
                     dockedItems = {
-                        text     : 'dockedItems',
+                        text     : &#39;dockedItems&#39;,
                         children : []
                     },
                     children;
@@ -114,10 +114,10 @@ Ext.define('AI.util.Component', {
             data.methods = Object.create(null);
 
             for (key in cmp) {
-                if (typeof cmp[key] === 'function') {
-                    data.methods[key] = 'METHOD';
+                if (typeof cmp[key] === &#39;function&#39;) {
+                    data.methods[key] = &#39;METHOD&#39;;
                 }
-                else if (typeof cmp[key] !== 'object') {
+                else if (typeof cmp[key] !== &#39;object&#39;) {
                     data.properties[key] = cmp[key];
                 }
             }

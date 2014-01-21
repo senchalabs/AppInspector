@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Overnested",
+        "model": "Overnested",
+        "storeId": "Overnested"
+    },
+    "designerId": "005dfa9e-ca81-422e-ae4c-b29b432479db"
+}

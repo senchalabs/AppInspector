@@ -1,0 +1,31 @@
+{
+    "type": "neptunethemeresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AITheme"
+    },
+    "designerId": "1b164612-6ea5-4722-8816-f85b69edae67",
+    "storage": {
+        "needsCompile": false,
+        "simple": {
+            "pkgVersion": 1,
+            "pkgPath": "packages"
+        },
+        "nameIndex": 1,
+        "varData": {
+            "Ext.Component": {
+                "globalVars": [
+                    {
+                        "name": "base-color",
+                        "enabled": true,
+                        "value": "rgba(0,0,0,1)"
+                    }
+                ]
+            }
+        }
+    }
+}

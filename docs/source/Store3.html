@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='AI-util-Store'>/**
 </span> * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.Store', {
+Ext.define(&#39;AI.util.Store&#39;, {
     singleton : true,
 
 <span id='AI-util-Store-method-getStores'>    /**
@@ -47,7 +47,7 @@ Ext.define('AI.util.Store', {
 
         store.each(function (record) {
             records.push({
-                id        : record.id || record.get('id'),
+                id        : record.id || record.get(&#39;id&#39;),
                 modelData : record.data,
                 rawData   : record.raw
             });

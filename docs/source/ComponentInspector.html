@@ -30,27 +30,27 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.view.ComponentInspector', {
-    extend: 'Ext.panel.Panel',
-    alias: 'widget.componentinspector',
+Ext.define(&#39;AI.view.ComponentInspector&#39;, {
+    extend: &#39;Ext.panel.Panel&#39;,
+    alias: &#39;widget.componentinspector&#39;,
 
     requires: [
-        'Ext.tree.Panel',
-        'Ext.toolbar.Toolbar',
-        'Ext.tree.View',
-        'Ext.tree.Column',
-        'Ext.tab.Panel',
-        'Ext.grid.property.Grid',
-        'Ext.tab.Tab'
+        &#39;Ext.tree.Panel&#39;,
+        &#39;Ext.toolbar.Toolbar&#39;,
+        &#39;Ext.tree.View&#39;,
+        &#39;Ext.tree.Column&#39;,
+        &#39;Ext.tab.Panel&#39;,
+        &#39;Ext.grid.property.Grid&#39;,
+        &#39;Ext.tab.Tab&#39;
     ],
 
     height: 250,
     width: 400,
-    title: 'Component Tree',
+    title: &#39;Component Tree&#39;,
 
     layout: {
-        type: 'hbox',
-        align: 'stretch'
+        type: &#39;hbox&#39;,
+        align: &#39;stretch&#39;
     },
 
     initComponent: function() {
@@ -59,26 +59,27 @@ Ext.define('AI.view.ComponentInspector', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'treepanel',
+                    xtype: &#39;treepanel&#39;,
                     flex: 1,
                     frame: true,
                     height: 250,
-                    itemId: 'ComponentTree',
+                    itemId: &#39;ComponentTree&#39;,
                     width: 400,
-                    store: 'Components',
+                    autoScroll: true,
+                    store: &#39;Components&#39;,
                     rootVisible: false,
                     useArrows: true,
                     dockedItems: [
                         {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            ui: 'default-toolbar',
+                            xtype: &#39;toolbar&#39;,
+                            dock: &#39;top&#39;,
+                            ui: &#39;default-toolbar&#39;,
                             items: [
                                 {
-                                    xtype: 'button',
-                                    itemId: 'RefreshComponentTree',
-                                    iconCls: 'x-tbar-loading',
-                                    text: 'Refresh'
+                                    xtype: &#39;button&#39;,
+                                    itemId: &#39;RefreshComponentTree&#39;,
+                                    iconCls: &#39;x-tbar-loading&#39;,
+                                    text: &#39;Refresh&#39;
                                 }
                             ]
                         }
@@ -88,38 +89,38 @@ Ext.define('AI.view.ComponentInspector', {
                     },
                     columns: [
                         {
-                            xtype: 'treecolumn',
-                            dataIndex: 'text',
-                            text: 'Component ID',
+                            xtype: &#39;treecolumn&#39;,
+                            dataIndex: &#39;text&#39;,
+                            text: &#39;Component ID&#39;,
                             flex: 1
                         },
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'value',
-                            text: 'XType'
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;value&#39;,
+                            text: &#39;XType&#39;
                         }
                     ]
                 },
                 {
-                    xtype: 'tabpanel',
+                    xtype: &#39;tabpanel&#39;,
                     flex: 1,
                     minWidth: 200,
                     resizable: true,
-                    resizeHandles: 'w',
+                    resizeHandles: &#39;w&#39;,
                     activeTab: 0,
                     items: [
                         {
-                            xtype: 'propertygrid',
-                            itemId: 'ComponentProps',
-                            title: 'Properties',
+                            xtype: &#39;propertygrid&#39;,
+                            itemId: &#39;ComponentProps&#39;,
+                            title: &#39;Properties&#39;,
                             source: {
                                 
                             }
                         },
                         {
-                            xtype: 'propertygrid',
-                            itemId: 'ComponentMethods',
-                            title: 'Methods',
+                            xtype: &#39;propertygrid&#39;,
+                            itemId: &#39;ComponentMethods&#39;,
+                            title: &#39;Methods&#39;,
                             source: {
                                 
                             }

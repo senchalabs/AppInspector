@@ -18,29 +18,44 @@
   <pre class="prettyprint lang-js"><span id='AI-util-InspectedWindow'>/**
 </span> *
  */
-Ext.define('AI.util.InspectedWindow', {
+Ext.define(&#39;AI.util.InspectedWindow&#39;, {
     singleton : true,
 
     requires : [
-        'AI.util.Error'
+        &#39;AI.util.Error&#39;
     ],
 
 <span id='AI-util-InspectedWindow-method-highlight'>    /**
 </span>     * @param {String} id
      */
     highlight : function (id) {
-        var cmp = Ext.getCmp(id);
+        var cmp = Ext.getCmp(id),
+            el  = document.getElementById(&#39;_AppInspector&#39;),
+            box;
 
         if (cmp &amp;&amp; cmp.rendered) {
             //Ext JS
             if (cmp.el) {
-                cmp.el.frame('red', 3, { duration : 250 });
+                box = cmp.el.getBox();
             }
 
             //Touch
             else if (cmp.element) {
-                //TODO: frame() doesn't exist
+                //TODO: frame() doesn&#39;t exist
+                box = cmp.element.getBox();
             }
+
+            el.style.height = box.height + &#39;px&#39;;
+            el.style.width  = box.width + &#39;px&#39;;
+            el.style.top  = box.top + &#39;px&#39;;
+            el.style.left  = box.left + &#39;px&#39;;
+            el.style.visibility = &#39;&#39;;
+
+            window.setTimeout(function() {
+                var el  = document.getElementById(&#39;_AppInspector&#39;);
+
+                el.style.visibility = &#39;hidden&#39;;
+            }, 1000);
         }
     },
 
@@ -55,14 +70,14 @@ Ext.define('AI.util.InspectedWindow', {
      */
     eval : function (closure, argString, callback) {
         var callbackFn = callback,
-            args = '';
+            args = &#39;&#39;;
 
         if (argString) {
-            args = '&quot;' + argString + '&quot;';
+            args = &#39;&quot;&#39; + argString + &#39;&quot;&#39;;
         }
 
         chrome.devtools.inspectedWindow.eval(
-            '(' + closure + ')(' + args + ')',
+            &#39;(&#39; + closure + &#39;)(&#39; + args + &#39;)&#39;,
             function (result, isException) {
                 if (isException) {
                     AI.util.Error.parseException(isException);
@@ -80,6 +95,19 @@ Ext.define('AI.util.InspectedWindow', {
     getAppVersion : function() {
         if (!window.Ext) {
             return false;
+        }
+
+        if (!document.getElementById(&#39;_AppInspector&#39;)) {
+            //create a highlighting DIV for use later
+            var div = document.createElement(&#39;div&#39;);
+
+            div.setAttribute(&#39;id&#39;, &#39;_AppInspector&#39;);
+            div.style.backgroundColor = &#39;#f00&#39;;
+            div.style.opacity = 0.5;
+            div.style.visibility = &#39;hidden&#39;;
+            div.style.position = &#39;absolute&#39;;
+
+            document.body.appendChild(div);
         }
 
         var data = {},

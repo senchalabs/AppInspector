@@ -30,34 +30,34 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.controller.Events', {
-    extend: 'Ext.app.Controller',
+Ext.define(&#39;AI.controller.Events&#39;, {
+    extend: &#39;Ext.app.Controller&#39;,
 
     requires: [
-        'AI.util.extjs.Events'
+        &#39;AI.util.extjs.Events&#39;
     ],
 
     init: function(application) {
         this.control({
-            'button#RecordEvents' : {
-                'click' : this.onRecordEventsClick
+            &#39;button#RecordEvents&#39; : {
+                &#39;click&#39; : this.onRecordEventsClick
             },
 
-            'button#StopRecording' : {
-                'click' : this.onStopRecordingClick
+            &#39;button#StopRecording&#39; : {
+                &#39;click&#39; : this.onStopRecordingClick
             }
         });
     },
 
     onRecordEventsClick: function() {
         var me = this,
-            store = Ext.getStore('Events');
+            store = Ext.getStore(&#39;Events&#39;);
 
-        Ext.ComponentQuery.query('button#RecordEvents')[0].hide();
-        Ext.ComponentQuery.query('button#StopRecording')[0].show();
+        Ext.ComponentQuery.query(&#39;button#RecordEvents&#39;)[0].hide();
+        Ext.ComponentQuery.query(&#39;button#StopRecording&#39;)[0].show();
 
-        if (this.getApplication().info.framework === 'touch') {
-            Ext.Msg.alert('Not Implemented', 'This feature is not implemented yet for Sencha Touch.');
+        if (this.getApplication().info.framework === &#39;touch&#39;) {
+            Ext.Msg.alert(&#39;Not Implemented&#39;, &#39;This feature is not implemented yet for Sencha Touch.&#39;);
             return;
         }
 
@@ -79,8 +79,8 @@ Ext.define('AI.controller.Events', {
     onStopRecordingClick: function() {
         var me = this;
 
-        Ext.ComponentQuery.query('button#StopRecording')[0].hide();
-        Ext.ComponentQuery.query('button#RecordEvents')[0].show();
+        Ext.ComponentQuery.query(&#39;button#StopRecording&#39;)[0].hide();
+        Ext.ComponentQuery.query(&#39;button#RecordEvents&#39;)[0].show();
 
         AI.util.InspectedWindow.eval(
             AI.util.extjs.Events.stopEvents,

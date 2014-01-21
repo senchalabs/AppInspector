@@ -30,13 +30,13 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.controller.Main', {
-    extend: 'Ext.app.Controller',
+Ext.define(&#39;AI.controller.Main&#39;, {
+    extend: &#39;Ext.app.Controller&#39;,
 
     init: function(application) {
         this.control({
-            '#mainView' : {
-                'afterrender' : this.onAppRender
+            &#39;#mainView&#39; : {
+                &#39;afterrender&#39; : this.onAppRender
             }
         });
     },
@@ -48,16 +48,16 @@ Ext.define('AI.controller.Main', {
             AI.util.InspectedWindow.getAppVersion,
             null,
             function (data) {
-                var main = Ext.ComponentQuery.query('#mainView')[0];
+                var main = Ext.ComponentQuery.query(&#39;#mainView&#39;)[0];
 
                 if (!data) {
                     main.disable();
                 }
                 else {
-                    main.down('#AppDetails').setSource(data);
+                    main.down(&#39;#AppDetails&#39;).setSource(data);
 
                     app.info = {
-                        framework : data.extjs ? 'ext' : 'touch',
+                        framework : data.extjs ? &#39;ext&#39; : &#39;touch&#39;,
                         version   : data.extjs ? data.extjs.version : data.touch.version
                     };
                 }

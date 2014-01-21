@@ -15,19 +15,19 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('AI.view.Viewport', {
-    extend: 'Ext.container.Viewport',
+  <pre class="prettyprint lang-js">Ext.define(&#39;AI.view.Viewport&#39;, {
+    extend: &#39;Ext.container.Viewport&#39;,
     requires:[
-        'Ext.layout.container.Fit',
-        'AI.view.Main'
+        &#39;Ext.layout.container.Fit&#39;,
+        &#39;AI.view.Main&#39;
     ],
 
     layout: {
-        type: 'fit'
+        type: &#39;fit&#39;
     },
 
     items: [{
-        xtype: 'app-main'
+        xtype: &#39;app-main&#39;
     }]
 });
 </pre>

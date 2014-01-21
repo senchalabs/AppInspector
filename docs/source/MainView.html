@@ -30,23 +30,23 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.view.MainView', {
-    extend: 'Ext.container.Viewport',
+Ext.define(&#39;AI.view.MainView&#39;, {
+    extend: &#39;Ext.container.Viewport&#39;,
 
     requires: [
-        'AI.view.ComponentInspector',
-        'AI.view.StoreInspector',
-        'AI.view.AppProfiles',
-        'AI.view.Events',
-        'Ext.button.Button',
-        'Ext.grid.property.Grid',
-        'Ext.tab.Panel',
-        'Ext.layout.container.Border',
-        'Ext.layout.container.Card'
+        &#39;AI.view.ComponentInspector&#39;,
+        &#39;AI.view.StoreInspector&#39;,
+        &#39;AI.view.AppProfiles&#39;,
+        &#39;AI.view.Events&#39;,
+        &#39;Ext.button.Button&#39;,
+        &#39;Ext.grid.property.Grid&#39;,
+        &#39;Ext.tab.Panel&#39;,
+        &#39;Ext.layout.container.Border&#39;,
+        &#39;Ext.layout.container.Card&#39;
     ],
 
-    itemId: 'mainView',
-    layout: 'border',
+    itemId: &#39;mainView&#39;,
+    layout: &#39;border&#39;,
 
     initComponent: function() {
         var me = this;
@@ -54,100 +54,100 @@ Ext.define('AI.view.MainView', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'panel',
-                    region: 'west',
+                    xtype: &#39;panel&#39;,
+                    region: &#39;west&#39;,
                     split: true,
-                    itemId: 'menuPanel',
+                    itemId: &#39;menuPanel&#39;,
                     width: 250,
                     collapsed: true,
                     collapsible: true,
-                    title: 'Menu',
+                    title: &#39;Menu&#39;,
                     layout: {
-                        type: 'vbox',
-                        align: 'stretch'
+                        type: &#39;vbox&#39;,
+                        align: &#39;stretch&#39;
                     },
                     items: [
                         {
-                            xtype: 'button',
-                            itemId: 'AboutNav',
-                            icon: 'resources/images/nav-components.png',
-                            scale: 'large',
-                            text: 'About'
+                            xtype: &#39;button&#39;,
+                            itemId: &#39;AboutNav&#39;,
+                            icon: &#39;resources/images/nav-components.png&#39;,
+                            scale: &#39;large&#39;,
+                            text: &#39;About&#39;
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'ComponentsNav',
-                            icon: 'resources/images/nav-components.png',
-                            scale: 'large',
-                            text: 'Components'
+                            xtype: &#39;button&#39;,
+                            itemId: &#39;ComponentsNav&#39;,
+                            icon: &#39;resources/images/nav-components.png&#39;,
+                            scale: &#39;large&#39;,
+                            text: &#39;Components&#39;
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'StoresNav',
-                            icon: 'resources/images/nav-stores.png',
-                            scale: 'large',
-                            text: 'Stores'
+                            xtype: &#39;button&#39;,
+                            itemId: &#39;StoresNav&#39;,
+                            icon: &#39;resources/images/nav-stores.png&#39;,
+                            scale: &#39;large&#39;,
+                            text: &#39;Stores&#39;
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'ProfilesNav',
-                            icon: 'resources/images/nav-components.png',
-                            scale: 'large',
-                            text: 'Layouts'
+                            xtype: &#39;button&#39;,
+                            itemId: &#39;ProfilesNav&#39;,
+                            icon: &#39;resources/images/nav-components.png&#39;,
+                            scale: &#39;large&#39;,
+                            text: &#39;Layouts&#39;
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'EventsNav',
-                            icon: 'resources/images/nav-components.png',
-                            scale: 'large',
-                            text: 'Events'
+                            xtype: &#39;button&#39;,
+                            itemId: &#39;EventsNav&#39;,
+                            icon: &#39;resources/images/nav-components.png&#39;,
+                            scale: &#39;large&#39;,
+                            text: &#39;Events&#39;
                         }
                     ]
                 },
                 {
-                    xtype: 'panel',
-                    region: 'center',
-                    itemId: 'ContentPanel',
-                    layout: 'card',
+                    xtype: &#39;panel&#39;,
+                    region: &#39;center&#39;,
+                    itemId: &#39;ContentPanel&#39;,
+                    layout: &#39;card&#39;,
                     items: [
                         {
-                            xtype: 'panel',
-                            itemId: 'AboutPanel',
+                            xtype: &#39;panel&#39;,
+                            itemId: &#39;AboutPanel&#39;,
                             padding: 20,
                             layout: {
-                                type: 'vbox',
-                                align: 'stretch'
+                                type: &#39;vbox&#39;,
+                                align: &#39;stretch&#39;
                             },
                             items: [
                                 {
-                                    xtype: 'propertygrid',
+                                    xtype: &#39;propertygrid&#39;,
                                     height: 150,
-                                    itemId: 'AppDetails',
-                                    title: 'App Details',
+                                    itemId: &#39;AppDetails&#39;,
+                                    title: &#39;App Details&#39;,
                                     source: {
                                         
                                     }
                                 },
                                 {
-                                    xtype: 'container',
+                                    xtype: &#39;container&#39;,
                                     loader: {
-                                        url: 'about.html',
+                                        url: &#39;about.html&#39;,
                                         autoLoad: true
                                     }
                                 }
                             ]
                         },
                         {
-                            xtype: 'componentinspector'
+                            xtype: &#39;componentinspector&#39;
                         },
                         {
-                            xtype: 'storeinspector'
+                            xtype: &#39;storeinspector&#39;
                         },
                         {
-                            xtype: 'appprofiles'
+                            xtype: &#39;appprofiles&#39;
                         },
                         {
-                            xtype: 'eventgrid'
+                            xtype: &#39;eventgrid&#39;
                         }
                     ]
                 }

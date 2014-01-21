@@ -30,25 +30,25 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.view.StoreInspector', {
-    extend: 'Ext.panel.Panel',
-    alias: 'widget.storeinspector',
+Ext.define(&#39;AI.view.StoreInspector&#39;, {
+    extend: &#39;Ext.panel.Panel&#39;,
+    alias: &#39;widget.storeinspector&#39;,
 
     requires: [
-        'Ext.grid.column.Column',
-        'Ext.grid.View',
-        'Ext.toolbar.Toolbar',
-        'Ext.button.Button',
-        'Ext.grid.property.Grid',
-        'Ext.grid.Panel'
+        &#39;Ext.grid.column.Column&#39;,
+        &#39;Ext.grid.View&#39;,
+        &#39;Ext.toolbar.Toolbar&#39;,
+        &#39;Ext.button.Button&#39;,
+        &#39;Ext.grid.property.Grid&#39;,
+        &#39;Ext.grid.Panel&#39;
     ],
 
-    itemId: 'StoresPanel',
-    title: 'Stores',
+    itemId: &#39;StoresPanel&#39;,
+    title: &#39;Stores&#39;,
 
     layout: {
-        type: 'vbox',
-        align: 'stretch'
+        type: &#39;vbox&#39;,
+        align: &#39;stretch&#39;
     },
 
     initComponent: function() {
@@ -57,68 +57,68 @@ Ext.define('AI.view.StoreInspector', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'gridpanel',
+                    xtype: &#39;gridpanel&#39;,
                     height: 300,
-                    itemId: 'StoreList',
-                    store: 'Stores',
+                    itemId: &#39;StoreList&#39;,
+                    store: &#39;Stores&#39;,
                     columns: [
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'id',
-                            text: 'Store ID',
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;id&#39;,
+                            text: &#39;Store ID&#39;,
                             flex: 1
                         },
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'count',
-                            text: 'Record Count'
+                            xtype: &#39;gridcolumn&#39;,
+                            dataIndex: &#39;count&#39;,
+                            text: &#39;Record Count&#39;
                         }
                     ],
                     dockedItems: [
                         {
-                            xtype: 'toolbar',
-                            dock: 'top',
+                            xtype: &#39;toolbar&#39;,
+                            dock: &#39;top&#39;,
                             items: [
                                 {
-                                    xtype: 'button',
-                                    itemId: 'RefreshStores',
-                                    iconCls: 'x-tbar-loading',
-                                    text: 'Refresh'
+                                    xtype: &#39;button&#39;,
+                                    itemId: &#39;RefreshStores&#39;,
+                                    iconCls: &#39;x-tbar-loading&#39;,
+                                    text: &#39;Refresh&#39;
                                 }
                             ]
                         }
                     ]
                 },
                 {
-                    xtype: 'container',
+                    xtype: &#39;container&#39;,
                     flex: 1,
                     resizable: true,
                     layout: {
-                        type: 'hbox',
-                        align: 'stretch'
+                        type: &#39;hbox&#39;,
+                        align: &#39;stretch&#39;
                     },
                     items: [
                         {
-                            xtype: 'gridpanel',
+                            xtype: &#39;gridpanel&#39;,
                             flex: 1,
-                            itemId: 'RecordList',
-                            title: 'Store Records',
-                            store: 'Records',
+                            itemId: &#39;RecordList&#39;,
+                            title: &#39;Store Records&#39;,
+                            store: &#39;Records&#39;,
                             columns: [
                                 {
-                                    xtype: 'gridcolumn',
-                                    dataIndex: 'id',
-                                    text: 'Record ID',
+                                    xtype: &#39;gridcolumn&#39;,
+                                    dataIndex: &#39;id&#39;,
+                                    text: &#39;Record ID&#39;,
                                     flex: 1
                                 }
                             ]
                         },
                         {
-                            xtype: 'propertygrid',
-                            itemId: 'RecordDetail',
+                            xtype: &#39;propertygrid&#39;,
+                            itemId: &#39;RecordDetail&#39;,
                             width: 300,
                             resizable: true,
-                            title: 'Record Details',
+                            title: &#39;Record Details&#39;,
                             source: {
                                 
                             }

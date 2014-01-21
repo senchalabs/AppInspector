@@ -30,29 +30,29 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.controller.Profile', {
-    extend: 'Ext.app.Controller',
+Ext.define(&#39;AI.controller.Profile&#39;, {
+    extend: &#39;Ext.app.Controller&#39;,
 
     requires: [
-        'AI.util.extjs.Profile',
-        'AI.util.touch.Profile'
+        &#39;AI.util.extjs.Profile&#39;,
+        &#39;AI.util.touch.Profile&#39;
     ],
 
     init: function(application) {
         this.control({
-            '#Overnested' : {
-                'select'      : this.onSelectOvernestedComponent
+            &#39;#Overnested&#39; : {
+                &#39;select&#39;      : this.onSelectOvernestedComponent
             },
 
-            'button#ProfileOvernesting' : {
+            &#39;button#ProfileOvernesting&#39; : {
                 click : this.onOvernestedProfileClick
             },
 
-            '#BoxLayouts' : {
-                'select'      : this.onSelectOvernestedComponent
+            &#39;#BoxLayouts&#39; : {
+                &#39;select&#39;      : this.onSelectOvernestedComponent
             },
 
-            'button#ProfileBoxLayouts' : {
+            &#39;button#ProfileBoxLayouts&#39; : {
                 click : this.onNestedBoxLayoutsClick
             }
         });
@@ -61,21 +61,21 @@ Ext.define('AI.controller.Profile', {
     onSelectOvernestedComponent: function(selModel, record, index, eOpts) {
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
-            record.get('cmpId'),
+            record.get(&#39;cmpId&#39;),
             Ext.emptyFn
         );
     },
 
     onOvernestedProfileClick: function(btn) {
-        var grid = btn.up('#Overnested'),
+        var grid = btn.up(&#39;#Overnested&#39;),
             store = grid.getStore();
 
         store.removeAll();
-        grid.setLoading('Profiling for overnested components...');
+        grid.setLoading(&#39;Profiling for overnested components...&#39;);
 
         var util;
 
-        if (this.getApplication().info.framework === 'ext') {
+        if (this.getApplication().info.framework === &#39;ext&#39;) {
             util = AI.util.extjs.Profile.getOvernestedComponents;
         }
         else {
@@ -87,7 +87,7 @@ Ext.define('AI.controller.Profile', {
             null,
             function (components) {
                 Ext.each(components, function (component) {
-                    var model = Ext.create('AI.model.Overnested', component);
+                    var model = Ext.create(&#39;AI.model.Overnested&#39;, component);
 
                     store.add(model);
                 });
@@ -98,16 +98,16 @@ Ext.define('AI.controller.Profile', {
     },
 
     onNestedBoxLayoutsClick: function(btn) {
-        var grid = btn.up('#BoxLayouts'),
+        var grid = btn.up(&#39;#BoxLayouts&#39;),
             store = grid.getStore();
 
         store.removeAll();
-        grid.setLoading('Profiling for overnested box layouts...');
+        grid.setLoading(&#39;Profiling for overnested box layouts...&#39;);
 
 
         var util;
 
-        if (this.getApplication().info.framework === 'ext') {
+        if (this.getApplication().info.framework === &#39;ext&#39;) {
             util = AI.util.extjs.Profile.getNestedBoxLayouts;
         }
         else {
@@ -119,7 +119,7 @@ Ext.define('AI.controller.Profile', {
             null,
             function (components) {
                 Ext.each(components, function (component) {
-                    var model = Ext.create('AI.model.Overnested', component);
+                    var model = Ext.create(&#39;AI.model.Overnested&#39;, component);
 
                     store.add(model);
                 });

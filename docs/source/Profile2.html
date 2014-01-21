@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='AI-util-extjs-Profile'>/**
 </span> * Utility class containing methods which run in the context of the inspectedWindow
  */
-Ext.define('AI.util.extjs.Profile', {
+Ext.define(&#39;AI.util.extjs.Profile&#39;, {
     singleton : true,
 
 <span id='AI-util-extjs-Profile-method-getOvernestedComponents'>    /**
@@ -29,7 +29,7 @@ Ext.define('AI.util.extjs.Profile', {
 
         Ext.ComponentManager.each(function (id) {
             var c = Ext.getCmp(id);
-            if (c.isContainer &amp;&amp; !c.isHeader &amp;&amp; !c.isXType('tablepanel') &amp;&amp; !c.isXType('headercontainer') &amp;&amp; !c.hasCls('x-fieldset-header') &amp;&amp; c.items.items.length === 1) {
+            if (c.isContainer &amp;&amp; !c.isHeader &amp;&amp; !c.isXType(&#39;tablepanel&#39;) &amp;&amp; !c.isXType(&#39;headercontainer&#39;) &amp;&amp; !c.hasCls(&#39;x-fieldset-header&#39;) &amp;&amp; c.items.items.length === 1) {
                 components.push({
                     cmpId : c.id,
                     xtype : c.xtype
@@ -47,12 +47,12 @@ Ext.define('AI.util.extjs.Profile', {
         var components = [];
 
         var isContainer = function (c) {
-            return (c.isContainer &amp;&amp; !c.isHeader &amp;&amp; !c.isXType('tablepanel') &amp;&amp; !c.isXType('headercontainer') &amp;&amp; !c.hasCls('x-fieldset-header') &amp;&amp;
+            return (c.isContainer &amp;&amp; !c.isHeader &amp;&amp; !c.isXType(&#39;tablepanel&#39;) &amp;&amp; !c.isXType(&#39;headercontainer&#39;) &amp;&amp; !c.hasCls(&#39;x-fieldset-header&#39;) &amp;&amp;
                     c.items.items.length &gt; 0);
         };
 
         var isBoxLayout = function (c) {
-            return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
+            return (c.getLayout().type === &#39;vbox&#39; || c.getLayout().type === &#39;hbox&#39;);
         };
 
         Ext.ComponentManager.each(function (id) {

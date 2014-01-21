@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "BoxLayouts",
+        "model": "Overnested",
+        "storeId": "BoxLayouts"
+    },
+    "designerId": "f0a1190d-0c29-49f6-a0af-5b44be4219a7"
+}

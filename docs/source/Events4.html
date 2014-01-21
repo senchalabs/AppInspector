@@ -30,19 +30,19 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('AI.view.Events', {
-    extend: 'Ext.grid.Panel',
-    alias: 'widget.eventgrid',
+Ext.define(&#39;AI.view.Events&#39;, {
+    extend: &#39;Ext.grid.Panel&#39;,
+    alias: &#39;widget.eventgrid&#39;,
 
     requires: [
-        'Ext.grid.column.Column',
-        'Ext.grid.View',
-        'Ext.toolbar.Toolbar',
-        'Ext.button.Button'
+        &#39;Ext.grid.column.Column&#39;,
+        &#39;Ext.grid.View&#39;,
+        &#39;Ext.toolbar.Toolbar&#39;,
+        &#39;Ext.button.Button&#39;
     ],
 
-    title: 'Events',
-    store: 'Events',
+    title: &#39;Events&#39;,
+    store: &#39;Events&#39;,
 
     initComponent: function() {
         var me = this;
@@ -50,32 +50,32 @@ Ext.define('AI.view.Events', {
         Ext.applyIf(me, {
             columns: [
                 {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'type',
-                    text: 'Type'
+                    xtype: &#39;gridcolumn&#39;,
+                    dataIndex: &#39;type&#39;,
+                    text: &#39;Type&#39;
                 },
                 {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'target',
-                    text: 'Target',
+                    xtype: &#39;gridcolumn&#39;,
+                    dataIndex: &#39;target&#39;,
+                    text: &#39;Target&#39;,
                     flex: 1
                 }
             ],
             dockedItems: [
                 {
-                    xtype: 'toolbar',
-                    dock: 'top',
+                    xtype: &#39;toolbar&#39;,
+                    dock: &#39;top&#39;,
                     items: [
                         {
-                            xtype: 'button',
-                            itemId: 'RecordEvents',
-                            text: 'Record'
+                            xtype: &#39;button&#39;,
+                            itemId: &#39;RecordEvents&#39;,
+                            text: &#39;Record&#39;
                         },
                         {
-                            xtype: 'button',
+                            xtype: &#39;button&#39;,
                             hidden: true,
-                            itemId: 'StopRecording',
-                            text: 'Stop Recording'
+                            itemId: &#39;StopRecording&#39;,
+                            text: &#39;Stop Recording&#39;
                         }
                     ]
                 }
