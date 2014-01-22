@@ -12,22 +12,28 @@ Ext.define('AI.util.extjs.Events', {
      *
      */
     recordEvents : function () {
-        if (!window._recorder) {
-            window._recorder = new Ext.create('Ext.ux.event.Recorder', {
-                attachTo : null
-            });
+        var o = Ext.util.Observable.prototype;
 
-            window._componentEvents = [];
+        if (!o._fireEvent) {
+            o._fireEvent = o.fireEvent; //set reference to restore later
+            o._eventMonitor = [];
 
-            window._recorder.start();
+            o.fireEvent = function (h) {
+                o._fireEvent.apply(this, arguments);
+
+                o._eventMonitor.push({
+                    eventName : arguments[0],
+                    source    : arguments[1].$className,
+                    xtype     : arguments[1].xtype,
+                    id        : arguments[1].id
+                });
+            };
         }
 
-        var events = {
-            dom : window._recorder.getRecordedEvents()
-        };
+        var events = o._eventMonitor;
 
         //clear each time so we don't duplicate
-        window._recorder.clear();
+        o._eventMonitor = [];
 
         return events;
     },
@@ -36,11 +42,13 @@ Ext.define('AI.util.extjs.Events', {
      *
      */
     stopEvents : function () {
-        if (window._recorder) {
-            window._recorder.stop();
-            window._recorder.clear();
+        var o = Ext.util.Observable.prototype;
 
-            window._recorder = null;
+        if (o._fireEvent) {
+            o.fireEvent = o._fireEvent; //set reference to restore later
+
+            delete o._fireEvent;
+            delete o._eventMonitor;
         }
     }
 });

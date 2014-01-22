@@ -34,13 +34,25 @@ Ext.define('AI.view.Events', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'type',
-                    text: 'Type'
+                    dataIndex: 'eventName',
+                    text: 'Event Name'
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'target',
-                    text: 'Target',
+                    dataIndex: 'source',
+                    text: 'Event Source',
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'xtype',
+                    text: 'XType',
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'id',
+                    text: 'Cmp ID',
                     flex: 1
                 }
             ],
@@ -49,6 +61,11 @@ Ext.define('AI.view.Events', {
                     xtype: 'toolbar',
                     dock: 'top',
                     items: [
+                        {
+                            xtype: 'button',
+                            itemId: 'ClearEvents',
+                            text: 'Clear'
+                        },
                         {
                             xtype: 'button',
                             itemId: 'RecordEvents',

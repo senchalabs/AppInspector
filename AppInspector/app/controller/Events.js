@@ -17,7 +17,8 @@ Ext.define('AI.controller.Events', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'AI.util.extjs.Events'
+        'AI.util.extjs.Events',
+        'AI.util.touch.Events'
     ],
 
     init: function(application) {
@@ -28,50 +29,76 @@ Ext.define('AI.controller.Events', {
 
             'button#StopRecording' : {
                 'click' : this.onStopRecordingClick
+            },
+
+            'button#ClearEvents' : {
+                'click' : this.onClearEventsClick
             }
         });
     },
 
     onRecordEventsClick: function() {
         var me = this,
-            store = Ext.getStore('Events');
+            store = Ext.getStore('Events'),
+            util;
 
         Ext.ComponentQuery.query('button#RecordEvents')[0].hide();
         Ext.ComponentQuery.query('button#StopRecording')[0].show();
 
-        if (this.getApplication().info.framework === 'touch') {
-            Ext.Msg.alert('Not Implemented', 'This feature is not implemented yet for Sencha Touch.');
-            return;
+        if (this.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Events.recordEvents;
+        }
+        else {
+            util = AI.util.touch.Events.recordEvents;
         }
 
         var getEvents = function() {
+            if (!me.recording) { return; }
+
             AI.util.InspectedWindow.eval(
-                AI.util.extjs.Events.recordEvents,
+                util,
                 null,
                 function (events) {
-                    store.add(events.dom);
+                    store.add(events);
 
-                    me.requestId = requestAnimationFrame(getEvents);
+                    requestAnimationFrame(getEvents);
                 }
             );
         };
 
-        me.requestId = requestAnimationFrame(getEvents);
+
+        me.recording = true;
+        requestAnimationFrame(getEvents);
     },
 
     onStopRecordingClick: function() {
-        var me = this;
+        var me = this,
+            util;
+
+        me.recording = false;
 
         Ext.ComponentQuery.query('button#StopRecording')[0].hide();
         Ext.ComponentQuery.query('button#RecordEvents')[0].show();
 
+        if (this.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Events.stopEvents;
+        }
+        else {
+            util = AI.util.touch.Events.stopEvents;
+        }
+
         AI.util.InspectedWindow.eval(
-            AI.util.extjs.Events.stopEvents,
+            util,
             null,
-            function () {
-                cancelAnimationFrame(me.requestId);
-            }
+            Ext.emptyFn
         );
+    },
+
+    onClearEventsClick: function(btn) {
+        var me = this,
+            store = Ext.getStore('Events');
+
+        store.removeAll();
     }
 
 });
