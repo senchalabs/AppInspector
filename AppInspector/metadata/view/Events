@@ -21,8 +21,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "type",
-                "text": "Type"
+                "dataIndex": "eventName",
+                "text": "Event Name"
             },
             "designerId": "890b0b93-7234-4032-ba6c-614c8bedcb96"
         },
@@ -34,11 +34,39 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "target",
+                "dataIndex": "source",
                 "flex": 1,
-                "text": "Target"
+                "text": "Event Source"
             },
             "designerId": "694a7474-b335-4dc2-9561-fb853b84bda5"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "xtype",
+                "flex": 1,
+                "text": "XType"
+            },
+            "designerId": "73546e2a-fba2-4794-aac9-4824f0ec85c1"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "id",
+                "flex": 1,
+                "text": "Cmp ID"
+            },
+            "designerId": "e8dc2887-4267-4be0-b94d-c42d2ef87f97"
         },
         {
             "type": "Ext.grid.View",
@@ -61,6 +89,21 @@
             },
             "designerId": "0b3f5721-4481-4449-8aaa-a97635bcba08",
             "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "ClearEvents",
+                        "layout|flex": null,
+                        "text": "Clear",
+                        "width": null
+                    },
+                    "designerId": "26713c9e-ab89-4097-9843-334778736c13"
+                },
                 {
                     "type": "Ext.button.Button",
                     "reference": {

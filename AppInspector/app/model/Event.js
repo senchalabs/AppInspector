@@ -22,13 +22,16 @@ Ext.define('AI.model.Event', {
 
     fields: [
         {
+            name: 'eventName'
+        },
+        {
+            name: 'xtype'
+        },
+        {
+            name: 'source'
+        },
+        {
             name: 'id'
-        },
-        {
-            name: 'type'
-        },
-        {
-            name: 'target'
         }
     ]
 });
