@@ -8,6 +8,7 @@
     "userConfig": {
         "designer|userAlias": "eventgrid",
         "designer|userClassName": "Events",
+        "icon": "resources/images/light.png",
         "store": "Events",
         "title": "Events"
     },

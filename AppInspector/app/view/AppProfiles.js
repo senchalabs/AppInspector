@@ -27,6 +27,7 @@ Ext.define('AI.view.AppProfiles', {
     ],
 
     itemId: 'ProfilesPanel',
+    icon: 'resources/images/screen.png',
     title: 'Layout Profiling',
     activeTab: 0,
     tabPosition: 'right',

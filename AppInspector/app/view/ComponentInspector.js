@@ -29,6 +29,7 @@ Ext.define('AI.view.ComponentInspector', {
 
     height: 250,
     width: 400,
+    icon: 'resources/images/connected.png',
     title: 'Component Tree',
 
     layout: {

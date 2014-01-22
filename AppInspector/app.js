@@ -36,7 +36,8 @@ Ext.application({
         'StoreInspector',
         'AppProfiles',
         'ComponentInspector',
-        'Events'
+        'Events',
+        'About'
     ],
     controllers: [
         'Components',

@@ -10,6 +10,7 @@
         "designer|userAlias": "componentinspector",
         "designer|userClassName": "ComponentInspector",
         "height": 250,
+        "icon": "resources/images/connected.png",
         "layout": "hbox",
         "title": "Component Tree",
         "width": 400
