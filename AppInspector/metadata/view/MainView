@@ -25,6 +25,9 @@
             },
             "codeClass": null,
             "userConfig": {
+                "bodyStyle": [
+                    "'background-color: #333;'"
+                ],
                 "collapsed": true,
                 "collapsible": true,
                 "container|align": "stretch",
@@ -45,7 +48,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "icon": "resources/images/nav-components.png",
+                        "icon": "resources/images/home.png",
                         "itemId": "AboutNav",
                         "layout|flex": null,
                         "scale": "large",
@@ -62,7 +65,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "icon": "resources/images/nav-components.png",
+                        "icon": "resources/images/connected.png",
                         "itemId": "ComponentsNav",
                         "layout|flex": null,
                         "scale": "large",
@@ -78,7 +81,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "icon": "resources/images/nav-stores.png",
+                        "icon": "resources/images/database.png",
                         "itemId": "StoresNav",
                         "layout|flex": null,
                         "scale": "large",
@@ -94,7 +97,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "icon": "resources/images/nav-components.png",
+                        "icon": "resources/images/screen.png",
                         "itemId": "ProfilesNav",
                         "layout|flex": null,
                         "scale": "large",
@@ -110,7 +113,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "icon": "resources/images/nav-components.png",
+                        "icon": "resources/images/light.png",
                         "itemId": "EventsNav",
                         "layout|flex": null,
                         "scale": "large",
@@ -136,58 +139,14 @@
             "designerId": "c98c4f91-6f66-4054-8e31-2ccc2ab4f975",
             "cn": [
                 {
-                    "type": "Ext.panel.Panel",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "container|align": "stretch",
-                        "itemId": "AboutPanel",
-                        "layout": "vbox",
-                        "loader": null,
-                        "padding": 20,
-                        "title": null,
-                        "width": null
-                    },
-                    "designerId": "6eb530d5-4d58-43be-8042-5f681064e8de",
-                    "cn": [
-                        {
-                            "type": "Ext.grid.property.Grid",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "height": 150,
-                                "itemId": "AppDetails",
-                                "source": [
-                                    "{}"
-                                ],
-                                "title": "App Details"
-                            },
-                            "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
-                        },
-                        {
-                            "type": "Ext.container.Container",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "loader": [
-                                    "{",
-                                    "    url: 'about.html',",
-                                    "    autoLoad: true",
-                                    "}"
-                                ]
-                            },
-                            "designerId": "d27912dd-c3e5-4d6b-9ace-156f4fd74e79"
-                        }
-                    ]
+                    "designerId": "5475878a-645b-4497-8036-c697c4ed47de",
+                    "masterInstanceId": "d35aac6a-df56-4378-8fd1-4decd2f16aef"
                 },
                 {
                     "type": "linkedinstance",

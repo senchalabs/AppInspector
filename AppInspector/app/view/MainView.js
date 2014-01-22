@@ -17,13 +17,14 @@ Ext.define('AI.view.MainView', {
     extend: 'Ext.container.Viewport',
 
     requires: [
+        'AI.view.About',
         'AI.view.ComponentInspector',
         'AI.view.StoreInspector',
         'AI.view.AppProfiles',
         'AI.view.Events',
         'Ext.button.Button',
-        'Ext.grid.property.Grid',
         'Ext.tab.Panel',
+        'Ext.grid.Panel',
         'Ext.layout.container.Border',
         'Ext.layout.container.Card'
     ],
@@ -42,6 +43,7 @@ Ext.define('AI.view.MainView', {
                     split: true,
                     itemId: 'menuPanel',
                     width: 250,
+                    bodyStyle: 'background-color: #333;',
                     collapsed: true,
                     collapsible: true,
                     title: 'Menu',
@@ -53,35 +55,35 @@ Ext.define('AI.view.MainView', {
                         {
                             xtype: 'button',
                             itemId: 'AboutNav',
-                            icon: 'resources/images/nav-components.png',
+                            icon: 'resources/images/home.png',
                             scale: 'large',
                             text: 'About'
                         },
                         {
                             xtype: 'button',
                             itemId: 'ComponentsNav',
-                            icon: 'resources/images/nav-components.png',
+                            icon: 'resources/images/connected.png',
                             scale: 'large',
                             text: 'Components'
                         },
                         {
                             xtype: 'button',
                             itemId: 'StoresNav',
-                            icon: 'resources/images/nav-stores.png',
+                            icon: 'resources/images/database.png',
                             scale: 'large',
                             text: 'Stores'
                         },
                         {
                             xtype: 'button',
                             itemId: 'ProfilesNav',
-                            icon: 'resources/images/nav-components.png',
+                            icon: 'resources/images/screen.png',
                             scale: 'large',
                             text: 'Layouts'
                         },
                         {
                             xtype: 'button',
                             itemId: 'EventsNav',
-                            icon: 'resources/images/nav-components.png',
+                            icon: 'resources/images/light.png',
                             scale: 'large',
                             text: 'Events'
                         }
@@ -94,31 +96,7 @@ Ext.define('AI.view.MainView', {
                     layout: 'card',
                     items: [
                         {
-                            xtype: 'panel',
-                            itemId: 'AboutPanel',
-                            padding: 20,
-                            layout: {
-                                type: 'vbox',
-                                align: 'stretch'
-                            },
-                            items: [
-                                {
-                                    xtype: 'propertygrid',
-                                    height: 150,
-                                    itemId: 'AppDetails',
-                                    title: 'App Details',
-                                    source: {
-                                        
-                                    }
-                                },
-                                {
-                                    xtype: 'container',
-                                    loader: {
-                                        url: 'about.html',
-                                        autoLoad: true
-                                    }
-                                }
-                            ]
+                            xtype: 'mypanel2'
                         },
                         {
                             xtype: 'componentinspector'

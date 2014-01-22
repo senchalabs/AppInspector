@@ -27,6 +27,7 @@ Ext.define('AI.view.StoreInspector', {
     ],
 
     itemId: 'StoresPanel',
+    icon: 'resources/images/database.png',
     title: 'Stores',
 
     layout: {

@@ -10,6 +10,7 @@
         "container|pack": null,
         "designer|userAlias": "storeinspector",
         "designer|userClassName": "StoreInspector",
+        "icon": "resources/images/database.png",
         "itemId": "StoresPanel",
         "layout": "vbox",
         "requires": [

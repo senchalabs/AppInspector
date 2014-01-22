@@ -9,6 +9,7 @@
         "activeTab": 0,
         "designer|userAlias": "appprofiles",
         "designer|userClassName": "AppProfiles",
+        "icon": "resources/images/screen.png",
         "itemId": "ProfilesPanel",
         "tabPosition": "right",
         "title": "Layout Profiling"

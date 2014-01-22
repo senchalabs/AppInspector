@@ -24,6 +24,7 @@ Ext.define('AI.view.Events', {
         'Ext.button.Button'
     ],
 
+    icon: 'resources/images/light.png',
     title: 'Events',
     store: 'Events',
 

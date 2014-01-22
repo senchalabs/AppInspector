@@ -1,0 +1,57 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "mypanel2",
+        "designer|userClassName": "About",
+        "icon": "resources/images/home.png",
+        "itemId": "AboutPanel",
+        "layout": "vbox",
+        "loader": null,
+        "padding": 20,
+        "title": "App Details",
+        "width": null
+    },
+    "designerId": "d35aac6a-df56-4378-8fd1-4decd2f16aef",
+    "cn": [
+        {
+            "type": "Ext.grid.property.Grid",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 150,
+                "itemId": "AppDetails",
+                "source": [
+                    "{}"
+                ],
+                "title": null
+            },
+            "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "loader": [
+                    "{",
+                    "    url: 'about.html',",
+                    "    autoLoad: true",
+                    "}"
+                ]
+            },
+            "designerId": "d27912dd-c3e5-4d6b-9ace-156f4fd74e79"
+        }
+    ]
+}

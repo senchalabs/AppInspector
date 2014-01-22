@@ -31,7 +31,8 @@
             "StoreInspector",
             "AppProfiles",
             "ComponentInspector",
-            "Events"
+            "Events",
+            "About"
         ]
     },
     "designerId": "application"
