@@ -3,7 +3,7 @@
     "settings": {
         "cmd": {
             "license": "gpl",
-            "cmdVersion": "4.0.1.45",
+            "cmdVersion": "4.0.2.67",
             "frameworkVersion": "4.2.1.883"
         },
         "canvasControls": {
@@ -23,6 +23,9 @@
         "cacheBust": false,
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": true,
+        "displayfield-ExtBox1-1296-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1346-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1335-inputEl": "Not Installed",
         "lastBuildSelection": {
             "value": "webBuild",
             "display": "Build web app"
