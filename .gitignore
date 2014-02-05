@@ -1,14 +1,16 @@
 # folders
-.tmp
-.sass-cache
-app/AppInspector/build
-app/bower_components
-dist
-docs
-package
-temp
-test/bower_components
+.sass-cache/
+app/AppInspector/.sencha/
+app/AppInspector/build/
+app/AppInspector/ext/
+app/AppInspector/touch/
+dist/
+docs/
+node_modules/
 
 # files
 .DS_Store
+Thumbs.db
+app/AppInspector/.architect
+*.$old
 lint/error_log.txt
