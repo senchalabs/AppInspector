@@ -25,6 +25,15 @@ module.exports = function(grunt) {
                         '!<%= yeoman.dist %>/.git*'
                     ]
                 }]
+            },
+            docs: {
+                files: [{
+                    dot: true,
+                    src: [
+                        'docs/*',
+                        '!docs/.gitkeep'
+                    ]
+                }]
             }
         },
         jshint: {
@@ -110,8 +119,30 @@ module.exports = function(grunt) {
             all: {
                 'pre-commit': 'jshint'
             }
+        },
+
+        jsduck: {
+            main: {
+                // source paths with your code
+                src: [
+                    'app/AppInspector/app'
+                ],
+
+                // docs output dir
+                dest: 'docs',
+
+                // extra options
+                options: {
+                    'title': 'App Inspector for Sencha'
+                }
+            }
         }
     });
+
+    grunt.registerTask('docs', [
+        'clean:docs',
+        'jsduck'
+    ]);
 
     grunt.registerTask('build', [
         'clean:dist',
@@ -119,7 +150,8 @@ module.exports = function(grunt) {
         'exec:build',
         'imagemin',
         'copy',
-        'compress'
+        'compress',
+        'docs'
     ]);
 
     grunt.registerTask('default', [
