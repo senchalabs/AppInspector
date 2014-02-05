@@ -67,7 +67,7 @@ module.exports = function(grunt) {
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
-                        '*.{html,js}'
+                        '*.{html,js}', '_locales'
                     ]
                 }, {
                     expand: true,
