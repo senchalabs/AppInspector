@@ -1,5 +1,16 @@
+# folders
+.sass-cache/
+app/AppInspector/.sencha/
+app/AppInspector/build/
+app/AppInspector/ext/
+app/AppInspector/touch/
+dist/
+docs/
+node_modules/
+
+# files
 .DS_Store
-.sass-cache
+Thumbs.db
+app/AppInspector/.architect
+*.$old
 lint/error_log.txt
-AppInspector/build
-deploy
