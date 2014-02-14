@@ -1,5 +1,5 @@
 # Contributors
 
-* [Bruno Tavares](http://bruno.tavares.me) (Creator)
-* [Arthur Kay](http://www.akawebdesign.com)
-* [Stefan Stölzle](http://stefan.stoelzle.me)
+* [Bruno Tavares](https://github.com/brunotavares) http://bruno.tavares.me (Creator)
+* [Arthur Kay](https://github.com/arthurakay) http://www.akawebdesign.com
+* [Stefan Stölzle](https://github.com/stoe) http://stefan.stoelzle.me

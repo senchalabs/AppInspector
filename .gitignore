@@ -1,16 +1,22 @@
-# folders
-.sass-cache/
-app/AppInspector/.sencha/
-app/AppInspector/build/
-app/AppInspector/ext/
-app/AppInspector/touch/
+# *** folders
 dist/
 docs/
-node_modules/
+package/
+# node_modules/
 
-# files
+# *** files
 .DS_Store
 Thumbs.db
-app/AppInspector/.architect
-*.$old
 lint/error_log.txt
+
+
+# *** Sencha Architect
+.sass-cache/
+app/AppInspector/build/
+# app/AppInspector/ext/
+# app/AppInspector/touch/
+*.$old
+
+# see http://docs.sencha.com/architect/3/#!/guide/team_dev
+app/AppInspector/.architect
+app/AppInspector/.sencha/

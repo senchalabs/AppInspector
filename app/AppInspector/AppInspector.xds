@@ -3,15 +3,15 @@
     "settings": {
         "cmd": {
             "license": "gpl",
-            "cmdVersion": "4.0.2.67",
+            "cmdVersion": "4.0.1.45",
             "frameworkVersion": "4.2.1.883"
         },
         "canvasControls": {
             "viewportSize": {
-                "name": "Auto Expand",
+                "name": "Medium",
                 "builtIn": true,
-                "height": null,
-                "width": null
+                "height": 768,
+                "width": 1024
             }
         },
         "urlPrefix": "",
@@ -23,9 +23,6 @@
         "cacheBust": false,
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": true,
-        "displayfield-ExtBox1-1296-inputEl": "Not Installed",
-        "displayfield-ExtBox1-1346-inputEl": "Not Installed",
-        "displayfield-ExtBox1-1335-inputEl": "Not Installed",
         "lastBuildSelection": {
             "value": "webBuild",
             "display": "Build web app"
@@ -70,7 +67,7 @@
         ],
         "resource": [
             "efa3151d-f411-416b-a78d-276e3b22783a",
-            "8fdbaaa8-11e2-46c8-8644-1208722fa443"
+            "1b164612-6ea5-4722-8816-f85b69edae67"
         ],
         "app": [
             "application"
