@@ -1,0 +1,34 @@
+{
+    "node": true,
+    "browser": true,
+    "esnext": true,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true, //force the use of curly braces on blocks
+    "eqeqeq": true, //force the usage of === and !==
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "quotmark": "single",
+    "regexp": true,
+    "undef": true, //don't use globals, unless those below...
+    "unused": false, // needed for some Sencha Architect generated internals (?)
+    "strict": false, // 'use strict' not in Sencha Architect generated files
+    "trailing": true,
+    "smarttabs": true,
+
+    "evil": true, //allow eval
+    // "devel": true, //ignore alert, console, etc
+
+    "globals": {
+        "Ext": true,
+        "AI": true,
+        "chrome": true,
+        "$0": true,
+
+        "requestAnimationFrame": true,
+        "cancelAnimationFrame": true
+    }
+}

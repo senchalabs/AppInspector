@@ -1,0 +1,8 @@
+We run a Git pre-commit hook, which runs our LintRoller config. This way we can't commit bad code.
+  - http://www.akawebdesign.com/2012/12/12/using-lintroller-with-a-git-pre-commit-hook/
+
+-----
+
+If you're on Mac/Linux, run "install.sh" on your local machine.
+
+If you're on Windows, run "install.bat" on your local machine.
