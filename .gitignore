@@ -20,3 +20,4 @@ app/AppInspector/build/
 # see http://docs.sencha.com/architect/3/#!/guide/team_dev
 app/AppInspector/.architect
 app/AppInspector/.sencha/
+app/AppInspector/.sencha_backup/
