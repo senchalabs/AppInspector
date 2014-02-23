@@ -16,7 +16,7 @@ Build the project. Subsequently running `clean:dist`, `chromeManifest:dist`, `ex
 #### `grunt` (default)
 See [grunt build](#grunt-build) task.
 
-#### Subtasks
+#### Subtasks (inside `grunt/`)
 
 * The `clean` task
 
@@ -29,6 +29,8 @@ See [grunt build](#grunt-build) task.
     * https://www.npmjs.org/package/grunt-contrib-clean
 
 * The `jshint` task
+
+    ![JShint](http://www.jshint.com/res/jshint.png)
 
     Lint `Gruntfile.js`, `app/AppInspector/app.js` and all *.js files in `app/AppInspector/app/`.
     It uses the `.jshintrc` file containing the linting rules.
@@ -71,12 +73,17 @@ See [grunt build](#grunt-build) task.
     Generates a git pre-commit hook to run the *grunt jshint task* on every commit, aborting the commit if any linting errors exist.
 
     __NOTE__: Only run this task once manually using `grunt githooks` or if adding new hooks.
+    ![grunt githooks](http://f.cl.ly/items/2U0l471z363P3a0w0408/screenshot%202014-02-14%20at%2012.46.48.png)
 
     Read more on:
     * http://git-scm.com/book/en/Customizing-Git-Git-Hooks
     * https://www.npmjs.org/package/grunt-githooks
 
 * The `jsduck` task
+
+    Generate duckumentation!
+
+    ![JSduck](https://raw.github.com/senchalabs/jsduck/master/opt/jsduck-logo-dark.png)
 
     Read more on:
     * https://github.com/senchalabs/jsduck

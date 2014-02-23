@@ -15,127 +15,17 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
-        clean: {
-            dist: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        '<%= yeoman.dist %>/*',
-                        '!<%= yeoman.dist %>/.git*'
-                    ]
-                }]
-            },
-            docs: {
-                files: [{
-                    dot: true,
-                    src: [
-                        'docs/*',
-                        '!docs/.gitkeep'
-                    ]
-                }]
-            }
-        },
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-            },
-            all: [
-                'Gruntfile.js',
-                '<%= yeoman.app %>/AppInspector/app.js',
-                '<%= yeoman.app %>/AppInspector/app/**/*.js'
-            ]
-        },
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/images',
-                    src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= yeoman.dist %>/images'
-                }, {
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/AppInspector/build/production/AI/resources/images',
-                    src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= yeoman.dist %>/AppInspector/resources/images'
-                }]
-            }
-        },
-        exec: {
-            build: {
-                cwd: '<%= yeoman.app %>/AppInspector/',
-                command: 'sencha -q app build -e production -c'
-            }
-        },
-        // Put files not handled in other tasks here
-        copy: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: [
-                        '*.{html,js}', '_locales/**/*'
-                    ]
-                }, {
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/AppInspector/build/production/AI',
-                    dest: '<%= yeoman.dist %>/AppInspector',
-                    src: [
-                        '*.{html,js}',
-                        'resources/*.css'
-                    ]
-                }]
-            }
-        },
-        chromeManifest: {
-            dist: {
-                options: {
-                    buildnumber: false,
-                    background: {
-                        target: 'background.js'
-                    }
-                },
-                src: '<%= yeoman.app %>',
-                dest: '<%= yeoman.dist %>'
-            }
-        },
-        compress: {
-            dist: {
-                options: {
-                    archive: 'package/AppInspector.zip'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'dist/',
-                    src: ['**'],
-                    dest: ''
-                }]
-            }
-        },
-
+        clean: require('./grunt/clean'),
+        jshint: require('./grunt/jshint'),
+        imagemin: require('./grunt/imagemin'),
+        exec: require('./grunt/exec'),
+        copy: require('./grunt/copy'),
+        chromeManifest: require('./grunt/manifest'),
+        compress: require('./grunt/compress'),
+        jsduck: require('./grunt/jsduck'),
+        // NOTE: run the »githooks« task only once or when adding new hooks
         githooks: {
-            all: {
-                'pre-commit': 'jshint'
-            }
-        },
-
-        jsduck: {
-            main: {
-                // source paths with your code
-                src: [
-                    'app/AppInspector/app'
-                ],
-
-                // docs output dir
-                dest: 'docs',
-
-                // extra options
-                options: {
-                    'title': 'App Inspector for Sencha'
-                }
-            }
+            all: { 'pre-commit': 'jshint' }
         }
     });
 
