@@ -22,14 +22,10 @@
         "genTimestamps": false,
         "cacheBust": false,
         "buildShouldOverwriteIndex": true,
-        "generateArchitectVersion": true,
-        "lastBuildSelection": {
-            "value": "webBuild",
-            "display": "Build web app"
-        }
+        "generateArchitectVersion": true
     },
     "xdsVersion": "3.0.2",
-    "xdsBuild": 1377,
+    "xdsBuild": 1375,
     "schemaVersion": 1,
     "upgradeVersion": 300000000004,
     "framework": "ext42",

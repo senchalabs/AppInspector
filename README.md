@@ -25,7 +25,7 @@ Read more on:
 ## Known Issues
 There are some APIs from Dev Tools that are not fully exposed, so the App Inspector uses some work arounds:
 
-* Component highlighting is executed manually via CSS (Ext JS only, currently)
+* Component highlighting is executed manually via CSS
 * DOM modifications (add/remove/move components) do not reflect automatically on the App Inspector, which is why we have "reload" buttons.
 
 ## Contributing
@@ -38,3 +38,9 @@ The UI for the Sencha panel is built using:
 * Sencha Cmd 4.x
 
 View the documentation for the Chrome-wrapped utilities under /docs/ in your browser.
+
+## Install & Build
+
+This project relies on *npm* and [Grunt](GruntJS.md) to build locally.
+ * Run **npm update** to install all Node.js dependencies from *package.json*
+ * If you are building the project for the first time, be sure to open the Architect project and hit "save" to generate the necessary Sencha Cmd bits

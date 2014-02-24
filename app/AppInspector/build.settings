@@ -1,7 +1,0 @@
-{
-    "webBuild": {
-        "environment": "production",
-        "clean": "on",
-        "publishPath": ""
-    }
-}
