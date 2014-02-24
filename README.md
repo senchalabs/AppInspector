@@ -25,7 +25,7 @@ Read more on:
 ## Known Issues
 There are some APIs from Dev Tools that are not fully exposed, so the App Inspector uses some work arounds:
 
-* Component highlighting is executed manually via CSS (Ext JS only, currently)
+* Component highlighting is executed manually via CSS
 * DOM modifications (add/remove/move components) do not reflect automatically on the App Inspector, which is why we have "reload" buttons.
 
 ## Contributing
