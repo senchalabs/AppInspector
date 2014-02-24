@@ -3,7 +3,6 @@ dist/
 docs/
 package/
 # node_modules/
-deploy/
 
 # *** files
 .DS_Store
