@@ -2,7 +2,7 @@
  * grunt-contrib-copy
  * http://gruntjs.com/
  *
- * Copyright (c) 2012 Chris Talkington, contributors
+ * Copyright (c) 2013 Chris Talkington, contributors
  * Licensed under the MIT license.
  * https://github.com/gruntjs/grunt-contrib-copy/blob/master/LICENSE-MIT
  */
@@ -11,21 +11,24 @@ module.exports = function(grunt) {
   'use strict';
 
   var path = require('path');
+  var fs = require('fs');
 
   grunt.registerMultiTask('copy', 'Copy files.', function() {
     var kindOf = grunt.util.kindOf;
 
     var options = this.options({
+      encoding: grunt.file.defaultEncoding,
+      // processContent/processContentExclude deprecated renamed to process/noProcess
       processContent: false,
-      processContentExclude: []
+      processContentExclude: [],
+      mode: false
     });
 
     var copyOptions = {
-      process: options.processContent,
-      noProcess: options.processContentExclude
+      encoding: options.encoding,
+      process: options.process || options.processContent,
+      noProcess: options.noProcess || options.processContentExclude,
     };
-
-    grunt.verbose.writeflags(options, 'Options');
 
     var dest;
     var isExpandedPair;
@@ -51,6 +54,9 @@ module.exports = function(grunt) {
         } else {
           grunt.verbose.writeln('Copying ' + src.cyan + ' -> ' + dest.cyan);
           grunt.file.copy(src, dest, copyOptions);
+          if (options.mode !== false) {
+            fs.chmodSync(dest, (options.mode === true) ? fs.lstatSync(src).mode : options.mode);
+          }
           tally.files++;
         }
       });

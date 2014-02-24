@@ -1,8 +1,9 @@
 # grunt-chrome-manifest
 
-get scripts/css file list from manifest to handle, and initialize the grunt configuration appropriately, and automatically. then replaces references to non-optimized scripts into the transformed background scripts. and auto increment build version in manifest.json.
+> Grunt task for Chrome manifest.json
 
 ## Getting Started
+
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
 ```shell
@@ -20,9 +21,11 @@ grunt.registerTask('default', ['chromeManifest:dist']);
 [Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
 
 ## Workflow
+
 chrome-manifest is composed of 3 steps:
 
-- **prepare**: detects `background` and `content_script` javascript and css files in manifest and update the grunt config to run `concat` `cssmin` and `uglify`. but `content_scripts` javascript files and excluded 'background' javascript files does not perform the `concat` task.
+- **prepare**: detects `background` and `content_script` javascript and css files in manifest and update the grunt config to run `concat` `cssmin` and `uglify`.
+  - `content_scripts` javascript files and excluded 'background' javascript files does not perform the `concat` task.
 - **buildnumber**: detects `buildnumber` and increased if set to true.
 - **cleanup**: detects javascripts files for develop in manifest and remove them from manifest.json for distribution.
 
@@ -33,7 +36,7 @@ chrome-manifest is composed of 3 steps:
 chromeManifest: {
   dist: {
     options: {
-      buildnumber: true,
+      buildnumber: 'both',
       background: {
         target: 'scripts/background.js',
         exclude: [
@@ -51,33 +54,30 @@ chromeManifest: {
 
 #### src
 **Required**
-Type: 'String'
+Type: `String`
 
 Base directory where the origin source files
 
 #### dest
 **Required**
-Type: 'String'
+Type: `String`
 
 Base directory where the transformed files should be output.
 
 ### Options
 #### buildnumber
-Type: 'Boolean'
+Type: `String` `Boolean` Default: `undefined`, `false`
 
-Flag of auto-increment build number.
+Auto-increment types. Can be:
+
+  - `dest`: increase build number in dest only
+  - `both`: increase build number in both origin and dest
+  - `undefined`, `false`: do not increase build number
 
 #### background
 
-##### target
-Type: 'String'
-
-Relative path of the transformed(`cssmin` and `uglify`) background script.
-
-##### exclude
-Type: 'String'
-
-The paths of script in manifest.json that will be exclude.
+- target: `String`, Relative path of the transformed(`cssmin` and `uglify`) background script.
+- exclude: `String`, Javascript files to exclude.
 
 ## Tests
 

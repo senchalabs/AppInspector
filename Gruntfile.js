@@ -1,9 +1,9 @@
-/*jshint camelcase: false*/
 'use strict';
 
 module.exports = function(grunt) {
     // show elapsed time at the end
     require('time-grunt')(grunt);
+
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
 
@@ -25,7 +25,9 @@ module.exports = function(grunt) {
         jsduck: require('./grunt/jsduck'),
         // NOTE: run the »githooks« task only once or when adding new hooks
         githooks: {
-            all: { 'pre-commit': 'jshint' }
+            all: {
+                'pre-commit': 'jshint'
+            }
         }
     });
 
@@ -37,8 +39,9 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'chromeManifest:dist',
-        'exec:build',
-        'imagemin',
+        'imagemin:resources',
+        'exec:production',
+        'imagemin:sencha',
         'copy',
         'compress',
         'docs'
