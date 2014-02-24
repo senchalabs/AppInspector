@@ -1,0 +1,47 @@
+{
+    "name": "appinspector",
+    "description": "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
+    "version": "2.0.0",
+    "private": true,
+
+    "contributors": [{
+        "name": "Bruno Tavares (Creator)",
+        "url": "https://github.com/brunotavares"
+    }, {
+        "name": "Arthur Kay",
+        "url": "https://github.com/arthurakay"
+    }, {
+        "name": "Stefan Stölzle",
+        "url": "https://github.com/stoe"
+    }],
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/senchalabs/AppInspector.git"
+    },
+
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-copy": "~0.5.0",
+        "grunt-contrib-jshint": "~0.8.0",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-imagemin": "0.2.0",
+        "grunt-contrib-compress": "~0.7.0",
+        "grunt-chrome-manifest": "~0.2.0",
+        "grunt-exec": "~0.4.5",
+        "grunt-githooks": "~0.3.1",
+        "grunt-jsduck": "~1.0.0",
+        "load-grunt-tasks": "~0.3.0",
+        "load-grunt-config": "^0.7.1",
+        "jshint-stylish": "~0.1.5",
+        "time-grunt": "~0.2.9"
+    },
+    "optionalDependencies": {
+        "lintroller": "~2.3.5-b"
+    },
+
+    "engines": {
+        "node": ">=0.8.0"
+    }
+}
