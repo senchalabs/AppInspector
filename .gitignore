@@ -3,6 +3,7 @@ dist/
 docs/
 package/
 # node_modules/
+deploy/
 
 # *** files
 .DS_Store
@@ -12,6 +13,7 @@ lint/error_log.txt
 
 # *** Sencha Architect
 .sass-cache/
+AppInspector/build/
 app/AppInspector/build/
 # app/AppInspector/ext/
 # app/AppInspector/touch/

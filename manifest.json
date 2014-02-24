@@ -1,29 +1,29 @@
 {
-    "manifest_version": 2,
-    "minimum_chrome_version": "31.0",
+    "manifest_version"       : 2,
+    "minimum_chrome_version" : "31.0",
 
-    "name": "App Inspector for Sencha",
-    "description": "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
-    "version": "2.0.0",
+    "name"        : "App Inspector for Sencha",
+    "description" : "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
+    "version"     : "2.0.0",
 
-    "icons": {
-        "16": "AppInspector/resources/images/icon-16x16.png",
-        "48": "AppInspector/resources/images/icon-48x48.png",
-        "128": "AppInspector/resources/images/icon-128x128.png"
+    "icons" : {
+        "16"  : "AppInspector/resources/images/icon-16x16.png",
+        "48"  : "AppInspector/resources/images/icon-48x48.png",
+        "128" : "AppInspector/resources/images/icon-128x128.png"
     },
 
-    "background": {
-        "page": "background.html"
+    "background" : {
+        "page" : "background.html"
     },
 
-    "devtools_page": "devtools-page.html",
+    "devtools_page" : "devtools-page.html",
 
     //for debugging
-    "options_page": "AppInspector/index.html",
+    "options_page"  : "AppInspector/index.html",
 
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "content_security_policy" : "script-src 'self' 'unsafe-eval'; object-src 'self'",
 
-    "permissions": [
+    "permissions" : [
         "tabs",
         "<all_urls>",
         "experimental"
