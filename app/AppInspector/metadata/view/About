@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoScroll": true,
         "container|align": "stretch",
         "designer|userAlias": "mypanel2",
         "designer|userClassName": "About",
