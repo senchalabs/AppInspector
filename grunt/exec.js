@@ -1,7 +1,6 @@
 'use strict';
 
-var fs = require('fs'),
-    chalk = require('chalk'),
+var chalk = require('chalk'),
     sa = {
         name: chalk.green('Sencha Architect'),
         path: chalk.yellow('./path/to/project/app/AppInspector/AppInspector.xds'),
@@ -19,17 +18,15 @@ module.exports = function(grunt) {
     // Look up if AppInspector was opened and saved at least once in Sencha Architect.
     // If so »./app/AppInspector/.sencha/« will exist containing build property files.
 
-    fs.exists(sa.lookup, function(exists) {
-        // If not, fail task!
-        if (!exists) {
-            grunt.fail.fatal([
-                chalk.bold.blue(sa.lookup) + chalk.white(' folder not found!'),
-                '',
-                '    To fix this, please open the project in ' + sa.name + ' first and save once.',
-                '    You can find the ' + sa.name + ' project under ' + sa.path
-            ].join('\n'));
-        }
-    });
+    // If not, fail task!
+    if (!grunt.file.isDir(sa.lookup)) {
+        grunt.fail.fatal([
+            chalk.bold.blue(sa.lookup) + chalk.white(' folder not found!'),
+            '',
+            '    To fix this, please open the project in ' + sa.name + ' first and save once.',
+            '    You can find the ' + sa.name + ' project under ' + sa.path
+        ].join(grunt.util.linefeed));
+    }
 
     // return task config
     return {
