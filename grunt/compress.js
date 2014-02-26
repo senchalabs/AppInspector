@@ -1,3 +1,11 @@
+'use strict';
+
+/**
+ * Compress files and folders.
+ * @type {Object}
+ *
+ * @see https://www.npmjs.org/package/grunt-contrib-compress
+ */
 module.exports = {
     dist: {
         options: {

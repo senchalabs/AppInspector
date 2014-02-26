@@ -1,3 +1,7 @@
+/**
+ * Grunt aliases
+ * @type {Object}
+ */
 module.exports = {
     docs: [
         'clean:docs',
