@@ -1,27 +1,37 @@
+'use strict';
+
 var fs = require('fs'),
     chalk = require('chalk'),
-    senchadir = './app/AppInspector/.sencha/';
+    sa = {
+        name: chalk.green('Sencha Architect'),
+        path: chalk.yellow('./path/to/project/app/AppInspector/AppInspector.xds'),
+        lookup: './app/AppInspector/.sencha/'
+    };
 
+/**
+ * Grunt task for executing shell commands.
+ * @param  {Object} grunt
+ * @return {Object}
+ *
+ * @see https://www.npmjs.org/package/grunt-exec
+ */
 module.exports = function(grunt) {
-    // look up if AppInspector was opened once in Sencha Architect
-    // if so »./app/AppInspector/.sencha/« will exist containing build property files
-    fs.exists(senchadir, function(exists) {
-        var sa = {
-                name: chalk.green('Sencha Architect'),
-                path: chalk.yellow('./path/to/project/app/AppInspector/AppInspector.xds')
-            };
+    // Look up if AppInspector was opened and saved at least once in Sencha Architect.
+    // If so »./app/AppInspector/.sencha/« will exist containing build property files.
 
-        // if not, fail task
+    fs.exists(sa.lookup, function(exists) {
+        // If not, fail task!
         if (!exists) {
             grunt.fail.fatal([
-                chalk.white(chalk.bold.blue(senchadir) + ' folder not found!'),
+                chalk.bold.blue(sa.lookup) + chalk.white(' folder not found!'),
                 '',
                 '    To fix this, please open the project in ' + sa.name + ' first and save once.',
                 '    You can find the ' + sa.name + ' project under ' + sa.path
             ].join('\n'));
         }
     });
-    // else return task config
+
+    // return task config
     return {
         testing: {
             cwd: '<%= yeoman.app %>/AppInspector/',

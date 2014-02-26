@@ -1,4 +1,12 @@
-// Put files not handled in other tasks here
+'use strict';
+
+/**
+ * Copy files and folders.
+ * Put files not handled in other tasks here
+ * @type {Object}
+ *
+ * @see https://www.npmjs.org/package/grunt-contrib-copy
+ */
 module.exports = {
     dist: {
         files: [{

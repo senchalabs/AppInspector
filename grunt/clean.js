@@ -1,3 +1,11 @@
+'use strict';
+
+/**
+ * Clean files and folders.
+ * @type {Object}
+ *
+ * @see https://www.npmjs.org/package/grunt-contrib-clean
+ */
 module.exports = {
     dist: {
         files: [{
