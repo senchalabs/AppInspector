@@ -24,7 +24,6 @@
 
     "permissions": [
         "tabs",
-        "<all_urls>",
-        "experimental"
+        "<all_urls>"
     ]
 }
