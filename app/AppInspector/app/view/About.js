@@ -23,6 +23,7 @@ Ext.define('AI.view.About', {
 
     itemId: 'AboutPanel',
     padding: 20,
+    autoScroll: true,
     icon: 'resources/images/home.png',
     title: 'App Details',
 
