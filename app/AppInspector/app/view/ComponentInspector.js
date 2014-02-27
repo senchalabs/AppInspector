@@ -29,13 +29,9 @@ Ext.define('AI.view.ComponentInspector', {
 
     height: 250,
     width: 400,
+    layout: 'border',
     icon: 'resources/images/connected.png',
     title: 'Component Tree',
-
-    layout: {
-        type: 'hbox',
-        align: 'stretch'
-    },
 
     initComponent: function() {
         var me = this;
@@ -45,10 +41,9 @@ Ext.define('AI.view.ComponentInspector', {
                 {
                     xtype: 'treepanel',
                     flex: 1,
+                    region: 'center',
                     frame: true,
-                    height: 250,
                     itemId: 'ComponentTree',
-                    width: 400,
                     autoScroll: true,
                     store: 'Components',
                     rootVisible: false,
@@ -88,9 +83,10 @@ Ext.define('AI.view.ComponentInspector', {
                 {
                     xtype: 'tabpanel',
                     flex: 1,
+                    region: 'east',
+                    split: true,
                     minWidth: 200,
-                    resizable: true,
-                    resizeHandles: 'w',
+                    width: 150,
                     activeTab: 0,
                     items: [
                         {

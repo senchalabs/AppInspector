@@ -13,7 +13,7 @@ Ext.define('AI.util.Store', {
         Ext.each(Ext.StoreManager.items, function (store) {
             stores.push({
                 id    : store.storeId || store.getStoreId(), //Ext || Touch
-                count : store.getCount()
+                count : (store.root) ? 'TreeStore' : store.getCount()
             });
         });
 
@@ -27,6 +27,11 @@ Ext.define('AI.util.Store', {
     getRecords : function (storeId) {
         var records = [],
             store = Ext.getStore(storeId);
+
+        //we can't read TreeStore records the same way
+        if (store.root) {
+            return false;
+        }
 
         store.each(function (record) {
             records.push({

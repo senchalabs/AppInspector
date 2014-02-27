@@ -74,6 +74,13 @@ Ext.define('AI.controller.Store', {
             AI.util.Store.getRecords,
             record.get('id'),
             function (records, isException) {
+                if (records.length > 0) {
+                    grid.enable();
+                } else {
+                    grid.disable();
+                }
+
+
                 Ext.each(records, function (record) {
                     var model = Ext.create('AI.model.Record', record);
 

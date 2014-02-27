@@ -6,12 +6,11 @@
     },
     "codeClass": null,
     "userConfig": {
-        "container|align": "stretch",
         "designer|userAlias": "componentinspector",
         "designer|userClassName": "ComponentInspector",
         "height": 250,
         "icon": "resources/images/connected.png",
-        "layout": "hbox",
+        "layout": "border",
         "title": "Component Tree",
         "width": 400
     },
@@ -27,14 +26,13 @@
             "userConfig": {
                 "autoScroll": true,
                 "frame": true,
-                "height": 250,
                 "itemId": "ComponentTree",
                 "layout|flex": 1,
+                "layout|region": "center",
                 "rootVisible": false,
                 "store": "Components",
                 "title": null,
-                "useArrows": true,
-                "width": 400
+                "useArrows": true
             },
             "designerId": "f9f6b3d2-a835-4161-a950-c58603f71b11",
             "isBuiltIn": true,
@@ -120,11 +118,12 @@
             "userConfig": {
                 "activeTab": 0,
                 "layout|flex": 1,
+                "layout|region": "east",
+                "layout|split": true,
                 "minWidth": 200,
-                "resizable": [
-                    "true"
-                ],
-                "resizeHandles": "w"
+                "resizable": null,
+                "resizeHandles": null,
+                "width": 150
             },
             "designerId": "1359ffa9-b00e-4586-858c-da45e066677f",
             "cn": [

@@ -77,6 +77,7 @@ Ext.define('AI.view.StoreInspector', {
                     xtype: 'container',
                     flex: 1,
                     resizable: true,
+                    resizeHandles: 'n',
                     layout: {
                         type: 'hbox',
                         align: 'stretch'
@@ -102,6 +103,7 @@ Ext.define('AI.view.StoreInspector', {
                             itemId: 'RecordDetail',
                             width: 300,
                             resizable: true,
+                            resizeHandles: 'w',
                             title: 'Record Details',
                             source: {
                                 

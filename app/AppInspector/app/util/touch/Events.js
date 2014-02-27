@@ -4,10 +4,6 @@
 Ext.define('AI.util.touch.Events', {
     singleton : true,
 
-    requires : [
-
-    ],
-
     /**
      *
      */
