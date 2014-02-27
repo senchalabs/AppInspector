@@ -4,30 +4,56 @@
 Ext.define('AI.util.extjs.Events', {
     singleton : true,
 
-    requires : [
-
-    ],
-
     /**
      *
      */
     recordEvents : function () {
         var o = Ext.util.Observable.prototype;
 
-        if (!o._fireEvent) {
-            o._fireEvent = o.fireEvent; //set reference to restore later
+        if (!o._eventMonitor) {
             o._eventMonitor = [];
 
-            o.fireEvent = function (h) {
-                o._fireEvent.apply(this, arguments);
+            o._captureFn = function () {
+                var eventName = arguments[0],
+                    signature = arguments[1];
 
-                o._eventMonitor.push({
-                    eventName : arguments[0],
-                    source    : arguments[1].$className,
-                    xtype     : arguments[1].xtype,
-                    id        : arguments[1].id
+                if (eventName === 'uievent') {
+                    //only fires on on Ext.view.Table
+                    eventName = arguments[1];
+                    signature = arguments[2];
+                }
+                else if (eventName === 'beforequery') {
+                    //only fires on on Ext.form.field.ComboBox
+                    signature = arguments[1].combo;
+                }
+                else if (signature.length && signature.length > 0) {
+                    //a bunch of events fire passing "arguments", which is like an Array but not really...
+                    signature = signature[0];
+                }
+
+                // <debug>
+                // it's conceivable that we're missing special cases somewhere
+                if (!signature.$className) {
+                    console.log(arguments);
+                }
+                // </debug>
+
+                Ext.util.Observable.prototype._eventMonitor.push({
+                    eventName : eventName,
+                    source    : signature.$className,
+                    xtype     : signature.xtype,
+                    id        : signature.id
                 });
             };
+
+            Ext.ComponentManager.each(function (key) {
+                Ext.util.Observable.capture(Ext.getCmp(key), o._captureFn);
+            });
+
+            //be sure we capture all new components added...
+            Ext.ComponentManager.register = Ext.Function.createSequence(Ext.ComponentManager.register, function (item) {
+                Ext.util.Observable.capture(item, Ext.util.Observable.prototype._captureFn);
+            });
         }
 
         var events = o._eventMonitor;
@@ -44,10 +70,14 @@ Ext.define('AI.util.extjs.Events', {
     stopEvents : function () {
         var o = Ext.util.Observable.prototype;
 
-        if (o._fireEvent) {
-            o.fireEvent = o._fireEvent; //set reference to restore later
+        if (o._eventMonitor) {
+            Ext.ComponentManager.each(function (key) {
+                Ext.util.Observable.releaseCapture(Ext.getCmp(key));
+            });
 
-            delete o._fireEvent;
+            //don't break the function sequence we created in recordEvents()
+            Ext.util.Observable.prototype._captureFn = Ext.emptyFn;
+
             delete o._eventMonitor;
         }
     }
