@@ -117,7 +117,8 @@
                 "layout|flex": 1,
                 "resizable": [
                     "true"
-                ]
+                ],
+                "resizeHandles": "n"
             },
             "designerId": "532dad53-d45d-44df-8c86-5795a1c685ba",
             "cn": [
@@ -175,6 +176,7 @@
                             "true",
                             ""
                         ],
+                        "resizeHandles": "w",
                         "source": [
                             "{}"
                         ],
