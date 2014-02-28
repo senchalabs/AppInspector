@@ -7,6 +7,13 @@ module.exports = {
         'clean:docs',
         'jsduck',
     ],
+    dev: [
+        'jshint',
+        'clean:dist',
+        'chromeManifest:dist',
+        'exec:dev',
+        'copy:dev'
+    ],
     build: [
         'jshint',
         'clean:dist',
@@ -14,7 +21,7 @@ module.exports = {
         'imagemin:resources',
         'exec:production',
         'imagemin:sencha',
-        'copy',
+        'copy:dist',
         'compress',
         'docs'
     ],
