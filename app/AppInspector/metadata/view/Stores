@@ -8,10 +8,10 @@
     "userConfig": {
         "container|align": "stretch",
         "container|pack": null,
-        "designer|userAlias": "storeinspector",
-        "designer|userClassName": "StoreInspector",
-        "icon": "resources/images/database.png",
-        "itemId": "StoresPanel",
+        "designer|userAlias": "stores",
+        "designer|userClassName": "Stores",
+        "icon": null,
+        "itemId": "StoreInspector",
         "layout": "vbox",
         "requires": [
             "Ext.grid.property.Grid",
@@ -31,7 +31,7 @@
             "userConfig": {
                 "height": 300,
                 "itemId": "StoreList",
-                "layout|flex": null,
+                "layout|flex": 1,
                 "store": "Stores",
                 "title": null
             },
@@ -93,7 +93,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "iconCls": "x-tbar-loading",
+                                "iconCls": "icn-refresh",
                                 "itemId": "RefreshStores",
                                 "layout|flex": null,
                                 "text": "Refresh"
@@ -113,6 +113,7 @@
             "codeClass": null,
             "userConfig": {
                 "container|align": "stretch",
+                "itemId": "StoreDetails",
                 "layout": "hbox",
                 "layout|flex": 1,
                 "resizable": [
@@ -147,6 +148,7 @@
                             "userConfig": {
                                 "dataIndex": "id",
                                 "flex": 1,
+                                "resizable": false,
                                 "text": "Record ID"
                             },
                             "designerId": "a3fd2b82-f999-412e-8744-71df0c4a505b"

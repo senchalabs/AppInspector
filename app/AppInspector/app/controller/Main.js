@@ -18,7 +18,7 @@ Ext.define('AI.controller.Main', {
 
     init: function(application) {
         this.control({
-            '#mainView' : {
+            '#mainview' : {
                 'afterrender' : this.onAppRender
             }
         });
@@ -31,7 +31,7 @@ Ext.define('AI.controller.Main', {
             AI.util.InspectedWindow.getAppVersion,
             null,
             function (data) {
-                var main = Ext.ComponentQuery.query('#mainView')[0];
+                var main = Ext.ComponentQuery.query('#mainview')[0];
 
                 if (!data) {
                     main.disable();

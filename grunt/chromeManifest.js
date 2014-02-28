@@ -17,7 +17,7 @@ module.exports = {
 
             use 'dest' for development and 'both' for release builds
              */
-            buildnumber: false,
+            buildnumber: 'both',
 
             background: {
                 target: 'background.js'

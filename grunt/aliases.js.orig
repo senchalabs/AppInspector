@@ -1,0 +1,40 @@
+/**
+ * Grunt aliases
+ * @type {Object}
+ */
+module.exports = {
+    docs: [
+        'clean:docs',
+        'jsduck',
+    ],
+<<<<<<< Updated upstream
+    dev: [
+        'jshint',
+        'clean:dist',
+        'chromeManifest:dist',
+        'exec:dev',
+        'copy:dev'
+=======
+    testing: [
+        'jshint',
+        'clean:dist',
+        'chromeManifest:dist',
+        'exec:testing',
+        'copy:testing'
+>>>>>>> Stashed changes
+    ],
+    build: [
+        'jshint',
+        'clean:dist',
+        'chromeManifest:dist',
+        'imagemin:resources',
+        'exec:production',
+        'imagemin:sencha',
+        'copy:dist',
+        'compress',
+        'docs'
+    ],
+    default: [
+        'build'
+    ]
+};

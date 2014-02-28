@@ -52,16 +52,40 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onClearEventsClick",
+                "implHandler": [
+                    "var me = this,",
+                    "    store = Ext.getStore('Events');",
+                    "",
+                    "store.removeAll();"
+                ]
+            },
+            "designerId": "f30eafcd-1b83-409c-99cf-803bc9745207"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
                 "fn": "onRecordEventsClick",
                 "implHandler": [
                     "var me = this,",
                     "    store = Ext.getStore('Events'),",
                     "    util;",
                     "",
-                    "Ext.ComponentQuery.query('button#RecordEvents')[0].hide();",
-                    "Ext.ComponentQuery.query('button#StopRecording')[0].show();",
+                    "btn.hide();",
+                    "btn.next().show();",
                     "",
-                    "if (this.getApplication().info.framework === 'ext') {",
+                    "if (me.getApplication().info.framework === 'ext') {",
                     "    util = AI.util.extjs.Events.recordEvents;",
                     "}",
                     "else {",
@@ -97,6 +121,9 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
                 "fn": "onStopRecordingClick",
                 "implHandler": [
                     "var me = this,",
@@ -104,10 +131,10 @@
                     "",
                     "me.recording = false;",
                     "",
-                    "Ext.ComponentQuery.query('button#StopRecording')[0].hide();",
-                    "Ext.ComponentQuery.query('button#RecordEvents')[0].show();",
+                    "btn.prev().show();",
+                    "btn.hide();",
                     "",
-                    "if (this.getApplication().info.framework === 'ext') {",
+                    "if (me.getApplication().info.framework === 'ext') {",
                     "    util = AI.util.extjs.Events.stopEvents;",
                     "}",
                     "else {",
@@ -122,27 +149,6 @@
                 ]
             },
             "designerId": "ab53bec9-a51f-4722-864e-7d63d6e43947"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "btn"
-                ],
-                "fn": "onClearEventsClick",
-                "implHandler": [
-                    "var me = this,",
-                    "    store = Ext.getStore('Events');",
-                    "",
-                    "store.removeAll();"
-                ]
-            },
-            "designerId": "f30eafcd-1b83-409c-99cf-803bc9745207"
         }
     ]
 }

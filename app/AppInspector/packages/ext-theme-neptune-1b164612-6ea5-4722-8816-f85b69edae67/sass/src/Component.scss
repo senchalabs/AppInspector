@@ -1,0 +1,77 @@
+$sencha-green: rgba(121, 154, 5, 1);	// sencha green
+:focus { outline: none; }
+
+.about-details {
+    img {
+        border: 2px solid $sencha-green;
+    }
+
+    .description, .contributors {
+        a {
+            color: $sencha-green;
+            text-decoration: none;
+
+            &:focus, &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.icn-home,
+.icn-components,
+.icn-stores,
+.icn-layouts,
+.icn-overnested,
+.icn-box,
+.icn-events,
+.icn-refresh,
+.icn-clear,
+.icn-record,
+.icn-stop {
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+.icn-home {
+    background-image: url('../resources/images/home2.png');
+}
+
+.icn-components {
+    background-image: url('../resources/images/nodes2.png');
+}
+
+.icn-stores {
+    background-image: url('../resources/images/data.png');
+}
+
+.icn-layouts {
+    background-image: url('../resources/images/monitor1.png');
+}
+
+.icn-overnested  {
+    background-image: url('../resources/images/window.png');
+}
+
+.icn-box  {
+    background-image: url('../resources/images/cube.png');
+}
+
+.icn-events {
+    background-image: url('../resources/images/bolt.png');
+}
+
+.icn-refresh {
+    background-image: url('../resources/images/refresh3.png');
+}
+
+.icn-clear {
+    background-image: url('../resources/images/stop1.png');
+}
+
+.icn-record {
+    background-image: url('../resources/images/play_black1.png');
+}
+
+.icn-stop {
+    background-image: url('../resources/images/stop.png');
+}

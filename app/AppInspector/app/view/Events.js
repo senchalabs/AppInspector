@@ -24,7 +24,7 @@ Ext.define('AI.view.Events', {
         'Ext.button.Button'
     ],
 
-    icon: 'resources/images/light.png',
+    itemId: 'EventInspector',
     title: 'Events',
     store: 'Events',
 
@@ -65,17 +65,20 @@ Ext.define('AI.view.Events', {
                         {
                             xtype: 'button',
                             itemId: 'ClearEvents',
+                            iconCls: 'icn-clear',
                             text: 'Clear'
                         },
                         {
                             xtype: 'button',
                             itemId: 'RecordEvents',
+                            iconCls: 'icn-record',
                             text: 'Record'
                         },
                         {
                             xtype: 'button',
                             hidden: true,
                             itemId: 'StopRecording',
+                            iconCls: 'icn-stop',
                             text: 'Stop Recording'
                         }
                     ]

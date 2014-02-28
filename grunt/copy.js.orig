@@ -26,7 +26,11 @@ module.exports = {
             ]
         }]
     },
+<<<<<<< Updated upstream
     dev: {
+=======
+    testing: {
+>>>>>>> Stashed changes
         files: [{
             expand: true,
             cwd: '<%= yeoman.app %>',
@@ -41,7 +45,11 @@ module.exports = {
             dest: '<%= yeoman.dist %>/images'
         }, {
             expand: true,
+<<<<<<< Updated upstream
+            cwd: '<%= yeoman.app %>/AppInspector/build/deving/AI',
+=======
             cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI',
+>>>>>>> Stashed changes
             dest: '<%= yeoman.dist %>/AppInspector',
             src: [
                 '*.{html,js}',
@@ -49,7 +57,11 @@ module.exports = {
             ]
         }, {
             expand: true,
+<<<<<<< Updated upstream
+            cwd: '<%= yeoman.app %>/AppInspector/build/deving/AI/resources/images',
+=======
             cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI/resources/images',
+>>>>>>> Stashed changes
             src: '{,*/}*.{png,jpg,jpeg}',
             dest: '<%= yeoman.dist %>/AppInspector/resources/images'
         }]

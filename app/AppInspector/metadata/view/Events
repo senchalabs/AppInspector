@@ -8,7 +8,8 @@
     "userConfig": {
         "designer|userAlias": "eventgrid",
         "designer|userClassName": "Events",
-        "icon": "resources/images/light.png",
+        "icon": null,
+        "itemId": "EventInspector",
         "store": "Events",
         "title": "Events"
     },
@@ -98,6 +99,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "iconCls": "icn-clear",
                         "itemId": "ClearEvents",
                         "layout|flex": null,
                         "text": "Clear",
@@ -113,6 +115,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "iconCls": "icn-record",
                         "itemId": "RecordEvents",
                         "layout|flex": null,
                         "text": "Record"
@@ -127,7 +130,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "disabled": null,
                         "hidden": true,
+                        "iconCls": "icn-stop",
                         "itemId": "StopRecording",
                         "layout|flex": null,
                         "text": "Stop Recording"

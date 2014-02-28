@@ -15,22 +15,21 @@
 
 Ext.define('AI.view.MainView', {
     extend: 'Ext.container.Viewport',
+    alias: 'widget.mainview',
 
     requires: [
         'AI.view.About',
-        'AI.view.ComponentInspector',
-        'AI.view.StoreInspector',
-        'AI.view.AppProfiles',
+        'AI.view.Components',
+        'AI.view.Stores',
+        'AI.view.Layouts',
         'AI.view.Events',
-        'Ext.button.Button',
         'Ext.tab.Panel',
-        'Ext.grid.Panel',
-        'Ext.layout.container.Border',
-        'Ext.layout.container.Card'
+        'Ext.tab.Tab',
+        'Ext.grid.Panel'
     ],
 
-    itemId: 'mainView',
-    layout: 'border',
+    itemId: 'mainview',
+    layout: 'fit',
 
     initComponent: function() {
         var me = this;
@@ -38,77 +37,29 @@ Ext.define('AI.view.MainView', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'panel',
-                    region: 'west',
-                    split: true,
-                    itemId: 'menuPanel',
-                    width: 250,
-                    bodyStyle: 'background-color: #333;',
-                    collapsed: true,
-                    collapsible: true,
-                    title: 'Menu',
-                    layout: {
-                        type: 'vbox',
-                        align: 'stretch'
-                    },
+                    xtype: 'tabpanel',
+                    activeTab: 0,
                     items: [
                         {
-                            xtype: 'button',
-                            itemId: 'AboutNav',
-                            icon: 'resources/images/home.png',
-                            scale: 'large',
-                            text: 'About'
+                            xtype: 'about',
+                            icon: '',
+                            iconCls: 'icn-home'
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'ComponentsNav',
-                            icon: 'resources/images/connected.png',
-                            scale: 'large',
-                            text: 'Components'
+                            xtype: 'components',
+                            iconCls: 'icn-components'
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'StoresNav',
-                            icon: 'resources/images/database.png',
-                            scale: 'large',
-                            text: 'Stores'
+                            xtype: 'stores',
+                            iconCls: 'icn-stores'
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'ProfilesNav',
-                            icon: 'resources/images/screen.png',
-                            scale: 'large',
-                            text: 'Layouts'
+                            xtype: 'layouts',
+                            iconCls: 'icn-layouts'
                         },
                         {
-                            xtype: 'button',
-                            itemId: 'EventsNav',
-                            icon: 'resources/images/light.png',
-                            scale: 'large',
-                            text: 'Events'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'panel',
-                    region: 'center',
-                    itemId: 'ContentPanel',
-                    layout: 'card',
-                    items: [
-                        {
-                            xtype: 'mypanel2'
-                        },
-                        {
-                            xtype: 'componentinspector'
-                        },
-                        {
-                            xtype: 'storeinspector'
-                        },
-                        {
-                            xtype: 'appprofiles'
-                        },
-                        {
-                            xtype: 'eventgrid'
+                            xtype: 'eventgrid',
+                            iconCls: 'icn-events'
                         }
                     ]
                 }

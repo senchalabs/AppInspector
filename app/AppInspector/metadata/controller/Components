@@ -31,7 +31,6 @@
                     "    '#ComponentTree' : {",
                     "        'itemclick'   : this.onSelectComponent",
                     "    },",
-                    "",
                     "    'button#RefreshComponentTree' : {",
                     "        'click' : this.onRefreshComponentsClick",
                     "    }",
@@ -113,7 +112,7 @@
                 ],
                 "fn": "onSelectComponent",
                 "implHandler": [
-                    "var parent = tree.up('componentinspector'),",
+                    "var parent = tree.up('components'),",
                     "    propsGrid = parent.down('#ComponentProps'),",
                     "    methodGrid = parent.down('#ComponentMethods');",
                     "",

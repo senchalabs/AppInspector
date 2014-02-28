@@ -6,12 +6,16 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userAlias": "componentinspector",
-        "designer|userClassName": "ComponentInspector",
+        "designer|userAlias": "components",
+        "designer|userClassName": "Components",
         "height": 250,
-        "icon": "resources/images/connected.png",
+        "icon": null,
+        "itemId": "ComponentInspector",
         "layout": "border",
-        "title": "Component Tree",
+        "requires": [
+            "Ext.layout.container.Border"
+        ],
+        "title": "Components",
         "width": 400
     },
     "designerId": "6396961f-44a6-489d-a87a-171343f16ba4",
@@ -25,7 +29,7 @@
             "codeClass": null,
             "userConfig": {
                 "autoScroll": true,
-                "frame": true,
+                "frame": null,
                 "itemId": "ComponentTree",
                 "layout|flex": 1,
                 "layout|region": "center",
@@ -61,7 +65,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "iconCls": "x-tbar-loading",
+                                "iconCls": "icn-refresh",
                                 "itemId": "RefreshComponentTree",
                                 "layout|flex": null,
                                 "text": "Refresh"
@@ -117,6 +121,7 @@
             "codeClass": null,
             "userConfig": {
                 "activeTab": 0,
+                "itemId": "ComponentDetails",
                 "layout|flex": 1,
                 "layout|region": "east",
                 "layout|split": true,

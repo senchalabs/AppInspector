@@ -15,16 +15,14 @@
 
 Ext.define('AI.view.About', {
     extend: 'Ext.panel.Panel',
-    alias: 'widget.mypanel2',
+    alias: 'widget.about',
 
     requires: [
         'Ext.grid.property.Grid'
     ],
 
-    itemId: 'AboutPanel',
-    padding: 20,
+    itemId: 'About',
     autoScroll: true,
-    icon: 'resources/images/home.png',
     title: 'App Details',
 
     layout: {
@@ -47,10 +45,13 @@ Ext.define('AI.view.About', {
                 },
                 {
                     xtype: 'container',
+                    cls: 'about-details',
+                    itemId: 'AboutDetails',
                     loader: {
                         url: 'about.html',
                         autoLoad: true
-                    }
+                    },
+                    padding: '0 10'
                 }
             ]
         });
