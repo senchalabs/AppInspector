@@ -30,9 +30,9 @@ module.exports = function(grunt) {
 
     // return task config
     return {
-        testing: {
+        dev: {
             cwd: '<%= yeoman.app %>/AppInspector/',
-            command: 'sencha -q app build -e testing'
+            command: 'sencha -q app build -e testing -c'
         },
         production: {
             cwd: '<%= yeoman.app %>/AppInspector/',

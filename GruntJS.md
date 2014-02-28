@@ -1,90 +1,110 @@
-## Grunt.js
+# Grunt.js
+http://gruntjs.com/
 
-### Getting Started
+## Getting Started
 This project requires [Grunt](http://gruntjs.com/) to use the requirerd [Grunt Plugins](http://gruntjs.com/plugins) and run the specified tasks.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
 
-### Tasks
+## Main tasks
 
-#### `grunt docs`
-Generate the projects documentation. Subsequently running `clean:docs` and `jsduck` tasks.
+### `grunt docs`
+Generate the projects documentation. Subsequently running [`clean:docs`](#the-clean-task) and [`jsduck`](#the-jsduck-task) tasks.
 
-#### `grunt build`
-Build the project. Subsequently running `clean:dist`, `chromeManifest:dist`, `exec:build`, `imagemin`, `copy`, `compress`,  and `docs` tasks.
+### `grunt dev`
+Build the project. Subsequently running [`jshint`](#the-jshint-task), [`clean:dist`](#the-clean-task), [`chromeManifest:dist`](#the-chromemanifest-task), [`exec:dev`](#the-exec-task) and [`copy:dev`](#the-copy-task) tasks.
 
-#### `grunt` (default)
-See [grunt build](#grunt-build) task.
+### `grunt build`
+Build the project. Subsequently running [`jshint`](#the-jshint-task), [`clean:dist`](#the-clean-task), [`chromeManifest:dist`](#the-chromemanifest-task), [`exec:production`](#the-exec-task), [`imagemin`](#the-imagemin-task), [`copy:dist`](#the-copy-task), [`compress`](#the-compress-task) and [`docs`](#grunt-docs) tasks.
 
-#### Subtasks (inside `grunt/`)
+### `grunt watch`
+Watch the project for changes triggeering the [`grunt dev`](#grunt-dev) task.
 
-* The `clean` task
+### `grunt` (default)
+See [`grunt build`](#grunt-build) task.
 
-    * target `clean:dist` cleans the `dist/` directory. Automatically run for `build` task.
-    * target `clean:docs` cleans the `docs/` directory. Automatically run for `docs` and `build` tasks.
+### Subtasks
+Subtasks are split into seperate files inside `grunt/`.
 
-    __NOTE__: You don't need to run this task or its targets manually.
+#### The `chromeManifest` task
 
-    Read more on:
-    * https://www.npmjs.org/package/grunt-contrib-clean
+Create the Chrome Dev Tools `manifest.json` file.
 
-* The `jshint` task
+Read more on:
+* https://www.npmjs.org/package/grunt-chrome-manifest
 
-    ![JShint](http://www.jshint.com/res/jshint.png)
+#### The `clean` task
 
-    Lint `Gruntfile.js`, `app/AppInspector/app.js` and all *.js files in `app/AppInspector/app/`.
-    It uses the `.jshintrc` file containing the linting rules.
+* target `clean:dist` cleans the `dist/` directory. Automatically run for [`build`](#grunt-build), [`dev`](#grunt-dev) and [`watch`](#grunt-watch) tasks.
+* target `clean:docs` cleans the `docs/` directory. Automatically run for [`docs`](#grunt-docs) and [`build`](#grunt-build) tasks.
 
-    Read more on:
-    * https://www.npmjs.org/package/grunt-contrib-jshint
-    * http://www.jshint.com/docs/
+__NOTE__: You don't need to run this task or its targets manually.
 
-* The `imagemin` task
+Read more on:
+* https://www.npmjs.org/package/grunt-contrib-clean
 
-    Optimise, compress and copy image assets.
+#### The `compress` task
 
-    Read more on:
-    * https://www.npmjs.org/package/grunt-contrib-imagemin
+Compress `dist/` to `package/AppInspector.zip`.
 
-* The `exec` task
+Read more on:
+* https://www.npmjs.org/package/grunt-grunt-contrib-compress
 
-    Cli task to run `sencha -q app build -e production -c` command.
+#### The `copy` task
 
-    Read more on:
-    * http://docs.sencha.com/extjs/4.2.1/#!/guide/command_reference
-    * https://www.npmjs.org/package/grunt-exec
+Copy resources from `app/` and `app/AppInspector/build/production/AI` to `dist/`.
+* target `copy:dist` for [`grunt build`](#grunt-build) or [`grunt`](#grunt-default) tasks.
+* target `copy:dev` for [`grunt:dev`](#grunt-dev) task.
 
-* The `copy` task
+Read more on:
+* https://www.npmjs.org/package/grunt-contrib-copy
 
-    Copy resources from `app/` and `app/AppInspector/build/production/AI` to `dist/`.
+#### The `exec` task
 
-    Read more on:
-    * https://www.npmjs.org/package/grunt-contrib-copy
+Task to run
+* target `exec:dev` `sencha -q app build -e testing -c`
+* target `exec:production` `sencha -q app build -e production`
+commands.
 
-* The `compress` task
+Read more on:
+* http://docs.sencha.com/extjs/4.2.1/#!/guide/command_reference
+* https://www.npmjs.org/package/grunt-exec
 
-    Compress `dist/` to `package/AppInspector.zip`.
+#### The `githooks` task
 
-    Read more on:
-    * https://www.npmjs.org/package/grunt-grunt-contrib-compress
+Generates a git pre-commit hook to run the [`jshint`](#the-jshint-task) task on every commit, aborting the commit if any linting errors exist.
 
-* The `githooks` task
+__NOTE__: Only run this task once manually using `grunt githooks` or if adding new hooks.
+![grunt githooks](http://f.cl.ly/items/2U0l471z363P3a0w0408/screenshot%202014-02-14%20at%2012.46.48.png)
 
-    Generates a git pre-commit hook to run the *grunt jshint task* on every commit, aborting the commit if any linting errors exist.
+Read more on:
+* http://git-scm.com/book/en/Customizing-Git-Git-Hooks
+* https://www.npmjs.org/package/grunt-githooks
 
-    __NOTE__: Only run this task once manually using `grunt githooks` or if adding new hooks.
-    ![grunt githooks](http://f.cl.ly/items/2U0l471z363P3a0w0408/screenshot%202014-02-14%20at%2012.46.48.png)
+#### The `imagemin` task
 
-    Read more on:
-    * http://git-scm.com/book/en/Customizing-Git-Git-Hooks
-    * https://www.npmjs.org/package/grunt-githooks
+Optimise, compress and copy image assets.
 
-* The `jsduck` task
+Read more on:
+* https://www.npmjs.org/package/grunt-contrib-imagemin
 
-    Generate duckumentation!
+#### The `jsduck` task
 
-    ![JSduck](https://raw.github.com/senchalabs/jsduck/master/opt/jsduck-logo-dark.png)
+Generate duckumentation!
 
-    Read more on:
-    * https://github.com/senchalabs/jsduck
-    * https://www.npmjs.org/package/grunt-jsduck
+![JSduck](https://raw.github.com/senchalabs/jsduck/master/opt/jsduck-logo-dark.png)
+
+Read more on:
+* https://github.com/senchalabs/jsduck
+* https://www.npmjs.org/package/grunt-jsduck
+
+#### The `jshint` task
+
+![JShint](http://www.jshint.com/res/jshint.png)
+
+Lint `Gruntfile.js`, `app/AppInspector/app.js` and all `*.js files in `app/AppInspector/app/`.
+It uses the `.jshintrc` file containing the linting rules.
+
+Read more on:
+* https://www.npmjs.org/package/grunt-contrib-jshint
+* http://www.jshint.com/docs/
