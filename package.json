@@ -35,6 +35,7 @@
         "chalk": "~0.4.0",
         "load-grunt-tasks": "~0.3.0",
         "load-grunt-config": "~0.7.1",
+        "lodash": "~2.4.1",
         "jshint-stylish": "~0.1.5",
         "time-grunt": "~0.2.9"
     },

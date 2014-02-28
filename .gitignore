@@ -2,7 +2,7 @@
 dist/
 docs/
 package/
-# node_modules/
+node_modules/
 
 # *** files
 .DS_Store
