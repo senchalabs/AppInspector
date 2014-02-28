@@ -10,7 +10,7 @@ module.exports = {
     dev: [
         'jshint',
         'clean:dist',
-        'chromeManifest:dist',
+        'chromeManifest:dev',
         'exec:dev',
         'copy:dev'
     ],

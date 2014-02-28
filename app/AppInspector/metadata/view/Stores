@@ -11,6 +11,7 @@
         "designer|userAlias": "stores",
         "designer|userClassName": "Stores",
         "icon": null,
+        "iconCls": "icn-stores",
         "itemId": "StoreInspector",
         "layout": "vbox",
         "requires": [

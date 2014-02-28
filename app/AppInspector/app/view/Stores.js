@@ -27,6 +27,7 @@ Ext.define('AI.view.Stores', {
     ],
 
     itemId: 'StoreInspector',
+    iconCls: 'icn-stores',
     title: 'Stores',
 
     layout: {

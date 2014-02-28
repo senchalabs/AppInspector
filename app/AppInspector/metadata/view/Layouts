@@ -10,6 +10,7 @@
         "designer|userAlias": "layouts",
         "designer|userClassName": "Layouts",
         "icon": null,
+        "iconCls": "icn-layouts",
         "itemId": "LayoutInspector",
         "tabPosition": "right",
         "title": "Layouts"

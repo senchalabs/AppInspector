@@ -32,6 +32,7 @@ Ext.define('AI.view.Components', {
     itemId: 'ComponentInspector',
     width: 400,
     layout: 'border',
+    iconCls: 'icn-components',
     title: 'Components',
 
     initComponent: function() {

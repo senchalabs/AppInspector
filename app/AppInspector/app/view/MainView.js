@@ -41,25 +41,19 @@ Ext.define('AI.view.MainView', {
                     activeTab: 0,
                     items: [
                         {
-                            xtype: 'about',
-                            icon: '',
-                            iconCls: 'icn-home'
+                            xtype: 'about'
                         },
                         {
-                            xtype: 'components',
-                            iconCls: 'icn-components'
+                            xtype: 'components'
                         },
                         {
-                            xtype: 'stores',
-                            iconCls: 'icn-stores'
+                            xtype: 'stores'
                         },
                         {
-                            xtype: 'layouts',
-                            iconCls: 'icn-layouts'
+                            xtype: 'layouts'
                         },
                         {
-                            xtype: 'eventgrid',
-                            iconCls: 'icn-events'
+                            xtype: 'eventgrid'
                         }
                     ]
                 }

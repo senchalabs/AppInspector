@@ -25,6 +25,7 @@ Ext.define('AI.view.Events', {
     ],
 
     itemId: 'EventInspector',
+    iconCls: 'icn-events',
     title: 'Events',
     store: 'Events',
 

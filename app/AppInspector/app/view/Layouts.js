@@ -27,6 +27,7 @@ Ext.define('AI.view.Layouts', {
     ],
 
     itemId: 'LayoutInspector',
+    iconCls: 'icn-layouts',
     title: 'Layouts',
     activeTab: 0,
     tabPosition: 'right',

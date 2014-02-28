@@ -36,12 +36,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "glyph": null,
-                        "icon": "",
-                        "iconCls": "icn-home"
-                    },
-                    "designerId": "d8b66414-6de2-422a-b441-d3561cf08e6a",
+                    "designerId": "7380c2e2-0bdd-4558-8e60-729e1e3f5c4d",
                     "masterInstanceId": "d35aac6a-df56-4378-8fd1-4decd2f16aef",
                     "cn": [
                         {
@@ -51,7 +46,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "1cea2221-df1d-461e-94d1-bff9df5038c4"
+                            "designerId": "e60d8708-2f54-43d4-9a07-b792ffcd90a5"
                         }
                     ]
                 },
@@ -62,12 +57,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "iconCls": "icn-components",
-                        "itemId": null,
-                        "title": null
-                    },
-                    "designerId": "5031ea18-99b9-4856-8a3f-37fb38ce9ec2",
+                    "designerId": "8489018a-10ba-4306-9d87-b5e26b98b38f",
                     "masterInstanceId": "6396961f-44a6-489d-a87a-171343f16ba4",
                     "cn": [
                         {
@@ -77,7 +67,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "34c77dca-5892-4a6f-8232-e93ea6baa844"
+                            "designerId": "ae39889d-343d-4217-8be8-25d45ce8d0d9"
                         }
                     ]
                 },
@@ -88,10 +78,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "iconCls": "icn-stores"
-                    },
-                    "designerId": "ae82da09-f40a-41c8-b8bc-0fc863941951",
+                    "designerId": "c8aa26c3-3263-432f-b747-212480516995",
                     "masterInstanceId": "bd2cd338-5fc6-488f-aa7c-a4ca1faad085",
                     "cn": [
                         {
@@ -101,7 +88,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "258a9065-079f-4a6b-ade3-cbe751102642"
+                            "designerId": "9172c070-8b5c-447e-a2eb-47e252d19a4f"
                         }
                     ]
                 },
@@ -112,11 +99,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "iconCls": "icn-layouts",
-                        "title": null
-                    },
-                    "designerId": "2f684f28-1b69-4b7c-add1-90aeafd1df94",
+                    "designerId": "b6796801-97ec-4db8-ba2e-383a77f89e24",
                     "masterInstanceId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905",
                     "cn": [
                         {
@@ -126,7 +109,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "5a8dc4d6-9a5d-459b-8069-1a8a50f2c2e3"
+                            "designerId": "13fb7632-a43d-4b06-a60d-ca2c7116f258"
                         }
                     ]
                 },
@@ -137,10 +120,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "iconCls": "icn-events"
-                    },
-                    "designerId": "b64ce38c-cf04-49dd-9177-90e5486f5273",
+                    "designerId": "b3fb9a8b-7851-4a31-bda9-b6e5a076cff7",
                     "masterInstanceId": "5a468293-377b-432a-9518-58ecb1365d6b",
                     "cn": [
                         {
@@ -150,7 +130,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "0593fedc-fa1e-4bde-b3f0-19cbb243765a"
+                            "designerId": "5ce2e9b5-4d87-49f8-91d4-aebca665306a"
                         }
                     ]
                 }

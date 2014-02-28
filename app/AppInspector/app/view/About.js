@@ -23,6 +23,7 @@ Ext.define('AI.view.About', {
 
     itemId: 'About',
     autoScroll: true,
+    iconCls: 'icn-home',
     title: 'App Details',
 
     layout: {

@@ -11,6 +11,7 @@
         "designer|userAlias": "about",
         "designer|userClassName": "About",
         "icon": null,
+        "iconCls": "icn-home",
         "itemId": "About",
         "layout": "vbox",
         "loader": null,

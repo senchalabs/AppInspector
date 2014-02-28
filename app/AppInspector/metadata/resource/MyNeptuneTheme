@@ -10,7 +10,7 @@
     },
     "designerId": "1b164612-6ea5-4722-8816-f85b69edae67",
     "storage": {
-        "needsCompile": false,
+        "needsCompile": true,
         "simple": {
             "pkgVersion": 1,
             "pkgPath": "packages"

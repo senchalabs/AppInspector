@@ -9,6 +9,7 @@
         "designer|userAlias": "eventgrid",
         "designer|userClassName": "Events",
         "icon": null,
+        "iconCls": "icn-events",
         "itemId": "EventInspector",
         "store": "Events",
         "title": "Events"

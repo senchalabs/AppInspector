@@ -10,6 +10,7 @@
         "designer|userClassName": "Components",
         "height": 250,
         "icon": null,
+        "iconCls": "icn-components",
         "itemId": "ComponentInspector",
         "layout": "border",
         "requires": [
