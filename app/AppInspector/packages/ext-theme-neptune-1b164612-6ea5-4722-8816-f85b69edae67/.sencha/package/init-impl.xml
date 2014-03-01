@@ -109,6 +109,20 @@
             </then>
         </if>
 
+        <!-- 
+            Slicing operations are not needed when using the touch framework
+            or for non-theme packages
+        -->
+        <if>
+            <or>
+                <equals arg1="theme" arg2="${package.type}"/>
+                <equals arg1="touch" arg2="${framework.name}"/>
+            </or>
+            <then>
+                <property name="skip.slice" value="1"/>
+            </then>
+        </if>
+
         <!--
         See if there is an ./examples subfolder full of example applications.
         -->

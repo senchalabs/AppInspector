@@ -30,10 +30,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
   "AI.controller.Components": [],
   "AI.controller.Events": [],
+  "AI.controller.Layouts": [],
   "AI.controller.Main": [],
-  "AI.controller.Navigation": [],
-  "AI.controller.Profile": [],
-  "AI.controller.Store": [],
+  "AI.controller.Stores": [],
   "AI.model.Component": [],
   "AI.model.Event": [],
   "AI.model.Overnested": [],
@@ -54,12 +53,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.util.touch.Events": [],
   "AI.util.touch.Profile": [],
   "AI.view.About": [],
-  "AI.view.AppProfiles": [],
-  "AI.view.ComponentInspector": [],
+  "AI.view.Components": [],
   "AI.view.Events": [],
+  "AI.view.Layouts": [],
   "AI.view.Main": [],
   "AI.view.MainView": [],
-  "AI.view.StoreInspector": [],
+  "AI.view.Stores": [],
   "AI.view.Viewport": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -898,10 +897,9 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
   "AI.controller.Components": [],
   "AI.controller.Events": [],
+  "AI.controller.Layouts": [],
   "AI.controller.Main": [],
-  "AI.controller.Navigation": [],
-  "AI.controller.Profile": [],
-  "AI.controller.Store": [],
+  "AI.controller.Stores": [],
   "AI.model.Component": [],
   "AI.model.Event": [],
   "AI.model.Overnested": [],
@@ -922,23 +920,25 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.util.touch.Events": [],
   "AI.util.touch.Profile": [],
   "AI.view.About": [
-    "widget.mypanel2"
+    "widget.about"
   ],
-  "AI.view.AppProfiles": [
-    "widget.appprofiles"
-  ],
-  "AI.view.ComponentInspector": [
-    "widget.componentinspector"
+  "AI.view.Components": [
+    "widget.components"
   ],
   "AI.view.Events": [
     "widget.eventgrid"
   ],
+  "AI.view.Layouts": [
+    "widget.layouts"
+  ],
   "AI.view.Main": [
     "widget.app-main"
   ],
-  "AI.view.MainView": [],
-  "AI.view.StoreInspector": [
-    "widget.storeinspector"
+  "AI.view.MainView": [
+    "widget.mainview"
+  ],
+  "AI.view.Stores": [
+    "widget.stores"
   ],
   "AI.view.Viewport": [],
   "Ext.AbstractComponent": [],

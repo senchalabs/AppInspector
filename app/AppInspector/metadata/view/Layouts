@@ -7,12 +7,13 @@
     "codeClass": null,
     "userConfig": {
         "activeTab": 0,
-        "designer|userAlias": "appprofiles",
-        "designer|userClassName": "AppProfiles",
-        "icon": "resources/images/screen.png",
-        "itemId": "ProfilesPanel",
+        "designer|userAlias": "layouts",
+        "designer|userClassName": "Layouts",
+        "icon": null,
+        "iconCls": "icn-layouts",
+        "itemId": "LayoutInspector",
         "tabPosition": "right",
-        "title": "Layout Profiling"
+        "title": "Layouts"
     },
     "designerId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905",
     "cn": [
@@ -24,6 +25,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "iconCls": "icn-overnested",
                 "itemId": "Overnested",
                 "store": "Overnested",
                 "title": "Overnesting"
@@ -96,7 +98,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "iconCls": "x-tbar-loading",
+                                "iconCls": "icn-refresh",
                                 "itemId": "ProfileOvernesting",
                                 "layout|flex": null,
                                 "text": "Profile"
@@ -164,6 +166,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "iconCls": "icn-box",
                 "itemId": "BoxLayouts",
                 "store": "BoxLayouts",
                 "title": "Box Layouts"
@@ -236,7 +239,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "iconCls": "x-tbar-loading",
+                                "iconCls": "icn-refresh",
                                 "itemId": "ProfileBoxLayouts",
                                 "layout|flex": null,
                                 "text": "Profile"

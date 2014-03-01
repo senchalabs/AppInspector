@@ -26,7 +26,6 @@ Ext.define('AI.controller.Components', {
             '#ComponentTree' : {
                 'itemclick'   : this.onSelectComponent
             },
-
             'button#RefreshComponentTree' : {
                 'click' : this.onRefreshComponentsClick
             }
@@ -66,7 +65,7 @@ Ext.define('AI.controller.Components', {
     },
 
     onSelectComponent: function(tree, record, item, index, e, eOpts) {
-        var parent = tree.up('componentinspector'),
+        var parent = tree.up('components'),
             propsGrid = parent.down('#ComponentProps'),
             methodGrid = parent.down('#ComponentMethods');
 

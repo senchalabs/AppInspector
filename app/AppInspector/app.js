@@ -21,30 +21,32 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
+        'Component',
+        'Store',
+        'Record',
+        'Overnested',
         'Event'
     ],
     stores: [
-        'Overnested',
-        'Records',
         'Components',
         'Stores',
+        'Records',
+        'Overnested',
         'BoxLayouts',
         'Events'
     ],
     views: [
         'MainView',
-        'StoreInspector',
-        'AppProfiles',
-        'ComponentInspector',
-        'Events',
-        'About'
+        'Components',
+        'Stores',
+        'Layouts',
+        'Events'
     ],
     controllers: [
-        'Components',
-        'Navigation',
-        'Store',
-        'Profile',
         'Main',
+        'Components',
+        'Stores',
+        'Layouts',
         'Events'
     ],
     name: 'AI',

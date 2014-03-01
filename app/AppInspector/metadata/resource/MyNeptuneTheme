@@ -10,7 +10,7 @@
     },
     "designerId": "1b164612-6ea5-4722-8816-f85b69edae67",
     "storage": {
-        "needsCompile": false,
+        "needsCompile": true,
         "simple": {
             "pkgVersion": 1,
             "pkgPath": "packages"
@@ -22,10 +22,165 @@
                     {
                         "name": "base-color",
                         "enabled": true,
-                        "value": "rgba(0,0,0,1)"
+                        "value": "silver"
+                    }
+                ]
+            },
+            "Ext.tab.Tab": {
+                "globalVars": [
+                    {
+                        "name": "tab-border-radius",
+                        "enabled": true,
+                        "value": "0"
+                    },
+                    {
+                        "name": "tab-color",
+                        "enabled": true,
+                        "value": "#000"
+                    },
+                    {
+                        "name": "tab-color-active",
+                        "enabled": true,
+                        "value": "$tab-color"
+                    },
+                    {
+                        "name": "tab-font-size",
+                        "enabled": true,
+                        "value": "10px"
+                    },
+                    {
+                        "name": "tab-font-weight",
+                        "enabled": true,
+                        "value": "normal"
+                    },
+                    {
+                        "name": "tab-font-weight-active",
+                        "enabled": true,
+                        "value": "bold"
                     }
                 ]
             }
         }
-    }
+    },
+    "cn": [
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "vars",
+                "implHandler": [
+                    "$sencha-green: rgba(121, 154, 5, 1);\t// sencha green"
+                ]
+            },
+            "designerId": "c111a61d-10e8-4180-aa2a-0e8e6aee9b0e"
+        },
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "about-details",
+                "implHandler": [
+                    ":focus { outline: none; }",
+                    "",
+                    ".about-details {",
+                    "    img {",
+                    "        border: 2px solid $sencha-green;",
+                    "    }",
+                    "",
+                    "    .description, .contributors {",
+                    "        a {",
+                    "            color: $sencha-green;",
+                    "            text-decoration: none;",
+                    "",
+                    "            &:focus, &:hover {",
+                    "                text-decoration: underline;",
+                    "            }",
+                    "        }",
+                    "    }",
+                    "}"
+                ]
+            },
+            "designerId": "1abd6bdf-8fe3-4a18-a9bd-50da5832c80e"
+        },
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "icons",
+                "implHandler": [
+                    ".icn-home,",
+                    ".icn-components,",
+                    ".icn-stores,",
+                    ".icn-layouts,",
+                    ".icn-overnested,",
+                    ".icn-box,",
+                    ".icn-events,",
+                    ".icn-refresh,",
+                    ".icn-clear,",
+                    ".icn-record,",
+                    ".icn-stop {",
+                    "    background-repeat: no-repeat;",
+                    "    background-size: 16px 16px;",
+                    "}",
+                    "",
+                    ".icn-home {",
+                    "    background-image: url('../resources/images/home2.png');",
+                    "}",
+                    "",
+                    ".icn-components {",
+                    "    background-image: url('../resources/images/nodes2.png');",
+                    "}",
+                    "",
+                    ".icn-stores {",
+                    "    background-image: url('../resources/images/data.png');",
+                    "}",
+                    "",
+                    ".icn-layouts {",
+                    "    background-image: url('../resources/images/monitor1.png');",
+                    "}",
+                    "",
+                    ".icn-overnested  {",
+                    "    background-image: url('../resources/images/window.png');",
+                    "}",
+                    "",
+                    ".icn-box  {",
+                    "    background-image: url('../resources/images/cube.png');",
+                    "}",
+                    "",
+                    ".icn-events {",
+                    "    background-image: url('../resources/images/bolt.png');",
+                    "}",
+                    "",
+                    ".icn-refresh {",
+                    "    background-image: url('../resources/images/refresh3.png');",
+                    "}",
+                    "",
+                    ".icn-clear {",
+                    "    background-image: url('../resources/images/stop1.png');",
+                    "}",
+                    "",
+                    ".icn-record {",
+                    "    background-image: url('../resources/images/play_black1.png');",
+                    "}",
+                    "",
+                    ".icn-stop {",
+                    "    background-image: url('../resources/images/stop.png');",
+                    "}"
+                ]
+            },
+            "designerId": "145ecce7-640e-41aa-bf1e-7bcccd04f429"
+        }
+    ]
 }

@@ -37,15 +37,22 @@ Ext.define('AI.controller.Events', {
         });
     },
 
-    onRecordEventsClick: function() {
+    onClearEventsClick: function(btn) {
+        var me = this,
+            store = Ext.getStore('Events');
+
+        store.removeAll();
+    },
+
+    onRecordEventsClick: function(btn) {
         var me = this,
             store = Ext.getStore('Events'),
             util;
 
-        Ext.ComponentQuery.query('button#RecordEvents')[0].hide();
-        Ext.ComponentQuery.query('button#StopRecording')[0].show();
+        btn.hide();
+        btn.next().show();
 
-        if (this.getApplication().info.framework === 'ext') {
+        if (me.getApplication().info.framework === 'ext') {
             util = AI.util.extjs.Events.recordEvents;
         }
         else {
@@ -71,16 +78,16 @@ Ext.define('AI.controller.Events', {
         requestAnimationFrame(getEvents);
     },
 
-    onStopRecordingClick: function() {
+    onStopRecordingClick: function(btn) {
         var me = this,
             util;
 
         me.recording = false;
 
-        Ext.ComponentQuery.query('button#StopRecording')[0].hide();
-        Ext.ComponentQuery.query('button#RecordEvents')[0].show();
+        btn.prev().show();
+        btn.hide();
 
-        if (this.getApplication().info.framework === 'ext') {
+        if (me.getApplication().info.framework === 'ext') {
             util = AI.util.extjs.Events.stopEvents;
         }
         else {
@@ -92,13 +99,6 @@ Ext.define('AI.controller.Events', {
             null,
             Ext.emptyFn
         );
-    },
-
-    onClearEventsClick: function(btn) {
-        var me = this,
-            store = Ext.getStore('Events');
-
-        store.removeAll();
     }
 
 });

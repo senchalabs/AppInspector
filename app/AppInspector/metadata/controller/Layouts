@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Profile",
+        "designer|userClassName": "Layouts",
         "requires": [
             "AI.util.extjs.Profile",
             "AI.util.touch.Profile"

@@ -41,7 +41,7 @@ module.exports = {
             dest: '<%= yeoman.dist %>/images'
         }, {
             expand: true,
-            cwd: '<%= yeoman.app %>/AppInspector/build/deving/AI',
+            cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI',
             dest: '<%= yeoman.dist %>/AppInspector',
             src: [
                 '*.{html,js}',
@@ -49,7 +49,7 @@ module.exports = {
             ]
         }, {
             expand: true,
-            cwd: '<%= yeoman.app %>/AppInspector/build/deving/AI/resources/images',
+            cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI/resources/images',
             src: '{,*/}*.{png,jpg,jpeg}',
             dest: '<%= yeoman.dist %>/AppInspector/resources/images'
         }]

@@ -7,136 +7,27 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
+        "designer|userAlias": "mainview",
         "designer|userClassName": "MainView",
-        "itemId": "mainView",
-        "layout": "border",
-        "requires": [
-            "Ext.layout.container.Border",
-            "Ext.layout.container.Card"
-        ]
+        "itemId": "mainview",
+        "layout": "fit"
     },
-    "designerId": "353f0c49-9162-4dc5-8e2d-ffb09f0d3a62",
+    "designerId": "9ea5a374-8953-4666-bc25-8cd89863667f",
     "cn": [
         {
-            "type": "Ext.panel.Panel",
+            "type": "Ext.tab.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "bodyStyle": [
-                    "'background-color: #333;'"
-                ],
-                "collapsed": true,
-                "collapsible": true,
-                "container|align": "stretch",
-                "itemId": "menuPanel",
-                "layout": "vbox",
-                "layout|region": "west",
-                "layout|split": true,
-                "title": "Menu",
-                "width": 250
-            },
-            "designerId": "70e4bdc2-8c21-4da3-b357-bdac73847e65",
-            "cn": [
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/home.png",
-                        "itemId": "AboutNav",
-                        "layout|flex": null,
-                        "scale": "large",
-                        "text": "About",
-                        "width": null
-                    },
-                    "designerId": "70ac490e-e5e7-4307-9533-bef76c6cf019"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/connected.png",
-                        "itemId": "ComponentsNav",
-                        "layout|flex": null,
-                        "scale": "large",
-                        "text": "Components"
-                    },
-                    "designerId": "1d5d7375-1fc9-4265-a0a3-0da315a801cf"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/database.png",
-                        "itemId": "StoresNav",
-                        "layout|flex": null,
-                        "scale": "large",
-                        "text": "Stores"
-                    },
-                    "designerId": "9008a98a-8590-4dee-a9a8-546868b30746"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/screen.png",
-                        "itemId": "ProfilesNav",
-                        "layout|flex": null,
-                        "scale": "large",
-                        "text": "Layouts"
-                    },
-                    "designerId": "0ad2117f-378c-49de-b59a-682987b7c1d3"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "icon": "resources/images/light.png",
-                        "itemId": "EventsNav",
-                        "layout|flex": null,
-                        "scale": "large",
-                        "text": "Events"
-                    },
-                    "designerId": "6e0261ea-7773-42f7-81de-8efe8d635a5c"
-                }
-            ]
-        },
-        {
-            "type": "Ext.panel.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "itemId": "ContentPanel",
-                "layout": "card",
-                "layout|region": "center",
+                "activeTab": 0,
+                "designer|displayName": "content",
+                "tabPosition": null,
                 "title": null
             },
-            "designerId": "c98c4f91-6f66-4054-8e31-2ccc2ab4f975",
+            "designerId": "71eb6dca-db8c-4b9c-9971-df75a352ce9a",
             "cn": [
                 {
                     "type": "linkedinstance",
@@ -145,8 +36,19 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "designerId": "5475878a-645b-4497-8036-c697c4ed47de",
-                    "masterInstanceId": "d35aac6a-df56-4378-8fd1-4decd2f16aef"
+                    "designerId": "7380c2e2-0bdd-4558-8e60-729e1e3f5c4d",
+                    "masterInstanceId": "d35aac6a-df56-4378-8fd1-4decd2f16aef",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "e60d8708-2f54-43d4-9a07-b792ffcd90a5"
+                        }
+                    ]
                 },
                 {
                     "type": "linkedinstance",
@@ -155,8 +57,19 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "designerId": "e98582dd-325e-4a80-88ed-b2bbc21cee41",
-                    "masterInstanceId": "6396961f-44a6-489d-a87a-171343f16ba4"
+                    "designerId": "8489018a-10ba-4306-9d87-b5e26b98b38f",
+                    "masterInstanceId": "6396961f-44a6-489d-a87a-171343f16ba4",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "ae39889d-343d-4217-8be8-25d45ce8d0d9"
+                        }
+                    ]
                 },
                 {
                     "type": "linkedinstance",
@@ -165,8 +78,19 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "designerId": "8959a8b5-5a5a-4d91-8e71-d4ca11e68574",
-                    "masterInstanceId": "bd2cd338-5fc6-488f-aa7c-a4ca1faad085"
+                    "designerId": "c8aa26c3-3263-432f-b747-212480516995",
+                    "masterInstanceId": "bd2cd338-5fc6-488f-aa7c-a4ca1faad085",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "9172c070-8b5c-447e-a2eb-47e252d19a4f"
+                        }
+                    ]
                 },
                 {
                     "type": "linkedinstance",
@@ -175,8 +99,19 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "designerId": "d30c0179-b8bd-46bc-bb72-d404bf75931a",
-                    "masterInstanceId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905"
+                    "designerId": "b6796801-97ec-4db8-ba2e-383a77f89e24",
+                    "masterInstanceId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "13fb7632-a43d-4b06-a60d-ca2c7116f258"
+                        }
+                    ]
                 },
                 {
                     "type": "linkedinstance",
@@ -185,8 +120,19 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "designerId": "e51ab3e9-b6ea-4186-ab9f-51bee60c62f0",
-                    "masterInstanceId": "5a468293-377b-432a-9518-58ecb1365d6b"
+                    "designerId": "b3fb9a8b-7851-4a31-bda9-b6e5a076cff7",
+                    "masterInstanceId": "5a468293-377b-432a-9518-58ecb1365d6b",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "5ce2e9b5-4d87-49f8-91d4-aebca665306a"
+                        }
+                    ]
                 }
             ]
         }

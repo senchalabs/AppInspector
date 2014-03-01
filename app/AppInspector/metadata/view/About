@@ -8,13 +8,14 @@
     "userConfig": {
         "autoScroll": true,
         "container|align": "stretch",
-        "designer|userAlias": "mypanel2",
+        "designer|userAlias": "about",
         "designer|userClassName": "About",
-        "icon": "resources/images/home.png",
-        "itemId": "AboutPanel",
+        "icon": null,
+        "iconCls": "icn-home",
+        "itemId": "About",
         "layout": "vbox",
         "loader": null,
-        "padding": 20,
+        "padding": null,
         "title": "App Details",
         "width": null
     },
@@ -28,8 +29,10 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|displayName": null,
                 "height": 150,
                 "itemId": "AppDetails",
+                "layout|flex": null,
                 "source": [
                     "{}"
                 ],
@@ -45,12 +48,18 @@
             },
             "codeClass": null,
             "userConfig": {
+                "cls": "about-details",
+                "designer|displayName": null,
+                "itemId": "AboutDetails",
+                "layout|flex": null,
                 "loader": [
                     "{",
                     "    url: 'about.html',",
                     "    autoLoad: true",
                     "}"
-                ]
+                ],
+                "padding": "0 10",
+                "width": null
             },
             "designerId": "d27912dd-c3e5-4d6b-9ace-156f4fd74e79"
         }
