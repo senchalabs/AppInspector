@@ -16,6 +16,10 @@
 Ext.define('AI.controller.Main', {
     extend: 'Ext.app.Controller',
 
+    requires: [
+        'Ext.window.MessageBox'
+    ],
+
     init: function(application) {
         this.control({
             '#mainview' : {
@@ -25,24 +29,26 @@ Ext.define('AI.controller.Main', {
     },
 
     onAppRender: function() {
-        var app = this.getApplication();
+        var app = this.getApplication(),
+            main = Ext.ComponentQuery.query('#mainview')[0];
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.getAppVersion,
             null,
             function (data) {
-                var main = Ext.ComponentQuery.query('#mainview')[0];
-
-                if (!data) {
-                    main.disable();
-                }
-                else {
+                if (data) {
                     main.down('#AppDetails').setSource(data);
 
                     app.info = {
                         framework : data.extjs ? 'ext' : 'touch',
                         version   : data.extjs ? data.extjs.version : data.touch.version
                     };
+                } else {
+                    // mask entire AppInspector body element
+                    Ext.getBody().mask(
+                        'No Sencha framework found!',
+                        'no-framework-mask'
+                    );
                 }
             }
         );

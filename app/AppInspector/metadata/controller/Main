@@ -6,7 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Main"
+        "designer|userClassName": "Main",
+        "requires": [
+            "Ext.window.MessageBox"
+        ]
     },
     "designerId": "82d77d3e-fd58-4e64-a3ce-00dbbb070209",
     "cn": [
@@ -42,24 +45,26 @@
             "userConfig": {
                 "fn": "onAppRender",
                 "implHandler": [
-                    "var app = this.getApplication();",
+                    "var app = this.getApplication(),",
+                    "    main = Ext.ComponentQuery.query('#mainview')[0];",
                     "",
                     "AI.util.InspectedWindow.eval(",
                     "    AI.util.InspectedWindow.getAppVersion,",
                     "    null,",
                     "    function (data) {",
-                    "        var main = Ext.ComponentQuery.query('#mainview')[0];",
-                    "",
-                    "        if (!data) {",
-                    "            main.disable();",
-                    "        }",
-                    "        else {",
+                    "        if (data) {",
                     "            main.down('#AppDetails').setSource(data);",
                     "",
                     "            app.info = {",
                     "                framework : data.extjs ? 'ext' : 'touch',",
                     "                version   : data.extjs ? data.extjs.version : data.touch.version",
                     "            };",
+                    "        } else {",
+                    "            // mask entire AppInspector body element",
+                    "            Ext.getBody().mask(",
+                    "                'No Sencha framework found!',",
+                    "                'no-framework-mask'",
+                    "            );",
                     "        }",
                     "    }",
                     ");"

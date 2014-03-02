@@ -26,7 +26,9 @@
         "lastBuildSelection": {
             "value": "webBuild",
             "display": "Build web app"
-        }
+        },
+        "displayfield-ExtBox1-1281-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1332-inputEl": "Not Installed"
     },
     "xdsVersion": "3.0.2",
     "xdsBuild": 1378,

@@ -20,7 +20,8 @@
     "smarttabs": true,
 
     "evil": true, //allow eval
-    // "devel": true, //ignore alert, console, etc
+    "devel": true, //ignore alert, console, etc
+    "debug": true,
 
     "globals": {
         "Ext": true,
