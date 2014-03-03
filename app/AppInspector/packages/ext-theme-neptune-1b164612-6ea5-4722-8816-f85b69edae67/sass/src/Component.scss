@@ -1,4 +1,25 @@
-$sencha-green: rgba(121, 154, 5, 1);	// sencha green
+.x-body.x-masked {
+    div.x-panel {
+        @include filter(blur(2px));
+    }
+}
+
+.x-mask-msg {
+    &.no-framework-mask {
+        border: 1px solid $loadmask-msg-inner-color;
+        
+        .x-mask-inner {}
+        
+        .x-mask-msg-text {
+            padding: 24px;
+            margin: 0;
+            background: none;
+            font-size: 2em;
+        }
+    }
+    
+    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);
+}
 :focus { outline: none; }
 
 .about-details {

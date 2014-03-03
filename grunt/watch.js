@@ -23,6 +23,7 @@ module.exports = function(grunt) {
         },
         develop: {
             files: [
+                'app/AppInspector/app/util/**/*',
                 'app/AppInspector/metadata/**/*',
                 'app/background.js',
                 'app/devtools-page.js'
