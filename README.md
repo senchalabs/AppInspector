@@ -42,5 +42,5 @@ View the documentation for the Chrome-wrapped utilities under /docs/ in your bro
 ## Install & Build
 
 This project relies on *npm* and [Grunt](GruntJS.md) to build locally.
- * Run **npm update** to install all Node.js dependencies from *package.json*
+ * Run **npm install** to install all Node.js dependencies from *package.json*
  * If you are building the project for the first time, be sure to open the Architect project and hit "save" to generate the necessary Sencha Cmd bits

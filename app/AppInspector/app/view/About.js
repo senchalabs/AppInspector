@@ -45,14 +45,17 @@ Ext.define('AI.view.About', {
                     }
                 },
                 {
-                    xtype: 'container',
+                    xtype: 'panel',
+                    flex: 1,
                     cls: 'about-details',
                     itemId: 'AboutDetails',
                     loader: {
                         url: 'about.html',
                         autoLoad: true
                     },
-                    padding: '0 10'
+                    autoScroll: true,
+                    bodyPadding: '0 10',
+                    title: 'About App Inspector for Sencha'
                 }
             ]
         });

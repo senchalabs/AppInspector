@@ -69,8 +69,15 @@ Ext.define('AI.util.Component', {
 
         //GET TOP LEVEL COMPONENTS FIRST
         var top = [],
-            all = Ext.ComponentManager.all.getArray(),
-            nodes;
+            all, nodes;
+
+        // Ext JS 5 breaks the older ComponentManager API
+        if (Ext.versions.extjs && Ext.versions.extjs.major > 4) {
+            all = Ext.Object.getValues(Ext.ComponentManager.all);
+        }
+        else {
+            all = Ext.ComponentManager.all.getArray();
+        }
 
         Ext.each(all, function (comp) {
             if (!comp.ownerCt && !comp.parent) {
