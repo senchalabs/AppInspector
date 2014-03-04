@@ -41,24 +41,27 @@
             "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
         },
         {
-            "type": "Ext.container.Container",
+            "type": "Ext.panel.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": "0 10",
                 "cls": "about-details",
                 "designer|displayName": null,
                 "itemId": "AboutDetails",
-                "layout|flex": null,
+                "layout|flex": 1,
                 "loader": [
                     "{",
                     "    url: 'about.html',",
                     "    autoLoad: true",
                     "}"
                 ],
-                "padding": "0 10",
+                "padding": null,
+                "title": "About App Inspector for Sencha",
                 "width": null
             },
             "designerId": "d27912dd-c3e5-4d6b-9ace-156f4fd74e79"
