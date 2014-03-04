@@ -73,7 +73,7 @@ Ext.define('AI.util.Component', {
 
         // Ext JS 5 breaks the older ComponentManager API
         if (Ext.versions.extjs && Ext.versions.extjs.major > 4) {
-            all = Ext.Object.getValues(Ext.ComponentManager.all);
+            all = Ext.ComponentManager.getAll();
         }
         else {
             all = Ext.ComponentManager.all.getArray();
