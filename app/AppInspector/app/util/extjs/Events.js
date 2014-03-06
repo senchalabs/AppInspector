@@ -10,10 +10,10 @@ Ext.define('AI.util.extjs.Events', {
     recordEvents : function () {
         var o = Ext.util.Observable.prototype;
 
-        if (!o._eventMonitor) {
-            o._eventMonitor = [];
+        if (Ext.ux.AppInspector.eventCache === null) {
+            Ext.ux.AppInspector.eventCache = [];
 
-            o._captureFn = function () {
+            Ext.ux.AppInspector.eventCaptureFn = function () {
                 var eventName = arguments[0],
                     signature = arguments[1];
 
@@ -38,7 +38,7 @@ Ext.define('AI.util.extjs.Events', {
                 }
                 // </debug>
 
-                Ext.util.Observable.prototype._eventMonitor.push({
+                Ext.ux.AppInspector.eventCache.push({
                     eventName : eventName,
                     source    : signature.$className,
                     xtype     : signature.xtype,
@@ -47,19 +47,19 @@ Ext.define('AI.util.extjs.Events', {
             };
 
             Ext.ComponentManager.each(function (key) {
-                Ext.util.Observable.capture(Ext.getCmp(key), o._captureFn);
+                Ext.util.Observable.capture(Ext.getCmp(key), Ext.ux.AppInspector.eventCaptureFn);
             });
 
             //be sure we capture all new components added...
             Ext.ComponentManager.register = Ext.Function.createSequence(Ext.ComponentManager.register, function (item) {
-                Ext.util.Observable.capture(item, Ext.util.Observable.prototype._captureFn);
+                Ext.util.Observable.capture(item, Ext.ux.AppInspector.eventCaptureFn);
             });
         }
 
-        var events = o._eventMonitor;
+        var events = Ext.ux.AppInspector.eventCache;
 
         //clear each time so we don't duplicate
-        o._eventMonitor = [];
+        Ext.ux.AppInspector.eventCache = [];
 
         return events;
     },
@@ -68,17 +68,15 @@ Ext.define('AI.util.extjs.Events', {
      *
      */
     stopEvents : function () {
-        var o = Ext.util.Observable.prototype;
-
-        if (o._eventMonitor) {
+        if (Ext.ux.AppInspector.eventCache) {
             Ext.ComponentManager.each(function (key) {
                 Ext.util.Observable.releaseCapture(Ext.getCmp(key));
             });
 
             //don't break the function sequence we created in recordEvents()
-            Ext.util.Observable.prototype._captureFn = Ext.emptyFn;
+            Ext.ux.AppInspector.eventCaptureFn = Ext.emptyFn;
 
-            delete o._eventMonitor;
+            Ext.ux.AppInspector.eventCache = null;
         }
     }
 });
