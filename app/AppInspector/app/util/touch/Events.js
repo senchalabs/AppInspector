@@ -10,12 +10,12 @@ Ext.define('AI.util.touch.Events', {
     recordEvents : function () {
         var o = Ext.event.Dispatcher.prototype;
 
-        if (!o._fireEvent) {
-            o._fireEvent = o.dispatchEvent; //set reference to restore later
-            o._eventMonitor = [];
+        if (Ext.ux.AppInspector.eventCache === null) {
+            Ext.ux.AppInspector.eventCaptureFn = o.dispatchEvent; //set reference to restore later
+            Ext.ux.AppInspector.eventCache = [];
 
             o.dispatchEvent = function (targetType, target, eventName) {
-                o._fireEvent.apply(this, arguments);
+                Ext.ux.AppInspector.eventCaptureFn.apply(this, arguments);
 
                 var isComponent = (targetType === 'component');
 
@@ -26,14 +26,14 @@ Ext.define('AI.util.touch.Events', {
                     id        : target
                 };
 
-                o._eventMonitor.push(x);
+                Ext.ux.AppInspector.eventCache.push(x);
             };
         }
 
-        var events = o._eventMonitor;
+        var events = Ext.ux.AppInspector.eventCache;
 
         //clear each time so we don't duplicate
-        o._eventMonitor = [];
+        Ext.ux.AppInspector.eventCache = [];
 
         return events;
     },
@@ -44,11 +44,11 @@ Ext.define('AI.util.touch.Events', {
     stopEvents : function () {
         var o = Ext.event.Dispatcher.prototype;
 
-        if (o._fireEvent) {
-            o.dispatchEvent = o._fireEvent; //set reference to restore later
+        if (Ext.ux.AppInspector.eventCache !== null) {
+            o.dispatchEvent = Ext.ux.AppInspector.eventCaptureFn; //set reference to restore later
 
-            delete o._fireEvent;
-            delete o._eventMonitor;
+            Ext.ux.AppInspector.eventCaptureFn = null;
+            Ext.ux.AppInspector.eventCache = null;
         }
     }
 });

@@ -1,5 +1,10 @@
 'use strict';
 
+var AI = {
+    isReady     : false,
+    contextMenu : null
+};
+
 /**
  * Create Sencha Panel
  * http://developer.chrome.com/extensions/devtools.html
@@ -10,11 +15,9 @@ chrome.devtools.panels.create(
     'AppInspector/index.html',
 
     function (senchaPanel) {
-        var READY;
-
         senchaPanel.onShown.addListener(function (panelWindow) {
-            if (READY) { return; }
-            READY = true;
+            if (AI.isReady) { return; }
+            AI.isReady = true;
 
             //connect to logic in background.js
             var port = chrome.runtime.connect({ name : 'AppInspector' }),

@@ -79,6 +79,31 @@ Ext.define('AI.util.InspectedWindow', {
             return false;
         }
 
+        //helper class
+        Ext.define('Ext.ux.AppInspector', {
+            singleton : true,
+
+            //for the Event Monitor
+            eventCache     : null,
+            eventCaptureFn : null,
+
+            //for the right-click menu
+            contextRef : null,
+            contextFn  : function(evt, target, eOpts) {
+                var cmp = Ext.getCmp(target.id);
+
+                if (cmp) {
+                    contextRef = cmp.getId();
+                }
+                else {
+                    contextRef = null;
+                }
+            }
+        });
+
+        //hack to access right-click menu
+        Ext.getBody().on('contextmenu', Ext.ux.AppInspector.contextFn, Ext.ux.AppInspector);
+
         if (!document.getElementById('_AppInspector')) {
             //create a highlighting DIV for use later
             var div = document.createElement('div');
