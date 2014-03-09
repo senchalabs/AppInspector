@@ -36,8 +36,8 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "designerId": "7380c2e2-0bdd-4558-8e60-729e1e3f5c4d",
-                    "masterInstanceId": "d35aac6a-df56-4378-8fd1-4decd2f16aef",
+                    "designerId": "06c5d5ad-3cdd-4bd9-a00b-1acf13785b9c",
+                    "masterInstanceId": "179dd4ed-c247-45e3-9431-e01d8a679662",
                     "cn": [
                         {
                             "type": "Ext.tab.Tab",
@@ -46,7 +46,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "e60d8708-2f54-43d4-9a07-b792ffcd90a5"
+                            "designerId": "4ab1f837-5bcc-43b8-8d30-8b10262dac1b"
                         }
                     ]
                 },
@@ -88,7 +88,7 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "9172c070-8b5c-447e-a2eb-47e252d19a4f"
+                            "designerId": "6d40dac8-8030-4c0c-8502-c0e1c8d14cc0"
                         }
                     ]
                 },

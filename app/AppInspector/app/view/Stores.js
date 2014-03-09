@@ -18,14 +18,15 @@ Ext.define('AI.view.Stores', {
     alias: 'widget.stores',
 
     requires: [
-        'Ext.grid.column.Column',
-        'Ext.grid.View',
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
+        'Ext.grid.column.Column',
+        'Ext.grid.View',
         'Ext.grid.property.Grid',
         'Ext.grid.Panel'
     ],
 
+    initialLoad: false,
     itemId: 'StoreInspector',
     iconCls: 'icn-stores',
     title: 'Stores',
@@ -46,19 +47,6 @@ Ext.define('AI.view.Stores', {
                     height: 300,
                     itemId: 'StoreList',
                     store: 'Stores',
-                    columns: [
-                        {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'id',
-                            text: 'Store ID',
-                            flex: 1
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'count',
-                            text: 'Record Count'
-                        }
-                    ],
                     dockedItems: [
                         {
                             xtype: 'toolbar',
@@ -71,6 +59,19 @@ Ext.define('AI.view.Stores', {
                                     text: 'Refresh'
                                 }
                             ]
+                        }
+                    ],
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'id',
+                            text: 'Store ID',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'count',
+                            text: 'Record Count'
                         }
                     ]
                 },

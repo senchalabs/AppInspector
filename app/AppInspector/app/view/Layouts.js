@@ -39,6 +39,7 @@ Ext.define('AI.view.Layouts', {
             items: [
                 {
                     xtype: 'gridpanel',
+                    initialLoad: false,
                     itemId: 'Overnested',
                     iconCls: 'icn-overnested',
                     title: 'Overnesting',
@@ -88,6 +89,7 @@ Ext.define('AI.view.Layouts', {
                 },
                 {
                     xtype: 'gridpanel',
+                    initialLoad: false,
                     itemId: 'BoxLayouts',
                     iconCls: 'icn-box',
                     title: 'Box Layouts',

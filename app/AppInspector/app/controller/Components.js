@@ -21,15 +21,43 @@ Ext.define('AI.controller.Components', {
         'AI.util.InspectedWindow'
     ],
 
+    models: [
+        'Component'
+    ],
+    stores: [
+        'Components'
+    ],
+    views: [
+        'Components'
+    ],
+
     init: function(application) {
-        this.control({
-            '#ComponentTree' : {
-                'itemclick'   : this.onSelectComponent
+        var me = this;
+
+        me.control({
+            'panel#ComponentInspector': {
+                'activate': me.onActivate
             },
-            'button#RefreshComponentTree' : {
-                'click' : this.onRefreshComponentsClick
+            'button#RefreshComponentTree': {
+                'click': me.onRefreshComponentsClick
+            },
+            'treepanel#ComponentTree': {
+                'itemclick': me.onSelectComponent
             }
         });
+    },
+
+    onActivate: function(panel) {
+        // load the "Components" upfront ...
+        var initialLoad = panel.initialLoad,
+            tree = panel.down('#ComponentTree');
+
+        if (!initialLoad && tree) {
+            // ... but only once
+            panel.initialLoad = true;
+
+            this.onComponentTreeActivate(tree);
+        }
     },
 
     onRefreshComponentsClick: function(btn) {
@@ -82,8 +110,7 @@ Ext.define('AI.controller.Components', {
                 if (result) {
                     propsGrid.setSource(result.properties);
                     methodGrid.setSource(result.methods);
-                }
-                else {
+                } else {
                     propsGrid.setSource({});
                     methodGrid.setSource({});
                 }

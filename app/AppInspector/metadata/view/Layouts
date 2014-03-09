@@ -15,6 +15,9 @@
         "tabPosition": "right",
         "title": "Layouts"
     },
+    "configAlternates": {
+        "initialLoad": "boolean"
+    },
     "designerId": "9941c2fb-3e03-40e6-ae0a-15ff82dcc905",
     "cn": [
         {
@@ -26,11 +29,22 @@
             "codeClass": null,
             "userConfig": {
                 "iconCls": "icn-overnested",
+                "initialLoad": false,
                 "itemId": "Overnested",
                 "store": "Overnested",
                 "title": "Overnesting"
             },
+            "configAlternates": {
+                "initialLoad": "boolean"
+            },
             "designerId": "afad97ac-efa9-4914-b952-5faf8207d088",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "initialLoad",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
                     "type": "Ext.grid.column.Column",
@@ -167,11 +181,22 @@
             "codeClass": null,
             "userConfig": {
                 "iconCls": "icn-box",
+                "initialLoad": false,
                 "itemId": "BoxLayouts",
                 "store": "BoxLayouts",
                 "title": "Box Layouts"
             },
+            "configAlternates": {
+                "initialLoad": "boolean"
+            },
             "designerId": "30738f8d-0255-45e9-a009-4bdd5869ac76",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "initialLoad",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
                     "type": "Ext.grid.column.Column",

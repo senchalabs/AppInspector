@@ -2,18 +2,18 @@
  *
  */
 Ext.define('AI.util.InspectedWindow', {
-    singleton : true,
+    singleton: true,
 
-    requires : [
+    requires: [
         'AI.util.Error'
     ],
 
     /**
      * @param {String} id
      */
-    highlight : function (id) {
+    highlight: function(id) {
         var cmp = Ext.getCmp(id),
-            el  = document.getElementById('_AppInspector'),
+            el = document.getElementById('_AppInspector'),
             box;
 
         if (cmp && cmp.rendered) {
@@ -28,13 +28,13 @@ Ext.define('AI.util.InspectedWindow', {
             }
 
             el.style.height = box.height + 'px';
-            el.style.width  = box.width + 'px';
-            el.style.top  = box.top + 'px';
-            el.style.left  = box.left + 'px';
+            el.style.width = box.width + 'px';
+            el.style.top = box.top + 'px';
+            el.style.left = box.left + 'px';
             el.style.visibility = '';
 
             window.setTimeout(function() {
-                var el  = document.getElementById('_AppInspector');
+                var el = document.getElementById('_AppInspector');
 
                 el.style.visibility = 'hidden';
             }, 1000);
@@ -50,7 +50,7 @@ Ext.define('AI.util.InspectedWindow', {
      *
      * - isException {Boolean}: whether-or-not the closure function encountered an exception
      */
-    eval : function (closure, argString, callback) {
+    eval: function(closure, argString, callback) {
         var callbackFn = callback,
             args = '';
 
@@ -60,7 +60,7 @@ Ext.define('AI.util.InspectedWindow', {
 
         chrome.devtools.inspectedWindow.eval(
             '(' + closure + ')(' + args + ')',
-            function (result, isException) {
+            function(result, isException) {
                 if (isException) {
                     AI.util.Error.parseException(isException);
                     return;
@@ -74,29 +74,28 @@ Ext.define('AI.util.InspectedWindow', {
     /**
      * Function to get the framework and version of the inspected app.
      */
-    getAppVersion : function() {
+    getAppVersion: function() {
         if (!window.Ext) {
             return false;
         }
 
         //helper class
         Ext.define('Ext.ux.AppInspector', {
-            singleton : true,
+            singleton: true,
 
             //for the Event Monitor
-            eventCache     : null,
-            eventCaptureFn : null,
+            eventCache: null,
+            eventCaptureFn: null,
 
             //for the right-click menu
-            contextRef : null,
-            contextFn  : function(evt, target, eOpts) {
+            contextRef: null,
+            contextFn: function(evt, target, eOpts) {
                 var cmp = Ext.getCmp(target.id);
 
                 if (cmp) {
-                    contextRef = cmp.getId();
-                }
-                else {
-                    contextRef = null;
+                    this.contextRef = cmp.getId();
+                } else {
+                    this.contextRef = null;
                 }
             }
         });

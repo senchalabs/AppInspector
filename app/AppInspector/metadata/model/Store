@@ -33,6 +33,23 @@
                 "name": "count"
             },
             "designerId": "30b326f4-a930-490b-9405-883997199699"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "false"
+                ],
+                "name": "leaf",
+                "sortType": null,
+                "type": "boolean"
+            },
+            "designerId": "ea4a5c2f-5e75-4cc3-95ba-5bc75e00effc"
         }
     ]
 }

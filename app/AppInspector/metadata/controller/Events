@@ -7,9 +7,19 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "Events",
+        "models": [
+            "Event"
+        ],
         "requires": [
             "AI.util.extjs.Events",
-            "AI.util.touch.Events"
+            "AI.util.touch.Events",
+            "AI.util.InspectedWindow"
+        ],
+        "stores": [
+            "Events"
+        ],
+        "views": [
+            "Events"
         ]
     },
     "designerId": "dd76bde8-9960-4b2e-991b-53d42bf48f26",

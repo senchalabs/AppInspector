@@ -6,20 +6,17 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoScroll": true,
         "container|align": "stretch",
         "designer|userAlias": "about",
         "designer|userClassName": "About",
-        "icon": null,
+        "height": 250,
         "iconCls": "icn-home",
         "itemId": "About",
         "layout": "vbox",
-        "loader": null,
-        "padding": null,
         "title": "App Details",
-        "width": null
+        "width": 400
     },
-    "designerId": "d35aac6a-df56-4378-8fd1-4decd2f16aef",
+    "designerId": "179dd4ed-c247-45e3-9431-e01d8a679662",
     "cn": [
         {
             "type": "Ext.grid.property.Grid",
@@ -30,15 +27,20 @@
             "codeClass": null,
             "userConfig": {
                 "designer|displayName": null,
-                "height": 150,
+                "emptyText": "No Sencha framework found!",
+                "header": false,
+                "height": null,
+                "iconCls": "icon-home",
                 "itemId": "AppDetails",
-                "layout|flex": null,
+                "layout|flex": 1,
+                "minHeight": 150,
                 "source": [
                     "{}"
                 ],
-                "title": null
+                "title": null,
+                "titleCollapse": null
             },
-            "designerId": "d82a1a3e-c4b9-4075-a976-c0d292a34c07"
+            "designerId": "4b8f158c-39a0-4297-a2c3-ec741a0880c7"
         },
         {
             "type": "Ext.panel.Panel",
@@ -48,12 +50,17 @@
             },
             "codeClass": null,
             "userConfig": {
+                "animCollapse": false,
                 "autoScroll": true,
-                "bodyPadding": "0 10",
+                "bodyPadding": "5 10",
                 "cls": "about-details",
+                "collapseDirection": null,
+                "collapsed": null,
+                "collapsible": true,
                 "designer|displayName": null,
+                "hideCollapseTool": true,
                 "itemId": "AboutDetails",
-                "layout|flex": 1,
+                "layout|flex": 2,
                 "loader": [
                     "{",
                     "    url: 'about.html',",
@@ -62,9 +69,10 @@
                 ],
                 "padding": null,
                 "title": "About App Inspector for Sencha",
+                "titleCollapse": true,
                 "width": null
             },
-            "designerId": "d27912dd-c3e5-4d6b-9ace-156f4fd74e79"
+            "designerId": "711195df-b751-425b-ae80-7600476ded26"
         }
     ]
 }

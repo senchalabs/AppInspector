@@ -21,8 +21,9 @@ Ext.define('AI.view.About', {
         'Ext.grid.property.Grid'
     ],
 
+    height: 250,
     itemId: 'About',
-    autoScroll: true,
+    width: 400,
     iconCls: 'icn-home',
     title: 'App Details',
 
@@ -38,15 +39,19 @@ Ext.define('AI.view.About', {
             items: [
                 {
                     xtype: 'propertygrid',
-                    height: 150,
+                    flex: 1,
                     itemId: 'AppDetails',
+                    minHeight: 150,
+                    header: false,
+                    iconCls: 'icon-home',
+                    emptyText: 'No Sencha framework found!',
                     source: {
                         
                     }
                 },
                 {
                     xtype: 'panel',
-                    flex: 1,
+                    flex: 2,
                     cls: 'about-details',
                     itemId: 'AboutDetails',
                     loader: {
@@ -54,8 +59,12 @@ Ext.define('AI.view.About', {
                         autoLoad: true
                     },
                     autoScroll: true,
-                    bodyPadding: '0 10',
-                    title: 'About App Inspector for Sencha'
+                    bodyPadding: '5 10',
+                    animCollapse: false,
+                    collapsible: true,
+                    hideCollapseTool: true,
+                    title: 'About App Inspector for Sencha',
+                    titleCollapse: true
                 }
             ]
         });

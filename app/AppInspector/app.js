@@ -20,28 +20,6 @@ Ext.Loader.setConfig({
 
 
 Ext.application({
-    models: [
-        'Component',
-        'Store',
-        'Record',
-        'Overnested',
-        'Event'
-    ],
-    stores: [
-        'Components',
-        'Stores',
-        'Records',
-        'Overnested',
-        'BoxLayouts',
-        'Events'
-    ],
-    views: [
-        'MainView',
-        'Components',
-        'Stores',
-        'Layouts',
-        'Events'
-    ],
     controllers: [
         'Main',
         'Components',

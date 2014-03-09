@@ -26,6 +26,11 @@ Ext.define('AI.model.Store', {
         },
         {
             name: 'count'
+        },
+        {
+            defaultValue: false,
+            name: 'leaf',
+            type: 'boolean'
         }
     ]
 });

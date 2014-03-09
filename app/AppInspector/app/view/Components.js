@@ -28,6 +28,7 @@ Ext.define('AI.view.Components', {
         'Ext.layout.container.Border'
     ],
 
+    initialLoad: false,
     height: 250,
     itemId: 'ComponentInspector',
     width: 400,
