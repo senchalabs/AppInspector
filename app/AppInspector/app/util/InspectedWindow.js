@@ -93,10 +93,10 @@ Ext.define('AI.util.InspectedWindow', {
                 var cmp = Ext.getCmp(target.id);
 
                 if (cmp) {
-                    contextRef = cmp.getId();
+                    this.contextRef = cmp.getId();
                 }
                 else {
-                    contextRef = null;
+                    this.contextRef = null;
                 }
             }
         });
