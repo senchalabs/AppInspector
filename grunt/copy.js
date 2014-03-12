@@ -15,7 +15,7 @@ module.exports = {
                 cwd    : '<%= yeoman.app %>',
                 dest   : '<%= yeoman.dist %>',
                 src    : [
-                    '*.{html,js}', '_locales/**/*'
+                    '*.{html,js}', '_locales/**/*', 'LICENSE'
                 ]
             },
             {
@@ -52,7 +52,7 @@ module.exports = {
                 cwd    : '<%= yeoman.app %>',
                 dest   : '<%= yeoman.dist %>',
                 src    : [
-                    '*.{html,js}', '_locales/**/*'
+                    '*.{html,js}', '_locales/**/*', 'LICENSE'
                 ]
             },
             {
