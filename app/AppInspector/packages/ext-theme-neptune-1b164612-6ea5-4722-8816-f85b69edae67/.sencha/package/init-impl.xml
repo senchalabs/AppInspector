@@ -115,7 +115,9 @@
         -->
         <if>
             <or>
-                <equals arg1="theme" arg2="${package.type}"/>
+                <not>
+                    <equals arg1="theme" arg2="${package.type}"/>
+                </not>
                 <equals arg1="touch" arg2="${framework.name}"/>
             </or>
             <then>

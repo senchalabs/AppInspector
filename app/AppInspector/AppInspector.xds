@@ -3,7 +3,7 @@
     "settings": {
         "cmd": {
             "license": "gpl",
-            "cmdVersion": "4.0.2.67",
+            "cmdVersion": "4.0.3.74",
             "frameworkVersion": "4.2.1.883"
         },
         "canvasControls": {
@@ -30,8 +30,8 @@
         "displayfield-ExtBox1-1281-inputEl": "Not Installed",
         "displayfield-ExtBox1-1332-inputEl": "Not Installed"
     },
-    "xdsVersion": "3.0.2",
-    "xdsBuild": 1378,
+    "xdsVersion": "3.0.3",
+    "xdsBuild": 1382,
     "schemaVersion": 1,
     "upgradeVersion": 300000000004,
     "framework": "ext42",
