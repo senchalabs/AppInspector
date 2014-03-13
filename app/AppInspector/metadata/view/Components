@@ -71,24 +71,21 @@
             "designerId": "1359ffa9-b00e-4586-858c-da45e066677f",
             "cn": [
                 {
-                    "type": "Ext.grid.property.Grid",
+	    "type": "Ext.grid.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "emptyText": null,
+	    "designer|displayName": null,
+	    "height": 250,
                         "itemId": "ComponentProps",
-                        "nameColumnWidth": "50%",
-                        "resizable": null,
-                        "source": [
-                            "{}"
-                        ],
+	    "store": "ComponentProps",
                         "title": "Properties",
-                        "width": null
+	    "width": 400
                     },
-                    "designerId": "14e957eb-d255-424a-8d6f-049d09c8272f",
+	    "designerId": "2a575c8c-6901-46fe-8bb3-31211bee61d2",
                     "cn": [
                         {
                             "type": "Ext.tab.Tab",
@@ -97,28 +94,103 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "7ef59c60-e185-4570-8e80-fb3137f4d0c0"
+		"designerId": "ddf655c4-5190-4621-8120-ca158b91d69b"
+	    },
+	    {
+		"type": "Ext.grid.column.Column",
+		"reference": {
+		"name": "columns",
+		"type": "array"
+		},
+		"codeClass": null,
+		"userConfig": {
+		"dataIndex": "name",
+		"flex": 1,
+		"sortable": true,
+		"text": "Name"
+		},
+		"designerId": "f01bf185-ed33-4094-8827-cbe17293eadf"
+	    },
+	    {
+		"type": "Ext.grid.column.Column",
+		"reference": {
+		"name": "columns",
+		"type": "array"
+		},
+		"codeClass": null,
+		"userConfig": {
+		"dataIndex": "value",
+		"flex": 2,
+		"sortable": false,
+		"text": "Value"
+		},
+		"designerId": "f77a7ab5-a8fc-47c0-87a9-5fd91aa9cbd0"
+	    },
+	    {
+		"type": "Ext.grid.View",
+		"reference": {
+		"name": "viewConfig",
+		"type": "object"
+		},
+		"codeClass": null,
+		"designerId": "0e1c5896-e0e4-47fe-9159-27845e440d4f",
+		"cn": [
+		{
+		    "type": "fixedfunction",
+		    "reference": {
+		    "name": "items",
+		    "type": "array"
+		    },
+		    "codeClass": null,
+		    "userConfig": {
+		    "designer|params": [
+			"record",
+			"rowIndex",
+			"rowParams",
+			"store"
+		    ],
+		    "fn": "getRowClass",
+		    "implHandler": [
+			"var isOwn = record.get('isOwn'),",
+			"    isOverride = record.get('isOverride'),",
+			"    cls = [];",
+			"",
+			"if (isOwn) {",
+			"    cls.push('isOwn');",
+			"}",
+			"",
+			"if (isOverride) {",
+			"    cls.push('isOverride');",
+			"}",
+			"",
+			"console.log(rowIndex, cls.join(' '));",
+			"",
+			"",
+			"return cls.join(' ');"
+		    ]
+		    },
+		    "designerId": "94f1e7c5-e518-41d8-9bff-2bb276864f52"
+		}
+		]
                         }
                     ]
                 },
                 {
-                    "type": "Ext.grid.property.Grid",
+	    "type": "Ext.grid.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
+	    "designer|displayName": null,
+	    "height": 250,
                         "itemId": "ComponentMethods",
-                        "nameColumnWidth": "50%",
-                        "resizable": null,
-                        "source": [
-                            "{}"
-                        ],
+	    "store": "ComponentMethods",
                         "title": "Methods",
-                        "width": null
+	    "width": 400
                     },
-                    "designerId": "4cb97cb2-72d1-4ac9-90bd-cc72735f406c",
+	    "designerId": "3a9961ef-2a3f-4aed-b94a-a7ea17236391",
                     "cn": [
                         {
                             "type": "Ext.tab.Tab",
@@ -127,7 +199,84 @@
                                 "type": "object"
                             },
                             "codeClass": null,
-                            "designerId": "cc20d420-8eb8-4beb-b10a-122902b9ef68"
+		"designerId": "d909f1b3-83ba-42e4-923b-fb14849d7c52"
+	    },
+	    {
+		"type": "Ext.grid.column.Column",
+		"reference": {
+		"name": "columns",
+		"type": "array"
+		},
+		"codeClass": null,
+		"userConfig": {
+		"dataIndex": "name",
+		"flex": 1,
+		"sortable": true,
+		"text": "Name"
+		},
+		"designerId": "81edea8c-453e-4ebc-a23e-603255940c0f"
+	    },
+	    {
+		"type": "Ext.grid.column.Column",
+		"reference": {
+		"name": "columns",
+		"type": "array"
+		},
+		"codeClass": null,
+		"userConfig": {
+		"dataIndex": "value",
+		"flex": 2,
+		"sortable": false,
+		"text": "Value"
+		},
+		"designerId": "58f76ece-a9bd-42af-8264-ef2998753e68"
+	    },
+	    {
+		"type": "Ext.grid.View",
+		"reference": {
+		"name": "viewConfig",
+		"type": "object"
+		},
+		"codeClass": null,
+		"designerId": "6df8feb9-8613-46e7-9bb9-fff0a2f6b662",
+		"cn": [
+		{
+		    "type": "fixedfunction",
+		    "reference": {
+		    "name": "items",
+		    "type": "array"
+		    },
+		    "codeClass": null,
+		    "userConfig": {
+		    "designer|params": [
+			"record",
+			"rowIndex",
+			"rowParams",
+			"store"
+		    ],
+		    "fn": "getRowClass",
+		    "implHandler": [
+			"var isOwn = record.get('isOwn'),",
+			"    isOverride = record.get('isOverride'),",
+			"    cls = [];",
+			"",
+			"if (isOwn) {",
+			"    cls.push('isOwn');",
+			"}",
+			"",
+			"if (isOverride) {",
+			"    cls.push('isOverride');",
+			"}",
+			"",
+			"console.log(rowIndex, cls.join(' '));",
+			"",
+			"",
+			"return cls.join(' ');"
+		    ]
+		    },
+		    "designerId": "5993317b-a117-415b-a3f0-d9e01c73af6b"
+		}
+		]
                         }
                     ]
                 }
