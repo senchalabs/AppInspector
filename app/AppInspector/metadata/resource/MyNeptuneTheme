@@ -26,40 +26,6 @@
                     }
                 ]
             },
-            "Ext.container.ButtonGroup": {
-                "globalVars": [
-                    {
-                        "name": "btn-group-background-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    },
-                    {
-                        "name": "btn-group-border-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    },
-                    {
-                        "name": "btn-group-border-width",
-                        "enabled": true,
-                        "value": "0"
-                    },
-                    {
-                        "name": "btn-group-framed-background-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    },
-                    {
-                        "name": "btn-group-framed-border-width",
-                        "enabled": true,
-                        "value": "0"
-                    },
-                    {
-                        "name": "btn-group-inner-border-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    }
-                ]
-            },
             "Ext.tab.Tab": {
                 "globalVars": [
                     {
@@ -125,6 +91,78 @@
             },
             "codeClass": null,
             "userConfig": {
+		"designer|displayName": "icons",
+		"implHandler": [
+		    ".icn-home,",
+		    ".icn-components,",
+		    ".icn-stores,",
+		    ".icn-layouts,",
+		    ".icn-overnested,",
+		    ".icn-box,",
+		    ".icn-events,",
+		    ".icn-refresh,",
+		    ".icn-clear,",
+		    ".icn-record,",
+		    ".icn-stop {",
+		    "    background-repeat: no-repeat;",
+		    "    background-size: 16px 16px;",
+		    "}",
+		    "",
+		    ".icn-home {",
+		    "    background-image: url('../resources/images/home2.png');",
+		    "}",
+		    "",
+		    ".icn-components {",
+		    "    background-image: url('../resources/images/nodes2.png');",
+		    "}",
+		    "",
+		    ".icn-stores {",
+		    "    background-image: url('../resources/images/data.png');",
+		    "}",
+		    "",
+		    ".icn-layouts {",
+		    "    background-image: url('../resources/images/monitor1.png');",
+		    "}",
+		    "",
+		    ".icn-overnested  {",
+		    "    background-image: url('../resources/images/window.png');",
+		    "}",
+		    "",
+		    ".icn-box  {",
+		    "    background-image: url('../resources/images/cube.png');",
+		    "}",
+		    "",
+		    ".icn-events {",
+		    "    background-image: url('../resources/images/bolt.png');",
+		    "}",
+		    "",
+		    ".icn-refresh {",
+		    "    background-image: url('../resources/images/refresh3.png');",
+		    "}",
+		    "",
+		    ".icn-clear {",
+		    "    background-image: url('../resources/images/stop1.png');",
+		    "}",
+		    "",
+		    ".icn-record {",
+		    "    background-image: url('../resources/images/play_black1.png');",
+		    "}",
+		    "",
+		    ".icn-stop {",
+		    "    background-image: url('../resources/images/stop.png');",
+		    "}"
+		]
+	    },
+	    "designerId": "145ecce7-640e-41aa-bf1e-7bcccd04f429"
+	},
+	{
+	    "type": "themescss",
+	    "reference": {
+		"name": "items",
+		"type": "array"
+	    },
+	    "codeClass": null,
+	    "userConfig": {
                 "designer|displayName": "mask",
                 "implHandler": [
                     ".x-body.x-masked {",
@@ -136,9 +174,9 @@
                     ".x-mask-msg {",
                     "    &.no-framework-mask {",
                     "        border: 1px solid $loadmask-msg-inner-color;",
-                    "        ",
+		    "",
                     "        .x-mask-inner {}",
-                    "        ",
+		    "",
                     "        .x-mask-msg-text {",
                     "            padding: 24px;",
                     "            margin: 0;",
@@ -146,7 +184,7 @@
                     "            font-size: 2em;",
                     "        }",
                     "    }",
-                    "    ",
+		    "",
                     "    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);",
                     "}"
                 ]
@@ -193,86 +231,18 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "icons",
+		"designer|displayName": "component grids",
                 "implHandler": [
-                    ".icn-home,",
-                    ".icn-components,",
-                    ".icn-stores,",
-                    ".icn-layouts,",
-                    ".icn-overnested,",
-                    ".icn-box,",
-                    ".icn-events,",
-                    ".icn-refresh,",
-                    ".icn-clear,",
-                    ".icn-record,",
-                    ".icn-stop {",
-                    "    background-repeat: no-repeat;",
-                    "    background-size: 16px 16px;",
+		    ".isOwn {",
+		    "    color: #BADA55;",
                     "}",
                     "",
-                    ".icn-home {",
-                    "    background-image: url('../resources/images/home2.png');",
-                    "}",
-                    "",
-                    ".icn-components {",
-                    "    background-image: url('../resources/images/nodes2.png');",
-                    "}",
-                    "",
-                    ".icn-stores {",
-                    "    background-image: url('../resources/images/data.png');",
-                    "}",
-                    "",
-                    ".icn-layouts {",
-                    "    background-image: url('../resources/images/monitor1.png');",
-                    "}",
-                    "",
-                    ".icn-overnested  {",
-                    "    background-image: url('../resources/images/window.png');",
-                    "}",
-                    "",
-                    ".icn-box  {",
-                    "    background-image: url('../resources/images/cube.png');",
-                    "}",
-                    "",
-                    ".icn-events {",
-                    "    background-image: url('../resources/images/bolt.png');",
-                    "}",
-                    "",
-                    ".icn-refresh {",
-                    "    background-image: url('../resources/images/refresh3.png');",
-                    "}",
-                    "",
-                    ".icn-clear {",
-                    "    background-image: url('../resources/images/stop1.png');",
-                    "}",
-                    "",
-                    ".icn-record {",
-                    "    background-image: url('../resources/images/play_black1.png');",
-                    "}",
-                    "",
-                    ".icn-stop {",
-                    "    background-image: url('../resources/images/stop.png');",
+		    ".isOverride {",
+		    "    // need an idea how to visualize this",
                     "}"
                 ]
             },
-            "designerId": "145ecce7-640e-41aa-bf1e-7bcccd04f429"
-        },
-        {
-            "type": "themescss",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|displayName": "tree filter",
-                "implHandler": [
-                    ".filtered {",
-                    "    display: none !important;",
-                    "}"
-                ]
-            },
-            "designerId": "a1e85bef-2149-496c-b948-67ae8fd2c7c4"
+	    "designerId": "ad8bf24b-196b-4dfb-8dcb-da33d7a859f9"
         }
     ]
 }

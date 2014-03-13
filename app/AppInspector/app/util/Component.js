@@ -112,7 +112,7 @@ Ext.define('AI.util.Component', {
 			name: key,
 			value: 'METHOD',
 			isOwn: isOwn,
-			isOverride: undefined   //(!parent[key] && (cmp[key] !== parent[key]))
+			isOverride: undefined //(!parent[key] && (cmp[key] !== parent[key]))
 		    });
                 } else if (typeof cmp[key] !== 'object') {
 		    data.properties.push({
