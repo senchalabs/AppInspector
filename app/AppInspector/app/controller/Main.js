@@ -17,7 +17,12 @@ Ext.define('AI.controller.Main', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'Ext.window.MessageBox'
+        'AI.util.InspectedWindow'
+    ],
+
+    views: [
+        'MainView',
+        'About'
     ],
 
     init: function(application) {

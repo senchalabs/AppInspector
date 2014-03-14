@@ -8,7 +8,11 @@
     "userConfig": {
         "designer|userClassName": "Main",
         "requires": [
-            "Ext.window.MessageBox"
+            "AI.util.InspectedWindow"
+        ],
+        "views": [
+            "MainView",
+            "About"
         ]
     },
     "designerId": "82d77d3e-fd58-4e64-a3ce-00dbbb070209",

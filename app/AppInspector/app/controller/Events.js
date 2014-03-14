@@ -18,7 +18,18 @@ Ext.define('AI.controller.Events', {
 
     requires: [
         'AI.util.extjs.Events',
-        'AI.util.touch.Events'
+        'AI.util.touch.Events',
+        'AI.util.InspectedWindow'
+    ],
+
+    models: [
+        'Event'
+    ],
+    stores: [
+        'Events'
+    ],
+    views: [
+        'Events'
     ],
 
     init: function(application) {

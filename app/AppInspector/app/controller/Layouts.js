@@ -18,35 +18,55 @@ Ext.define('AI.controller.Layouts', {
 
     requires: [
         'AI.util.extjs.Profile',
-        'AI.util.touch.Profile'
+        'AI.util.touch.Profile',
+        'AI.util.InspectedWindow'
+    ],
+
+    models: [
+        'Overnested'
+    ],
+    stores: [
+        'Overnested',
+        'BoxLayouts'
+    ],
+    views: [
+        'Layouts'
     ],
 
     init: function(application) {
-        this.control({
-            '#Overnested' : {
-                'select'      : this.onSelectOvernestedComponent
-            },
+        var me = this;
 
-            'button#ProfileOvernesting' : {
-                click : this.onOvernestedProfileClick
+        me.control({
+            // overnested profile
+            'gridpanel#Overnested': {
+                'activate': me.onOvernetedProfileActivate,
+                'select': me.onSelectOvernestedComponent
             },
-
-            '#BoxLayouts' : {
-                'select'      : this.onSelectOvernestedComponent
+            'button#ProfileOvernesting': {
+                'click': me.onOvernestedProfileClick
             },
-
-            'button#ProfileBoxLayouts' : {
-                click : this.onNestedBoxLayoutsClick
+            // nested box layouts
+            'gridpanel#BoxLayouts': {
+                'activate': me.onNestedBoxLayoutActivate,
+                'select': me.onSelectOvernestedComponent
+            },
+            'button#ProfileBoxLayouts': {
+                'click': me.onNestedBoxLayoutsClick
             }
         });
     },
 
-    onSelectOvernestedComponent: function(selModel, record, index, eOpts) {
-        AI.util.InspectedWindow.eval(
-            AI.util.InspectedWindow.highlight,
-            record.get('cmpId'),
-            Ext.emptyFn
-        );
+    onOvernetedProfileActivate: function(grid) {
+        // load the "Layouts > Overnesting" upfront ...
+        var initialLoad = grid.initialLoad,
+            btn = grid.down('button#ProfileOvernesting');
+
+        if (!initialLoad && btn) {
+            // ... but only once
+            grid.initialLoad = true;
+
+            this.onOvernestedProfileClick(btn);
+        }
     },
 
     onOvernestedProfileClick: function(btn) {
@@ -80,6 +100,19 @@ Ext.define('AI.controller.Layouts', {
         );
     },
 
+    onNestedBoxLayoutActivate: function(grid) {
+        // load the "Layouts > Box Layouts" upfront ...
+        var initialLoad = grid.initialLoad,
+            btn = grid.down('button#ProfileBoxLayouts');
+
+        if (!initialLoad && btn) {
+            // ... but only once
+            grid.initialLoad = true;
+
+            this.onNestedBoxLayoutsClick(btn);
+        }
+    },
+
     onNestedBoxLayoutsClick: function(btn) {
         var grid = btn.up('#BoxLayouts'),
             store = grid.getStore();
@@ -109,6 +142,14 @@ Ext.define('AI.controller.Layouts', {
 
                 grid.setLoading(false);
             }
+        );
+    },
+
+    onSelectOvernestedComponent: function(selModel, record, index, eOpts) {
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.highlight,
+            record.get('cmpId'),
+            Ext.emptyFn
         );
     }
 

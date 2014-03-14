@@ -7,9 +7,18 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "Components",
+        "models": [
+            "Component"
+        ],
         "requires": [
             "AI.util.Component",
             "AI.util.InspectedWindow"
+        ],
+        "stores": [
+            "Components"
+        ],
+        "views": [
+            "Components"
         ]
     },
     "designerId": "26d6c88d-7725-4c18-af80-ca851ac3ece6",
@@ -27,17 +36,49 @@
                 ],
                 "fn": "init",
                 "implHandler": [
-                    "this.control({",
-                    "    '#ComponentTree' : {",
-                    "        'itemclick'   : this.onSelectComponent",
+                    "var me = this;",
+                    "",
+                    "me.control({",
+                    "    'panel#ComponentInspector': {",
+                    "        'activate': me.onActivate",
                     "    },",
-                    "    'button#RefreshComponentTree' : {",
-                    "        'click' : this.onRefreshComponentsClick",
+                    "    'button#RefreshComponentTree': {",
+                    "        'click': me.onRefreshComponentsClick",
+                    "    },",
+                    "    'treepanel#ComponentTree': {",
+                    "        'itemclick': me.onSelectComponent",
                     "    }",
                     "});"
                 ]
             },
             "designerId": "ed7296d7-dd95-4d7b-80ae-46ddcfdb02d6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "panel"
+                ],
+                "fn": "onActivate",
+                "implHandler": [
+                    "// load the \"Components\" upfront ...",
+                    "var initialLoad = panel.initialLoad,",
+                    "    tree = panel.down('#ComponentTree');",
+                    "",
+                    "if (!initialLoad && tree) {",
+                    "    // ... but only once",
+                    "    panel.initialLoad = true;",
+                    "    ",
+                    "    this.onComponentTreeActivate(tree);",
+                    "}"
+                ]
+            },
+            "designerId": "8b15e6de-47b8-4636-9b85-312d2288f24d"
         },
         {
             "type": "basicfunction",
@@ -129,8 +170,7 @@
                     "        if (result) {",
                     "            propsGrid.setSource(result.properties);",
                     "            methodGrid.setSource(result.methods);",
-                    "        }",
-                    "        else {",
+                    "        } else {",
                     "            propsGrid.setSource({});",
                     "            methodGrid.setSource({});",
                     "        }",

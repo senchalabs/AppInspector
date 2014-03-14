@@ -13,29 +13,7 @@
             "Layouts",
             "Events"
         ],
-        "models": [
-            "Component",
-            "Store",
-            "Record",
-            "Overnested",
-            "Event"
-        ],
-        "name": "AI",
-        "stores": [
-            "Components",
-            "Stores",
-            "Records",
-            "Overnested",
-            "BoxLayouts",
-            "Events"
-        ],
-        "views": [
-            "MainView",
-            "Components",
-            "Stores",
-            "Layouts",
-            "Events"
-        ]
+        "name": "AI"
     },
     "designerId": "application"
 }

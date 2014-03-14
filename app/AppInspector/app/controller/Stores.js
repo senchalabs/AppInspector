@@ -17,23 +17,52 @@ Ext.define('AI.controller.Stores', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'AI.util.Store'
+        'AI.util.Store',
+        'AI.util.InspectedWindow'
+    ],
+
+    models: [
+        'Store',
+        'Record'
+    ],
+    stores: [
+        'Stores',
+        'Records'
+    ],
+    views: [
+        'Stores'
     ],
 
     init: function(application) {
-        this.control({
-            'gridpanel#StoreList' : {
-                'itemclick'   : this.onStoreGridSelection
-            },
+        var me = this;
 
+        me.control({
+            'panel#StoreInspector': {
+                'activate': me.onActivate
+            },
+            'button#RefreshStores': {
+                'click': me.onRefreshStoresClick
+            },
+            'gridpanel#StoreList': {
+                'itemclick': me.onStoreGridSelection
+            },
             'gridpanel#RecordList' : {
-                'itemclick'   : this.onRecordGridSelection
-            },
-
-            'button#RefreshStores' : {
-                'click' : this.onRefreshStoresClick
+                'itemclick'   : me.onRecordGridSelection
             }
         });
+    },
+
+    onActivate: function(panel) {
+        // load the "Stores" upfront
+        var initialLoad = panel.initialLoad,
+            grid = panel.down('gridpanel#StoreList');
+
+        if (!initialLoad && grid) {
+            // ... but only once
+            panel.initialLoad = true;
+
+            this.onStoreGridActivate(panel);
+        }
     },
 
     onRefreshStoresClick: function(btn) {

@@ -11,6 +11,7 @@
         "height": 250,
         "icon": null,
         "iconCls": "icn-components",
+        "initialLoad": false,
         "itemId": "ComponentInspector",
         "layout": "border",
         "requires": [
@@ -19,7 +20,18 @@
         "title": "Components",
         "width": 400
     },
+    "configAlternates": {
+        "loaded": "boolean",
+        "initialLoad": "boolean"
+    },
     "designerId": "6396961f-44a6-489d-a87a-171343f16ba4",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "initialLoad",
+            "type": "string"
+        }
+    ],
     "cn": [
         {
             "type": "Ext.tree.Panel",
@@ -30,6 +42,7 @@
             "codeClass": null,
             "userConfig": {
                 "autoScroll": true,
+                "emptyText": null,
                 "frame": null,
                 "itemId": "ComponentTree",
                 "layout|flex": 1,
@@ -141,6 +154,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "emptyText": null,
                         "itemId": "ComponentProps",
                         "resizable": null,
                         "source": [

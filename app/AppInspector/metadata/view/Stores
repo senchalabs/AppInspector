@@ -12,6 +12,7 @@
         "designer|userClassName": "Stores",
         "icon": null,
         "iconCls": "icn-stores",
+        "initialLoad": false,
         "itemId": "StoreInspector",
         "layout": "vbox",
         "requires": [
@@ -20,7 +21,17 @@
         ],
         "title": "Stores"
     },
+    "configAlternates": {
+        "initialLoad": "boolean"
+    },
     "designerId": "bd2cd338-5fc6-488f-aa7c-a4ca1faad085",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "initialLoad",
+            "type": "string"
+        }
+    ],
     "cn": [
         {
             "type": "Ext.grid.Panel",
@@ -38,6 +49,36 @@
             },
             "designerId": "6fce872c-e09c-4357-9549-47e6fac6e089",
             "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "StoreList Toolbar",
+                        "dock": "top"
+                    },
+                    "designerId": "9ce54251-556c-429a-a780-26ccb0ff0bc2",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "icn-refresh",
+                                "itemId": "RefreshStores",
+                                "layout|flex": null,
+                                "text": "Refresh"
+                            },
+                            "designerId": "d1b40240-d9ab-4fa1-822d-19dea11e9f40"
+                        }
+                    ]
+                },
                 {
                     "type": "Ext.grid.column.Column",
                     "reference": {
@@ -73,35 +114,6 @@
                     },
                     "codeClass": null,
                     "designerId": "2d4c4eab-d295-4cff-8aa8-554a300be38a"
-                },
-                {
-                    "type": "Ext.toolbar.Toolbar",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top"
-                    },
-                    "designerId": "9ce54251-556c-429a-a780-26ccb0ff0bc2",
-                    "cn": [
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "icn-refresh",
-                                "itemId": "RefreshStores",
-                                "layout|flex": null,
-                                "text": "Refresh"
-                            },
-                            "designerId": "d1b40240-d9ab-4fa1-822d-19dea11e9f40"
-                        }
-                    ]
                 }
             ]
         },

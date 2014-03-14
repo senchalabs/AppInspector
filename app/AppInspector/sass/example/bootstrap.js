@@ -9,6 +9,7 @@ Ext.Loader.addClassPathMappings({
   "Ext": "../../ext/src",
   "Ext.Msg": "../../ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "../../ext/src/rtl/EventObject.js",
+  "Ext.ux.AppInspector": "../../app/util/InspectedWindow.js",
   "ExtThemeNeptune.Component": "../../ext/ext-theme-neptune.js",
   "ExtThemeNeptune.container.ButtonGroup": "../../ext/ext-theme-neptune.js",
   "ExtThemeNeptune.form.field.HtmlEditor": "../../ext/ext-theme-neptune.js",
@@ -797,6 +798,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.util.Sortable": [],
   "Ext.util.Sorter": [],
   "Ext.util.TextMetrics": [],
+  "Ext.ux.AppInspector": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.CellDragDrop": [],
   "Ext.ux.DataTip": [],
@@ -1792,6 +1794,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.util.Sortable": [],
   "Ext.util.Sorter": [],
   "Ext.util.TextMetrics": [],
+  "Ext.ux.AppInspector": [],
   "Ext.ux.BoxReorderer": [],
   "Ext.ux.CellDragDrop": [
     "plugin.celldragdrop"
