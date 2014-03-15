@@ -1,8 +1,4 @@
 {
-    "appName": {
-        "message": "App Inspector for Sencha™",
-        "description": "The name of the application"
-    },
     "appDescription": {
         "message": "Google Chrome™ Dev Tools extension for debugging Sencha™ applications.",
         "description": "The description of the application"
