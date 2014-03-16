@@ -55,12 +55,15 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.util.touch.Profile": [],
   "AI.view.About": [],
   "AI.view.Components": [],
+  "AI.view.ComponentsTreeGrid": [],
   "AI.view.Events": [],
+  "AI.view.FilterField": [],
   "AI.view.Layouts": [],
   "AI.view.Main": [],
   "AI.view.MainView": [],
   "AI.view.Stores": [],
   "AI.view.Viewport": [],
+  "AI.view.override.ComponentsTreeGrid": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -927,8 +930,14 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.Components": [
     "widget.components"
   ],
+  "AI.view.ComponentsTreeGrid": [
+    "widget.componentstreegrid"
+  ],
   "AI.view.Events": [
     "widget.eventgrid"
+  ],
+  "AI.view.FilterField": [
+    "widget.filterfield"
   ],
   "AI.view.Layouts": [
     "widget.layouts"
@@ -943,6 +952,7 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.stores"
   ],
   "AI.view.Viewport": [],
+  "AI.view.override.ComponentsTreeGrid": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],

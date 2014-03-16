@@ -1,8 +1,9 @@
 # *** folders
 dist/
 docs/
-package/
 node_modules/
+package/
+testdata/
 
 # *** files
 .DS_Store

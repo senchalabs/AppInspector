@@ -18,10 +18,8 @@ Ext.define('AI.view.Components', {
     alias: 'widget.components',
 
     requires: [
+        'AI.view.ComponentsTreeGrid',
         'Ext.tree.Panel',
-        'Ext.toolbar.Toolbar',
-        'Ext.tree.View',
-        'Ext.tree.Column',
         'Ext.tab.Panel',
         'Ext.grid.property.Grid',
         'Ext.tab.Tab',
@@ -29,9 +27,7 @@ Ext.define('AI.view.Components', {
     ],
 
     initialLoad: false,
-    height: 250,
     itemId: 'ComponentInspector',
-    width: 400,
     layout: 'border',
     iconCls: 'icn-components',
     title: 'Components',
@@ -42,45 +38,10 @@ Ext.define('AI.view.Components', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'treepanel',
-                    flex: 1,
-                    region: 'center',
+                    xtype: 'componentstreegrid',
                     itemId: 'ComponentTree',
-                    autoScroll: true,
-                    store: 'Components',
-                    rootVisible: false,
-                    useArrows: true,
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            ui: 'default-toolbar',
-                            items: [
-                                {
-                                    xtype: 'button',
-                                    itemId: 'RefreshComponentTree',
-                                    iconCls: 'icn-refresh',
-                                    text: 'Refresh'
-                                }
-                            ]
-                        }
-                    ],
-                    viewConfig: {
-
-                    },
-                    columns: [
-                        {
-                            xtype: 'treecolumn',
-                            dataIndex: 'text',
-                            text: 'Component ID',
-                            flex: 1
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'xtype',
-                            text: 'XType'
-                        }
-                    ]
+                    flex: 1,
+                    region: 'center'
                 },
                 {
                     xtype: 'tabpanel',
@@ -88,9 +49,9 @@ Ext.define('AI.view.Components', {
                     region: 'east',
                     split: true,
                     itemId: 'ComponentDetails',
-                    minWidth: 200,
-                    width: 150,
+                    minWidth: 100,
                     activeTab: 0,
+                    minTabWidth: 45,
                     items: [
                         {
                             xtype: 'propertygrid',

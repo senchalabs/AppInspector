@@ -6,8 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoLoad": true,
         "designer|userClassName": "Components",
         "model": "Component",
+        "root": null,
         "storeId": "Components"
     },
     "designerId": "fc80428c-1f26-4b31-8e73-979d8be2aa5c",
@@ -19,12 +21,7 @@
                 "type": "object"
             },
             "codeClass": null,
-            "userConfig": {
-                "data": [
-                    "[]"
-                ]
-            },
-            "designerId": "0583de56-8834-4259-81c4-3b824a47fe0d",
+            "designerId": "16e772d3-bbba-4c68-b65a-57d8b8513e4c",
             "cn": [
                 {
                     "type": "Ext.data.reader.Json",
@@ -33,7 +30,7 @@
                         "type": "object"
                     },
                     "codeClass": null,
-                    "designerId": "f206e933-90d3-4075-b350-173f84c88826"
+                    "designerId": "d1ea9804-ab43-4964-ab76-ee73301554e3"
                 }
             ]
         }
