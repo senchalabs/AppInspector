@@ -49,8 +49,8 @@ Ext.define('AI.controller.Stores', {
             'gridpanel#StoreList': {
                 'itemclick': me.onStoreGridSelection
             },
-            'gridpanel#RecordList' : {
-                'itemclick'   : me.onRecordGridSelection
+            'gridpanel#RecordList': {
+                'itemclick': me.onRecordGridSelection
             }
         });
     },
@@ -79,8 +79,8 @@ Ext.define('AI.controller.Stores', {
         AI.util.InspectedWindow.eval(
             AI.util.Store.getStores,
             null,
-            function (stores) {
-                Ext.each(stores, function (store) {
+            function(stores) {
+                Ext.each(stores, function(store) {
                     var model = Ext.create('AI.model.Store', store);
 
                     gridStore.add(model);
@@ -124,7 +124,7 @@ Ext.define('AI.controller.Stores', {
         AI.util.InspectedWindow.eval(
             AI.util.Store.getRecords,
             record.get('id'),
-            function (records, isException) {
+            function(records, isException) {
                 if (records.length > 0) {
                     grid.enable();
                 } else {
@@ -132,7 +132,7 @@ Ext.define('AI.controller.Stores', {
                 }
 
 
-                Ext.each(records, function (record) {
+                Ext.each(records, function(record) {
                     var model = Ext.create('AI.model.Record', record);
 
                     store.add(model);

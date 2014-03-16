@@ -38,45 +38,36 @@ Ext.define('AI.view.ComponentsTreeGrid', {
         var me = this;
 
         Ext.applyIf(me, {
-            dockedItems: [
-                {
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    ui: 'default-toolbar',
-                    items: [
-                        {
-                            xtype: 'button',
-                            itemId: 'RefreshComponentTree',
-                            iconCls: 'icn-refresh',
-                            text: 'Refresh'
-                        },
-                        {
-                            xtype: 'tbfill'
-                        },
-                        {
-                            xtype: 'filterfield',
-                            itemId: 'FilterComponentsTree'
-                        }
-                    ]
-                }
-            ],
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'top',
+                ui: 'default-toolbar',
+                items: [{
+                    xtype: 'button',
+                    itemId: 'RefreshComponentTree',
+                    iconCls: 'icn-refresh',
+                    text: 'Refresh'
+                }, {
+                    xtype: 'tbfill'
+                }, {
+                    xtype: 'filterfield',
+                    itemId: 'FilterComponentsTree'
+                }]
+            }],
             viewConfig: {
 
             },
-            columns: [
-                {
-                    xtype: 'treecolumn',
-                    dataIndex: 'text',
-                    text: 'Component ID',
-                    flex: 2
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'xtype',
-                    text: 'XType',
-                    flex: 1
-                }
-            ]
+            columns: [{
+                xtype: 'treecolumn',
+                dataIndex: 'text',
+                text: 'Component ID',
+                flex: 2
+            }, {
+                xtype: 'gridcolumn',
+                dataIndex: 'xtype',
+                text: 'XType',
+                flex: 1
+            }]
         });
 
         me.callParent(arguments);

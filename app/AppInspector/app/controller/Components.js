@@ -74,14 +74,14 @@ Ext.define('AI.controller.Components', {
         AI.util.InspectedWindow.eval(
             AI.util.Component.loadComponentTree,
             null,
-            function (components, isException) {
-                Ext.each(components, function (cmp) {
+            function(components, isException) {
+                Ext.each(components, function(cmp) {
                     var model = Ext.create('AI.model.Component', cmp);
 
                     nodes.push(model);
                 });
 
-                Ext.each(nodes, function (node) {
+                Ext.each(nodes, function(node) {
                     root.appendChild(node);
                 });
 

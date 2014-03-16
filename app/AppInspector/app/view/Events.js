@@ -36,67 +36,54 @@ Ext.define('AI.view.Events', {
         var me = this;
 
         Ext.applyIf(me, {
-            columns: [
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'eventName',
-                    text: 'Event Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'source',
-                    text: 'Event Source',
-                    flex: 1
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'xtype',
-                    text: 'XType',
-                    flex: 1
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'id',
-                    text: 'Cmp ID',
-                    flex: 1
-                }
-            ],
-            dockedItems: [
-                {
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    items: [
-                        {
-                            xtype: 'button',
-                            itemId: 'ClearEvents',
-                            iconCls: 'icn-clear',
-                            text: 'Clear'
-                        },
-                        {
-                            xtype: 'button',
-                            itemId: 'RecordEvents',
-                            iconCls: 'icn-record',
-                            text: 'Record'
-                        },
-                        {
-                            xtype: 'button',
-                            hidden: true,
-                            itemId: 'StopRecording',
-                            iconCls: 'icn-stop',
-                            text: 'Stop Recording'
-                        },
-                        {
-                            xtype: 'tbfill'
-                        },
-                        {
-                            xtype: 'filterfield',
-                            disabled: true,
-                            hidden: true,
-                            itemId: 'FilterEvents'
-                        }
-                    ]
-                }
-            ]
+            columns: [{
+                xtype: 'gridcolumn',
+                dataIndex: 'eventName',
+                text: 'Event Name'
+            }, {
+                xtype: 'gridcolumn',
+                dataIndex: 'source',
+                text: 'Event Source',
+                flex: 1
+            }, {
+                xtype: 'gridcolumn',
+                dataIndex: 'xtype',
+                text: 'XType',
+                flex: 1
+            }, {
+                xtype: 'gridcolumn',
+                dataIndex: 'id',
+                text: 'Cmp ID',
+                flex: 1
+            }],
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'top',
+                items: [{
+                    xtype: 'button',
+                    itemId: 'ClearEvents',
+                    iconCls: 'icn-clear',
+                    text: 'Clear'
+                }, {
+                    xtype: 'button',
+                    itemId: 'RecordEvents',
+                    iconCls: 'icn-record',
+                    text: 'Record'
+                }, {
+                    xtype: 'button',
+                    hidden: true,
+                    itemId: 'StopRecording',
+                    iconCls: 'icn-stop',
+                    text: 'Stop Recording'
+                }, {
+                    xtype: 'tbfill'
+                }, {
+                    xtype: 'filterfield',
+                    disabled: true,
+                    hidden: true,
+                    itemId: 'FilterEvents'
+                }]
+            }]
         });
 
         me.callParent(arguments);
