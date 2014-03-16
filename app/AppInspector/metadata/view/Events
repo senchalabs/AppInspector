@@ -17,6 +17,68 @@
     "designerId": "5a468293-377b-432a-9518-58ecb1365d6b",
     "cn": [
         {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top"
+            },
+            "designerId": "0b3f5721-4481-4449-8aaa-a97635bcba08",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "icn-clear",
+                        "itemId": "ClearEvents",
+                        "layout|flex": null,
+                        "text": "Clear",
+                        "width": null
+                    },
+                    "designerId": "26713c9e-ab89-4097-9843-334778736c13"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "icn-record",
+                        "itemId": "RecordEvents",
+                        "layout|flex": null,
+                        "text": "Record"
+                    },
+                    "designerId": "0c63494c-b2da-44cb-948a-4cdacd5dc5e0"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": null,
+                        "hidden": true,
+                        "iconCls": "icn-stop",
+                        "itemId": "StopRecording",
+                        "layout|flex": null,
+                        "text": "Stop Recording"
+                    },
+                    "designerId": "9c774eea-356e-47aa-8b8f-a1782a00715a"
+                }
+            ]
+        },
+        {
             "type": "Ext.grid.column.Column",
             "reference": {
                 "name": "columns",
@@ -79,106 +141,6 @@
             },
             "codeClass": null,
             "designerId": "037fc65d-5897-426c-969c-4cc723122d14"
-        },
-        {
-            "type": "Ext.toolbar.Toolbar",
-            "reference": {
-                "name": "dockedItems",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dock": "top"
-            },
-            "designerId": "0b3f5721-4481-4449-8aaa-a97635bcba08",
-            "cn": [
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "iconCls": "icn-clear",
-                        "itemId": "ClearEvents",
-                        "layout|flex": null,
-                        "text": "Clear",
-                        "width": null
-                    },
-                    "designerId": "26713c9e-ab89-4097-9843-334778736c13"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "iconCls": "icn-record",
-                        "itemId": "RecordEvents",
-                        "layout|flex": null,
-                        "text": "Record"
-                    },
-                    "designerId": "0c63494c-b2da-44cb-948a-4cdacd5dc5e0"
-                },
-                {
-                    "type": "Ext.button.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "disabled": null,
-                        "hidden": true,
-                        "iconCls": "icn-stop",
-                        "itemId": "StopRecording",
-                        "layout|flex": null,
-                        "text": "Stop Recording"
-                    },
-                    "designerId": "9c774eea-356e-47aa-8b8f-a1782a00715a"
-                },
-                {
-                    "type": "Ext.toolbar.Fill",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "layout|flex": null
-                    },
-                    "designerId": "a203d463-c917-495d-8821-531cd490c87e"
-                },
-                {
-                    "type": "linkedinstance",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "disabled": true,
-                        "hidden": true,
-                        "itemId": "FilterEvents",
-                        "layout|flex": null
-                    },
-                    "configAlternates": {
-                        "filterBy": "object"
-                    },
-                    "designerId": "4ff95282-5fe2-4ef6-ad77-6694ac9c8eb0",
-                    "customConfigs": [
-                        {
-                            "group": "(Custom Properties)",
-                            "name": "filterBy",
-                            "type": "string"
-                        }
-                    ],
-                    "masterInstanceId": "6ac6082d-27c2-446c-a5eb-a2845710d54e"
-                }
-            ]
         }
     ]
 }

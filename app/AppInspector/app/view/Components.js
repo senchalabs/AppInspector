@@ -58,7 +58,7 @@ Ext.define('AI.view.Components', {
                             itemId: 'ComponentProps',
                             title: 'Properties',
                             source: {
-
+                                
                             }
                         },
                         {
@@ -66,7 +66,7 @@ Ext.define('AI.view.Components', {
                             itemId: 'ComponentMethods',
                             title: 'Methods',
                             source: {
-
+                                
                             }
                         }
                     ]

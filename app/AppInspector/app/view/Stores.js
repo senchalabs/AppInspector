@@ -43,72 +43,89 @@ Ext.define('AI.view.Stores', {
         var me = this;
 
         Ext.applyIf(me, {
-            items: [{
-                xtype: 'gridpanel',
-                flex: 1,
-                height: 300,
-                itemId: 'StoreList',
-                store: 'Stores',
-                dockedItems: [{
-                    xtype: 'toolbar',
-                    dock: 'top',
-                    items: [{
-                        xtype: 'button',
-                        itemId: 'RefreshStores',
-                        iconCls: 'icn-refresh',
-                        text: 'Refresh'
-                    }, {
-                        xtype: 'tbfill'
-                    }, {
-                        xtype: 'filterfield',
-                        itemId: 'FilterStoresList'
-                    }]
-                }],
-                columns: [{
-                    xtype: 'gridcolumn',
-                    dataIndex: 'id',
-                    text: 'Store ID',
-                    flex: 1
-                }, {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'count',
-                    text: 'Record Count'
-                }]
-            }, {
-                xtype: 'container',
-                flex: 1,
-                itemId: 'StoreDetails',
-                resizable: true,
-                resizeHandles: 'n',
-                layout: {
-                    type: 'hbox',
-                    align: 'stretch'
-                },
-                items: [{
+            items: [
+                {
                     xtype: 'gridpanel',
                     flex: 1,
-                    itemId: 'RecordList',
-                    title: 'Store Records',
-                    store: 'Records',
-                    columns: [{
-                        xtype: 'gridcolumn',
-                        resizable: false,
-                        dataIndex: 'id',
-                        text: 'Record ID',
-                        flex: 1
-                    }]
-                }, {
-                    xtype: 'propertygrid',
-                    itemId: 'RecordDetail',
-                    width: 300,
+                    height: 300,
+                    itemId: 'StoreList',
+                    store: 'Stores',
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    itemId: 'RefreshStores',
+                                    iconCls: 'icn-refresh',
+                                    text: 'Refresh'
+                                },
+                                {
+                                    xtype: 'tbfill'
+                                },
+                                {
+                                    xtype: 'filterfield',
+                                    itemId: 'FilterStoresList'
+                                }
+                            ]
+                        }
+                    ],
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'id',
+                            text: 'Store ID',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'count',
+                            text: 'Record Count'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'container',
+                    flex: 1,
+                    itemId: 'StoreDetails',
                     resizable: true,
-                    resizeHandles: 'w',
-                    title: 'Record Details',
-                    source: {
-
-                    }
-                }]
-            }]
+                    resizeHandles: 'n',
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch'
+                    },
+                    items: [
+                        {
+                            xtype: 'gridpanel',
+                            flex: 1,
+                            itemId: 'RecordList',
+                            title: 'Store Records',
+                            store: 'Records',
+                            columns: [
+                                {
+                                    xtype: 'gridcolumn',
+                                    resizable: false,
+                                    dataIndex: 'id',
+                                    text: 'Record ID',
+                                    flex: 1
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'propertygrid',
+                            itemId: 'RecordDetail',
+                            width: 300,
+                            resizable: true,
+                            resizeHandles: 'w',
+                            title: 'Record Details',
+                            source: {
+                                
+                            }
+                        }
+                    ]
+                }
+            ]
         });
 
         me.callParent(arguments);

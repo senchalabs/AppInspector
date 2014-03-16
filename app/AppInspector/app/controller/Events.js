@@ -33,17 +33,17 @@ Ext.define('AI.controller.Events', {
     ],
 
     init: function(application) {
-        this.control({
-            'button#RecordEvents' : {
-                'click' : this.onRecordEventsClick
-            },
+        var me = this;
 
-            'button#StopRecording' : {
-                'click' : this.onStopRecordingClick
-            },
-
+        me.control({
             'button#ClearEvents' : {
-                'click' : this.onClearEventsClick
+                'click' : me.onClearEventsClick
+            },
+            'button#RecordEvents' : {
+                'click' : me.onRecordEventsClick
+            },
+            'button#StopRecording' : {
+                'click' : me.onStopRecordingClick
             }
         });
     },

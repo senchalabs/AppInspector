@@ -137,8 +137,10 @@
                 ],
                 "fn": "onRefreshComponentsClick",
                 "implHandler": [
-                    "var tree = btn.up('#ComponentTree');",
+                    "var tree = btn.up('#ComponentTree'),",
+                    "    filter = tree.down('#FilterComponentsTree');",
                     "",
+                    "filter.reset();",
                     "this.onComponentTreeActivate(tree);"
                 ]
             },
