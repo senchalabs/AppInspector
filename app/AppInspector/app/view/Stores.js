@@ -18,8 +18,11 @@ Ext.define('AI.view.Stores', {
     alias: 'widget.stores',
 
     requires: [
+        'AI.view.FilterField',
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
+        'Ext.toolbar.Fill',
+        'Ext.form.field.Text',
         'Ext.grid.column.Column',
         'Ext.grid.View',
         'Ext.grid.property.Grid',
@@ -57,6 +60,13 @@ Ext.define('AI.view.Stores', {
                                     itemId: 'RefreshStores',
                                     iconCls: 'icn-refresh',
                                     text: 'Refresh'
+                                },
+                                {
+                                    xtype: 'tbfill'
+                                },
+                                {
+                                    xtype: 'filterfield',
+                                    itemId: 'FilterStoresList'
                                 }
                             ]
                         }

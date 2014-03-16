@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userAlias": "components",
         "designer|userClassName": "Components",
-        "height": 250,
+        "height": null,
         "icon": null,
         "iconCls": "icn-components",
         "initialLoad": false,
@@ -18,7 +18,7 @@
             "Ext.layout.container.Border"
         ],
         "title": "Components",
-        "width": 400
+        "width": null
     },
     "configAlternates": {
         "loaded": "boolean",
@@ -34,97 +34,19 @@
     ],
     "cn": [
         {
-            "type": "Ext.tree.Panel",
+            "type": "linkedinstance",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "autoScroll": true,
-                "emptyText": null,
-                "frame": null,
                 "itemId": "ComponentTree",
                 "layout|flex": 1,
-                "layout|region": "center",
-                "rootVisible": false,
-                "store": "Components",
-                "title": null,
-                "useArrows": true
+                "layout|region": "center"
             },
-            "designerId": "f9f6b3d2-a835-4161-a950-c58603f71b11",
-            "isBuiltIn": true,
-            "iconCls": "icon-treegridpanel",
-            "autoName": "TreeGrid",
-            "cn": [
-                {
-                    "type": "Ext.toolbar.Toolbar",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|uiInterfaceName": "default-toolbar",
-                        "dock": "top",
-                        "ui": "default-toolbar"
-                    },
-                    "designerId": "448d07e4-7828-4572-9714-c826da12a8b7",
-                    "cn": [
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "icn-refresh",
-                                "itemId": "RefreshComponentTree",
-                                "layout|flex": null,
-                                "text": "Refresh"
-                            },
-                            "designerId": "72b128c4-ed89-4c3f-8520-7aa1b391eca4"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.tree.View",
-                    "reference": {
-                        "name": "viewConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "designerId": "af2604ba-b50d-4816-acbb-c8b8eeac095d"
-                },
-                {
-                    "type": "Ext.tree.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "text",
-                        "flex": 1,
-                        "text": "Component ID"
-                    },
-                    "designerId": "c88fb6e5-61cc-4615-8db0-4e8661442ac8"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "xtype",
-                        "text": "XType"
-                    },
-                    "designerId": "6b8d4f75-97b2-4a1d-be09-bf11c6a4f692"
-                }
-            ]
+            "designerId": "3371a46c-b7ef-4d1d-8a3c-4ceb8d17d097",
+            "masterInstanceId": "237c87fc-e8d6-457d-bc48-91de8e75ef5d"
         },
         {
             "type": "Ext.tab.Panel",
@@ -139,10 +61,12 @@
                 "layout|flex": 1,
                 "layout|region": "east",
                 "layout|split": true,
-                "minWidth": 200,
+                "maxTabWidth": null,
+                "minTabWidth": 45,
+                "minWidth": 100,
                 "resizable": null,
                 "resizeHandles": null,
-                "width": 150
+                "width": null
             },
             "designerId": "1359ffa9-b00e-4586-858c-da45e066677f",
             "cn": [

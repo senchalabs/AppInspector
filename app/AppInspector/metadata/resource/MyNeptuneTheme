@@ -26,6 +26,40 @@
                     }
                 ]
             },
+            "Ext.container.ButtonGroup": {
+                "globalVars": [
+                    {
+                        "name": "btn-group-background-color",
+                        "enabled": true,
+                        "value": "transparent"
+                    },
+                    {
+                        "name": "btn-group-border-color",
+                        "enabled": true,
+                        "value": "transparent"
+                    },
+                    {
+                        "name": "btn-group-border-width",
+                        "enabled": true,
+                        "value": "0"
+                    },
+                    {
+                        "name": "btn-group-framed-background-color",
+                        "enabled": true,
+                        "value": "transparent"
+                    },
+                    {
+                        "name": "btn-group-framed-border-width",
+                        "enabled": true,
+                        "value": "0"
+                    },
+                    {
+                        "name": "btn-group-inner-border-color",
+                        "enabled": true,
+                        "value": "transparent"
+                    }
+                ]
+            },
             "Ext.tab.Tab": {
                 "globalVars": [
                     {
@@ -74,7 +108,6 @@
                 "designer|displayName": "vars",
                 "designer|scssplacement": "beforeFramework",
                 "implHandler": [
-                    "",
                     "$sencha-green: rgba(121, 154, 5, 1);\t// sencha green",
                     "",
                     "// loadmask",
@@ -223,6 +256,23 @@
                 ]
             },
             "designerId": "145ecce7-640e-41aa-bf1e-7bcccd04f429"
+        },
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tree filter",
+                "implHandler": [
+                    ".filtered {",
+                    "    display: none !important;",
+                    "}"
+                ]
+            },
+            "designerId": "a1e85bef-2149-496c-b948-67ae8fd2c7c4"
         }
     ]
 }

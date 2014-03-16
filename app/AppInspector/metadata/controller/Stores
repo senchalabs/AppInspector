@@ -47,6 +47,9 @@
                     "    'button#RefreshStores': {",
                     "        'click': me.onRefreshStoresClick",
                     "    },",
+                    "    'filterfield#FilterStoresList': {",
+                    "        'applyfilter': me.onFilterStores",
+                    "    },",
                     "    'gridpanel#StoreList': {",
                     "        'itemclick': me.onStoreGridSelection",
                     "    },",
@@ -94,26 +97,6 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "btn"
-                ],
-                "fn": "onRefreshStoresClick",
-                "implHandler": [
-                    "var view = btn.up('#StoreInspector');",
-                    "",
-                    "this.onStoreGridActivate(view);"
-                ]
-            },
-            "designerId": "f0a65706-24e8-42aa-bda2-5a89a5b83939"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
                     "panel"
                 ],
                 "fn": "onStoreGridActivate",
@@ -141,6 +124,59 @@
                 ]
             },
             "designerId": "9c5d9a39-9756-4555-ab6a-58420db2cd8d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onRefreshStoresClick",
+                "implHandler": [
+                    "var view = btn.up('#StoreInspector'),",
+                    "    filter = view.down('#FilterStoresList');",
+                    "",
+                    "filter.reset();",
+                    "this.onStoreGridActivate(view);"
+                ]
+            },
+            "designerId": "f0a65706-24e8-42aa-bda2-5a89a5b83939"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "field",
+                    "value"
+                ],
+                "fn": "onFilterStores",
+                "implHandler": [
+                    "var grid = field.up('#StoreList'),",
+                    "    store = grid.getStore();",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "if (value !== '') {",
+                    "    store.filter([{",
+                    "        anyMatch: true,",
+                    "        caseSensitive: false,",
+                    "        property: 'id',",
+                    "        value: value",
+                    "    }]);",
+                    "}"
+                ]
+            },
+            "designerId": "3c0d0fc4-b2f0-4b31-a902-b98286a1b52a"
         },
         {
             "type": "basicfunction",
