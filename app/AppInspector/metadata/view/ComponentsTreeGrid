@@ -22,6 +22,7 @@
     "isBuiltIn": true,
     "iconCls": "icon-treegridpanel",
     "autoName": "TreeGrid",
+    "cn": [
         {
             "type": "Ext.toolbar.Toolbar",
             "reference": {
