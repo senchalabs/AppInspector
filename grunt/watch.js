@@ -11,12 +11,19 @@ var chalk = require('chalk');
 module.exports = function(grunt) {
     return {
         options: {
-            dateFormat: function(time) {
+            dateFormat: function(runtime) {
+                var now = new Date(),
+                    date = now.toLocaleDateString(),
+                    time = now.toLocaleTimeString();
+
                 grunt.log.writeln('');
                 grunt.log.writeln(chalk.bold.green('✔ done.'));
-                grunt.log.writeln(
-                    'Watch finished in ' + chalk.green(time) + 'ms at ' + chalk.gray(new Date()).toString()
-                );
+                grunt.log.writeln('');
+                grunt.log.writeln([
+                    'Watch finished in',
+                    chalk.blue(runtime + 'ms'),
+                    chalk.gray('(' + date + ' ' + time + ')') + '.'
+                ].join(' '));
                 grunt.log.writeln('Waiting for more changes...');
                 grunt.log.writeln('');
             },
@@ -24,6 +31,7 @@ module.exports = function(grunt) {
         develop: {
             files: [
                 'app/AppInspector/app/util/**/*',
+                'app/AppInspector/app/**/override/*',
                 'app/AppInspector/metadata/**/*',
                 'app/background.js',
                 'app/devtools-page.js'

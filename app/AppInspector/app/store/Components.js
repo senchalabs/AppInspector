@@ -26,13 +26,11 @@ Ext.define('AI.store.Components', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
+            autoLoad: true,
             model: 'AI.model.Component',
             storeId: 'Components',
             proxy: {
                 type: 'memory',
-                data: [
-                    
-                ],
                 reader: {
                     type: 'json'
                 }

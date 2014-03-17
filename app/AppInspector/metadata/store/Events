@@ -10,5 +10,8 @@
         "model": "Event",
         "storeId": "Events"
     },
+    "mockCfgs": [
+        "data"
+    ],
     "designerId": "2b8c84a4-23a7-4be2-9340-def773002814"
 }

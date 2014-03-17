@@ -10,5 +10,8 @@
         "model": "Store",
         "storeId": "Stores"
     },
+    "mockCfgs": [
+        "data"
+    ],
     "designerId": "42e51542-8422-4c09-b580-f34a75103d1c"
 }

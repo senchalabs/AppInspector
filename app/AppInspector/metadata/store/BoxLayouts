@@ -10,5 +10,8 @@
         "model": "Overnested",
         "storeId": "BoxLayouts"
     },
+    "mockCfgs": [
+        "data"
+    ],
     "designerId": "f0a1190d-0c29-49f6-a0af-5b44be4219a7"
 }
