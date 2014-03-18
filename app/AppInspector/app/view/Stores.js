@@ -125,10 +125,21 @@ Ext.define('AI.view.Stores', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                beforeadd: {
+                    fn: me.onStoreInspectorBeforeAdd,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onStoreInspectorBeforeAdd: function(container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+
     }
 
 });

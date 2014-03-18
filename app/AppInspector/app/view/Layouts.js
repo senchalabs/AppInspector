@@ -137,10 +137,21 @@ Ext.define('AI.view.Layouts', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                beforeadd: {
+                    fn: me.onLayoutInspectorBeforeAdd,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onLayoutInspectorBeforeAdd: function(container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+
     }
 
 });

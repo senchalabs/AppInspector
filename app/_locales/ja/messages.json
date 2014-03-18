@@ -1,6 +1,90 @@
 {
     "appDescription": {
-	"message": "Sencha™アプリケーションをデバッグするためのGoogle Chrome™開発ツールエクステンション.",
-	"description": "The description of the application"
+	    "message": "Sencha™ アプリケーションをデバッグするための Google Chrome™ デベロッパーツール拡張",
+	    "description": "The description of the application"
+    },
+    "App_Details": {
+        "message": "アプリ詳細",
+        "description": "The caption of the about panel"
+    },
+    "Components": {
+        "message": "コンポーネント",
+        "description": "The caption of the components panel"
+    },
+    "Stores": {
+        "message": "ストア",
+        "description": "The caption of the store panel"
+    },
+    "Layouts": {
+        "message": "レイアウト",
+        "description": "The caption of the layout panel"
+    },
+    "Events": {
+        "message": "イベント",
+        "description": "The caption of the event panel"
+    },
+    "About_App_Inspector_for_Sencha": {
+        "message": "App Inspector for Sencha について",
+        "description": ""
+    },
+    "Refresh": {
+        "message": "更新",
+        "description": "The caption of the refresh button"
+    },
+    "Filter": {
+        "message": "検索",
+        "description": "The empty text of the filter field"
+    },
+    "Properties": {
+        "message": "プロパティ",
+        "description": "The properties header of the property grid"
+    },
+    "Methods": {
+        "message": "メソッド",
+        "description": "The methods header of the property grid"
+    },
+    "Store_Records": {
+        "message": "Store のレコード",
+        "description": "The panel title of the Store Records"
+    },
+    "Record_Details": {
+        "message": "レコード詳細",
+        "description": "The panel title of the Records Details"
+    },
+    "Profile": {
+        "message": "プロファイル",
+        "description": "The caption of the about panel"
+    },
+    "Overnesting": {
+        "message": "過剰なネスト",
+        "description": "The tab title of the Overnesting"
+    },
+    "Box_Layouts": {
+        "message": "ボックスレイアウト",
+        "description": "The tab title of the Box Layouts"
+    },
+    "Clear": {
+        "message": "クリア",
+        "description": "The caption of the Clear button"
+    },
+    "Record": {
+        "message": "記録",
+        "description": "The caption of the Record button"
+    },
+    "Stop_Recording": {
+        "message": "記録の停止",
+        "description": "The caption of the Stop Record button"
+    },
+    "Sort_Ascending": {
+        "message": "昇順",
+        "description": "The caption of the Sort Ascending"
+    },
+    "Sort_Descending": {
+        "message": "降順",
+        "description": "The caption of the Sort Descending"
+    },
+    "Columns": {
+        "message": "カラム",
+        "description": "The caption of the Columns"
     }
 }

@@ -75,6 +75,24 @@
                 "scope": "me"
             },
             "designerId": "10a2fb72-d45a-4700-bf7e-4e97012efdf2"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTextfieldBeforeRender",
+                "implHandler": [
+                    "this.emptyText = AI.util.i18n.getMessage(this.emptyText);",
+                    ""
+                ],
+                "name": "beforerender",
+                "scope": "me"
+            },
+            "designerId": "c57d85e5-a255-4693-9520-9c5a9acaef72"
         }
     ]
 }

@@ -20,6 +20,10 @@ Ext.Loader.setConfig({
 
 
 Ext.application({
+
+    requires: [
+        'AI.util.i18n'
+    ],
     controllers: [
         'Main',
         'Components',

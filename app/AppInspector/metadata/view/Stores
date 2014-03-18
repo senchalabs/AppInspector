@@ -228,6 +228,24 @@
                     "designerId": "5366c649-9898-4417-9809-34f6905409a0"
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreInspectorBeforeAdd",
+                "implHandler": [
+                    "this.setTitle(AI.util.i18n.getMessage(this.title));",
+                    ""
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "designerId": "1226d648-b12f-4283-a3b3-0ca214e53b93"
         }
     ]
 }
