@@ -19,12 +19,12 @@ Ext.define('AI.view.Stores', {
 
     requires: [
         'AI.view.FilterField',
-        'Ext.toolbar.Toolbar',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
         'Ext.form.field.Text',
         'Ext.grid.column.Column',
         'Ext.grid.View',
+        'Ext.toolbar.Paging',
         'Ext.grid.property.Grid',
         'Ext.grid.Panel'
     ],
@@ -109,6 +109,16 @@ Ext.define('AI.view.Stores', {
                                     dataIndex: 'id',
                                     text: 'Record ID',
                                     flex: 1
+                                }
+                            ],
+                            dockedItems: [
+                                {
+                                    xtype: 'pagingtoolbar',
+                                    dock: 'bottom',
+                                    itemId: 'mypagingtoolbar',
+                                    width: 360,
+                                    displayInfo: true,
+                                    store: 'Records'
                                 }
                             ]
                         },

@@ -17,7 +17,10 @@ Ext.define('AI.store.Records', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'AI.model.Record'
+        'AI.model.Record',
+        'Ext.data.proxy.Memory',
+        'Ext.data.reader.Array',
+        'AI.ux.data.proxy.InspectedWindow'
     ],
 
     constructor: function(cfg) {
@@ -25,7 +28,15 @@ Ext.define('AI.store.Records', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             model: 'AI.model.Record',
-            storeId: 'Records'
+            storeId: 'Records',
+            pageSize: 50,
+            proxy: {
+                type: 'memory',
+                type: 'inspectedwindow',
+                reader: {
+                    type: 'array'
+                }
+            }
         }, cfg)]);
     }
 });
