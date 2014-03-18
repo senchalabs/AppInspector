@@ -201,6 +201,22 @@
                             },
                             "codeClass": null,
                             "designerId": "4931dfca-f973-449b-b21f-2b3c5526fbee"
+                        },
+                        {
+                            "type": "Ext.toolbar.Paging",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayInfo": true,
+                                "dock": "bottom",
+                                "itemId": "mypagingtoolbar",
+                                "store": "Records",
+                                "width": 360
+                            },
+                            "designerId": "7d921677-32e0-4b83-97f6-496d2f0e4f84"
                         }
                     ]
                 },

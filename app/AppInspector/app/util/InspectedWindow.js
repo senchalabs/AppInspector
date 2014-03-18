@@ -43,7 +43,7 @@ Ext.define('AI.util.InspectedWindow', {
 
     /**
      * @param {Function} closure
-     * @param {String} argString
+     * @param {String/Array} argString
      * @param {Function} callback  A callback function passed two parameters:
      *
      * - result {*}: Whatever the closure function returns
@@ -54,8 +54,33 @@ Ext.define('AI.util.InspectedWindow', {
         var callbackFn = callback,
             args = '';
 
-        if (argString) {
-            args = '"' + argString + '"';
+        var encodeArg = function(arg) {
+            switch (typeof arg) {
+                case 'string':
+                    return '"' + arg + '"';
+                    break;
+
+                case 'number':
+                    return arg;
+                    break;
+
+                default:
+                    break;
+            }
+        };
+
+        //handle arrays and variable data types
+        if (argString && typeof argString !== 'object') {
+            args = encodeArg(argString);
+        }
+        else if (argString) {
+            Ext.Array.each(argString, function(x) {
+                if (args !== '') {
+                    args += ', ';
+                }
+
+                args += encodeArg(x);
+            });
         }
 
         chrome.devtools.inspectedWindow.eval(
