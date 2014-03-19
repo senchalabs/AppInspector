@@ -14,6 +14,9 @@ Ext.define('AI.util.i18n', {
         'name'
     ],
 
+    REGEXP_SPACE : /\s/g,
+    REGEXP_PERIOD: /\./g,
+
     /**
      * Overrides internal mechanism of class system.
      */
@@ -42,12 +45,14 @@ Ext.define('AI.util.i18n', {
     /**
      * Convert value to use the chrome i18n message key.
      * If it contains spaces, be replaced '_' string.
+     * If it contains period, be trimmed.
      * @private
      * @param  {String} value
      * @return {String}
      */
     convertMessageKey: function(value) {
-        return value.replace(/\s/g, '_');
+        return value.replace(AI.util.i18n.REGEXP_SPACE, '_').
+                    replace(AI.util.i18n.REGEXP_PERIOD, '');
     },
 
     /**

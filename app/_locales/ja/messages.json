@@ -86,5 +86,13 @@
     "Columns": {
         "message": "カラム",
         "description": "The caption of the Columns"
+    },
+    "Utility_to_find_components_which_may_be_overnested_inside_the_application": {
+        "message": "アプリケーション内で過剰にネストされているコンポーネントを探す機能です。",
+        "description": "The description about Overnesting"
+    },
+    "Utility_to_find_nested_box_layouts_inside_the_application_which_may_contribute_to_performance_issues": {
+        "message": "アプリケーション内でネストされているボックスレイアウトを探す機能です。ボックスレイアウトはパフォーマンス上の問題を発生させる場合があります。",
+        "description": "The description about Overnesting"
     }
 }
