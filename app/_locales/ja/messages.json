@@ -1,7 +1,7 @@
 {
     "appDescription": {
-	    "message": "Sencha™ アプリケーションをデバッグするための Google Chrome™ デベロッパーツール拡張",
-	    "description": "The description of the application"
+        "message": "Sencha™ アプリケーションをデバッグするための Google Chrome™ デベロッパーツール拡張",
+        "description": "The description of the application"
     },
     "App_Details": {
         "message": "アプリ詳細",
