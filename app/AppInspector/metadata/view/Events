@@ -75,6 +75,33 @@
                         "text": "Stop Recording"
                     },
                     "designerId": "9c774eea-356e-47aa-8b8f-a1782a00715a"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "designerId": "a1697eaf-ca9c-4b04-b1d5-d68ecb527da2"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "emptyText": null,
+                        "itemId": "FilterEventsList",
+                        "layout|flex": null
+                    },
+                    "designerId": "f6cdbc47-51bd-45f4-aabf-ed43c47433a7",
+                    "masterInstanceId": "6ac6082d-27c2-446c-a5eb-a2845710d54e"
                 }
             ]
         },

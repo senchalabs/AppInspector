@@ -48,11 +48,45 @@
                     "    },",
                     "    'button#StopRecording' : {",
                     "        'click' : me.onStopRecordingClick",
+                    "    },",
+                    "    'filterfield#FilterEventsList': {",
+                    "        'applyfilter': me.onFilterEvents",
                     "    }",
                     "});"
                 ]
             },
             "designerId": "c8641669-898c-4139-820b-8f12fb0b6aff"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "field",
+                    "value"
+                ],
+                "fn": "onFilterEvents",
+                "implHandler": [
+                    "var grid = field.up('#EventInspector'),",
+                    "    store = grid.getStore();",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "if (value !== '') {",
+                    "    store.filter([{",
+                    "        anyMatch: true,",
+                    "        caseSensitive: false,",
+                    "        property: 'eventName',",
+                    "        value: value",
+                    "    }]);",
+                    "}"
+                ]
+            },
+            "designerId": "b8f68463-43aa-496f-b15d-71f8ab354006"
         },
         {
             "type": "basicfunction",

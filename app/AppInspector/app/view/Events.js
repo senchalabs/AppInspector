@@ -18,8 +18,11 @@ Ext.define('AI.view.Events', {
     alias: 'widget.eventgrid',
 
     requires: [
+        'AI.view.FilterField',
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
+        'Ext.toolbar.Fill',
+        'Ext.form.field.Text',
         'Ext.grid.column.Column',
         'Ext.grid.View'
     ],
@@ -56,6 +59,13 @@ Ext.define('AI.view.Events', {
                             itemId: 'StopRecording',
                             iconCls: 'icn-stop',
                             text: 'Stop Recording'
+                        },
+                        {
+                            xtype: 'tbfill'
+                        },
+                        {
+                            xtype: 'filterfield',
+                            itemId: 'FilterEventsList'
                         }
                     ]
                 }

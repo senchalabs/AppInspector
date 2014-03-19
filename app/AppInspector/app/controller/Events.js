@@ -44,8 +44,27 @@ Ext.define('AI.controller.Events', {
             },
             'button#StopRecording' : {
                 'click' : me.onStopRecordingClick
+            },
+            'filterfield#FilterEventsList': {
+                'applyfilter': me.onFilterEvents
             }
         });
+    },
+
+    onFilterEvents: function(field, value) {
+        var grid = field.up('#EventInspector'),
+            store = grid.getStore();
+
+        store.clearFilter();
+
+        if (value !== '') {
+            store.filter([{
+                anyMatch: true,
+                caseSensitive: false,
+                property: 'eventName',
+                value: value
+            }]);
+        }
     },
 
     onClearEventsClick: function(btn) {
