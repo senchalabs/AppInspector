@@ -168,6 +168,24 @@
             },
             "codeClass": null,
             "designerId": "037fc65d-5897-426c-969c-4cc723122d14"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onEventInspectorBeforeAdd",
+                "implHandler": [
+                    "this.setTitle(AI.util.i18n.getMessage(this.title));",
+                    ""
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "designerId": "dbd8eddb-03cb-44a9-b94c-c13e8de50958"
         }
     ]
 }

@@ -66,10 +66,21 @@ Ext.define('AI.view.About', {
                     title: 'About App Inspector for Sencha',
                     titleCollapse: true
                 }
-            ]
+            ],
+            listeners: {
+                beforeadd: {
+                    fn: me.onAboutBeforeAdd,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onAboutBeforeAdd: function(container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+
     }
 
 });

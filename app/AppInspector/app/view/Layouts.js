@@ -77,9 +77,10 @@ Ext.define('AI.view.Layouts', {
                                     xtype: 'button',
                                     handler: function(button, e) {
                                         Ext.Msg.alert(
-                                        'Overnesting',
-                                        'Utility to find components which may be overnested inside the application.'
+                                        AI.util.i18n.getMessage('Overnesting'),
+                                        AI.util.i18n.getMessage('Utility to find components which may be overnested inside the application.')
                                         );
+
                                     },
                                     text: '?'
                                 }
@@ -127,9 +128,10 @@ Ext.define('AI.view.Layouts', {
                                     xtype: 'button',
                                     handler: function(button, e) {
                                         Ext.Msg.alert(
-                                        'Box Layouts',
-                                        'Utility to find nested box layouts inside the application which may contribute to performance issues.'
+                                        AI.util.i18n.getMessage('Box Layouts'),
+                                        AI.util.i18n.getMessage('Utility to find nested box layouts inside the application which may contribute to performance issues.')
                                         );
+
                                     },
                                     text: '?'
                                 }
@@ -137,10 +139,21 @@ Ext.define('AI.view.Layouts', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                beforeadd: {
+                    fn: me.onLayoutInspectorBeforeAdd,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onLayoutInspectorBeforeAdd: function(container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+
     }
 
 });

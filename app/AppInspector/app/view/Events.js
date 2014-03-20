@@ -94,10 +94,21 @@ Ext.define('AI.view.Events', {
                     text: 'Cmp ID',
                     flex: 1
                 }
-            ]
+            ],
+            listeners: {
+                beforeadd: {
+                    fn: me.onEventInspectorBeforeAdd,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onEventInspectorBeforeAdd: function(container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+
     }
 
 });

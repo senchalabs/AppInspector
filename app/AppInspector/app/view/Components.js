@@ -71,10 +71,21 @@ Ext.define('AI.view.Components', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                beforeadd: {
+                    fn: me.onComponentInspectorBeforeAdd,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
+    },
+
+    onComponentInspectorBeforeAdd: function(container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+
     }
 
 });

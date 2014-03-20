@@ -40,6 +40,10 @@ Ext.define('AI.view.FilterField', {
                 keypress: {
                     fn: me.onTextfieldKeypress,
                     scope: me
+                },
+                beforerender: {
+                    fn: me.onTextfieldBeforeRender,
+                    scope: me
                 }
             }
         });
@@ -59,6 +63,11 @@ Ext.define('AI.view.FilterField', {
         if (this.forceEnter === true && e.getKey() === Ext.EventObject.ENTER) {
             this.fireEvent('applyfilter', textfield, textfield.getValue());
         }
+    },
+
+    onTextfieldBeforeRender: function(component, eOpts) {
+        this.emptyText = AI.util.i18n.getMessage(this.emptyText);
+
     }
 
 });

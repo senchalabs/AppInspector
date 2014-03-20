@@ -13,7 +13,10 @@
             "Layouts",
             "Events"
         ],
-        "name": "AI"
+        "name": "AI",
+        "requires": [
+            "AI.util.i18n"
+        ]
     },
     "designerId": "application"
 }

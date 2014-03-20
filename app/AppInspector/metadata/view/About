@@ -73,6 +73,24 @@
                 "width": null
             },
             "designerId": "711195df-b751-425b-ae80-7600476ded26"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onAboutBeforeAdd",
+                "implHandler": [
+                    "this.setTitle(AI.util.i18n.getMessage(this.title));",
+                    ""
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "designerId": "8a2fb92c-19fa-4f8b-8433-00ddc992f31f"
         }
     ]
 }

@@ -130,6 +130,24 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onComponentInspectorBeforeAdd",
+                "implHandler": [
+                    "this.setTitle(AI.util.i18n.getMessage(this.title));",
+                    ""
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "designerId": "5ec2a06c-d550-426d-a34b-2d9915d8acd3"
         }
     ]
 }
