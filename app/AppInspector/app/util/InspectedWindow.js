@@ -58,11 +58,9 @@ Ext.define('AI.util.InspectedWindow', {
             switch (typeof arg) {
                 case 'string':
                     return '"' + arg + '"';
-                    break;
 
                 case 'number':
                     return arg;
-                    break;
 
                 default:
                     break;

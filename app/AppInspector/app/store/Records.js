@@ -18,8 +18,7 @@ Ext.define('AI.store.Records', {
 
     requires: [
         'AI.model.Record',
-        'Ext.data.proxy.Memory',
-        'Ext.data.reader.Array',
+        'AI.store.override.Records',
         'AI.ux.data.proxy.InspectedWindow'
     ],
 
@@ -29,14 +28,7 @@ Ext.define('AI.store.Records', {
         me.callParent([Ext.apply({
             model: 'AI.model.Record',
             storeId: 'Records',
-            pageSize: 50,
-            proxy: {
-                type: 'memory',
-                type: 'inspectedwindow',
-                reader: {
-                    type: 'array'
-                }
-            }
+            pageSize: 50
         }, cfg)]);
     }
 });
