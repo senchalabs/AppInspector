@@ -129,6 +129,7 @@ Ext.define('AI.view.Stores', {
                             resizable: true,
                             resizeHandles: 'w',
                             title: 'Record Details',
+                            nameColumnWidth: '50%',
                             source: {
                                 
                             }

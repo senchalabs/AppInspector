@@ -32,6 +32,7 @@ Ext.define('AI.util.InspectedWindow', {
             el.style.top = box.top + 'px';
             el.style.left = box.left + 'px';
             el.style.visibility = '';
+            el.style.zIndex = 99999;
 
             window.setTimeout(function() {
                 var el = document.getElementById('_AppInspector');

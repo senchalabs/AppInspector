@@ -57,6 +57,7 @@ Ext.define('AI.view.Components', {
                             xtype: 'propertygrid',
                             itemId: 'ComponentProps',
                             title: 'Properties',
+                            nameColumnWidth: '50%',
                             source: {
                                 
                             }
@@ -65,6 +66,7 @@ Ext.define('AI.view.Components', {
                             xtype: 'propertygrid',
                             itemId: 'ComponentMethods',
                             title: 'Methods',
+                            nameColumnWidth: '50%',
                             source: {
                                 
                             }
