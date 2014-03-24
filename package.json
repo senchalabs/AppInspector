@@ -34,7 +34,7 @@
         "jshint-stylish": "~0.1.5",
         "lintroller": "~2.3.5-b",
         "load-grunt-config": "~0.7.1",
-        "load-grunt-tasks": "~0.3.0",
+        "load-grunt-tasks": "~0.4.0",
         "lodash": "~2.4.1",
         "time-grunt": "~0.2.9"
     },

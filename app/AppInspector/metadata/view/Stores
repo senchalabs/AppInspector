@@ -230,6 +230,7 @@
                     "userConfig": {
                         "itemId": "RecordDetail",
                         "layout|flex": null,
+                        "nameColumnWidth": "50%",
                         "resizable": [
                             "true",
                             ""

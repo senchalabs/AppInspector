@@ -38,8 +38,16 @@ Ext.define('AI.util.i18n', {
      * @return {String}
      */
     getMessage: function(value) {
-        var messageKey = this.convertMessageKey(value);
-        return chrome.i18n.getMessage(messageKey) || value || '';
+        var messageKey = this.convertMessageKey(value),
+            localeString;
+
+        // chrome.i18n is only available online
+        // so we need to have a fallback
+        if (chrome && chrome.i18n) {
+            localeString = chrome.i18n.getMessage(messageKey);
+        }
+
+        return (localeString || value || '');
     },
 
     /**

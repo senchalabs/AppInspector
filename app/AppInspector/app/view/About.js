@@ -21,9 +21,7 @@ Ext.define('AI.view.About', {
         'Ext.grid.property.Grid'
     ],
 
-    height: 250,
     itemId: 'About',
-    width: 400,
     iconCls: 'icn-home',
     title: 'App Details',
 
@@ -45,6 +43,7 @@ Ext.define('AI.view.About', {
                     header: false,
                     iconCls: 'icon-home',
                     emptyText: 'No Sencha framework found!',
+                    nameColumnWidth: '50%',
                     source: {
                         
                     }

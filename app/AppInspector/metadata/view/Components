@@ -80,6 +80,7 @@
                     "userConfig": {
                         "emptyText": null,
                         "itemId": "ComponentProps",
+                        "nameColumnWidth": "50%",
                         "resizable": null,
                         "source": [
                             "{}"
@@ -109,6 +110,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "itemId": "ComponentMethods",
+                        "nameColumnWidth": "50%",
                         "resizable": null,
                         "source": [
                             "{}"

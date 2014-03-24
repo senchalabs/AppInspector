@@ -9,12 +9,12 @@
         "container|align": "stretch",
         "designer|userAlias": "about",
         "designer|userClassName": "About",
-        "height": 250,
+        "height": null,
         "iconCls": "icn-home",
         "itemId": "About",
         "layout": "vbox",
         "title": "App Details",
-        "width": 400
+        "width": null
     },
     "designerId": "179dd4ed-c247-45e3-9431-e01d8a679662",
     "cn": [
@@ -34,6 +34,7 @@
                 "itemId": "AppDetails",
                 "layout|flex": 1,
                 "minHeight": 150,
+                "nameColumnWidth": "50%",
                 "source": [
                     "{}"
                 ],

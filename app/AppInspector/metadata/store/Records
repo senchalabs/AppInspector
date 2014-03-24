@@ -17,37 +17,5 @@
     "mockCfgs": [
         "data"
     ],
-    "designerId": "96c4b9b0-4313-4f3f-b073-d054eb1d1324",
-    "cn": [
-        {
-            "type": "Ext.data.proxy.Memory",
-            "reference": {
-                "name": "proxy",
-                "type": "object"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "type": "inspectedwindow"
-            },
-            "designerId": "3690a493-70b9-4da7-8af1-100541102328",
-            "customConfigs": [
-                {
-                    "group": "(Custom Properties)",
-                    "name": "type",
-                    "type": "string"
-                }
-            ],
-            "cn": [
-                {
-                    "type": "Ext.data.reader.Array",
-                    "reference": {
-                        "name": "reader",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "designerId": "e44bd61a-0f08-4b52-ad83-a24f8ad28170"
-                }
-            ]
-        }
-    ]
+    "designerId": "96c4b9b0-4313-4f3f-b073-d054eb1d1324"
 }

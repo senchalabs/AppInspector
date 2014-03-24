@@ -6,6 +6,7 @@
  */
 Ext.Loader.addClassPathMappings({
   "AI": "../../app",
+  "AI.override.AbstractComponent": "../../app/util/i18n.js",
   "Ext": "../../ext/src",
   "Ext.Msg": "../../ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "../../ext/src/rtl/EventObject.js",
@@ -39,20 +40,24 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.Components": [],
   "AI.store.Events": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.store.override.Records": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
   "AI.util.extjs.Events": [],
   "AI.util.extjs.Profile": [],
+  "AI.util.i18n": [],
   "AI.util.touch.Events": [],
   "AI.util.touch.Profile": [],
+  "AI.ux.data.proxy.InspectedWindow": [],
   "AI.view.About": [],
   "AI.view.Components": [],
   "AI.view.ComponentsTreeGrid": [],
@@ -465,6 +470,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.grid.RowEditor": [],
   "Ext.grid.RowEditorButtons": [],
+  "Ext.grid.Scroller": [],
   "Ext.grid.View": [],
   "Ext.grid.ViewDropZone": [],
   "Ext.grid.column.Action": [
@@ -910,20 +916,26 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.Components": [],
   "AI.store.Events": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.store.override.Records": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
   "AI.util.extjs.Events": [],
   "AI.util.extjs.Profile": [],
+  "AI.util.i18n": [],
   "AI.util.touch.Events": [],
   "AI.util.touch.Profile": [],
+  "AI.ux.data.proxy.InspectedWindow": [
+    "proxy.inspectedwindow"
+  ],
   "AI.view.About": [
     "widget.about"
   ],
@@ -1388,6 +1400,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.grid.RowEditorButtons": [
     "widget.roweditorbuttons"
   ],
+  "Ext.grid.Scroller": [],
   "Ext.grid.View": [
     "widget.gridview"
   ],

@@ -6,14 +6,9 @@
  */
 Ext.Loader.addClassPathMappings({
   "AI": "app",
+  "AI.override.AbstractComponent": "app/util/i18n.js",
   "Ext": "ext/src",
-  "Ext.DomHelper": "ext/src/dom/Helper.js",
-  "Ext.DomQuery": "ext/src/dom/Query.js",
-  "Ext.EventObjectImpl": "ext/src/EventObject.js",
   "Ext.Msg": "ext/src/window/MessageBox.js",
-  "Ext.Supports": "ext/src/Support.js",
-  "Ext.core.DomHelper": "ext/src/dom/Helper.js",
-  "Ext.core.DomQuery": "ext/src/dom/Query.js",
   "Ext.rtl.EventObjectImpl": "ext/src/rtl/EventObject.js",
   "Ext.ux.AppInspector": "app/util/InspectedWindow.js",
   "ExtThemeNeptune.Component": "ext/ext-theme-neptune.js",
@@ -45,18 +40,21 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.Components": [],
   "AI.store.Events": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.store.override.Records": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
   "AI.util.extjs.Events": [],
   "AI.util.extjs.Profile": [],
+  "AI.util.i18n": [],
   "AI.util.touch.Events": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [],
@@ -472,6 +470,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.grid.RowEditor": [],
   "Ext.grid.RowEditorButtons": [],
+  "Ext.grid.Scroller": [],
   "Ext.grid.View": [],
   "Ext.grid.ViewDropZone": [],
   "Ext.grid.column.Action": [
@@ -917,18 +916,21 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.Components": [],
   "AI.store.Events": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.store.override.Records": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
   "AI.util.extjs.Events": [],
   "AI.util.extjs.Profile": [],
+  "AI.util.i18n": [],
   "AI.util.touch.Events": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [
@@ -1398,6 +1400,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.grid.RowEditorButtons": [
     "widget.roweditorbuttons"
   ],
+  "Ext.grid.Scroller": [],
   "Ext.grid.View": [
     "widget.gridview"
   ],
@@ -1970,9 +1973,9 @@ Ext.setVersion("ext-theme-neptune", "4.2.1");
 Ext.setVersion("ext-theme-neptune-1b164612-6ea5-4722-8816-f85b69edae67", "1.0.0");
 Ext.setVersion("ext-theme-neutral", "4.2.1");
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/Component.js");;
+Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/panel/Panel.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/toolbar/Toolbar.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/layout/component/Dock.js");;
-Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/panel/Panel.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/container/ButtonGroup.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/toolbar/Paging.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/picker/Month.js");;
@@ -1981,8 +1984,8 @@ Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/panel/Table.js")
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/grid/RowEditor.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/grid/column/RowNumberer.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/resizer/Splitter.js");;
-Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/menu/Separator.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/menu/Menu.js");;
+Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/menu/Separator.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/panel/Tool.js");;
 Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/tab/Tab.js");;
 /**
@@ -1990,7 +1993,7 @@ Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/tab/Tab.js");;
  * @author Jacky Nguyen <jacky@sencha.com>
  */
 (function() {
-    var head = document.head;
+    var head = document.head || document.getElementsByTagName('head')[0];
 
     function write(content) {
         document.write(content);
@@ -2143,9 +2146,13 @@ Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/tab/Tab.js");;
             if (!filterPlatform(platform) || filterPlatform(exclude)) {
                 continue;
             }
-            Ext.theme = {
-                name: theme || 'Default'
-            };
+
+            if(!Ext.theme) {
+                Ext.theme = {};
+            }
+            if(!Ext.theme.name) {
+                Ext.theme.name = theme || 'Default';
+            }
         }
 
         write('<link rel="stylesheet" href="'+path+'">');
