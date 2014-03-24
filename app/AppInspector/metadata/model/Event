@@ -54,7 +54,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "id"
+                "name": "cmpId"
             },
             "designerId": "472da607-58b2-4c28-aa76-0e40a02cc3aa"
         }

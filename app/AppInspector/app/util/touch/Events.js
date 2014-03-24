@@ -23,7 +23,7 @@ Ext.define('AI.util.touch.Events', {
                     eventName : eventName,
                     source    : (isComponent) ? arguments[3][0].$className : targetType,
                     xtype     : (isComponent) ? arguments[3][0].xtype : '',
-                    id        : target
+                    cmpId     : target
                 };
 
                 Ext.ux.AppInspector.eventCache.push(x);

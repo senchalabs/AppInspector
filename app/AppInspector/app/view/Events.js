@@ -90,7 +90,7 @@ Ext.define('AI.view.Events', {
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'id',
+                    dataIndex: 'cmpId',
                     text: 'Cmp ID',
                     flex: 1
                 }
