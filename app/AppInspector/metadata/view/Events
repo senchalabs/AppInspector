@@ -154,7 +154,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "id",
+                "dataIndex": "cmpId",
                 "flex": 1,
                 "text": "Cmp ID"
             },

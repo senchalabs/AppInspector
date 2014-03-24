@@ -42,7 +42,7 @@ Ext.define('AI.util.extjs.Events', {
                     eventName : eventName,
                     source    : signature.$className,
                     xtype     : signature.xtype,
-                    id        : signature.id
+                    cmpId     : signature.id
                 });
             };
 

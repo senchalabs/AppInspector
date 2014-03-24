@@ -31,7 +31,7 @@ Ext.define('AI.model.Event', {
             name: 'source'
         },
         {
-            name: 'id'
+            name: 'cmpId'
         }
     ]
 });
