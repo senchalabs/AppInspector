@@ -126,7 +126,11 @@ Ext.define('AI.controller.Stores', {
 
         store.getProxy().inspectedStoreId = record.get('id');
 
-        store.load();
+        store.load({
+            callback : function(records, operation, success) {
+                record.set('count', this.getTotalCount());
+            }
+        });
     },
 
     onRecordGridSelection: function(grid, record, item, index, e, eOpts) {
