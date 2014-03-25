@@ -71,8 +71,7 @@ Ext.define('AI.util.InspectedWindow', {
         //handle arrays and variable data types
         if (argString && typeof argString !== 'object') {
             args = encodeArg(argString);
-        }
-        else if (argString) {
+        } else if (argString) {
             Ext.Array.each(argString, function(x) {
                 if (args !== '') {
                     args += ', ';
@@ -118,7 +117,7 @@ Ext.define('AI.util.InspectedWindow', {
 
                 if (cmp) {
                     this.contextRef = cmp.getId();
-		} else {
+                } else {
                     this.contextRef = null;
                 }
             }

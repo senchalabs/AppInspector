@@ -15,9 +15,9 @@
             "AI.util.InspectedWindow"
         ],
         "stores": [
-	    "Components",
-	    "ComponentProps",
-	    "ComponentMethods"
+            "Components",
+            "ComponentProps",
+            "ComponentMethods"
         ],
         "views": [
             "Components",
@@ -188,9 +188,9 @@
                 "implHandler": [
                     "var parent = tree.up('components'),",
                     "    propsGrid = parent.down('#ComponentProps'),",
-		    "    propsGridStore = propsGrid.getStore(),",
-		    "    methodGrid = parent.down('#ComponentMethods'),",
-		    "    methodGridStore = methodGrid.getStore();",
+                    "    propsGridStore = propsGrid.getStore(),",
+                    "    methodGrid = parent.down('#ComponentMethods'),",
+                    "    methodGridStore = methodGrid.getStore();",
                     "",
                     "AI.util.InspectedWindow.eval(",
                     "    AI.util.InspectedWindow.highlight,",
@@ -203,13 +203,13 @@
                     "    record.get('cmpId'),",
                     "    function(result, isException) {",
                     "        if (result) {",
-		    "            console.log(result);",
-		    "            ",
-		    "            propsGridStore.loadData(result.properties);",
-		    "            methodGridStore.loadData(result.methods);",
+                    "            console.log(result);",
+                    "            ",
+                    "            propsGridStore.loadData(result.properties);",
+                    "            methodGridStore.loadData(result.methods);",
                     "        } else {",
-		    "            propsGridStore.loadData([]);",
-		    "            methodGridStore.loadData([]);",
+                    "            propsGridStore.loadData([]);",
+                    "            methodGridStore.loadData([]);",
                     "        }",
                     "    }",
                     ");"

@@ -25,9 +25,9 @@ Ext.define('AI.controller.Components', {
         'Component'
     ],
     stores: [
-	'Components',
-	'ComponentProps',
-	'ComponentMethods'
+        'Components',
+        'ComponentProps',
+        'ComponentMethods'
     ],
     views: [
         'Components',
@@ -113,9 +113,9 @@ Ext.define('AI.controller.Components', {
     onSelectComponent: function(tree, record, item, index, e, eOpts) {
         var parent = tree.up('components'),
             propsGrid = parent.down('#ComponentProps'),
-	    propsGridStore = propsGrid.getStore(),
-	    methodGrid = parent.down('#ComponentMethods'),
-	    methodGridStore = methodGrid.getStore();
+            propsGridStore = propsGrid.getStore(),
+            methodGrid = parent.down('#ComponentMethods'),
+            methodGridStore = methodGrid.getStore();
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
@@ -128,13 +128,13 @@ Ext.define('AI.controller.Components', {
             record.get('cmpId'),
             function(result, isException) {
                 if (result) {
-		    console.log(result);
+                    console.log(result);
 
-		    propsGridStore.loadData(result.properties);
-		    methodGridStore.loadData(result.methods);
+                    propsGridStore.loadData(result.properties);
+                    methodGridStore.loadData(result.methods);
                 } else {
-		    propsGridStore.loadData([]);
-		    methodGridStore.loadData([]);
+                    propsGridStore.loadData([]);
+                    methodGridStore.loadData([]);
                 }
             }
         );

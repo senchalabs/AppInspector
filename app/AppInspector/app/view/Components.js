@@ -18,12 +18,15 @@ Ext.define('AI.view.Components', {
     alias: 'widget.components',
 
     requires: [
-        'AI.view.ComponentsTreeGrid',
         'Ext.tree.Panel',
+        'Ext.toolbar.Toolbar',
+        'Ext.tree.View',
+        'Ext.tree.Column',
         'Ext.tab.Panel',
-	'Ext.grid.Panel',
+        'Ext.grid.Panel',
         'Ext.tab.Tab',
-	'Ext.grid.View',
+        'Ext.grid.column.Boolean',
+        'Ext.grid.View',
         'Ext.layout.container.Border'
     ],
 
@@ -39,10 +42,45 @@ Ext.define('AI.view.Components', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'componentstreegrid',
-                    itemId: 'ComponentTree',
+                    xtype: 'treepanel',
                     flex: 1,
-                    region: 'center'
+                    region: 'center',
+                    itemId: 'ComponentTree',
+                    autoScroll: true,
+                    store: 'Components',
+                    rootVisible: false,
+                    useArrows: true,
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            ui: 'default-toolbar',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    itemId: 'RefreshComponentTree',
+                                    iconCls: 'icn-refresh',
+                                    text: 'Refresh'
+                                }
+                            ]
+                        }
+                    ],
+                    viewConfig: {
+
+                    },
+                    columns: [
+                        {
+                            xtype: 'treecolumn',
+                            dataIndex: 'text',
+                            text: 'Component ID',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'xtype',
+                            text: 'XType'
+                        }
+                    ]
                 },
                 {
                     xtype: 'tabpanel',
@@ -50,115 +88,129 @@ Ext.define('AI.view.Components', {
                     region: 'east',
                     split: true,
                     itemId: 'ComponentDetails',
-                    minWidth: 100,
+                    minWidth: 200,
+                    width: 150,
                     activeTab: 0,
-                    minTabWidth: 45,
                     items: [
                         {
-			    xtype: 'gridpanel',
-			    height: 250,
+                            xtype: 'gridpanel',
+                            cls: 'highlight',
+                            height: 250,
                             itemId: 'ComponentProps',
-			    width: 400,
+                            width: 400,
                             title: 'Properties',
-			    store: 'ComponentProps',
-			    columns: [
-				{
-				    xtype: 'gridcolumn',
-				    sortable: true,
-				    dataIndex: 'name',
-				    text: 'Name',
-				    flex: 1
-				},
-				{
-				    xtype: 'gridcolumn',
-				    sortable: false,
-				    dataIndex: 'value',
-				    text: 'Value',
-				    flex: 2
-				}
-			    ],
-			    viewConfig: {
-				getRowClass: function(record, rowIndex, rowParams, store) {
-				    var isOwn = record.get('isOwn'),
-					isOverride = record.get('isOverride'),
-					cls = [];
+                            store: 'ComponentProps',
+                            columns: [
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 5,
+                                    resizable: false,
+                                    defaultWidth: 5,
+                                    weight: 5,
+                                    dataIndex: 'isOwn',
+                                    hideable: false,
+                                    tdCls: 'indicator',
+                                    falseText: ' ',
+                                    trueText: ' '
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: true,
+                                    dataIndex: 'name',
+                                    text: 'Name',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: false,
+                                    dataIndex: 'value',
+                                    text: 'Value',
+                                    flex: 2
+                                }
+                            ],
+                            viewConfig: {
+                                getRowClass: function(record, rowIndex, rowParams, store) {
+                                    var isOwn = record.get('isOwn'),
+                                        isOverride = record.get('isOverride'),
+                                        cls = [];
 
-				    if (isOwn) {
-					cls.push('isOwn');
-				    }
+                                    if (isOwn) {
+                                        cls.push('isOwn');
+                                    }
 
-				    if (isOverride) {
-					cls.push('isOverride');
-				    }
+                                    if (isOverride) {
+                                        cls.push('isOverride');
+                                    }
 
-				    console.log(rowIndex, cls.join(' '));
+                                    console.log(rowIndex, cls.join(' '));
 
 
-				    return cls.join(' ');
-				}
+                                    return cls.join(' ');
+                                }
                             }
                         },
                         {
-			    xtype: 'gridpanel',
-			    height: 250,
+                            xtype: 'gridpanel',
+                            cls: 'highlight',
+                            height: 250,
                             itemId: 'ComponentMethods',
-			    width: 400,
+                            width: 400,
                             title: 'Methods',
-			    store: 'ComponentMethods',
-			    columns: [
-				{
-				    xtype: 'gridcolumn',
-				    sortable: true,
-				    dataIndex: 'name',
-				    text: 'Name',
-				    flex: 1
-				},
-				{
-				    xtype: 'gridcolumn',
-				    sortable: false,
-				    dataIndex: 'value',
-				    text: 'Value',
-				    flex: 2
-				}
-			    ],
-			    viewConfig: {
-				getRowClass: function(record, rowIndex, rowParams, store) {
-				    var isOwn = record.get('isOwn'),
-					isOverride = record.get('isOverride'),
-					cls = [];
+                            store: 'ComponentMethods',
+                            columns: [
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 5,
+                                    resizable: false,
+                                    defaultWidth: 5,
+                                    dataIndex: 'isOwn',
+                                    hideable: false,
+                                    tdCls: 'indicator',
+                                    falseText: ' ',
+                                    trueText: ' '
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: true,
+                                    dataIndex: 'name',
+                                    text: 'Name',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: false,
+                                    dataIndex: 'value',
+                                    text: 'Value',
+                                    flex: 2
+                                }
+                            ],
+                            viewConfig: {
+                                getRowClass: function(record, rowIndex, rowParams, store) {
+                                    var isOwn = record.get('isOwn'),
+                                        isOverride = record.get('isOverride'),
+                                        cls = [];
 
-				    if (isOwn) {
-					cls.push('isOwn');
-				    }
+                                    if (isOwn) {
+                                        cls.push('isOwn');
+                                    }
 
-				    if (isOverride) {
-					cls.push('isOverride');
-				    }
+                                    if (isOverride) {
+                                        cls.push('isOverride');
+                                    }
 
-				    console.log(rowIndex, cls.join(' '));
+                                    console.log(rowIndex, cls.join(' '));
 
 
-				    return cls.join(' ');
-				}
+                                    return cls.join(' ');
+                                }
                             }
                         }
                     ]
                 }
-            ],
-            listeners: {
-                beforeadd: {
-                    fn: me.onComponentInspectorBeforeAdd,
-                    scope: me
-                }
-            }
+            ]
         });
 
         me.callParent(arguments);
-    },
-
-    onComponentInspectorBeforeAdd: function(container, component, index, eOpts) {
-        this.setTitle(AI.util.i18n.getMessage(this.title));
-
     }
 
 });
