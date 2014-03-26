@@ -27,7 +27,8 @@ Ext.define('AI.controller.Layouts', {
     ],
     stores: [
         'Overnested',
-        'BoxLayouts'
+        'BoxLayouts',
+        'Layouts'
     ],
     views: [
         'Layouts'
@@ -52,6 +53,20 @@ Ext.define('AI.controller.Layouts', {
             },
             'button#ProfileBoxLayouts': {
                 'click': me.onNestedBoxLayoutsClick
+            },
+
+            //layout runs
+            '#LayoutRuns button#ClearLayouts' : {
+                'click' : me.onClearLayoutsClick
+            },
+            '#LayoutRuns button#RecordLayouts' : {
+                'click' : me.onRecordLayoutsClick
+            },
+            '#LayoutRuns button#StopRecording' : {
+                'click' : me.onStopRecordingClick
+            },
+            'treepanel#LayoutRuns': {
+                'itemclick': me.onSelectLayoutRunComponent
             }
         });
     },
@@ -146,6 +161,89 @@ Ext.define('AI.controller.Layouts', {
     },
 
     onSelectOvernestedComponent: function(selModel, record, index, eOpts) {
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.highlight,
+            record.get('cmpId'),
+            Ext.emptyFn
+        );
+    },
+
+    onClearLayoutsClick: function(btn) {
+        var me = this,
+            root = Ext.ComponentQuery.query('#LayoutRuns')[0].getRootNode();
+
+        root.removeAll();
+    },
+
+    onRecordLayoutsClick: function(btn) {
+        var me = this,
+            root = Ext.ComponentQuery.query('#LayoutRuns')[0].getRootNode(),
+            util;
+
+        btn.hide();
+        btn.next().show();
+
+        if (me.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Profile.recordLayouts;
+        }
+        else {
+            util = AI.util.touch.Profile.recordLayouts;
+        }
+
+        var getLayouts = function() {
+            if (!me.recording) { return; }
+
+            AI.util.InspectedWindow.eval(
+                util,
+                null,
+                function (components, isException) {
+                    var nodes = [];
+
+                    Ext.each(components, function (cmp) {
+                        var model = Ext.create('AI.model.Component', cmp);
+
+                        nodes.push(model);
+                    });
+
+                    Ext.each(nodes, function (node) {
+                        root.appendChild(node);
+                    });
+
+
+                    requestAnimationFrame(getLayouts);
+                }
+            );
+        };
+
+
+        me.recording = true;
+        requestAnimationFrame(getLayouts);
+    },
+
+    onStopRecordingClick: function(btn) {
+        var me = this,
+            util;
+
+        me.recording = false;
+
+        btn.prev().show();
+        btn.hide();
+
+        if (me.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Profile.stopLayouts;
+        }
+        else {
+            util = AI.util.touch.Profile.stopLayouts;
+        }
+
+        AI.util.InspectedWindow.eval(
+            util,
+            null,
+            Ext.emptyFn
+        );
+    },
+
+    onSelectLayoutRunComponent: function(tree, record, item, index, e, eOpts) {
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
             record.get('cmpId'),

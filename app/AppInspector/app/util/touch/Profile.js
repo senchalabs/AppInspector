@@ -56,5 +56,15 @@ Ext.define('AI.util.touch.Profile', {
         });
 
         return components;
-    }
+    },
+
+    /**
+     * @returns {Array}
+     */
+    recordLayouts : function () {},
+
+    /**
+     *
+     */
+    stopLayouts : function () {}
 });
