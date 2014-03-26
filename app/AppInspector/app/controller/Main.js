@@ -48,6 +48,10 @@ Ext.define('AI.controller.Main', {
                         framework : data.extjs ? 'ext' : 'touch',
                         version   : data.extjs ? data.extjs.version : data.touch.version
                     };
+
+                    if (app.info.framework === 'touch') {
+                        main.down('#LayoutRuns').disable();
+                    }
                 } else {
                     // mask entire AppInspector body element
                     Ext.getBody().mask(

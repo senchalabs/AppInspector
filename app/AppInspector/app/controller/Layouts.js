@@ -178,17 +178,10 @@ Ext.define('AI.controller.Layouts', {
     onRecordLayoutsClick: function(btn) {
         var me = this,
             root = Ext.ComponentQuery.query('#LayoutRuns')[0].getRootNode(),
-            util;
+            util = AI.util.extjs.Profile.recordLayouts;
 
         btn.hide();
         btn.next().show();
-
-        if (me.getApplication().info.framework === 'ext') {
-            util = AI.util.extjs.Profile.recordLayouts;
-        }
-        else {
-            util = AI.util.touch.Profile.recordLayouts;
-        }
 
         var getLayouts = function() {
             if (!me.recording) { return; }
@@ -222,19 +215,12 @@ Ext.define('AI.controller.Layouts', {
 
     onStopRecordingClick: function(btn) {
         var me = this,
-            util;
+            util = AI.util.extjs.Profile.stopLayouts;
 
         me.recording = false;
 
         btn.prev().show();
         btn.hide();
-
-        if (me.getApplication().info.framework === 'ext') {
-            util = AI.util.extjs.Profile.stopLayouts;
-        }
-        else {
-            util = AI.util.touch.Profile.stopLayouts;
-        }
 
         AI.util.InspectedWindow.eval(
             util,
