@@ -131,6 +131,11 @@ Ext.define('AI.util.InspectedWindow', {
             eventCache     : null,
             eventCaptureFn : null,
 
+            //for the Layout Run monitor
+            layoutRunTotal : null,
+            layoutCollection : null,
+            layoutCaptureFn : null,
+
             //for the right-click menu
             contextRef     : null,
             contextFn      : function (evt, target, eOpts) {

@@ -28,6 +28,159 @@
             },
             "codeClass": null,
             "userConfig": {
+                "iconCls": "icn-box",
+                "initialLoad": false,
+                "itemId": "BoxLayouts1",
+                "store": "BoxLayouts",
+                "title": "Box Layouts"
+            },
+            "configAlternates": {
+                "initialLoad": "boolean"
+            },
+            "designerId": "38a2b4bb-e487-4931-91d6-521829efca03",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "initialLoad",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "cmpId",
+                        "flex": 1,
+                        "text": "Component ID"
+                    },
+                    "designerId": "51115a79-805c-4d88-aff6-0d170bd95a86"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "xtype",
+                        "flex": 1,
+                        "text": "XType"
+                    },
+                    "designerId": "58d1d3e7-e1e7-43ca-a07e-ed1deaac7d0e"
+                },
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "7c32679b-ba3e-43bd-8400-1f4fd16ff1c0"
+                },
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "e07a7cc1-c390-46b7-8c96-6d0475c94185"
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top"
+                    },
+                    "designerId": "2caa3b7d-4c2e-438f-b482-b77e36290356",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "icn-refresh",
+                                "itemId": "ProfileBoxLayouts",
+                                "layout|flex": null,
+                                "text": "Profile"
+                            },
+                            "designerId": "1d748603-490e-4e3e-8eb9-6c77f438eb2e"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "9bbf9cde-7ffc-4d11-937d-b5d308b0b2bf"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "text": "?"
+                            },
+                            "designerId": "f816df33-d30e-408a-ac0e-3ee09d2d5fa0",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "Ext.Msg.alert(",
+                                            "    AI.util.i18n.getMessage('Box Layouts'),",
+                                            "    AI.util.i18n.getMessage('Utility to find nested box layouts inside the application which may contribute to performance issues.')",
+                                            ");",
+                                            ""
+                                        ]
+                                    },
+                                    "designerId": "ac64302c-cd4d-48a7-bf69-d910863b2077"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "iconCls": "icn-overnested",
                 "initialLoad": false,
                 "itemId": "Overnested",
@@ -174,44 +327,141 @@
             ]
         },
         {
-            "type": "Ext.grid.Panel",
+            "type": "Ext.tree.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "iconCls": "icn-box",
-                "initialLoad": false,
-                "itemId": "BoxLayouts",
-                "store": "BoxLayouts",
-                "title": "Box Layouts"
+                "animate": false,
+                "autoScroll": true,
+                "emptyText": null,
+                "frame": null,
+                "iconCls": "icn-globe",
+                "itemId": "LayoutRuns",
+                "rootVisible": false,
+                "store": "Layouts",
+                "title": "Layout Runs",
+                "useArrows": true
             },
-            "configAlternates": {
-                "initialLoad": "boolean"
-            },
-            "designerId": "30738f8d-0255-45e9-a009-4bdd5869ac76",
-            "customConfigs": [
-                {
-                    "group": "(Custom Properties)",
-                    "name": "initialLoad",
-                    "type": "string"
-                }
-            ],
+            "designerId": "c4a0f5bd-a962-414d-8b81-6081e0efec66",
+            "isBuiltIn": true,
+            "iconCls": "icon-treegridpanel",
+            "autoName": "TreeGrid",
             "cn": [
                 {
-                    "type": "Ext.grid.column.Column",
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "toolbar",
+                        "designer|uiInterfaceName": "default-toolbar",
+                        "dock": "top",
+                        "ui": "default-toolbar"
+                    },
+                    "designerId": "c02d00b8-d1b4-4786-ac6f-4c75f000a52f",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "icn-clear",
+                                "itemId": "ClearLayouts",
+                                "layout|flex": null,
+                                "text": "Clear"
+                            },
+                            "designerId": "6194372d-9c7a-4061-bc6e-aab6a76ea750"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "icn-record",
+                                "itemId": "RecordLayouts",
+                                "layout|flex": null,
+                                "text": "Record"
+                            },
+                            "designerId": "84e5c904-18d5-4a48-86bf-9ca5b48b46de"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "iconCls": "icn-stop",
+                                "itemId": "StopRecording",
+                                "layout|flex": null,
+                                "text": "Stop Recording"
+                            },
+                            "designerId": "97e0f8fe-e3d0-4fc7-bf37-9a887d3f077b"
+                        },
+                        {
+                            "type": "Ext.toolbar.Fill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null
+                            },
+                            "designerId": "22df42d1-0d98-4edb-a6a1-e42bc2f8aa36"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "emptyText": null,
+                                "itemId": "FilterComponentsTree",
+                                "layout|flex": null
+                            },
+                            "designerId": "4a3c687a-371d-4e26-8d3c-495c7affb6a2",
+                            "masterInstanceId": "6ac6082d-27c2-446c-a5eb-a2845710d54e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.tree.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "185a937f-1cf5-4bbd-96ff-8b20909c054b"
+                },
+                {
+                    "type": "Ext.tree.Column",
                     "reference": {
                         "name": "columns",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "cmpId",
-                        "flex": 1,
+                        "dataIndex": "text",
+                        "flex": 2,
                         "text": "Component ID"
                     },
-                    "designerId": "408f2633-c0da-411d-8adb-9d0e475b70a3"
+                    "designerId": "1d8fa0f7-61aa-4535-855d-60d3dd42cf42"
                 },
                 {
                     "type": "Ext.grid.column.Column",
@@ -225,16 +475,7 @@
                         "flex": 1,
                         "text": "XType"
                     },
-                    "designerId": "49bef55c-afcb-4ce6-a8a2-7e54aea8ca6e"
-                },
-                {
-                    "type": "Ext.grid.View",
-                    "reference": {
-                        "name": "viewConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "designerId": "90a50b88-49e3-4891-afe5-94be01d7c7d9"
+                    "designerId": "9f9dcaa2-52ef-415e-a13c-de7d679cb293"
                 },
                 {
                     "type": "Ext.tab.Tab",
@@ -243,86 +484,7 @@
                         "type": "object"
                     },
                     "codeClass": null,
-                    "designerId": "1c2a37a8-8e28-4d56-ab1f-24f547b3baac"
-                },
-                {
-                    "type": "Ext.toolbar.Toolbar",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top"
-                    },
-                    "designerId": "b49ca866-30f1-4806-85b1-9d266ac63eb4",
-                    "cn": [
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "icn-refresh",
-                                "itemId": "ProfileBoxLayouts",
-                                "layout|flex": null,
-                                "text": "Profile"
-                            },
-                            "designerId": "84e5c904-18d5-4a48-86bf-9ca5b48b46de"
-                        },
-                        {
-                            "type": "Ext.toolbar.Spacer",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": 1
-                            },
-                            "designerId": "b396f70b-6f5f-4351-89cc-4baf61247ca9"
-                        },
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": null,
-                                "text": "?"
-                            },
-                            "designerId": "9e6b38c6-6b00-4180-9ff9-dada0be1774f",
-                            "cn": [
-                                {
-                                    "type": "fixedfunction",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|params": [
-                                            "button",
-                                            "e"
-                                        ],
-                                        "fn": "handler",
-                                        "implHandler": [
-                                            "Ext.Msg.alert(",
-                                            "    AI.util.i18n.getMessage('Box Layouts'),",
-                                            "    AI.util.i18n.getMessage('Utility to find nested box layouts inside the application which may contribute to performance issues.')",
-                                            ");",
-                                            ""
-                                        ]
-                                    },
-                                    "designerId": "d9246067-7066-49c6-a727-1c3c4c6757dc"
-                                }
-                            ]
-                        }
-                    ]
+                    "designerId": "abe0c276-db0d-46aa-b4a0-5238a19f252a"
                 }
             ]
         },

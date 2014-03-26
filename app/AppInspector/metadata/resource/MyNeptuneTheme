@@ -252,6 +252,10 @@
                     "",
                     ".icn-stop {",
                     "    background-image: url('../resources/images/stop.png');",
+                    "}",
+                    "",
+                    ".icn-globe {",
+                    "    background-image: url('../resources/images/line-globe.png');",
                     "}"
                 ]
             },
