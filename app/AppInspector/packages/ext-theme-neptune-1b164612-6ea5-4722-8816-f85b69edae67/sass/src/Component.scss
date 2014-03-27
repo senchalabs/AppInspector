@@ -56,6 +56,11 @@
 .icn-stop {
     background-image: url('../resources/images/stop.png');
 }
+
+.icn-globe {
+    background-image: url('../resources/images/line-globe.png');
+}
+
 :focus { outline: none; }
 
 .about-details {
@@ -107,7 +112,7 @@
 
     &.isChanged {
         color: $green !important;
-        
+
         .indicator {}
     }
 
@@ -119,7 +124,12 @@
 
     &.isOverride {
         color: $orange !important;
-        
+
         .indicator {}
     }
+}
+
+// *** tree
+.filtered {
+    display: none !important;
 }

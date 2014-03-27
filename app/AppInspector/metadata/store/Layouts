@@ -1,0 +1,38 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "designer|userClassName": "Layouts",
+        "model": "Component",
+        "root": null,
+        "storeId": "Layouts"
+    },
+    "designerId": "567529ca-7ab0-4144-a761-daeb55937ad1",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Memory",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "ee3c531f-a87a-4c79-ac52-e7905e01d29c",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "d4f0e227-423a-4363-839c-1b4fca20b643"
+                }
+            ]
+        }
+    ]
+}

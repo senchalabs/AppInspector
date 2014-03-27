@@ -128,8 +128,6 @@ Ext.define('AI.controller.Components', {
             record.get('cmpId'),
             function(result, isException) {
                 if (result) {
-                    console.log(result);
-
                     propsGridStore.loadData(result.properties);
                     methodGridStore.loadData(result.methods);
                 } else {

@@ -17,7 +17,8 @@
         ],
         "stores": [
             "Overnested",
-            "BoxLayouts"
+            "BoxLayouts",
+            "Layouts"
         ],
         "views": [
             "Layouts"
@@ -56,6 +57,20 @@
                     "    },",
                     "    'button#ProfileBoxLayouts': {",
                     "        'click': me.onNestedBoxLayoutsClick",
+                    "    },",
+                    "",
+                    "    //layout runs",
+                    "    '#LayoutRuns button#ClearLayouts' : {",
+                    "        'click' : me.onClearLayoutsClick",
+                    "    },",
+                    "    '#LayoutRuns button#RecordLayouts' : {",
+                    "        'click' : me.onRecordLayoutsClick",
+                    "    },",
+                    "    '#LayoutRuns button#StopRecording' : {",
+                    "        'click' : me.onStopRecordingClick",
+                    "    },",
+                    "    'treepanel#LayoutRuns': {",
+                    "        'itemclick': me.onSelectLayoutRunComponent",
                     "    }",
                     "});"
                 ]
@@ -228,6 +243,131 @@
                 ]
             },
             "designerId": "b55948d6-ae08-4b58-90d9-6f8cd3525ea0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onClearLayoutsClick",
+                "implHandler": [
+                    "var me = this,",
+                    "    root = Ext.ComponentQuery.query('#LayoutRuns')[0].getRootNode();",
+                    "",
+                    "root.removeAll();"
+                ]
+            },
+            "designerId": "ce9c5357-133d-4f17-96fb-2683188796e6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onRecordLayoutsClick",
+                "implHandler": [
+                    "var me = this,",
+                    "    root = Ext.ComponentQuery.query('#LayoutRuns')[0].getRootNode(),",
+                    "    util = AI.util.extjs.Profile.recordLayouts;",
+                    "",
+                    "btn.hide();",
+                    "btn.next().show();",
+                    "",
+                    "var getLayouts = function() {",
+                    "    if (!me.recording) { return; }",
+                    "",
+                    "    AI.util.InspectedWindow.eval(",
+                    "        util,",
+                    "        null,",
+                    "        function (components, isException) {",
+                    "            var nodes = [];",
+                    "",
+                    "            Ext.each(components, function (cmp) {",
+                    "                var model = Ext.create('AI.model.Component', cmp);",
+                    "",
+                    "                nodes.push(model);",
+                    "            });",
+                    "",
+                    "            Ext.each(nodes, function (node) {",
+                    "                root.appendChild(node);",
+                    "            });",
+                    "",
+                    "",
+                    "            requestAnimationFrame(getLayouts);",
+                    "        }",
+                    "    );",
+                    "};",
+                    "",
+                    "",
+                    "me.recording = true;",
+                    "requestAnimationFrame(getLayouts);"
+                ]
+            },
+            "designerId": "ffddd5c9-2747-4093-892e-98f4ac9730d2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "btn"
+                ],
+                "fn": "onStopRecordingClick",
+                "implHandler": [
+                    "var me = this,",
+                    "    util = AI.util.extjs.Profile.stopLayouts;",
+                    "",
+                    "me.recording = false;",
+                    "",
+                    "btn.prev().show();",
+                    "btn.hide();",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    util,",
+                    "    null,",
+                    "    Ext.emptyFn",
+                    ");"
+                ]
+            },
+            "designerId": "2e53b5e1-b5b0-455d-9a0d-dc2248889c11"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tree, record, item, index, e, eOpts"
+                ],
+                "fn": "onSelectLayoutRunComponent",
+                "implHandler": [
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.InspectedWindow.highlight,",
+                    "    record.get('cmpId'),",
+                    "    Ext.emptyFn",
+                    ");"
+                ]
+            },
+            "designerId": "50e05d67-8c76-458f-8f20-d31b8d972a04"
         }
     ]
 }

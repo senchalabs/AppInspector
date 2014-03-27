@@ -14,25 +14,45 @@ Ext.define('AI.util.InspectedWindow', {
     highlight: function(id) {
         var cmp = Ext.getCmp(id),
             el = document.getElementById('_AppInspector'),
-            box;
+            box, cmpDom;
 
         if (cmp && cmp.rendered) {
             //Ext JS
             if (cmp.el) {
                 box = cmp.el.getBox();
+                cmpDom = cmp.el.dom;
             }
 
             //Touch
             else if (cmp.element) {
                 box = cmp.element.getBox();
+                cmpDom = cmp.element.dom;
             }
 
-            el.style.height = box.height + 'px';
-            el.style.width = box.width + 'px';
-            el.style.top = box.top + 'px';
-            el.style.left = box.left + 'px';
-            el.style.visibility = '';
-            el.style.zIndex = 99999;
+            Ext.apply(el.style, {
+                height: box.height + 'px',
+                width: box.width + 'px',
+
+                visibility: '',
+                zIndex: 99999
+            });
+
+            var getPosition = function(element) {
+                var xPosition = 0;
+                var yPosition = 0;
+
+                while (element) {
+                    xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+                    yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+                    element = element.offsetParent;
+                }
+                return {
+                    left: xPosition + 'px',
+                    top: yPosition + 'px'
+                };
+            };
+
+            Ext.apply(el.style, getPosition(cmpDom));
 
             window.setTimeout(function() {
                 var el = document.getElementById('_AppInspector');
@@ -109,6 +129,11 @@ Ext.define('AI.util.InspectedWindow', {
             //for the Event Monitor
             eventCache: null,
             eventCaptureFn: null,
+
+            //for the Layout Run monitor
+            layoutRunTotal: null,
+            layoutCollection: null,
+            layoutCaptureFn: null,
 
             //for the right-click menu
             contextRef: null,

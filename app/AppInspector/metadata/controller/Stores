@@ -201,7 +201,11 @@
                     "",
                     "store.getProxy().inspectedStoreId = record.get('id');",
                     "",
-                    "store.load();"
+                    "store.load({",
+                    "    callback : function(records, operation, success) {",
+                    "        record.set('count', this.getTotalCount());",
+                    "    }",
+                    "});"
                 ]
             },
             "designerId": "be6d2006-7858-4073-bea2-02b60d0165b1"

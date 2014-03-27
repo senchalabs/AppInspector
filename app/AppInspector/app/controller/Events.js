@@ -36,13 +36,13 @@ Ext.define('AI.controller.Events', {
         var me = this;
 
         me.control({
-            'button#ClearEvents' : {
+            '#EventInspector button#ClearEvents' : {
                 'click' : me.onClearEventsClick
             },
-            'button#RecordEvents' : {
+            '#EventInspector button#RecordEvents' : {
                 'click' : me.onRecordEventsClick
             },
-            'button#StopRecording' : {
+            '#EventInspector button#StopRecording' : {
                 'click' : me.onStopRecordingClick
             },
             'filterfield#FilterEventsList': {

@@ -10,7 +10,7 @@
     },
     "designerId": "1b164612-6ea5-4722-8816-f85b69edae67",
     "storage": {
-        "needsCompile": true,
+        "needsCompile": false,
         "simple": {
             "pkgVersion": 1,
             "pkgPath": "packages"
@@ -160,7 +160,12 @@
                     "",
                     ".icn-stop {",
                     "    background-image: url('../resources/images/stop.png');",
-                    "}"
+                    "}",
+                    "",
+                    ".icn-globe {",
+                    "    background-image: url('../resources/images/line-globe.png');",
+                    "}",
+                    ""
                 ]
             },
             "designerId": "145ecce7-640e-41aa-bf1e-7bcccd04f429"
@@ -226,7 +231,7 @@
                     "",
                     "    &.isChanged {",
                     "        color: $green !important;",
-                    "        ",
+                    "",
                     "        .indicator {}",
                     "    }",
                     "",
@@ -238,10 +243,16 @@
                     "",
                     "    &.isOverride {",
                     "        color: $orange !important;",
-                    "        ",
+                    "",
                     "        .indicator {}",
                     "    }",
-                    "}"
+                    "}",
+                    "",
+                    "// *** tree",
+                    ".filtered {",
+                    "    display: none !important;",
+                    "}",
+                    ""
                 ]
             },
             "designerId": "1abd6bdf-8fe3-4a18-a9bd-50da5832c80e"
