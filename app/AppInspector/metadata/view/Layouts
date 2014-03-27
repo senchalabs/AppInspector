@@ -30,7 +30,7 @@
             "userConfig": {
                 "iconCls": "icn-box",
                 "initialLoad": false,
-                "itemId": "BoxLayouts1",
+                "itemId": "BoxLayouts",
                 "store": "BoxLayouts",
                 "title": "Box Layouts"
             },

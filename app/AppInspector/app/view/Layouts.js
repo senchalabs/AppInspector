@@ -45,7 +45,7 @@ Ext.define('AI.view.Layouts', {
                 {
                     xtype: 'gridpanel',
                     initialLoad: false,
-                    itemId: 'BoxLayouts1',
+                    itemId: 'BoxLayouts',
                     iconCls: 'icn-box',
                     title: 'Box Layouts',
                     store: 'BoxLayouts',
