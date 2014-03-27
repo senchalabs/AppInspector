@@ -39,12 +39,16 @@ Ext.define('AI.store.ComponentMethods', {
                     type: 'auto'
                 },
                 {
-                    name: 'isOwn',
-                    type: 'boolean'
+                    defaultValue: null,
+                    name: 'isOverride',
+                    type: 'boolean',
+                    useNull: true
                 },
                 {
-                    name: 'isOverride',
-                    type: 'boolean'
+                    defaultValue: null,
+                    name: 'isOwn',
+                    type: 'boolean',
+                    useNull: true
                 }
             ]
         }, cfg)]);

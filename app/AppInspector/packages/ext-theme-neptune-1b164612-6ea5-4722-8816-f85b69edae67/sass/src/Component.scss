@@ -104,7 +104,13 @@
     .indicator {
         background-color: $grid-row-cell-border-color;
     }
-    
+
+    &.isChanged {
+        color: $green !important;
+        
+        .indicator {}
+    }
+
     &.isOwn {
         .indicator {
             background-color: $blue-light !important;
@@ -112,6 +118,8 @@
     }
 
     &.isOverride {
-        //color: $orange !important;
+        color: $orange !important;
+        
+        .indicator {}
     }
 }

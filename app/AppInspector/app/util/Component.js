@@ -93,7 +93,7 @@ Ext.define('AI.util.Component', {
      * @returns {Object/undefined}
      */
     getInspectedComponent: function(id) {
-        var cmp, key, data, parent, isOwn;
+        var cmp, key, data, parent, isChanged, isOwn, isOverride;
 
         cmp = Ext.getCmp(id);
         parent = cmp.superclass;
@@ -105,23 +105,33 @@ Ext.define('AI.util.Component', {
             data.methods = [];
 
             for (key in cmp) {
-                isOwn = (!parent[key] && !parent.hasOwnProperty(key));
+                // isOwn = (!parent[key] && !parent.hasOwnProperty(key));
 
                 if (typeof cmp[key] === 'function') {
+                    // isOverride = undefined;
+
                     data.methods.push({
                         name: key,
                         value: 'METHOD',
                         isOwn: isOwn,
-                        isOverride: undefined //(!parent[key] && (cmp[key] !== parent[key]))
+                        isOverride: isOverride
                     });
                 } else if (typeof cmp[key] !== 'object') {
+                    // isChanged = (cmp[key] !== parent[key]);
+
                     data.properties.push({
                         name: key,
                         value: cmp[key],
+                        isChanged: isChanged,
                         isOwn: isOwn
                     });
                 }
             }
+
+            // data.properties.push({
+            //     name: '*parent*',
+            //     value: parent.$className
+            // });
         }
 
         return data;

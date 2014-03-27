@@ -106,9 +106,12 @@ Ext.define('AI.view.Components', {
                                     width: 5,
                                     resizable: false,
                                     defaultWidth: 5,
-                                    weight: 5,
+                                    sortable: false,
                                     dataIndex: 'isOwn',
+                                    groupable: false,
                                     hideable: false,
+                                    lockable: false,
+                                    menuDisabled: true,
                                     tdCls: 'indicator',
                                     falseText: ' ',
                                     trueText: ' '
@@ -130,9 +133,14 @@ Ext.define('AI.view.Components', {
                             ],
                             viewConfig: {
                                 getRowClass: function(record, rowIndex, rowParams, store) {
-                                    var isOwn = record.get('isOwn'),
+                                    var isChanged = record.get('isChanged'),
+                                        isOwn = record.get('isOwn'),
                                         isOverride = record.get('isOverride'),
                                         cls = [];
+
+                                    if (isChanged) {
+                                        cls.push('isChanged');
+                                    }
 
                                     if (isOwn) {
                                         cls.push('isOwn');
@@ -163,8 +171,12 @@ Ext.define('AI.view.Components', {
                                     width: 5,
                                     resizable: false,
                                     defaultWidth: 5,
+                                    sortable: false,
                                     dataIndex: 'isOwn',
+                                    groupable: false,
                                     hideable: false,
+                                    lockable: false,
+                                    menuDisabled: true,
                                     tdCls: 'indicator',
                                     falseText: ' ',
                                     trueText: ' '

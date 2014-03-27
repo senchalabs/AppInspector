@@ -39,8 +39,16 @@ Ext.define('AI.store.ComponentProps', {
                     type: 'auto'
                 },
                 {
+                    defaultValue: null,
+                    name: 'isChanged',
+                    type: 'boolean',
+                    useNull: true
+                },
+                {
+                    defaultValue: null,
                     name: 'isOwn',
-                    type: 'boolean'
+                    type: 'boolean',
+                    useNull: true
                 }
             ]
         }, cfg)]);
