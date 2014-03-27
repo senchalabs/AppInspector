@@ -1,0 +1,14 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js",
+        "update": "full",
+        "url": "mocks.js"
+    },
+    "designerId": "605216e5-1cf1-451a-b7db-d966cf2fe802"
+}
