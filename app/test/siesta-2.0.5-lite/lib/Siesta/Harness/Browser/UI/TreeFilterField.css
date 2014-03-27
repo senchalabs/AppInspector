@@ -1,0 +1,19 @@
+/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+.sch-tree-filtered .x-tree-expander {
+    visibility     : hidden;
+}
+
+.tr-filter-trigger-leaf {
+    background-image        : url("../images/trigger-leafs.gif");
+}
+
+.tr-filter-trigger-group {
+    background-image        : url("../images/trigger-groups.gif");  
+}

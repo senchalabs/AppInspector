@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Ext JS library CSS-->
+    <link rel="stylesheet" type="text/css" href="../../../ext-3.4.0/resources/css/ext-all.css">
+
+    <!-- Ext JS library -->
+    <script type="text/javascript" src="../../../ext-3.4.0/adapter/ext/ext-base-debug.js"></script>
+    <script type="text/javascript" src="../../../ext-3.4.0/ext-all-debug.js"></script>
+
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            new Ext.Panel({
+                renderTo    : document.body,
+                title       : 'Form',
+                height      : 200,
+                width       : 500,
+                id          : 'theform',
+
+                items : [
+                    {
+                        xtype     : 'textfield',
+                        cls       : 'foo',
+                        value     : "FOFOF"
+                    },
+                    {
+                        xtype     : 'textfield',
+                        cls       : 'baz',
+                        value    : "BAR"
+                    }
+                ]
+            });
+        })
+    </script>
+</head>
+
+<body style="padding:0;margin:0">
+</body>
+</html>

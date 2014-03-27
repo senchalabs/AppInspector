@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 
+            This harness wrapper provides the ExtJS-based UI, and is purposed to be used
+            during development, on the desktop browsers.
+            
+            Note, that we include "siesta-all.js" file here. 
+         -->
+        
+        <!-- 
+            Ext JS library CSS, this is merely for the Siesta UI and is not used by your tests.
+            Your tests use the ExtJS/SenchaTouch library, specified in the "preload" config of harness.
+            Do not change this line, instead modify the "preload".  
+        -->
+        <link rel="stylesheet" type="text/css" href="http://cdn.sencha.io/ext/gpl/4.2.0/resources/css/ext-all.css">
+        
+        <!-- Siesta CSS -->
+        <link rel="stylesheet" type="text/css" href="../resources/css/siesta-all.css">
+
+        <!-- 
+            Ext JS library CSS, this is merely for the Siesta UI and is not used by your tests.
+            Your tests use the ExtJS/SenchaTouch library, specified in the "preload" config of harness.
+            Do not change this line, instead modify the "preload".  
+        -->
+        <script type="text/javascript" src="http://cdn.sencha.com/ext-4.2.0-gpl/ext-all.js"></script>
+        
+        <!-- Siesta application -->
+        <script type="text/javascript" src="../siesta-all.js"></script>
+        
+        <!-- The test harness -->
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+    <body>
+    </body>
+</html>

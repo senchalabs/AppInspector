@@ -1,0 +1,99 @@
+/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+/*
+	Play icons from:
+	Author      :    Sekkyumu
+	HomePage    :    http://sekkyumu.deviantart.com/
+	License     :    Creative Commons Attribution 3.0 License
+*/
+
+.tr-iframe-wrapper {
+    position    : absolute;
+    width       : 100% !important;
+    height      : 100% !important;
+    left        : -10000px;
+    top         : -10000px;
+    
+    background-color    : white;
+}
+
+iframe.tr-iframe {
+	position    : absolute;
+    width       : 100% !important;
+    height      : 100% !important;
+}
+
+.tr-iframe-wrapper.active {
+    left        : 0px;
+    top         : 0px;
+    z-index     : 0;
+}
+
+.mainarea-panel, .tr-testgrid, .x-layout-card-item
+{
+    background:transparent !important;
+}
+
+
+/*=======================================================================================================================================================================================================================
+    Icons
+*/
+
+.tr-icon-run-failed .x-button-label {
+    background: transparent url(../images/PlayRed.png) no-repeat 0 -8px;
+    height:16px;
+}
+
+.tr-icon-run-all .x-button-label{
+    background: transparent url(../images/PlayAll.png) no-repeat 0 -8px;
+    height:16px;
+}
+
+.tr-icon-stop .x-button-label{
+    background: transparent url(../images/Stop.png) no-repeat 0 -8px;
+    height:16px;
+}
+
+/*=======================================================================================================================================================================================================================
+    Unsorted
+*/
+
+.launching
+{
+    background: url(../images/clock_48.png) no-repeat 5px center !important;
+    padding-left:60px;
+}
+
+#splashLoader {
+    background: url(../images/logo_small2.png) no-repeat center 25%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#loading {
+    color: #9EB2CD;
+    font-size: 120%;
+    position: absolute;
+    width: 170px;
+    left: 50%;
+    margin: 55% 0 0 -59px;
+}
+
+#loading .x-loading-spinner {
+    font-size: 160%;
+    margin: -27px 0 0 -45px;
+}
+
+.suite-bar .x-title
+{
+    opacity:0.5;
+}
