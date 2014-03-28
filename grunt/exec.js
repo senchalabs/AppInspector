@@ -2,9 +2,9 @@
 
 var chalk = require('chalk'),
     sa = {
-        name: chalk.green('Sencha Architect'),
-        path: chalk.yellow('./path/to/project/app/AppInspector/AppInspector.xds'),
-        lookup: './app/AppInspector/.sencha/'
+        name   : chalk.green('Sencha Architect'),
+        path   : chalk.yellow('./path/to/project/app/AppInspector/AppInspector.xds'),
+        lookup : './app/AppInspector/.sencha/'
     };
 
 /**
@@ -14,7 +14,7 @@ var chalk = require('chalk'),
  *
  * @see https://www.npmjs.org/package/grunt-exec
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     // Look up if AppInspector was opened and saved at least once in Sencha Architect.
     // If so »./app/AppInspector/.sencha/« will exist containing build property files.
 
@@ -30,13 +30,13 @@ module.exports = function(grunt) {
 
     // return task config
     return {
-        dev: {
-            cwd: '<%= yeoman.app %>/AppInspector/',
-            command: 'sencha -q app build -e testing -c'
+        dev        : {
+            cwd     : '<%= yeoman.app %>/AppInspector/',
+            command : 'sencha -q app build -e testing -c'
         },
-        production: {
-            cwd: '<%= yeoman.app %>/AppInspector/',
-            command: 'sencha -q app build -e production'
+        production : {
+            cwd     : '<%= yeoman.app %>/AppInspector/',
+            command : 'sencha -q app build -e production'
         }
     };
 };

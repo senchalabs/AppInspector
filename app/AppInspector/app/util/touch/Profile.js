@@ -12,10 +12,9 @@ Ext.define('AI.util.touch.Profile', {
             all = Ext.ComponentManager.all.getArray();
 
         Ext.Array.each(all, function (c) {
-            if (c.isContainer && !c.isDocked() &&
-                !c.isXType('viewport') && !c.isXType('segmentedbutton') &&
+            if (c.isContainer && !c.isDocked() && !c.isXType('viewport') && !c.isXType('segmentedbutton') &&
 
-                //titlebar has left/right regions ('container')
+                    //titlebar has left/right regions ('container')
                 (c.parent ? !c.parent.isXType('titlebar') : true) &&
 
                 c.items.items.length === 1) {
@@ -37,8 +36,7 @@ Ext.define('AI.util.touch.Profile', {
             all = Ext.ComponentManager.all.getArray();
 
         var isContainer = function (c) {
-            return (c.isContainer && !c.isDocked() &&
-                    !c.isXType('viewport') && !c.isXType('segmentedbutton') &&
+            return (c.isContainer && !c.isDocked() && !c.isXType('viewport') && !c.isXType('segmentedbutton') &&
                     c.items.items.length > 0);
         };
 

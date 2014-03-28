@@ -2,22 +2,22 @@
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.Component', {
-    singleton: true,
+    singleton : true,
 
     /**
      * @returns {*}
      */
-    loadComponentTree: function() {
-        var getComponentTreeNodes = function(comps) {
+    loadComponentTree : function () {
+        var getComponentTreeNodes = function (comps) {
             var compNodes = [];
 
-            var getCompNodeForComp = function(comp) {
+            var getCompNodeForComp = function (comp) {
                 return {
-                    text: comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
-                    cmpId: comp.id || '',
-                    itemId: comp.itemId || '',
-                    xtype: comp.xtype,
-                    children: []
+                    text     : comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
+                    cmpId    : comp.id || '',
+                    itemId   : comp.itemId || '',
+                    xtype    : comp.xtype,
+                    children : []
                 };
             };
 
@@ -29,22 +29,22 @@ Ext.define('AI.util.Component', {
                 comps = [comps];
             }
 
-            Ext.each(comps, function(comp) {
+            Ext.each(comps, function (comp) {
                 var node = getCompNodeForComp(comp),
                     items = {
-                        text: 'items',
-                        children: []
+                        text     : 'items',
+                        children : []
                     },
                     dockedItems = {
-                        text: 'dockedItems',
-                        children: []
+                        text     : 'dockedItems',
+                        children : []
                     },
                     children;
 
                 if (comp.items && comp.items.items && comp.items.items.length) {
                     children = getComponentTreeNodes(comp.items.items); //recursion...
 
-                    Ext.each(children, function(child) {
+                    Ext.each(children, function (child) {
                         items.children.push(child);
                     });
 
@@ -54,7 +54,7 @@ Ext.define('AI.util.Component', {
                 if (comp.dockedItems && comp.dockedItems.items && comp.dockedItems.items.length) {
                     children = getComponentTreeNodes(comp.dockedItems.items); //recursion...
 
-                    Ext.each(children, function(child) {
+                    Ext.each(children, function (child) {
                         dockedItems.children.push(child);
                     });
 
@@ -74,11 +74,12 @@ Ext.define('AI.util.Component', {
         // Ext JS 5 breaks the older ComponentManager API
         if (Ext.versions.extjs && Ext.versions.extjs.major > 4) {
             all = Ext.ComponentManager.getAll();
-        } else {
+        }
+        else {
             all = Ext.ComponentManager.all.getArray();
         }
 
-        Ext.each(all, function(comp) {
+        Ext.each(all, function (comp) {
             if (!comp.ownerCt && !comp.parent) {
                 top.push(comp);
             }
@@ -92,7 +93,7 @@ Ext.define('AI.util.Component', {
     /**
      * @returns {Object/undefined}
      */
-    getInspectedComponent: function(id) {
+    getInspectedComponent : function (id) {
         var cmp, data, key;
 
         cmp = Ext.getCmp(id);
@@ -105,7 +106,8 @@ Ext.define('AI.util.Component', {
             for (key in cmp) {
                 if (typeof cmp[key] === 'function') {
                     data.methods[key] = 'METHOD';
-                } else if (typeof cmp[key] !== 'object') {
+                }
+                else if (typeof cmp[key] !== 'object') {
                     data.properties[key] = cmp[key];
                 }
             }

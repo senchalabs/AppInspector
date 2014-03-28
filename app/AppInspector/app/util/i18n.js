@@ -2,30 +2,30 @@
  * Utility class for i18n.
  */
 Ext.define('AI.util.i18n', {
-    singleton: true,
+    singleton : true,
 
     /**
      * The list of property to convert value.
      * @type {Array}
      */
-    TARGET_PROPERTIES: [
+    TARGET_PROPERTIES : [
         'text',
         'title',
         'name'
     ],
 
-    REGEXP_SPACE : /\s/g,
-    REGEXP_PERIOD: /\./g,
+    REGEXP_SPACE  : /\s/g,
+    REGEXP_PERIOD : /\./g,
 
     /**
      * Overrides internal mechanism of class system.
      */
-    constructor: function() {
+    constructor : function () {
         var me = this;
 
         Ext.define('AI.override.AbstractComponent', {
-            override: 'Ext.AbstractComponent',
-            constructor: function(config) {
+            override    : 'Ext.AbstractComponent',
+            constructor : function (config) {
                 me.convert(config);
                 this.callParent(arguments);
             }
@@ -37,7 +37,7 @@ Ext.define('AI.util.i18n', {
      * @param  {String} value
      * @return {String}
      */
-    getMessage: function(value) {
+    getMessage : function (value) {
         var messageKey = this.convertMessageKey(value),
             localeString;
 
@@ -58,9 +58,9 @@ Ext.define('AI.util.i18n', {
      * @param  {String} value
      * @return {String}
      */
-    convertMessageKey: function(value) {
+    convertMessageKey : function (value) {
         return value.replace(AI.util.i18n.REGEXP_SPACE, '_').
-                    replace(AI.util.i18n.REGEXP_PERIOD, '');
+            replace(AI.util.i18n.REGEXP_PERIOD, '');
     },
 
     /**
@@ -69,14 +69,14 @@ Ext.define('AI.util.i18n', {
      * @private
      * @param  {Object} config
      */
-    convert: function(config) {
-        var me    = this,
-            keys  = Object.keys(config),
-            key   = '',
+    convert : function (config) {
+        var me = this,
+            keys = Object.keys(config),
+            key = '',
             value = '';
 
         for (var i = keys.length - 1; i >= 0; i--) {
-            key   = keys[i];
+            key = keys[i];
             value = config[key];
 
             if (!me.isTargetProperty(key)) {
@@ -94,7 +94,7 @@ Ext.define('AI.util.i18n', {
      * @param  {String}  key
      * @return {Boolean}
      */
-    isTargetProperty: function(key) {
+    isTargetProperty : function (key) {
         return Ext.Array.contains(AI.util.i18n.TARGET_PROPERTIES, key);
     }
 

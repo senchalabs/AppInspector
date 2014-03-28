@@ -8,10 +8,10 @@ var chalk = require('chalk');
  *
  * @see https://www.npmjs.org/package/grunt-contrib-watch
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     return {
-        options: {
-            dateFormat: function(runtime) {
+        options : {
+            dateFormat : function (runtime) {
                 var now = new Date(),
                     date = now.toLocaleDateString(),
                     time = now.toLocaleTimeString();
@@ -28,17 +28,17 @@ module.exports = function(grunt) {
                 grunt.log.writeln('');
             },
         },
-        develop: {
-            files: [
+        develop : {
+            files   : [
                 'app/AppInspector/app/util/**/*',
                 'app/AppInspector/app/**/override/*',
                 'app/AppInspector/metadata/**/*',
                 'app/background.js',
                 'app/devtools-page.js'
             ],
-            tasks: ['dev'],
-            options: {
-                spawn: false,
+            tasks   : ['dev'],
+            options : {
+                spawn : false,
             }
         }
     };
