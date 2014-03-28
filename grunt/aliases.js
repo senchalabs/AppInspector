@@ -21,7 +21,6 @@ module.exports = {
         'clean:dist',
         'chromeManifest:dist',
         'imagemin:resources',
-        'fileblocks:production',
         'exec:production',
         'imagemin:sencha',
         'copy:dist',

@@ -31,13 +31,5 @@ module.exports = {
                 src : 'mocks.js'
             }
         }
-    },
-    // development junk "clean up"
-    production : {
-        src     : 'tpl/index.tpl.html',
-        dest    : 'app/AppInspector/index.html',
-        blocks  : {
-            'mocks' : {}
-        }
     }
 };
