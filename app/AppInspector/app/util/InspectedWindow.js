@@ -41,7 +41,7 @@ Ext.define('AI.util.InspectedWindow', {
                 var xPosition = 0;
                 var yPosition = 0;
 
-                while(element) {
+                while (element) {
                     xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
                     yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
                     element = element.offsetParent;
@@ -125,20 +125,20 @@ Ext.define('AI.util.InspectedWindow', {
 
         //helper class
         Ext.define('Ext.ux.AppInspector', {
-            singleton      : true,
+            singleton        : true,
 
             //for the Event Monitor
-            eventCache     : null,
-            eventCaptureFn : null,
+            eventCache       : null,
+            eventCaptureFn   : null,
 
             //for the Layout Run monitor
-            layoutRunTotal : null,
+            layoutRunTotal   : null,
             layoutCollection : null,
-            layoutCaptureFn : null,
+            layoutCaptureFn  : null,
 
             //for the right-click menu
-            contextRef     : null,
-            contextFn      : function (evt, target, eOpts) {
+            contextRef       : null,
+            contextFn        : function (evt, target, eOpts) {
                 var cmp = Ext.getCmp(target.id);
 
                 if (cmp) {
