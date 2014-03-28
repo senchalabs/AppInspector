@@ -133,24 +133,15 @@ Ext.define('AI.view.Components', {
                             ],
                             viewConfig: {
                                 getRowClass: function(record, rowIndex, rowParams, store) {
-                                    var isChanged = record.get('isChanged'),
-                                        isOwn = record.get('isOwn'),
-                                        isOverride = record.get('isOverride'),
-                                        cls = [];
+                                    var cls = [];
 
-                                    if (isChanged) {
+                                    if (record.get('isChanged')) {
                                         cls.push('isChanged');
                                     }
 
-                                    if (isOwn) {
+                                    if (record.get('isOwn')) {
                                         cls.push('isOwn');
                                     }
-
-                                    if (isOverride) {
-                                        cls.push('isOverride');
-                                    }
-
-                                    console.log(rowIndex, cls.join(' '));
 
 
                                     return cls.join(' ');
@@ -198,19 +189,15 @@ Ext.define('AI.view.Components', {
                             ],
                             viewConfig: {
                                 getRowClass: function(record, rowIndex, rowParams, store) {
-                                    var isOwn = record.get('isOwn'),
-                                        isOverride = record.get('isOverride'),
-                                        cls = [];
+                                    var cls = [];
 
-                                    if (isOwn) {
+                                    if (record.get('isOwn')) {
                                         cls.push('isOwn');
                                     }
 
-                                    if (isOverride) {
+                                    if (record.get('isOverride')) {
                                         cls.push('isOverride');
                                     }
-
-                                    console.log(rowIndex, cls.join(' '));
 
 
                                     return cls.join(' ');
