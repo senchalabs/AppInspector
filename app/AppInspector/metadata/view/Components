@@ -34,97 +34,18 @@
     ],
     "cn": [
         {
-            "type": "Ext.tree.Panel",
+            "type": "linkedinstance",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "autoScroll": true,
-                "emptyText": null,
-                "frame": null,
                 "itemId": "ComponentTree",
-                "layout|flex": 1,
-                "layout|region": "center",
-                "rootVisible": false,
-                "store": "Components",
-                "title": null,
-                "useArrows": true
+                "layout|region": "center"
             },
-            "designerId": "f9f6b3d2-a835-4161-a950-c58603f71b11",
-            "isBuiltIn": true,
-            "iconCls": "icon-treegridpanel",
-            "autoName": "TreeGrid",
-            "cn": [
-                {
-                    "type": "Ext.toolbar.Toolbar",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|uiInterfaceName": "default-toolbar",
-                        "dock": "top",
-                        "ui": "default-toolbar"
-                    },
-                    "designerId": "448d07e4-7828-4572-9714-c826da12a8b7",
-                    "cn": [
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "icn-refresh",
-                                "itemId": "RefreshComponentTree",
-                                "layout|flex": null,
-                                "text": "Refresh"
-                            },
-                            "designerId": "72b128c4-ed89-4c3f-8520-7aa1b391eca4"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.tree.View",
-                    "reference": {
-                        "name": "viewConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "designerId": "af2604ba-b50d-4816-acbb-c8b8eeac095d"
-                },
-                {
-                    "type": "Ext.tree.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "text",
-                        "flex": 1,
-                        "text": "Component ID"
-                    },
-                    "designerId": "c88fb6e5-61cc-4615-8db0-4e8661442ac8"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "xtype",
-                        "text": "XType"
-                    },
-                    "designerId": "6b8d4f75-97b2-4a1d-be09-bf11c6a4f692"
-                }
-            ]
+            "designerId": "3ee1d841-7e26-4026-81c5-913408da9a81",
+            "masterInstanceId": "237c87fc-e8d6-457d-bc48-91de8e75ef5d"
         },
         {
             "type": "Ext.tab.Panel",
@@ -273,6 +194,45 @@
                                     "designerId": "94f1e7c5-e518-41d8-9bff-2bb276864f52"
                                 }
                             ]
+                        },
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top"
+                            },
+                            "designerId": "04bab6a7-156f-4af6-914f-637fe5d0a213",
+                            "cn": [
+                                {
+                                    "type": "Ext.toolbar.Fill",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null
+                                    },
+                                    "designerId": "1063d5d4-fdda-495a-8f82-f284808d155a"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null
+                                    },
+                                    "designerId": "1085f168-63f6-469a-b317-16fa3c33459d",
+                                    "masterInstanceId": "6ac6082d-27c2-446c-a5eb-a2845710d54e"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -399,6 +359,141 @@
                                         ]
                                     },
                                     "designerId": "5993317b-a117-415b-a3f0-d9e01c73af6b"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top"
+                            },
+                            "designerId": "628d83b6-15bc-4e82-8e71-b144146a34e1",
+                            "cn": [
+                                {
+                                    "type": "Ext.toolbar.Fill",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null
+                                    },
+                                    "designerId": "984fff27-5dd8-473e-a730-6a103c9cda13"
+                                },
+                                {
+                                    "type": "linkedinstance",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null
+                                    },
+                                    "designerId": "91f34278-6bb8-4d64-80ed-3c94e4104dcd",
+                                    "masterInstanceId": "6ac6082d-27c2-446c-a5eb-a2845710d54e"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": "components-tips",
+                        "designer|displayName": null,
+                        "dock": "bottom",
+                        "itemId": "ComponentsTips"
+                    },
+                    "designerId": "aa393325-45e5-462e-9924-1ebb8cf73b15",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Fill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 2
+                            },
+                            "designerId": "19ebc3e0-f723-408d-95fb-e5928b01cdef"
+                        },
+                        {
+                            "type": "Ext.toolbar.TextItem",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": "tip-changed",
+                                "layout|flex": 1,
+                                "text": "Changed",
+                                "tipGroup": "props"
+                            },
+                            "designerId": "904fa0fb-5036-4029-9118-6596d29be19a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "tipGroup",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.toolbar.TextItem",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": "tip-custom",
+                                "layout|flex": 1,
+                                "text": "Custom",
+                                "tipGroup": "both"
+                            },
+                            "designerId": "05159e70-c614-40b3-9c7b-fb78038dba4e",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "tipGroup",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.toolbar.TextItem",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": "tip-override",
+                                "hidden": true,
+                                "layout|flex": 1,
+                                "text": "Override",
+                                "tipGroup": "methods"
+                            },
+                            "designerId": "cdc7c642-07f2-4b92-9d4d-1a1966219845",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "tipGroup",
+                                    "type": "string"
                                 }
                             ]
                         }

@@ -53,6 +53,20 @@
                     "    },",
                     "    'treepanel#ComponentTree': {",
                     "        'itemclick': me.onSelectComponent",
+                    "    },",
+                    "    // properties",
+                    "    'gridpanel#ComponentProps': {",
+                    "        'activate': me.toggleComponentsDetailsTips",
+                    "    },",
+                    "    'gridpanel#ComponentProps filterfield': {",
+                    "        'applyfilter': me.onFilterComponentDetails",
+                    "    },",
+                    "    // methods",
+                    "    'gridpanel#ComponentMethods': {",
+                    "        'activate': me.toggleComponentsDetailsTips",
+                    "    },",
+                    "    'gridpanel#ComponentMethods filterfield': {",
+                    "        'applyfilter': me.onFilterComponentDetails",
                     "    }",
                     "});"
                 ]
@@ -214,6 +228,67 @@
                 ]
             },
             "designerId": "94fa3fe8-c359-429e-8872-d6d2cbc0c4dc"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "grid"
+                ],
+                "fn": "toggleComponentsDetailsTips",
+                "implHandler": [
+                    "var tips = grid.up('#ComponentInspector').down('toolbar[dock=bottom]'),",
+                    "    isProps = grid.itemId === 'ComponentProps',",
+                    "    props = tips.query('[tipGroup=props]'),",
+                    "    methods = tips.query('[tipGroup=methods]'),",
+                    "    i;",
+                    "",
+                    "for(i = 0; i < props.length; i++) {",
+                    "    props[i].setVisible(isProps);",
+                    "}",
+                    "",
+                    "for(i = 0; i < methods.length; i++) {",
+                    "    methods[i].setVisible(!isProps);",
+                    "}"
+                ]
+            },
+            "designerId": "a1b2427a-d594-403c-b91d-5d091896a44c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "field",
+                    "value"
+                ],
+                "fn": "onFilterComponentDetails",
+                "implHandler": [
+                    "var grid = field.up('gridpanel'),",
+                    "    store = grid.getStore();",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "if (value !== '') {",
+                    "    store.filter([{",
+                    "        anyMatch: true,",
+                    "        caseSensitive: false,",
+                    "        property: 'name',",
+                    "        value: value",
+                    "    }]);",
+                    "}"
+                ]
+            },
+            "designerId": "24a8efd1-ce39-4d7d-8eda-c2d2d10a5246"
         }
     ]
 }

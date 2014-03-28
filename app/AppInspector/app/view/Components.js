@@ -18,15 +18,18 @@ Ext.define('AI.view.Components', {
     alias: 'widget.components',
 
     requires: [
+        'AI.view.ComponentsTreeGrid',
+        'AI.view.FilterField',
         'Ext.tree.Panel',
-        'Ext.toolbar.Toolbar',
-        'Ext.tree.View',
-        'Ext.tree.Column',
         'Ext.tab.Panel',
         'Ext.grid.Panel',
         'Ext.tab.Tab',
         'Ext.grid.column.Boolean',
         'Ext.grid.View',
+        'Ext.toolbar.Toolbar',
+        'Ext.toolbar.Fill',
+        'Ext.form.field.Text',
+        'Ext.toolbar.TextItem',
         'Ext.layout.container.Border'
     ],
 
@@ -42,45 +45,9 @@ Ext.define('AI.view.Components', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'treepanel',
-                    flex: 1,
-                    region: 'center',
+                    xtype: 'componentstreegrid',
                     itemId: 'ComponentTree',
-                    autoScroll: true,
-                    store: 'Components',
-                    rootVisible: false,
-                    useArrows: true,
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            ui: 'default-toolbar',
-                            items: [
-                                {
-                                    xtype: 'button',
-                                    itemId: 'RefreshComponentTree',
-                                    iconCls: 'icn-refresh',
-                                    text: 'Refresh'
-                                }
-                            ]
-                        }
-                    ],
-                    viewConfig: {
-
-                    },
-                    columns: [
-                        {
-                            xtype: 'treecolumn',
-                            dataIndex: 'text',
-                            text: 'Component ID',
-                            flex: 1
-                        },
-                        {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'xtype',
-                            text: 'XType'
-                        }
-                    ]
+                    region: 'center'
                 },
                 {
                     xtype: 'tabpanel',
@@ -146,7 +113,21 @@ Ext.define('AI.view.Components', {
 
                                     return cls.join(' ');
                                 }
-                            }
+                            },
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    items: [
+                                        {
+                                            xtype: 'tbfill'
+                                        },
+                                        {
+                                            xtype: 'filterfield'
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             xtype: 'gridpanel',
@@ -202,7 +183,57 @@ Ext.define('AI.view.Components', {
 
                                     return cls.join(' ');
                                 }
-                            }
+                            },
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    items: [
+                                        {
+                                            xtype: 'tbfill'
+                                        },
+                                        {
+                                            xtype: 'filterfield'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            cls: 'components-tips',
+                            itemId: 'ComponentsTips',
+                            items: [
+                                {
+                                    xtype: 'tbfill',
+                                    flex: 2
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'props',
+                                    flex: 1,
+                                    cls: 'tip-changed',
+                                    text: 'Changed'
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'both',
+                                    flex: 1,
+                                    cls: 'tip-custom',
+                                    text: 'Custom'
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'methods',
+                                    flex: 1,
+                                    cls: 'tip-override',
+                                    hidden: true,
+                                    text: 'Override'
+                                }
+                            ]
                         }
                     ]
                 }
