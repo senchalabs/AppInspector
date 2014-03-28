@@ -12,6 +12,9 @@
     }, {
         "name": "Stefan Stölzle",
         "url": "https://github.com/stoe"
+    }, {
+        "name": "Shinobu Kawano",
+        "url": "https://github.com/kawanoshinobu"
     }],
     "repository": {
         "type": "git",
@@ -36,7 +39,8 @@
         "load-grunt-config": "~0.7.1",
         "load-grunt-tasks": "~0.4.0",
         "lodash": "~2.4.1",
-        "time-grunt": "~0.2.9"
+        "time-grunt": "~0.2.9",
+        "grunt-file-blocks": "^0.2.2"
     },
     "optionalDependencies": {
         "lintroller": "~2.3.5-b"

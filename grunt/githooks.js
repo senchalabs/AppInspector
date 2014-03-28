@@ -9,7 +9,7 @@
  * NOTE: run the »githooks« task only once or when adding new hooks
  */
 module.exports = {
-    all: {
-        'pre-commit': 'jshint'
+    all : {
+        'pre-commit' : 'jshint'
     }
 };
