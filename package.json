@@ -32,6 +32,7 @@
         "grunt-contrib-jshint": "~0.8.0",
         "grunt-contrib-watch": "~0.5.3",
         "grunt-exec": "~0.4.5",
+        "grunt-file-blocks": "^0.2.2",
         "grunt-githooks": "~0.3.1",
         "grunt-jsduck": "~1.0.0",
         "jshint-stylish": "~0.1.5",
@@ -39,8 +40,7 @@
         "load-grunt-config": "~0.7.1",
         "load-grunt-tasks": "~0.4.0",
         "lodash": "~2.4.1",
-        "time-grunt": "~0.2.9",
-        "grunt-file-blocks": "^0.2.2"
+        "time-grunt": "~0.2.9"
     },
     "optionalDependencies": {
         "lintroller": "~2.3.5-b"
