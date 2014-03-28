@@ -41,7 +41,7 @@ Ext.define('AI.util.Store', {
             records.push({
                 id        : record.id || record.get('id'),
                 modelData : record.data,
-                rawData   : record.raw
+                rawData   : record.raw //TODO: "raw" doesn't exist in Ext 5!
             });
         });
 

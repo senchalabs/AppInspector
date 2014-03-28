@@ -33,10 +33,12 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/themes/index.html',
+        hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/personel-review/index.html',
 
         items : [
-            'specs/ext4/InspectedWindow.js'
+            'specs/ext4/InspectedWindow.js',
+            'specs/ext4/Component.js',
+            'specs/ext4/Store.js'
         ]
     }
 
