@@ -1,0 +1,138 @@
+/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+.tr-tree-column .x-grid-cell-inner {
+    position           : relative;
+}
+
+.x-tree-elbow-line {
+	visibility         : hidden;
+}
+
+.tr-elbow-line {
+	visibility         : visible;
+    position           : absolute !important;
+    display            : block !important;
+    height             : 100% !important;
+    top                : 0px;
+}
+
+.test-name-column .x-tree-expander {
+    margin-top   : 6px;
+    margin-right : 7px;
+    margin-left  : 1px;
+    height       : 0;
+    width        : 0;
+    background   : none !important;
+    border-style : solid;
+    border-width : 5px 0 5px 8px;
+    border-color : transparent transparent transparent #868686;
+}
+
+.x-grid-tree-node-expanded .test-name-column .x-tree-expander {
+    margin-top   : 9px;
+    margin-right : 7px;
+    margin-left  : -1px;
+    border-width : 8px 5px 0 5px;
+    border-style : solid;
+    border-color : #868686 transparent transparent transparent;
+}
+
+.x-ie9m .test-name-column .x-tree-expander {
+    position:relative;
+    top:-4px;
+}
+
+
+/* ICONS AND TEXT */
+.test-name-column span.x-tree-node-text {
+    font-size    : 14px;
+    padding-left : 24px;
+    position     : relative;
+}
+
+/* TEST STATUS ICONS */
+
+.test-icon {
+    font-size : 1.2em;
+    position  : absolute;
+    left      : 2px;
+    top       : 0;
+}
+
+body.x-linux .test-icon {
+    margin-top  : 2px;
+}
+
+
+.x-ie .test-icon,
+.x-ie10 .test-icon {
+    top : 3px;
+}
+
+.icon-checkmark {
+    background-position : 3px center;
+    background-repeat   : no-repeat;
+    color               : rgb(89, 205, 82);
+    text-shadow         : 1px 0 1px green;
+}
+
+.test-name-column .icon-file-2 {
+    color : #bbb;
+}
+
+.test-name-column .icon-bug {
+    color      : #ff1111;
+    font-size  : 1.1em;
+    margin-top : 1px;
+}
+
+.icon-busy {
+    color : #777;
+}
+
+.test-name-column .icon-close {
+    color : #ff1111;
+}
+
+.icon-flag {
+    color : #F52222;
+}
+
+.icon-lightning {
+    color       : rgb(251, 249, 176);
+    text-shadow : 1px 0 1px rgb(148, 120, 87);
+}
+
+.icon-folder-open,
+.icon-folder {
+    color       : rgb(215, 213, 40);
+    text-shadow : 1px 0 1px rgb(148, 120, 87);
+    top         : 0;
+}
+
+.icon-folder-open.tr-folder-green,
+.icon-folder.tr-folder-green {
+    color       : rgb(89, 205, 82);
+    text-shadow : 1px 0 1px green;
+}
+
+.icon-folder-open.tr-folder-red,
+.icon-folder.tr-folder-red {
+    color       : #FC2525;
+    text-shadow : 1px 0 1px darkred;
+}
+
+.tr-test-todo-pass {
+    color       : green;
+    font-weight : bold;
+}
+
+.tr-test-todo-fail {
+    color : #666;
+}

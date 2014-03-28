@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 
+            This harness wrapper provides the SenchaTouch-based UI, and is purposed to be used
+            during "production" testing, on the actual mobile devices. The mobile UI is less
+            powerful and convenient than ExtJS-based UI, so consider using the latter during
+            development (see "browser-desktop.html")
+            
+            Note, that we include "siesta-touch-all.js" file here.
+         -->
+    
+        <!-- 
+            SenchaTouch library CSS, this is merely for the Siesta UI and is not used by your tests.
+            Your tests use the ExtJS/SenchaTouch library, specified in the "preload" config of harness.
+            Do not change this line, instead modify the "preload".  
+        -->
+        <link rel="stylesheet" type="text/css" href="http://cdn.sencha.com/touch/sencha-touch-2.2.1/resources/css/sencha-touch.css">
+        
+        <!-- Siesta CSS -->
+        <link rel="stylesheet" type="text/css" href="../resources/css/siesta-touch-all.css">
+    </head>
+    <body>
+        <div id="splashLoader">
+            <div id="loading">
+                <span class="loadTxt">Loading...</span>
+                <div class="x-loading-spinner"><span class="x-loading-top"></span><span class="x-loading-right"></span><span class="x-loading-bottom"></span><span class="x-loading-left"></span></div>
+            </div>
+        </div>
+
+        <!-- 
+            SenchaTouch library, this is merely for the Siesta UI and is not used by your tests.
+            Your tests use the ExtJS/SenchaTouch library, specified in the "preload" config of harness.
+            Do not change this line, instead modify the "preload".  
+        -->
+        <script type="text/javascript" src="http://cdn.sencha.com/touch/sencha-touch-2.2.1/sencha-touch-all-debug.js"></script>
+        
+        <!-- Siesta application -->
+        <script type="text/javascript" src="../siesta-touch-all.js"></script>
+
+        <!-- The test harness -->
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>

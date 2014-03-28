@@ -1,0 +1,71 @@
+/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+.ghost-cursor {
+    position   : absolute;
+    width      : 19px;
+    height     : 22px;
+    left       : 0px;
+    top        : 0px;
+    z-index    : 1000001;
+    background : url(../images/cursor-hand.png) no-repeat left center;
+}
+
+.ghost-cursor-press {
+    background : url(../images/cursor-hand-press.png) no-repeat left center;
+}
+
+.ghost-cursor-message {
+    background                  : none repeat scroll 0 0 #FFFFFF;
+    border                      : 1px solid #CCCCCC;
+    color                       : #666666;
+    padding                     : 2px 4px;
+    position                    : absolute;
+    z-index                     : 101;
+    border-radius               : 5px;
+    box-shadow                  : 1px 1px 1px rgba(200, 200, 200, 0.1);
+    -webkit-transition-property : opacity, top;
+    -webkit-transition-duration : 2s;
+    -moz-transition-property    : opacity, top;
+    -moz-transition-duration    : 2s;
+    transition-property         : opacity, top;
+    transition-duration         : 2s;
+    opacity                     : 1;
+}
+
+.ghost-cursor-click-indicator {
+    position                    : absolute;
+    border-radius               : 100%;
+    margin-left                 : -3px;
+    margin-top                  : -3px;
+    -webkit-transition-property : opacity, width, height, margin-left, margin-top, visibility;
+    -webkit-transition-duration : 2.5s;
+    -moz-transition-property    : opacity, width, height, margin-left, margin-top, visibility;
+    -moz-transition-duration    : 2.5s;
+    transition-property         : opacity, width, height, margin-left, margin-top, visibility;
+    transition-duration         : 2.5s;
+    border                      : 2px solid darkred;
+    opacity                     : 0.7;
+    width                       : 7px;
+    height                      : 7px;
+    z-index                     : 101;
+}
+
+.ghost-cursor-click-indicator-big {
+    margin-left : -21px;
+    margin-top  : -21px;
+    height      : 50px;
+    width       : 50px;
+    opacity     : 0;
+    visibility  : hidden;
+}
+
+.x-ie .ghost-cursor {
+    z-index : -1;
+    display : none;
+}

@@ -1,0 +1,17 @@
+{
+   "repository" : null,
+   "directories" : {
+      "man" : "./man",
+      "lib" : "./lib",
+      "doc" : "./doc/mmd"
+   },
+   "version" : "2.0.5",
+   "name" : "siesta",
+   "author" : "Nickolay Platonov <nplatonov@cpan.org>",
+   "description" : "JavaScript unit testing, without stress",
+   "main" : "siesta-all-nodejs.js",
+   "homepage" : "http://bryntum.com/siesta",
+   "contributors" : [
+      "Mats Bryntse <mats@bryntum.com>"
+   ]
+}

@@ -1,0 +1,89 @@
+/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+.resultPanel-panel {
+    margin-top  : -25px;
+    border      : 0 none;
+}
+
+.resultPanel-panel .x-panel-body {
+    border : 0 none;
+}
+
+.siesta-assertion-grid {
+    border-top-left-radius  : 3px;
+    border-top-right-radius : 3px;
+    border                  : 1px solid #999;
+    border-bottom           : 0 none;
+}
+
+.siesta-assertion-grid .light-button .x-btn-button{
+    overflow:visible;
+}
+
+.resultPanel-panel .resultpanel-toolbar {
+    border-top-left-radius : 3px;
+    background-image       : none !important;
+}
+
+.resultpanel-toolbar .light-button {
+    border       : 0 none;
+    background   : none;
+    color        : rgb(7, 89, 133);
+}
+
+.resultpanel-toolbar .light-button:hover {
+    color        : #222;
+}
+
+.resultpanel-toolbar .light-button.x-pressed {
+    color        : blue;
+}
+
+.resultpanel-toolbar .icon-play {
+    color        : #fff;
+    font-size    : 1.3em;
+    line-height  : 22px;
+    padding-left : 2px;
+}
+
+.resultPanel-panel > .x-panel-header {
+    background    : transparent none;
+    border        : 0 none;
+    box-shadow    : none;
+    border-bottom : 1px solid #bababa;
+}
+
+.resultPanel-panel > .x-panel-header .x-header-text {
+    font-size   : 1.4em;
+    text-shadow : 0 1px rgba(55, 55, 55, 0.5);
+    color       : #fff;
+}
+
+.view-source {
+    background : url(../images/text_align_left.png) no-repeat left center;
+}
+
+.test-source-ct .syntaxhighlighter {
+    overflow : hidden !important;
+}
+
+/* fixes row height sync in Chrome */
+.syntaxhighlighter .line {
+    height         : 1.2em !important;
+    vertical-align : middle !important;
+}
+
+.test-source-ct {
+    background : #fff;
+}
+
+.siesta-domcontainer {
+    border-radius : 3px;
+    border        : 1px solid #999;
+}

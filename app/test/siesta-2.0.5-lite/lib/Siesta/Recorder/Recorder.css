@@ -1,0 +1,113 @@
+/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+.icon-delete {
+    background      : transparent url(../images/cross.png) no-repeat left center !important;
+    cursor          : pointer;
+    height          : 10px;
+    width           : 10px;
+    background-size : 8px 8px !important;
+    margin          : 4px 2px;
+}
+
+.recorder-tool {
+    background : none !important;
+    border     : none !important;
+}
+
+.recorder-tool-icon {
+    font-size   : 1.1em;
+    color       : rgb(7, 89, 133);
+    padding-top : 0.1em;
+}
+
+.recorder-tool-icon:hover {
+    color : #222;
+}
+
+.icon-record {
+    border-radius : 10px;
+    width         : 10px !important;
+    height        : 10px !important;
+    margin-top    : 3px;
+    background    : #ff1111;
+    margin-left   : 2px;
+}
+
+.icon-record:hover {
+    background : darkred;
+}
+
+.recorder-tool-icon.icon-close {
+    font-size   : 0.9em;
+    padding-top : 0.2em;
+}
+
+.cheatsheet {
+    background : #eee;
+    padding    : 5px;
+}
+
+.cheatsheet-type {
+    width       : 135px;
+    font-weight : bold;
+    margin-top  : 5px;
+}
+
+.cheatsheet td {
+    white-space : nowrap;
+    color       : #555;
+}
+
+.eventview-offsetcolumn > .x-grid-cell-inner {
+    position : relative;
+    color    : #777;
+}
+
+.eventview-clearoffset {
+    position : absolute;
+    width    : 11px;
+    height   : 11px;
+    right    : 4px;
+    top      : 0px;
+    cursor   : pointer;
+}
+
+.x-grid-row-over .eventview-clearoffset {
+    background : transparent url(../images/bullet_delete.png) no-repeat left center !important;
+}
+
+@keyframes blink {
+    0% { opacity : 0; }
+    100% { opacity : 1; }
+}
+
+@-webkit-keyframes blink {
+    0% { opacity : 0; }
+    100% { opacity : 1; }
+}
+
+.recorder-recording .icon-record {
+    -webkit-animation                 : blink 0.5s linear infinite;
+    -moz-animation                    : blink 0.5s linear infinite;
+    animation                         : blink 0.5s linear infinite;
+    -webkit-animation-timing-function : cubic-bezier(1.0, 0, 0, 1.0);
+    -webkit-animation-direction       : alternate;
+    animation-direction               : alternate;
+}
+
+.siesta-recorder-codeeditor .CodeMirror {
+    background-image    : url(../images/ok.png);
+    background-repeat   : no-repeat;
+    background-position : right top;
+    background-size     : 10px 10px;
+}
+
+.siesta-recorder-codeeditor.x-form-invalid .CodeMirror {
+    background-image : url(../images/cross.png);
+}

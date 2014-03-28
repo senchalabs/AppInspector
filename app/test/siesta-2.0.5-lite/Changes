@@ -1,0 +1,830 @@
+Release history for Siesta:
+
+2.0.5     2013-12-20 10:29
+    This is the first release that includes the new event recorder feature. Please refer to the "Using the event recorder" guide in the
+    documentation. http://www.bryntum.com/docs/siesta/#!/guide/event_recorder Note, that for now the recorder is considered to be experimental and any features in it may change w/o notice.
+
+    [KNOWN ISSUES]
+    - Event simulation on touch devices not working for Sencha Touch 2.2.1+. https://www.assembla.com/spaces/bryntum/tickets/996#/activity/ticket:
+
+    [FEATURES / ENHANCEMENTS]
+    - Added new method `setup` to the test class, intended to provide easier setup code, than `isReady` method
+    - Added new guide, describing how to test Sencha Touch application and how to perform an automatic login before every test
+    - Added new command line option `page-size` for WebDriver launcher, specifying the number of test files, after which the browser
+      should be restarted (previously it was not configurable)
+    - When running in automated mode, Siesta will now try to report about exceptions thrown by Siesta internals too
+    - ChromeDriver upgraded to v2.6
+    - Added new method returning placeholder: `anyNumberApprox`
+    - Test descriptors with `null` or other falsy values are now ignored in the Harness#start method
+    - Siesta now warns if Java is not available in the system (Fixed #1020)
+    - New waitForElementNotEmpty, waitForElementEmpty helper methods
+
+    [API CHANGES]
+
+    [BUG FIXES]
+    - Fixed a regression bug, that was causing tests with `separateContext` option enabled to fail to start
+    - Fixed #979: Siesta focus is off by a few pixels in IE9, IE10, Firefox
+    - Fixed #1051: Testing of production build from CMD does not work for ST
+    - Fixed #1079: Infinite loop for actions on unrendered components
+    - Fixed #1084: Siesta: Test 030_global_variables.t.js is failing out of the box
+
+2.0.4     2013-10-30 13:16
+    [KNOWN ISSUES]
+    - Event simulation on touch devices not working for Sencha Touch 2.2.1+. https://www.assembla.com/spaces/bryntum/tickets/996#/activity/ticket:
+
+    [FEATURES / ENHANCEMENTS]
+    - New 'waitForAnimations' method in the Ext JS layer, waiting for any active animations to complete.
+    - New 'waitForTarget' method in the Ext JS layer, waiting for any type of target (CSS query, CQ, CSQ)
+    - New `messageBoxIsVisible`, `messageBoxIsHidden` assertions added to Ext JS layer
+    - New `cqExists/componentQueryExists` assertion methods
+    - New `cqNotExists` assertion to verify a non-existing component query.
+    - New `elementIsEmpty` assertion method
+    - New `waitForTextPresent/waitForTextNotPresent` methods added
+    - ChromeWebDriver version upgraded to 2.4, Selenium version upgraded to 2.37.0
+    - The `enableCodeCoverage` config now supports the special value `ifloaded` which enables coverage
+      only if appropriate files are loaded on the harness page
+    - The automation command line interface get a new option `exclude`, containing regexp text, to remove the tests with 
+      matching urls from the current launch 
+    - The `args` config of the `wait` action can now accept a function, which will be called at the time of action
+      processing and should return the arguments for the action
+    - Any exceptions thrown from function chain steps will be now detected (unless in the "transparent exception" mode)
+    - Implemented a possibility to inject the code coverage instrumentation hook for Ext.Loader in the middle of test preloads.
+      Please refer to the documentation of the `getLoaderInstrumentationHook` method. 
+    - Implemented a possibility to inject the paths value for Ext.Loader in the middle of test preloads.
+      Please refer to the documentation of the `getLoaderPathHook` method. 
+
+    [API CHANGES]
+    - The automatic "verifyGlobals" call will now be performed for a top level test only, instead of for each sub-test. 
+      The "expectGlobals" calls will add expected global to the collection of the top level test.
+    - The main name for the `isaOk` assertion has been changed to `isInstanceOf`. The old "isaOk" and "isa_ok" methods
+      will still be supported as aliases
+    - The automation command line option `filter` has been renamed to `include`. The old name is still supported as an alias.
+    - the `getElementAtCursor` method documented (made public)
+
+    [BUG FIXES]
+    - Fixed a bug, that was causing PhantomJS launcher to always return 0 as exit code
+    - Fixed a bug, that could cause the "Cannot read property 'clearTimeout' of null" exception when re-launching some
+      test with sub-tests before its finalization
+    - Fixed #1005: Hide passed Test assertions button not working
+    - Fixed #1021: Siesta interactions should first waitForAnimations, and wait for target to exist
+    - Fixed #1030: Typing into Ext JS HTML editor
+
+2.0.3     2013-09-12 10:22
+    [FEATURES / ENHANCEMENTS]
+    - All arrays in the input for `chain` method are now flattened. Steps, presented with `null/undefiend`
+      are ignored. This allows us to implement the conditional steps processing - see the updated docs for 
+      `chain` method
+    - The "dragTo/dragBy" methods now will scroll their source elements into view (unless specified as an array of coordinates)
+    - The check for whether element is scrolled out of the current view has been improved
+    - When Siesta can't find a DOM element for some action it will now issue a warning in the assertion list
+    - Simulating TAB key now attempts to focus the next available input
+
+    [API CHANGES]
+    - The default value of the "allowEmpty" argument for the "compositeQuery" method has been changed to `true` 
+
+    [BUG FIXES]
+    - Fixed a bug, that was causing code coverage to fail, when trying to parse the call to `Ext.define()`
+      with 1st argument being some JS expression
+    
+2.0.2     2013-08-28 09:53
+    [FEATURES / ENHANCEMENTS]
+    - Selenium version upgraded to 2.35.0, Chrome driver version upgraded to 2.2 (supports Chrome 27-30)
+
+    [API CHANGES]
+
+    [BUG FIXES]
+    - Fixed #912: Max length is not respected in the "type" method in PhantomJS
+    - Fixed #954: "isApprox" fails on isApprox(1, 1.05) because of JS number presentation
+    - Fixed a bug that could cause functions tested with "isCalledNTimes" to be called with incorrect scope
+    - Fixed a bug which caused the "isNotStrict" assertion to perform a regular (non-strict) comparison
+
+2.0.1     2013-07-26 10:40
+
+    [FEATURES / ENHANCEMENTS]
+    - BDD: added support for exclusive version of "it" and "describe": "iit" and "ddescribe" 
+
+    [API CHANGES]
+
+    [BUG FIXES]
+    - Fixed a bug that was causing simulated events to be ignored in IE10 and ExtJS 4.2.1
+    - Fixed #880: Mouse Cursor Pauses on Chain after hitting enter on a msgbox
+
+2.0.0     2013-07-17 14:28
+    Siesta Standard license agreement has been updated (v1.12).
+
+    [FEATURES / ENHANCEMENTS]
+    - Code coverage support has landed. Siesta can now instrument your files and give you detailed coverage information (uses Istanbul). See blog post for more details.
+    - Brand new User Interface. Built using Ext JS 4.2, the new UI is cleaner and has better support for retina screens.
+    - The UI will now display a notification when there is a new release available for download.
+    - New code coverage guide added.
+
+    [API CHANGES]
+
+    [BUG FIXES]
+    - Multiple minor issues and stability improvements fixed.
+
+1.2.1     2013-06-25 08:06
+
+    [FEATURES / ENHANCEMENTS]
+    - Introduced a new "autoScrollElementsIntoView" option, which automatically scrolls the target of an action into view
+      if it is not currently visible. It is enabled by default.
+    
+    [API CHANGES]
+
+    [BUG FIXES]
+    - Fixed a bug, that would cause "waitForCQVisible" to complete immediately for hidden components
+    - Fixed a bug, that would cause a test with both "hostPageUrl" and "preload" to ignore the "preload" config
+    - Fixed a bug, that would cause the "t.type" method to not honor the "maxlength" attribute of the input fields
+    - When clicking DOM elements, the "focus" event is now correctly fired before "click/contextmenu" events
+    - Disabled animation when expanding/collapsing the assertions tree, because of this bug: http://www.sencha.com/forum/showthread.php?265901
+
+1.2.0     2013-06-14 09:42
+
+    [FEATURES / ENHANCEMENTS]
+    - Added scrollbars for viewing the DOM of the test
+    - Actions in "t.chain()" call can now be specified with the shortcut properties, according to the action name,
+      for example: { click : ".css-class" }, { type : 'some text', target : numberField } etc
+    - New assertions 'assertNoGlobalExtOverrides/assertMaxNumberOfGlobalExtOverrides' available which checks for global Ext JS overrides.
+    - New 'assertNoLayoutTriggered' and 'getTotalLayoutCounter' counter methods for the Ext JS test class.
+    - The filter field in the Siesta ExtJS UI now accepts "|" separator, which splits the filter value in several parts, combined with "OR"
+    - Wrote new example test showing how to mock Ext JS ajax requests
+    - Updated Selenium to 2.32.0
+    - Mobile UI updated to reflect the recent sub-tests addition
+    - Added a new 'Component Inspector' button allowing you to easily visually inspect the Ext JS components in your test.
+    - Improved simulation of native 'blur' of previously targeted elements.
+
+    [API CHANGES]
+    - Required ExtJS version for harness page with Siesta UI is now 4.2.0
+    - Required SenchaTouch version for harness page with Siesta UI is now 2.2.1
+    - Actions like click/doubleClick/contextMenu no longer fire 'mouseover' first.
+    - The "hostPageUrl" option, defined on the harness level, will no longer stops the inheriting of the `preload` option
+      Also the previously private possibility to re-enable the inheriting of the `preload` option is made public and documented
+      (need to set the `preload` option to string `inherit`) (Fixed #774)
+
+    [BUG FIXES]
+    - Fixed #617: Siesta not firing mouseout/mouseleave properly
+    - Fixed #708: Method Test.compareObjects returns false for function comparison
+    - Fixed #748: Add support for scope in methodIsCalledNTimes
+    - Fixed #760: Test assertion methods isCalledNTimes and methodIsCalledNTimes do not return original function value
+    - Fixed a bug - "waitFor" method was generating a failure, when provided with number of milliseconds to wait, 
+      which is bigger than a default timeout value
+    - Fixed a bug - in the transparent exceptions mode, exceptions from tests could not be reported in the UI 
+    - Fixed a bug that didn't fire events from nested iframes properly.
+
+1.2.0-beta-2 2013-04-23 15:29
+    [KNOWN ISSUES]
+    - The Sencha Touch based mobile UI has not been updated yet, use the ExtJS UI in the meantime
+    
+    [FEATURES / ENHANCEMENTS]
+    - added new assertion "selectorCountIs"
+    - added new helper methods "scrollVerticallyTo/scrollHorizontallyTo"
+
+    [API CHANGES]
+    - "waitFor" method now returns an object, that allows you to complete waiting immediately
+    - "dragTo/dragBy" now use the current cursor position if the source is omitted
+
+    [BUG FIXES]
+    - Fixed a bug, that was causing sub tests to have different set of config options (related to DOM access/events simulation)
+      from the main test
+    - Fixed #718: Simulating [ENTER] on the input should submit the form it belongs to (if any).
+
+1.2.0-beta-1 2013-04-08 11:20
+
+    [KNOWN ISSUES]
+    - The Sencha Touch based mobile UI has not been updated yet, use the ExtJS UI in the meantime
+    
+    [FEATURES / ENHANCEMENTS]
+    - Added support for BDD syntax, please refer to the guide "Writing tests in BDD conventions" for an introduction
+    - Assertions "is", "isStrict", "isDeeply" and their opposites now work with the BDD placeholders
+      generated with the new method "any"
+    - Added support for "sub tests" - independent tests which have their own order of assertions. See the "subTest" method.
+      Tests and assertions now form a tree structure. This is useful if you test several asynchronous processes
+      in parallel and would like to see a sane order of generated assertions
+    - When assertion description is omitted, Siesta now generates a sensible default text, for example:
+      "1 is equal to 1", "Foo matches regexp /foo/i" etc (Thanks to Brian Moeskau for suggestion!)
+    - Added `isString/isObject/isBoolean/etc` assertions, each checking the according type of the supplied value
+    - Updated Selenium to 2.31.0. It includes built-in support for Safari WebDriver, so it no longer requires 
+      compilation from sources
+    - Added new method: waitForCQNotVisible (Fixed #644)
+    - WebDriver launcher now reports the OS and browser version it runs the tests on (Fixed #456)
+    - Automation launchers now reports the total number of tests time spent (Fixed #587)
+    - Added support for passing an 'options' object for a 'type' method and  chain action (to hold CTRL or SHIFT keys etc)
+    - Fixed #574: Add filter for showing only failed assertions (button added to the assertion grid).
+
+    [API CHANGES]
+    - [BREAKING] 'overrideSetTimeout' on the Siesta.Harness class now defaults to `false`. To keep the old overriding behavior, 
+      you should set it explicitly to `true`.
+    - [BREAKING] when 'hostPageUrl' option is set on some test descriptor, it will now turn it's 'preload' to empty array 
+      (Thanks to Brian Moeskau for suggestion!)
+      (more precisely it will block the inheritance of the 'preload' option from parent descriptor/harness, 
+      'preload' option still can be set to non-empty array directly on such test descriptor
+      Fixed #577: By default ignore parent value and set "preload" to [] for tests with "hostPageUrl")
+    - [BREAKING] The newly added "isArray" assertion replaces the previously existing private method "isArray", which was renamed to
+      "valueIsArray" (if you were using that private method in your tests then rename its occurrences accordingly)
+    - The "todo" method now starts a new sub-test
+    - "firesOk" assertion has been completely rewritten and generalized, see the updates docs. The old signature will still be supported.
+    - `willFireNTimes` assertion is deprecated and removed from the documentation, please use "firesOk" instead
+    - removed deprecated and unstable Selenium RC launcher from the package, newer and more stable WebDriver launcher
+      provides a drop-in replacement command-line interface
+    - [BREAKING] the JSON report format was extended to reflect the tree structure of assertions. Assertions now contains "type" property,
+      can be one of the following: "Siesta.Result.Assertion/Siesta.Result.Diagnostic/Siesta.Result.SubTest".
+      To keep the previous behavior, filter and use only "Siesta.Result.Assertion" entries.
+
+    [BUG FIXES]
+    - Fixed a bug in the `matchGridCellContent` that caused the method to work incorrectly with plain strings
+    - Fixed #590: Siesta should handle req.status === 0 for preloading
+    - Fixed #615: Allow { type : 'css', url : '...' } resource descriptors
+    - Fixed a bug, that was preventing the update of the test source code in the "View sources" panel
+    - Fixed #470: This bug was causing the `<Exception from launcher>While running: return Siesta.my.activeHarness.generateUnifiedPageReport()...<Exception from launcher>`
+      exception when using WebDriver launcher with IE and some test has failed by throwing an exception
+    - Fixed #588: Remove 1s delay after phantomjs has finalized
+
+1.1.8     2013-01-05 10:44
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - Documented `timeout` property of the step config object in `t.chain`. Allow functions as value of `action` property.
+
+    [API CHANGES]
+
+    [BUG FIXES]
+    - Fixed a bug in PhantomJS launcher, when it could incorrectly report that harness page is using Siesta Lite version
+    - Fixed #511: Investigate if "style" property can be missing on the dom element
+
+1.1.7     2012-12-13 14:43
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+
+    [API CHANGES]
+    - All user simulated interactions now correctly targets up the top-most DOM element from the position where the action was supposed to happen
+      (previously this was only happening in the "click*" methods)
+
+    [BUG FIXES]
+    - added a workaround for bug in PhantomJS, which was causing error message about Siesta
+      not found on harness page
+    - Fixed #541: Not use `getEl` which is deprecated in SenchaTouch 2.1.0
+    - harness UI made compatible with ExtJS 4.1.3 
+    - Fixed #545: [Siesta] Sencha Touch 2.1 issues
+
+1.1.6     2012-12-03 10:44
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - Filtering in groups now includes full sub-tree starting from matching group name
+    - One can now launch groups of tests in filtered mode
+    - Added "--version" command line options for PhantomJS/WebDriver launchers
+    - Added meaningful error message when automation launcher is targeting harness page, that
+      contains Siesta Lite version
+
+    [API CHANGES]
+    - The threshold provided for the "isApprox" assertion is now inclusive (i.e. checking <=, previously used <)
+
+    [BUG FIXES]
+    - PhantomJS version downgraded back to 1.6.0, since 1.7.0 seems to have critical regression: http://code.google.com/p/phantomjs/issues/detail?id=444
+    - Fixed #455: Siesta UI can be broken easily if the space for the DOM container is too small
+    - Fixed #428: keyboard typing simulation
+    - Fixed #515: [Siesta] willFireNTimes misbehaving in MVC example
+    - Fixed #501: lastCellInRow not working
+    - Fixed #504: waitFor step should use 'desc' as its description message if provided
+    - Fixed #529: Typing in Search field does not work (SenchaTouch)
+
+1.1.5     2012-11-05 11:31
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - Added additional tests filtering mode - filter groups
+
+    [API CHANGES]
+    - isElementVisible method now also checks for "visibility" style 'hidden' value
+
+    [BUG FIXES]
+    - Fixed a bug in Eval action, which is activated when arguments parsing fails
+    - Fixed #477: Siesta UI throws exception when running several tests
+    - Fixed a bug in "wait" action that could cause premature test finalization and
+      "adding assertion after end of test" message
+
+1.1.4     2012-10-22 16:42
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - Added new action - Eval, which provides a simplified way to call action with static arguments
+      see documentation for Siesta.Test.Action.Eval
+    - Added a camelCased alias for StartTest - "startTest" (Fixed #433)
+
+    [API CHANGES]
+    
+    [BUG FIXES]
+    - Fixed a bug in RemoteWebDriver implementation, causing test suite to stop after running the initial page
+    - Fixed a bug in elementIsAt method which previously passed in cases it shouldn't
+    - Fixed a bug, breaking mobile UI for SenchaTouch harness
+
+1.1.3     2012-10-17 11:35
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - WebDriver launcher now supports running tests on remote RemoteWebDriver server instance
+      See the updated automation guide for details. 
+    - Added "interval" config for "waitFor" method (Fixed #369)
+    - The test filter value is now saved in cookie and re-applied after harness page refresh
+    - When attempting to click on hidden DOM element, a failing assertion is now added to the test, warning user
+      that something is incorrect. Previously test was silently clicking in the left-top corner of the document's "body" (Fixed #418)
+      (Thanks to Zombeerose!)
+    - Added new "destroysOk" assertion to the ExtJS/Component layer (Thanks to Zombeerose for suggestion!)
+    - PhantomJS binaries updated to 1.7.0
+
+    [API CHANGES]
+    - Harness.start method now also accepts an array of test descriptors
+    - Experimental: The "StartTest" function can now be called asynchronously, after some delay. In this case however, test can not be
+      configured using object as 1st argument for StartTest (Fixed #379). 
+      (Thanks to GustavR for suggestion!) 
+    
+    [BUG FIXES]
+    - Fixed #399: test should pass, but fails with step function does not use provided next function anywhere
+    - Fixed #404: t.click / rightClick / doubleClick should accept additional argument "options" to make "CTRL + click", "SHIFT + click" etc possible
+    - Fixed #400: click on text field fails, when the label length is greater than 50% of field width
+    - Fixed #373: No stack traces for errors
+    - Fixed #372: Errors encountered running multiple test cases at once
+    - Fixed #387: Cross Page Test throws exceptions
+    - Fixed #425: "Adding assertions after end of test" when using chaining and "done" action
+    - Fixed #381: [Siesta 1.1.2] All forms of t.click() need Ext.form.Field defined/loaded
+
+1.1.2     2012-08-31 20:47
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - new harness config option: "keepNLastResults" - allows to keep the results for a certain number
+      of the recently launched tests
+      
+    - the mobile package (siesta-touch-all.js) now also supports automation facilities using PhantomJS 
+      or WebDriver (using Chrome)
+    
+    - new command line option for PhantomJS and WebDriver launchers - "--no-color", allows to disable 
+      the coloring of the test output on Linux
+      
+    - the pause between tests for selenium/phantomjs launchers can now be configured with command line 
+      argument "--pause"
+    - the pause between test pages for selenium/phantomjs launchers can now be configured with command 
+      line argument "--page-pause"
+
+    - improved simulation of tap and doubleTap for Sencha Touch
+    - Sencha Touch tests can now be run using regular ExtJS UI, see /examples-touch/browser-desktop.html
+      (works only in Webkit browser naturally)
+      
+    - improved detection of the exceptions from test code
+      
+    - web drivers for various browsers updated to latest versions
+
+    [API CHANGES]
+    - If `beginAsync` call will not be finalized with `endAsync` within provided timeframe - an error 
+      will be reported (previously such situation was just ignored) 
+    
+    - link to examples, changed from /examples-touch/index.html to /examples-touch/browse-mobile.html 
+      and /examples-touch/browser-desktop.html
+    
+    [BUG FIXES]
+    - Fixed #328: [Siesta 1.1.1] PhantomJS Test creates invalid JUnit report
+    - Fixed bug with longpress not firing touchend properly
+    - Fixed #335: [Siesta] { waitFor : 'pageToLoad' } does not work in a chain
+    - Fixed a bug: when passing function as "target" for some action in chain, the target was not 
+      correctly passed to the next step in chain 
+    - Fixed #363: If step in t.chain doesn't complete in "defaultTimeout" time, error should be reported
+    - Fixed #324: [Siesta] No warning when running Phantom and using invalid filter
+
+1.1.1     2012-07-24 12:24
+
+    [KNOWN ISSUES]
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - `t.expectGlobals` now also accepts regular expressions to match several names 
+      (Thanks to gabrielle for suggestion)
+      
+    - improved saving of the UI state for collapsed folders and selected tests 
+      (now should support bigger test suites)
+      
+    - Both Selenium Webdriver and PhantomJS launchers now execute the test suite in chunks,
+      freeing memory after each and allowing much bigger test suites to be executed
+    
+    - Selenium updated to 2.25.0, webdrivers updated to latest versions (fixes Chrome driver
+      crash on Windows) 
+
+    [API CHANGES]
+    - The Selenium RC launcher is deprecated as we found Selenium RC too unstable 
+      and is scheduled for removal in the nearest releases. Switch to WebDriver launcher,
+      which provides the identical interface 
+
+    [BUG FIXES]
+    - Fixed broken carousel test
+    - Fixed reversed swipe direction ("left" was swiping right)
+    - Fixed: #302 [Siesta] Checkbox not checked when clicked in IE, with Ext JS 3
+    - Allow spaces in path to Siesta installation directory on Windows
+
+1.1.0     2012-07-04 19:33
+
+    [KNOWN ISSUES]
+    - Selenium Chrome driver crashes on Windows right after test suite completion
+    - Selenium Safari driver requires compilation from source
+
+    [FEATURES / ENHANCEMENTS]
+    - Sencha Touch support added
+    
+    - Added Siesta.Test.ActionTarget class, clearly describing how Siesta resolves targets for various actions.
+      Target resolving is now a very flexible and powerful mechanism, make sure to check the Siesta.Test.ActionTarget docs.
+      
+    - Introduced a new (more stable) launcher for Selenium which uses WebDriver, see the automation guide for details
+    
+    - Added new actions "moveCursorTo, mouseUp, mouseDown"
+    
+    - `t.type` method now focuses the input element before typing, this also solves issue #209.
+    
+    - Added new method "clickSelector" (thanks to Zombeerose!)
+    
+    - Greatly improved and tested compatibility with Ext JS 3
+    
+    - Improved reporting from the "willFireNTimes / firesOk" methods
+    - Show test folder status as hourglasses while it has any of waiting/running tests
+    - waitForEvent now supports waiting for events fired by DOM elements, window object and other browser observables.
+    
+    - New harness setting - "pauseBetweenTests", to improve stability when running many tests in sequence.
+      
+    - PhantomJS was updated to version 1.6.0 for all platforms
+
+    [API CHANGES]
+    - Siesta.Test.ExtJS.FormField#isEmpty has been deprecated in favor of #isFieldEmpty and will be removed in v1.2
+    - Siesta.Test.ExtJS.FormField#hasValue has been deprecated in favor of #fieldHasValue and will be removed in v1.2
+    - deprecated method Siesta.Test.Simulate.Mouse#drag, scheduled for removal in v1.2
+    - PhantomJS now performs a 3s delay between tests
+    - Selenium launcher is now always running tests sequentially
+
+    [BUG FIXES]
+    - Fixed several bugs related to testing Ext JS 3 grids
+    - Fixed a bug, when clicking on the element inside of iframe was producing a click in wrong coordinates
+    - Fixed #209: t.type does not support Ext3
+    - Fixed #224: waitForRowsVisible is not compatible with Ext 3
+    - Fixed #254: Stack trace not displaying properly with server port number
+    - Fixed #269: Siesta doesn't replace text when typing in textbox with selected text
+
+1.1.0-beta-1 2012-05-04 23:18
+
+    [FEATURES / ENHANCEMENTS]
+    - UI simplified, all panels are now resizable and remembers their width
+    - Double click a failed assertion shows code editor with highlighted row
+    - Improved `waitFor` visualization
+    
+    - introduced a "Composite Query" - a combination of ComponentQuery and a CSS query
+      see Siesta.Test#compositeQuery for details
+    - added `waitForCompositeQuery/waitForCompositeQueryNotFound` methods
+    
+    - all methods from the Siesta.Test.ExtJS and Siesta.Test.SenchaTouch classes that were accepting the instance of
+      Ext.Component, now also accept the string with component query or composite query
+    
+    - the "wait" action of `t.chain` now supports any waitFor* methods, see Siesta.Test.Action.Wait for details
+    - t.chain now tries to detect, that step function actually uses "next" to continue the chain, and warn otherwise
+    
+    - new method "isFiredWithSignature" in the ExtJS Observable layer  
+    
+    - introduced a generalized mechanism for delaying the test start - see documentation for the "Siesta.Test#isReady" method
+    
+    - added example of grid editing using RowEditor plugin
+    - Cleaned up a few of the examples
+    - New demo showing waitFor functionality
+
+    [API CHANGES]
+    - the experimental options `maintainMinViewportSize` and `minViewportSize` were removed 
+      in favor of `maintainViewportSize` and `viewportWidth/viewportHeight`
+
+    [BUG FIXES]
+    - Fixed #196: t.type adds to disabled inputfield
+    - fixed Siesta.Test.ExtJS regression when tests were not launching with ExtJS 3
+    - fixed a bug, when "alsoPreload" option was ignored, when specified in the config object passed to StartTest
+    - fixed a bug, when "doubleClick" action for `t.chain` was actually using right click
+    - fixed a #205, when a bug was preventing test to run in IE
+
+1.0.8     2012-04-03 11:24
+
+    [FEATURES / ENHANCEMENTS]
+    - configuration of the test can now be specified in the test file itself - as the 1st or 2nd argument to the StartTest call
+      (thanks to Zombeerose for this excellent suggestion!)
+    
+    - new action for "t.chain" - "wait"
+    - new action for "t.chain" - "drag"
+    - allow `t.chain` to also receive the array of steps
+    - the `target` for the actions can now be also provided as function, which will be called before starting the action
+    
+    - `defaultTimeout/waitForTimeout` properties of the test class made configurable via harness or test descriptor
+    
+    - added new config to ExtJS layer - "waitForAppReady", will defer the test start until the first "launch" event from ExtJS MVC application
+    
+    - documented previously private feature that callbacks of waitFor* methods can receive some meaningful value as the 1st argument
+    
+    - slightly improved reporting from the "requireOk" assertion
+    
+    - added "t.waitForComponentNotVisible" (thanks to Zombeerose)
+    - added "t.hasListener" 
+    
+    - UI now contains a filter field for test files (experimental, to be revised after migration of UI to ExtJS 4.1)
+    - UI now remembers the expanded/collapsed state of the test folders
+    
+    [API CHANGES]
+    - the last step for `t.chain` will now receive a no-op callback, instead of "null"
+      (thanks to Maxim Bazhenov for suggestion)
+    - experimental: The iframes with the tests now can maintain certain minimal size, default value is 1024x768.
+      However, this feature is disabled by default, because it causes the displacement of the whole harness UI,
+      in cases when that minimal size is bigger than available size.
+      See Siesta.Harness.Browser#minViewportSize and Siesta.Harness.Browser#maintainMinViewportSize
+
+    [BUG FIXES]
+    - fixed a bug in UI, when test file could not be checked/unchecked after test suite launch
+    - `waitForViewRendered` now correctly handles the case when provided "view" has empty store
+    - fixed a bug when "disabelCaching" query parameter could been added several times 
+      (thanks to Thorsten Suckow-Homberg for the report)
+
+
+1.0.7     2012-02-14 20:00
+    [FEATURES / ENHANCEMENTS]
+    - PhantomJS and Selenium launchers now can report the results of test suite execution in JSON and JUnit formats.
+      Launch `bin/phantomjs`, `bin/selenium` w/o arguments for help, also see the updated Automation guide
+        
+    - Documented the events, fired by harness and individual test cases. 
+      Included new example: /examples/events, demonstrating how you can provide hooks for all stages of test suite execution
+      
+    - added `t.chain` method to reduce nesting when testing asynchronous code
+    - added "actions" to further simplify common steps in `t.chain`: click, rightClick, doubleClick, type, done
+    
+    - added `t.chainClick` method (thanks to Zombeerose for suggestion)
+    - added `t.clickComponentQuery` method (thanks to Zombeerose for suggestion)
+    - added `t.waitForEvent` method (thanks to Zombeerose for suggestion)
+    - added `t.waitForElementVisible/waitForElementNotVisible` methods (thanks to Zombeerose for suggestion)
+    
+    - `waitForComponentQuery, waitForXType` now also accept the optional "root" argument to use as the root of the query
+    
+    - added `waitForComponentQueryNotFound` methods (thanks to Zombeerose for suggestion)
+    - added `waitForComponentQueryVisible` method (thanks to Zombeerose for suggestion)
+    
+    [API CHANGES]
+    - For Ext tests, moveMouseTo now also accepts an Ext JS component as the first argument
+
+    [BUG FIXES]
+    - Improved fail message for Function.isCalledNTimes
+    - Improved dom visibility handling when using panel collapse tool
+
+1.0.6     2012-01-18 14:04
+
+    [FEATURES / ENHANCEMENTS]
+    - New assertion method for DOM: `selectorNotExists`
+    - new `waitFor` method: `waitForSelectors` (plural) (thanks to zombeerose for suggestion)
+    - The Siesta version is now shown in the header.
+    - The Test "is"-method now handles Date comparison
+    - We now include the Siesta's own test suite in the distribution
+
+    [API CHANGES]
+
+    [BUG FIXES]
+    - fixed a bug, when after the "clearTimeout" test was not trying to finalize itself
+    - fixed a bug in selenium/phantomjs launcher files, when they were not working with 
+      spaces in file path
+
+1.0.5     2012-01-06 18:07
+    [FEATURES / ENHANCEMENTS]
+    - The trial version is now based on the Standard Package, containing the automation facilities
+    - New helper class for testing DataViews
+    - New assertions for Observable: wontFire, firesAtLeastNTimes
+    - New assertions for native JS Functions: isCalled, isCalledNTimes, isntCalled
+    - New "waitForSelectorNotFound" helper method
+    - new guide in documentation: "Extending test class with your own assertions and helper methods"
+    - phantomjs launcher script now exits after 3 minutes of inactivity in the test suite
+    - new `separateContext` option, allowing to test the page refresh/redirect (experimental)
+      new guide in documentation: "Testing page refresh"
+
+    [API CHANGES]
+    - `waitForStoresToLoad` and `loadStoresAndThen` methods now also accept the array of stores
+    - when simulating a mouse click (left/right/double), Siesta now picks the top-most element 
+      from the center of provided element
+    - when simulating right click and double clicks, Siesta now also fires the additional 
+      "mousedown/mouseup/click" event where needed, see the updated documentation 
+      for the `t.rightClick() / t.doubleClick` 
+
+    [BUG FIXES]
+    - fixed a bug, when the position of simulated mouse cursor could been reset to (0, 0)
+    - fixed a bug, when doing the "Run all" action w/o any selected test file could throw exception
+    - fixed a bug, when `t.requireOk` was not working correctly with singleton classes
+
+1.0.4     2011-12-23 17:39
+
+    [FEATURES / ENHANCEMENTS]
+    - added example of testing ExtJS MVC application, along with "Testing MVC app" guide
+    - included the MacOS binaries for PhantomJS
+    - upgraded Selenium to 2.15.0
+    - added `waitForScrollLeftChange / waitForScrollTopChange` methods
+    - added `dragTo / dragBy` methods with a bit cleaner interface 
+      (old `drag` method is still supported but deprecated)
+    - added `requireOk` method for ExtJS tests  
+    - New helper class for form fields
+    - New matcher Element.hasRegion
+    - display the number of passed/failed TODO assertions
+
+    [API CHANGES]
+    - forceDOMVisible is now default true for IE since any DOM test in IE requires the frame to be visible
+    - for ExtJS tests, imply that `StartTest` is wrapped with Ext.onReady
+      (can be configured with `waitForExtReady` option, which defaults to `true`)
+
+    [BUG FIXES]
+    - fixed a bug, when using "forceDOMVisible" and "viewDOM"- the iframe of the last test ran can be hidden
+    - fixed a bug, when trying to serialize the `window.location` object in FF were causing a silent exception
+    - fixed a bug, when the argument for `t.type()` was assumed to always be a string (we now stringify it)
+    - fixed a bug, when utility Queue class was not stopping even if the test has been finalized by exception
+      same fix for `t.waitFor` method
+
+1.0.3     2011-12-14 22:54
+
+    [FEATURES / ENHANCEMENTS]
+    - stop the server and close all opened browser windows when terminating the selenium launcher
+    - moved the "forceDOMVisible" logic from viewport to harness (fixes some automation issues)
+    - various docs improvements - `hostPageURL / type`
+    - upgraded Selenium to 2.12.0 - with Safari support
+    - allow to specify the "speedRun" option for the individual tests
+    
+    [API CHANGES]
+    - none 
+
+    [BUG FIXES]
+    - fixed a bug, when the last few lines from the selenium log could be missing in IE
+    - fixed a bug, when having several nested groups, some of the groups could be not shown in the tree
+
+1.0.2     2011-12-06 17:54
+
+    [FEATURES / ENHANCEMENTS]
+    - removed flickering of the simulated cursor 
+    
+    [API CHANGES]
+    - none 
+
+    [BUG FIXES]
+    - none 
+
+
+1.0.1     2011-12-06 10:12
+    [FEATURES / ENHANCEMENTS]
+    - new selectorExists assertion method to query a CSS selector
+    - various improvements in events simulation
+    
+    [API CHANGES]
+    - none 
+
+    [BUG FIXES]
+    - fixed bug in text selection helper method
+    - fixed crashes in IE8 (were caused by updating the iframe content)
+    - fixed a bug, when using "hostPageURL" option and preloading the css file,
+      all this when running the test suite in PhantomJS, page loading could stuck
+    - fixed the bug, when colored output could not be fully striped out from the
+      output of the phantomjs / selenium
+
+
+1.0.0     2011-11-28 16:23
+
+    [FEATURES / ENHANCEMENTS]
+    - Official 1.0.0 release  
+    
+    [API CHANGES]
+    - none 
+
+    [BUG FIXES]
+    - none 
+
+
+0.91      2011-11-26 13:44
+
+    [FEATURES / ENHANCEMENTS]
+    - smarter "disableCaching" option
+    - override "setTimeout/clearTimeout" to automatically issue "beginAsync/endAsync" calls
+      (use "overrideSetTimeout : false" option to disable if needed)
+    
+    [API CHANGES]
+    - "t.done()" call made optional (use "needDone" option to make it required) 
+
+    [BUG FIXES]
+    - none 
+
+
+0.90      2011-11-23 12:05
+
+    [FEATURES / ENHANCEMENTS]
+    - updated the UI look and feel
+    - docs moved to new JSDuck version and guides moved to separate section
+    - much improved the UI performance (tuned the the tree-grid)
+    - improved the cleanup procedure for iframes
+    
+    [API CHANGES]
+    - none
+
+    [BUG FIXES]
+    - none 
+
+0.21      2011-10-01 10:00
+
+    - intermediate release
+
+0.20      2011-10-12 18:41
+
+    - name changed to Siesta
+    - UI is now based on Ext4
+    - tests now can also be ran in PhantomJS
+    
+    - tests can be organized in folders
+    
+    - a whole new assertions pack for testing DOM with simulated events  
+    
+    - much better NodeJS support (proper module creation for each test)
+    
+    - significant improvement in the preloading mechanism 
+      (trying hard to use more efficient "document.write()" method even in IE)
+      
+    - ability to cache the preloads (faster but not firebug friendly)
+      
+    - failed assertions now shows the line in source file (if possible), 
+      name of assertions and information about provided values 
+      (which can be stringified even in presence of cyclic structures)
+      
+    - fixed bug, preventing the automatic timeout for `beginAsync` calls
+
+0.19      2011-07-16 13:12
+
+    - improved the Dates processing in `isDeeply`
+    - converted Todo test to role, so the test instance will have the same class
+    - `keepResults` defaults to `true` now
+    
+    - adapted to npm 1.0
+
+0.18      2011-01-12 21:32
+
+    - bumped dependency from Scope.Provider
+
+0.17      2011-01-12 18:47
+
+    - re-release just to pick up the new markdown css styles, no functional changes
+
+0.16      2010-12-14 20:07
+
+    - more correct checks for RegExp instances in `like/unlike`
+    - throw Error instances instead of strings
+    - massive docs update
+
+0.15      2010-11-12 13:36
+
+    - commented typecheck for test function, which do not pass for Window scope provider in IE
+    - small regex fix for scope provider name resolving
+    - various non-code updates
+
+0.14      2010-11-09 23:48
+
+    - re-release because `npm` didn't accepted the previous release
+
+0.13      2010-11-09 23:46
+
+    - fixed bug in `isDeeply`
+    - fixed bug: add default target to test descriptors
+    - fixed bug in absolutizing already absolute urls in browser harness 
+
+0.12      2010-11-01 12:33
+
+    - re-release with bumped dependency from Task-Joose-Stable
+
+0.11      2010-11-01 11:57
+
+    - added docs for `is_deeply`
+    - releasing on the `npm` platform
+
+0.10      2010-10-11 16:02
+
+    - fixed bug, when call to `finalize` could be potentially missed
+    - initial draft for `isDeeply` assertion
+    - added `prepareINC` method to ExtJS and Node harnesses
+
+0.09      2010-08-08 12:12
+
+    - dependency from Scope.Provider bumped to 0.02 
+
+0.08      2010-08-02 10:03
+
+    - fixed bug, when call to `done` after `endAsync` was ignored
+    
+    - implemented `isaOk` assertion
+
+0.07      2010-07-05 18:11
+
+    - switched to Dist::Zilla for distribution management
+    - major refactoring, providing the inter-operability with NodeJS 
