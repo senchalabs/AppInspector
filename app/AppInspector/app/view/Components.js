@@ -19,10 +19,17 @@ Ext.define('AI.view.Components', {
 
     requires: [
         'AI.view.ComponentsTreeGrid',
+        'AI.view.FilterField',
         'Ext.tree.Panel',
         'Ext.tab.Panel',
-        'Ext.grid.property.Grid',
+        'Ext.grid.Panel',
+        'Ext.toolbar.Toolbar',
+        'Ext.toolbar.Fill',
+        'Ext.form.field.Text',
+        'Ext.grid.View',
+        'Ext.grid.column.Boolean',
         'Ext.tab.Tab',
+        'Ext.toolbar.TextItem',
         'Ext.layout.container.Border'
     ],
 
@@ -54,22 +61,174 @@ Ext.define('AI.view.Components', {
                     minTabWidth: 45,
                     items: [
                         {
-                            xtype: 'propertygrid',
+                            xtype: 'gridpanel',
+                            cls: 'highlight',
                             itemId: 'ComponentProps',
                             title: 'Properties',
-                            nameColumnWidth: '50%',
-                            source: {
-                                
-                            }
+                            store: 'ComponentProps',
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    border: 1,
+                                    cls: 'components-toolbar top',
+                                    items: [
+                                        {
+                                            xtype: 'tbfill'
+                                        },
+                                        {
+                                            xtype: 'filterfield'
+                                        }
+                                    ]
+                                }
+                            ],
+                            viewConfig: {
+                                getRowClass: function(record, rowIndex, rowParams, store) {
+                                    var cls = [];
+
+                                    if (record.get('isChanged')) {
+                                        cls.push('isChanged');
+                                    }
+
+                                    if (record.get('isOwn')) {
+                                        cls.push('isOwn');
+                                    }
+
+                                    return cls.join(' ');
+                                }
+                            },
+                            columns: [
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 5,
+                                    resizable: false,
+                                    defaultWidth: 5,
+                                    sortable: false,
+                                    dataIndex: 'isOwn',
+                                    groupable: false,
+                                    hideable: false,
+                                    lockable: false,
+                                    menuDisabled: true,
+                                    tdCls: 'indicator',
+                                    falseText: ' ',
+                                    trueText: ' '
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'name',
+                                    text: 'Name',
+                                    flex: 2
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'value',
+                                    text: 'Value',
+                                    flex: 1
+                                }
+                            ]
                         },
                         {
-                            xtype: 'propertygrid',
+                            xtype: 'gridpanel',
+                            cls: 'highlight',
                             itemId: 'ComponentMethods',
                             title: 'Methods',
-                            nameColumnWidth: '50%',
-                            source: {
-                                
-                            }
+                            store: 'ComponentMethods',
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    border: 1,
+                                    cls: 'components-toolbar top',
+                                    items: [
+                                        {
+                                            xtype: 'tbfill'
+                                        },
+                                        {
+                                            xtype: 'filterfield'
+                                        }
+                                    ]
+                                }
+                            ],
+                            viewConfig: {
+                                getRowClass: function(record, rowIndex, rowParams, store) {
+                                    var cls = [];
+
+                                    if (record.get('isOverride')) {
+                                        cls.push('isOverride');
+                                    }
+
+                                    if (record.get('isOwn')) {
+                                        cls.push('isOwn');
+                                    }
+
+                                    return cls.join(' ');
+                                }
+                            },
+                            columns: [
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 5,
+                                    resizable: false,
+                                    defaultWidth: 5,
+                                    sortable: false,
+                                    dataIndex: 'isOwn',
+                                    groupable: false,
+                                    hideable: false,
+                                    lockable: false,
+                                    menuDisabled: true,
+                                    tdCls: 'indicator',
+                                    falseText: ' ',
+                                    trueText: ' '
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'name',
+                                    text: 'Name',
+                                    flex: 2
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'value',
+                                    text: 'Value',
+                                    flex: 1
+                                }
+                            ]
+                        }
+                    ],
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            cls: 'components-tips',
+                            itemId: 'ComponentsTips',
+                            items: [
+                                {
+                                    xtype: 'tbfill',
+                                    flex: 2
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'props',
+                                    flex: 1,
+                                    cls: 'tip-changed',
+                                    text: 'Changed'
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'both',
+                                    flex: 1,
+                                    cls: 'tip-custom',
+                                    text: 'Custom'
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'methods',
+                                    flex: 1,
+                                    cls: 'tip-override',
+                                    hidden: true,
+                                    text: 'Override'
+                                }
+                            ]
                         }
                     ]
                 }

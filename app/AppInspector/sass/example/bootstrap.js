@@ -42,8 +42,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.model.Store": [],
   "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
+  "AI.store.ComponentMethods": [],
+  "AI.store.ComponentProps": [],
   "AI.store.Components": [],
   "AI.store.Events": [],
+  "AI.store.Layouts": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
@@ -470,7 +473,6 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.grid.RowEditor": [],
   "Ext.grid.RowEditorButtons": [],
-  "Ext.grid.Scroller": [],
   "Ext.grid.View": [],
   "Ext.grid.ViewDropZone": [],
   "Ext.grid.column.Action": [
@@ -918,8 +920,11 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.model.Store": [],
   "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
+  "AI.store.ComponentMethods": [],
+  "AI.store.ComponentProps": [],
   "AI.store.Components": [],
   "AI.store.Events": [],
+  "AI.store.Layouts": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
@@ -1400,7 +1405,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.grid.RowEditorButtons": [
     "widget.roweditorbuttons"
   ],
-  "Ext.grid.Scroller": [],
   "Ext.grid.View": [
     "widget.gridview"
   ],

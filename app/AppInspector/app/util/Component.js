@@ -94,23 +94,44 @@ Ext.define('AI.util.Component', {
      * @returns {Object/undefined}
      */
     getInspectedComponent : function (id) {
-        var cmp, data, key;
+        var cmp, key, data, parent,
+            isChanged, isOwn;
 
         cmp = Ext.getCmp(id);
 
         if (cmp) {
+            parent = cmp.superclass;
+
             data = Object.create(null); //which sets __proto__ to undefined
-            data.properties = Object.create(null);
-            data.methods = Object.create(null);
+
+            data.properties = [];
+            data.methods = [];
 
             for (key in cmp) {
+                isOwn = (!parent.hasOwnProperty(key) && cmp[key] !== parent[key]);
+                isChanged = (parent.hasOwnProperty(key) && cmp[key] !== parent[key]);
+
                 if (typeof cmp[key] === 'function') {
-                    data.methods[key] = 'METHOD';
-                }
-                else if (typeof cmp[key] !== 'object') {
-                    data.properties[key] = cmp[key];
+                    data.methods.push({
+                        name: key,
+                        value: 'METHOD',
+                        isOwn: isOwn,
+                        isOverride: isChanged
+                    });
+                } else if (typeof cmp[key] !== 'object') {
+                    data.properties.push({
+                        name: key,
+                        value: cmp[key],
+                        isChanged: (isChanged || isOwn),
+                        isOwn: isOwn
+                    });
                 }
             }
+
+            data.properties.push({
+                name: '$parent',
+                value: parent.$className
+            });
         }
 
         return data;

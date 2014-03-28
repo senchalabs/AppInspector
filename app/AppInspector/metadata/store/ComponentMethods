@@ -1,0 +1,217 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[",
+            "    {",
+            "        \"name\": \"Name 1\",",
+            "        \"value\": \"Value 1\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 2\",",
+            "        \"value\": \"Value 2\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 3\",",
+            "        \"value\": \"Value 3\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 4\",",
+            "        \"value\": \"Value 4\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 5\",",
+            "        \"value\": \"Value 5\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 6\",",
+            "        \"value\": \"Value 6\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 7\",",
+            "        \"value\": \"Value 7\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 8\",",
+            "        \"value\": \"Value 8\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 9\",",
+            "        \"value\": \"Value 9\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 10\",",
+            "        \"value\": \"Value 10\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 11\",",
+            "        \"value\": \"Value 11\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 12\",",
+            "        \"value\": \"Value 12\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 13\",",
+            "        \"value\": \"Value 13\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": false",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 14\",",
+            "        \"value\": \"Value 14\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 15\",",
+            "        \"value\": \"Value 15\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 16\",",
+            "        \"value\": \"Value 16\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 17\",",
+            "        \"value\": \"Value 17\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 18\",",
+            "        \"value\": \"Value 18\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 19\",",
+            "        \"value\": \"Value 19\",",
+            "        \"isOverride\": false,",
+            "        \"isOwn\": true",
+            "    },",
+            "    {",
+            "        \"name\": \"Name 20\",",
+            "        \"value\": \"Value 20\",",
+            "        \"isOverride\": true,",
+            "        \"isOwn\": false",
+            "    }",
+            "]"
+        ],
+        "designer|userClassName": "ComponentMethods",
+        "model": null,
+        "sortRoot": null,
+        "storeId": "ComponentMethods"
+    },
+    "mockCfgs": [
+        "data"
+    ],
+    "designerId": "9a156f01-04c6-4676-bdbf-272a8f153ebf",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "method sorter",
+                "property": "name"
+            },
+            "designerId": "7a475179-acc3-40a9-87a6-5b0de73bf9cd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "23fa08b0-fccb-4173-8fe2-1edda1101262"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "value",
+                "type": "auto"
+            },
+            "designerId": "62633404-1a81-4112-811a-0f8baaa94a68"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "null"
+                ],
+                "name": "isOverride",
+                "type": "boolean",
+                "useNull": true
+            },
+            "designerId": "0e213919-2091-4b18-be8c-df91ac53c214"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "null"
+                ],
+                "name": "isOwn",
+                "type": "boolean",
+                "useNull": true
+            },
+            "designerId": "b5769855-63ae-4b59-9ef2-d333330b20c9"
+        }
+    ]
+}
