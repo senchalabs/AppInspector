@@ -1,0 +1,94 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": null,
+        "designer|userClassName": "ComponentMethods",
+        "model": null,
+        "sortRoot": null,
+        "storeId": "ComponentMethods"
+    },
+    "mockCfgs": [
+        "data"
+    ],
+    "designerId": "9a156f01-04c6-4676-bdbf-272a8f153ebf",
+    "cn": [
+        {
+            "type": "Ext.util.Sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "method sorter",
+                "property": "name"
+            },
+            "designerId": "7a475179-acc3-40a9-87a6-5b0de73bf9cd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "23fa08b0-fccb-4173-8fe2-1edda1101262"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "value",
+                "type": "auto"
+            },
+            "designerId": "62633404-1a81-4112-811a-0f8baaa94a68"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "null"
+                ],
+                "name": "isOverride",
+                "type": "boolean",
+                "useNull": true
+            },
+            "designerId": "0e213919-2091-4b18-be8c-df91ac53c214"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "null"
+                ],
+                "name": "isOwn",
+                "type": "boolean",
+                "useNull": true
+            },
+            "designerId": "b5769855-63ae-4b59-9ef2-d333330b20c9"
+        }
+    ]
+}

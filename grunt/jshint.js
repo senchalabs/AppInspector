@@ -8,7 +8,7 @@
  */
 module.exports = {
     options: {
-        jshintrc: '.jshintrc',  // see http://www.jshint.com/docs/
+        jshintrc: '.jshintrc', // see http://www.jshint.com/docs/
         reporter: require('jshint-stylish')
     },
     // lint task files

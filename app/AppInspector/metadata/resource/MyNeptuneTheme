@@ -26,40 +26,6 @@
                     }
                 ]
             },
-            "Ext.container.ButtonGroup": {
-                "globalVars": [
-                    {
-                        "name": "btn-group-background-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    },
-                    {
-                        "name": "btn-group-border-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    },
-                    {
-                        "name": "btn-group-border-width",
-                        "enabled": true,
-                        "value": "0"
-                    },
-                    {
-                        "name": "btn-group-framed-background-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    },
-                    {
-                        "name": "btn-group-framed-border-width",
-                        "enabled": true,
-                        "value": "0"
-                    },
-                    {
-                        "name": "btn-group-inner-border-color",
-                        "enabled": true,
-                        "value": "transparent"
-                    }
-                ]
-            },
             "Ext.tab.Tab": {
                 "globalVars": [
                     {
@@ -108,7 +74,17 @@
                 "designer|displayName": "vars",
                 "designer|scssplacement": "beforeFramework",
                 "implHandler": [
-                    "$sencha-green: rgba(121, 154, 5, 1);\t// sencha green",
+                    "// primery colors",
+                    "$blue:\t\t\trgb(0, 72, 119);\t// #004877",
+                    "$green:\t\t\trgb(121, 154, 5);\t// #799A05",
+                    "",
+                    "// secondary colors",
+                    "$blue-light:\trgb(59, 142, 222);\t// #3B8EDE",
+                    "$cyan:\t\t\trgb(60, 191, 194);\t// #3CBFAE",
+                    "$grey:\t\t\trgb(84, 86, 91);\t// #54565B",
+                    "$red:\t\t\trgb(177, 32, 41);\t// #B12029",
+                    "$orange:\t\trgb(255, 144, 22);\t// #FF9016",
+                    "$yellow:\t\trgb(255, 200, 69);\t// #FFC845",
                     "",
                     "// loadmask",
                     "$loadmask-msg-border-radius: 0;",
@@ -116,74 +92,6 @@
                 ]
             },
             "designerId": "c111a61d-10e8-4180-aa2a-0e8e6aee9b0e"
-        },
-        {
-            "type": "themescss",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|displayName": "mask",
-                "implHandler": [
-                    ".x-body.x-masked {",
-                    "    div.x-panel {",
-                    "        @include filter(blur(2px));",
-                    "    }",
-                    "}",
-                    "",
-                    ".x-mask-msg {",
-                    "    &.no-framework-mask {",
-                    "        border: 1px solid $loadmask-msg-inner-color;",
-                    "        ",
-                    "        .x-mask-inner {}",
-                    "        ",
-                    "        .x-mask-msg-text {",
-                    "            padding: 24px;",
-                    "            margin: 0;",
-                    "            background: none;",
-                    "            font-size: 2em;",
-                    "        }",
-                    "    }",
-                    "    ",
-                    "    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);",
-                    "}"
-                ]
-            },
-            "designerId": "5bf3a5da-bda4-47eb-9e51-bb00cbe910c9"
-        },
-        {
-            "type": "themescss",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|displayName": "about-details",
-                "implHandler": [
-                    ":focus { outline: none; }",
-                    "",
-                    ".about-details {",
-                    "    img {",
-                    "        border: 2px solid $sencha-green;",
-                    "    }",
-                    "",
-                    "    .description, .contributors {",
-                    "        a {",
-                    "            color: $sencha-green;",
-                    "            text-decoration: none;",
-                    "",
-                    "            &:focus, &:hover {",
-                    "                text-decoration: underline;",
-                    "            }",
-                    "        }",
-                    "    }",
-                    "}"
-                ]
-            },
-            "designerId": "1abd6bdf-8fe3-4a18-a9bd-50da5832c80e"
         },
         {
             "type": "themescss",
@@ -256,7 +164,8 @@
                     "",
                     ".icn-globe {",
                     "    background-image: url('../resources/images/line-globe.png');",
-                    "}"
+                    "}",
+                    ""
                 ]
             },
             "designerId": "145ecce7-640e-41aa-bf1e-7bcccd04f429"
@@ -269,14 +178,121 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "tree filter",
+                "designer|displayName": "custom-styles",
                 "implHandler": [
+                    ":focus { outline: none; }",
+                    "",
+                    ".x-form-focus {",
+                    "    border-color: $green !important;",
+                    "}",
+                    "",
+                    ".about-details {",
+                    "    img {",
+                    "        border: 2px solid $green;",
+                    "    }",
+                    "",
+                    "    .description, .contributors {",
+                    "        a {",
+                    "            color: $green;",
+                    "            text-decoration: none;",
+                    "",
+                    "            &:focus, &:hover {",
+                    "                text-decoration: underline;",
+                    "            }",
+                    "        }",
+                    "    }",
+                    "}",
+                    "",
+                    "// *** mask",
+                    ".x-body.x-masked {",
+                    "    div.x-panel {",
+                    "        @include filter(blur(2px));",
+                    "    }",
+                    "}",
+                    "",
+                    ".x-mask-msg {",
+                    "    &.no-framework-mask {",
+                    "        border: 1px solid $loadmask-msg-inner-color;",
+                    "",
+                    "        .x-mask-inner {}",
+                    "",
+                    "        .x-mask-msg-text {",
+                    "            padding: 24px;",
+                    "            margin: 0;",
+                    "            background: none;",
+                    "            font-size: 2em;",
+                    "        }",
+                    "    }",
+                    "",
+                    "    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);",
+                    "}",
+                    "",
+                    "// *** grids",
+                    ".highlight .x-grid-row {",
+                    "    .indicator {",
+                    "        background-color: $grid-row-cell-border-color;",
+                    "    }",
+                    "",
+                    "    &.isChanged, &.isOwn {",
+                    "        .indicator {",
+                    "            background-color: $blue-light !important;",
+                    "        }",
+                    "    }",
+                    "",
+                    "    &.isOwn {",
+                    "        color: $green !important;",
+                    "    }",
+                    "",
+                    "    &.isOverride {",
+                    "        color: $orange !important;",
+                    "",
+                    "        .indicator {",
+                    "            background-color: $orange !important;",
+                    "        }",
+                    "    }",
+                    "}",
+                    "",
+                    ".components-tips {",
+                    "    border-top: 1px solid $base-color !important;",
+                    "    //border-left: 5px solid $grid-row-cell-border-color !important;",
+                    "    ",
+                    "    .tip {",
+                    "        font-weight: bold;",
+                    "",
+                    "        &:before {",
+                    "            content: \"\";",
+                    "            padding-right: 8px;",
+                    "            margin-right: 4px;",
+                    "        }",
+                    "    }",
+                    "",
+                    "    .tip-changed, .tip-custom {",
+                    "        @extend .tip;",
+                    "",
+                    "        &:before { background-color: $blue-light; }",
+                    "    }",
+                    "",
+                    "    .tip-custom {",
+                    "        color: $green;",
+                    "    }",
+                    "",
+                    "    .tip-override {",
+                    "        @extend .tip;",
+                    "",
+                    "        color: $orange;",
+                    "",
+                    "        &:before { background-color: $orange; }",
+                    "    }",
+                    "}",
+                    "",
+                    "// *** tree",
                     ".filtered {",
                     "    display: none !important;",
-                    "}"
+                    "}",
+                    ""
                 ]
             },
-            "designerId": "a1e85bef-2149-496c-b948-67ae8fd2c7c4"
+            "designerId": "1abd6bdf-8fe3-4a18-a9bd-50da5832c80e"
         }
     ]
 }

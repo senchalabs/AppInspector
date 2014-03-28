@@ -14,7 +14,7 @@ Ext.define('AI.util.i18n', {
         'name'
     ],
 
-    REGEXP_SPACE : /\s/g,
+    REGEXP_SPACE: /\s/g,
     REGEXP_PERIOD: /\./g,
 
     /**
@@ -60,7 +60,7 @@ Ext.define('AI.util.i18n', {
      */
     convertMessageKey: function(value) {
         return value.replace(AI.util.i18n.REGEXP_SPACE, '_').
-                    replace(AI.util.i18n.REGEXP_PERIOD, '');
+        replace(AI.util.i18n.REGEXP_PERIOD, '');
     },
 
     /**
@@ -70,13 +70,13 @@ Ext.define('AI.util.i18n', {
      * @param  {Object} config
      */
     convert: function(config) {
-        var me    = this,
-            keys  = Object.keys(config),
-            key   = '',
+        var me = this,
+            keys = Object.keys(config),
+            key = '',
             value = '';
 
         for (var i = keys.length - 1; i >= 0; i--) {
-            key   = keys[i];
+            key = keys[i];
             value = config[key];
 
             if (!me.isTargetProperty(key)) {

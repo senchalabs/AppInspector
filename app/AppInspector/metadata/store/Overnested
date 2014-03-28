@@ -11,7 +11,7 @@
         "storeId": "Overnested"
     },
     "mockCfgs": [
-        "data"
+	    "data"
     ],
     "designerId": "005dfa9e-ca81-422e-ae4c-b29b432479db"
 }

@@ -19,10 +19,17 @@ Ext.define('AI.view.Components', {
 
     requires: [
         'AI.view.ComponentsTreeGrid',
+        'AI.view.FilterField',
         'Ext.tree.Panel',
         'Ext.tab.Panel',
-        'Ext.grid.property.Grid',
+        'Ext.grid.Panel',
         'Ext.tab.Tab',
+        'Ext.grid.column.Boolean',
+        'Ext.grid.View',
+        'Ext.toolbar.Toolbar',
+        'Ext.toolbar.Fill',
+        'Ext.form.field.Text',
+        'Ext.toolbar.TextItem',
         'Ext.layout.container.Border'
     ],
 
@@ -40,7 +47,6 @@ Ext.define('AI.view.Components', {
                 {
                     xtype: 'componentstreegrid',
                     itemId: 'ComponentTree',
-                    flex: 1,
                     region: 'center'
                 },
                 {
@@ -49,27 +55,185 @@ Ext.define('AI.view.Components', {
                     region: 'east',
                     split: true,
                     itemId: 'ComponentDetails',
-                    minWidth: 100,
+                    minWidth: 200,
+                    width: 150,
                     activeTab: 0,
-                    minTabWidth: 45,
                     items: [
                         {
-                            xtype: 'propertygrid',
+                            xtype: 'gridpanel',
+                            cls: 'highlight',
+                            height: 250,
                             itemId: 'ComponentProps',
+                            width: 400,
                             title: 'Properties',
-                            nameColumnWidth: '50%',
-                            source: {
-                                
-                            }
+                            store: 'ComponentProps',
+                            columns: [
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 5,
+                                    resizable: false,
+                                    defaultWidth: 5,
+                                    sortable: false,
+                                    dataIndex: 'isOwn',
+                                    groupable: false,
+                                    hideable: false,
+                                    lockable: false,
+                                    menuDisabled: true,
+                                    tdCls: 'indicator',
+                                    falseText: ' ',
+                                    trueText: ' '
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: true,
+                                    dataIndex: 'name',
+                                    text: 'Name',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: false,
+                                    dataIndex: 'value',
+                                    text: 'Value',
+                                    flex: 2
+                                }
+                            ],
+                            viewConfig: {
+                                getRowClass: function(record, rowIndex, rowParams, store) {
+                                    var cls = [];
+
+                                    if (record.get('isChanged')) {
+                                        cls.push('isChanged');
+                                    }
+
+                                    if (record.get('isOwn')) {
+                                        cls.push('isOwn');
+                                    }
+
+
+                                    return cls.join(' ');
+                                }
+                            },
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    items: [
+                                        {
+                                            xtype: 'tbfill'
+                                        },
+                                        {
+                                            xtype: 'filterfield'
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            xtype: 'propertygrid',
+                            xtype: 'gridpanel',
+                            cls: 'highlight',
+                            height: 250,
                             itemId: 'ComponentMethods',
+                            width: 400,
                             title: 'Methods',
-                            nameColumnWidth: '50%',
-                            source: {
-                                
-                            }
+                            store: 'ComponentMethods',
+                            columns: [
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 5,
+                                    resizable: false,
+                                    defaultWidth: 5,
+                                    sortable: false,
+                                    dataIndex: 'isOwn',
+                                    groupable: false,
+                                    hideable: false,
+                                    lockable: false,
+                                    menuDisabled: true,
+                                    tdCls: 'indicator',
+                                    falseText: ' ',
+                                    trueText: ' '
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: true,
+                                    dataIndex: 'name',
+                                    text: 'Name',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    sortable: false,
+                                    dataIndex: 'value',
+                                    text: 'Value',
+                                    flex: 2
+                                }
+                            ],
+                            viewConfig: {
+                                getRowClass: function(record, rowIndex, rowParams, store) {
+                                    var cls = [];
+
+                                    if (record.get('isOwn')) {
+                                        cls.push('isOwn');
+                                    }
+
+                                    if (record.get('isOverride')) {
+                                        cls.push('isOverride');
+                                    }
+
+
+                                    return cls.join(' ');
+                                }
+                            },
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    items: [
+                                        {
+                                            xtype: 'tbfill'
+                                        },
+                                        {
+                                            xtype: 'filterfield'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            cls: 'components-tips',
+                            itemId: 'ComponentsTips',
+                            items: [
+                                {
+                                    xtype: 'tbfill',
+                                    flex: 2
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'props',
+                                    flex: 1,
+                                    cls: 'tip-changed',
+                                    text: 'Changed'
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'both',
+                                    flex: 1,
+                                    cls: 'tip-custom',
+                                    text: 'Custom'
+                                },
+                                {
+                                    xtype: 'tbtext',
+                                    tipGroup: 'methods',
+                                    flex: 1,
+                                    cls: 'tip-override',
+                                    hidden: true,
+                                    text: 'Override'
+                                }
+                            ]
                         }
                     ]
                 }
@@ -87,7 +251,6 @@ Ext.define('AI.view.Components', {
 
     onComponentInspectorBeforeAdd: function(container, component, index, eOpts) {
         this.setTitle(AI.util.i18n.getMessage(this.title));
-
     }
 
 });

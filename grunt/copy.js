@@ -38,24 +38,33 @@ var _ = require('lodash'),
         ]
     }],
     dev = [{
-        expand: true,
-        cwd: '<%= yeoman.app %>/images',
-        src: '{,*/}*.{png,jpg,jpeg}',
-        dest: '<%= yeoman.dist %>/images'
-    }, {
-        expand: true,
-        cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI',
-        dest: '<%= yeoman.dist %>/AppInspector',
-        src: [
-            '*.{html,js}',
-            'resources/*.css'
-        ]
-    }, {
-        expand: true,
-        cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI/resources/images',
-        src: '{,*/}*.{png,jpg,jpeg}',
-        dest: '<%= yeoman.dist %>/AppInspector/resources/images'
-    }];
+            expand: true,
+            cwd: '<%= yeoman.app %>/AppInspector',
+            dest: '<%= yeoman.dist %>/AppInspector',
+            src: 'mocks.js'
+        }, {
+            expand: true,
+            cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI',
+            dest: '<%= yeoman.dist %>/AppInspector',
+            src: [
+                '*.{html,js}',
+                'resources/*.css'
+            ]
+        },
+        // we copy images on dev build
+        // on build|production this is done through 'imagemin'
+        {
+            expand: true,
+            cwd: '<%= yeoman.app %>/images',
+            dest: '<%= yeoman.dist %>/images',
+            src: '{,*/}*.{png,jpg,jpeg}'
+        }, {
+            expand: true,
+            cwd: '<%= yeoman.app %>/AppInspector/build/testing/AI/resources/images',
+            dest: '<%= yeoman.dist %>/AppInspector/resources/images',
+            src: '{,*/}*.{png,jpg,jpeg}'
+        }
+    ];
 
 /**
  * Copy files and folders.
