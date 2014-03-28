@@ -5,14 +5,15 @@
 module.exports = {
     docs    : [
         'clean:docs',
-        'jsduck',
+        'jsduck'
     ],
     dev     : [
         'jshint',
         'clean:dist',
         'chromeManifest:dev',
         'exec:dev',
-        'copy:dev'
+        'copy:dev',
+        'fileblocks:dist'
     ],
     build   : [
         'jshint',
