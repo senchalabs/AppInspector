@@ -15,7 +15,9 @@
             "AI.util.InspectedWindow"
         ],
         "stores": [
-            "Components"
+            "Components",
+            "ComponentProps",
+            "ComponentMethods"
         ],
         "views": [
             "Components",
@@ -49,8 +51,22 @@
                     "    'filterfield#FilterComponentsTree': {",
                     "        'applyfilter': me.onFilterComponentTree",
                     "    },",
-                    "    'treepanel#ComponentTree': {",
+                    "    'componentstreegrid#ComponentTree': {",
                     "        'itemclick': me.onSelectComponent",
+                    "    },",
+                    "    // properties",
+                    "    'gridpanel#ComponentProps': {",
+                    "        'activate': me.toggleComponentsDetailsTips",
+                    "    },",
+                    "    'gridpanel#ComponentProps filterfield': {",
+                    "        'applyfilter': me.onFilterComponentDetails",
+                    "    },",
+                    "    // methods",
+                    "    'gridpanel#ComponentMethods': {",
+                    "        'activate': me.toggleComponentsDetailsTips",
+                    "    },",
+                    "    'gridpanel#ComponentMethods filterfield': {",
+                    "        'applyfilter': me.onFilterComponentDetails",
                     "    }",
                     "});"
                 ]
@@ -186,7 +202,9 @@
                 "implHandler": [
                     "var parent = tree.up('components'),",
                     "    propsGrid = parent.down('#ComponentProps'),",
-                    "    methodGrid = parent.down('#ComponentMethods');",
+                    "    propsGridStore = propsGrid.getStore(),",
+                    "    methodGrid = parent.down('#ComponentMethods'),",
+                    "    methodGridStore = methodGrid.getStore();",
                     "",
                     "AI.util.InspectedWindow.eval(",
                     "    AI.util.InspectedWindow.highlight,",
@@ -199,17 +217,78 @@
                     "    record.get('cmpId'),",
                     "    function(result, isException) {",
                     "        if (result) {",
-                    "            propsGrid.setSource(result.properties);",
-                    "            methodGrid.setSource(result.methods);",
+                    "            propsGridStore.loadData(result.properties);",
+                    "            methodGridStore.loadData(result.methods);",
                     "        } else {",
-                    "            propsGrid.setSource({});",
-                    "            methodGrid.setSource({});",
+                    "            propsGridStore.loadData([]);",
+                    "            methodGridStore.loadData([]);",
                     "        }",
                     "    }",
                     ");"
                 ]
             },
             "designerId": "94fa3fe8-c359-429e-8872-d6d2cbc0c4dc"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "grid"
+                ],
+                "fn": "toggleComponentsDetailsTips",
+                "implHandler": [
+                    "var tips = grid.up('#ComponentInspector').down('toolbar[dock=bottom]'),",
+                    "    isProps = grid.itemId === 'ComponentProps',",
+                    "    props = tips.query('[tipGroup=props]'),",
+                    "    methods = tips.query('[tipGroup=methods]'),",
+                    "    i;",
+                    "",
+                    "for(i = 0; i < props.length; i++) {",
+                    "    props[i].setVisible(isProps);",
+                    "}",
+                    "",
+                    "for(i = 0; i < methods.length; i++) {",
+                    "    methods[i].setVisible(!isProps);",
+                    "}"
+                ]
+            },
+            "designerId": "16385bd1-cc65-43f1-980b-07ca5636ea66"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "field",
+                    "value"
+                ],
+                "fn": "onFilterComponentDetails",
+                "implHandler": [
+                    "var grid = field.up('gridpanel'),",
+                    "    store = grid.getStore();",
+                    "",
+                    "store.clearFilter();",
+                    "",
+                    "if (value !== '') {",
+                    "    store.filter([{",
+                    "        anyMatch: true,",
+                    "        caseSensitive: false,",
+                    "        property: 'name',",
+                    "        value: value",
+                    "    }]);",
+                    "}"
+                ]
+            },
+            "designerId": "b19705e2-d90c-45cc-a8ad-7c1dbb815cb8"
         }
     ]
 }

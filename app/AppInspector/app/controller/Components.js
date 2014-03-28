@@ -25,7 +25,9 @@ Ext.define('AI.controller.Components', {
         'Component'
     ],
     stores: [
-        'Components'
+        'Components',
+        'ComponentProps',
+        'ComponentMethods'
     ],
     views: [
         'Components',
@@ -45,8 +47,22 @@ Ext.define('AI.controller.Components', {
             'filterfield#FilterComponentsTree': {
                 'applyfilter': me.onFilterComponentTree
             },
-            'treepanel#ComponentTree': {
+            'componentstreegrid#ComponentTree': {
                 'itemclick': me.onSelectComponent
+            },
+            // properties
+            'gridpanel#ComponentProps': {
+                'activate': me.toggleComponentsDetailsTips
+            },
+            'gridpanel#ComponentProps filterfield': {
+                'applyfilter': me.onFilterComponentDetails
+            },
+            // methods
+            'gridpanel#ComponentMethods': {
+                'activate': me.toggleComponentsDetailsTips
+            },
+            'gridpanel#ComponentMethods filterfield': {
+                'applyfilter': me.onFilterComponentDetails
             }
         });
     },
@@ -111,7 +127,9 @@ Ext.define('AI.controller.Components', {
     onSelectComponent: function(tree, record, item, index, e, eOpts) {
         var parent = tree.up('components'),
             propsGrid = parent.down('#ComponentProps'),
-            methodGrid = parent.down('#ComponentMethods');
+            propsGridStore = propsGrid.getStore(),
+            methodGrid = parent.down('#ComponentMethods'),
+            methodGridStore = methodGrid.getStore();
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
@@ -124,14 +142,46 @@ Ext.define('AI.controller.Components', {
             record.get('cmpId'),
             function(result, isException) {
                 if (result) {
-                    propsGrid.setSource(result.properties);
-                    methodGrid.setSource(result.methods);
+                    propsGridStore.loadData(result.properties);
+                    methodGridStore.loadData(result.methods);
                 } else {
-                    propsGrid.setSource({});
-                    methodGrid.setSource({});
+                    propsGridStore.loadData([]);
+                    methodGridStore.loadData([]);
                 }
             }
         );
+    },
+
+    toggleComponentsDetailsTips: function(grid) {
+        var tips = grid.up('#ComponentInspector').down('toolbar[dock=bottom]'),
+            isProps = grid.itemId === 'ComponentProps',
+            props = tips.query('[tipGroup=props]'),
+            methods = tips.query('[tipGroup=methods]'),
+            i;
+
+        for(i = 0; i < props.length; i++) {
+            props[i].setVisible(isProps);
+        }
+
+        for(i = 0; i < methods.length; i++) {
+            methods[i].setVisible(!isProps);
+        }
+    },
+
+    onFilterComponentDetails: function(field, value) {
+        var grid = field.up('gridpanel'),
+            store = grid.getStore();
+
+        store.clearFilter();
+
+        if (value !== '') {
+            store.filter([{
+                anyMatch: true,
+                caseSensitive: false,
+                property: 'name',
+                value: value
+            }]);
+        }
     }
 
 });

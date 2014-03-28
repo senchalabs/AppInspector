@@ -11,8 +11,14 @@ $tab-color-active: $tab-color;
 $tab-font-size: 10px;
 $tab-font-weight: normal;
 $tab-font-weight-active: bold;
-$sencha-green: rgba(121, 154, 5, 1);	// sencha green
+// primery colors
+$blue: rgb(0, 72, 119);         // #004877
+$green: rgb(121, 154, 5);       // #799A05
 
-// loadmask
-$loadmask-msg-border-radius: 0;
-//$loadmask-opacity: 0.95;
+// secondary colors
+$blue-light: rgb(59, 142, 222); // #3B8EDE
+$cyan: rgb(60, 191, 194);       // #3CBFAE
+$grey: rgb(84, 86, 91);         // #54565B
+$red: rgb(177, 32, 41);         // #B12029
+$orange: rgb(255, 144, 22);     // #FF9016
+$yellow: rgb(255, 200, 69);     // #FFC845

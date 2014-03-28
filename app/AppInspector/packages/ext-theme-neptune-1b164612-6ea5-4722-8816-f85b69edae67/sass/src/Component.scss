@@ -1,3 +1,6 @@
+$loadmask-msg-border-radius: 0;
+//$loadmask-opacity: 0.95;
+
 .x-body.x-masked {
     div.x-panel {
         @include filter(blur(2px));
@@ -7,9 +10,9 @@
 .x-mask-msg {
     &.no-framework-mask {
         border: 1px solid $loadmask-msg-inner-color;
-        
+
         .x-mask-inner {}
-        
+
         .x-mask-msg-text {
             padding: 24px;
             margin: 0;
@@ -17,19 +20,20 @@
             font-size: 2em;
         }
     }
-    
+
     @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);
 }
+
 :focus { outline: none; }
 
 .about-details {
     img {
-        border: 2px solid $sencha-green;
+        border: 2px solid $green;
     }
 
     .description, .contributors {
         a {
-            color: $sencha-green;
+            color: $green;
             text-decoration: none;
 
             &:focus, &:hover {
@@ -38,68 +42,137 @@
         }
     }
 }
-.icn-home,
-.icn-components,
-.icn-stores,
-.icn-layouts,
-.icn-overnested,
-.icn-box,
-.icn-events,
-.icn-refresh,
-.icn-clear,
-.icn-record,
-.icn-stop {
+
+.base-icn {
     background-repeat: no-repeat;
     background-size: 16px 16px;
 }
 
 .icn-home {
+    @extend .base-icn;
     background-image: url('../resources/images/home2.png');
 }
 
 .icn-components {
+    @extend .base-icn;
     background-image: url('../resources/images/nodes2.png');
 }
 
 .icn-stores {
+    @extend .base-icn;
     background-image: url('../resources/images/data.png');
 }
 
 .icn-layouts {
+    @extend .base-icn;
     background-image: url('../resources/images/monitor1.png');
 }
 
 .icn-overnested  {
+    @extend .base-icn;
     background-image: url('../resources/images/window.png');
 }
 
 .icn-box  {
+    @extend .base-icn;
     background-image: url('../resources/images/cube.png');
 }
 
 .icn-events {
+    @extend .base-icn;
     background-image: url('../resources/images/bolt.png');
 }
 
 .icn-refresh {
+    @extend .base-icn;
     background-image: url('../resources/images/refresh3.png');
 }
 
 .icn-clear {
+    @extend .base-icn;
     background-image: url('../resources/images/stop1.png');
 }
 
 .icn-record {
+    @extend .base-icn;
     background-image: url('../resources/images/play_black1.png');
 }
 
 .icn-stop {
+    @extend .base-icn;
     background-image: url('../resources/images/stop.png');
 }
 
 .icn-globe {
+    @extend .base-icn;
     background-image: url('../resources/images/line-globe.png');
 }
+
 .filtered {
     display: none !important;
+}
+
+.components-toolbar {
+    &.top {
+        border-top-width: 1px;
+        border-bottom-width: 1px !important;
+        padding: 2px 0;
+    }
+}
+
+.highlight .x-grid-row {
+    .indicator {
+        background-color: $grid-row-cell-border-color;
+    }
+
+    &.isChanged, &.isOwn {
+        .indicator {
+            background-color: $blue-light !important;
+        }
+    }
+
+    &.isOwn {
+        color: $green !important;
+    }
+
+    &.isOverride {
+        color: $orange !important;
+
+        .indicator {
+            background-color: $orange !important;
+        }
+    }
+}
+
+.components-tips {
+    border-top: 1px solid $base-color !important;
+    //border-left: 5px solid $grid-row-cell-border-color !important;
+
+    .tip {
+        font-weight: bold;
+
+        &:before {
+            content: "";
+            padding-right: 8px;
+            margin-right: 4px;
+        }
+    }
+
+    .tip-changed, .tip-custom {
+        @extend .tip;
+
+        &:before { background-color: $blue-light; }
+    }
+
+    .tip-custom {
+        color: $green;
+    }
+
+    .tip-override {
+        @extend .tip;
+
+        color: $orange;
+
+        &:before { background-color: $orange; }
+    }
 }
