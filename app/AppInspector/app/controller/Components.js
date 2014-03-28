@@ -47,7 +47,7 @@ Ext.define('AI.controller.Components', {
             'filterfield#FilterComponentsTree': {
                 'applyfilter': me.onFilterComponentTree
             },
-            'treepanel#ComponentTree': {
+            'componentstreegrid#ComponentTree': {
                 'itemclick': me.onSelectComponent
             },
             // properties

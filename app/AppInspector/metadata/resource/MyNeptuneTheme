@@ -255,7 +255,7 @@
                     ".components-tips {",
                     "    border-top: 1px solid $base-color !important;",
                     "    //border-left: 5px solid $grid-row-cell-border-color !important;",
-                    "    ",
+                    "",
                     "    .tip {",
                     "        font-weight: bold;",
                     "",

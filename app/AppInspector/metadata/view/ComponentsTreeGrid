@@ -13,6 +13,9 @@
         "emptyText": null,
         "frame": null,
         "itemId": null,
+        "requires": [
+            "AI.view.override.ComponentsTreeGrid"
+        ],
         "rootVisible": false,
         "store": "Components",
         "title": null,
