@@ -7,17 +7,15 @@
  * @see https://www.npmjs.org/package/grunt-contrib-compress
  */
 module.exports = {
-    dist : {
-	options : {
-	    archive : 'package/AppInspector.zip'
+    dist: {
+        options: {
+            archive: 'package/AppInspector.zip'
         },
-	files   : [
-	    {
-		expand : true,
-		cwd    : 'dist/',
-		src    : ['**'],
-		dest   : ''
-	    }
-	]
+        files: [{
+            expand: true,
+            cwd: 'dist/',
+            src: ['**'],
+            dest: ''
+        }]
     }
 };

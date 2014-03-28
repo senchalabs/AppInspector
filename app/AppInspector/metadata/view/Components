@@ -500,6 +500,23 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onComponentInspectorBeforeAdd",
+                "implHandler": [
+                    "this.setTitle(AI.util.i18n.getMessage(this.title));"
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "designerId": "1c42cea8-3a33-4495-9d32-54a5aa330eb7"
         }
     ]
 }
