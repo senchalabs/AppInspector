@@ -15,7 +15,7 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
 
     read : function (operation, callback, scope) {
         scope = scope || this;
-        
+
         var records = [];
 
         AI.util.InspectedWindow.eval(

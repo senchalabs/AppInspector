@@ -3,18 +3,18 @@
  * @type {Object}
  */
 module.exports = {
-    docs: [
+    docs    : [
         'clean:docs',
         'jsduck',
     ],
-    dev: [
+    dev     : [
         'jshint',
         'clean:dist',
         'chromeManifest:dev',
         'exec:dev',
         'copy:dev'
     ],
-    build: [
+    build   : [
         'jshint',
         'clean:dist',
         'chromeManifest:dist',
@@ -25,7 +25,7 @@ module.exports = {
         'compress',
         'docs'
     ],
-    default: [
+    default : [
         'build'
     ]
 };
