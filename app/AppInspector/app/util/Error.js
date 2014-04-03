@@ -4,10 +4,6 @@
 Ext.define('AI.util.Error', {
     singleton : true,
 
-    requires : [
-        'Ext.window.MessageBox'
-    ],
-
     /**
      * @param {Object} exception
      */

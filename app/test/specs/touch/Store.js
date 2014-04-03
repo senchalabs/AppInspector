@@ -29,7 +29,7 @@ StartTest({
         AI.util.Store.getRecords,
 
         //id of store is specific to the example!
-        [ 'List', 0 ],
+        [ 'ext-data-store-1', 0 ],
 
         function(data, isException) {
             //test the data object properties

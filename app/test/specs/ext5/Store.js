@@ -29,7 +29,7 @@ StartTest({
         AI.util.Store.getRecords,
 
         //id of store is specific to the example!
-        [ 'reviewStore', 0 ],
+        [ 'Restaurants', 0 ],
 
         function(data, isException) {
             //test the data object properties
@@ -41,7 +41,7 @@ StartTest({
 
             test.isNot(rec.id, undefined, 'record.id exists');
             test.isNot(rec.modelData, undefined, 'record.modelData exists');
-            test.isNot(rec.rawData, undefined, 'record.rawData exists');
+            test.is(rec.rawData, undefined, 'record.rawData does not exist! (Removed in Ext JS 5)');
         }
     );
 });

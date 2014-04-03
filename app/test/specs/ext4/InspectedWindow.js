@@ -6,6 +6,10 @@ StartTest({
     ]
 }, function (test) {
 
+    if (!Ext.ux) {
+        Ext.ns('Ext.ux');
+    }
+
     //=================================================================
     test.diag("AI.util.InspectedWindow.getAppVersion()");
     test.is(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is not yet defined.');
