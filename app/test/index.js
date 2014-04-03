@@ -22,6 +22,10 @@ Harness.start(
         ]
     },
 
+    /**
+     * Ext JS 4 and 5 really ought to test the same page for consistency in the tests.
+     * However, Ext JS 5 GA isn't yet available, and for whatever reason the 4.2.1 example throws some console errors (but don't kill the tests)
+     */
     {
         group : 'Ext JS 4',
 
@@ -29,7 +33,8 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/personel-review/index.html',
+        //hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/personel-review/index.html',
+        hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/kitchensink/#basic-panels',
 
         items : [
             'specs/ext4/InspectedWindow.js',
@@ -45,7 +50,7 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : 'http://sencha.local/_ext/ext-5.0.0.470-pb2/examples/personel-review/index.html',
+        hostPageUrl : 'http://sencha.local/_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
 
         items : [
             'specs/ext5/InspectedWindow.js',

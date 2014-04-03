@@ -22,7 +22,8 @@ Ext.Loader.setConfig({
 Ext.application({
 
     requires: [
-        'AI.util.i18n'
+        'AI.util.i18n',
+        'Ext.window.MessageBox'
     ],
     controllers: [
         'Main',

@@ -6,6 +6,10 @@ StartTest({
     ]
 }, function (test) {
 
+    if (!Ext.ux) {
+        Ext.ns('Ext.ux');
+    }
+
     //=================================================================
     test.diag("AI.util.InspectedWindow.getAppVersion()");
     test.is(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is not yet defined.');
@@ -17,8 +21,8 @@ StartTest({
 
             test.isNot(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is defined.');
 
-            test.isNot(data.extjs, undefined, 'Framework is Ext JS');
-            test.is(data.extjs, '4.2.1.883', 'Ext JS version is 4.2.1.883');
+            test.isNot(data.touch, undefined, 'Framework is Touch');
+            test.is(data.touch, '2.3.1', 'Touch version is 2.3.1');
         }
     );
 });

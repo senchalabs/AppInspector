@@ -31,7 +31,7 @@ StartTest({
         AI.util.Component.getInspectedComponent,
 
         //id of component is specific to the example!
-        'mainviewport',
+        'app-header',
 
         function(data, isException) {
             test.isNot(data.methods, undefined, 'data.methods exists');
