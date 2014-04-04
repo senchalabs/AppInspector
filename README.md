@@ -3,6 +3,10 @@ Google Chrome™ Dev Tools extension for debugging Sencha™ applications.
 
 [![Available on Chrome Store](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png)](https://chrome.google.com/webstore/detail/app-inspector-for-sencha/pbeapidedgdpniokbedbfbaacglkceae)
 
+Read more on the Sencha blog:
+
+* [Announcing App Inspector 2.0](http://www.sencha.com/blog/app-inspector-for-sencha-touch-and-ext-js-developers/)
+
 ## Features
 
 * Creates a new section on Dev Tools elements panel displaying properties of a given component if they match the selected DOM node.
