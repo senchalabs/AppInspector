@@ -13,7 +13,8 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : 'http://sencha.local/_touch/touch-2.3.1/examples/list/index.html',
+        // hostPageUrl : 'http://sencha.local/_touch/touch-2.3.1/examples/list/index.html',
+        hostPageUrl : '../../../_touch/touch-2.3.1/examples/list/index.html',
 
         items : [
             'specs/touch/InspectedWindow.js',
@@ -34,7 +35,8 @@ Harness.start(
         },
 
         //hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/personel-review/index.html',
-        hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/kitchensink/#basic-panels',
+        // hostPageUrl : 'http://localhost/_ext/ext-4.2.1.883/examples/kitchensink/#basic-panels',
+        hostPageUrl : '../../../_ext/ext-4.2.1.883/examples/kitchensink/#basic-panels',
 
         items : [
             'specs/ext4/InspectedWindow.js',
@@ -50,7 +52,8 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : 'http://sencha.local/_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
+        // hostPageUrl : 'http://sencha.local/_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
+        hostPageUrl : '../../../_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
 
         items : [
             'specs/ext5/InspectedWindow.js',

@@ -12,6 +12,9 @@
     }, {
         "name": "Stefan Stölzle",
         "url": "https://github.com/stoe"
+    }, {
+        "name": "KAWANO Shinobu",
+        "url": "https://github.com/kawanoshinobu"
     }],
     "repository": {
         "type": "git",
@@ -24,6 +27,7 @@
         "grunt-chrome-manifest": "~0.2.0",
         "grunt-contrib-clean": "~0.5.0",
         "grunt-contrib-compress": "~0.7.0",
+        "grunt-contrib-connect": "~0.7.1",
         "grunt-contrib-copy": "~0.5.0",
         "grunt-contrib-imagemin": "~0.2.0",
         "grunt-contrib-jshint": "~0.8.0",

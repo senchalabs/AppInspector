@@ -15,6 +15,9 @@ module.exports = {
         'copy:dev',
         'fileblocks:dist'
     ],
+    test    : [
+        'connect'
+    ],
     build   : [
         'jshint',
         'clean:dist',

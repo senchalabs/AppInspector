@@ -14,6 +14,9 @@ Generate the projects documentation. Subsequently running [`clean:docs`](#the-cl
 ### `grunt dev`
 Build the project. Subsequently running [`jshint`](#the-jshint-task), [`clean:dist`](#the-clean-task), [`chromeManifest:dist`](#the-chromemanifest-task), [`exec:dev`](#the-exec-task) and [`copy:dev`](#the-copy-task) tasks.
 
+### `grunt test`
+Run the tests. Subsequently running [`connect`](#the-connect-) task.
+
 ### `grunt build`
 Build the project. Subsequently running [`jshint`](#the-jshint-task), [`clean:dist`](#the-clean-task), [`chromeManifest:dist`](#the-chromemanifest-task), [`exec:production`](#the-exec-task), [`imagemin`](#the-imagemin-task), [`copy:dist`](#the-copy-task), [`compress`](#the-compress-task) and [`docs`](#grunt-docs) tasks.
 
@@ -108,3 +111,13 @@ It uses the `.jshintrc` file containing the linting rules.
 Read more on:
 * https://www.npmjs.org/package/grunt-contrib-jshint
 * http://www.jshint.com/docs/
+
+#### The `connect` task
+
+Start a connect web server for running the tests on Siesta Lite. It opens the Siesta's test page in your default browser.
+
+The port number will be used in 8333, but if you have already used it, please change it as you like.
+
+Read more on:
+* https://www.npmjs.org/package/grunt-contrib-connect
+
