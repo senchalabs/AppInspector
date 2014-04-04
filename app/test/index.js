@@ -1,7 +1,7 @@
 var Harness = Siesta.Harness.Browser;
 
 Harness.configure({
-    title            : 'AppInspector Test Suite'
+    title : 'AppInspector Test Suite'
     //autoCheckGlobals : true
 });
 
@@ -13,7 +13,6 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        // hostPageUrl : 'http://sencha.local/_touch/touch-2.3.1/examples/list/index.html',
         hostPageUrl : '../../../_touch/touch-2.3.1/examples/list/index.html',
 
         items : [
@@ -34,8 +33,6 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        //hostPageUrl : 'http://sencha.local/_ext/ext-4.2.1.883/examples/personel-review/index.html',
-        // hostPageUrl : 'http://localhost/_ext/ext-4.2.1.883/examples/kitchensink/#basic-panels',
         hostPageUrl : '../../../_ext/ext-4.2.1.883/examples/kitchensink/#basic-panels',
 
         items : [
@@ -52,7 +49,6 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        // hostPageUrl : 'http://sencha.local/_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
         hostPageUrl : '../../../_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
 
         items : [
