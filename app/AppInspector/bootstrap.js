@@ -67,6 +67,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.util.extjs.Profile": [],
   "AI.util.i18n": [],
   "AI.util.touch.Events": [],
+  "AI.util.touch.MVC": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [],
   "AI.view.About": [],
@@ -957,6 +958,7 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.util.extjs.Profile": [],
   "AI.util.i18n": [],
   "AI.util.touch.Events": [],
+  "AI.util.touch.MVC": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [
     "proxy.inspectedwindow"

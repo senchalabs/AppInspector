@@ -17,15 +17,23 @@ Ext.define('AI.controller.MVC', {
     extend: 'Ext.app.Controller',
 
     requires: [
-        'AI.util.extjs.MVC'
+        'AI.util.extjs.MVC',
+        'AI.util.touch.MVC'
     ],
 
     onActivate: function(component, eOpts) {
         var tree      = component.child('treepanel'),
-            treeStore = tree.getStore();
+            treeStore = tree.getStore(),
+            fn;
+
+        if (this.getApplication().info.framework === 'ext') {
+            fn = AI.util.extjs.MVC.getApplication;
+        } else {
+            fn = AI.util.touch.MVC.getApplication;
+        }
 
         AI.util.InspectedWindow.eval(
-            AI.util.extjs.MVC.getApplication,
+            fn,
             null,
             function (data) {
                 treeStore.setRootNode({

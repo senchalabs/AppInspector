@@ -2,6 +2,27 @@ Ext.define('AI.util.extjs.MVC', {
     singleton : true,
 
     getApplication : function() {
+        var children = [];
+
+        if (!Ext.app.Application) {
+            return children;
+        }
+
+        var instance = Ext.app.Application.instance;
+
+        if (!instance) {
+            for (key in window) {
+                if (window.hasOwnProperty(key) && window[key] && window[key].app && window[key].app.$className) {
+                    instance = window[key].app;
+                    break;
+                }
+            }
+        }
+
+        if (!instance) {
+            return children;
+        }
+
         function getControllerListeners(cls) {
             var EventBus       = Ext.app.EventBus,
                 domains        = EventBus.domains,
@@ -58,14 +79,12 @@ Ext.define('AI.util.extjs.MVC', {
             return busControllers;
         }
 
-        var instance       = Ext.app.Application.instance,
-            appControllers = instance.controllers,
+        var appControllers = instance.controllers,
             appStores      = instance.stores,
             i              = 0,
             length         = appControllers.length,
             controllers    = [],
             stores         = [],
-            children       = [],
             controller, listeners, store, getter;
 
         for (; i < length; i++) {
@@ -106,7 +125,6 @@ Ext.define('AI.util.extjs.MVC', {
 
         children.push({
             text     : 'Application instance',
-            type     : 'application',
             expanded : true,
             children : [
                 {

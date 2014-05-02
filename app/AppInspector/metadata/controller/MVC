@@ -8,7 +8,8 @@
     "userConfig": {
         "designer|userClassName": "MVC",
         "requires": [
-            "AI.util.extjs.MVC"
+            "AI.util.extjs.MVC",
+            "AI.util.touch.MVC"
         ]
     },
     "designerId": "505a99fc-6dec-487b-b4a5-b9ecf5cd8096",
@@ -26,10 +27,17 @@
                 "fn": "onActivate",
                 "implHandler": [
                     "var tree      = component.child('treepanel'),",
-                    "    treeStore = tree.getStore();",
+                    "    treeStore = tree.getStore(),",
+                    "    fn;",
+                    "",
+                    "if (this.getApplication().info.framework === 'ext') {",
+                    "    fn = AI.util.extjs.MVC.getApplication;",
+                    "} else {",
+                    "    fn = AI.util.touch.MVC.getApplication;",
+                    "}",
                     "",
                     "AI.util.InspectedWindow.eval(",
-                    "    AI.util.extjs.MVC.getApplication,",
+                    "    fn,",
                     "    null,",
                     "    function (data) {",
                     "        treeStore.setRootNode({",
