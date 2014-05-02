@@ -1,0 +1,133 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MVC",
+        "requires": [
+            "AI.util.extjs.MVC"
+        ]
+    },
+    "designerId": "505a99fc-6dec-487b-b4a5-b9ecf5cd8096",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "mvc",
+                "designer|targetType": "Ext.container.Container",
+                "fn": "onActivate",
+                "implHandler": [
+                    "var tree      = component.child('treepanel'),",
+                    "    treeStore = tree.getStore();",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    AI.util.extjs.MVC.getApplication,",
+                    "    null,",
+                    "    function (data) {",
+                    "        treeStore.setRootNode({",
+                    "            expanded : true,",
+                    "            children : data",
+                    "        });",
+                    "    }",
+                    ");"
+                ],
+                "name": "activate",
+                "scope": "me"
+            },
+            "designerId": "d50c9472-5890-4022-8d1d-387f713b2c7c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "mvc treepanel",
+                "designer|targetType": "Ext.tree.Panel",
+                "fn": "onMVCSelect",
+                "implHandler": [
+                    "var type = record.get('type');",
+                    "",
+                    "if (type) {",
+                    "    var view     = rowmodel.view,",
+                    "        panel    = view.up('mvc'),",
+                    "        children = panel.query('> component'),",
+                    "        i        = 1,",
+                    "        length   = children.length;",
+                    "    ",
+                    "    panel.suspendLayouts();",
+                    "    ",
+                    "    for (; i < length; i++) {",
+                    "        children[i].hide();",
+                    "    }",
+                    "    ",
+                    "    if (type == 'controller') {",
+                    "        var grid  = panel.child('mvc_listeners'),",
+                    "            store = grid.getStore();",
+                    "    ",
+                    "        grid.show();",
+                    "    ",
+                    "        store.removeAll();",
+                    "        store.add(record.get('eventbus'));",
+                    "    } else if (type == 'store') {",
+                    "        var cnt      = panel.child('mvc_records'),",
+                    "            grid     = cnt.child('grid'),",
+                    "            property = cnt.child('propertygrid'),",
+                    "            store    = grid.getStore();",
+                    "        ",
+                    "        cnt.show();",
+                    "        ",
+                    "        store.removeAll();",
+                    "        property.setSource({});",
+                    "        ",
+                    "        store.getProxy().inspectedStoreId = record.get('id');",
+                    "        ",
+                    "        store.load({",
+                    "            callback : function() {",
+                    "                record.set('count', this.getTotalCount());",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "    ",
+                    "    panel.resumeLayouts(true);",
+                    "}"
+                ],
+                "name": "select",
+                "scope": "me"
+            },
+            "designerId": "7767a13e-c83e-4a9d-afe4-bb810e01f745"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "mvc_records gridpanel",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onRecordGridSelection",
+                "implHandler": [
+                    "var panel    = dataview.up('gridpanel'),",
+                    "    property = panel.nextSibling();",
+                    "",
+                    "property.setSource(record.raw.modelData);"
+                ],
+                "name": "itemclick",
+                "scope": "me"
+            },
+            "designerId": "3ab4b901-3ced-4d5a-9827-f3f827378795"
+        }
+    ]
+}

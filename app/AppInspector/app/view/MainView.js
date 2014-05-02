@@ -23,6 +23,7 @@ Ext.define('AI.view.MainView', {
         'AI.view.Stores',
         'AI.view.Layouts',
         'AI.view.Events',
+        'AI.view.MVC',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
         'Ext.grid.Panel'
@@ -54,6 +55,9 @@ Ext.define('AI.view.MainView', {
                         },
                         {
                             xtype: 'eventgrid'
+                        },
+                        {
+                            xtype: 'mvc'
                         }
                     ]
                 }

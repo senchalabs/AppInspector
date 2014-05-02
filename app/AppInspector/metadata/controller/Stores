@@ -219,14 +219,14 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "grid, record, item, index, e, eOpts"
+                    "dataview, record, item, index, e, eOpts"
                 ],
                 "fn": "onRecordGridSelection",
                 "implHandler": [
-                    "var parent = Ext.ComponentQuery.query('#StoreDetails')[0],",
-                    "    propertyGrid = parent.down('#RecordDetail');",
+                    "var panel    = dataview.up('gridpanel'),",
+                    "    property = panel.nextSibling();",
                     "",
-                    "propertyGrid.setSource(record.raw.modelData);"
+                    "property.setSource(record.raw.modelData);"
                 ]
             },
             "designerId": "588b0ca3-e374-4de0-8a3e-37c7b7a55043"

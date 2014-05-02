@@ -11,21 +11,34 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
         'AI.util.Store'
     ],
 
-    inspectedStoreId : '',
+    /**
+     * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
+     */
+    evalFn : null,
+    /**
+     * @cfg {String} inspectedStoreId The storeId of the store.
+     */
+    inspectedStoreId : null,
 
     read : function (operation, callback, scope) {
         scope = scope || this;
 
-        var records = [];
+        var records = [],
+            evalFn  = this.evalFn,
+            reader  = this.getReader(),
+            model   = reader.model;
+
+        if (Ext.isString(evalFn)) {
+            //can resolve better, split by . and resolve each part
+            evalFn = eval(evalFn);
+        }
 
         AI.util.InspectedWindow.eval(
-            AI.util.Store.getRecords,
+            evalFn,
             [ this.inspectedStoreId, operation.start ],
-            function (result, isException) {
+            function (result) {
                 Ext.each(result.records, function (record) {
-                    var model = Ext.create('AI.model.Record', record);
-
-                    records.push(model);
+                    records.push(Ext.create(model, record));
                 });
 
                 Ext.apply(operation, {
