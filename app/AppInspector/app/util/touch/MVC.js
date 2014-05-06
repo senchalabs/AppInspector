@@ -4,7 +4,7 @@ Ext.define('AI.util.touch.MVC', {
     getApplication : function() {
         var children = [];
 
-        if (!Ext.app.Application) {
+        if (!Ext.app || !Ext.app.Application) {
             return children;
         }
 
@@ -13,7 +13,7 @@ Ext.define('AI.util.touch.MVC', {
         if (!instance) {
             for (key in window) {
                 if (window.hasOwnProperty(key) && window[key] && window[key].app && window[key].app.$className) {
-                    instance = window[key].app;
+                    instance = Ext.app.Application.instance = window[key].app;
                     break;
                 }
             }
@@ -83,11 +83,11 @@ Ext.define('AI.util.touch.MVC', {
                     leaf : true
                 },
                 {
-                    text     : 'Controllers',
+                    text     : 'Controllers (' + controllers.length + ')',
                     children : controllers
                 },
                 {
-                    text     : 'Stores',
+                    text     : 'Stores (' + stores.length + ')',
                     children : stores
                 }
             ]
