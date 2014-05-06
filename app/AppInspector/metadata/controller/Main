@@ -49,23 +49,41 @@
             "userConfig": {
                 "fn": "onAppRender",
                 "implHandler": [
-                    "var app = this.getApplication(),",
-                    "    main = Ext.ComponentQuery.query('#mainview')[0];",
+                    "var me       = this,",
+                    "    args     = Ext.Array.slice(arguments),",
+                    "    app      = me.getApplication(),",
+                    "    main     = me.getMainView(),",
+                    "    tabpanel = main.child('tabpanel');",
+                    "",
+                    "main.setLoading('Getting application details...');",
                     "",
                     "AI.util.InspectedWindow.eval(",
-                    "    AI.util.InspectedWindow.getAppVersion,",
+                    "    AI.util.InspectedWindow.getAppDetails,",
                     "    null,",
                     "    function (data) {",
                     "        if (data) {",
-                    "            main.down('#AppDetails').setSource(data);",
-                    "",
-                    "            app.info = {",
-                    "                framework : data.extjs ? 'ext' : 'touch',",
-                    "                version   : data.extjs ? data.extjs.version : data.touch.version",
-                    "            };",
-                    "",
-                    "            if (app.info.framework === 'touch') {",
-                    "                main.down('#LayoutRuns').disable();",
+                    "            if (data.isLoading || !data.versions) {",
+                    "                //Need to wait till app has loaded so we can get any info we want",
+                    "                setTimeout(function() {",
+                    "                    me.onAppRender.apply(me, args);",
+                    "                }, 75);",
+                    "            } else {",
+                    "                var versions = data.versions,",
+                    "                    source   = Ext.apply({",
+                    "                        name : data.name",
+                    "                    }, versions);",
+                    "                ",
+                    "                app.info = {",
+                    "                    isMVC     : data.isMVC,",
+                    "                    framework : versions.extjs ? 'ext' : 'touch',",
+                    "                    version   : versions.extjs ? versions.extjs : data.touch",
+                    "                };",
+                    "                ",
+                    "                tabpanel.down('#AppDetails').setSource(source);",
+                    "                tabpanel.child('mvc').setDisabled(!data.isMVC);",
+                    "                tabpanel.down('#LayoutRuns').setDisabled(app.info.framework === 'touch');",
+                    "                ",
+                    "                main.setLoading(false);",
                     "            }",
                     "        } else {",
                     "            // mask entire AppInspector body element",
@@ -79,6 +97,19 @@
                 ]
             },
             "designerId": "68045649-639a-48f3-a9b9-4a3600f6d030"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "mainView",
+                "selector": "#mainview"
+            },
+            "designerId": "8a7c27d2-5f99-4675-a82e-46459af8e3c7"
         }
     ]
 }

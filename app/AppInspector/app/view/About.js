@@ -46,6 +46,23 @@ Ext.define('AI.view.About', {
                     nameColumnWidth: '50%',
                     source: {
                         
+                    },
+                    sourceConfig: {
+                        core: {
+                            displayName: 'Core Version'
+                        },
+                        touch: {
+                            displayName: 'Touch Version'
+                        },
+                        extjs: {
+                            displayName: 'Ext JS Version'
+                        },
+                        ext: {
+                            displayName: 'Ext JS Version'
+                        },
+                        name: {
+                            displayName: 'Application Name'
+                        }
                     }
                 },
                 {

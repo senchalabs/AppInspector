@@ -25,6 +25,13 @@ Ext.define('AI.controller.Main', {
         'About'
     ],
 
+    refs: [
+        {
+            ref: 'mainView',
+            selector: '#mainview'
+        }
+    ],
+
     init: function(application) {
         this.control({
             '#mainview' : {
@@ -34,23 +41,41 @@ Ext.define('AI.controller.Main', {
     },
 
     onAppRender: function() {
-        var app = this.getApplication(),
-            main = Ext.ComponentQuery.query('#mainview')[0];
+        var me       = this,
+            args     = Ext.Array.slice(arguments),
+            app      = me.getApplication(),
+            main     = me.getMainView(),
+            tabpanel = main.child('tabpanel');
+
+        main.setLoading('Getting application details...');
 
         AI.util.InspectedWindow.eval(
-            AI.util.InspectedWindow.getAppVersion,
+            AI.util.InspectedWindow.getAppDetails,
             null,
             function (data) {
                 if (data) {
-                    main.down('#AppDetails').setSource(data);
+                    if (data.isLoading || !data.versions) {
+                        //Need to wait till app has loaded so we can get any info we want
+                        setTimeout(function() {
+                            me.onAppRender.apply(me, args);
+                        }, 75);
+                    } else {
+                        var versions = data.versions,
+                            source   = Ext.apply({
+                                name : data.name
+                            }, versions);
 
-                    app.info = {
-                        framework : data.extjs ? 'ext' : 'touch',
-                        version   : data.extjs ? data.extjs.version : data.touch.version
-                    };
+                        app.info = {
+                            isMVC     : data.isMVC,
+                            framework : versions.extjs ? 'ext' : 'touch',
+                            version   : versions.extjs ? versions.extjs : data.touch
+                        };
 
-                    if (app.info.framework === 'touch') {
-                        main.down('#LayoutRuns').disable();
+                        tabpanel.down('#AppDetails').setSource(source);
+                        tabpanel.child('mvc').setDisabled(!data.isMVC);
+                        tabpanel.down('#LayoutRuns').setDisabled(app.info.framework === 'touch');
+
+                        main.setLoading(false);
                     }
                 } else {
                     // mask entire AppInspector body element

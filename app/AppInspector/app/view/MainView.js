@@ -57,7 +57,8 @@ Ext.define('AI.view.MainView', {
                             xtype: 'eventgrid'
                         },
                         {
-                            xtype: 'mvc'
+                            xtype: 'mvc',
+                            disabled: true
                         }
                     ]
                 }

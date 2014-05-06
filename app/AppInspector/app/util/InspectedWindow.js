@@ -116,9 +116,9 @@ Ext.define('AI.util.InspectedWindow', {
     },
 
     /**
-     * Function to get the framework and version of the inspected app.
+     * Function to get details about the application and framework including version.
      */
-    getAppVersion : function () {
+    getAppDetails : function () {
         if (!window.Ext) {
             return false;
         }
@@ -138,7 +138,7 @@ Ext.define('AI.util.InspectedWindow', {
 
             //for the right-click menu
             contextRef       : null,
-            contextFn        : function (evt, target, eOpts) {
+            contextFn        : function (evt, target) {
                 var cmp = Ext.getCmp(target.id);
 
                 if (cmp) {
@@ -155,23 +155,57 @@ Ext.define('AI.util.InspectedWindow', {
 
         if (!document.getElementById('_AppInspector')) {
             //create a highlighting DIV for use later
-            var div = document.createElement('div');
+            var div   = document.createElement('div'),
+                style = div.style;
 
             div.setAttribute('id', '_AppInspector');
-            div.style.backgroundColor = '#f00';
-            div.style.opacity = 0.5;
-            div.style.visibility = 'hidden';
-            div.style.position = 'absolute';
+
+            style.backgroundColor = '#f00';
+            style.opacity         = 0.5;
+            style.visibility      = 'hidden';
+            style.position        = 'absolute';
 
             document.body.appendChild(div);
         }
 
-        var data = {},
+        if (!Ext.Loader || (Ext.Loader && Ext.Loader.isLoading)) {
+            return {
+                isLoading : true
+            };
+        }
+
+        var data     = {
+                isMVC    : false,
+                versions : {}
+            },
+            versions = Ext.versions,
             key;
 
-        for (key in Ext.versions) {
-            if (Ext.versions.hasOwnProperty(key)) {
-                data[key] = Ext.versions[key].version;
+        for (key in versions) {
+            if (versions.hasOwnProperty(key)) {
+                data.versions[key] = versions[key].version;
+            }
+        }
+
+        if (Ext.app && Ext.app.Application) {
+            var instance = Ext.app.Application.instance;
+
+            if (!instance) {
+                for (key in window) {
+                    if (window.hasOwnProperty(key) && window[key] && window[key].app && window[key].app.$className) {
+                        //get app instance, save on Ext.app.Application.instance like Ext JS 4+ does since it couldn't find it before
+                        instance = Ext.app.Application.instance = window[key].app;
+                        break;
+                    }
+                }
+            }
+
+            if (instance && instance instanceof Ext.app.Application) {
+                //flag that it is an MVC app
+                data.isMVC = true;
+
+                //get app name
+                data.name = instance.getName ? instance.getName() : instance.name;
             }
         }
 

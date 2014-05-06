@@ -141,6 +141,9 @@
                         "type": "array"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "disabled": true
+                    },
                     "designerId": "3cd1175e-1b33-4ae6-a88b-7f157b362680",
                     "masterInstanceId": "ebb64850-d172-46e4-8170-fbb87b4c2347"
                 }
