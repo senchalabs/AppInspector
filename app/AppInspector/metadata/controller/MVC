@@ -15,15 +15,41 @@
     "designerId": "505a99fc-6dec-487b-b4a5-b9ecf5cd8096",
     "cn": [
         {
-            "type": "controlleraction",
+            "type": "basicfunction",
             "reference": {
-                "name": "listeners",
+                "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "mvc",
-                "designer|targetType": "Ext.container.Container",
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    'mvc': {",
+                    "        activate: this.onActivate",
+                    "    },",
+                    "    'mvc treepanel': {",
+                    "        select: this.onMVCSelect",
+                    "    },",
+                    "    'mvc_records gridpanel': {",
+                    "        itemclick: this.onRecordGridSelection",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "2cbd7f19-cf95-4177-a8ff-80f00486b91f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "component"
+                ],
                 "fn": "onActivate",
                 "implHandler": [
                     "var tree      = component.child('treepanel'),",
@@ -46,22 +72,22 @@
                     "        });",
                     "    }",
                     ");"
-                ],
-                "name": "activate",
-                "scope": "me"
+                ]
             },
-            "designerId": "d50c9472-5890-4022-8d1d-387f713b2c7c"
+            "designerId": "e3ff456a-521a-463d-b4b5-99a0447d144f"
         },
         {
-            "type": "controlleraction",
+            "type": "basicfunction",
             "reference": {
-                "name": "listeners",
+                "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "mvc treepanel",
-                "designer|targetType": "Ext.tree.Panel",
+                "designer|params": [
+                    "rowmodel",
+                    "record"
+                ],
                 "fn": "onMVCSelect",
                 "implHandler": [
                     "var type = record.get('type');",
@@ -71,7 +97,8 @@
                     "        panel    = view.up('mvc'),",
                     "        children = panel.query('> component'),",
                     "        i        = 1,",
-                    "        length   = children.length;",
+                    "        length   = children.length,",
+                    "        grid, store;",
                     "    ",
                     "    panel.suspendLayouts();",
                     "    ",
@@ -79,19 +106,20 @@
                     "        children[i].hide();",
                     "    }",
                     "    ",
-                    "    if (type == 'controller') {",
-                    "        var grid  = panel.child('mvc_listeners'),",
-                    "            store = grid.getStore();",
-                    "    ",
+                    "    if (type === 'controller') {",
+                    "        grid  = panel.child('mvc_listeners');",
+                    "        store = grid.getStore();",
+                    "        ",
                     "        grid.show();",
-                    "    ",
+                    "        ",
                     "        store.removeAll();",
                     "        store.add(record.get('eventbus'));",
-                    "    } else if (type == 'store') {",
+                    "    } else if (type === 'store') {",
                     "        var cnt      = panel.child('mvc_records'),",
-                    "            grid     = cnt.child('grid'),",
-                    "            property = cnt.child('propertygrid'),",
-                    "            store    = grid.getStore();",
+                    "            property = cnt.child('propertygrid');",
+                    "        ",
+                    "        grid  = cnt.child('gridpanel');",
+                    "        store = grid.getStore();",
                     "        ",
                     "        cnt.show();",
                     "        ",
@@ -109,33 +137,31 @@
                     "    ",
                     "    panel.resumeLayouts(true);",
                     "}"
-                ],
-                "name": "select",
-                "scope": "me"
+                ]
             },
-            "designerId": "7767a13e-c83e-4a9d-afe4-bb810e01f745"
+            "designerId": "4b9f65d3-88a5-4529-8a0c-160864e4dfb4"
         },
         {
-            "type": "controlleraction",
+            "type": "basicfunction",
             "reference": {
-                "name": "listeners",
+                "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "mvc_records gridpanel",
-                "designer|targetType": "Ext.grid.Panel",
+                "designer|params": [
+                    "view",
+                    "record"
+                ],
                 "fn": "onRecordGridSelection",
                 "implHandler": [
-                    "var panel    = dataview.up('gridpanel'),",
+                    "var panel    = view.up('gridpanel'),",
                     "    property = panel.nextSibling();",
                     "",
                     "property.setSource(record.raw.modelData);"
-                ],
-                "name": "itemclick",
-                "scope": "me"
+                ]
             },
-            "designerId": "3ab4b901-3ced-4d5a-9827-f3f827378795"
+            "designerId": "45d3e47f-4e9e-4e58-ae2e-703ec498527d"
         }
     ]
 }

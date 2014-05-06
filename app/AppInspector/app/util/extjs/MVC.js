@@ -11,6 +11,8 @@ Ext.define('AI.util.extjs.MVC', {
         var instance = Ext.app.Application.instance;
 
         if (!instance) {
+            var key;
+
             for (key in window) {
                 if (window.hasOwnProperty(key) && window[key] && window[key].app && window[key].app.$className) {
                     instance = Ext.app.Application.instance = window[key].app;

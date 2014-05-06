@@ -21,7 +21,21 @@ Ext.define('AI.controller.MVC', {
         'AI.util.touch.MVC'
     ],
 
-    onActivate: function(component, eOpts) {
+    init: function() {
+        this.control({
+            'mvc': {
+                activate: this.onActivate
+            },
+            'mvc treepanel': {
+                select: this.onMVCSelect
+            },
+            'mvc_records gridpanel': {
+                itemclick: this.onRecordGridSelection
+            }
+        });
+    },
+
+    onActivate: function(component) {
         var tree      = component.child('treepanel'),
             treeStore = tree.getStore(),
             fn;
@@ -44,7 +58,7 @@ Ext.define('AI.controller.MVC', {
         );
     },
 
-    onMVCSelect: function(rowmodel, record, index, eOpts) {
+    onMVCSelect: function(rowmodel, record) {
         var type = record.get('type');
 
         if (type) {
@@ -52,7 +66,8 @@ Ext.define('AI.controller.MVC', {
                 panel    = view.up('mvc'),
                 children = panel.query('> component'),
                 i        = 1,
-                length   = children.length;
+                length   = children.length,
+                grid, store;
 
             panel.suspendLayouts();
 
@@ -60,19 +75,20 @@ Ext.define('AI.controller.MVC', {
                 children[i].hide();
             }
 
-            if (type == 'controller') {
-                var grid  = panel.child('mvc_listeners'),
-                    store = grid.getStore();
+            if (type === 'controller') {
+                grid  = panel.child('mvc_listeners');
+                store = grid.getStore();
 
                 grid.show();
 
                 store.removeAll();
                 store.add(record.get('eventbus'));
-            } else if (type == 'store') {
+            } else if (type === 'store') {
                 var cnt      = panel.child('mvc_records'),
-                    grid     = cnt.child('grid'),
-                    property = cnt.child('propertygrid'),
-                    store    = grid.getStore();
+                    property = cnt.child('propertygrid');
+
+                grid  = cnt.child('gridpanel');
+                store = grid.getStore();
 
                 cnt.show();
 
@@ -92,25 +108,11 @@ Ext.define('AI.controller.MVC', {
         }
     },
 
-    onRecordGridSelection: function(dataview, record, item, index, e, eOpts) {
-        var panel    = dataview.up('gridpanel'),
+    onRecordGridSelection: function(view, record) {
+        var panel    = view.up('gridpanel'),
             property = panel.nextSibling();
 
         property.setSource(record.raw.modelData);
-    },
-
-    init: function(application) {
-        this.control({
-            "mvc": {
-                activate: this.onActivate
-            },
-            "mvc treepanel": {
-                select: this.onMVCSelect
-            },
-            "mvc_records gridpanel": {
-                itemclick: this.onRecordGridSelection
-            }
-        });
     }
 
 });

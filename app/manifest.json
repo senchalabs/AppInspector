@@ -3,7 +3,7 @@
     "minimum_chrome_version": "31.0",
     "name": "App Inspector for Sencha™",
     "description": "__MSG_appDescription__",
-    "version": "2.0.4",
+    "version": "2.0.6",
     "icons": {
         "16": "AppInspector/resources/images/icon-16x16.png",
         "48": "AppInspector/resources/images/icon-48x48.png",
