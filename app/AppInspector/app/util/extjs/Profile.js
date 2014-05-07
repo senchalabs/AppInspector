@@ -85,6 +85,7 @@ Ext.define('AI.util.extjs.Profile', {
                 Ext.Object.each(this.items, function (key, item) {
                     //TODO: is there any better way to do this?
                     // "item" is an Ext.layout.ContextItem and I don't see any way to access the original component
+                    // item.target?
                     var comp = Ext.getCmp(key);
 
                     if (comp) {
