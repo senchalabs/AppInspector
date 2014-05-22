@@ -1,0 +1,17 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MVC",
+        "model": "mvc.Tree",
+        "root": [
+            "{children:[]}"
+        ],
+        "storeId": "MVC"
+    },
+    "designerId": "3015f08e-a09c-4042-ae42-6b9a767e9882"
+}

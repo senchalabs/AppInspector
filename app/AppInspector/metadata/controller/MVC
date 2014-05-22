@@ -1,0 +1,167 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MVC",
+        "requires": [
+            "AI.util.extjs.MVC",
+            "AI.util.touch.MVC"
+        ]
+    },
+    "designerId": "505a99fc-6dec-487b-b4a5-b9ecf5cd8096",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    'mvc': {",
+                    "        activate: this.onActivate",
+                    "    },",
+                    "    'mvc treepanel': {",
+                    "        select: this.onMVCSelect",
+                    "    },",
+                    "    'mvc_records gridpanel': {",
+                    "        itemclick: this.onRecordGridSelection",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "2cbd7f19-cf95-4177-a8ff-80f00486b91f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "component"
+                ],
+                "fn": "onActivate",
+                "implHandler": [
+                    "var tree      = component.child('treepanel'),",
+                    "    treeStore = tree.getStore(),",
+                    "    fn;",
+                    "",
+                    "if (this.getApplication().info.framework === 'ext') {",
+                    "    fn = AI.util.extjs.MVC.getApplication;",
+                    "} else {",
+                    "    fn = AI.util.touch.MVC.getApplication;",
+                    "}",
+                    "",
+                    "AI.util.InspectedWindow.eval(",
+                    "    fn,",
+                    "    null,",
+                    "    function (data) {",
+                    "        treeStore.setRootNode({",
+                    "            expanded : true,",
+                    "            children : data",
+                    "        });",
+                    "    }",
+                    ");"
+                ]
+            },
+            "designerId": "e3ff456a-521a-463d-b4b5-99a0447d144f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "rowmodel",
+                    "record"
+                ],
+                "fn": "onMVCSelect",
+                "implHandler": [
+                    "var type = record.get('type');",
+                    "",
+                    "if (type) {",
+                    "    var view     = rowmodel.view,",
+                    "        panel    = view.up('mvc'),",
+                    "        children = panel.query('> component'),",
+                    "        i        = 1,",
+                    "        length   = children.length,",
+                    "        grid, store;",
+                    "    ",
+                    "    panel.suspendLayouts();",
+                    "    ",
+                    "    for (; i < length; i++) {",
+                    "        children[i].hide();",
+                    "    }",
+                    "    ",
+                    "    if (type === 'controller') {",
+                    "        grid  = panel.child('mvc_listeners');",
+                    "        store = grid.getStore();",
+                    "        ",
+                    "        grid.show();",
+                    "        ",
+                    "        store.removeAll();",
+                    "        store.add(record.get('eventbus'));",
+                    "    } else if (type === 'store') {",
+                    "        var cnt      = panel.child('mvc_records'),",
+                    "            property = cnt.child('propertygrid');",
+                    "        ",
+                    "        grid  = cnt.child('gridpanel');",
+                    "        store = grid.getStore();",
+                    "        ",
+                    "        cnt.show();",
+                    "        ",
+                    "        store.removeAll();",
+                    "        property.setSource({});",
+                    "        ",
+                    "        store.getProxy().inspectedStoreId = record.get('id');",
+                    "        ",
+                    "        store.load({",
+                    "            callback : function() {",
+                    "                record.set('count', this.getTotalCount());",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "    ",
+                    "    panel.resumeLayouts(true);",
+                    "}"
+                ]
+            },
+            "designerId": "4b9f65d3-88a5-4529-8a0c-160864e4dfb4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "view",
+                    "record"
+                ],
+                "fn": "onRecordGridSelection",
+                "implHandler": [
+                    "var panel    = view.up('gridpanel'),",
+                    "    property = panel.nextSibling();",
+                    "",
+                    "property.setSource(record.raw.modelData);"
+                ]
+            },
+            "designerId": "45d3e47f-4e9e-4e58-ae2e-703ec498527d"
+        }
+    ]
+}

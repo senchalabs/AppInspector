@@ -1,0 +1,77 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "mvc_listeners",
+        "designer|userClassName": "mvc.Listeners",
+        "store": "mvc.Listeners",
+        "title": "Controller Listeners"
+    },
+    "designerId": "100d0c2e-ebce-48f8-9883-09118d41fa0d",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "event",
+                "flex": 1,
+                "text": "Event Name"
+            },
+            "designerId": "4d16c40c-1b5d-4199-b95b-9d366f808ddf"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "selector",
+                "flex": 1,
+                "text": "Selector"
+            },
+            "designerId": "885d7a12-2d6b-42b2-a717-814f18b9fb37"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "method",
+                "flex": 1,
+                "text": "Method Name"
+            },
+            "designerId": "6d9a37f1-c18f-4312-81af-75146db7fa74"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "1a3e1e25-5f21-4237-b6cf-afb13a682822"
+        },
+        {
+            "type": "Ext.grid.feature.Grouping",
+            "reference": {
+                "name": "features",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "2662cf4d-f814-44a4-891a-a911fa4cb53f"
+        }
+    ]
+}

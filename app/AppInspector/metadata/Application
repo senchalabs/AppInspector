@@ -11,12 +11,27 @@
             "Components",
             "Stores",
             "Layouts",
-            "Events"
+            "Events",
+            "MVC"
+        ],
+        "models": [
+            "mvc.Tree",
+            "mvc.Listeners"
         ],
         "name": "AI",
         "requires": [
             "AI.util.i18n",
             "Ext.window.MessageBox"
+        ],
+        "stores": [
+            "MVC",
+            "mvc.Listeners",
+            "mvc.Records"
+        ],
+        "views": [
+            "mvc.Listeners",
+            "Records",
+            "mvc.Records"
         ]
     },
     "designerId": "application"

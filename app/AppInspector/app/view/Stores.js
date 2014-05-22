@@ -19,14 +19,15 @@ Ext.define('AI.view.Stores', {
 
     requires: [
         'AI.view.FilterField',
+        'AI.view.Records',
+        'Ext.grid.Panel',
+        'Ext.toolbar.Toolbar',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
         'Ext.form.field.Text',
         'Ext.grid.column.Column',
         'Ext.grid.View',
-        'Ext.toolbar.Paging',
-        'Ext.grid.property.Grid',
-        'Ext.grid.Panel'
+        'Ext.grid.property.Grid'
     ],
 
     initialLoad: false,
@@ -86,55 +87,8 @@ Ext.define('AI.view.Stores', {
                     ]
                 },
                 {
-                    xtype: 'container',
-                    flex: 1,
-                    itemId: 'StoreDetails',
-                    resizable: true,
-                    resizeHandles: 'n',
-                    layout: {
-                        type: 'hbox',
-                        align: 'stretch'
-                    },
-                    items: [
-                        {
-                            xtype: 'gridpanel',
-                            flex: 1,
-                            itemId: 'RecordList',
-                            title: 'Store Records',
-                            store: 'Records',
-                            columns: [
-                                {
-                                    xtype: 'gridcolumn',
-                                    resizable: false,
-                                    dataIndex: 'id',
-                                    text: 'Record ID',
-                                    flex: 1
-                                }
-                            ],
-                            dockedItems: [
-                                {
-                                    xtype: 'pagingtoolbar',
-                                    dock: 'bottom',
-                                    itemId: 'mypagingtoolbar',
-                                    width: 360,
-                                    displayInfo: true,
-                                    store: 'Records'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'propertygrid',
-                            itemId: 'RecordDetail',
-                            width: 300,
-                            resizable: true,
-                            resizeHandles: 'w',
-                            title: 'Record Details',
-                            nameColumnWidth: '50%',
-                            source: {
-                                
-                            }
-                        }
-                    ]
+                    xtype: 'records',
+                    flex: 1
                 }
             ],
             listeners: {

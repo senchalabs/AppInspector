@@ -97,7 +97,7 @@
                     "if (!initialLoad && btn) {",
                     "    // ... but only once",
                     "    grid.initialLoad = true;",
-                    "    ",
+                    "",
                     "    this.onOvernestedProfileClick(btn);",
                     "}"
                 ]

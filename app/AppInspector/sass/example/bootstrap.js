@@ -33,6 +33,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.controller.Components": [],
   "AI.controller.Events": [],
   "AI.controller.Layouts": [],
+  "AI.controller.MVC": [],
   "AI.controller.Main": [],
   "AI.controller.Stores": [],
   "AI.model.Component": [],
@@ -40,6 +41,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.model.mvc.Listeners": [],
+  "AI.model.mvc.Tree": [],
   "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.ComponentMethods": [],
@@ -47,18 +50,24 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.store.Components": [],
   "AI.store.Events": [],
   "AI.store.Layouts": [],
+  "AI.store.MVC": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.store.mvc.Listeners": [],
+  "AI.store.mvc.Records": [],
   "AI.store.override.Records": [],
+  "AI.store.override.mvc.Records": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
   "AI.util.extjs.Events": [],
+  "AI.util.extjs.MVC": [],
   "AI.util.extjs.Profile": [],
   "AI.util.i18n": [],
   "AI.util.touch.Events": [],
+  "AI.util.touch.MVC": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [],
   "AI.view.About": [],
@@ -67,10 +76,14 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.Events": [],
   "AI.view.FilterField": [],
   "AI.view.Layouts": [],
+  "AI.view.MVC": [],
   "AI.view.Main": [],
   "AI.view.MainView": [],
+  "AI.view.Records": [],
   "AI.view.Stores": [],
   "AI.view.Viewport": [],
+  "AI.view.mvc.Listeners": [],
+  "AI.view.mvc.Records": [],
   "AI.view.override.ComponentsTreeGrid": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -911,6 +924,7 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.controller.Components": [],
   "AI.controller.Events": [],
   "AI.controller.Layouts": [],
+  "AI.controller.MVC": [],
   "AI.controller.Main": [],
   "AI.controller.Stores": [],
   "AI.model.Component": [],
@@ -918,6 +932,8 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.model.Overnested": [],
   "AI.model.Record": [],
   "AI.model.Store": [],
+  "AI.model.mvc.Listeners": [],
+  "AI.model.mvc.Tree": [],
   "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.ComponentMethods": [],
@@ -925,18 +941,24 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.store.Components": [],
   "AI.store.Events": [],
   "AI.store.Layouts": [],
+  "AI.store.MVC": [],
   "AI.store.Overnested": [],
   "AI.store.Records": [],
   "AI.store.Stores": [],
+  "AI.store.mvc.Listeners": [],
+  "AI.store.mvc.Records": [],
   "AI.store.override.Records": [],
+  "AI.store.override.mvc.Records": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
   "AI.util.extjs.Events": [],
+  "AI.util.extjs.MVC": [],
   "AI.util.extjs.Profile": [],
   "AI.util.i18n": [],
   "AI.util.touch.Events": [],
+  "AI.util.touch.MVC": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [
     "proxy.inspectedwindow"
@@ -959,16 +981,28 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.Layouts": [
     "widget.layouts"
   ],
+  "AI.view.MVC": [
+    "widget.mvc"
+  ],
   "AI.view.Main": [
     "widget.app-main"
   ],
   "AI.view.MainView": [
     "widget.mainview"
   ],
+  "AI.view.Records": [
+    "widget.records"
+  ],
   "AI.view.Stores": [
     "widget.stores"
   ],
   "AI.view.Viewport": [],
+  "AI.view.mvc.Listeners": [
+    "widget.mvc_listeners"
+  ],
+  "AI.view.mvc.Records": [
+    "widget.mvc_records"
+  ],
   "AI.view.override.ComponentsTreeGrid": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],

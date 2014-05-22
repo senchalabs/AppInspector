@@ -1,0 +1,15 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "mvc.Listeners",
+        "groupField": "domain",
+        "model": "mvc.Listeners",
+        "storeId": "mvc.Listeners"
+    },
+    "designerId": "04bbd6c3-a400-4c4b-8b87-ec40391c5c68"
+}

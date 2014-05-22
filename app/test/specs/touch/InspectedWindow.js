@@ -15,14 +15,14 @@ StartTest({
     test.is(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is not yet defined.');
 
     AI.util.InspectedWindow.eval(
-        AI.util.InspectedWindow.getAppVersion,
+        AI.util.InspectedWindow.getAppDetails,
         null,
         function(data, isException) {
 
             test.isNot(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is defined.');
 
-            test.isNot(data.touch, undefined, 'Framework is Touch');
-            test.is(data.touch, '2.3.1', 'Touch version is 2.3.1');
+            test.isNot(data.versions.touch, undefined, 'Framework is Touch');
+            test.is(data.versions.touch, '2.3.1', 'Touch version is 2.3.1');
         }
     );
 });

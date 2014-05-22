@@ -23,3 +23,6 @@ app/AppInspector/build/
 app/AppInspector/.architect
 app/AppInspector/.sencha/
 app/AppInspector/.sencha_backup/
+
+.idea/
+*.iml
