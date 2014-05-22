@@ -15,14 +15,14 @@ StartTest({
     test.is(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is not yet defined.');
 
     AI.util.InspectedWindow.eval(
-        AI.util.InspectedWindow.getAppVersion,
+        AI.util.InspectedWindow.getAppDetails,
         null,
         function(data, isException) {
 
             test.isNot(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is defined.');
 
-            test.isNot(data.extjs, undefined, 'Framework is Ext JS');
-            test.is(data.extjs, '5.0.0.700', 'Ext JS version is 5.0.0.700');
+            test.isNot(data.versions.extjs, undefined, 'Framework is Ext JS');
+            test.is(data.versions.extjs, '5.0.0.700', 'Ext JS version is 5.0.0.700');
         }
     );
 });
