@@ -35,7 +35,7 @@ Ext.define('AI.util.extjs.MVC', {
                 controllerId, controllers,
                 controller, i, length,
                 masterListenerObj, listenerObj, listeners,
-                x, len, observableId;
+                x, len, observableId, method;
 
             for (domain in domains) {
                 bus = domains[domain].bus;
@@ -48,8 +48,14 @@ Ext.define('AI.util.extjs.MVC', {
 
                         for (controllerId in controllers) {
                             controller = controllers[controllerId];
-                            i          = 0;
-                            length     = controller.length;
+
+                            //Ext 5 nests it, Ext 4/ST2 does not
+                            if (controller.list) {
+                                controller = controller.list;
+                            }
+
+                            i      = 0;
+                            length = controller.length;
 
                             for (; i < length; i++) {
                                 masterListenerObj = controller[i];
@@ -65,11 +71,18 @@ Ext.define('AI.util.extjs.MVC', {
                                         break;
                                     }
 
+                                    method = listenerObj.fireFn;
+
+                                    //Ext 5 lazily resolves actual method
+                                    if (Ext.isFunction(method)) {
+                                        method = method.$name;
+                                    }
+
                                     busControllers.push({
                                         domain   : domain,
                                         event    : event,
                                         selector : selector,
-                                        method   : listenerObj.fireFn.$name
+                                        method   : method
                                     });
                                 }
                             }
@@ -87,17 +100,19 @@ Ext.define('AI.util.extjs.MVC', {
             length         = appControllers.length,
             controllers    = [],
             stores         = [],
-            controller, listeners, store, getter;
+            controller, listeners, id,
+            store, getter;
 
         for (; i < length; i++) {
             controller = appControllers.getAt(i);
             listeners  = getControllerListeners(controller.$className);
+            id         = controller.id || controller.getId();
 
             controllers.push({
-                text     : controller.id,
+                text     : id,
                 qtip     : controller.$className,
                 type     : 'controller',
-                id       : controller.id,
+                id       : id,
                 count    : listeners.length,
                 eventbus : listeners,
                 leaf     : true
@@ -130,7 +145,7 @@ Ext.define('AI.util.extjs.MVC', {
             expanded : true,
             children : [
                 {
-                    text : 'name: ' + instance.name,
+                    text : 'name: ' + (instance.getName ? instance.getName() : instance.name),
                     leaf : true
                 },
                 {
