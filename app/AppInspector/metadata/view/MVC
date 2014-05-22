@@ -9,6 +9,7 @@
         "container|align": "stretch",
         "designer|userAlias": "mvc",
         "designer|userClassName": "MVC",
+        "iconCls": "icn-mvc",
         "layout": "hbox",
         "title": "MVC"
     },
@@ -17,6 +18,11 @@
         {
             "group": "(Custom Properties)",
             "name": "title",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "iconCls",
             "type": "string"
         }
     ],

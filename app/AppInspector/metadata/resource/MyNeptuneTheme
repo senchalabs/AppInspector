@@ -218,7 +218,7 @@
                     "",
                     ".icn-components {",
                     "    @extend .base-icn;",
-                    "    background-image: url('../resources/images/icon-connected.png');",
+                    "    background-image: url('../resources/images/icon-tree.png');",
                     "}",
                     "",
                     ".icn-stores {",
@@ -269,6 +269,11 @@
                     ".icn-globe {",
                     "    @extend .base-icn;",
                     "    background-image: url('../resources/images/icon-line-globe.png');",
+                    "}",
+                    "",
+                    ".icn-mvc {",
+                    "    @extend .base-icn;",
+                    "    background-image: url('../resources/images/icon-connected.png');",
                     "}",
                     ""
                 ]

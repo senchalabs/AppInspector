@@ -27,6 +27,7 @@ Ext.define('AI.view.MVC', {
     ],
 
     title: 'MVC',
+    iconCls: 'icn-mvc',
 
     layout: {
         type: 'hbox',
