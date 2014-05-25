@@ -20,7 +20,7 @@ Ext.define('AI.view.MainView', {
     requires: [
         'AI.view.About',
         'AI.view.Components',
-        'AI.view.Stores',
+        'AI.view.stores.Stores',
         'AI.view.Layouts',
         'AI.view.Events',
         'AI.view.MVC',
@@ -39,7 +39,7 @@ Ext.define('AI.view.MainView', {
             items: [
                 {
                     xtype: 'tabpanel',
-                    activeTab: 0,
+                    activeTab: 2,
                     items: [
                         {
                             xtype: 'about'

@@ -7,9 +7,23 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "MVC",
+        "models": [
+            "mvc.Tree",
+            "mvc.Listeners"
+        ],
         "requires": [
             "AI.util.extjs.MVC",
             "AI.util.touch.MVC"
+        ],
+        "stores": [
+            "MVC",
+            "mvc.Records",
+            "mvc.Listeners"
+        ],
+        "views": [
+            "MVC",
+            "mvc.Records",
+            "mvc.Listeners"
         ]
     },
     "designerId": "505a99fc-6dec-487b-b4a5-b9ecf5cd8096",

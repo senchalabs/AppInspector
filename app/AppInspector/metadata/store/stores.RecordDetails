@@ -1,0 +1,31 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": null,
+        "defaultRootText": "",
+        "designer|userAlias": "recorddetails",
+        "designer|userClassName": "stores.RecordDetails",
+        "model": "stores.RecordDetail",
+        "requires": [
+            "Ext.Date"
+        ],
+        "root": [
+            "{",
+            "    text: 'Model',",
+            "    value: '',",
+            "    cls: 'root',",
+            "    iconCls: 'no-icon',",
+            "    expanded: true,",
+            "    expandable: false,",
+            "    children: [] ",
+            "}"
+        ],
+        "storeId": "RecordDetails"
+    },
+    "designerId": "acc198e4-fd50-48f4-889b-71eba16fcc0e"
+}

@@ -17,20 +17,27 @@ Ext.define('AI.controller.Stores', {
     extend: 'Ext.app.Controller',
 
     requires: [
+        'AI.util.InspectedWindow',
         'AI.util.Store',
-        'AI.util.InspectedWindow'
+        'AI.util.TreeStore'
     ],
 
     models: [
-        'Store',
-        'Record'
+        'Record',
+        'stores.Store',
+        'stores.RecordDetail'
     ],
     stores: [
-        'Stores',
-        'Records'
+        'Records',
+        'stores.Stores',
+        'stores.RecordsTree',
+        'stores.RecordDetails'
     ],
     views: [
-        'Stores'
+        'stores.Stores',
+        'stores.RecordList',
+        'stores.RecordListTree',
+        'stores.RecordDetails'
     ],
 
     init: function(application) {
@@ -81,7 +88,7 @@ Ext.define('AI.controller.Stores', {
             null,
             function (stores) {
                 Ext.each(stores, function (store) {
-                    var model = Ext.create('AI.model.Store', store);
+                    var model = Ext.create('AI.model.stores.Store', store);
 
                     gridStore.add(model);
                 });
@@ -117,20 +124,63 @@ Ext.define('AI.controller.Stores', {
 
     onStoreGridSelection: function(storeGrid, record, item, index, e, eOpts) {
         var parent = Ext.ComponentQuery.query('#StoreDetails')[0],
-            grid = parent.down('#RecordList'),
-            store = grid.getStore(),
-            propertyGrid = parent.down('#RecordDetail');
+            card = parent.down('#StoreRecordsContainer'),
+            layout = card.getLayout(),
+            isTreeStore = record.get('isTree'),
+            // records list store
+            recordsGrid,
+            recordsGridStore,
+            // records list treestore
+            recordsTree,
+            recordsTreeStore,
+            recordsRoot,
+            // record details
+            detailsTree = parent.down('#RecordDetail'),
+            detailsRoot = detailsTree.getRootNode();
 
-        store.removeAll();
-        propertyGrid.setSource({});
+        if (!isTreeStore) {
+            // records list store
+            recordsGrid = parent.down('#RecordListStore');
+            recordsGridStore = recordsGrid.getStore();
 
-        store.getProxy().inspectedStoreId = record.get('id');
+            recordsGridStore.removeAll();
 
-        store.load({
-            callback : function(records, operation, success) {
-                record.set('count', this.getTotalCount());
-            }
-        });
+            recordsGridStore.getProxy().inspectedStoreId = record.get('id');
+
+            recordsGridStore.load({
+                callback : function(records, operation, success) {
+                    record.set('count', this.getTotalCount());
+                }
+            });
+
+            layout.setActiveItem(recordsGrid);
+        } else {
+            // records list treestore
+            recordsTree = parent.down('#RecordListTreeStore');
+            recordsTreeStore = recordsTree.getStore();
+            recordsRoot = recordsTree.getRootNode();
+
+            AI.util.InspectedWindow.eval(
+                AI.util.TreeStore.getChildNodes,
+
+                // storeId
+                [record.get('id')],
+
+                function(result) {
+                    recordsRoot.removeAll();
+
+                    recordsRoot.appendChild(result);
+                    recordsRoot.expandChildren();
+
+                    layout.setActiveItem(recordsTree);
+                }
+            );
+        }
+
+        // record details
+        detailsRoot.removeAll();
+        detailsRoot.set('value', record.get('model'));
+
     },
 
     onRecordGridSelection: function(dataview, record, item, index, e, eOpts) {

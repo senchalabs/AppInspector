@@ -42,6 +42,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.controller.MVC": [],
   "AI.controller.Main": [],
   "AI.controller.Stores": [],
+  "AI.mockup.TreeStore": [],
   "AI.model.Component": [],
   "AI.model.Event": [],
   "AI.model.Overnested": [],
@@ -49,6 +50,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.model.Store": [],
   "AI.model.mvc.Listeners": [],
   "AI.model.mvc.Tree": [],
+  "AI.model.stores.RecordDetail": [],
+  "AI.model.stores.Store": [],
   "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.ComponentMethods": [],
@@ -64,10 +67,14 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.store.mvc.Records": [],
   "AI.store.override.Records": [],
   "AI.store.override.mvc.Records": [],
+  "AI.store.stores.RecordDetails": [],
+  "AI.store.stores.RecordsTree": [],
+  "AI.store.stores.Stores": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
+  "AI.util.TreeStore": [],
   "AI.util.extjs.Events": [],
   "AI.util.extjs.MVC": [],
   "AI.util.extjs.Profile": [],
@@ -85,12 +92,14 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.MVC": [],
   "AI.view.Main": [],
   "AI.view.MainView": [],
-  "AI.view.Records": [],
-  "AI.view.Stores": [],
   "AI.view.Viewport": [],
   "AI.view.mvc.Listeners": [],
   "AI.view.mvc.Records": [],
   "AI.view.override.ComponentsTreeGrid": [],
+  "AI.view.stores.RecordDetails": [],
+  "AI.view.stores.RecordList": [],
+  "AI.view.stores.RecordListTree": [],
+  "AI.view.stores.Stores": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -933,6 +942,7 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.controller.MVC": [],
   "AI.controller.Main": [],
   "AI.controller.Stores": [],
+  "AI.mockup.TreeStore": [],
   "AI.model.Component": [],
   "AI.model.Event": [],
   "AI.model.Overnested": [],
@@ -940,6 +950,8 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.model.Store": [],
   "AI.model.mvc.Listeners": [],
   "AI.model.mvc.Tree": [],
+  "AI.model.stores.RecordDetail": [],
+  "AI.model.stores.Store": [],
   "AI.override.AbstractComponent": [],
   "AI.store.BoxLayouts": [],
   "AI.store.ComponentMethods": [],
@@ -955,10 +967,16 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.store.mvc.Records": [],
   "AI.store.override.Records": [],
   "AI.store.override.mvc.Records": [],
+  "AI.store.stores.RecordDetails": [
+    "store.recorddetails"
+  ],
+  "AI.store.stores.RecordsTree": [],
+  "AI.store.stores.Stores": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
   "AI.util.Store": [],
+  "AI.util.TreeStore": [],
   "AI.util.extjs.Events": [],
   "AI.util.extjs.MVC": [],
   "AI.util.extjs.Profile": [],
@@ -996,12 +1014,6 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.MainView": [
     "widget.mainview"
   ],
-  "AI.view.Records": [
-    "widget.records"
-  ],
-  "AI.view.Stores": [
-    "widget.stores"
-  ],
   "AI.view.Viewport": [],
   "AI.view.mvc.Listeners": [
     "widget.mvc_listeners"
@@ -1010,6 +1022,18 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.mvc_records"
   ],
   "AI.view.override.ComponentsTreeGrid": [],
+  "AI.view.stores.RecordDetails": [
+    "widget.recorddetails"
+  ],
+  "AI.view.stores.RecordList": [
+    "widget.recordliststore"
+  ],
+  "AI.view.stores.RecordListTree": [
+    "widget.recordlisttreestore"
+  ],
+  "AI.view.stores.Stores": [
+    "widget.stores"
+  ],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],

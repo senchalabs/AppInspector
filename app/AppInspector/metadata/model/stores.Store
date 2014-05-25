@@ -1,0 +1,83 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "stores.Store"
+    },
+    "designerId": "bb7971c6-0892-4d90-b857-8cb6dd2021e2",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id"
+            },
+            "designerId": "31dde21e-5533-498d-9d82-7378a5e34939"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "count"
+            },
+            "designerId": "30b326f4-a930-490b-9405-883997199699"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "model"
+            },
+            "designerId": "4645e8f9-d152-4ec3-835a-d97a727e0041"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "false"
+                ],
+                "name": "isTree",
+                "type": "boolean"
+            },
+            "designerId": "56f27c20-265c-45de-88ab-b11860dc384f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "false"
+                ],
+                "name": "leaf",
+                "sortType": null,
+                "type": "boolean"
+            },
+            "designerId": "ea4a5c2f-5e75-4cc3-95ba-5bc75e00effc"
+        }
+    ]
+}
