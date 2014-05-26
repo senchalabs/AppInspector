@@ -24,8 +24,14 @@ Ext.define('AI.util.TreeStore', {
         // store = Ext.create('AI.mockup.TreeStore', {});
         // </debug>
 
-        root = store.getRootNode();
+        // Ext JS 5 changed to {Ext.data.TreeModel}
+        if (store.getRoot) {
+            // TODO
+            return {};
+        } else {
+            root = store.getRootNode();
 
-        return root.serialize();
+            return root.serialize();
+        }
     }
 });

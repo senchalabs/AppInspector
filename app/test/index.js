@@ -18,7 +18,8 @@ Harness.start(
         items : [
             'specs/touch/InspectedWindow.js',
             'specs/touch/Component.js',
-            'specs/touch/Store.js'
+            'specs/touch/Store.js',
+            'specs/touch/TreeStore.js'
         ]
     },
 
@@ -38,7 +39,8 @@ Harness.start(
         items : [
             'specs/ext4/InspectedWindow.js',
             'specs/ext4/Component.js',
-            'specs/ext4/Store.js'
+            'specs/ext4/Store.js',
+            'specs/ext4/TreeStore.js'
         ]
     },
 
@@ -49,12 +51,13 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : '../../../_ext/ext5-qa/ext/examples/kitchensink/#basic-panels',
+        hostPageUrl : '../../../_ext/ext5-qa/examples/kitchensink/#basic-panels',
 
         items : [
             'specs/ext5/InspectedWindow.js',
             'specs/ext5/Component.js',
-            'specs/ext5/Store.js'
+            'specs/ext5/Store.js',
+            'specs/ext5/TreeStore.js'
         ]
     }
 );

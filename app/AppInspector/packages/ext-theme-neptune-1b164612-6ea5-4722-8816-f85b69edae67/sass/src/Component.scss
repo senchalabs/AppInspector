@@ -1,47 +1,4 @@
-$loadmask-msg-border-radius: 0;
-//$loadmask-opacity: 0.95;
-
-.x-body.x-masked {
-    div.x-panel {
-        @include filter(blur(2px));
-    }
-}
-
-.x-mask-msg {
-    &.no-framework-mask {
-        border: 1px solid $loadmask-msg-inner-color;
-
-        .x-mask-inner {}
-
-        .x-mask-msg-text {
-            padding: 24px;
-            margin: 0;
-            background: none;
-            font-size: 2em;
-        }
-    }
-
-    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);
-}
-
 :focus { outline: none; }
-
-.about-details {
-    img {
-        border: 2px solid $green;
-    }
-
-    .description, .contributors {
-        a {
-            color: $green;
-            text-decoration: none;
-
-            &:focus, &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-}
 
 .base-icn {
     background-repeat: no-repeat;
@@ -113,8 +70,50 @@ $loadmask-msg-border-radius: 0;
     background-image: url('../resources/images/icon-connected.png');
 }
 
+$loadmask-msg-border-radius: 0;
+
+.x-body.x-masked {
+    div.x-panel {
+        @include filter(blur(2px));
+    }
+}
+
+.x-mask-msg {
+    &.no-framework-mask {
+        border: 1px solid $loadmask-msg-inner-color;
+
+        .x-mask-inner {}
+
+        .x-mask-msg-text {
+            padding: 24px;
+            margin: 0;
+            background: none;
+            font-size: 2em;
+        }
+    }
+
+    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);
+}
+
 .filtered {
     display: none !important;
+}
+
+.about-details {
+    img {
+        border: 2px solid $green;
+    }
+
+    .description, .contributors {
+        a {
+            color: $green;
+            text-decoration: none;
+
+            &:focus, &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 .components-toolbar {
@@ -179,5 +178,32 @@ $loadmask-msg-border-radius: 0;
         color: $orange;
 
         &:before { background-color: $orange; }
+    }
+}
+
+.treegrid {
+    .x-grid-row:first-child .root .x-grid-cell-inner {
+        font-weight: bold !important;
+    }
+
+    img {
+        &.x-tree-elbow-img:first-child, &.no-icon {
+            display: none;
+        }
+    }
+
+    span {
+        &.boolean {
+            font-family: monospace;
+
+            &.true { color: $green; }
+
+            &.false { color: $red; }
+        }
+
+        &.null, &.undefined, &.NaN {
+            font-family: monospace;
+            color: lighten($grey, 50%);
+        }
     }
 }

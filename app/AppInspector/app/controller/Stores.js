@@ -56,8 +56,11 @@ Ext.define('AI.controller.Stores', {
             'gridpanel#StoreList': {
                 'itemclick': me.onStoreGridSelection
             },
-            'gridpanel#RecordList' : {
-                'itemclick'   : me.onRecordGridSelection
+            'gridpanel#RecordListStore': {
+                'itemclick': me.onRecordGridSelection
+            },
+            'treepanel#RecordListTreeStore': {
+                'itemclick': me.onRecordGridSelection
             }
         });
     },
@@ -184,10 +187,24 @@ Ext.define('AI.controller.Stores', {
     },
 
     onRecordGridSelection: function(dataview, record, item, index, e, eOpts) {
-        var panel    = dataview.up('gridpanel'),
-            property = panel.nextSibling();
+        var parent = Ext.ComponentQuery.query('#StoreDetails')[0],
+            tree = parent.down('#RecordDetail'),
+            root = tree.getRootNode(),
+            details = record.raw.modelData || record.raw;
 
-        property.setSource(record.raw.modelData);
+        root.removeAll();
+
+        Ext.Object.each(details, function (key, value) {
+            root.appendChild(Ext.create('AI.model.stores.RecordDetail', {
+                text: key,
+                value: value,
+                iconCls: 'no-icon',
+                leaf: true
+            }));
+        });
+
+        root.setDirty(false);
+
     }
 
 });
