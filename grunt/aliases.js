@@ -10,8 +10,9 @@ module.exports = {
     dev     : [
         'jshint',
         'clean:dist',
-        'chromeManifest:dev',
         'exec:dev',
+        'chromeManifest:dev',
+        'changelog:dev',
         'copy:dev',
         'fileblocks:dist'
     ],
@@ -21,10 +22,11 @@ module.exports = {
     build   : [
         'jshint',
         'clean:dist',
-        'chromeManifest:dist',
         'imagemin:resources',
         'exec:production',
         'imagemin:sencha',
+        'chromeManifest:dist',
+        'changelog:dist',
         'copy:dist',
         'compress',
         'docs'
