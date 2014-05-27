@@ -1,0 +1,64 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "recordliststore",
+        "designer|userClassName": "stores.RecordList",
+        "disabled": null,
+        "hidden": null,
+        "hideHeaders": true,
+        "itemId": null,
+        "store": "Records",
+        "title": "Store Records"
+    },
+    "designerId": "fbf4c62c-fa71-474e-b056-3349c4eb5734",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "id",
+                "flex": 1,
+                "resizable": false,
+                "text": "Record ID"
+            },
+            "designerId": "a3fd2b82-f999-412e-8744-71df0c4a505b"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "markDirty": false
+            },
+            "designerId": "4931dfca-f973-449b-b21f-2b3c5526fbee"
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayInfo": true,
+                "dock": "bottom",
+                "itemId": "mypagingtoolbar",
+                "store": "Records",
+                "width": null
+            },
+            "designerId": "7d921677-32e0-4b83-97f6-496d2f0e4f84"
+        }
+    ]
+}

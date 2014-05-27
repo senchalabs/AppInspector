@@ -18,7 +18,7 @@ StartTest({
 
             test.isNot(stores[0].id, undefined, 'Nodes have "id" property');
             test.isNot(stores[0].count, undefined, 'Nodes have "count" property');
-            test.isNot(stores[0].leaf, undefined, 'Nodes have "leaf" property');
+            test.isNot(stores[0].isTree, undefined, 'Nodes have "isTree" property');
         }
     );
 

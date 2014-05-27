@@ -1,0 +1,40 @@
+{
+    "type": "Ext.data.TreeStore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": null,
+        "designer|userClassName": "stores.RecordsTree",
+        "model": "Record",
+        "root": [
+            "{",
+            "    id: '_ROOT_',",
+            "    cls: 'root',",
+            "    iconCls: 'no-icon',",
+            "    expanded: true,",
+            "    expandable: false,",
+            "    children: []",
+            "}",
+            ""
+        ],
+        "storeId": "RecordsTree"
+    },
+    "designerId": "a41ba8eb-884c-4af8-8477-fee9723a8887",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Memory",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "memory proxy"
+            },
+            "designerId": "f253bdae-afd8-4afc-b914-a6ebbe675c7c"
+        }
+    ]
+}

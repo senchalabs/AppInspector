@@ -1,0 +1,89 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "stores.RecordDetail"
+    },
+    "designerId": "d44f1ab2-6157-4dc2-9433-236c93c67b6f",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "text"
+            },
+            "designerId": "c8c9abd3-dc04-411b-8910-38b1e778045f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "value",
+                "type": null
+            },
+            "designerId": "89983d9a-6261-4f06-9fba-4200426abf37"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "type"
+            },
+            "designerId": "5b645ea2-974a-4e94-8376-31ab6fca13e0",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "v",
+                            "rec"
+                        ],
+                        "fn": "convert",
+                        "implHandler": [
+                            "var value = rec.get('value');",
+                            "",
+                            "if (rec.data.id === 'root') {",
+                            "    return '';",
+                            "}",
+                            "",
+                            "if (value === null) {",
+                            "    return 'null';",
+                            "}",
+                            "",
+                            "/*",
+                            "// TODO: Date() check needs to be more accurate",
+                            "if (Ext.isDate(value) || (typeof value === 'string' && Date.parse(value))) {",
+                            "    return 'date';",
+                            "}",
+                            "*/",
+                            "",
+                            "return typeof value;"
+                        ]
+                    },
+                    "designerId": "8c6de032-0b49-4da5-8ef1-e3c5933b5c23"
+                }
+            ]
+        }
+    ]
+}

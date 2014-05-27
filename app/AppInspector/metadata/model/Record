@@ -21,6 +21,43 @@
                 "name": "id"
             },
             "designerId": "2d6a50ce-6086-4687-b5db-70715e055724"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultValue": [
+                    "true"
+                ],
+                "name": "isLeaf",
+                "type": "boolean"
+            },
+            "designerId": "543c575a-8211-465d-98a3-3506170b3562"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "text"
+            },
+            "designerId": "5b618508-2523-47c8-9d85-2e29142fe470"
+        },
+        {
+            "type": "Ext.data.UuidGenerator",
+            "reference": {
+                "name": "idgen",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "7eb55ddb-97f2-4fb4-a172-db982b9958f2"
         }
     ]
 }

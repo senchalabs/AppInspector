@@ -118,7 +118,8 @@
                     "$grey: rgb(84, 86, 91);         // #54565B",
                     "$red: rgb(177, 32, 41);         // #B12029",
                     "$orange: rgb(255, 144, 22);     // #FF9016",
-                    "$yellow: rgb(255, 200, 69);     // #FFC845"
+                    "$yellow: rgb(255, 200, 69);     // #FFC845",
+                    ""
                 ]
             },
             "designerId": "c111a61d-10e8-4180-aa2a-0e8e6aee9b0e"
@@ -131,70 +132,13 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "mask",
-                "implHandler": [
-                    "$loadmask-msg-border-radius: 0;",
-                    "//$loadmask-opacity: 0.95;",
-                    "",
-                    ".x-body.x-masked {",
-                    "    div.x-panel {",
-                    "        @include filter(blur(2px));",
-                    "    }",
-                    "}",
-                    "",
-                    ".x-mask-msg {",
-                    "    &.no-framework-mask {",
-                    "        border: 1px solid $loadmask-msg-inner-color;",
-                    "",
-                    "        .x-mask-inner {}",
-                    "",
-                    "        .x-mask-msg-text {",
-                    "            padding: 24px;",
-                    "            margin: 0;",
-                    "            background: none;",
-                    "            font-size: 2em;",
-                    "        }",
-                    "    }",
-                    "",
-                    "    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);",
-                    "}",
-                    ""
-                ]
-            },
-            "designerId": "5bf3a5da-bda4-47eb-9e51-bb00cbe910c9"
-        },
-        {
-            "type": "themescss",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|displayName": "about-details",
+                "designer|displayName": "base",
                 "implHandler": [
                     ":focus { outline: none; }",
-                    "",
-                    ".about-details {",
-                    "    img {",
-                    "        border: 2px solid $green;",
-                    "    }",
-                    "",
-                    "    .description, .contributors {",
-                    "        a {",
-                    "            color: $green;",
-                    "            text-decoration: none;",
-                    "",
-                    "            &:focus, &:hover {",
-                    "                text-decoration: underline;",
-                    "            }",
-                    "        }",
-                    "    }",
-                    "}",
                     ""
                 ]
             },
-            "designerId": "1abd6bdf-8fe3-4a18-a9bd-50da5832c80e"
+            "designerId": "f619129f-8183-4b05-b9c0-94f02b20c2f4"
         },
         {
             "type": "themescss",
@@ -288,7 +232,46 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "tree filter",
+                "designer|displayName": "mask",
+                "implHandler": [
+                    "$loadmask-msg-border-radius: 0;",
+                    "",
+                    ".x-body.x-masked {",
+                    "    div.x-panel {",
+                    "        @include filter(blur(2px));",
+                    "    }",
+                    "}",
+                    "",
+                    ".x-mask-msg {",
+                    "    &.no-framework-mask {",
+                    "        border: 1px solid $loadmask-msg-inner-color;",
+                    "",
+                    "        .x-mask-inner {}",
+                    "",
+                    "        .x-mask-msg-text {",
+                    "            padding: 24px;",
+                    "            margin: 0;",
+                    "            background: none;",
+                    "            font-size: 2em;",
+                    "        }",
+                    "    }",
+                    "",
+                    "    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "5bf3a5da-bda4-47eb-9e51-bb00cbe910c9"
+        },
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "tree",
                 "implHandler": [
                     ".filtered {",
                     "    display: none !important;",
@@ -306,7 +289,38 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "highlight",
+                "designer|displayName": "about",
+                "implHandler": [
+                    ".about-details {",
+                    "    img {",
+                    "        border: 2px solid $green;",
+                    "    }",
+                    "",
+                    "    .description, .contributors {",
+                    "        a {",
+                    "            color: $green;",
+                    "            text-decoration: none;",
+                    "",
+                    "            &:focus, &:hover {",
+                    "                text-decoration: underline;",
+                    "            }",
+                    "        }",
+                    "    }",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "1abd6bdf-8fe3-4a18-a9bd-50da5832c80e"
+        },
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "components",
                 "implHandler": [
                     ".components-toolbar {",
                     "    &.top {",
@@ -375,7 +389,48 @@
                     ""
                 ]
             },
-            "designerId": "a8b3e96e-1805-473f-b527-4b7cd5a16116"
+            "designerId": "cc76ab8a-f41b-4439-aeb1-5bffcd43813c"
+        },
+        {
+            "type": "themescss",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "stores",
+                "implHandler": [
+                    ".treegrid {",
+                    "    .x-grid-row:first-child .root .x-grid-cell-inner {",
+                    "        font-weight: bold !important;",
+                    "    }",
+                    "",
+                    "    img {",
+                    "        &.x-tree-elbow-img:first-child, &.no-icon {",
+                    "            display: none;",
+                    "        }",
+                    "    }",
+                    "",
+                    "    span {",
+                    "        &.boolean {",
+                    "            font-family: monospace;",
+                    "",
+                    "            &.true { color: $green; }",
+                    "",
+                    "            &.false { color: $red; }",
+                    "        }",
+                    "",
+                    "        &.null, &.undefined, &.NaN {",
+                    "            font-family: monospace;",
+                    "            color: lighten($grey, 50%);",
+                    "        }",
+                    "    }",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "5b318e12-75e1-4327-b1a1-e27849329ee9"
         }
     ]
 }

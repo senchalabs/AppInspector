@@ -21,6 +21,21 @@ Ext.define('AI.controller.MVC', {
         'AI.util.touch.MVC'
     ],
 
+    models: [
+        'mvc.Tree',
+        'mvc.Listeners'
+    ],
+    stores: [
+        'MVC',
+        'mvc.Records',
+        'mvc.Listeners'
+    ],
+    views: [
+        'MVC',
+        'mvc.Records',
+        'mvc.Listeners'
+    ],
+
     init: function() {
         this.control({
             'mvc': {

@@ -1,0 +1,114 @@
+{
+    "type": "Ext.tree.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": "treegrid",
+        "columnLines": false,
+        "data": [
+            "{",
+            "    text: 'My.model.Foo'",
+            "}"
+        ],
+        "designer|userAlias": "recorddetails",
+        "designer|userClassName": "stores.RecordDetails",
+        "height": null,
+        "hideHeaders": true,
+        "rootVisible": null,
+        "rowLines": true,
+        "store": "stores.RecordDetails",
+        "title": "Record Details",
+        "useArrows": true,
+        "width": null
+    },
+    "mockCfgs": [
+        "data"
+    ],
+    "designerId": "1d694f46-7cb9-41a6-b932-48c9eede228b",
+    "isBuiltIn": true,
+    "iconCls": "icon-treegridpanel",
+    "autoName": "TreeGrid",
+    "cn": [
+        {
+            "type": "Ext.tree.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "treeview config",
+                "markDirty": false,
+                "stripeRows": true
+            },
+            "designerId": "6c7a733b-7076-4e02-8bfb-69b44da87da8"
+        },
+        {
+            "type": "Ext.tree.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "text",
+                "flex": 1,
+                "text": "Name"
+            },
+            "designerId": "f743675c-8a27-4adb-bbcd-9691f76c08d7"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "value",
+                "flex": 2,
+                "text": "Value"
+            },
+            "designerId": "0e410add-d7bd-49a5-8f1f-7cf231bd15ef",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "fn": "renderer",
+                        "implHandler": [
+                            "var v = value;",
+                            "",
+                            "if (value === null) {",
+                            "    v = 'null';",
+                            "}",
+                            "",
+                            "if (record.data.text === 'undefined') {",
+                            "    v = 'undefined';",
+                            "}",
+                            "",
+                            "return '<span class=\"' + record.get('type') + ' ' + v + '\">' + v + '</span>';"
+                        ]
+                    },
+                    "designerId": "6ba48b2a-8c3e-4270-9d7d-0844c670ea86"
+                }
+            ]
+        }
+    ]
+}

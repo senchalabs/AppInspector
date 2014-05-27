@@ -25,20 +25,6 @@ Ext.application({
         'AI.util.i18n',
         'Ext.window.MessageBox'
     ],
-    models: [
-        'mvc.Tree',
-        'mvc.Listeners'
-    ],
-    stores: [
-        'MVC',
-        'mvc.Listeners',
-        'mvc.Records'
-    ],
-    views: [
-        'mvc.Listeners',
-        'Records',
-        'mvc.Records'
-    ],
     controllers: [
         'Main',
         'Components',

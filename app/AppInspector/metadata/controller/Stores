@@ -8,19 +8,26 @@
     "userConfig": {
         "designer|userClassName": "Stores",
         "models": [
-            "Store",
-            "Record"
+            "Record",
+            "stores.Store",
+            "stores.RecordDetail"
         ],
         "requires": [
+            "AI.util.InspectedWindow",
             "AI.util.Store",
-            "AI.util.InspectedWindow"
+            "AI.util.TreeStore"
         ],
         "stores": [
-            "Stores",
-            "Records"
+            "Records",
+            "stores.Stores",
+            "stores.RecordsTree",
+            "stores.RecordDetails"
         ],
         "views": [
-            "Stores"
+            "stores.Stores",
+            "stores.RecordList",
+            "stores.RecordListTree",
+            "stores.RecordDetails"
         ]
     },
     "designerId": "981c06a0-6e9d-48a2-a9e7-f0db46131544",
@@ -53,8 +60,11 @@
                     "    'gridpanel#StoreList': {",
                     "        'itemclick': me.onStoreGridSelection",
                     "    },",
-                    "    'gridpanel#RecordList' : {",
-                    "        'itemclick'   : me.onRecordGridSelection",
+                    "    'gridpanel#RecordListStore': {",
+                    "        'itemclick': me.onRecordGridSelection",
+                    "    },",
+                    "    'treepanel#RecordListTreeStore': {",
+                    "        'itemclick': me.onRecordGridSelection",
                     "    }",
                     "});"
                 ]
@@ -113,7 +123,7 @@
                     "    null,",
                     "    function (stores) {",
                     "        Ext.each(stores, function (store) {",
-                    "            var model = Ext.create('AI.model.Store', store);",
+                    "            var model = Ext.create('AI.model.stores.Store', store);",
                     "",
                     "            gridStore.add(model);",
                     "        });",
@@ -192,20 +202,63 @@
                 "fn": "onStoreGridSelection",
                 "implHandler": [
                     "var parent = Ext.ComponentQuery.query('#StoreDetails')[0],",
-                    "    grid = parent.down('#RecordList'),",
-                    "    store = grid.getStore(),",
-                    "    propertyGrid = parent.down('#RecordDetail');",
+                    "    card = parent.down('#StoreRecordsContainer'),",
+                    "    layout = card.getLayout(),",
+                    "    isTreeStore = record.get('isTree'),",
+                    "    // records list store",
+                    "    recordsGrid,",
+                    "    recordsGridStore,",
+                    "    // records list treestore",
+                    "    recordsTree,",
+                    "    recordsTreeStore,",
+                    "    recordsRoot,",
+                    "    // record details",
+                    "    detailsTree = parent.down('#RecordDetail'),",
+                    "    detailsRoot = detailsTree.getRootNode();",
                     "",
-                    "store.removeAll();",
-                    "propertyGrid.setSource({});",
+                    "if (!isTreeStore) {",
+                    "    // records list store",
+                    "    recordsGrid = parent.down('#RecordListStore');",
+                    "    recordsGridStore = recordsGrid.getStore();",
                     "",
-                    "store.getProxy().inspectedStoreId = record.get('id');",
+                    "    recordsGridStore.removeAll();",
                     "",
-                    "store.load({",
-                    "    callback : function(records, operation, success) {",
-                    "        record.set('count', this.getTotalCount());",
-                    "    }",
-                    "});"
+                    "    recordsGridStore.getProxy().inspectedStoreId = record.get('id');",
+                    "",
+                    "    recordsGridStore.load({",
+                    "        callback : function(records, operation, success) {",
+                    "            record.set('count', this.getTotalCount());",
+                    "        }",
+                    "    });",
+                    "",
+                    "    layout.setActiveItem(recordsGrid);",
+                    "} else {",
+                    "    // records list treestore",
+                    "    recordsTree = parent.down('#RecordListTreeStore');",
+                    "    recordsTreeStore = recordsTree.getStore();",
+                    "    recordsRoot = recordsTree.getRootNode();",
+                    "",
+                    "    AI.util.InspectedWindow.eval(",
+                    "        AI.util.TreeStore.getChildNodes,",
+                    "",
+                    "        // storeId",
+                    "        [record.get('id')],",
+                    "",
+                    "        function(result) {",
+                    "            recordsRoot.removeAll();",
+                    "",
+                    "            recordsRoot.appendChild(result);",
+                    "            recordsRoot.expandChildren();",
+                    "",
+                    "            layout.setActiveItem(recordsTree);",
+                    "        }",
+                    "    );",
+                    "}",
+                    "",
+                    "// record details",
+                    "detailsRoot.removeAll();",
+                    "detailsRoot.set('value', record.get('model'));",
+                    ""
                 ]
             },
             "designerId": "be6d2006-7858-4073-bea2-02b60d0165b1"
@@ -223,10 +276,24 @@
                 ],
                 "fn": "onRecordGridSelection",
                 "implHandler": [
-                    "var panel    = dataview.up('gridpanel'),",
-                    "    property = panel.nextSibling();",
+                    "var parent = Ext.ComponentQuery.query('#StoreDetails')[0],",
+                    "    tree = parent.down('#RecordDetail'),",
+                    "    root = tree.getRootNode(),",
+                    "    details = record.raw.modelData || record.raw;",
                     "",
-                    "property.setSource(record.raw.modelData);"
+                    "root.removeAll();",
+                    "",
+                    "Ext.Object.each(details, function (key, value) {",
+                    "    root.appendChild(Ext.create('AI.model.stores.RecordDetail', {",
+                    "        text: key,",
+                    "        value: value,",
+                    "        iconCls: 'no-icon',",
+                    "        leaf: true",
+                    "    }));",
+                    "});",
+                    "",
+                    "root.setDirty(false);",
+                    ""
                 ]
             },
             "designerId": "588b0ca3-e374-4de0-8a3e-37c7b7a55043"
