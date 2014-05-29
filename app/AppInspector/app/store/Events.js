@@ -27,5 +27,28 @@ Ext.define('AI.store.Events', {
             model: 'AI.model.Event',
             storeId: 'Events'
         }, cfg)]);
+    },
+
+    findAll: function(property, value, anyMatch, caseSensitive) {
+        var me = this,
+            data = Ext.clone(me.data),
+
+            filter = me.decodeFilters([{
+                property      : property,
+                value         : value,
+                anyMatch      : anyMatch,
+                caseSensitive : caseSensitive
+            }]),
+
+            filteredData = data.filter(filter),
+            indices = [];
+
+        Ext.each(filteredData.getRange(), function (record) {
+            var index = me.indexOf(record);
+            indices.push(index);
+        });
+
+        return indices;
     }
+
 });

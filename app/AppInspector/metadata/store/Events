@@ -137,5 +137,43 @@
     "mockCfgs": [
         "data"
     ],
-    "designerId": "2b8c84a4-23a7-4be2-9340-def773002814"
+    "designerId": "2b8c84a4-23a7-4be2-9340-def773002814",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "property, value, anyMatch, caseSensitive"
+                ],
+                "fn": "findAll",
+                "implHandler": [
+                    "var me = this,",
+                    "    data = Ext.clone(me.data),",
+                    "",
+                    "    filter = me.decodeFilters([{",
+                    "        property      : property,",
+                    "        value         : value,",
+                    "        anyMatch      : anyMatch,",
+                    "        caseSensitive : caseSensitive",
+                    "    }]),",
+                    "",
+                    "    filteredData = data.filter(filter),",
+                    "    indices = [];",
+                    "",
+                    "Ext.each(filteredData.getRange(), function (record) {",
+                    "    var index = me.indexOf(record);",
+                    "    indices.push(index);",
+                    "});",
+                    "",
+                    "return indices;"
+                ]
+            },
+            "designerId": "11e6087b-efa8-420a-baa4-e7bfde58b1fd"
+        }
+    ]
 }
