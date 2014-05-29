@@ -186,6 +186,18 @@
                 "scope": "me"
             },
             "designerId": "dbd8eddb-03cb-44a9-b94c-c13e8de50958"
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "userConfig": {
+                "mode": "MULTI"
+            },
+            "designerId": "da76e068-97d2-448c-b8b1-275d10b96116"
         }
     ]
 }

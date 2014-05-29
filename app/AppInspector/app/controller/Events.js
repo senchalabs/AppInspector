@@ -35,6 +35,8 @@ Ext.define('AI.controller.Events', {
     init: function(application) {
         var me = this;
 
+        me.task = new Ext.util.DelayedTask(me.highlightFilteredRecords);
+
         me.control({
             '#EventInspector button#ClearEvents' : {
                 'click' : me.onClearEventsClick
@@ -46,7 +48,8 @@ Ext.define('AI.controller.Events', {
                 'click' : me.onStopRecordingClick
             },
             'filterfield#FilterEventsList': {
-                'applyfilter': me.onFilterEvents
+                'applyfilter' : me.onFilterEvents,
+                'change'      : me.onFilterChange
             }
         });
     },
@@ -129,6 +132,29 @@ Ext.define('AI.controller.Events', {
             null,
             Ext.emptyFn
         );
+    },
+
+    highlightFilteredRecords: function(field, value) {
+        var grid = field.up('#EventInspector'),
+            selModel = grid.getSelectionModel(),
+            store = grid.getStore(),
+            indices;
+
+        selModel.deselectAll();
+
+        if (value === '') {
+            return;
+        }
+
+        indices = store.findAll('eventName', value, true);
+
+        Ext.each(indices, function (index) {
+            selModel.select(index, true, true);
+        });
+    },
+
+    onFilterChange: function(field, newValue, oldValue, eOpts) {
+        this.task.delay(500, null, this, [field, newValue]);
     }
 
 });

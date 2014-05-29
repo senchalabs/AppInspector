@@ -24,7 +24,8 @@ Ext.define('AI.view.Events', {
         'Ext.toolbar.Fill',
         'Ext.form.field.Text',
         'Ext.grid.column.Column',
-        'Ext.grid.View'
+        'Ext.grid.View',
+        'Ext.selection.RowModel'
     ],
 
     itemId: 'EventInspector',
@@ -100,7 +101,10 @@ Ext.define('AI.view.Events', {
                     fn: me.onEventInspectorBeforeAdd,
                     scope: me
                 }
-            }
+            },
+            selModel: Ext.create('Ext.selection.RowModel', {
+                mode: 'MULTI'
+            })
         });
 
         me.callParent(arguments);
