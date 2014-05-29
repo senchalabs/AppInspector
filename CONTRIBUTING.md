@@ -2,18 +2,20 @@
 
  1. Fork the repo.
 
- 2. Install *node_modules*: `npm install`
+ 2. Install *node_modules* by running `npm install`.
 
- 3. Enable the *pre-commit-hook*: `grunt githooks`
+ 3. Enable the *pre-commit-hook* by running `grunt githooks` once.
 
- 4. Happy coding ...
+ 4. 4. Add *commit.template* to `.git/config` by running `git config commit.template ./.gitmessage` once.
 
- 5. Use JShint on your code, either with `.jshintrc` or `grunt jshint`.
+ 5. Happy coding ...
+
+ 6. Use JShint on your code, either with `.jshintrc` or `grunt jshint`.
     The `grunt` task is automatically run on `grunt`, `grunt build`, `grunt dev`, `grunt watch` and of course as a pre-commit-hook.
 
- 6. Push to your fork and submit a pull request.
+ 7. Push to your fork and submit a pull request.
 
- 7. Please give us some time to review your pull request.
+ 8. Please give us some time to review your pull request.
 
 
 ### Syntax
