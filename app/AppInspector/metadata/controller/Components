@@ -56,7 +56,8 @@
                     "    },",
                     "    // properties",
                     "    'gridpanel#ComponentProps': {",
-                    "        'activate': me.toggleComponentsDetailsTips",
+                    "        'activate': me.toggleComponentsDetailsTips,",
+                    "        'validateedit': me.onDetailValueEdit",
                     "    },",
                     "    'gridpanel#ComponentProps filterfield': {",
                     "        'applyfilter': me.onFilterComponentDetails",
@@ -289,6 +290,22 @@
                 ]
             },
             "designerId": "b19705e2-d90c-45cc-a8ad-7c1dbb815cb8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onDetailValueEdit",
+                "implHandler": [
+                    "// cancel edit to reset original value",
+                    "return false;"
+                ]
+            },
+            "designerId": "fa3786ff-760f-4952-956e-8e03efee7089"
         }
     ]
 }

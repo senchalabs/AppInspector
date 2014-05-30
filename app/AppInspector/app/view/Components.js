@@ -29,6 +29,7 @@ Ext.define('AI.view.Components', {
         'Ext.grid.View',
         'Ext.grid.column.Boolean',
         'Ext.tab.Tab',
+        'Ext.grid.plugin.CellEditing',
         'Ext.toolbar.TextItem',
         'Ext.layout.container.Border'
     ],
@@ -123,8 +124,17 @@ Ext.define('AI.view.Components', {
                                     xtype: 'gridcolumn',
                                     dataIndex: 'value',
                                     text: 'Value',
-                                    flex: 1
+                                    flex: 1,
+                                    editor: {
+                                        xtype: 'textfield',
+                                        selectOnFocus: true
+                                    }
                                 }
+                            ],
+                            plugins: [
+                                Ext.create('Ext.grid.plugin.CellEditing', {
+
+                                })
                             ]
                         },
                         {
