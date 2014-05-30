@@ -6,7 +6,7 @@
 
  3. Enable the *pre-commit-hook* by running `grunt githooks` once.
 
- 4. 4. Add *commit.template* to `.git/config` by running `git config commit.template ./.gitmessage` once.
+ 4. Add *commit.template* to `.git/config` by running `git config commit.template ./.gitmessage` once.
 
  5. Happy coding ...
 
@@ -27,7 +27,7 @@
  * __Four__ spaces.
 
  * __No__ tabs.
- 
+
  * __No__ trailing whitespace.
 
  * Empty new line at the end of a file.
