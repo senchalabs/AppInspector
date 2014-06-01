@@ -52,7 +52,8 @@ Ext.define('AI.controller.Components', {
             },
             // properties
             'gridpanel#ComponentProps': {
-                'activate': me.toggleComponentsDetailsTips
+                'activate': me.toggleComponentsDetailsTips,
+                'validateedit': me.onDetailValueEdit
             },
             'gridpanel#ComponentProps filterfield': {
                 'applyfilter': me.onFilterComponentDetails
@@ -182,6 +183,11 @@ Ext.define('AI.controller.Components', {
                 value: value
             }]);
         }
+    },
+
+    onDetailValueEdit: function() {
+        // cancel edit to reset original value
+        return false;
     }
 
 });

@@ -233,7 +233,21 @@
                                 "flex": 1,
                                 "text": "Value"
                             },
-                            "designerId": "94651013-15f2-45bc-bcf2-d49d954dc75f"
+                            "designerId": "94651013-15f2-45bc-bcf2-d49d954dc75f",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "editor",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "selectOnFocus": true
+                                    },
+                                    "designerId": "26989453-d6e9-4455-be62-3b9e878bf35d"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.tab.Tab",
@@ -243,6 +257,15 @@
                             },
                             "codeClass": null,
                             "designerId": "6a0c1d1b-fe18-463d-b860-1f7817324449"
+                        },
+                        {
+                            "type": "Ext.grid.plugin.CellEditing",
+                            "reference": {
+                                "name": "plugins",
+                                "type": "array"
+                            },
+                            "codeClass": "Ext.grid.plugin.CellEditing",
+                            "designerId": "7e31e4e3-dc0a-4b44-8f50-f94c353c1609"
                         }
                     ]
                 },
