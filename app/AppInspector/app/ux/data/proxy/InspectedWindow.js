@@ -11,22 +11,22 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
         'AI.util.Store'
     ],
 
-    /**
-     * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
-     */
-    evalFn : null,
-    /**
-     * @cfg {String} inspectedStoreId The storeId of the store.
-     */
-    inspectedStoreId : null,
+    config : {
+        /**
+         * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
+         */
+        evalFn           : null,
+
+        /**
+         * @cfg {String} inspectedStoreId The storeId of the store.
+         */
+        inspectedStoreId : null
+    },
 
     read : function (operation, callback, scope) {
         scope = scope || this;
 
-        var records = [],
-            evalFn  = this.evalFn,
-            reader  = this.getReader(),
-            model   = reader.model;
+        var evalFn = this.evalFn;
 
         if (Ext.isString(evalFn)) {
             //can resolve better, split by . and resolve each part
@@ -35,23 +35,12 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
 
         AI.util.InspectedWindow.eval(
             evalFn,
-            [ this.inspectedStoreId, operation.start ],
+            [ this.inspectedStoreId, operation.getStart() ],
             function (result) {
-                Ext.each(result.records, function (record) {
-                    records.push(Ext.create(model, record));
-                });
+                var resultSet = scope.getReader().read(result.records);
 
-                Ext.apply(operation, {
-                    resultSet : {
-                        records      : records,
-                        count        : records.length,
-                        totalRecords : result.totalCount,
-                        total        : result.totalCount
-                    }
-                });
-
-                operation.setCompleted();
-                operation.setSuccessful();
+                resultSet.setTotal(result.totalCount);
+                operation.process(resultSet, null, null, true);
 
                 Ext.Function.defer(function () {
                     Ext.callback(callback, scope, [operation]);
