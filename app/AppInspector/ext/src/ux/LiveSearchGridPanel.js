@@ -67,7 +67,7 @@ Ext.define('Ext.ux.LiveSearchGridPanel', {
                      change: {
                          fn: me.onTextFieldChange,
                          scope: this,
-                         buffer: 100
+                         buffer: 500
                      }
                  }
             }, {

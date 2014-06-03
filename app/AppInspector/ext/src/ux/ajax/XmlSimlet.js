@@ -27,23 +27,30 @@ Ext.define('Ext.ux.ajax.XmlSimlet', {
         var me = this,
             data = me.getData(ctx),
             page = me.getPage(ctx, data),
-            reader = ctx.xhr.options.proxy.reader,
+            proxy = ctx.xhr.options.operation.getProxy(),
+            reader = proxy && proxy.getReader(),
+            model = reader && reader.getModel(),
             ret = me.callParent(arguments), // pick up status/statusText
             response = {
                 data: page,
                 reader: reader,
-                fields: reader.model.getFields(),
-                root: reader.root,
-                record: reader.record
-            };
+                fields: model && model.fields,
+                root: reader && reader.getRootProperty(),
+                record: reader && reader.record
+            },
+            tpl, xml, doc;
 
         if (ctx.groupSpec) {
             response.summaryData = me.getSummary(ctx, data, page);
         }
 
-        var tpl = Ext.XTemplate.getTpl(me, 'xmlTpl'),
-            xml = tpl.apply(response),
-            doc;
+        // If a straight Ajax request there won't be an xmlTpl.
+        if (me.xmlTpl) {
+            tpl = Ext.XTemplate.getTpl(me, 'xmlTpl');
+            xml = tpl.apply(response);
+        } else {
+            xml = data;
+        }
 
         if (typeof DOMParser != 'undefined') {
             doc = (new DOMParser()).parseFromString(xml, "text/xml");
@@ -57,5 +64,33 @@ Ext.define('Ext.ux.ajax.XmlSimlet', {
         ret.responseText = xml;
         ret.responseXML = doc;
         return ret;
+    },
+
+    fixTree: function() {
+        this.callParent(arguments);
+        var buffer = [];
+        this.buildTreeXml(this.data, buffer);
+        this.data = buffer.join('');
+    },
+
+    buildTreeXml: function(nodes, buffer) {
+        var rootProperty = this.rootProperty,
+            recordProperty = this.recordProperty;
+
+        buffer.push('<', rootProperty, '>');
+        Ext.Array.forEach(nodes, function(node) {
+            buffer.push('<', recordProperty, '>');
+            for (var key in node) {
+                if (key == 'children') {
+                    this.buildTreeXml(node.children, buffer);
+                } else {
+                    buffer.push('<', key, '>', node[key], '</', key, '>');
+                }
+            }
+            buffer.push('</', recordProperty, '>');
+        });
+        buffer.push('</', rootProperty, '>');
     }
+
+
 });

@@ -90,7 +90,7 @@ Ext.define('Ext.ux.event.RecorderManager', {
             }
         ];
 
-        var events = me.attachTo.testEvents;
+        var events = me.attachTo && me.attachTo.testEvents;
         me.items = [
             {
                 xtype: 'textarea',
@@ -108,7 +108,7 @@ Ext.define('Ext.ux.event.RecorderManager', {
         me.fbar = [
             {
                 xtype: 'tbtext',
-                text: 'Attached To: ' + me.attachTo.location.href
+                text: 'Attached To: ' + (me.attachTo && me.attachTo.location.href)
             }
         ];
 

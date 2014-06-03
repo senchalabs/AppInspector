@@ -128,7 +128,7 @@ Ext.define('Ext.ux.DataView.Animated', {
                 itemHeight  = el.getMargin('bt') + el.getHeight(),
                 dvWidth     = parentEl.dom.clientWidth,
                 columns     = Math.floor(dvWidth / itemWidth),
-                rtl = this.dataview.getHierarchyState().rtl,
+                rtl = this.dataview.getInherited().rtl,
                 styleSide = rtl ? 'right' : 'left',
                 newStyle;
             
@@ -257,7 +257,7 @@ Ext.define('Ext.ux.DataView.Animated', {
     },
     
     getItemX: function(el) {
-        var rtl = this.dataview.getHierarchyState().rtl,
+        var rtl = this.dataview.getInherited().rtl,
             parentEl = el.up('');
 
         if (rtl) {

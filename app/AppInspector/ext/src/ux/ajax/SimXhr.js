@@ -29,9 +29,11 @@ Ext.define('Ext.ux.ajax.SimXhr', {
 
     getAllResponseHeaders: function () {
         var headers = [];
-        Ext.Object.each(this.responseHeaders, function (name, value) {
-            headers.push(name + ': ' + value);
-        });
+        if (Ext.isObject(this.responseHeaders)) {
+            Ext.Object.each(this.responseHeaders, function (name, value) {
+                headers.push(name + ': ' + value);
+            });
+        }
         return headers.join('\x0d\x0a');
     },
 
@@ -56,10 +58,16 @@ Ext.define('Ext.ux.ajax.SimXhr', {
     },
 
     schedule: function () {
-        var me = this;
-        me.timer = setTimeout(function () {
+        var me = this,
+            delay = me.mgr.delay;
+            
+        if (delay) {
+            me.timer = setTimeout(function () {
+                me.onTick();
+            }, delay);
+        } else {
             me.onTick();
-        }, me.mgr.delay);
+        }
     },
 
     send: function (body) {

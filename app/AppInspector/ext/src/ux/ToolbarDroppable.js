@@ -67,7 +67,7 @@
     /**
      * Calculates the location on the toolbar to create the new sorter button based on the XY of the
      * drag event
-     * @param {Ext.EventObject} e The event object
+     * @param {Ext.event.Event} e The event object
      * @return {Number} The index at which to insert the new button
      */    
     calculateEntryIndex: function(e) {
