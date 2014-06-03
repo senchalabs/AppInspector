@@ -20,7 +20,7 @@
     /**
      * The name of the theme for this application.
      */
-    "theme": "ext-theme-neptune",
+    "theme": "AppInspectorTheme",
 
     /**
      * The list of required packages (with optional versions; default is "latest").
@@ -32,6 +32,7 @@
      *      ]
      */
     "requires": [
+        "AppInspectorTheme"
     ],
 
     /**

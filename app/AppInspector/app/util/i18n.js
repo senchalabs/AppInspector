@@ -29,7 +29,7 @@ Ext.define('AI.util.i18n', {
                 if (config) {
                     me.convert(config);
                 }
-                
+
                 this.callParent(arguments);
             }
         });

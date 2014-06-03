@@ -3805,6 +3805,7 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.toolbar.Paging": [],
   "ExtThemeNeptune.toolbar.Toolbar": []
 });
+Ext.setVersion("AppInspectorTheme", "1.0.0");
 Ext.setVersion("ext", "5.0.0.970");
 Ext.setVersion("ext-theme-base", "5.0.0");
 Ext.setVersion("ext-theme-neptune", "5.0.0");
