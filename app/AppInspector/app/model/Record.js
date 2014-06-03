@@ -18,7 +18,7 @@ Ext.define('AI.model.Record', {
 
     requires: [
         'Ext.data.Field',
-        'Ext.data.UuidGenerator'
+        'Ext.data.identifier.Uuid'
     ],
 
     fields: [

@@ -26,7 +26,10 @@ Ext.define('AI.util.i18n', {
         Ext.define('AI.override.AbstractComponent', {
             override    : 'Ext.AbstractComponent',
             constructor : function (config) {
-                me.convert(config);
+                if (config) {
+                    me.convert(config);
+                }
+                
                 this.callParent(arguments);
             }
         });
