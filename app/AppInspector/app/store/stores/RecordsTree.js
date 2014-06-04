@@ -2,12 +2,12 @@ Ext.define('AI.store.stores.RecordsTree', {
     extend : 'Ext.data.TreeStore',
 
     requires : [
-        'AI.model.TreeRecord',
+        'AI.model.Record',
         'Ext.data.proxy.Memory'
     ],
 
     config : {
-        model   : 'AI.model.TreeRecord',
+        model   : 'AI.model.Record',
         storeId : 'RecordsTree',
         root    : {
             id         : '_ROOT_',
