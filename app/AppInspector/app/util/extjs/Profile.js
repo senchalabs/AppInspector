@@ -109,7 +109,7 @@ Ext.define('AI.util.extjs.Profile', {
                 });
 
                 Ext.ux.AppInspector.layoutCollection.push({
-                    text     : 'Layout run #' + Ext.ux.AppInspector.layoutRunTotal + ' ( ' + items.length + 'items)',
+                    text     : 'Layout run #' + Ext.ux.AppInspector.layoutRunTotal + ' (' + items.length + ' items)',
                     cmpId    : '',
                     itemId   : '',
                     xtype    : '',

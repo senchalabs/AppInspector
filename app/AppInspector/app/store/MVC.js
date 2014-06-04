@@ -5,11 +5,20 @@ Ext.define('AI.store.MVC', {
         'AI.model.mvc.Tree'
     ],
 
-    model   : 'AI.model.mvc.Tree',
-    storeId : 'MVC',
-    root    : {
-        children : [
+    config : {
+        model   : 'AI.model.mvc.Tree',
+        storeId : 'MVC',
+        root    : {
+            children : [
 
-        ]
+            ]
+        },
+
+        proxy    : {
+            type   : 'memory',
+            reader : {
+                type : 'json'
+            }
+        }
     }
 });
