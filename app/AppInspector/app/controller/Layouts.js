@@ -1,47 +1,51 @@
 Ext.define('AI.controller.Layouts', {
-    extend: 'Ext.app.Controller',
+    extend : 'Ext.app.Controller',
 
-    requires: [
+    requires : [
         'AI.util.extjs.Profile',
         'AI.util.touch.Profile',
         'AI.util.InspectedWindow'
     ],
 
-    models: [
+    models : [
         'Overnested'
     ],
-    stores: [
+
+    stores : [
         'Overnested',
         'BoxLayouts',
         'Layouts'
     ],
-    views: [
+
+    views  : [
         'Layouts'
     ],
 
-    init: function(application) {
+    init : function (application) {
         var me = this;
+
+        me.layoutPool = [];
 
         me.control({
             // overnested profile
-            'gridpanel#Overnested': {
-                'activate': me.onOvernetedProfileActivate,
-                'select': me.onSelectOvernestedComponent
+            'gridpanel#Overnested'             : {
+                'activate' : me.onOvernetedProfileActivate,
+                'select'   : me.onSelectOvernestedComponent
             },
-            'button#ProfileOvernesting': {
-                'click': me.onOvernestedProfileClick
+            'button#ProfileOvernesting'        : {
+                'click' : me.onOvernestedProfileClick
             },
             // nested box layouts
-            'gridpanel#BoxLayouts': {
-                'activate': me.onNestedBoxLayoutActivate,
-                'select': me.onSelectOvernestedComponent
+            'gridpanel#BoxLayouts'             : {
+                'activate' : me.onNestedBoxLayoutActivate,
+                'select'   : me.onSelectOvernestedComponent
             },
-            'button#ProfileBoxLayouts': {
-                'click': me.onNestedBoxLayoutsClick
+            'button#ProfileBoxLayouts'         : {
+                'click' : me.onNestedBoxLayoutsClick
             },
 
             //layout runs
-            '#LayoutRuns button#ClearLayouts' : {
+            '#LayoutRuns button#ClearLayouts'  : {
                 'click' : me.onClearLayoutsClick
             },
             '#LayoutRuns button#RecordLayouts' : {
@@ -50,13 +54,13 @@ Ext.define('AI.controller.Layouts', {
             '#LayoutRuns button#StopRecording' : {
                 'click' : me.onStopRecordingClick
             },
-            'treepanel#LayoutRuns': {
-                'itemclick': me.onSelectLayoutRunComponent
+            'treepanel#LayoutRuns'             : {
+                'itemclick' : me.onSelectLayoutRunComponent
             }
         });
     },
 
-    onOvernetedProfileActivate: function(grid) {
+    onOvernetedProfileActivate : function (grid) {
         // load the "Layouts > Overnesting" upfront ...
         var initialLoad = grid.initialLoad,
             btn = grid.down('button#ProfileOvernesting');
@@ -69,7 +73,7 @@ Ext.define('AI.controller.Layouts', {
         }
     },
 
-    onOvernestedProfileClick: function(btn) {
+    onOvernestedProfileClick : function (btn) {
         var grid = btn.up('#Overnested'),
             store = grid.getStore();
 
@@ -100,7 +104,7 @@ Ext.define('AI.controller.Layouts', {
         );
     },
 
-    onNestedBoxLayoutActivate: function(grid) {
+    onNestedBoxLayoutActivate : function (grid) {
         // load the "Layouts > Box Layouts" upfront ...
         var initialLoad = grid.initialLoad,
             btn = grid.down('button#ProfileBoxLayouts');
@@ -113,13 +117,12 @@ Ext.define('AI.controller.Layouts', {
         }
     },
 
-    onNestedBoxLayoutsClick: function(btn) {
+    onNestedBoxLayoutsClick : function (btn) {
         var grid = btn.up('#BoxLayouts'),
             store = grid.getStore();
 
         store.removeAll();
         grid.setLoading('Profiling for overnested box layouts...');
-
 
         var util;
 
@@ -145,7 +148,7 @@ Ext.define('AI.controller.Layouts', {
         );
     },
 
-    onSelectOvernestedComponent: function(selModel, record, index, eOpts) {
+    onSelectOvernestedComponent : function (selModel, record, index, eOpts) {
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
             record.get('cmpId'),
@@ -153,14 +156,16 @@ Ext.define('AI.controller.Layouts', {
         );
     },
 
-    onClearLayoutsClick: function(btn) {
+    onClearLayoutsClick : function (btn) {
         var me = this,
             root = Ext.ComponentQuery.query('#LayoutRuns')[0].getRootNode();
+
+        me.layoutPool = [];
 
         root.removeAll();
     },
 
-    onRecordLayoutsClick: function(btn) {
+    onRecordLayoutsClick : function (btn) {
         var me = this,
             tree = Ext.ComponentQuery.query('#LayoutRuns')[0],
             util = AI.util.extjs.Profile.recordLayouts;
@@ -168,29 +173,32 @@ Ext.define('AI.controller.Layouts', {
         btn.hide();
         btn.next().show();
 
-        var getLayouts = function() {
+        var getLayouts = function () {
             if (!me.recording) { return; }
 
             AI.util.InspectedWindow.eval(
                 util,
                 null,
                 function (components, isException) {
-                    tree.getStore().setRootNode({
-                        expanded : true,
-                        children : components
-                    });
+                    if (components.length > 0) {
+                        me.layoutPool = Ext.Array.merge(me.layoutPool, components);
+
+                        tree.getStore().setRootNode({
+                            expanded : true,
+                            children : Ext.clone(me.layoutPool)
+                        });
+                    }
 
                     requestAnimationFrame(getLayouts);
                 }
             );
         };
 
-
         me.recording = true;
         requestAnimationFrame(getLayouts);
     },
 
-    onStopRecordingClick: function(btn) {
+    onStopRecordingClick : function (btn) {
         var me = this,
             util = AI.util.extjs.Profile.stopLayouts;
 
@@ -206,7 +214,7 @@ Ext.define('AI.controller.Layouts', {
         );
     },
 
-    onSelectLayoutRunComponent: function(tree, record, item, index, e, eOpts) {
+    onSelectLayoutRunComponent : function (tree, record, item, index, e, eOpts) {
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
             record.get('cmpId'),
