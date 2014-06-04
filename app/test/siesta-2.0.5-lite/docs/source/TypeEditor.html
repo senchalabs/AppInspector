@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Recorder-TypeEditor'>/**
+</span> * Target editor.
+ */
+Ext.define('Siesta.Recorder.TypeEditor', {
+    extend          : 'Ext.form.ComboBox',
+    alias           : 'widget.typeeditor',
+<span id='Siesta-Recorder-TypeEditor-property-displayField'>    displayField    : 'id',
+</span><span id='Siesta-Recorder-TypeEditor-property-valueField'>    valueField      : 'id',
+</span><span id='Siesta-Recorder-TypeEditor-property-queryMode'>    queryMode       : 'local',
+</span><span id='Siesta-Recorder-TypeEditor-property-matchFieldWidth'>    matchFieldWidth : false,
+</span><span id='Siesta-Recorder-TypeEditor-property-forceSelection'>    forceSelection  : true,
+</span><span id='Siesta-Recorder-TypeEditor-property-typeAhead'>    typeAhead       : true,
+</span><span id='Siesta-Recorder-TypeEditor-property-selectOnFocus'>    selectOnFocus   : true,
+</span>
+<span id='Siesta-Recorder-TypeEditor-property-actions'>    // TODO move to test class autogenerate these (either during Siesta build or at Siesta runtime - via JsDuck?)
+</span>    // Not all commands can be edited either (like waitForStoresToLoad etc).
+    actions         : [
+        { id : 'click', type : 'mouseinput' },
+        { id : 'dblclick', type : 'mouseinput' },
+        { id : 'contextmenu', type : 'mouseinput' },
+
+        { id : 'drag', type : 'mouseinput' },
+        { id : 'fn', type : 'fn' },
+        { id : 'moveCursorTo', type : 'mouseinput' },
+        { id : 'moveCursorBy', type : 'mouseinput' },
+        { id : 'type', type : 'keyinput' }
+    ],
+
+<span id='Siesta-Recorder-TypeEditor-method-initComponent'>    initComponent : function () {
+</span>        this.store = new Ext.data.JsonStore({
+            fields : ['id', 'type']
+        });
+
+        this.callParent();
+    },
+
+<span id='Siesta-Recorder-TypeEditor-method-populate'>    populate : function (test) {
+</span>        var waitActions = [];
+
+        for (var o in test) {
+            if (o.match(/waitFor.+/) &amp;&amp; typeof test[o] === 'function') {
+                waitActions.push({ id : o, type : 'wait' });
+            }
+        }
+
+        var actions = this.actions.concat(waitActions).sort(function(a, b) { return a.id &lt; b.id ? -1 : 1; });
+
+        this.store.loadData(actions);
+    }
+
+});
+</pre>
+</body>
+</html>

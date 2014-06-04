@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Recorder-EventView'>/**
+</span> * Event recorder.
+ */
+Ext.define('Siesta.Recorder.EventView', {
+    extend : 'Ext.grid.Panel',
+    alias  : 'widget.eventview',
+<span id='Siesta-Recorder-EventView-property-cls'>    cls    : 'siesta-eventview',
+</span>
+<span id='Siesta-Recorder-EventView-property-editing'>    editing : null,
+</span><span id='Siesta-Recorder-EventView-property-test'>    test    : null,
+</span>
+<span id='Siesta-Recorder-EventView-property-enableColumnMove'>    enableColumnMove : false,
+</span>
+<span id='Siesta-Recorder-EventView-method-scrollToBottom'>    scrollToBottom  : function () {
+</span>        if (this.view.rendered) {
+            this.view.el.dom.scrollTop = this.view.el.dom.firstChild.clientHeight;
+        }
+    },
+
+<span id='Siesta-Recorder-EventView-method-highlightTarget'>    // Provided by instantiator
+</span>    highlightTarget : function () {
+        return { success : true };
+    },
+
+<span id='Siesta-Recorder-EventView-method-initComponent'>    initComponent : function () {
+</span>        var me = this;
+
+        me.plugins = me.plugins || [];
+
+        me.editing = new Ext.grid.plugin.CellEditing({
+            clicksToEdit : 1,
+
+            startEdit : function (record, column) {
+                this.completeEdit();
+
+                column = typeof column === 'number' ? me.headerCt.items.getAt(column) : column;
+
+                if (column.dataIndex === &quot;actionTarget&quot;) {
+                    record = typeof record === 'number' ? me.store.getAt(record) : record;
+
+                    if (column.bindEditor(this.getEditor(record, column), record) === false) {
+                        return;
+                    }
+                }
+
+                return Ext.grid.plugin.CellEditing.prototype.startEdit.apply(this, arguments);
+            }
+        });
+
+        me.editing.on({
+            beforeedit   : me.onBeforeEdit,
+            validateedit : me.onValidateEdit,
+            edit         : me.afterEdit,
+            canceledit   : me.afterEdit,
+            scope        : me
+        });
+
+        me.editing.on({
+            beforeedit : function () {
+                // Can't populate until we have a test bound
+                this.typeEditor.populate(me.test);
+            },
+            scope      : me
+        });
+
+        this.relayEvents(me.editing, ['beforeedit', 'afteredit'])
+
+        me.plugins.push(me.editing);
+
+        Ext.apply(me, {
+            viewConfig : {
+                forceFit   : true,
+                markDirty  : false,
+                stripeRows : false,
+                allowCopy  : true,
+                plugins    : {
+                    ptype : 'gridviewdragdrop'
+                }
+            },
+
+            columns : [
+                {
+                    header       : 'Action',
+                    dataIndex    : 'type',
+                    width        : 100,
+                    sortable     : false,
+                    menuDisabled : true,
+                    tdCls        : 'eventview-typecolumn',
+                    editor       : this.typeEditor = new Siesta.Recorder.TypeEditor()
+                },
+                new Siesta.Recorder.TargetColumn({
+                    cellEditing     : me.editing,
+                    highlightTarget : this.highlightTarget
+                }),
+                {
+                    xtype        : 'templatecolumn',
+                    header       : 'Offset',
+                    width        : 50,
+                    sortable     : false,
+                    menuDisabled : true,
+                    dataIndex    : 'offset',
+                    tdCls        : 'eventview-offsetcolumn',
+                    tpl          : '&lt;tpl if=&quot;offset&quot;&gt;&lt;div class=&quot;eventview-clearoffset&quot;&gt;&lt;/div&gt;&lt;/tpl&gt;{offset}',
+                    editor       : {}
+                },
+                {
+                    xtype        : 'actioncolumn',
+                    width        : 18,
+                    sortable     : false,
+                    menuDisabled : true,
+                    tdCls        : 'eventview-actioncolumn',
+
+                    items : [
+                        {
+                            iconCls : 'icon-delete',
+                            handler : function (grid, rowIndex, colIndex) {
+                                me.editing.completeEdit();
+
+                                grid.store.removeAt(rowIndex);
+                            }
+                        }
+                    ]
+                }
+            ]
+        });
+
+        this.callParent();
+    },
+
+
+<span id='Siesta-Recorder-EventView-method-onBeforeEdit'>    onBeforeEdit : function (cellEditing, e) {
+</span>
+        // Offset only relevant for mouseinput actions
+        return e.field !== 'offset' || e.record.isMouseInputEvent();
+    },
+
+<span id='Siesta-Recorder-EventView-method-afterEdit'>    afterEdit : function (plug, e) {
+</span>        // Offset is most likely not relevant if you switch action target
+        if (e.field === 'actionTarget' &amp;&amp; e.value !== e.originalValue) {
+            e.record.set('offset');
+        }
+
+        if (e.field === 'type') {
+            var store = e.column.field.store;
+            store.clearFilter();
+
+            if (store.getById(e.value).get('type') !== store.getById(e.originalValue).get('type')) {
+                e.record.resetValues();
+            }
+        }
+    },
+
+<span id='Siesta-Recorder-EventView-method-onValidateEdit'>    onValidateEdit : function (plug, e) {
+</span>        var value = e.value;
+
+        if (value &amp;&amp; e.field === 'offset') {
+            e.cancel = true;
+
+            var parsed = e.record.parseOffset(value);
+
+            if (parsed) {
+                e.record.set('offset', parsed);
+            }
+        }
+    },
+
+<span id='Siesta-Recorder-EventView-method-afterRender'>    afterRender : function () {
+</span>        this.callParent(arguments);
+
+        this.view.el.on({
+            mousedown : function (e, t) {
+                var record = this.view.getRecord(this.view.findItemByChild(t));
+                record.set('offset', null);
+                e.stopEvent();
+            },
+            scope     : this,
+            delegate  : '.eventview-clearoffset'
+        })
+    }
+});
+</pre>
+</body>
+</html>

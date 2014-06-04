@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Ext.define('Siesta.Harness.Browser.UI_Mobile.TestList', {
+
+    alias       : 'widget.testlist',
+
+    extend      : 'Ext.dataview.List',
+    
+    config : {
+        displayField            : 'title',
+        cls                     : 'tr-testgrid',
+        
+        disclosureProperty      : 'leaf',
+        onItemDisclosure        : true,
+        
+        itemTpl         : new Ext.XTemplate(
+            '&lt;div style=&quot;margin-left : {[this.getPadding(values)]}px&quot; class=&quot;{[this.getIconCls(values)]}&quot;&gt;',
+                '{title}',
+            '&lt;/div&gt;',
+            '&lt;tpl if=&quot;leaf&quot;&gt;',
+                '&lt;div class=&quot;tr-test-results&quot;&gt;',
+                    '&lt;div class=&quot;tr-test-results-passed&quot;&gt;{passCount}&lt;/div&gt;&lt;div class=&quot;tr-test-results-failed&quot;&gt;{failCount}&lt;/div&gt;',
+                '&lt;/div&gt;',
+            '&lt;/tpl&gt;',
+            {
+                getPadding: function (data) {
+                    return Math.max(data.depth - 1, 0) * 25
+                },
+                
+                getIconCls : function (data) {
+                    var tdCls       = 'tr-test-status '
+                    var testFile    = data.test
+                
+                    if (data['leaf']) {
+                
+                        var test = data['test']
+                    
+                        if (test) {
+                        
+                            if (data['isFailed'])
+                                tdCls += 'tr-test-status-thrown'
+                            
+                            else if (data['isRunning'] &amp;&amp; !test.isFinished())
+                                tdCls += 'tr-test-status-running'
+                            else
+                                if (test.isFinished()) {
+                                
+                                    if (test.isPassed())
+                                        tdCls += 'tr-test-status-passed'
+                                    else 
+                                        tdCls += 'tr-test-status-failed'
+                                } else
+                                    tdCls += 'tr-test-status-working'
+                            
+                        } else {
+                        
+                            if (data['isMissing'])
+                                tdCls += 'tr-test-status-missing'
+                            else
+                                if (data['isStarting'])
+                                    tdCls += 'tr-test-status-working'
+                                else
+                                    tdCls += 'tr-test-status-empty'
+                        }
+                    } else {
+                        tdCls += 'tr-folder-' + data['folderStatus']
+                    }
+                    
+                    return tdCls
+                }
+                // eof getIconCls
+            }
+            // eof helper functions
+        )
+        // eof template
+    },
+
+    
+    getLabelCls : function (index, data, prev) {
+        if (data.leaf) return prev
+        
+        return prev + ' tr-folder-item'
+    }
+})</pre>
+</body>
+</html>

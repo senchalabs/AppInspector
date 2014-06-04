@@ -1,8 +1,8 @@
 # *** folders
-dist/
-docs/
-node_modules/
-package/
+/dist/
+/docs/
+/node_modules/
+/package/
 testdata/
 
 # *** files

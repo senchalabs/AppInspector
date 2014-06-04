@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+.st-cov-report-tree-panel,
+.st-cov-report-tree-panel,
+.st-cov-report-source-panel {
+    border                  : 1px solid #bbb;
+    border-top-left-radius  : 3px;
+    border-top-right-radius : 3px;
+    border-bottom           : 0 none;
+}
+
+.st-cov-report-tree-panel .x-toolbar {
+    padding-top : 3px;
+}
+
+
+
+.st-cov-report-tree-panel .x-grid-cell {
+    padding : 0 4px;
+    border  : 0 none !important;
+}
+
+.st-cov-report-tree-panel .x-grid-cell-inner {
+    padding-bottom : 2px;
+    text-overflow : clip;
+}
+
+
+.st-cov-report-tree-panel .x-grid-row-selected .cov-result-cell {
+    background : transparent !important;
+}
+
+.x-grid-row-selected .cov-result-cell .x-grid-cell-inner {
+    color         : #000;
+    font-weight   : 400;
+}
+
+.st-cov-report-tree-panel .x-tree-icon-parent {
+    background : url(../images/ns.png) no-repeat 0 0 !important;
+}
+
+.st-cov-report-tree-panel .x-tree-icon-leaf {
+    background : url(../images/leaf.png) no-repeat 0 0 !important;
+}
+
+
+.st-cov-report-tree-panel .x-tree-icon {
+    background-size: 16px 16px !important;
+    border-radius: 16px;
+}
+
+.st-cov-report-tree-panel .x-btn {
+    background-image : none !important;
+}
+
+.st-cov-report-tree-panel .x-btn-pressed {
+    background   : #d8d8d8;
+    border-color : #aaa;
+}
+
+.st-cov-level-high .x-grid-cell-inner { border-bottom : 4px solid rgb(89, 205, 82) !important; font-weight : 300; }
+
+.st-cov-level-medium .x-grid-cell-inner { border-bottom : 4px solid rgb(215, 213, 40) !important; font-weight : 300; }
+
+.st-cov-level-low .x-grid-cell-inner { border-bottom : 4px solid #ff1111 !important; font-weight : 300; }
+
+/* CODE AREA STYLING Styles from Istanbul, TODO: remove unused rules, or completely re-style */
+
+pre.coverage {
+    font-family   : &quot;Monaco&quot;, &quot;Inconsolata&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Courier New&quot;, Courier, monospace !important;
+    margin        : 0;
+    padding       : 0;
+    line-height   : 15px;
+    font-size     : 13px;
+    -moz-tab-size : 2;
+    -o-tab-size   : 2;
+    tab-size      : 2;
+}
+
+div.path { font-size : 110%; }
+
+div.path a:link, div.path a:visited { color : #555; }
+
+table.coverage { border-collapse : collapse; margin : 0; padding : 0 }
+
+table.coverage td {
+    margin         : 0;
+    padding        : 0;
+    color          : #111;
+    vertical-align : top;
+}
+
+table.coverage td.line-count {
+    text-align    : right;
+    padding-right : 5px;
+    font-size     : 11px;
+    color         : #afafaf;
+}
+
+table.coverage td.line-coverage {
+    color        : #777 !important;
+    text-align   : right;
+    border-left  : 1px solid #ccc;
+    border-right : 1px solid #ccc;
+}
+
+table.coverage td.text {
+}
+
+table.coverage td span.cline-any {
+    display : inline-block;
+    padding : 0 5px;
+    width   : 40px;
+}
+
+table.coverage td span.cline-neutral {
+    background : #f4f4f4;
+}
+
+table.coverage td span.cline-yes {
+    background : #b5d592;
+    color      : #999;
+}
+
+table.coverage td span.cline-no {
+    background : #fc8c84;
+}
+
+.cstat-yes { color : #555; }
+
+.cstat-no { background : #fc8c84; color : #111; }
+
+.fstat-no { background : #ffc520; color : #111 !important; }
+
+.cbranch-no { background : yellow !important; color : #111; }
+
+.missing-if-branch {
+    display         : inline-block;
+    margin-right    : 10px;
+    position        : relative;
+    padding         : 0 4px;
+    background      : black;
+    color           : yellow;
+    text-decoration : line-through;
+}
+
+.missing-if-branch .typ {
+    color : inherit !important;
+}
+
+.high { background : #b5d592 !important; }
+
+.medium { background : #ffe87c !important; }
+
+.low { background : #fc8c84 !important; }
+
+span.cover-fill, span.cover-empty {
+    display    : inline-block;
+    border     : 1px solid #444;
+    background : white;
+    height     : 12px;
+}
+
+span.cover-fill {
+    background   : #ccc;
+    border-right : 1px solid #444;
+}
+
+span.cover-empty {
+    background  : white;
+    border-left : none;
+}
+
+span.cover-full {
+    border-right : none !important;
+}
+
+.st-cov-stat-abs-statements,
+.st-cov-stat-abs-branches,
+.st-cov-stat-abs-lines,
+.st-cov-stat-abs-functions
+{
+    font-size:0.8em;
+}
+
+pre.prettyprint {
+    border  : none !important;
+    padding : 0 !important;
+    margin  : 0 !important;
+}
+
+.com { color : #999 !important; }
+
+/* EOF Styles from Istanbul */</pre>
+</body>
+</html>
