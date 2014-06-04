@@ -1,4 +1,5 @@
 # *** folders
+.idea/
 /dist/
 /docs/
 /node_modules/
@@ -6,16 +7,13 @@
 testdata/
 
 # *** files
+*.iml
 .DS_Store
 Thumbs.db
 lint/error_log.txt
 
 
-# *** Sencha Architect
+# *** Ext JS
 .sass-cache/
-AppInspector/build/
-app/AppInspector/build/
+/app/AppInspector/**/build/
 *.$old
-
-.idea/
-*.iml
