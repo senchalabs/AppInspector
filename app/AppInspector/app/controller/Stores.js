@@ -180,10 +180,7 @@ Ext.define('AI.controller.Stores', {
         var parent = Ext.ComponentQuery.query('#StoreDetails')[0],
             tree = parent.down('#RecordDetail'),
             root = tree.getRootNode(),
-            details = record.data;
-
-        //TODO: record.data... can we only return the defined fields?
-        // Ext 5 doesn't require you to define everything, but we don't want to list all of the inherited junk
+            details = Ext.JSON.decode(record.data.modelData);
 
         root.removeAll();
 

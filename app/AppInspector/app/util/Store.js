@@ -45,8 +45,8 @@ Ext.define('AI.util.Store', {
         Ext.Array.each(range, function (record) {
             records.push({
                 id        : record.id || record.get('id'),
-                modelData : record.data,
-                rawData   : record.raw // TODO: "raw" doesn't exist in Ext 5!
+                modelData : Ext.JSON.encode(record.data),
+                rawData   : Ext.JSON.encode(record.raw)   // TODO: "raw" doesn't exist in Ext 5!
             });
         });
 

@@ -13,8 +13,9 @@ Ext.define('AI.store.Records', {
     proxy : {
         type   : 'inspectedwindow',
         evalFn : 'AI.util.Store.getRecords',
+
         reader : {
-            type : 'array'
+            type : 'json'
         }
     }
 });

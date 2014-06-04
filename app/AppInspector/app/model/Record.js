@@ -1,5 +1,5 @@
 Ext.define('AI.model.Record', {
-    extend : 'Ext.data.Model',
+    extend : 'Ext.data.TreeModel',
 
     requires : [
         'Ext.data.Field',
@@ -8,19 +8,17 @@ Ext.define('AI.model.Record', {
 
     fields : [
         {
-            name : 'id'
-        },
-        {
             defaultValue : true,
             name         : 'isLeaf',
             type         : 'boolean'
         },
         {
-            name : 'text'
+            name : 'modelData',
+            type : 'string'     //serialized model data from the Inspected Window
         }
     ],
 
-    idgen : {
+    identifier : {
         type : 'uuid'
     }
 });
