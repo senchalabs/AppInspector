@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Harness-Browser-ExtJS'>/**
+</span>@class Siesta.Harness.Browser.ExtJS
+@extends Siesta.Harness.Browser 
+@mixin Siesta.Harness.Browser.ExtJSCore
+
+Class, representing the browser harness. This class provides a web-based UI and defines some additional configuration options.
+
+The default value of the `testClass` configuration option in this class is {@link Siesta.Test.ExtJS}, which inherits from 
+{@link Siesta.Test.Browser} and contains various ExtJS-specific assertions. So, use this harness class, when testing an ExtJS application.
+
+This file is for reference only, for a getting start guide and manual, please refer to &lt;a href=&quot;#!/guide/siesta_getting_started&quot;&gt;Getting Started Guide&lt;/a&gt;.
+
+Synopsys
+========
+
+    var Harness = Siesta.Harness.Browser.ExtJS;
+    
+    Harness.configure({
+        title     : 'Awesome ExtJS Application Test Suite',
+        
+        transparentEx       : true,
+        
+        autoCheckGlobals    : true,
+        expectedGlobals     : [
+            'Ext',
+            'Sch'
+        ],
+        
+        preload : [
+            &quot;http://cdn.sencha.io/ext-4.0.2a/ext-all-debug.js&quot;,
+            &quot;../awesome-project-all.js&quot;,
+            {
+                text    : &quot;console.log('preload completed')&quot;
+            }
+        ]
+    })
+    
+    
+    Harness.start(
+        // simple string - url relative to harness file
+        'sanity.t.js',
+        
+        // test file descriptor with own configuration options
+        {
+            url     : 'basic.t.js',
+            
+            // replace `preload` option of harness
+            preload : [
+                &quot;http://cdn.sencha.io/ext-4.0.6/ext-all-debug.js&quot;,
+                &quot;../awesome-project-all.js&quot;
+            ]
+        },
+        
+        // groups (&quot;folders&quot;) of test files (possibly with own options)
+        {
+            group       : 'Sanity',
+            
+            autoCheckGlobals    : false,
+            
+            items       : [
+                'data/crud.t.js',
+                ...
+            ]
+        },
+        ...
+    )
+
+
+*/
+
+Class('Siesta.Harness.Browser.ExtJS', {
+    
+    isa     : Siesta.Harness.Browser,
+    
+    // pure static class, no need to instantiate it
+    my : {
+        
+        does    : [
+            Siesta.Harness.Browser.ExtJSCore
+        ],
+        
+        has     : {
+<span id='Siesta-Harness-Browser-ExtJS-cfg-testClass'>            /**
+</span>             * @cfg {Class} testClass The test class which will be used for creating test instances, defaults to {@link Siesta.Test.ExtJS}.
+             * You can subclass {@link Siesta.Test.ExtJS} and provide a new class. 
+             * 
+             * This option can be also specified in the test file descriptor. 
+             */
+            testClass           : Siesta.Test.ExtJS,
+            
+<span id='Siesta-Harness-Browser-ExtJS-cfg-waitForExtReady'>            /**
+</span>             * @cfg {Boolean} waitForExtReady
+             * 
+             * By default the `StartTest` function will be executed after `Ext.onReady`. Set to `false` to launch `StartTest` immediately.  
+             * 
+             * This option can be also specified in the test file descriptor. 
+             */
+            waitForExtReady     : true,
+            
+<span id='Siesta-Harness-Browser-ExtJS-cfg-waitForAppReady'>            /**
+</span>             * @cfg {Boolean} waitForAppReady
+             * 
+             * Setting this configuration option to &quot;true&quot; will cause Siesta to wait until the ExtJS MVC application on the test page will become ready,
+             * before starting the test. More precisely it will wait till the first &quot;launch&quot; event from any instance of `Ext.app.Application` class on the page.
+             *   
+             * This option can (and probably should) be also specified in the test file descriptor. 
+             */
+            waitForAppReady     : false,
+            
+
+            extVersion              : null,
+
+<span id='Siesta-Harness-Browser-ExtJS-cfg-allowExtVersionChange'>            /**
+</span>             * @cfg {Boolean} allowExtVersionChange
+             * 
+             * True to show a version picker to swiftly change which Ext JS version is used in the test suite.
+             */
+            allowExtVersionChange   : false,
+            
+            extVersionRegExp        : /ext(?:js)?-(\d\.\d+\.\d+.*?)\//,
+            
+            contentManagerClass     : Siesta.Content.Manager.Browser.ExtJSCore
+        },
+        
+        
+        methods : {
+            createViewport       : function(config) {
+               return Ext.create(&quot;Siesta.Harness.Browser.UI.ExtViewport&quot;, config);
+            },
+            
+            setup : function (callback) {
+                var me      = this
+                
+                /*
+                    This is to be able to pass &quot;next&quot; function form the chain step to the Ext as callback:
+                        function (next) {
+                            resourceStore.reload({
+                                callback : next
+                            })
+                        }
+                    For some reason, Ext performs &quot;isFunction&quot; check on the callback value and only calls it if this check passes
+                    (assuming programming does not know what he is doing)
+                    &quot;isFunction&quot; check in turn relies on the presence of this property in the Function prototype
+                    
+                    This line can be removed once &quot;isFunction&quot; in Ext will become cross-context or Ext will stop
+                    using &quot;isFunction&quot; check for callbacks
+                */
+                Function.prototype.$extIsFunction = true;
+                
+                this.SUPER(function () {
+                    if (me.allowExtVersionChange) me.extVersion = me.findExtVersion()
+                    
+                    callback()
+                })
+            },
+            
+        
+            getNewTestConfiguration : function (desc, scopeProvider, contentManager, options, runFunc) {
+                var config          = this.SUPERARG(arguments)
+                
+                config.waitForExtReady  = this.getDescriptorConfig(desc, 'waitForExtReady')
+                config.waitForAppReady  = this.getDescriptorConfig(desc, 'waitForAppReady')
+                
+                return config
+            },
+            
+            
+            setExtVersion : function (newVersion) {
+                if (!this.allowExtVersionChange || newVersion == this.extVersion) return
+                
+                this.extVersion         = newVersion
+                
+                var me                  = this
+                var allDescriptors      = this.flattenDescriptors(this.descriptors)
+                var mainPreset          = this.mainPreset
+                
+                this.setExtVersionForPreset(mainPreset, newVersion)
+                
+                Joose.A.each(allDescriptors, function (desc) {
+                    if (desc.preset != mainPreset) me.setExtVersionForPreset(desc.preset, newVersion)
+                })
+            },
+            
+            
+            setExtVersionForPreset : function (preset, newVersion) {
+                var me      = this
+                
+                preset.eachResource(function (resource) {
+                    var url     = resource.url
+                    
+                    if (url &amp;&amp; url.match(me.extVersionRegExp)) resource.url = url.replace(me.extVersionRegExp, 'ext-' + newVersion + '/')
+                })
+            },
+            
+            
+            findExtVersion : function () {
+                var me      = this
+                
+                var found
+                
+                this.mainPreset.eachResource(function (resource) {
+                    var match   = me.extVersionRegExp.exec(resource.url)
+                    
+                    if (match) {
+                        found   = match[ 1 ]
+                        
+                        return false
+                    }
+                })
+                
+                return found
+            }
+        }
+    }
+})</pre>
+</body>
+</html>

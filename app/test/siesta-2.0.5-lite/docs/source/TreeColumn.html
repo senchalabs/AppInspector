@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Ext.define('Siesta.Harness.Browser.UI.TreeColumn', {
+    
+    extend              : 'Ext.tree.Column',
+    alias               : 'widget.assertiontreecolumn',
+    
+    imgWithOffsetText   : '&lt;img src=&quot;{1}&quot; class=&quot;{0}&quot; style=&quot;left:{2}px&quot; /&gt;',
+    
+    tdCls               : Ext.baseCSSPrefix + 'grid-cell-treecolumn tr-tree-column',
+
+    treeRenderer: function(value, metaData, record, rowIdx, colIdx, store, view){
+        var me = this,
+            buf = [],
+            format = Ext.String.format,
+            depth = record.getDepth(),
+            treePrefix  = me.treePrefix,
+            elbowPrefix = me.elbowPrefix,
+            expanderCls = me.expanderCls,
+            imgText     = me.imgText,
+            checkboxText= me.checkboxText,
+            formattedValue = me.origRenderer.apply(me.origScope, arguments),
+            blank = Ext.BLANK_IMAGE_URL,
+            href = record.get('href'),
+            target = record.get('hrefTarget'),
+            cls = record.get('cls');
+
+        while (record) {
+            if (!record.isRoot() || (record.isRoot() &amp;&amp; view.rootVisible)) {
+                if (record.getDepth() === depth) {
+                    buf.unshift(format(imgText,
+                        treePrefix + 'icon ' + 
+                        treePrefix + 'icon' + (record.get('icon') ? '-inline ' : (record.isLeaf() ? '-leaf ' : '-parent ')) +
+                        (record.get('iconCls') || ''),
+                        record.get('icon') || blank
+                    ));
+                    if (record.get('checked') !== null) {
+                        buf.unshift(format(
+                            checkboxText,
+                            (treePrefix + 'checkbox') + (record.get('checked') ? ' ' + treePrefix + 'checkbox-checked' : ''),
+                            record.get('checked') ? 'aria-checked=&quot;true&quot;' : ''
+                        ));
+                        if (record.get('checked')) {
+                            metaData.tdCls += (' ' + treePrefix + 'checked');
+                        }
+                    }
+                    if (record.isLast()) {
+                        if (record.isExpandable()) {
+                            buf.unshift(format(imgText, (elbowPrefix + 'end-plus ' + expanderCls), blank));
+                        } else {
+                            buf.unshift(format(imgText, (elbowPrefix + 'end'), blank));
+                        }
+                            
+                    } else {
+                        if (record.isExpandable()) {
+                            buf.unshift(format(imgText, (elbowPrefix + 'plus ' + expanderCls), blank));
+                        } else {
+                            buf.unshift(format(imgText, (treePrefix + 'elbow'), blank));
+                            buf.unshift(format(this.imgWithOffsetText, (treePrefix + 'elbow-line tr-elbow-line'), blank, (record.getDepth() - 1) * 16));
+                        }
+                    }
+                } else {
+                    if (record.isLast() || record.getDepth() === 0) {
+                        buf.unshift(format(imgText, (elbowPrefix + 'empty'), blank));
+                    } else if (record.getDepth() !== 0) {
+                        buf.unshift(format(imgText, (elbowPrefix + 'line'), blank));
+                        buf.unshift(format(imgText, (elbowPrefix + 'line tr-elbow-line'), blank));
+                    }                      
+                }
+            }
+            record = record.parentNode;
+        }
+        if (href) {
+            buf.push('&lt;a href=&quot;', href, '&quot; target=&quot;', target, '&quot;&gt;', formattedValue, '&lt;/a&gt;');
+        } else {
+            buf.push(formattedValue);
+        }
+        if (cls) {
+            metaData.tdCls += ' ' + cls;
+        }
+        return buf.join('');
+    }
+});
+</pre>
+</body>
+</html>

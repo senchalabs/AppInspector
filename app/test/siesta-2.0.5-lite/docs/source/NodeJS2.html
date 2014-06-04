@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Harness-NodeJS'>/**
+</span>@class Siesta.Harness.NodeJS
+@extends Siesta.Harness 
+
+Class, representing the NodeJS harness. This class reports the output from all test files to console.
+
+This file is a reference only however, for a getting start guide and manual, please refer to &lt;a href=&quot;#!/guide/siesta_getting_started&quot;&gt;Getting Started Guide&lt;/a&gt;.
+
+Synopsys
+========
+
+    var Harness,
+        isNode        = typeof process != 'undefined' &amp;&amp; process.pid
+    
+    if (isNode) {
+        Harness = require('siesta');
+    } else {
+        Harness = Siesta.Harness.Browser;
+    }
+        
+    
+    Harness.configure({
+        title     : 'Awesome Test Suite',
+        
+        transparentEx       : true,
+        
+        autoCheckGlobals    : true,
+        expectedGlobals     : [
+            'Ext',
+            'Sch'
+        ],
+        
+        preload : [
+            &quot;http://cdn.sencha.io/ext-4.0.2a/ext-all-debug.js&quot;,
+            &quot;../awesome-project-all.js&quot;,
+            {
+                text    : &quot;console.log('preload completed')&quot;
+            }
+        ]
+    })
+    
+    
+    Harness.start(
+        // simple string - url relative to harness file
+        'sanity.t.js',
+        
+        // test file descriptor with own configuration options
+        {
+            url     : 'basic.t.js',
+            
+            // replace `preload` option of harness
+            preload : [
+                &quot;http://cdn.sencha.io/ext-4.0.6/ext-all-debug.js&quot;,
+                &quot;../awesome-project-all.js&quot;
+            ]
+        },
+        
+        // groups (&quot;folders&quot;) of test files (possibly with own options)
+        {
+            group       : 'Sanity',
+            
+            autoCheckGlobals    : false,
+            
+            items       : [
+                'data/crud.t.js',
+                ...
+            ]
+        },
+        ...
+    )
+
+Running the test suite in NodeJS
+================================
+
+To run the suite in NodeJS, launch the harness javascript file:
+
+    &gt; node t/index.js
+
+
+*/
+
+Class('Siesta.Harness.NodeJS', {
+    
+    // static
+    my : {
+        isa         : Siesta.Harness,
+        
+        does        : Siesta.Role.ConsoleReporter,
+        
+        has : {
+            contentManagerClass     : Siesta.Content.Manager.NodeJS,
+            scopeProvider           : 'Scope.Provider.NodeJS',
+            
+            chdirToIndex            : true
+        },
+        
+        
+        before : {
+            
+            start : function () {
+                this.runCore         = 'sequential'
+                
+                if (this.chdirToIndex) {
+                    var indexFile = process.argv[1]
+                    
+                    var path = require('path')
+                    
+                    process.chdir(path.dirname(indexFile))
+                }
+            }
+        },
+        
+        
+        methods : {
+            
+            log     : console.log,
+            exit    : process.exit,
+
+            
+            getScopeProviderConfigFor : function (desc, launchId) {
+                var config = this.SUPER(desc, launchId)
+                
+                config.sourceURL    = desc.url
+                
+                return config
+            },
+            
+            
+            normalizeURL : function (url) {
+                // ref to lib in current dist (no trailing `.js`) 
+                if (!/\.js$/.test(url)) {
+                    url = '../lib/' + url.replace(/\./g, '/') + '.js'
+                }
+                
+                return url
+            }
+        }
+        
+    }
+    //eof my
+})
+//eof Siesta.Harness.NodeJS
+
+
+</pre>
+</body>
+</html>

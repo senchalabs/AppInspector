@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Ext.define('Siesta.Harness.Browser.UI.Center', {
+    extend              : 'Ext.Panel',
+    alias               : 'widget.centerpanel',
+    border              : false,
+    style : 'background:transparent',
+    bodyStyle : 'background:transparent',
+    layout              : {
+        type : 'hbox',
+        align : 'stretch'
+    },
+
+    initComponent : function() {
+
+        Ext.apply(this, {
+            
+            items : [
+                {
+                    style : 'background:transparent',
+                    bodyStyle : 'background:transparent',
+                    border : false,
+                    flex : 1,
+                    layout              : {
+                        type : 'vbox',
+                        align : 'stretch'
+                    },
+                    items : [
+                        {
+                            margins     : '20 5 10 20',
+                            flex : 1,
+                            title : 'Tips and tricks',
+               
+                            html : 'Tips....'
+                        },
+                        {
+                            margins     : '10 5 20 20',
+                            flex : 1,
+                            cls : 'videos',
+                            title : 'Siesta videos',
+                            autoScroll : true,
+                            html : '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/video/32559451&quot; target=&quot;_blank&quot;  class=&quot;video&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;In this video we introduce Siesta - the stress-free JavaScript unit testing tool&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;' +
+                                    '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/video/32559505&quot; target=&quot;_blank&quot;  class=&quot;video&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;In this video we will show how to do a basic ExtJS UI test with Siesta&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;' +
+                                    '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/video/32559560&quot; target=&quot;_blank&quot; class=&quot;video&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;In this video we will show how to automate your test suite using PhantomJS or Selenium&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;' + 
+                                    '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/guide/siesta_getting_started&quot; target=&quot;_blank&quot; class=&quot;book&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;Getting started with Siesta&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;' +
+                                    '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/guide/siesta_automation&quot; target=&quot;_blank&quot; class=&quot;book&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;Siesta automation and continuous integration&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;' +
+                                    '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/guide/testing_mvc_app&quot; target=&quot;_blank&quot; class=&quot;book&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;Testing Ext JS MVC&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;' + 
+                                    '&lt;dl&gt;&lt;dt&gt;' + 
+                                            '&lt;a href=&quot;http://www.bryntum.com/products/siesta/docs/#!/guide/extending_test_class&quot; target=&quot;_blank&quot; class=&quot;book&quot;&gt;&lt;/a&gt;' + 
+                                        '&lt;/dt&gt;' + 
+                                        '&lt;dd&gt;Extending Siesta&lt;/dd&gt;' +
+                                    '&lt;/dl&gt;'
+                        }
+                    ]
+                },
+                {
+                    style : 'background:transparent',
+                    bodyStyle : 'background:transparent',
+                    flex : 1,
+                    border : false,
+                    layout              : {
+                        type : 'vbox',
+                        align : 'stretch'
+                    },
+                    items : [
+                        {
+                            cls : 'splash-links',
+                            margins     : '20 20 10 20',
+                            flex : 1,
+                            title : 'Useful links',
+                            autoScroll : true,
+                            html : '&lt;ul&gt;' +
+                                        '&lt;li&gt;' + 
+                                            '&lt;a class=&quot;docs&quot; href=&quot;http://www.bryntum.com/products/siesta/docs&quot; target=&quot;_blank&quot;&gt;API Documentation&lt;/a&gt;' +
+                                        '&lt;/li&gt;' + 
+                                        '&lt;li&gt;' + 
+                                            '&lt;a class=&quot;report-bug&quot; href=&quot;http://www.assembla.com/spaces/bryntum/support/tickets&quot; target=&quot;_blank&quot;&gt;Report a bug&lt;/a&gt;' +
+                                        '&lt;/li&gt;' + 
+                                        '&lt;li&gt;' + 
+                                            '&lt;a class=&quot;forum&quot; href=&quot;http://www.bryntum.com/forum/viewforum.php?f=20&amp;sid=b18136bc962e28494e2e7614382b27d5&quot; target=&quot;_blank&quot;&gt;Community Forums&lt;/a&gt;' +
+                                        '&lt;/li&gt;' + 
+                                        '&lt;li&gt;' + 
+                                            '&lt;a class=&quot;buy&quot; href=&quot;http://www.bryntum.com/store/siesta&quot; target=&quot;_blank&quot;&gt;Buy a license&lt;/a&gt;' +
+                                        '&lt;/li&gt;' + 
+                                    '&lt;/ul&gt;'
+                        },
+                        {
+                            flex : 1,
+                            margins     : '10 5 20 20',
+                            title : 'Change log for v.'+ (Siesta.meta.VERSION || &quot;1.0.0&quot;),
+                            html : 'TODO'
+                        }
+                    ]
+                }
+
+            ]
+        });
+        this.callParent();
+    }
+})
+</pre>
+</body>
+</html>

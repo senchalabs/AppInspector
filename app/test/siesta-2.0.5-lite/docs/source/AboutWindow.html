@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Ext.define('Siesta.Harness.Browser.UI.AboutWindow', {
+    extend      : 'Ext.Window',
+    id          : 'aboutwindow',
+    title       : 'ABOUT SIESTA (v.' + (Siesta.meta.VERSION || '1.0.0') + ')',
+    bodyPadding : 20,
+    modal       : true,
+    width       : 500,
+    height      : 380,
+    closeAction : 'destroy',
+    bodyStyle   : 'background: #fff',
+    autoScroll  : true,
+
+    html : '&lt;img height=&quot;35&quot; src=&quot;http://www.bryntum.com/bryntum-logo.png&quot;/&gt;\
+         &lt;p&gt;Siesta is a JavaScript unit and functional test tool made by &lt;a target=&quot;_blank&quot; href=&quot;http://www.bryntum.com&quot;&gt;Bryntum&lt;/a&gt;. You can test any web page or JavaScript code, including Ext JS, jQuery or NodeJS. \
+         \Siesta comes in two versions: &lt;strong&gt;Lite&lt;/strong&gt; and &lt;strong&gt;Standard&lt;/strong&gt;. With Lite, you can launch your tests in the browser UI. \
+         \With the Standard version, you can also automate your tests and use the automation scripts together with tools like PhantomJS or Selenium WebDriver. &lt;/p&gt;\
+         Siesta would not be possible without these awesome products &amp; libraries: &lt;br&gt;\
+                 \&lt;ul style=&quot;padding:0 0 0 30px&quot;&gt;\
+                 \  &lt;li&gt;&lt;a href=&quot;http://sencha.com/extjs&quot;&gt;Ext JS&lt;/a&gt;&lt;/li&gt; \
+                 \  &lt;li&gt;&lt;a href=&quot;http://jquery.com&quot;&gt;jQuery&lt;/a&gt;&lt;/li&gt; \
+                 \  &lt;li&gt;&lt;a href=&quot;http://http://alexgorbatchev.com/SyntaxHighlighter/&quot;&gt;SyntaxHighlighter&lt;/a&gt;&lt;/li&gt; \
+                 \  &lt;li&gt;&lt;a href=&quot;http://joose.it/&quot;&gt;Joose&lt;/a&gt;&lt;/li&gt; \
+                 \  &lt;li&gt;&lt;a href=&quot;https://github.com/gotwarlost/istanbul&quot;&gt;Istanbul&lt;/a&gt;&lt;/li&gt; \
+                &lt;/ul&gt;',
+
+    buttons : {
+        padding : '10 13',
+        style   : 'background: transparent',
+
+        items : [
+            {
+                hidden  : !Siesta.Harness.Browser.Automation,
+                text    : 'Upgrade to Siesta Standard',
+                handler : function () {
+                    window.open('http://bryntum.com/store/siesta');
+                }
+            },
+            {
+                text    : 'Close',
+                handler : function () {
+                    this.up('window').close();
+                }
+            }
+        ]
+    }
+});</pre>
+</body>
+</html>

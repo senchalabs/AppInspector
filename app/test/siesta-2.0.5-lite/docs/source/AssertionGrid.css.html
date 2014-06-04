@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+/*=======================================================================================================================================================================================================================
+    Common and unsorted
+*/
+
+.assertiongrid-initializing {
+    color      : #777;
+    margin     : 5px;
+    font-size  : 10px;
+    text-align : left;
+}
+
+.siesta-assertion-grid .x-grid-cell-inner {
+    line-height    : 23px !important;
+    padding-bottom : 4px !important;
+}
+
+.siesta-assertion-grid .x-grid-cell-inner {
+    margin  : 0;
+    padding : 3px 0;
+}
+
+.siesta-assertion-grid .x-grid-cell {
+    border-width : 0;
+}
+
+/*=======================================================================================================================================================================================================================
+    Summary row
+*/
+
+.tr-summary-row .x-tree-icon,
+.tr-summary-row .x-tree-elbow-empty,
+.tr-summary-row .x-tree-elbow-end {
+    display : none !important;
+}
+
+.tr-summary-row .x-grid-cell {
+    padding-left : 10px;
+}
+
+.tr-summary-row .x-grid-cell-inner {
+    border-top  : 10px solid #59d152;
+    line-height : 17px;
+    margin      : 15px 17px 6px 7px;
+    padding     : 5px 0 0 3px;
+}
+
+.tr-summary-failure .x-grid-cell-inner {
+    border-top : 10px solid #ff1111;
+}
+
+.tr-summary-failure span {
+    font-weight : bold;
+}
+
+/*=======================================================================================================================================================================================================================
+    Diagnostic row
+*/
+
+.tr-diagnostic-row {
+    background-color : #f7f7f7 !important;
+    border-top       : 1px solid;
+    text-transform   : uppercase;
+}
+
+.tr-diagnostic-row .x-tree-icon {
+    display : none !important;
+}
+
+.tr-diagnostic-row span.assertion-text {
+    font-weight : bold;
+}
+
+.tr-warning-row span.assertion-text {
+    color : #ff1111;
+}
+
+.tr-diagnostic-row td {
+    border-top       : 1px solid #e6e6e6 !important;
+    border-bottom    : 1px solid #e6e6e6 !important;
+    background-image : none !important;
+}
+
+/*=======================================================================================================================================================================================================================
+    Annotation
+*/
+
+.tr-assert-row-annontation {
+    font-family   : &quot;Courier New&quot;, monospace, serif;
+    font-size     : 1em;
+    padding-top   : 10px;
+    line-height   : 13px;
+    margin-top    : 4px;
+    margin-bottom : 4px;
+    padding-left  : 22px;
+}
+
+/*=======================================================================================================================================================================================================================
+    Assertion row
+*/
+
+.si-hide-passes .tr-assertion-row-passed {
+    display : none;
+}
+
+.tr-waiting-row .x-tree-icon {
+    background-image : url(../images/spinner.gif);
+}
+
+.tr-assertion-row-passed .x-tree-icon,
+.tr-subtest-row-green .x-tree-icon {
+    background-image : url(../images/ok.png);
+}
+
+.tr-assertion-row-failed .x-tree-icon,
+.tr-subtest-row-red .x-tree-icon {
+    background-image : url(../images/bug.png);
+}
+
+.tr-assertion-row-failed {
+    background-color : #ff8186;
+}
+
+.tr-todo-row-passed .x-tree-icon {
+    background-image : url(../images/ok-todo.png);
+}
+
+.tr-todo-row-failed .x-tree-icon {
+    background-image : url(../images/bug-todo.png);
+}
+
+.tr-waiting-row .assertion-text {
+    color : #666;
+}
+
+.tr-waiting-row-passed .x-tree-icon {
+    background-image : url(../images/clock_check.png);
+}
+
+.tr-waiting-row-passed .assertion-text {
+    color : #666;
+}
+
+.tr-subtest-row-working .x-tree-icon {
+    background-image : url(../images/spinner.gif);
+}
+
+/*=======================================================================================================================================================================================================================
+    Exception row
+*/
+
+.tr-exception-row .x-tree-icon {
+    background-image : url(../images/flag-red.png) !important;
+}
+
+.tr-exception-row {
+    background-color : #FD3F3F;
+}
+
+.tr-exception-row .x-grid-cell {
+    font-weight : bolder;
+}
+
+.tr-exception-todo-row .x-tree-icon {
+    background-image : url(../images/flag-green.png) !important;
+}
+
+/*=======================================================================================================================================================================================================================
+    Sub test row (including describe/it)
+*/
+
+.tr-subtest-row-describe .x-grid-cell-inner {
+    font-weight : bolder;
+}
+
+.tr-subtest-row-describe {
+    background-color : rgb(154, 228, 252);
+}
+
+.siesta-assertion-grid .x-grid-cell-inner img {
+    vertical-align : middle;
+}
+
+.siesta-assertion-grid .x-tree-icon {
+    margin-top   : -2px;
+    margin-right : 5px;
+}
+
+</pre>
+</body>
+</html>
