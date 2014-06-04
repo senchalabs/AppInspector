@@ -15,7 +15,7 @@ lint/error_log.txt
 .sass-cache/
 AppInspector/build/
 app/AppInspector/build/
-app/AppInspector/ext/
+# app/AppInspector/ext/
 # app/AppInspector/touch/
 *.$old
 
