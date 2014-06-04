@@ -92,14 +92,9 @@ Ext.define('AI.controller.Components', {
             AI.util.Component.loadComponentTree,
             null,
             function (components, isException) {
-                Ext.each(components, function (cmp) {
-                    var model = Ext.create('AI.model.Component', cmp);
-
-                    nodes.push(model);
-                });
-
-                Ext.each(nodes, function (node) {
-                    root.appendChild(node);
+                tree.getStore().setRootNode({
+                    expanded : true,
+                    children : components
                 });
 
                 tree.setLoading(false);
