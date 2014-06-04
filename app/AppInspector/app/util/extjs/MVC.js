@@ -100,19 +100,18 @@ Ext.define('AI.util.extjs.MVC', {
             length         = appControllers.length,
             controllers    = [],
             stores         = [],
-            controller, listeners, id,
+            controller, listeners, controllerName,
             store, getter;
 
         for (; i < length; i++) {
             controller = appControllers.getAt(i);
             listeners  = getControllerListeners(controller.$className);
-            id         = controller.id || controller.getId();
+            controllerName = controller.$className;
 
             controllers.push({
-                text     : id,
+                text     : controllerName,
                 qtip     : controller.$className,
                 type     : 'controller',
-                id       : id,
                 count    : listeners.length,
                 eventbus : listeners,
                 leaf     : true
