@@ -1,3 +1,7 @@
+/**
+ * @class   AI.view.mvc.Listeners
+ * @extends Ext.grid.Panel
+ */
 Ext.define('AI.view.mvc.Listeners', {
     extend : 'Ext.grid.Panel',
     alias  : 'widget.mvc_listeners',

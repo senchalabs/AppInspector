@@ -1,3 +1,7 @@
+/**
+ * @class   AI.view.stores.RecordListTree
+ * @extends Ext.tree.Panel
+ */
 Ext.define('AI.view.stores.RecordListTree', {
     extend : 'Ext.tree.Panel',
     alias  : 'widget.recordlisttreestore',

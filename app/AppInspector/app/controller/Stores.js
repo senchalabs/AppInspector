@@ -1,3 +1,7 @@
+/**
+ * @class   AI.controller.Stores
+ * @extends Ext.app.Controller
+ */
 Ext.define('AI.controller.Stores', {
     extend : 'Ext.app.Controller',
 

@@ -1,3 +1,7 @@
+/**
+ * @class   AI.model.mvc.Listeners
+ * @extends Ext.data.Model
+ */
 Ext.define('AI.model.mvc.Listeners', {
     extend : 'Ext.data.Model',
 

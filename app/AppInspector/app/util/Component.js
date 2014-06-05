@@ -1,4 +1,7 @@
 /**
+ * @class   AI.util.Component
+ * @singleton
+ *
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.Component', {
@@ -113,24 +116,25 @@ Ext.define('AI.util.Component', {
 
                 if (typeof cmp[key] === 'function') {
                     data.methods.push({
-                        name: key,
-                        value: 'METHOD',
-                        isOwn: isOwn,
-                        isOverride: isChanged
+                        name       : key,
+                        value      : 'METHOD',
+                        isOwn      : isOwn,
+                        isOverride : isChanged
                     });
-                } else if (typeof cmp[key] !== 'object') {
+                }
+                else if (typeof cmp[key] !== 'object') {
                     data.properties.push({
-                        name: key,
-                        value: cmp[key],
-                        isChanged: (isChanged || isOwn),
-                        isOwn: isOwn
+                        name      : key,
+                        value     : cmp[key],
+                        isChanged : (isChanged || isOwn),
+                        isOwn     : isOwn
                     });
                 }
             }
 
             data.properties.push({
-                name: '$parent',
-                value: parent.$className
+                name  : '$parent',
+                value : parent.$className
             });
         }
 

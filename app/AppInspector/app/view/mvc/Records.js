@@ -1,3 +1,7 @@
+/**
+ * @class   AI.view.mvc.Records
+ * @extends Ext.container.Container
+ */
 Ext.define('AI.view.mvc.Records', {
     extend : 'Ext.container.Container',
     alias  : 'widget.mvc_records',

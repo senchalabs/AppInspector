@@ -1,5 +1,6 @@
 /**
- *
+ * @class   AI.util.Error
+ * @singleton
  */
 Ext.define('AI.util.Error', {
     singleton : true,

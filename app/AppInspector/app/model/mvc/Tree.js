@@ -1,3 +1,7 @@
+/**
+ * @class   AI.model.mvc.Tree
+ * @extends Ext.data.Model
+ */
 Ext.define('AI.model.mvc.Tree', {
     extend : 'Ext.data.Model',
 

@@ -1,26 +1,30 @@
+/**
+ * @class   AI.model.Component
+ * @extends Ext.data.Model
+ */
 Ext.define('AI.model.Component', {
-    extend: 'Ext.data.TreeModel',
+    extend : 'Ext.data.TreeModel',
 
-    requires: [
+    requires : [
         'Ext.data.Field',
         'Ext.data.identifier.Uuid'
     ],
 
-    fields: [
+    fields : [
         {
-            name: 'xclass'
+            name : 'xclass'
         },
         {
-            name: 'xtype'
+            name : 'xtype'
         },
         {
-            name: 'cmpId'
+            name : 'cmpId'
         },
         {
-            name: 'itemId'
+            name : 'itemId'
         },
         {
-            name: 'name'
+            name : 'name'
         }
     ],
 

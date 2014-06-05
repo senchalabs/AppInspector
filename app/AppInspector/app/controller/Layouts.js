@@ -1,3 +1,7 @@
+/**
+ * @class   AI.controller.Layouts
+ * @extends Ext.app.Controller
+ */
 Ext.define('AI.controller.Layouts', {
     extend : 'Ext.app.Controller',
 
@@ -17,7 +21,7 @@ Ext.define('AI.controller.Layouts', {
         'Layouts'
     ],
 
-    views  : [
+    views : [
         'Layouts'
     ],
 

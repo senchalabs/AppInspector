@@ -1,3 +1,7 @@
+/**
+ * @class   AI.controller.MVC
+ * @extends Ext.app.Controller
+ */
 Ext.define('AI.controller.MVC', {
     extend : 'Ext.app.Controller',
 
