@@ -1,4 +1,7 @@
 /**
+ * @class   AI.util.touch.Profile
+ * @singleton
+ *
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.touch.Profile', {

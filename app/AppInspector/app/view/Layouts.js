@@ -1,3 +1,7 @@
+/**
+ * @class   AI.view.Layouts
+ * @extends Ext.tab.Panel
+ */
 Ext.define('AI.view.Layouts', {
     extend : 'Ext.tab.Panel',
     alias  : 'widget.layouts',

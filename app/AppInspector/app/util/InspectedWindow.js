@@ -1,5 +1,6 @@
 /**
- *
+ * @class   AI.util.InspectedWindow
+ * @singleton
  */
 Ext.define('AI.util.InspectedWindow', {
     singleton : true,
@@ -155,15 +156,15 @@ Ext.define('AI.util.InspectedWindow', {
 
         if (!document.getElementById('_AppInspector')) {
             //create a highlighting DIV for use later
-            var div   = document.createElement('div'),
+            var div = document.createElement('div'),
                 style = div.style;
 
             div.setAttribute('id', '_AppInspector');
 
             style.backgroundColor = '#f00';
-            style.opacity         = 0.5;
-            style.visibility      = 'hidden';
-            style.position        = 'absolute';
+            style.opacity = 0.5;
+            style.visibility = 'hidden';
+            style.position = 'absolute';
 
             document.body.appendChild(div);
         }
@@ -174,7 +175,7 @@ Ext.define('AI.util.InspectedWindow', {
             };
         }
 
-        var data     = {
+        var data = {
                 isMVC    : false,
                 versions : {}
             },

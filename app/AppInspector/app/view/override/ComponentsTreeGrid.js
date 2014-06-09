@@ -9,13 +9,13 @@
  * Thanks for the inspiration: https://gist.github.com/colinramsay/1789536
  */
 Ext.define('AI.view.override.ComponentsTreeGrid', {
-    override: 'AI.view.ComponentsTreeGrid',
+    override : 'AI.view.ComponentsTreeGrid',
 
     /**
      * @private
      * @type {Array}    _visibleNodeIds Array of {Ext.data.NodeInterface}.ids
      */
-    _visibleNodeIds: [],
+    _visibleNodeIds : [],
 
     /**
      * Recursivly apply filter to tree nodes.
@@ -24,7 +24,7 @@ Ext.define('AI.view.override.ComponentsTreeGrid', {
      *
      * @returns {Array}
      */
-    filterTree: function(value) {
+    filterTree : function (value) {
         var me = this,
             view = me.getView(),
             root = me.getRootNode();
@@ -34,15 +34,15 @@ Ext.define('AI.view.override.ComponentsTreeGrid', {
         me.suspendLayouts();
 
         // preparation
-        root.cascadeBy(function(tree, view, value) {
+        root.cascadeBy(function (tree, view, value) {
             var node = this,
                 currentNode = node,
                 ids = tree._visibleNodeIds,
-                // fuzzy search
+            // fuzzy search
                 re = new RegExp(value, 'i'),
                 reText = re.test(node.get('text')),
-                // reCmpId = re.test(node.get('cmpId')),
-                // reItemId = re.test(node.get('itemId')),
+            // reCmpId = re.test(node.get('cmpId')),
+            // reItemId = re.test(node.get('itemId')),
                 reXType = re.test(node.get('xtype'));
 
             node.expandChildren(true);
@@ -59,7 +59,7 @@ Ext.define('AI.view.override.ComponentsTreeGrid', {
 
         // "apply" filter
         // @scope: {Ext.data.NodeInterface}
-        root.cascadeBy(function(tree, view) {
+        root.cascadeBy(function (tree, view) {
             var node = this,
                 ui = view.getNodeByRecord(node);
 
@@ -75,14 +75,14 @@ Ext.define('AI.view.override.ComponentsTreeGrid', {
     /**
      * clearFilters
      */
-    clearFilters: function() {
+    clearFilters : function () {
         var me = this,
             view = me.getView();
 
         me.suspendLayouts();
 
         // @scope: {Ext.data.NodeInterface}
-        me.getRootNode().cascadeBy(function(tree, view) {
+        me.getRootNode().cascadeBy(function (tree, view) {
             var ui = view.getNodeByRecord(this);
 
             if (ui) {

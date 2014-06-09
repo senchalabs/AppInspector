@@ -1,4 +1,7 @@
 /**
+ * @class   AI.util.i18n
+ * @singleton
+ *
  * Utility class for i18n.
  */
 Ext.define('AI.util.i18n', {

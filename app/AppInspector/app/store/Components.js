@@ -1,3 +1,7 @@
+/**
+ * @class   AI.store.Components
+ * @extends Ext.data.TreeStore
+ */
 Ext.define('AI.store.Components', {
     extend : 'Ext.data.TreeStore',
 
@@ -18,7 +22,7 @@ Ext.define('AI.store.Components', {
             }
         },
 
-        root    : {
+        root : {
             children : [
 
             ]

@@ -1,3 +1,7 @@
+/**
+ * @class   AI.model.Record
+ * @extends Ext.data.TreeModel
+ */
 Ext.define('AI.model.Record', {
     extend : 'Ext.data.TreeModel',
 

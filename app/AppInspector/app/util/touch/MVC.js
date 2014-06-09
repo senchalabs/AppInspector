@@ -1,7 +1,11 @@
+/**
+ * @class   AI.util.touch.MVC
+ * @singleton
+ */
 Ext.define('AI.util.touch.MVC', {
     singleton : true,
 
-    getApplication : function() {
+    getApplication : function () {
         var children = [];
 
         if (!Ext.app || !Ext.app.Application) {
@@ -26,11 +30,11 @@ Ext.define('AI.util.touch.MVC', {
         }
 
         var instanceControllers = instance.getControllerInstances(),
-            instanceStores      = instance.getStores(),
-            controllers         = [],
-            stores              = [],
-            i                   = 0,
-            length              = instanceStores.length,
+            instanceStores = instance.getStores(),
+            controllers = [],
+            stores = [],
+            i = 0,
+            length = instanceStores.length,
             listeners,
             className, controller, control,
             selector, events, event,
@@ -38,8 +42,8 @@ Ext.define('AI.util.touch.MVC', {
 
         for (className in instanceControllers) {
             controller = instanceControllers[className];
-            control    = controller.getControl();
-            listeners  = [];
+            control = controller.getControl();
+            listeners = [];
 
             for (selector in control) {
                 events = control[selector];

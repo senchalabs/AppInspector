@@ -1,7 +1,11 @@
+/**
+ * @class   AI.util.extjs.MVC
+ * @singleton
+ */
 Ext.define('AI.util.extjs.MVC', {
     singleton : true,
 
-    getApplication : function() {
+    getApplication : function () {
         var children = [];
 
         if (!Ext.app || !Ext.app.Application) {
@@ -26,8 +30,8 @@ Ext.define('AI.util.extjs.MVC', {
         }
 
         function getControllerListeners(cls) {
-            var EventBus       = Ext.app.EventBus,
-                domains        = EventBus.domains,
+            var EventBus = Ext.app.EventBus,
+                domains = EventBus.domains,
                 busControllers = [],
                 domain, bus,
                 event, events,
@@ -54,17 +58,17 @@ Ext.define('AI.util.extjs.MVC', {
                                 controller = controller.list;
                             }
 
-                            i      = 0;
+                            i = 0;
                             length = controller.length;
 
                             for (; i < length; i++) {
                                 masterListenerObj = controller[i];
-                                listeners         = masterListenerObj.listeners;
-                                x                 = 0;
-                                len               = listeners.length;
+                                listeners = masterListenerObj.listeners;
+                                x = 0;
+                                len = listeners.length;
 
                                 for (; x < len; x++) {
-                                    listenerObj  = listeners[x];
+                                    listenerObj = listeners[x];
                                     observableId = masterListenerObj.observable.$className;
 
                                     if (observableId !== cls) {
@@ -95,17 +99,17 @@ Ext.define('AI.util.extjs.MVC', {
         }
 
         var appControllers = instance.controllers || [],
-            appStores      = instance.stores || [],
-            i              = 0,
-            length         = appControllers.length,
-            controllers    = [],
-            stores         = [],
+            appStores = instance.stores || [],
+            i = 0,
+            length = appControllers.length,
+            controllers = [],
+            stores = [],
             controller, listeners, controllerName,
             store, getter;
 
         for (; i < length; i++) {
             controller = appControllers.getAt(i);
-            listeners  = getControllerListeners(controller.$className);
+            listeners = getControllerListeners(controller.$className);
             controllerName = controller.$className;
 
             controllers.push({
@@ -118,7 +122,7 @@ Ext.define('AI.util.extjs.MVC', {
             });
         }
 
-        i      = 0;
+        i = 0;
         length = appStores.length;
 
         for (; i < length; i++) {
@@ -126,7 +130,7 @@ Ext.define('AI.util.extjs.MVC', {
 
             if (Ext.isString(store)) {
                 getter = Ext.app.Controller.getGetterName(store, 'Store');
-                store  = instance[getter]();
+                store = instance[getter]();
             }
 
             stores.push({

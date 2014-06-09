@@ -1,6 +1,8 @@
 /**
- * @class AI.ux.data.proxy.InspectedWindow
- * @author Arthur Kay (@arthurakay)
+ * @class   AI.ux.data.proxy.InspectedWindow
+ * @extends Ext.data.proxy.Proxy
+ *
+ * @author  Arthur Kay (@arthurakay)
  */
 Ext.define('AI.ux.data.proxy.InspectedWindow', {
     extend : 'Ext.data.proxy.Proxy',
@@ -15,7 +17,7 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
         /**
          * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
          */
-        evalFn           : null,
+        evalFn : null,
 
         /**
          * @cfg {String} inspectedStoreId The storeId of the store.

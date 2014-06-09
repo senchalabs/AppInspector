@@ -1,3 +1,7 @@
+/**
+ * @class   AI.store.stores.RecordsTree
+ * @extends Ext.data.TreeStore
+ */
 Ext.define('AI.store.stores.RecordsTree', {
     extend : 'Ext.data.TreeStore',
 

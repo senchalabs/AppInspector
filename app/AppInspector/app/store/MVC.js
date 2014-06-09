@@ -1,3 +1,7 @@
+/**
+ * @class   AI.store.MVC
+ * @extends Ext.data.TreeStore
+ */
 Ext.define('AI.store.MVC', {
     extend : 'Ext.data.TreeStore',
 
@@ -14,7 +18,7 @@ Ext.define('AI.store.MVC', {
             ]
         },
 
-        proxy    : {
+        proxy : {
             type   : 'memory',
             reader : {
                 type : 'json'

@@ -1,23 +1,27 @@
+/**
+ * @class   AI.controller.Main
+ * @extends Ext.app.Controller
+ */
 Ext.define('AI.controller.Main', {
-    extend: 'Ext.app.Controller',
+    extend : 'Ext.app.Controller',
 
-    requires: [
+    requires : [
         'AI.util.InspectedWindow'
     ],
 
-    views: [
+    views : [
         'MainView',
         'About'
     ],
 
-    refs: [
+    refs : [
         {
-            ref: 'mainView',
-            selector: '#mainview'
+            ref      : 'mainView',
+            selector : '#mainview'
         }
     ],
 
-    init: function(application) {
+    init : function (application) {
         this.control({
             '#mainview' : {
                 'afterrender' : this.onAppRender
@@ -25,11 +29,11 @@ Ext.define('AI.controller.Main', {
         });
     },
 
-    onAppRender: function() {
-        var me       = this,
-            args     = Ext.Array.slice(arguments),
-            app      = me.getApplication(),
-            main     = me.getMainView(),
+    onAppRender : function () {
+        var me = this,
+            args = Ext.Array.slice(arguments),
+            app = me.getApplication(),
+            main = me.getMainView(),
             tabpanel = main.child('tabpanel');
 
         main.setLoading('Getting application details...');
@@ -41,12 +45,13 @@ Ext.define('AI.controller.Main', {
                 if (data) {
                     if (data.isLoading || !data.versions) {
                         //Need to wait till app has loaded so we can get any info we want
-                        setTimeout(function() {
+                        setTimeout(function () {
                             me.onAppRender.apply(me, args);
                         }, 75);
-                    } else {
+                    }
+                    else {
                         var versions = data.versions,
-                            source   = Ext.apply({
+                            source = Ext.apply({
                                 name : data.name
                             }, versions);
 
@@ -62,7 +67,8 @@ Ext.define('AI.controller.Main', {
 
                         main.setLoading(false);
                     }
-                } else {
+                }
+                else {
                     // mask entire AppInspector body element
                     Ext.getBody().mask(
                         'No Sencha framework found!',
