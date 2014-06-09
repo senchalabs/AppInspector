@@ -15,5 +15,6 @@ lint/error_log.txt
 
 # *** Ext JS
 .sass-cache/
+/app/AppInspector/build/
 /app/AppInspector/**/build/
 *.$old
