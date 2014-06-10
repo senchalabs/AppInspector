@@ -16,7 +16,8 @@ Ext.define('AI.controller.Components', {
     stores : [
         'Components',
         'ComponentProps',
-        'ComponentMethods'
+        'ComponentMethods',
+        'ComponentBindings'
     ],
     views  : [
         'Components',
@@ -53,6 +54,11 @@ Ext.define('AI.controller.Components', {
             },
             'gridpanel#ComponentMethods filterfield' : {
                 'applyfilter' : me.onFilterComponentDetails
+            },
+
+            //MVVM bindings
+            'gridpanel#ComponentBindings'            : {
+                'activate' : me.toggleComponentsDetailsTips
             }
         });
     },
@@ -71,8 +77,7 @@ Ext.define('AI.controller.Components', {
     },
 
     onComponentTreeActivate : function (tree) {
-        var nodes = [],
-            root = tree.getRootNode();
+        var root = tree.getRootNode();
 
         tree.setLoading('Loading components...');
         root.removeAll();
@@ -112,10 +117,15 @@ Ext.define('AI.controller.Components', {
 
     onSelectComponent : function (tree, record, item, index, e, eOpts) {
         var parent = tree.up('components'),
+
             propsGrid = parent.down('#ComponentProps'),
             propsGridStore = propsGrid.getStore(),
+
             methodGrid = parent.down('#ComponentMethods'),
-            methodGridStore = methodGrid.getStore();
+            methodGridStore = methodGrid.getStore(),
+
+            bindingGrid = parent.down('#ComponentBindings'),
+            bindingGridStore = bindingGrid.getStore();
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
@@ -130,10 +140,22 @@ Ext.define('AI.controller.Components', {
                 if (result) {
                     propsGridStore.loadData(result.properties);
                     methodGridStore.loadData(result.methods);
+
+                    if (result.mvvm && result.mvvm.bindings) {
+                        bindingGridStore.loadData(result.mvvm.bindings);
+                        bindingGrid.enable();
+                    }
+                    else {
+                        bindingGridStore.loadData([]);
+                        bindingGrid.disable();
+                    }
                 }
                 else {
                     propsGridStore.loadData([]);
                     methodGridStore.loadData([]);
+
+                    bindingGrid.disable();
+                    bindingGridStore.loadData([]);
                 }
             }
         );
@@ -142,16 +164,25 @@ Ext.define('AI.controller.Components', {
     toggleComponentsDetailsTips : function (grid) {
         var tips = grid.up('#ComponentInspector').down('toolbar[dock=bottom]'),
             isProps = grid.itemId === 'ComponentProps',
+            isMethods = grid.itemId === 'ComponentMethods',
             props = tips.query('[tipGroup=props]'),
             methods = tips.query('[tipGroup=methods]'),
             i;
+
+        if (!isProps && !isMethods) {
+            tips.setVisible(false);
+            return;
+        }
+        else {
+            tips.setVisible(true);
+        }
 
         for (i = 0; i < props.length; i++) {
             props[i].setVisible(isProps);
         }
 
         for (i = 0; i < methods.length; i++) {
-            methods[i].setVisible(!isProps);
+            methods[i].setVisible(isMethods);
         }
     },
 

@@ -8,19 +8,19 @@ Ext.define('AI.view.Components', {
 
     requires : [
         'AI.view.ComponentsTreeGrid',
-        'AI.view.FilterField',
+
         'Ext.tree.Panel',
         'Ext.tab.Panel',
-        'Ext.grid.Panel',
+
         'Ext.toolbar.Toolbar',
         'Ext.toolbar.Fill',
-        'Ext.form.field.Text',
-        'Ext.grid.View',
-        'Ext.grid.column.Boolean',
-        'Ext.tab.Tab',
-        'Ext.grid.plugin.CellEditing',
         'Ext.toolbar.TextItem',
-        'Ext.layout.container.Border'
+        'Ext.layout.container.Border',
+
+        'AI.view.components.ComponentBindings',
+        'AI.view.components.ComponentMethods',
+        'AI.view.components.ComponentProperties',
+        'AI.view.components.ComponentViewModels'
     ],
 
     initialLoad : false,
@@ -51,149 +51,19 @@ Ext.define('AI.view.Components', {
                     minTabWidth : 45,
                     items       : [
                         {
-                            xtype       : 'gridpanel',
-                            cls         : 'highlight',
-                            itemId      : 'ComponentProps',
-                            title       : 'Properties',
-                            store       : 'ComponentProps',
-                            dockedItems : [
-                                {
-                                    xtype  : 'toolbar',
-                                    dock   : 'top',
-                                    border : 1,
-                                    cls    : 'components-toolbar top',
-                                    items  : [
-                                        {
-                                            xtype : 'tbfill'
-                                        },
-                                        {
-                                            xtype : 'filterfield'
-                                        }
-                                    ]
-                                }
-                            ],
-                            viewConfig  : {
-                                getRowClass : function (record, rowIndex, rowParams, store) {
-                                    var cls = [];
-
-                                    if (record.get('isChanged')) {
-                                        cls.push('isChanged');
-                                    }
-
-                                    if (record.get('isOwn')) {
-                                        cls.push('isOwn');
-                                    }
-
-                                    return cls.join(' ');
-                                }
-                            },
-                            columns     : [
-                                {
-                                    xtype        : 'booleancolumn',
-                                    width        : 5,
-                                    resizable    : false,
-                                    defaultWidth : 5,
-                                    sortable     : false,
-                                    dataIndex    : 'isOwn',
-                                    groupable    : false,
-                                    hideable     : false,
-                                    lockable     : false,
-                                    menuDisabled : true,
-                                    tdCls        : 'indicator',
-                                    falseText    : ' ',
-                                    trueText     : ' '
-                                },
-                                {
-                                    xtype     : 'gridcolumn',
-                                    dataIndex : 'name',
-                                    text      : 'Name',
-                                    flex      : 2
-                                },
-                                {
-                                    xtype     : 'gridcolumn',
-                                    dataIndex : 'value',
-                                    text      : 'Value',
-                                    flex      : 1,
-                                    editor    : {
-                                        xtype         : 'textfield',
-                                        selectOnFocus : true
-                                    }
-                                }
-                            ],
-                            plugins     : [
-                                Ext.create('Ext.grid.plugin.CellEditing', {
-
-                                })
-                            ]
+                            xtype : 'ai-components-properties'
                         },
                         {
-                            xtype       : 'gridpanel',
-                            cls         : 'highlight',
-                            itemId      : 'ComponentMethods',
-                            title       : 'Methods',
-                            store       : 'ComponentMethods',
-                            dockedItems : [
-                                {
-                                    xtype  : 'toolbar',
-                                    dock   : 'top',
-                                    border : 1,
-                                    cls    : 'components-toolbar top',
-                                    items  : [
-                                        {
-                                            xtype : 'tbfill'
-                                        },
-                                        {
-                                            xtype : 'filterfield'
-                                        }
-                                    ]
-                                }
-                            ],
-                            viewConfig  : {
-                                getRowClass : function (record, rowIndex, rowParams, store) {
-                                    var cls = [];
-
-                                    if (record.get('isOverride')) {
-                                        cls.push('isOverride');
-                                    }
-
-                                    if (record.get('isOwn')) {
-                                        cls.push('isOwn');
-                                    }
-
-                                    return cls.join(' ');
-                                }
-                            },
-                            columns     : [
-                                {
-                                    xtype        : 'booleancolumn',
-                                    width        : 5,
-                                    resizable    : false,
-                                    defaultWidth : 5,
-                                    sortable     : false,
-                                    dataIndex    : 'isOwn',
-                                    groupable    : false,
-                                    hideable     : false,
-                                    lockable     : false,
-                                    menuDisabled : true,
-                                    tdCls        : 'indicator',
-                                    falseText    : ' ',
-                                    trueText     : ' '
-                                },
-                                {
-                                    xtype     : 'gridcolumn',
-                                    dataIndex : 'name',
-                                    text      : 'Name',
-                                    flex      : 2
-                                },
-                                {
-                                    xtype     : 'gridcolumn',
-                                    dataIndex : 'value',
-                                    text      : 'Value',
-                                    flex      : 1
-                                }
-                            ]
+                            xtype : 'ai-components-methods'
+                        },
+                        {
+                            xtype : 'ai-components-bindings'
                         }
+//                        {
+//                            xtype : 'ai-components-viewmodels'
+//                        }
                     ],
+
                     dockedItems : [
                         {
                             xtype  : 'toolbar',
@@ -243,9 +113,8 @@ Ext.define('AI.view.Components', {
         me.callParent(arguments);
     },
 
-    onComponentInspectorBeforeAdd : function (container, component, index, eOpts) {
-        this.setTitle(AI.util.i18n.getMessage(this.title));
-
-    }
+//    onComponentInspectorBeforeAdd : function (container, component, index, eOpts) {
+//        this.setTitle(AI.util.i18n.getMessage(this.title));
+//    }
 
 });
