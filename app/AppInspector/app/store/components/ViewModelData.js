@@ -1,21 +1,21 @@
-/**
- * @class   AI.store.Components
- * @extends Ext.data.TreeStore
- */
-Ext.define('AI.store.Components', {
+Ext.define('AI.store.components.ViewModelData', {
     extend : 'Ext.data.TreeStore',
 
     requires : [
-        'AI.model.Component',
         'Ext.data.proxy.Memory',
         'Ext.data.reader.Json'
     ],
 
     config : {
         autoLoad : true,
-        model    : 'AI.model.Component',
-        storeId  : 'Components',
-        proxy    : {
+        //model    : 'AI.model.Component',
+        //storeId  : 'ComponentViewModelData',
+
+        fields : [
+            'text', 'value'
+        ],
+
+        proxy : {
             type   : 'memory',
             reader : {
                 type : 'json'

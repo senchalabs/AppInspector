@@ -1,4 +1,4 @@
-Ext.define('AI.store.ComponentMethods', {
+Ext.define('AI.store.components.Methods', {
     extend : 'Ext.data.Store',
 
     requires : [

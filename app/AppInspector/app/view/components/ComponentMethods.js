@@ -15,7 +15,7 @@ Ext.define('AI.view.components.ComponentMethods', {
     cls         : 'highlight',
     itemId      : 'ComponentMethods',
     title       : 'Methods',
-    store       : 'ComponentMethods',
+    store       : 'components.Methods',
     dockedItems : [
         {
             xtype  : 'toolbar',

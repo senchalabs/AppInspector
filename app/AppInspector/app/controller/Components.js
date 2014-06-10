@@ -13,12 +13,15 @@ Ext.define('AI.controller.Components', {
     models : [
         'Component'
     ],
+
     stores : [
-        'Components',
-        'ComponentProps',
-        'ComponentMethods',
-        'ComponentBindings'
+        'components.Bindings',
+        'components.Components',
+        'components.Methods',
+        'components.Properties',
+        'components.ViewModelData'
     ],
+
     views  : [
         'Components',
         'ComponentsTreeGrid'
@@ -125,7 +128,9 @@ Ext.define('AI.controller.Components', {
             methodGridStore = methodGrid.getStore(),
 
             bindingGrid = parent.down('#ComponentBindings'),
-            bindingGridStore = bindingGrid.getStore();
+            bindingGridStore = bindingGrid.getStore(),
+
+            vmTree = parent.down('ai-components-viewmodels');
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
@@ -149,6 +154,24 @@ Ext.define('AI.controller.Components', {
                         bindingGridStore.loadData([]);
                         bindingGrid.disable();
                     }
+
+                    if (result.mvvm && result.mvvm.viewModel) {
+                        vmTree.getStore().setRootNode({
+                            expanded : true,
+                            children : result.mvvm.viewModel
+                        });
+
+                        vmTree.enable();
+                    }
+                    else {
+                        vmTree.getStore().setRootNode({
+                            expanded : true,
+                            children : []
+                        });
+
+                        vmTree.disable();
+                    }
+
                 }
                 else {
                     propsGridStore.loadData([]);

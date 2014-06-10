@@ -1,4 +1,4 @@
-Ext.define('AI.store.ComponentBindings', {
+Ext.define('AI.store.components.Properties', {
     extend : 'Ext.data.Store',
 
     requires : [
@@ -7,13 +7,13 @@ Ext.define('AI.store.ComponentBindings', {
     ],
 
     config : {
-        storeId : 'ComponentBindings',
+        storeId : 'ComponentProps',
         sorters : {
-            property : 'key'
+            property : 'name'
         },
         fields  : [
             {
-                name : 'key',
+                name : 'name',
                 type : 'string'
             },
             {
@@ -21,16 +21,17 @@ Ext.define('AI.store.ComponentBindings', {
                 type : 'auto'
             },
             {
-                name : 'boundTo',
-                type : 'auto'
+                defaultValue : null,
+                name         : 'isChanged',
+                type         : 'boolean',
+                useNull      : true
             },
             {
                 defaultValue : null,
-                name         : 'isValid',
+                name         : 'isOwn',
                 type         : 'boolean',
                 useNull      : true
             }
         ]
-
     }
 });

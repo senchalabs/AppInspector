@@ -12,7 +12,7 @@ Ext.define('AI.view.components.ComponentBindings', {
     disabled : true,
     itemId   : 'ComponentBindings',
     title    : 'MVVM Bindings',
-    store    : 'ComponentBindings',
+    store    : 'components.Bindings',
 
     viewConfig : {
         getRowClass : function (record, rowIndex, rowParams, store) {

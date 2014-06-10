@@ -1,7 +1,3 @@
-/**
- * @class   AI.view.Components
- * @extends Ext.panel.Panel
- */
 Ext.define('AI.view.Components', {
     extend : 'Ext.panel.Panel',
     alias  : 'widget.components',
@@ -58,10 +54,10 @@ Ext.define('AI.view.Components', {
                         },
                         {
                             xtype : 'ai-components-bindings'
+                        },
+                        {
+                            xtype : 'ai-components-viewmodels'
                         }
-//                        {
-//                            xtype : 'ai-components-viewmodels'
-//                        }
                     ],
 
                     dockedItems : [
@@ -113,8 +109,8 @@ Ext.define('AI.view.Components', {
         me.callParent(arguments);
     },
 
-//    onComponentInspectorBeforeAdd : function (container, component, index, eOpts) {
-//        this.setTitle(AI.util.i18n.getMessage(this.title));
-//    }
+    onComponentInspectorBeforeAdd : function (container, component, index, eOpts) {
+        this.setTitle(AI.util.i18n.getMessage(this.title));
+    }
 
 });

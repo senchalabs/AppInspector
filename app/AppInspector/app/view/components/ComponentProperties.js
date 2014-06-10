@@ -15,7 +15,7 @@ Ext.define('AI.view.components.ComponentProperties', {
     cls         : 'highlight',
     itemId      : 'ComponentProps',
     title       : 'Properties',
-    store       : 'ComponentProps',
+    store       : 'components.Properties',
     dockedItems : [
         {
             xtype  : 'toolbar',

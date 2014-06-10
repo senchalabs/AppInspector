@@ -1,7 +1,3 @@
-/**
- * @class   AI.view.ComponentsTreeGrid
- * @extends Ext.tree.Panel
- */
 Ext.define('AI.view.ComponentsTreeGrid', {
     extend : 'Ext.tree.Panel',
     alias  : 'widget.componentstreegrid',
@@ -18,57 +14,50 @@ Ext.define('AI.view.ComponentsTreeGrid', {
     ],
 
     autoScroll  : true,
-    store       : 'Components',
+    store       : 'components.Components',
     animate     : false,
     rootVisible : false,
     useArrows   : true,
 
-    initComponent : function () {
-        var me = this;
-
-        Ext.applyIf(me, {
-            dockedItems : [
+    dockedItems : [
+        {
+            xtype : 'toolbar',
+            dock  : 'top',
+            ui    : 'default-toolbar',
+            items : [
                 {
-                    xtype : 'toolbar',
-                    dock  : 'top',
-                    ui    : 'default-toolbar',
-                    items : [
-                        {
-                            xtype   : 'button',
-                            itemId  : 'RefreshComponentTree',
-                            iconCls : 'icn-refresh',
-                            text    : 'Refresh'
-                        },
-                        {
-                            xtype : 'tbfill'
-                        },
-                        {
-                            xtype  : 'filterfield',
-                            itemId : 'FilterComponentsTree'
-                        }
-                    ]
-                }
-            ],
-            viewConfig  : {
-
-            },
-            columns     : [
-                {
-                    xtype     : 'treecolumn',
-                    dataIndex : 'text',
-                    text      : 'Component ID',
-                    flex      : 2
+                    xtype   : 'button',
+                    itemId  : 'RefreshComponentTree',
+                    iconCls : 'icn-refresh',
+                    text    : 'Refresh'
                 },
                 {
-                    xtype     : 'gridcolumn',
-                    dataIndex : 'xtype',
-                    text      : 'XType',
-                    flex      : 1
+                    xtype : 'tbfill'
+                },
+                {
+                    xtype  : 'filterfield',
+                    itemId : 'FilterComponentsTree'
                 }
             ]
-        });
+        }
+    ],
+    viewConfig  : {
 
-        me.callParent(arguments);
-    }
+    },
+    columns     : [
+        {
+            xtype     : 'treecolumn',
+            dataIndex : 'text',
+            text      : 'Component ID',
+            flex      : 2
+        },
+        {
+            xtype     : 'gridcolumn',
+            dataIndex : 'xtype',
+            text      : 'XType',
+            flex      : 1
+        }
+    ]
+
 
 });
