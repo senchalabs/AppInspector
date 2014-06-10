@@ -23,8 +23,7 @@ Ext.define('AI.controller.Components', {
     ],
 
     views  : [
-        'Components',
-        'ComponentsTreeGrid'
+        'Components'
     ],
 
     init : function (application) {

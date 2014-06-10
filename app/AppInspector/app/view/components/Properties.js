@@ -1,6 +1,6 @@
-Ext.define('AI.view.components.ComponentMethods', {
+Ext.define('AI.view.components.Properties', {
     extend : 'Ext.grid.Panel',
-    xtype  : 'ai-components-methods',
+    xtype  : 'ai-components-properties',
 
     requires : [
         'Ext.grid.plugin.CellEditing',
@@ -13,9 +13,9 @@ Ext.define('AI.view.components.ComponentMethods', {
     ],
 
     cls         : 'highlight',
-    itemId      : 'ComponentMethods',
-    title       : 'Methods',
-    store       : 'components.Methods',
+    itemId      : 'ComponentProps',
+    title       : 'Properties',
+    store       : 'components.Properties',
     dockedItems : [
         {
             xtype  : 'toolbar',
@@ -32,13 +32,12 @@ Ext.define('AI.view.components.ComponentMethods', {
             ]
         }
     ],
-
     viewConfig  : {
         getRowClass : function (record, rowIndex, rowParams, store) {
             var cls = [];
 
-            if (record.get('isOverride')) {
-                cls.push('isOverride');
+            if (record.get('isChanged')) {
+                cls.push('isChanged');
             }
 
             if (record.get('isOwn')) {
@@ -48,7 +47,6 @@ Ext.define('AI.view.components.ComponentMethods', {
             return cls.join(' ');
         }
     },
-
     columns     : [
         {
             xtype        : 'booleancolumn',
@@ -75,8 +73,17 @@ Ext.define('AI.view.components.ComponentMethods', {
             xtype     : 'gridcolumn',
             dataIndex : 'value',
             text      : 'Value',
-            flex      : 1
+            flex      : 1,
+            editor    : {
+                xtype         : 'textfield',
+                selectOnFocus : true
+            }
         }
-    ]
+    ],
 
+    plugins: [
+        Ext.create('Ext.grid.plugin.CellEditing', {
+            clicksToEdit: 1
+        })
+    ]
 });

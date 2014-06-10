@@ -8,8 +8,6 @@ Ext.define('AI.store.components.ViewModelData', {
 
     config : {
         autoLoad : true,
-        //model    : 'AI.model.Component',
-        //storeId  : 'ComponentViewModelData',
 
         fields : [
             'text', 'value'

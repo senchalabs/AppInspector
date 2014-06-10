@@ -3,8 +3,6 @@ Ext.define('AI.view.Components', {
     alias  : 'widget.components',
 
     requires : [
-        'AI.view.ComponentsTreeGrid',
-
         'Ext.tree.Panel',
         'Ext.tab.Panel',
 
@@ -13,10 +11,11 @@ Ext.define('AI.view.Components', {
         'Ext.toolbar.TextItem',
         'Ext.layout.container.Border',
 
-        'AI.view.components.ComponentBindings',
-        'AI.view.components.ComponentMethods',
-        'AI.view.components.ComponentProperties',
-        'AI.view.components.ComponentViewModels'
+        'AI.view.components.ComponentsTreeGrid',
+        'AI.view.components.Bindings',
+        'AI.view.components.Methods',
+        'AI.view.components.Properties',
+        'AI.view.components.ViewModels'
     ],
 
     initialLoad : false,

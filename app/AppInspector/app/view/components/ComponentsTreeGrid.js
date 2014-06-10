@@ -1,4 +1,4 @@
-Ext.define('AI.view.ComponentsTreeGrid', {
+Ext.define('AI.view.components.ComponentsTreeGrid', {
     extend : 'Ext.tree.Panel',
     alias  : 'widget.componentstreegrid',
 

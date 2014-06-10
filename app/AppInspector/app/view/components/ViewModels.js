@@ -1,4 +1,4 @@
-Ext.define('AI.view.components.ComponentViewModels', {
+Ext.define('AI.view.components.ViewModels', {
     extend : 'Ext.tree.Panel',
     xtype  : 'ai-components-viewmodels',
 

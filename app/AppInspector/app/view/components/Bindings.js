@@ -1,4 +1,4 @@
-Ext.define('AI.view.components.ComponentBindings', {
+Ext.define('AI.view.components.Bindings', {
     extend : 'Ext.grid.Panel',
     xtype  : 'ai-components-bindings',
 
