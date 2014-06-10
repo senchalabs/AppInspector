@@ -146,6 +146,14 @@ $loadmask-msg-border-radius: 0;
             background-color: $orange !important;
         }
     }
+
+    &.isInvalidBinding {
+      color: $red !important;
+
+      .indicator {
+        background-color: $red !important;
+      }
+    }
 }
 
 .components-tips {

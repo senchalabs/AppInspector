@@ -1,7 +1,3 @@
-/**
- * @class   AI.store.stores.Stores
- * @extends Ext.data.Store
- */
 Ext.define('AI.store.stores.Stores', {
     extend : 'Ext.data.Store',
 
@@ -9,12 +5,8 @@ Ext.define('AI.store.stores.Stores', {
         'AI.model.stores.Store'
     ],
 
-    constructor : function (cfg) {
-        var me = this;
-        cfg = cfg || {};
-        me.callParent([Ext.apply({
-            model   : 'AI.model.stores.Store',
-            storeId : 'Stores'
-        }, cfg)]);
+    config : {
+        model   : 'AI.model.stores.Store',
+        storeId : 'Stores'
     }
 });

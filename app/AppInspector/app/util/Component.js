@@ -136,6 +136,95 @@ Ext.define('AI.util.Component', {
                 name  : '$parent',
                 value : parent.$className
             });
+
+            //for components with Ext.mixin.Bindable (Ext JS 5)
+            if (Ext.getVersion().major >= 5 && cmp.mixins && cmp.mixins.bindable) {
+                data.mvvm = Object.create(null); //which sets __proto__ to undefined
+
+                var viewController = cmp.getController(),
+                    viewModel = cmp.getViewModel(),
+                    bindings = cmp.getBind(),
+                    boundData, boundItem, ownerData, boundPath, value;
+
+                if (bindings) {
+                    data.mvvm.bindings = [];
+
+                    var recursiveFetchBindChain = function (item) {
+                        var parent = item.parent,
+                            chain = '';
+
+                        if (parent && parent.name) {
+                            chain = recursiveFetchBindChain(parent) + '.';
+                        }
+
+                        return chain + item.name;
+
+                    };
+
+                    for (key in bindings) {
+                        boundItem = bindings[key];
+                        ownerData = boundItem.owner.getData();
+                        boundPath = recursiveFetchBindChain(boundItem.stub);
+
+                        data.mvvm.bindings.push({
+                            key     : key,
+                            value   : boundItem.getValue(),
+                            boundTo : boundPath,
+
+                            isValid : (boundItem.getValue()) ? true :
+                                      eval('ownerData.' + boundPath) ? true : false
+                        });
+                    }
+                }
+
+                if (viewModel) {
+                    boundData = viewModel.getData();
+
+                    var recursiveFetchData = function (item, name) {
+                        var node = Object.create(null), //which sets __proto__ to undefined
+                            text = name || 'data',
+                            children = [],
+                            key;
+
+                        //TODO: do we need to worry about other special types? Stores, etc...
+                        if (item.isModel) {
+                            return recursiveFetchData(item.data, item.$className);
+                        }
+
+                        for (key in item) {
+                            value = item[key];
+
+                            if (Ext.isObject(value)) {
+                                children.push(recursiveFetchData(value, key));
+                            }
+                            else {
+                                children.push({
+                                    text  : key,
+                                    value : value,
+                                    leaf  : true
+                                });
+                            }
+                        }
+
+                        node.text = text;
+                        node.children = children;
+
+                        return node;
+                    };
+
+                    data.mvvm.viewModel = Object.create(null); //which sets __proto__ to undefined
+                    data.mvvm.viewModel.text = viewModel.$className;
+                    data.mvvm.viewModel.value = viewModel.getId();
+                    data.mvvm.viewModel.children = recursiveFetchData(boundData);
+                }
+
+                if (viewController) {
+                    data.mvvm.controller = Object.create(null); //which sets __proto__ to undefined
+
+                    data.mvvm.controller.className = viewController.$className;
+                    data.mvvm.controller.id = viewController.getId();
+                }
+            }
         }
 
         return data;
