@@ -24,6 +24,7 @@ Ext.define('AI.view.layouts.tab.LayoutRunsModel', {
             fields: ['text', 'xtype'],
             rootVisible: true,
             root: {
+                text: '_LAYOUTRUNS_',
                 expanded: true,
                 children: []
             },
