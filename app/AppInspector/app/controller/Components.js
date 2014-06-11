@@ -61,6 +61,11 @@ Ext.define('AI.controller.Components', {
             //MVVM bindings
             'gridpanel#ComponentBindings'            : {
                 'activate' : me.toggleComponentsDetailsTips
+            },
+
+            //Inheritance model
+            'ai-components-inheritancemodel' : {
+                activate : me.toggleComponentsDetailsTips
             }
         });
     },
@@ -117,7 +122,7 @@ Ext.define('AI.controller.Components', {
         }
     },
 
-    onSelectComponent : function (tree, record, item, index, e, eOpts) {
+    onSelectComponent : function (tree, record) {
         var parent = tree.up('components'),
 
             propsGrid = parent.down('#ComponentProps'),
@@ -129,7 +134,9 @@ Ext.define('AI.controller.Components', {
             bindingGrid = parent.down('#ComponentBindings'),
             bindingGridStore = bindingGrid.getStore(),
 
-            vmTree = parent.down('ai-components-viewmodels');
+            vmTree = parent.down('ai-components-viewmodels'),
+
+            inheritanceModel = parent.down('ai-components-inheritancemodel');
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
@@ -144,6 +151,7 @@ Ext.define('AI.controller.Components', {
                 if (result) {
                     propsGridStore.loadData(result.properties);
                     methodGridStore.loadData(result.methods);
+
 
                     if (result.mvvm && result.mvvm.bindings) {
                         bindingGridStore.loadData(result.mvvm.bindings);
@@ -171,41 +179,73 @@ Ext.define('AI.controller.Components', {
                         vmTree.disable();
                     }
 
+                    if (result.inheritance) {
+                        inheritanceModel.enable();
+                        inheritanceModel.renderDiagram(result.inheritance)
+                    }
+
                 }
                 else {
+                    inheritanceModel.disable();
                     propsGridStore.loadData([]);
                     methodGridStore.loadData([]);
 
                     bindingGrid.disable();
                     bindingGridStore.loadData([]);
+
+                    inheritanceModel.disable();
                 }
             }
         );
     },
 
-    toggleComponentsDetailsTips : function (grid) {
-        var tips = grid.up('#ComponentInspector').down('toolbar[dock=bottom]'),
-            isProps = grid.itemId === 'ComponentProps',
-            isMethods = grid.itemId === 'ComponentMethods',
-            props = tips.query('[tipGroup=props]'),
-            methods = tips.query('[tipGroup=methods]'),
+    toggleComponentsDetailsTips : function (view) {
+        var tipsToolbar   = view.up('#ComponentInspector').down('toolbar[dock=bottom]'),
+            isProps       = view.itemId === 'ComponentProps',
+            isMethods     = view.itemId === 'ComponentMethods',
+            isInheritance = view.xtype == 'ai-components-inheritancemodel',
+            superClsTip   = tipsToolbar.query('[tipGroup=superclass]')[0],
+            mixinTip      = tipsToolbar.query('[tipGroup=mixin]')[0],
+            props         = tipsToolbar.query('[tipGroup=props]')[0],
+            methods       = tipsToolbar.query('[tipGroup=methods]')[0],
+            both          = tipsToolbar.query('[tipGroup=both]')[0],
             i;
 
-        if (!isProps && !isMethods) {
-            tips.setVisible(false);
+        if (!isProps && !isMethods && !isInheritance) {
+            tipsToolbar.setVisible(false);
             return;
         }
         else {
-            tips.setVisible(true);
+            tipsToolbar.setVisible(true);
         }
 
-        for (i = 0; i < props.length; i++) {
-            props[i].setVisible(isProps);
+        // Todo: Replace w/ a state machine mechanism
+        // Todo: Replace bootom-docked toolbar (tipsToolbar) with a custom view (much more efficient)
+        if (isProps) {
+            methods.setVisible(false);
+            both.setVisible(true);
+            props.setVisible(true);
+            superClsTip.setVisible(false);
+            mixinTip.setVisible(false);
         }
 
-        for (i = 0; i < methods.length; i++) {
-            methods[i].setVisible(isMethods);
+        if (isMethods) {
+            methods.setVisible(true);
+            props.setVisible(false);
+            both.setVisible(true);
+            superClsTip.setVisible(false);
+            mixinTip.setVisible(false);
         }
+
+
+        if (isInheritance) {
+            methods.setVisible(false);
+            props.setVisible(false);
+            both.setVisible(false);
+            superClsTip.setVisible(true);
+            mixinTip.setVisible(true);
+        }
+
     },
 
     onFilterComponentDetails : function (field, value) {

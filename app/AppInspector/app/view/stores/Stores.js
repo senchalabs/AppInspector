@@ -1,5 +1,6 @@
 /**
- *
+ * @class   AI.view.stores.Stores
+ * @extends Ext.panel.Panel
  */
 Ext.define('AI.view.stores.Stores', {
     extend: 'Ext.panel.Panel',

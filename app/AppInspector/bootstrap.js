@@ -658,11 +658,6 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
 
                 if ((exception || status === 0) && !_environment.phantom) {
                     entry.error =
-                        ("Failed loading synchronously via XHR: '" + url +
-                            "'. It's likely that the file is either being loaded from a " +
-                            "different domain or from the local file system where cross " +
-                            "origin requests are not allowed for security reasons. Try " +
-                            "asynchronous loading instead.") ||
                             true;
                 }
                 else if ((status >= 200 && status < 300) || status === 304
@@ -673,9 +668,6 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 }
                 else {
                     entry.error =
-                        ("Failed loading synchronously via XHR: '" + url +
-                            "'. Please verify that the file exists. XHR status code: " +
-                            status) ||
                             true;
                 }
 
@@ -708,9 +700,6 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
 
             ++request.loaded;
 
-            if (!request.loading) {
-                throw new Error('Unexpected script load notification ' + entry.url);
-            }
 
             if (entry.error) {
                 (request.errors || (request.errors = [])).push(entry);
