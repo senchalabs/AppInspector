@@ -11,7 +11,6 @@ Ext.define('AI.view.components.tree.TreeModel', {
         'AI.model.components.Component'
     ],
 
-    data: {},
     store: {
         components: {
             type: 'tree',
@@ -22,6 +21,7 @@ Ext.define('AI.view.components.tree.TreeModel', {
             },
             root: {
                 text: '_COMPONENTS_',
+                expanded: true,
                 children: []
             }
         }

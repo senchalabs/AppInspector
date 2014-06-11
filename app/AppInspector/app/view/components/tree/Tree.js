@@ -12,6 +12,7 @@ Ext.define('AI.view.components.tree.Tree', {
         'Ext.toolbar.Fill',
         'Ext.tree.View',
         'Ext.tree.Column',
+        'Ext.grid.column.Column',
         'AI.view.field.Filter'
     ],
 

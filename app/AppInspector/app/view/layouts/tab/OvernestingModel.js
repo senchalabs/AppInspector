@@ -14,6 +14,7 @@ Ext.define('AI.view.layouts.tab.OvernestingModel', {
     data: {
         selected: false
     },
+
     stores: {
         overnesting: {
             storeId: 'overnesting',

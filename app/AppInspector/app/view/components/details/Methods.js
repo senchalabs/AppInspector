@@ -10,6 +10,7 @@ Ext.define('AI.view.components.details.Methods', {
         'Ext.toolbar.Toolbar',
         'Ext.toolbar.Fill',
         'Ext.grid.View',
+        'Ext.grid.column.Column',
         'Ext.grid.column.Boolean',
         'AI.view.field.Filter'
     ],

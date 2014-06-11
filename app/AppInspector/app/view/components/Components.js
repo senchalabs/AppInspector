@@ -14,7 +14,8 @@ Ext.define('AI.view.components.Components', {
         'AI.view.components.tree.Tree',
         'AI.view.components.details.Properties',
         'AI.view.components.details.Methods',
-        'AI.view.components.details.Bindings'
+        'AI.view.components.details.Bindings',
+        'AI.view.components.details.ViewModelData'
     ],
 
     config: {
@@ -52,23 +53,32 @@ Ext.define('AI.view.components.Components', {
             xtype: 'properties',
             reference: 'properties',
             listeners: {
-                activate: 'toggleComponentsDetailsTips',
+                activate: 'toggleDetailsTips',
                 validateedit: 'onDetailValueEdit'
             }
         }, {
             xtype: 'methods',
             reference: 'methods',
             listeners: {
-                activate: 'toggleComponentsDetailsTips'
+                activate: 'toggleDetailsTips'
             }
         }, {
             xtype: 'bindings',
             reference: 'bindings',
             bind: {
-                // disabled: '{!componentstree.isMVVM}'
+                disabled: '{!componentstree.isMVVMBindings}'
             },
             listeners: {
-                activate: 'toggleComponentsDetailsTips'
+                activate: 'toggleDetailsTips'
+            }
+        }, {
+            xtype: 'viewmodeldata',
+            reference: 'vm',
+            bind: {
+                disabled: '{!componentstree.isViewModelData}'
+            },
+            listeners: {
+                activate: 'toggleDetailsTips'
             }
         }],
         dockedItems: [{
@@ -94,7 +104,7 @@ Ext.define('AI.view.components.Components', {
                 cls: 'tip-custom',
                 text: 'Custom ',
                 bind: {
-                    hidden: '{componentsdetails.bindings}'
+                    hidden: '{!componentsdetails.isPropertiesOrMethods}'
                 }
             }, {
                 xtype: 'tbtext',
@@ -116,6 +126,10 @@ Ext.define('AI.view.components.Components', {
                 bind: {
                     hidden: '{!componentsdetails.bindings}'
                 }
+            }, {
+                xtype: 'tbtext',
+                maxWidth: 1,
+                text: '&nbsp;'
             }]
         }]
     }],

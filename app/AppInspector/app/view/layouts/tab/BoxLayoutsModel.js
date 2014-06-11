@@ -14,6 +14,7 @@ Ext.define('AI.view.layouts.tab.BoxLayoutsModel', {
     data: {
         selected: false
     },
+
     stores: {
         boxlayouts: {
             storeId: 'boxlayouts',

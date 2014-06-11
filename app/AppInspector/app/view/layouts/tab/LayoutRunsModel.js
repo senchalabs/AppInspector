@@ -15,6 +15,7 @@ Ext.define('AI.view.layouts.tab.LayoutRunsModel', {
         selected: false,
         layoutPool: []
     },
+
     stores: {
         layoutruns: {
             type: 'tree',
@@ -25,6 +26,7 @@ Ext.define('AI.view.layouts.tab.LayoutRunsModel', {
             },
             root: {
                 text: '_LAYOUTRUNS_',
+                expanded: true,
                 children: []
             }
         }

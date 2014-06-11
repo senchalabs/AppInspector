@@ -9,6 +9,7 @@ Ext.define('AI.view.components.details.Bindings', {
         'Ext.toolbar.Toolbar',
         'Ext.toolbar.Fill',
         'Ext.grid.View',
+        'Ext.grid.column.Column',
         'Ext.grid.column.Boolean',
         'AI.view.field.Filter'
     ],
@@ -72,5 +73,18 @@ Ext.define('AI.view.components.details.Bindings', {
             text: 'Bound To',
             flex: 1
         }]
-    }
+    },
+
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'top',
+        border: 1,
+        cls: 'components-toolbar top',
+        items: ['->', {
+            xtype: 'filterfield',
+            listeners: {
+                // applyfilter: 'onFilterComponentDetails'
+            }
+        }]
+    }]
 });

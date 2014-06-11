@@ -7,16 +7,26 @@ Ext.define('AI.view.componets.details.DetailsModel', {
     alias: 'viewmodel.details',
 
     requires: [
+        'Ext.data.Field',
         'Ext.util.Sorter',
-        'Ext.data.proxy.Memory',
-        'AI.model.components.Detail'
+        'Ext.data.proxy.Memory'
     ],
 
     stores: {
         propstore: {
             // type: 'store',
             storeId: 'propertyDetails',
-            model: 'AI.model.components.Detail',
+            fields: ['name', 'value', {
+                defaultValue: null,
+                name: 'isChanged',
+                type: 'boolean',
+                useNull: true
+            }, {
+                defaultValue: null,
+                name: 'isOwn',
+                type: 'boolean',
+                useNull: true
+            }],
             sorters: [{
                 property: 'name',
                 direction: 'ASC'
@@ -28,7 +38,17 @@ Ext.define('AI.view.componets.details.DetailsModel', {
         methodstore: {
             // type: 'store',
             storeId: 'methodDetails',
-            model: 'AI.model.components.Detail',
+            fields: ['name', 'value', {
+                defaultValue: null,
+                name: 'isOverride',
+                type: 'boolean',
+                useNull: true
+            }, {
+                defaultValue: null,
+                name: 'isOwn',
+                type: 'boolean',
+                useNull: true
+            }],
             sorters: [{
                 property: 'name',
                 direction: 'ASC'
@@ -38,11 +58,30 @@ Ext.define('AI.view.componets.details.DetailsModel', {
             }
         },
         bindingsstore: {
-            type: 'tree',
             storeId: 'bindingsDetails',
-            model: 'AI.model.components.Detail',
+            fields: ['key', 'value', 'boundTo', {
+                defaultValue: null,
+                name: 'isValid',
+                type: 'boolean',
+                useNull: true
+            }],
             proxy: {
                 type: 'memory'
+            }
+        },
+        vmstore: {
+            txpe: 'tree',
+            storeId: 'viewmodelDetails',
+            fields: [
+                'text', 'value'
+            ],
+            proxy: {
+                type: 'memory'
+            },
+            root: {
+                text: '_VIEWMODEL_',
+                expanded: true,
+                children: []
             }
         }
     }

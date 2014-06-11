@@ -131,7 +131,7 @@ Ext.define('AI.view.components.tree.TreeController', {
             methodGridStore = methodGrid.getStore(),
             // binding details
             bindingsGrid = parent.down('bindings'),
-            // bindingsFilter = bindingsGrid.down('filterfield'),
+            bindingsFilter = bindingsGrid.down('filterfield'),
             bindingsGridStore = bindingsGrid.getStore();
 
         propsFilter.reset();
@@ -158,7 +158,6 @@ Ext.define('AI.view.components.tree.TreeController', {
                     });
 
                     propsGridStore.loadData(properties);
-                    propsGridStore.sort('name', 'ASC');
 
                     // methods tab
                     Ext.each(result.methods, function(method) {
@@ -166,7 +165,6 @@ Ext.define('AI.view.components.tree.TreeController', {
                     });
 
                     methodGridStore.loadData(methods);
-                    methodGridStore.sort('name', 'ASC');
 
                     // <debug>
                     // debugger;

@@ -5,12 +5,17 @@ Ext.define('AI.view.components.ComponentsModel', {
     data: {
         componentstree: {
             selected: false,
-            isMVVM: false
+            isMVVMBindings: false,
+            isViewModelData: false
         },
         componentsdetails: {
+            // tabs
             properties: false,
             methods: false,
-            bindings: false
+            bindings: false,
+            viewmodeldata: false,
+            // logical binding
+            isPropertiesOrMethods: false
         }
     }
 });

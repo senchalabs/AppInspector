@@ -10,6 +10,7 @@ Ext.define('AI.view.components.details.Properties', {
         'Ext.toolbar.Toolbar',
         'Ext.toolbar.Fill',
         'Ext.grid.View',
+        'Ext.grid.column.Column',
         'Ext.grid.column.Boolean',
         'Ext.grid.plugin.CellEditing',
         'AI.view.field.Filter'
