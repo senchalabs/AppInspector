@@ -5,7 +5,7 @@
  * Utility class containing methods which run in the context of the inspectedWindow.
  */
 Ext.define('AI.util.TreeStore', {
-    singleton : true,
+    singleton: true,
 
     // <debug>
     // require: ['AI.mockup.TreeStore'],
@@ -14,7 +14,7 @@ Ext.define('AI.util.TreeStore', {
     /**
      * @param  {String} storeId
      */
-    getChildNodes : function (storeId) {
+    getChildNodes: function(storeId) {
         var store = Ext.getStore(storeId),
             root;
 
@@ -30,8 +30,7 @@ Ext.define('AI.util.TreeStore', {
         if (store.getRoot) {
             // TODO
             return {};
-        }
-        else {
+        } else {
             root = store.getRootNode();
 
             return root.serialize();

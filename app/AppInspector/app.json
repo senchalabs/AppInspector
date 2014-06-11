@@ -2,7 +2,7 @@
     /**
      * The application's namespace.
      */
-    "name": "AI",
+    "name" : "AI",
 
     /**
      * Comma-separated string with the paths of directories or files to search. Any classes
@@ -10,17 +10,17 @@
      * to "Ext.require". The "app.dir" variable below is expanded to the path where the
      * application resides (the same folder in which this file is located).
      */
-    "classpath": "${app.dir}/app",
+    "classpath" : "${app.dir}/app",
 
     /**
      * The Sencha Framework for this application: "ext" or "touch".
      */
-    "framework": "ext",
+    "framework" : "ext",
 
     /**
      * The name of the theme for this application.
      */
-    "theme": "AppInspectorTheme",
+    "theme" : "AppInspectorTheme",
 
     /**
      * The list of required packages (with optional versions; default is "latest").
@@ -31,14 +31,14 @@
      *          "sencha-charts"
      *      ]
      */
-    "requires": [
+    "requires" : [
         "AppInspectorTheme"
     ],
 
     /**
      * Sass configuration properties.
      */
-    "sass": {
+    "sass" : {
         /**
          * The root namespace to use when mapping *.scss files to classes in the
          * sass/src and sass/var directories. For example, "AI.view.Foo" would
@@ -47,14 +47,14 @@
          * root namespace, change this to "". Doing so would change the mapping of
          * "AI.view.Foo" to "sass/src/AI/view/Foo.scss".
          */
-        "namespace": "AI"
+        "namespace" : "AI"
     },
 
     /**
      * The file path to this application's front HTML document. This is relative
      * to this app.json file.
      */
-    "indexHtmlPath": "index.html",
+    "indexHtmlPath" : "index.html",
 
     /**
      * The absolute URL to this application in development environment, i.e: the URL to run
@@ -65,7 +65,7 @@
      * resolution by setting "skip.resolve=0" (in .sencha/app/sencha.cfg) or if you
      * invoke "sencha app resolve".
      */
-    "url": null,
+    "url" : null,
 
     /**
      * List of all JavaScript assets in the right execution order.
@@ -107,14 +107,16 @@
      *          "bootstrap": false   // OPTIONAL
      *      }
      */
-    "js": [
+    "js" : [
         {
-            "path": "app.js",
-            "bundle": true
+            "path"   : "app.js",
+            "bundle" : true
         },
         {
-            "path": "mocks.js",
-            "includeInBundle": false
+            "path"            : "mocks.js",
+            "bundle"          : false,
+            "includeInBundle" : false,
+            "bootstrap"       : true
         }
     ],
 
@@ -143,46 +145,46 @@
      *          "update": ""      // OPTIONAL
      *      }
      */
-    "css": [
+    "css" : [
         {
-            "path": "bootstrap.css",
-            "bootstrap": true
+            "path"      : "bootstrap.css",
+            "bootstrap" : true
         }
     ],
 
     /**
      * Used to automatically generate cache.manifest (HTML 5 application cache manifest) file when you build
      */
-    "appCache": {
+    "appCache" : {
         /**
          * List of items in the CACHE MANIFEST section
          */
-        "cache": [
+        "cache"    : [
             "index.html"
         ],
         /**
          * List of items in the NETWORK section
          */
-        "network": [
+        "network"  : [
             "*"
         ],
         /**
          * List of items in the FALLBACK section
          */
-        "fallback": []
+        "fallback" : []
     },
 
     /**
      * Extra resources to be copied along when build
      */
-    "resources": [
+    "resources" : [
         "about.html"
     ],
 
     /**
      * File / directory name matchers to ignore when copying to the builds, must be valid regular expressions
      */
-    "ignore": [
+    "ignore" : [
         "^\\.svn$",
         "^\\.git$"
     ],
@@ -191,11 +193,11 @@
      * Directory path to store all previous production builds. Note that the content generated inside this directory
      * must be kept intact for proper generation of deltas between updates
      */
-    "archivePath": "archive",
+    "archivePath" : "archive",
 
     /**
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "f951f321-a118-4a68-884e-9a261774ee35"
+    "id" : "f951f321-a118-4a68-884e-9a261774ee35"
 }

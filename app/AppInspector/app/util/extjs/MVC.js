@@ -3,9 +3,9 @@
  * @singleton
  */
 Ext.define('AI.util.extjs.MVC', {
-    singleton : true,
+    singleton: true,
 
-    getApplication : function () {
+    getApplication: function() {
         var children = [];
 
         if (!Ext.app || !Ext.app.Application) {
@@ -83,10 +83,10 @@ Ext.define('AI.util.extjs.MVC', {
                                     }
 
                                     busControllers.push({
-                                        domain   : domain,
-                                        event    : event,
-                                        selector : selector,
-                                        method   : method
+                                        domain: domain,
+                                        event: event,
+                                        selector: selector,
+                                        method: method
                                     });
                                 }
                             }
@@ -113,12 +113,12 @@ Ext.define('AI.util.extjs.MVC', {
             controllerName = controller.$className;
 
             controllers.push({
-                text     : controllerName,
-                qtip     : controller.$className,
-                type     : 'controller',
-                count    : listeners.length,
-                eventbus : listeners,
-                leaf     : true
+                text: controllerName,
+                qtip: controller.$className,
+                type: 'controller',
+                count: listeners.length,
+                eventbus: listeners,
+                leaf: true
             });
         }
 
@@ -134,43 +134,36 @@ Ext.define('AI.util.extjs.MVC', {
             }
 
             stores.push({
-                text  : store.storeId,
-                qtip  : store.$className,
-                type  : 'store',
-                count : (store.root) ? 'TreeStore' : store.getCount(),
-                id    : store.storeId,
-                leaf  : true
+                text: store.storeId,
+                qtip: store.$className,
+                type: 'store',
+                count: (store.root) ? 'TreeStore' : store.getCount(),
+                id: store.storeId,
+                leaf: true
             });
         }
 
         children.push({
-            text     : 'Application instance',
-            expanded : true,
-            children : [
-                {
-                    text : 'name: ' + (instance.getName ? instance.getName() : instance.name),
-                    leaf : true
-                },
-                {
-                    text : 'namespace: ' + instance.$namespace,
-                    leaf : true
-                },
-                {
-                    text : 'class name: ' + instance.$className,
-                    leaf : true
-                },
-                {
-                    text     : 'Controllers (' + controllers.length + ')',
-                    children : controllers
-                },
-                {
-                    text     : 'Stores (' + stores.length + ')',
-                    children : stores
-                }
-            ]
+            text: 'Application instance',
+            expanded: true,
+            children: [{
+                text: 'name: ' + (instance.getName ? instance.getName() : instance.name),
+                leaf: true
+            }, {
+                text: 'namespace: ' + instance.$namespace,
+                leaf: true
+            }, {
+                text: 'class name: ' + instance.$className,
+                leaf: true
+            }, {
+                text: 'Controllers (' + controllers.length + ')',
+                children: controllers
+            }, {
+                text: 'Stores (' + stores.length + ')',
+                children: stores
+            }]
         });
 
         return children;
     }
 });
-

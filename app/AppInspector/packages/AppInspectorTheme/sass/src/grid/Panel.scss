@@ -1,0 +1,33 @@
+$grid-row-cell-selected-background-color : rgba($green, 0.2);
+
+.highlight .x-grid-row {
+    .indicator {
+        background-color : $grid-row-cell-border-color;
+    }
+
+    &.isChanged, &.isOwn {
+        .indicator {
+            background-color : $blue-light !important;
+        }
+    }
+
+    &.isOwn {
+        color : $green !important;
+    }
+
+    &.isOverride {
+        color : $orange !important;
+
+        .indicator {
+            background-color : $orange !important;
+        }
+    }
+
+    &.isInvalidBinding {
+        color : $red !important;
+
+        .indicator {
+            background-color : $red !important;
+        }
+    }
+}

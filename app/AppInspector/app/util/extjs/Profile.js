@@ -5,20 +5,20 @@
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.extjs.Profile', {
-    singleton : true,
+    singleton: true,
 
     /**
      * @returns {Array}
      */
-    getOvernestedComponents : function () {
+    getOvernestedComponents: function() {
         var components = [];
 
-        Ext.ComponentManager.each(function (id) {
+        Ext.ComponentManager.each(function(id) {
             var c = Ext.getCmp(id);
             if (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') && c.items.items.length === 1) {
                 components.push({
-                    cmpId : c.id,
-                    xtype : c.xtype
+                    cmpId: c.id,
+                    xtype: c.xtype
                 });
             }
         });
@@ -29,25 +29,25 @@ Ext.define('AI.util.extjs.Profile', {
     /**
      * @returns {Array}
      */
-    getNestedBoxLayouts : function () {
+    getNestedBoxLayouts: function() {
         var components = [];
 
-        var isContainer = function (c) {
+        var isContainer = function(c) {
             return (c.isContainer && !c.isHeader && !c.isXType('tablepanel') && !c.isXType('headercontainer') && !c.hasCls('x-fieldset-header') &&
-                    c.items.items.length > 0);
+                c.items.items.length > 0);
         };
 
-        var isBoxLayout = function (c) {
+        var isBoxLayout = function(c) {
             return (c.getLayout().type === 'vbox' || c.getLayout().type === 'hbox');
         };
 
-        Ext.ComponentManager.each(function (id) {
+        Ext.ComponentManager.each(function(id) {
             var cmp = Ext.getCmp(id);
 
             if (isContainer(cmp) && isBoxLayout(cmp) && cmp.flex) {
                 components.push({
-                    cmpId : cmp.id,
-                    xtype : cmp.xtype
+                    cmpId: cmp.id,
+                    xtype: cmp.xtype
                 });
             }
         });
@@ -58,7 +58,7 @@ Ext.define('AI.util.extjs.Profile', {
     /**
      *
      */
-    stopLayouts : function () {
+    stopLayouts: function() {
         if (Ext.ux.AppInspector.layoutCaptureFn) {
             Ext.layout.Context.prototype.runComplete = Ext.ux.AppInspector.layoutCaptureFn;
 
@@ -71,7 +71,7 @@ Ext.define('AI.util.extjs.Profile', {
     /**
      * @returns {Array}
      */
-    recordLayouts : function () {
+    recordLayouts: function() {
         if (Ext.ux.AppInspector.layoutRunTotal === null) {
             Ext.ux.AppInspector.layoutRunTotal = 0;
             Ext.ux.AppInspector.layoutCollection = [];
@@ -80,12 +80,12 @@ Ext.define('AI.util.extjs.Profile', {
             Ext.ux.AppInspector.layoutCaptureFn = Ext.layout.Context.prototype.runComplete;
 
             //create an intercept function for our purposes
-            var interceptFn = function () {
+            var interceptFn = function() {
                 Ext.ux.AppInspector.layoutRunTotal++;
 
                 var items = [];
 
-                Ext.Object.each(this.items, function (key, item) {
+                Ext.Object.each(this.items, function(key, item) {
                     //TODO: is there any better way to do this?
                     // "item" is an Ext.layout.ContextItem and I don't see any way to access the original component
                     // item.target?
@@ -93,34 +93,33 @@ Ext.define('AI.util.extjs.Profile', {
 
                     if (comp) {
                         items.push({
-                            text     : comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
-                            cmpId    : comp.id || '',
-                            itemId   : comp.itemId || '',
-                            xtype    : comp.xtype,
-                            children : []
+                            text: comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
+                            cmpId: comp.id || '',
+                            itemId: comp.itemId || '',
+                            xtype: comp.xtype,
+                            children: []
                         });
-                    }
-                    else {
+                    } else {
                         items.push({
-                            text     : key,
-                            cmpId    : '',
-                            itemId   : '',
-                            xtype    : '',
-                            children : []
+                            text: key,
+                            cmpId: '',
+                            itemId: '',
+                            xtype: '',
+                            children: []
                         });
                     }
                 });
 
                 Ext.ux.AppInspector.layoutCollection.push({
-                    text     : 'Layout run #' + Ext.ux.AppInspector.layoutRunTotal + ' (' + items.length + ' items)',
-                    cmpId    : '',
-                    itemId   : '',
-                    xtype    : '',
-                    children : items
+                    text: 'Layout run #' + Ext.ux.AppInspector.layoutRunTotal + ' (' + items.length + ' items)',
+                    cmpId: '',
+                    itemId: '',
+                    xtype: '',
+                    children: items
                 });
             };
 
-            Ext.layout.Context.prototype.runComplete = function () {
+            Ext.layout.Context.prototype.runComplete = function() {
                 Ext.ux.AppInspector.layoutCaptureFn.apply(this, arguments);
                 return interceptFn.apply(this, arguments);
             };

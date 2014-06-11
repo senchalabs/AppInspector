@@ -1,26 +1,18 @@
-// @require @packageOverrides
-Ext.Loader.setConfig({
-    enabled: true
-});
-
+/*
+ * This file is generated and updated by Sencha Cmd. You can edit this file as
+ * needed for your application, but these edits will have to be merged by
+ * Sencha Cmd when upgrading.
+ */
 Ext.application({
-
-    requires: [
-        'AI.util.i18n',
-        'Ext.window.MessageBox'
-    ],
-    controllers: [
-        'Main',
-        'Components',
-        'Stores',
-        'Layouts',
-        'Events',
-        'MVC'
-    ],
     name: 'AI',
 
-    launch: function() {
-        Ext.create('AI.view.MainView');
-    }
+    extend: 'AI.Application',
 
+    autoCreateViewport: 'AI.view.main.Main'
+
+    //-------------------------------------------------------------------------
+    // Most customizations should be made to AI.Application. If you need to
+    // customize this file, doing so below this section reduces the likelihood
+    // of merge conflicts when upgrading to new versions of Sencha Cmd.
+    //-------------------------------------------------------------------------
 });

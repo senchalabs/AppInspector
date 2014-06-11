@@ -1,5 +1,10 @@
 Ext.define('AI.Application', {
-    name : 'AI',
+    extend: 'Ext.app.Application',
 
-    extend : 'Ext.app.Application'
+    name: 'AI',
+
+    requires: [
+        'Ext.MessageBox',
+        'AI.util.i18n'
+    ]
 });

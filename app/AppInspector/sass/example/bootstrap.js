@@ -1193,7 +1193,10 @@ Ext.Boot.loadSync([
 
 Ext.Loader.addClassPathMappings({
   "AI": "../../app",
+  "AI.model.components.Component": "../../app/model/componets/Component.js",
+  "AI.model.components.Detail": "../../app/model/componets/Detail.js",
   "AI.override.AbstractComponent": "../../app/util/i18n.js",
+  "AI.view.componets.details.DetailsModel": "../../app/view/components/details/DetailsModel.js",
   "Ext": "../../ext/src",
   "Ext-more": "../../ext/overrides/Ext-more.js",
   "Ext.AbstractManager": "../../ext/packages/sencha-core/src/AbstractManager.js",
@@ -1281,38 +1284,10 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
-  "AI.controller.Components": [],
-  "AI.controller.Events": [],
-  "AI.controller.Layouts": [],
-  "AI.controller.MVC": [],
-  "AI.controller.Main": [],
-  "AI.controller.Stores": [],
-  "AI.model.Component": [],
-  "AI.model.Event": [],
-  "AI.model.Overnested": [],
-  "AI.model.Record": [],
-  "AI.model.Store": [],
-  "AI.model.mvc.Listeners": [],
-  "AI.model.mvc.Tree": [],
-  "AI.model.stores.RecordDetail": [],
-  "AI.model.stores.Store": [],
+  "AI.model.components.Component": [],
+  "AI.model.components.Detail": [],
+  "AI.model.layouts.Layout": [],
   "AI.override.AbstractComponent": [],
-  "AI.store.BoxLayouts": [],
-  "AI.store.ComponentMethods": [],
-  "AI.store.ComponentProps": [],
-  "AI.store.Components": [],
-  "AI.store.Events": [],
-  "AI.store.Layouts": [],
-  "AI.store.MVC": [],
-  "AI.store.Overnested": [],
-  "AI.store.Records": [],
-  "AI.store.Stores": [],
-  "AI.store.mvc.Listeners": [],
-  "AI.store.mvc.Records": [],
-  "AI.store.override.mvc.Records": [],
-  "AI.store.stores.RecordDetails": [],
-  "AI.store.stores.RecordsTree": [],
-  "AI.store.stores.Stores": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
@@ -1326,23 +1301,42 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.util.touch.MVC": [],
   "AI.util.touch.Profile": [],
   "AI.ux.data.proxy.InspectedWindow": [],
-  "AI.view.About": [],
-  "AI.view.Components": [],
-  "AI.view.ComponentsTreeGrid": [],
-  "AI.view.Events": [],
-  "AI.view.FilterField": [],
-  "AI.view.Layouts": [],
-  "AI.view.MVC": [],
-  "AI.view.Main": [],
-  "AI.view.MainView": [],
-  "AI.view.Viewport": [],
-  "AI.view.mvc.Listeners": [],
-  "AI.view.mvc.Records": [],
-  "AI.view.override.ComponentsTreeGrid": [],
-  "AI.view.stores.RecordDetails": [],
-  "AI.view.stores.RecordList": [],
-  "AI.view.stores.RecordListTree": [],
+  "AI.view.about.About": [],
+  "AI.view.components.Components": [],
+  "AI.view.components.ComponentsController": [],
+  "AI.view.components.ComponentsModel": [],
+  "AI.view.components.details.Bindings": [],
+  "AI.view.components.details.Methods": [],
+  "AI.view.components.details.Properties": [],
+  "AI.view.components.tree.Tree": [],
+  "AI.view.components.tree.TreeController": [],
+  "AI.view.components.tree.TreeModel": [],
+  "AI.view.componets.details.DetailsModel": [],
+  "AI.view.events.Events": [],
+  "AI.view.events.EventsController": [],
+  "AI.view.events.EventsModel": [],
+  "AI.view.field.Filter": [],
+  "AI.view.field.FilterController": [],
+  "AI.view.layouts.Layouts": [],
+  "AI.view.layouts.LayoutsController": [],
+  "AI.view.layouts.LayoutsModel": [],
+  "AI.view.layouts.tab.BoxLayouts": [],
+  "AI.view.layouts.tab.BoxLayoutsController": [],
+  "AI.view.layouts.tab.BoxLayoutsModel": [],
+  "AI.view.layouts.tab.LayoutRuns": [],
+  "AI.view.layouts.tab.LayoutRunsController": [],
+  "AI.view.layouts.tab.LayoutRunsModel": [],
+  "AI.view.layouts.tab.Overnesting": [],
+  "AI.view.layouts.tab.OvernestingController": [],
+  "AI.view.layouts.tab.OvernestingModel": [],
+  "AI.view.main.Main": [],
+  "AI.view.main.MainController": [],
+  "AI.view.mvc.MVC": [],
+  "AI.view.mvc.MVCController": [],
+  "AI.view.mvc.MVCModel": [],
   "AI.view.stores.Stores": [],
+  "AI.view.stores.StoresController": [],
+  "AI.view.stores.StoresModel": [],
   "Ext.AbstractManager": [],
   "Ext.Action": [],
   "Ext.Ajax": [],
@@ -2380,40 +2374,10 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
-  "AI.controller.Components": [],
-  "AI.controller.Events": [],
-  "AI.controller.Layouts": [],
-  "AI.controller.MVC": [],
-  "AI.controller.Main": [],
-  "AI.controller.Stores": [],
-  "AI.model.Component": [],
-  "AI.model.Event": [],
-  "AI.model.Overnested": [],
-  "AI.model.Record": [],
-  "AI.model.Store": [],
-  "AI.model.mvc.Listeners": [],
-  "AI.model.mvc.Tree": [],
-  "AI.model.stores.RecordDetail": [],
-  "AI.model.stores.Store": [],
+  "AI.model.components.Component": [],
+  "AI.model.components.Detail": [],
+  "AI.model.layouts.Layout": [],
   "AI.override.AbstractComponent": [],
-  "AI.store.BoxLayouts": [],
-  "AI.store.ComponentMethods": [],
-  "AI.store.ComponentProps": [],
-  "AI.store.Components": [],
-  "AI.store.Events": [],
-  "AI.store.Layouts": [],
-  "AI.store.MVC": [],
-  "AI.store.Overnested": [],
-  "AI.store.Records": [],
-  "AI.store.Stores": [],
-  "AI.store.mvc.Listeners": [],
-  "AI.store.mvc.Records": [],
-  "AI.store.override.mvc.Records": [],
-  "AI.store.stores.RecordDetails": [
-    "store.recorddetails"
-  ],
-  "AI.store.stores.RecordsTree": [],
-  "AI.store.stores.Stores": [],
   "AI.util.Component": [],
   "AI.util.Error": [],
   "AI.util.InspectedWindow": [],
@@ -2429,52 +2393,113 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.ux.data.proxy.InspectedWindow": [
     "proxy.inspectedwindow"
   ],
-  "AI.view.About": [
+  "AI.view.about.About": [
     "widget.about"
   ],
-  "AI.view.Components": [
+  "AI.view.components.Components": [
     "widget.components"
   ],
-  "AI.view.ComponentsTreeGrid": [
-    "widget.componentstreegrid"
+  "AI.view.components.ComponentsController": [
+    "controller.components"
   ],
-  "AI.view.Events": [
-    "widget.eventgrid"
+  "AI.view.components.ComponentsModel": [
+    "viewmodel.components"
   ],
-  "AI.view.FilterField": [
+  "AI.view.components.details.Bindings": [
+    "widget.bindings"
+  ],
+  "AI.view.components.details.Methods": [
+    "widget.methods"
+  ],
+  "AI.view.components.details.Properties": [
+    "widget.properties"
+  ],
+  "AI.view.components.tree.Tree": [
+    "widget.componentstree"
+  ],
+  "AI.view.components.tree.TreeController": [
+    "controller.componentstree"
+  ],
+  "AI.view.components.tree.TreeModel": [
+    "viewmodel.componentstree"
+  ],
+  "AI.view.componets.details.DetailsModel": [
+    "viewmodel.details"
+  ],
+  "AI.view.events.Events": [
+    "widget.events"
+  ],
+  "AI.view.events.EventsController": [
+    "controller.events"
+  ],
+  "AI.view.events.EventsModel": [
+    "viewmodel.events"
+  ],
+  "AI.view.field.Filter": [
     "widget.filterfield"
   ],
-  "AI.view.Layouts": [
+  "AI.view.field.FilterController": [
+    "controller.filterfield"
+  ],
+  "AI.view.layouts.Layouts": [
     "widget.layouts"
   ],
-  "AI.view.MVC": [
+  "AI.view.layouts.LayoutsController": [
+    "controller.layouts"
+  ],
+  "AI.view.layouts.LayoutsModel": [
+    "viewmodel.layouts"
+  ],
+  "AI.view.layouts.tab.BoxLayouts": [
+    "widget.boxlayouts"
+  ],
+  "AI.view.layouts.tab.BoxLayoutsController": [
+    "controller.boxlayouts"
+  ],
+  "AI.view.layouts.tab.BoxLayoutsModel": [
+    "viewmodel.boxlayouts"
+  ],
+  "AI.view.layouts.tab.LayoutRuns": [
+    "widget.layoutruns"
+  ],
+  "AI.view.layouts.tab.LayoutRunsController": [
+    "controller.layoutruns"
+  ],
+  "AI.view.layouts.tab.LayoutRunsModel": [
+    "viewmodel.layoutruns"
+  ],
+  "AI.view.layouts.tab.Overnesting": [
+    "widget.overnesting"
+  ],
+  "AI.view.layouts.tab.OvernestingController": [
+    "controller.overnesting"
+  ],
+  "AI.view.layouts.tab.OvernestingModel": [
+    "viewmodel.overnesting"
+  ],
+  "AI.view.main.Main": [
+    "widget.main"
+  ],
+  "AI.view.main.MainController": [
+    "controller.main"
+  ],
+  "AI.view.mvc.MVC": [
     "widget.mvc"
   ],
-  "AI.view.Main": [
-    "widget.app-main"
+  "AI.view.mvc.MVCController": [
+    "controller.mvc"
   ],
-  "AI.view.MainView": [
-    "widget.mainview"
-  ],
-  "AI.view.Viewport": [],
-  "AI.view.mvc.Listeners": [
-    "widget.mvc_listeners"
-  ],
-  "AI.view.mvc.Records": [
-    "widget.mvc_records"
-  ],
-  "AI.view.override.ComponentsTreeGrid": [],
-  "AI.view.stores.RecordDetails": [
-    "widget.recorddetails"
-  ],
-  "AI.view.stores.RecordList": [
-    "widget.recordliststore"
-  ],
-  "AI.view.stores.RecordListTree": [
-    "widget.recordlisttreestore"
+  "AI.view.mvc.MVCModel": [
+    "viewmodel.mvc"
   ],
   "AI.view.stores.Stores": [
     "widget.stores"
+  ],
+  "AI.view.stores.StoresController": [
+    "controller.stores"
+  ],
+  "AI.view.stores.StoresModel": [
+    "viewmodel.stores"
   ],
   "Ext.AbstractManager": [],
   "Ext.Action": [],

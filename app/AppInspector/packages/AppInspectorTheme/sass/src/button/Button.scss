@@ -1,0 +1,19 @@
+@-webkit-keyframes pulse {
+    0%, 100% {
+        color        : $button-default-base-color;
+        border-color : $button-default-border-color;
+    }
+
+    50% {
+        color        : $red;
+        border-color : $red;
+    }
+}
+
+.recording, .recording * {
+    -webkit-animation : pulse 2s linear infinite;
+
+    &.x-item-disabled, &.x-item-disabled * {
+        -webkit-animation : none;
+    }
+}
