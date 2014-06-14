@@ -8,8 +8,7 @@ Ext.define('AI.view.componets.details.DetailsModel', {
 
     requires: [
         'Ext.data.Field',
-        'Ext.util.Sorter',
-        'Ext.data.proxy.Memory'
+        'Ext.util.Sorter'
     ],
 
     stores: {
@@ -27,13 +26,7 @@ Ext.define('AI.view.componets.details.DetailsModel', {
                 type: 'boolean',
                 useNull: true
             }],
-            sorters: [{
-                property: 'name',
-                direction: 'ASC'
-            }],
-            proxy: {
-                type: 'memory'
-            }
+            sorters: 'name'
         },
         methodstore: {
             // type: 'store',
@@ -49,13 +42,7 @@ Ext.define('AI.view.componets.details.DetailsModel', {
                 type: 'boolean',
                 useNull: true
             }],
-            sorters: [{
-                property: 'name',
-                direction: 'ASC'
-            }],
-            proxy: {
-                type: 'memory'
-            }
+            sorters: 'name'
         },
         bindingsstore: {
             storeId: 'bindingsDetails',
@@ -64,25 +51,21 @@ Ext.define('AI.view.componets.details.DetailsModel', {
                 name: 'isValid',
                 type: 'boolean',
                 useNull: true
-            }],
-            proxy: {
-                type: 'memory'
-            }
+            }]
         },
         vmstore: {
             txpe: 'tree',
             storeId: 'viewmodelDetails',
             fields: [
                 'text', 'value'
-            ],
-            proxy: {
-                type: 'memory'
-            },
-            root: {
-                text: '_VIEWMODEL_',
-                expanded: true,
-                children: []
-            }
+            ]
+        },
+        vcstore: {
+            txpe: 'tree',
+            storeId: 'viewcontrollerDetails',
+            fields: [
+                'text', 'leaf'
+            ]
         }
     }
 });

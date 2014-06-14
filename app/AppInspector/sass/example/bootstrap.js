@@ -1308,6 +1308,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.components.details.Bindings": [],
   "AI.view.components.details.Methods": [],
   "AI.view.components.details.Properties": [],
+  "AI.view.components.details.ViewControllerData": [],
+  "AI.view.components.details.ViewModelData": [],
   "AI.view.components.tree.Tree": [],
   "AI.view.components.tree.TreeController": [],
   "AI.view.components.tree.TreeModel": [],
@@ -1319,7 +1321,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.field.FilterController": [],
   "AI.view.layouts.Layouts": [],
   "AI.view.layouts.LayoutsController": [],
-  "AI.view.layouts.LayoutsModel": [],
   "AI.view.layouts.tab.BoxLayouts": [],
   "AI.view.layouts.tab.BoxLayoutsController": [],
   "AI.view.layouts.tab.BoxLayoutsModel": [],
@@ -2414,6 +2415,12 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.components.details.Properties": [
     "widget.properties"
   ],
+  "AI.view.components.details.ViewControllerData": [
+    "widget.viewcontrollerdata"
+  ],
+  "AI.view.components.details.ViewModelData": [
+    "widget.viewmodeldata"
+  ],
   "AI.view.components.tree.Tree": [
     "widget.componentstree"
   ],
@@ -2446,9 +2453,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "AI.view.layouts.LayoutsController": [
     "controller.layouts"
-  ],
-  "AI.view.layouts.LayoutsModel": [
-    "viewmodel.layouts"
   ],
   "AI.view.layouts.tab.BoxLayouts": [
     "widget.boxlayouts"

@@ -216,6 +216,16 @@ Ext.define('AI.util.Component', {
 
                 if (viewController) {
                     data.mvvm.controller = Object.create(null); //which sets __proto__ to undefined
+                    data.mvvm.controller.functions = [];
+
+                    for (key in viewController) {
+                        if (typeof viewController[key] === 'function') {
+                            data.mvvm.controller.functions.push({
+                                text: key,
+                                leaf: true
+                            });
+                        }
+                    }
 
                     data.mvvm.controller.className = viewController.$className;
                     data.mvvm.controller.id = viewController.getId();

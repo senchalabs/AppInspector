@@ -4,9 +4,7 @@ Ext.define('AI.view.components.ComponentsModel', {
 
     data: {
         componentstree: {
-            selected: false,
-            isMVVMBindings: false,
-            isViewModelData: false
+            selection: false
         },
         componentsdetails: {
             // tabs
@@ -14,8 +12,7 @@ Ext.define('AI.view.components.ComponentsModel', {
             methods: false,
             bindings: false,
             viewmodeldata: false,
-            // logical binding
-            isPropertiesOrMethods: false
+            viewcontrollerdata: false
         }
     }
 });

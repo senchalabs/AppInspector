@@ -11,8 +11,8 @@ Ext.define('AI.view.components.details.ViewModelData', {
         'Ext.grid.column.Column'
     ],
 
-    title: 'ViewModel Data',
-    cls: 'highlight',
+    title: 'MVMM ViewModel',
+    cls: 'treegrid highlight',
     itemId: 'viewmodeldata',
 
     // controller: 'viewmodeldata',
@@ -29,9 +29,15 @@ Ext.define('AI.view.components.details.ViewModelData', {
 
     autoScroll: true,
     animate: false,
-    // rootVisible: false,
     allowDeselect: true,
     useArrows: true,
+    lines: false,
+
+    root: {
+        text: '_VIEWMODEL_',
+        expanded: true,
+        children: []
+    },
 
     viewConfig: {},
     columns: [{
@@ -44,7 +50,5 @@ Ext.define('AI.view.components.details.ViewModelData', {
         dataIndex: 'value',
         text: 'value',
         flex: 1
-    }],
-
-    dockedItems: []
+    }]
 });

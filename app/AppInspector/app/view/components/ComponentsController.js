@@ -27,11 +27,11 @@ Ext.define('AI.view.components.ComponentsController', {
     toggleDetailsTips: function(ct) {
         var vm = ct.up('components').getViewModel();
 
-        vm.set('componentsdetails.properties', ct.xtype === 'properties');
-        vm.set('componentsdetails.methods', ct.xtype === 'methods');
-        vm.set('componentsdetails.isPropertiesOrMethods', (ct.xtype === 'properties' || ct.xtype === 'methods'));
-        vm.set('componentsdetails.bindings', ct.xtype === 'bindings');
-        vm.set('componentsdetails.viewmodeldata', ct.xtype === 'viewmodeldata');
+        // vm.set('componentsdetails.properties', ct.xtype === 'properties');
+        // vm.set('componentsdetails.methods', ct.xtype === 'methods');
+        // vm.set('componentsdetails.isPropertiesOrMethods', (ct.xtype === 'properties' || ct.xtype === 'methods'));
+        // vm.set('componentsdetails.bindings', ct.xtype === 'bindings');
+        // vm.set('componentsdetails.viewmodeldata', ct.xtype === 'viewmodeldata');
     },
 
     /**

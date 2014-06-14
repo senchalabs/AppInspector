@@ -23,6 +23,7 @@ Ext.define('AI.view.components.tree.Tree', {
     bind: {
         store: '{components}'
     },
+    publishes: 'selection',
 
     config: {
         initialLoad: false

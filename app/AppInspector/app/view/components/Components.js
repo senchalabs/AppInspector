@@ -15,7 +15,8 @@ Ext.define('AI.view.components.Components', {
         'AI.view.components.details.Properties',
         'AI.view.components.details.Methods',
         'AI.view.components.details.Bindings',
-        'AI.view.components.details.ViewModelData'
+        'AI.view.components.details.ViewModelData',
+        'AI.view.components.details.ViewControllerData'
     ],
 
     config: {
@@ -47,7 +48,7 @@ Ext.define('AI.view.components.Components', {
         activeTab: 0,
         minTabWidth: 45,
         bind: {
-            disabled: '{!componentstree.selected}'
+            disabled: '{!componentstree.selection}'
         },
         items: [{
             xtype: 'properties',
@@ -65,18 +66,20 @@ Ext.define('AI.view.components.Components', {
         }, {
             xtype: 'bindings',
             reference: 'bindings',
-            bind: {
-                disabled: '{!componentstree.isMVVMBindings}'
-            },
             listeners: {
                 activate: 'toggleDetailsTips'
             }
         }, {
             xtype: 'viewmodeldata',
+            rootVisible: true,
             reference: 'vm',
-            bind: {
-                disabled: '{!componentstree.isViewModelData}'
-            },
+            listeners: {
+                activate: 'toggleDetailsTips'
+            }
+        }, {
+            xtype: 'viewcontrollerdata',
+            rootVisible: true,
+            reference: 'vc',
             listeners: {
                 activate: 'toggleDetailsTips'
             }
@@ -98,16 +101,6 @@ Ext.define('AI.view.components.Components', {
                 }
             }, {
                 xtype: 'tbtext',
-                tipGroup: 'both',
-                flex: 1,
-                maxWidth: 125,
-                cls: 'tip-custom',
-                text: 'Custom ',
-                bind: {
-                    hidden: '{!componentsdetails.isPropertiesOrMethods}'
-                }
-            }, {
-                xtype: 'tbtext',
                 tipGroup: 'methods',
                 flex: 1,
                 maxWidth: 125,
@@ -115,6 +108,16 @@ Ext.define('AI.view.components.Components', {
                 text: 'Override',
                 bind: {
                     hidden: '{!componentsdetails.methods}'
+                }
+            }, {
+                xtype: 'tbtext',
+                tipGroup: 'both',
+                flex: 1,
+                maxWidth: 125,
+                cls: 'tip-custom',
+                text: 'Custom ',
+                bind: {
+                    hidden: '{!componentsdetails.isPropertiesOrMethods}'
                 }
             }, {
                 xtype: 'tbtext',

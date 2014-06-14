@@ -159,8 +159,7 @@ Ext.define('AI.util.InspectedWindow', {
 
             div.setAttribute('id', '_AppInspector');
 
-            style.backgroundColor = '#f00';
-            style.opacity = 0.5;
+            style.backgroundColor = 'rgba(121, 154, 5, 0.5)';
             style.visibility = 'hidden';
             style.position = 'absolute';
 
