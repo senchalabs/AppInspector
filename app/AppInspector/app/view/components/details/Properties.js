@@ -21,7 +21,7 @@ Ext.define('AI.view.components.details.Properties', {
 
     // controller: 'properties',
     viewModel: {
-        type: 'details'
+        type: 'properties'
     },
     bind: {
         store: '{propstore}'
@@ -65,12 +65,12 @@ Ext.define('AI.view.components.details.Properties', {
             xtype: 'gridcolumn',
             dataIndex: 'name',
             text: 'Name',
-            flex: 2
+            flex: 3
         }, {
             xtype: 'gridcolumn',
             dataIndex: 'value',
             text: 'Value',
-            flex: 1,
+            flex: 2,
             editor: {
                 xtype: 'textfield',
                 selectOnFocus: true

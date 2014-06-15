@@ -10,6 +10,7 @@ Ext.define('AI.view.components.details.Bindings', {
         'Ext.toolbar.Fill',
         'Ext.grid.View',
         'Ext.grid.column.Boolean',
+        'Ext.grid.column.Template',
         'AI.view.field.Filter'
     ],
 
@@ -19,7 +20,7 @@ Ext.define('AI.view.components.details.Bindings', {
 
     // controller: 'methods',
     viewModel: {
-        type: 'details'
+        type: 'bindings'
     },
     bind: {
         store: '{bindingsstore}'
@@ -62,15 +63,29 @@ Ext.define('AI.view.components.details.Bindings', {
             text: 'Binding Key',
             flex: 1
         }, {
+            xtype: 'templatecolumn',
+            dataIndex: 'boundTo',
+            text: 'Bound To',
+            flex: 1,
+            tpl: '\{{boundTo}\}'
+        }, {
             xtype: 'gridcolumn',
             dataIndex: 'value',
             text: 'Value',
-            flex: 1
-        }, {
-            xtype: 'gridcolumn',
-            dataIndex: 'boundTo',
-            text: 'Bound To',
-            flex: 1
+            flex: 1,
+            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                var v = value;
+
+                if (value === null) {
+                    v = 'null';
+                }
+
+                if (record.data.text === 'undefined') {
+                    v = 'undefined';
+                }
+
+                return '<span class="' + record.get('type') + ' ' + v + '">' + v + '</span>';
+            }
         }]
     }
 });

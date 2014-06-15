@@ -55,4 +55,31 @@ $grid-row-cell-selected-background-color: rgba($green, 0.2);
         &.object {
         }
     }
+
+    span {
+        &.boolean {
+            font-family : monospace;
+
+            &.true {
+                color : $green;
+            }
+
+            &.false {
+                color : $red;
+            }
+        }
+
+        &.null, &.undefined, &.NaN {
+            font-family : monospace;
+            color       : lighten($grey, 23%);
+        }
+
+        &.number {
+            color       : mix($red, $blue);
+        }
+
+        &.object {
+            font-family : monospace;
+        }
+    }
 }
