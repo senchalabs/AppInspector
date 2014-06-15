@@ -17,7 +17,7 @@ Ext.define('AI.view.components.details.ViewModelData', {
 
     // controller: 'viewmodeldata',
     viewModel: {
-        type: 'details'
+        type: 'viewmodeldata'
     },
     bind: {
         store: '{viewmodelDetails}'
@@ -36,6 +36,9 @@ Ext.define('AI.view.components.details.ViewModelData', {
     root: {
         text: '_VIEWMODEL_',
         expanded: true,
+        value: '',
+        cls: 'root',
+        iconCls: 'no-icon',
         children: []
     },
 
@@ -44,11 +47,11 @@ Ext.define('AI.view.components.details.ViewModelData', {
         xtype: 'treecolumn',
         dataIndex: 'text',
         text: 'Key',
-        flex: 2
+        flex: 3
     }, {
         xtype: 'gridcolumn',
         dataIndex: 'value',
         text: 'value',
-        flex: 1
+        flex: 2
     }]
 });

@@ -21,7 +21,7 @@ Ext.define('AI.view.components.details.Methods', {
 
     // controller: 'methods',
     viewModel: {
-        type: 'details'
+        type: 'methods'
     },
     bind: {
         store: '{methodstore}'
@@ -65,12 +65,13 @@ Ext.define('AI.view.components.details.Methods', {
             xtype: 'gridcolumn',
             dataIndex: 'name',
             text: 'Name',
-            flex: 2
+            flex: 1
         }, {
             xtype: 'gridcolumn',
             dataIndex: 'value',
-            text: 'Value',
-            flex: 1
+            text: 'Function',
+            flex: 2,
+            hidden: true
         }]
     },
 

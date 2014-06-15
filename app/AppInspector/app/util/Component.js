@@ -116,7 +116,7 @@ Ext.define('AI.util.Component', {
                 if (typeof cmp[key] === 'function') {
                     data.methods.push({
                         name: key,
-                        value: 'METHOD',
+                        value: key + '()',
                         isOwn: isOwn,
                         isOverride: isChanged
                     });
@@ -135,7 +135,7 @@ Ext.define('AI.util.Component', {
                 value: parent.$className
             });
 
-            //for components with Ext.mixin.Bindable (Ext JS 5)
+            // for components with Ext.mixin.Bindable (Ext JS 5)
             if (Ext.getVersion().major >= 5 && cmp.mixins && cmp.mixins.bindable) {
                 data.mvvm = Object.create(null); //which sets __proto__ to undefined
 
@@ -148,29 +148,37 @@ Ext.define('AI.util.Component', {
                     data.mvvm.bindings = [];
 
                     var recursiveFetchBindChain = function(item) {
-                        var parent = item.parent,
+                        var parent = (item && item.parent) ? item.parent : null,
                             chain = '';
 
                         if (parent && parent.name) {
                             chain = recursiveFetchBindChain(parent) + '.';
                         }
 
-                        return chain + item.name;
+                        return chain + (item.name || '');
 
                     };
 
                     for (key in bindings) {
                         boundItem = bindings[key];
-                        ownerData = boundItem.owner.getData();
-                        boundPath = recursiveFetchBindChain(boundItem.stub);
 
-                        data.mvvm.bindings.push({
-                            key: key,
-                            value: boundItem.getValue(),
-                            boundTo: boundPath,
+                        if (boundItem) {
+                            ownerData = boundItem.owner.getData();
+                            boundPath = recursiveFetchBindChain(boundItem.stub);
+                            value = boundItem.getValue();
 
-                            isValid: (boundItem.getValue()) ? true : eval('ownerData.' + boundPath) ? true : false
-                        });
+                            data.mvvm.bindings.push({
+                                key: key,
+                                boundTo: boundPath,
+                                // check for object type - else it will crash for complex objects like Ext JS classes
+                                // we use the $className (e.g. Ext.data.Store) if it's an Ext JS class
+                                value: (Ext.isObject(value) ? (value.$className || '[object]') : value),
+                                // check via hasOwnProperty()
+                                // else e.g. a 'false' value won't be noticed as valid
+                                isValid: ownerData.hasOwnProperty(boundPath),
+                                type: (typeof value)
+                            });
+                        }
                     }
                 }
 
@@ -183,7 +191,10 @@ Ext.define('AI.util.Component', {
                             children = [],
                             key;
 
-                        //TODO: do we need to worry about other special types? Stores, etc...
+                        // FIXME - recursion runs into an infinit loop crasjing the devtools
+                        return node;
+
+                        // TODO: do we need to worry about other special types? Stores, etc...
                         if (item.isModel) {
                             return recursiveFetchData(item.data, item.$className);
                         }
@@ -214,6 +225,7 @@ Ext.define('AI.util.Component', {
                     data.mvvm.viewModel.children = recursiveFetchData(boundData);
                 }
 
+                /*
                 if (viewController) {
                     data.mvvm.controller = Object.create(null); //which sets __proto__ to undefined
                     data.mvvm.controller.functions = [];
@@ -230,6 +242,7 @@ Ext.define('AI.util.Component', {
                     data.mvvm.controller.className = viewController.$className;
                     data.mvvm.controller.id = viewController.getId();
                 }
+*/
             }
         }
 

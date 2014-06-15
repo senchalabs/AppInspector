@@ -47,42 +47,39 @@ Ext.define('AI.view.components.Components', {
         minWidth: 100,
         activeTab: 0,
         minTabWidth: 45,
-        bind: {
-            disabled: '{!componentstree.selection}'
-        },
-        items: [{
-            xtype: 'properties',
-            reference: 'properties',
+        defaults: {
             listeners: {
                 activate: 'toggleDetailsTips',
                 validateedit: 'onDetailValueEdit'
             }
+        },
+        bind: {
+            disabled: '{!selection}'
+        },
+        items: [{
+            xtype: 'properties',
+            reference: 'properties'
         }, {
             xtype: 'methods',
-            reference: 'methods',
-            listeners: {
-                activate: 'toggleDetailsTips'
-            }
+            reference: 'methods'
         }, {
             xtype: 'bindings',
             reference: 'bindings',
-            listeners: {
-                activate: 'toggleDetailsTips'
+            bind: {
+                disabled: '{!tabs.bindings}'
             }
         }, {
             xtype: 'viewmodeldata',
-            rootVisible: true,
             reference: 'vm',
-            listeners: {
-                activate: 'toggleDetailsTips'
+            bind: {
+                disabled: '{!tabs.viewmodeldata}'
             }
-        }, {
-            xtype: 'viewcontrollerdata',
-            rootVisible: true,
-            reference: 'vc',
-            listeners: {
-                activate: 'toggleDetailsTips'
-            }
+            // }, {
+            //     xtype: 'viewcontrollerdata',
+            //     reference: 'vc',
+            //     bind: {
+            //         disabled: '{!tabs.viewcontrollerdata}'
+            //     }
         }],
         dockedItems: [{
             xtype: 'toolbar',
@@ -91,43 +88,39 @@ Ext.define('AI.view.components.Components', {
             reference: 'componentstips',
             items: [{
                 xtype: 'tbtext',
-                tipGroup: 'props',
                 flex: 1,
                 maxWidth: 125,
                 cls: 'tip-changed',
                 text: 'Changed ',
                 bind: {
-                    hidden: '{!componentsdetails.properties}'
+                    hidden: '{!propertiesTip}'
                 }
             }, {
                 xtype: 'tbtext',
-                tipGroup: 'methods',
                 flex: 1,
                 maxWidth: 125,
                 cls: 'tip-override',
                 text: 'Override',
                 bind: {
-                    hidden: '{!componentsdetails.methods}'
+                    hidden: '{!methodsTip}'
                 }
             }, {
                 xtype: 'tbtext',
-                tipGroup: 'both',
                 flex: 1,
                 maxWidth: 125,
                 cls: 'tip-custom',
                 text: 'Custom ',
                 bind: {
-                    hidden: '{!componentsdetails.isPropertiesOrMethods}'
+                    hidden: '{!propertiesOrMethodsTip}'
                 }
             }, {
                 xtype: 'tbtext',
-                tipGroup: 'bindings',
                 flex: 1,
                 maxWidth: 125,
                 cls: 'tip-binding error',
                 text: 'Binding Error',
                 bind: {
-                    hidden: '{!componentsdetails.bindings}'
+                    hidden: '{!bindingsTip}'
                 }
             }, {
                 xtype: 'tbtext',

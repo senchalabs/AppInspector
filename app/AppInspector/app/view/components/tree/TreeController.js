@@ -6,6 +6,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     alias: 'controller.componentstree',
 
     requires: [
+        'AI.model.components.Component',
         'AI.model.components.Detail',
         'AI.util.Component',
         'AI.util.InspectedWindow'
@@ -137,11 +138,13 @@ Ext.define('AI.view.components.tree.TreeController', {
 
     setComponentsDetails: function(result, isException, record) {
         var me = this,
-            components = me.getView().up('components'),
+            tree = me.getView(),
+            components = tree.up('components'),
             tabpanel = components.down('tabpanel'),
             properties, methods, bindings, vm, vc;
 
         if (isException || !result) {
+            tree.fireEvent('deselect', me);
             return;
         }
 
@@ -161,9 +164,9 @@ Ext.define('AI.view.components.tree.TreeController', {
 
         // set tree data
         me.setComponentsDetailsTree(vm, tabpanel.down('viewmodeldata'), record, components);
-        me.setComponentsDetailsTree(vc, tabpanel.down('viewcontrollerdata'), record, components);
+        // me.setComponentsDetailsTree(vc, tabpanel.down('viewcontrollerdata'), record, components);
 
-        tabpanel.enable();
+        components.getViewModel().set('selection', true);
     },
 
     /**
@@ -174,21 +177,22 @@ Ext.define('AI.view.components.tree.TreeController', {
      */
     setComponentsDetailsGrid: function(details, view, record, parent) {
         var me = this,
+            parentVM = me.getViewModel().getParent(),
             store = view.getStore(),
             data = [];
 
         store.removeAll();
 
-        // if (Ext.Object.getSize(details) > 0) {
+        if (Ext.Object.getSize(details) > 0) {
             Ext.each(details, function(property) {
                 data.push(Ext.create('AI.model.components.Detail', property));
             });
-        // }
-
-        console.log(view.$className, data.length);
+        }
 
         store.loadData(data);
-        view.setDisabled(data.length < 1);
+
+        // en-/disable
+        parentVM.set('tabs.' + view.xtype, !! data.length);
     },
 
     /**
@@ -199,11 +203,18 @@ Ext.define('AI.view.components.tree.TreeController', {
      */
     setComponentsDetailsTree: function(data, view, record, parent) {
         var me = this,
+            parentVM = me.getViewModel().getParent(),
             root = view.getRootNode(),
             store = view.getStore(),
             children = [];
 
+        // reset
         root.removeAll();
+        root.set({
+            text: '',
+            value: '',
+            children: []
+        });
 
         // <debug>
         console.groupCollapsed('setComponentsDetailsTree(', view.$className, ')');
@@ -212,17 +223,39 @@ Ext.define('AI.view.components.tree.TreeController', {
         console.log('root', root);
         console.log('store', store);
         console.log('arguments', arguments);
+        console.log(data);
         console.groupEnd();
         // </debug>
 
+        switch (view.xtype) {
+            case 'viewmodeldata':
+                if (data.text && data.children) {
+                    root.set({
+                        text: data.text,
+                        value: data.value,
+                        expanded: true,
+                        expandable: false
+                    });
+
+                    // TODO - children
+                }
+                break;
+
+            case 'viewcontrollerdata':
+                // TODO
+                break;
+        }
+
         root.appendChild(children);
-        view.setDisabled(children.length < 1);
+
+        // en-/disable
+        parentVM.set('tabs.' + view.xtype, children.length > 0);
     },
 
     /**
      *
      */
     onDeselectComponent: function(selModel) {
-        // TODO
+        this.getViewModel().getParent().set('selection', false);
     }
 });

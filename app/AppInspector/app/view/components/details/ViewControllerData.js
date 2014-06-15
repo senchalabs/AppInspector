@@ -16,7 +16,7 @@ Ext.define('AI.view.components.details.ViewControllerData', {
 
     // controller: 'viewcontrollerdata',
     viewModel: {
-        type: 'details'
+        type: 'viewcontrollerdata'
     },
     bind: {
         store: '{viewcontrollerDetails}'
@@ -35,6 +35,9 @@ Ext.define('AI.view.components.details.ViewControllerData', {
     root: {
         text: '_VIEWCONTROLLER_',
         expanded: true,
+        value: '',
+        cls: 'root',
+        iconCls: 'no-icon',
         children: []
     }
 });

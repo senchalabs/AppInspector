@@ -12,23 +12,4 @@
             display : none;
         }
     }
-
-    span {
-        &.boolean {
-            font-family : monospace;
-
-            &.true {
-                color : $green;
-            }
-
-            &.false {
-                color : $red;
-            }
-        }
-
-        &.null, &.undefined, &.NaN {
-            font-family : monospace;
-            color       : lighten($grey, 50%);
-        }
-    }
 }
