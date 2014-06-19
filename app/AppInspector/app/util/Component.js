@@ -191,7 +191,7 @@ Ext.define('AI.util.Component', {
                             children = [],
                             key;
 
-                        // FIXME - recursion runs into an infinit loop crasjing the devtools
+                        // FIXME - recursion runs into an infinit loop crashing the devtools
                         return node;
 
                         // TODO: do we need to worry about other special types? Stores, etc...

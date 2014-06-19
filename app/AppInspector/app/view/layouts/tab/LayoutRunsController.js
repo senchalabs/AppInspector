@@ -22,32 +22,32 @@ Ext.define('AI.view.layouts.tab.LayoutRunsController', {
 
     onRecordLayoutsClick: function(btn) {
         var vm = this.getViewModel(),
-            layoutPool = vm.get('layoutPool');
-        tree = this.getView(),
-        util = AI.util.extjs.Profile.recordLayouts,
-        getLayouts = function() {
-            if (!vm.get('recording')) {
-                return;
-            }
-
-            AI.util.InspectedWindow.eval(
-                util,
-                null,
-                function(components, isException) {
-                    if (components.length > 0) {
-                        layoutPool = Ext.Array.merge(layoutPool, components);
-
-                        tree.getStore().setRootNode({
-                            expanded: true,
-                            children: Ext.clone(layoutPool)
-                        });
-
-                    }
-
-                    requestAnimationFrame(getLayouts);
+            layoutPool = vm.get('layoutPool'),
+            tree = this.getView(),
+            util = AI.util.extjs.Profile.recordLayouts,
+            getLayouts = function() {
+                if (!vm.get('recording')) {
+                    return;
                 }
-            );
-        };
+
+                AI.util.InspectedWindow.eval(
+                    util,
+                    null,
+                    function(components, isException) {
+                        if (components.length > 0) {
+                            layoutPool = Ext.Array.merge(layoutPool, components);
+
+                            tree.getStore().setRootNode({
+                                expanded: true,
+                                children: Ext.clone(layoutPool)
+                            });
+
+                        }
+
+                        requestAnimationFrame(getLayouts);
+                    }
+                );
+            };
 
         vm.set('recording', true);
         requestAnimationFrame(getLayouts);
