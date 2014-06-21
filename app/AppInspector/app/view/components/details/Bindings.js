@@ -28,6 +28,8 @@ Ext.define('AI.view.components.details.Bindings', {
     },
 
     viewConfig: {
+        markDirty: false,
+        stripeRows: true,
         getRowClass: function(record, rowIndex, rowParams, store) {
             var cls = [];
 
@@ -38,7 +40,6 @@ Ext.define('AI.view.components.details.Bindings', {
             return cls.join(' ');
         }
     },
-
     columns: {
         defaults: {
             sortable: true,
@@ -95,7 +96,9 @@ Ext.define('AI.view.components.details.Bindings', {
         dock: 'top',
         border: 1,
         cls: 'components-toolbar top',
-        items: ['->', {
+        items: [{
+            xtype: 'tbfill'
+        }, {
             xtype: 'filterfield',
             listeners: {
                 // applyfilter: 'onFilterComponentDetails'

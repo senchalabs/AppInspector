@@ -32,6 +32,10 @@ Ext.define('AI.view.components.details.ViewControllerData', {
     useArrows: true,
     lines: false,
 
+    viewConfig: {
+        markDirty: false,
+        stripeRows: true
+    },
     root: {
         text: '_VIEWCONTROLLER_',
         expanded: true,

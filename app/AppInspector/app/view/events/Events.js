@@ -6,12 +6,11 @@ Ext.define('AI.view.events.Events', {
     xtype: 'events',
 
     requires: [
-        'Ext.util.DelayedTask',
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.grid.column.Column',
         'Ext.grid.View',
+        'Ext.grid.column.Column',
         'Ext.selection.RowModel',
         'AI.view.field.Filter'
     ],
@@ -28,48 +27,10 @@ Ext.define('AI.view.events.Events', {
     title: 'Events',
     glyph: 'xf0e7@fontawesome',
 
-    dockedItems: [{
-        xtype: 'toolbar',
-        dock: 'top',
-        items: [{
-                xtype: 'button',
-                text: 'Clear',
-                glyph: 'xf1b8@fontawesome',
-                reference: 'clear',
-                handler: 'onClearEventsClick'
-            }, {
-                xtype: 'button',
-                text: 'Record',
-                glyph: 'xf144@fontawesome',
-                reference: 'record',
-                bind: {
-                    hidden: '{recording}',
-                    disabled: '{recording}'
-                },
-                handler: 'onRecordEventsClick'
-            }, {
-                xtype: 'button',
-                text: 'Stop Recording',
-                glyph: 'xf04d@fontawesome',
-                cls: 'recording',
-                reference: 'stop',
-                bind: {
-                    hidden: '{!recording}',
-                    disabled: '{!recording}'
-                },
-                handler: 'onStopRecordingClick'
-            },
-            '->', {
-                xtype: 'filterfield',
-                itemId: 'FilterComponentsTree',
-                listeners: {
-                    change: 'onFilterChange',
-                    applyfilter: 'onFilterEvents'
-                }
-            }
-        ]
-    }],
-
+    viewConfig: {
+        markDirty: false,
+        stripeRows: true
+    },
     columns: [{
         xtype: 'gridcolumn',
         dataIndex: 'eventName',
@@ -93,6 +54,48 @@ Ext.define('AI.view.events.Events', {
     selModel: Ext.create('Ext.selection.RowModel', {
         mode: 'MULTI'
     }),
+
+    dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'top',
+        items: [{
+            xtype: 'button',
+            text: 'Clear',
+            glyph: 'xf1b8@fontawesome',
+            reference: 'clear',
+            handler: 'onClearEventsClick'
+        }, {
+            xtype: 'button',
+            text: 'Record',
+            glyph: 'xf144@fontawesome',
+            reference: 'record',
+            bind: {
+                hidden: '{recording}',
+                disabled: '{recording}'
+            },
+            handler: 'onRecordEventsClick'
+        }, {
+            xtype: 'button',
+            text: 'Stop Recording',
+            glyph: 'xf04d@fontawesome',
+            cls: 'recording',
+            reference: 'stop',
+            bind: {
+                hidden: '{!recording}',
+                disabled: '{!recording}'
+            },
+            handler: 'onStopRecordingClick'
+        }, {
+            xtype: 'tbfill'
+        }, {
+            xtype: 'filterfield',
+            itemId: 'FilterComponentsTree',
+            listeners: {
+                change: 'onFilterChange',
+                applyfilter: 'onFilterEvents'
+            }
+        }]
+    }],
 
     listeners: {
         beforeadd: 'localize',

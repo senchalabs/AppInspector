@@ -33,7 +33,10 @@ Ext.define('AI.view.components.tree.Tree', {
     rootVisible: false,
     allowDeselect: true,
 
-    viewConfig: {},
+    viewConfig: {
+        markDirty: false,
+        stripeRows: true
+    },
     columns: [{
         xtype: 'treecolumn',
         dataIndex: 'text',
@@ -54,18 +57,18 @@ Ext.define('AI.view.components.tree.Tree', {
         xtype: 'toolbar',
         dock: 'top',
         items: [{
-                xtype: 'button',
-                text: 'Refresh',
-                glyph: 'xf021@fontawesome',
-                handler: 'onRefreshClick'
-            },
-            '->', {
-                xtype: 'filterfield',
-                listeners: {
-                    applyfilter: 'onApplyFilter'
-                }
+            xtype: 'button',
+            text: 'Refresh',
+            glyph: 'xf021@fontawesome',
+            handler: 'onRefreshClick'
+        }, {
+            xtype: 'tbfill'
+        }, {
+            xtype: 'filterfield',
+            listeners: {
+                applyfilter: 'onApplyFilter'
             }
-        ]
+        }]
     }],
 
     listeners: {

@@ -28,6 +28,8 @@ Ext.define('AI.view.components.details.Methods', {
     },
 
     viewConfig: {
+        markDirty: false,
+        stripeRows: true,
         getRowClass: function(record, rowIndex, rowParams, store) {
             var cls = [];
 
@@ -80,7 +82,9 @@ Ext.define('AI.view.components.details.Methods', {
         dock: 'top',
         border: 1,
         cls: 'components-toolbar top',
-        items: ['->', {
+        items: [{
+            xtype: 'tbfill'
+        }, {
             xtype: 'filterfield',
             listeners: {
                 applyfilter: 'onFilterComponentDetails'

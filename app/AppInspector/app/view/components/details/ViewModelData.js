@@ -42,7 +42,10 @@ Ext.define('AI.view.components.details.ViewModelData', {
         children: []
     },
 
-    viewConfig: {},
+    viewConfig: {
+        markDirty: false,
+        stripeRows: true
+    },
     columns: [{
         xtype: 'treecolumn',
         dataIndex: 'text',

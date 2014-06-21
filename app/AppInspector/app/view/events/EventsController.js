@@ -6,6 +6,7 @@ Ext.define('AI.view.events.EventsController', {
     alias: 'controller.events',
 
     requires: [
+        'Ext.util.DelayedTask',
         'AI.util.extjs.Events',
         'AI.util.touch.Events',
         'AI.util.InspectedWindow',

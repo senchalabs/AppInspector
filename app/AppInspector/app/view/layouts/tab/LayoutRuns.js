@@ -5,6 +5,15 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
     extend: 'Ext.tree.Panel',
     xtype: 'layoutruns',
 
+    requires: [
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button',
+        'Ext.toolbar.Fill',
+        'Ext.tree.View',
+        'Ext.tree.Column',
+        'Ext.grid.column.Column'
+    ],
+
     controller: 'layoutruns',
     viewModel: {
         type: 'layoutruns'
@@ -20,7 +29,10 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
     rootVisible: false,
     allowDeselect: true,
 
-    viewConfig: {},
+    viewConfig: {
+        markDirty: false,
+        stripeRows: true
+    },
     columns: [{
         xtype: 'treecolumn',
         dataIndex: 'text',
@@ -37,48 +49,48 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
         xtype: 'toolbar',
         dock: 'top',
         items: [{
-                xtype: 'button',
-                text: 'Clear',
-                glyph: 'xf1b8@fontawesome',
-                reference: 'clear',
-                handler: 'onClearLayoutsClick'
-            }, {
-                xtype: 'button',
-                text: 'Record',
-                glyph: 'xf144@fontawesome',
-                reference: 'record',
-                bind: {
-                    hidden: '{recording}',
-                    disabled: '{recording}'
-                },
-                handler: 'onRecordLayoutsClick'
-            }, {
-                xtype: 'button',
-                text: 'Stop Recording',
-                glyph: 'xf04d@fontawesome',
-                cls: 'recording',
-                reference: 'stop',
-                bind: {
-                    hidden: '{!recording}',
-                    disabled: '{!recording}'
-                },
-                handler: 'onStopRecordingClick'
-            }, {
-                xtype: 'button',
-                text: 'Reveal',
-                tooltip: 'Reveal in »Components« tab',
-                reference: 'revealcmp',
-                glyph: 'xf0e8@fontawesome',
-                handler: 'onRevealClick',
-                bind: {
-                    disabled: '{!selected}'
-                }
+            xtype: 'button',
+            text: 'Clear',
+            glyph: 'xf1b8@fontawesome',
+            reference: 'clear',
+            handler: 'onClearLayoutsClick'
+        }, {
+            xtype: 'button',
+            text: 'Record',
+            glyph: 'xf144@fontawesome',
+            reference: 'record',
+            bind: {
+                hidden: '{recording}',
+                disabled: '{recording}'
             },
-            '->', {
-                xtype: 'filterfield',
-                itemId: 'FilterComponentsTree'
+            handler: 'onRecordLayoutsClick'
+        }, {
+            xtype: 'button',
+            text: 'Stop Recording',
+            glyph: 'xf04d@fontawesome',
+            cls: 'recording',
+            reference: 'stop',
+            bind: {
+                hidden: '{!recording}',
+                disabled: '{!recording}'
+            },
+            handler: 'onStopRecordingClick'
+        }, {
+            xtype: 'button',
+            text: 'Reveal',
+            tooltip: 'Reveal in »Components« tab',
+            reference: 'revealcmp',
+            glyph: 'xf0e8@fontawesome',
+            handler: 'onRevealClick',
+            bind: {
+                disabled: '{!selected}'
             }
-        ]
+        }, {
+            xtype: 'tbfill'
+        }, {
+            xtype: 'filterfield',
+            itemId: 'FilterComponentsTree'
+        }]
     }],
 
     listeners: {
