@@ -1196,7 +1196,11 @@ Ext.Loader.addClassPathMappings({
   "AI.model.components.Component": "../../app/model/componets/Component.js",
   "AI.model.components.Detail": "../../app/model/componets/Detail.js",
   "AI.override.AbstractComponent": "../../app/util/i18n.js",
-  "AI.view.componets.details.DetailsModel": "../../app/view/components/details/DetailsModel.js",
+  "AI.view.componets.details.BindingsModel": "../../app/view/components/details/BindingsModel.js",
+  "AI.view.componets.details.MethodsModel": "../../app/view/components/details/MethodsModel.js",
+  "AI.view.componets.details.PropertiesModel": "../../app/view/components/details/PropertiesModel.js",
+  "AI.view.componets.details.ViewControllerDataModel": "../../app/view/components/details/ViewControllerDataModel.js",
+  "AI.view.componets.details.ViewModelDataModel": "../../app/view/components/details/ViewModelDataModel.js",
   "Ext": "../../ext/src",
   "Ext-more": "../../ext/overrides/Ext-more.js",
   "Ext.AbstractManager": "../../ext/packages/sencha-core/src/AbstractManager.js",
@@ -1313,7 +1317,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.components.tree.Tree": [],
   "AI.view.components.tree.TreeController": [],
   "AI.view.components.tree.TreeModel": [],
-  "AI.view.componets.details.DetailsModel": [],
+  "AI.view.componets.details.BindingsModel": [],
+  "AI.view.componets.details.MethodsModel": [],
+  "AI.view.componets.details.PropertiesModel": [],
+  "AI.view.componets.details.ViewControllerDataModel": [],
+  "AI.view.componets.details.ViewModelDataModel": [],
   "AI.view.events.Events": [],
   "AI.view.events.EventsController": [],
   "AI.view.events.EventsModel": [],
@@ -2430,8 +2438,20 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.components.tree.TreeModel": [
     "viewmodel.componentstree"
   ],
-  "AI.view.componets.details.DetailsModel": [
-    "viewmodel.details"
+  "AI.view.componets.details.BindingsModel": [
+    "viewmodel.bindings"
+  ],
+  "AI.view.componets.details.MethodsModel": [
+    "viewmodel.methods"
+  ],
+  "AI.view.componets.details.PropertiesModel": [
+    "viewmodel.properties"
+  ],
+  "AI.view.componets.details.ViewControllerDataModel": [
+    "viewmodel.viewcontrollerdata"
+  ],
+  "AI.view.componets.details.ViewModelDataModel": [
+    "viewmodel.viewmodeldata"
   ],
   "AI.view.events.Events": [
     "widget.events"

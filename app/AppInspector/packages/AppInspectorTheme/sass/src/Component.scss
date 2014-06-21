@@ -2,6 +2,35 @@
     outline : none;
 }
 
+@font-face {
+  font-family: 'fontawesome';
+  src: url('../resources/fonts/fontawesome-webfont.eot');
+  src: url('../resources/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../resources/fonts/fontawesome-webfont.woff') format('woff'),
+    url('../resources/fonts/fontawesome-webfont.ttf') format('truetype'),
+    url('../resources/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+  //src: url('../resources/fonts/FontAwesome.otf') format('opentype'); // used when developing fonts
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+    font-family:'fontawesome';
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+
+    &.twitter {
+        &:before {
+            content:"\f099";
+        }
+    }
+}
+
+
+/*
 .base-icn {
     background-repeat : no-repeat;
     background-size   : 16px 16px;
@@ -71,6 +100,7 @@
     @extend .base-icn;
     background-image : url('../resources/images/icon-connected.png');
 }
+*/
 
 $loadmask-msg-border-radius : 0;
 
@@ -103,7 +133,7 @@ $loadmask-msg-border-radius : 0;
         border : 2px solid $green;
     }
 
-    .description, .contributors {
+    .description, .contributors, .social {
         a {
             color           : $green;
             text-decoration : none;

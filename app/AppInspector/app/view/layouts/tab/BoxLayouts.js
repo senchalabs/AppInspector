@@ -46,15 +46,14 @@ Ext.define('AI.view.layouts.tab.BoxLayouts', {
                 xtype: 'button',
                 text: 'Profile',
                 reference: 'profile',
-                iconCls: 'icn-refresh',
+                glyph: 'xf021@fontawesome',
                 handler: 'onRefreshClick'
             }, {
                 xtype: 'button',
                 text: 'Reveal',
                 tooltip: 'Reveal in »Components« tab',
                 reference: 'revealcmp',
-                iconCls: 'icn-components',
-                iconAlign: 'right',
+                glyph: 'xf0e8@fontawesome',
                 handler: 'onRevealClick',
                 bind: {
                     disabled: '{!selected}'
@@ -63,7 +62,7 @@ Ext.define('AI.view.layouts.tab.BoxLayouts', {
             '->', {
                 xtype: 'button',
                 reference: 'help',
-                text: '?',
+                glyph: 'xf128@fontawesome',
                 handler: 'onHelpClick'
             }
         ]

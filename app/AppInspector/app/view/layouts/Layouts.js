@@ -16,8 +16,8 @@ Ext.define('AI.view.layouts.Layouts', {
     //     type: 'layouts'
     // },
 
-    iconCls: 'icn-layouts',
     title: 'Layouts',
+    glyph: 'xf108@fontawesome',
     activeTab: 0,
     tabPosition: 'right',
 

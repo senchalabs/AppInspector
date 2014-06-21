@@ -40,13 +40,13 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
         items: [{
                 xtype: 'button',
                 text: 'Clear',
-                iconCls: 'icn-clear',
+                glyph: 'xf1b8@fontawesome',
                 reference: 'clear',
                 handler: 'onClearLayoutsClick'
             }, {
                 xtype: 'button',
                 text: 'Record',
-                iconCls: 'icn-record',
+                glyph: 'xf144@fontawesome',
                 reference: 'record',
                 bind: {
                     hidden: '{recording}',
@@ -56,7 +56,7 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
             }, {
                 xtype: 'button',
                 text: 'Stop Recording',
-                iconCls: 'icn-stop',
+                glyph: 'xf04d@fontawesome',
                 cls: 'recording',
                 reference: 'stop',
                 bind: {
@@ -69,8 +69,7 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
                 text: 'Reveal',
                 tooltip: 'Reveal in »Components« tab',
                 reference: 'revealcmp',
-                iconCls: 'icn-components',
-                iconAlign: 'right',
+                glyph: 'xf0e8@fontawesome',
                 handler: 'onRevealClick',
                 bind: {
                     disabled: '{!selected}'

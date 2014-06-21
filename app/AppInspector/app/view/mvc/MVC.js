@@ -10,8 +10,8 @@ Ext.define('AI.view.mvc.MVC', {
     //     type: 'mvc-mvc'
     // },
 
-    iconCls: 'icn-mvc',
     title: 'MVC',
+    glyph: 'xf1e0@fontawesome',
 
     html: 'mvc'
 });

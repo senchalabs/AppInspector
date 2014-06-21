@@ -29,7 +29,7 @@ Ext.define('AI.view.components.Components', {
     },
 
     title: 'Components',
-    iconCls: 'icn-components',
+    glyph: 'xf0e8@fontawesome',
     layout: {
         type: 'border'
     },

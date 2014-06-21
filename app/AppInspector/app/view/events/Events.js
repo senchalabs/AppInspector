@@ -25,8 +25,8 @@ Ext.define('AI.view.events.Events', {
         store: '{events}'
     },
 
-    iconCls: 'icn-events',
     title: 'Events',
+    glyph: 'xf0e7@fontawesome',
 
     dockedItems: [{
         xtype: 'toolbar',
@@ -34,13 +34,13 @@ Ext.define('AI.view.events.Events', {
         items: [{
                 xtype: 'button',
                 text: 'Clear',
-                iconCls: 'icn-clear',
+                glyph: 'xf1b8@fontawesome',
                 reference: 'clear',
                 handler: 'onClearEventsClick'
             }, {
                 xtype: 'button',
                 text: 'Record',
-                iconCls: 'icn-record',
+                glyph: 'xf144@fontawesome',
                 reference: 'record',
                 bind: {
                     hidden: '{recording}',
@@ -50,7 +50,7 @@ Ext.define('AI.view.events.Events', {
             }, {
                 xtype: 'button',
                 text: 'Stop Recording',
-                iconCls: 'icn-stop',
+                glyph: 'xf04d@fontawesome',
                 cls: 'recording',
                 reference: 'stop',
                 bind: {

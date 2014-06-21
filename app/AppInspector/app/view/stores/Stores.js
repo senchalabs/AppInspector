@@ -11,7 +11,7 @@ Ext.define('AI.view.stores.Stores', {
     // },
 
     title: 'Stores',
-    iconCls: 'icn-stores',
+    glyph: 'xf1c0@fontawesome',
 
     html: 'stores'
 });

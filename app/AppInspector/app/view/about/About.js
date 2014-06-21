@@ -11,7 +11,7 @@ Ext.define('AI.view.about.About', {
     ],
 
     title: 'App Details',
-    iconCls: 'icn-home',
+    glyph: 'xf015@fontawesome',
     layout: {
         type: 'vbox',
         align: 'stretch'

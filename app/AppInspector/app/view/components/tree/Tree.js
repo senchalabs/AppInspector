@@ -56,7 +56,7 @@ Ext.define('AI.view.components.tree.Tree', {
         items: [{
                 xtype: 'button',
                 text: 'Refresh',
-                iconCls: 'icn-refresh',
+                glyph: 'xf021@fontawesome',
                 handler: 'onRefreshClick'
             },
             '->', {
