@@ -25,7 +25,6 @@ Ext.define('AI.view.layouts.tab.Overnesting', {
     },
 
     title: 'Overnesting',
-    iconCls: 'icn-overnested',
 
     columns: [{
         xtype: 'gridcolumn',

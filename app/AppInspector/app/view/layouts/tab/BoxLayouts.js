@@ -25,7 +25,6 @@ Ext.define('AI.view.layouts.tab.BoxLayouts', {
     },
 
     title: 'Box Layouts',
-    iconCls: 'icn-box',
 
     columns: [{
         xtype: 'gridcolumn',

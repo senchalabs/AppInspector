@@ -57,6 +57,7 @@ Ext.define('AI.view.about.About', {
         },
         autoScroll: true,
         bodyPadding: '5 10',
+        ui: 'about',
         animCollapse: false,
         collapsible: true,
         hideCollapseTool: true,

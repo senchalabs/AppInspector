@@ -14,7 +14,6 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
     },
 
     title: 'Layout Runs',
-    iconCls: 'icn-globe',
 
     autoScroll: true,
     animate: false,
