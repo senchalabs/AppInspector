@@ -62,38 +62,16 @@ Ext.define('AI.view.components.tree.TreeController', {
      *
      */
     onRefreshClick: function(btn) {
-        var parent = btn.up('components'),
-            tree = parent.down('componentstree'),
+        var me = this,
+            tree = me.getView(),
             treeFilter = tree.down('filterfield'),
-            treeStore = tree.getStore(),
-            // properties details
-            propsGrid = parent.down('properties'),
-            propsFilter = propsGrid.down('filterfield'),
-            propsGridStore = propsGrid.getStore(),
-            // method details
-            methodGrid = parent.down('methods'),
-            methodFilter = methodGrid.down('filterfield'),
-            methodGridStore = methodGrid.getStore(),
-            // binding details
-            bindingsGrid = parent.down('bindings'),
-            // bindingsFilter = bindingsGrid.down('filterfield'),
-            bindingsGridStore = bindingsGrid.getStore();
-
-        propsGrid.up().setActiveTab(0);
-        propsFilter.reset();
-        propsGridStore.removeAll();
-
-        methodFilter.reset();
-        methodGridStore.removeAll();
-
-        // bindingsFilter.reset();
-        bindingsGridStore.removeAll();
-
-        parent.getViewModel().set('componentstree.selected', false);
+            treeStore = tree.getStore();
 
         treeStore.clearFilter();
         treeFilter.reset();
-        this.onComponentTreeActivate(tree);
+
+        me.onDeselectComponent();
+        me.onComponentTreeActivate(tree);
     },
 
     /**
@@ -148,7 +126,8 @@ Ext.define('AI.view.components.tree.TreeController', {
             properties, methods, bindings, vm, vc;
 
         if (isException || !result) {
-            tree.fireEvent('deselect', me);
+            // tree.fireEvent('deselect', me);
+            components.getViewModel().set('selection', false);
             return;
         }
 
@@ -260,6 +239,7 @@ Ext.define('AI.view.components.tree.TreeController', {
      *
      */
     onDeselectComponent: function(selModel) {
+        // TODO - reset details pan
         this.getViewModel().getParent().set('selection', false);
     }
 });

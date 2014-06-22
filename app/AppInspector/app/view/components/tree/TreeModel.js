@@ -12,9 +12,9 @@ Ext.define('AI.view.components.tree.TreeModel', {
     ],
 
     store: {
-        components: {
+        componentsTree: {
             type: 'tree',
-            storeId: 'componentstree',
+            storeId: 'componentsTree',
             model: 'AI.model.components.Component',
             proxy: {
                 type: 'memory'
