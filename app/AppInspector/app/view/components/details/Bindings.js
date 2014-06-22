@@ -15,6 +15,10 @@ Ext.define('AI.view.components.details.Bindings', {
         'AI.view.field.Filter'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     title: 'MVVM Bindings',
     cls: 'highlight',
     itemId: 'bindings',
@@ -101,7 +105,7 @@ Ext.define('AI.view.components.details.Bindings', {
         }, {
             xtype: 'filterfield',
             listeners: {
-                // applyfilter: 'onFilterComponentDetails'
+                applyfilter: 'onFilterComponentDetails'
             }
         }]
     }]

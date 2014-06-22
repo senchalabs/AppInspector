@@ -9,8 +9,11 @@ Ext.define('AI.view.events.EventsController', {
         'Ext.util.DelayedTask',
         'AI.util.extjs.Events',
         'AI.util.touch.Events',
-        'AI.util.InspectedWindow',
-        'AI.util.i18n'
+        'AI.util.InspectedWindow'
+    ],
+
+    mixins: [
+        'AI.mixin.Localize'
     ],
 
     config: {
@@ -156,15 +159,5 @@ Ext.define('AI.view.events.EventsController', {
             null,
             me, [field, newValue, me.getView()]
         );
-    },
-
-    /**
-     * localize
-     */
-    localize: function() {
-        var view = this.getView(),
-            msg = AI.util.i18n.getMessage;
-
-        view.setTitle(msg(view.title));
     }
 });

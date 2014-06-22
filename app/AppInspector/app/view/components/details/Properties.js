@@ -16,6 +16,10 @@ Ext.define('AI.view.components.details.Properties', {
         'AI.view.field.Filter'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     title: 'Properties',
     cls: 'highlight',
     itemId: 'properties',

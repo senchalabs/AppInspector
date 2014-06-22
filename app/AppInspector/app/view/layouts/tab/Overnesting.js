@@ -73,9 +73,12 @@ Ext.define('AI.view.layouts.tab.Overnesting', {
     }],
 
     listeners: {
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
         activate: 'onActivate',
         select: 'onSelect',
-        beforeadd: 'localize',
         scope: 'controller'
     }
 });

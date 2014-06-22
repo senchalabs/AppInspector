@@ -11,6 +11,10 @@ Ext.define('AI.view.components.details.ViewModelData', {
         'Ext.grid.column.Column'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     title: 'MVMM ViewModel',
     cls: 'treegrid highlight',
     itemId: 'viewmodeldata',

@@ -8,8 +8,11 @@ Ext.define('AI.view.layouts.tab.LayoutRunsController', {
     requires: [
         'AI.util.extjs.Profile',
         'AI.util.touch.Profile',
-        'AI.util.InspectedWindow',
-        'AI.util.i18n'
+        'AI.util.InspectedWindow'
+    ],
+
+    mixins: [
+        'AI.mixin.Localize'
     ],
 
     onClearLayoutsClick: function(btn) {
@@ -93,15 +96,5 @@ Ext.define('AI.view.layouts.tab.LayoutRunsController', {
             record = this.getViewModel().get('selected');
 
         main.fireEvent('revealcmp', record, main);
-    },
-
-    /**
-     * localize
-     */
-    localize: function() {
-        var view = this.getView(),
-            msg = AI.util.i18n.getMessage;
-
-        view.setTitle(msg(view.title));
     }
 });

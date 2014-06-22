@@ -15,6 +15,10 @@ Ext.define('AI.view.components.details.Methods', {
         'AI.view.field.Filter'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     title: 'Methods',
     cls: 'highlight',
     itemId: 'methods',

@@ -75,7 +75,10 @@ Ext.define('AI.view.layouts.tab.BoxLayouts', {
     listeners: {
         activate: 'onActivate',
         select: 'onSelect',
-        beforeadd: 'localize',
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
         scope: 'controller'
     }
 });

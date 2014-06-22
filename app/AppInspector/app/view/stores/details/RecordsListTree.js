@@ -27,7 +27,7 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
     columns: [{
         xtype: 'treecolumn',
         dataIndex: 'text',
-        emptyCellText: 'node text missing ...',
+        emptyCellText: 'node text missing...',
         text: 'Text',
         flex: 3
     }, {

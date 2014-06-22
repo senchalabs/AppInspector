@@ -33,6 +33,10 @@ Ext.define('AI.view.layouts.Layouts', {
     }],
 
     listeners: {
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
         layoutselect: 'onLayoutSelect',
         scope: 'controller'
     }

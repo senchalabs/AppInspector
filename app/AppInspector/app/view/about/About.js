@@ -10,6 +10,10 @@ Ext.define('AI.view.about.About', {
         'Ext.grid.property.Grid'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     title: 'App Details',
     glyph: 'xf015@fontawesome',
     layout: {
@@ -66,11 +70,10 @@ Ext.define('AI.view.about.About', {
     }],
 
     listeners: {
-        beforeadd: function() {
-            var view = this,
-                msg = AI.util.i18n.getMessage;
-
-            view.setTitle(msg(view.title));
+        beforeadd: {
+            fn: 'localize',
+            single: true,
+            scope: 'this'
         }
     }
 });

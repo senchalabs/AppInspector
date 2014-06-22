@@ -94,7 +94,10 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
     }],
 
     listeners: {
-        beforeadd: 'localize',
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
         select: 'onSelectLayoutRunComponent',
         scope: 'controller'
     }

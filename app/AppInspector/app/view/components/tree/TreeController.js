@@ -12,6 +12,10 @@ Ext.define('AI.view.components.tree.TreeController', {
         'AI.util.InspectedWindow'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     /**
      *
      */

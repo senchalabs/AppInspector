@@ -132,7 +132,10 @@ Ext.define('AI.view.components.Components', {
 
     listeners: {
         activate: 'onActivate',
-        beforeadd: 'localize',
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
         scope: 'controller'
     }
 });

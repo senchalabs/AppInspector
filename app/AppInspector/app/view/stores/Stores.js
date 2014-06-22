@@ -15,10 +15,9 @@ Ext.define('AI.view.stores.Stores', {
         'AI.view.stores.details.RecordDetails'
     ],
 
-    // controller: 'stores',
-    // viewModel: {
-    //     type: 'stores-stores'
-    // },
+    mixins: [
+        'AI.mixin.Localize'
+    ],
 
     config: {
         initialLoad: false
@@ -65,5 +64,23 @@ Ext.define('AI.view.stores.Stores', {
             resizable: true,
             resizeHandles: 'w'
         }]
-    }]
+    }],
+
+    listeners: {
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
+        activate: 'onActivate',
+        scope: 'this'
+    },
+
+    /**
+     * delegate
+     */
+    onActivate: function() {
+        var storeslist = this.down('storeslist');
+
+        storeslist.fireEvent('activate', storeslist);
+    }
 });

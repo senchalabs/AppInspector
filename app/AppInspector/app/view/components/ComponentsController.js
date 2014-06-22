@@ -6,6 +6,10 @@ Ext.define('AI.view.components.ComponentsController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.components',
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     /**
      * preload the componets tree by delegating it to {AI.view.components.tree.Tree}
      *
@@ -16,7 +20,7 @@ Ext.define('AI.view.components.ComponentsController', {
     onActivate: function(panel) {
         var tree = panel.down('treepanel');
 
-        tree.fireEvent('cmpactivate', tree, panel);
+        tree.fireEvent('activate', tree, panel);
     },
 
     /**
@@ -55,15 +59,5 @@ Ext.define('AI.view.components.ComponentsController', {
      */
     onDetailValueEdit: function() {
         return false;
-    },
-
-    /**
-     * localize
-     */
-    localize: function() {
-        var view = this.getView(),
-            msg = AI.util.i18n.getMessage;
-
-        view.setTitle(msg(view.title));
     }
 });

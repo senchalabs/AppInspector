@@ -10,6 +10,10 @@ Ext.define('AI.view.main.MainController', {
         'AI.util.InspectedWindow'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     /**
      *
      */

@@ -98,7 +98,10 @@ Ext.define('AI.view.events.Events', {
     }],
 
     listeners: {
-        beforeadd: 'localize',
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
         scope: 'controller'
     }
 });

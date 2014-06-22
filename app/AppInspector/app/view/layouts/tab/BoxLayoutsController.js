@@ -9,8 +9,11 @@ Ext.define('AI.view.layouts.tab.BoxLayoutsController', {
         'AI.model.layouts.Layout',
         'AI.util.extjs.Profile',
         'AI.util.touch.Profile',
-        'AI.util.InspectedWindow',
-        'AI.util.i18n'
+        'AI.util.InspectedWindow'
+    ],
+
+    mixins: [
+        'AI.mixin.Localize'
     ],
 
     /**
@@ -36,7 +39,7 @@ Ext.define('AI.view.layouts.tab.BoxLayoutsController', {
         var grid = btn.up('boxlayouts'),
             store = grid.getStore(),
             util;
-        grid.setLoading('Profiling for overnested box layouts ...');
+        grid.setLoading('Profiling for overnested box layouts...');
 
         this.getViewModel().set('selected', false);
 
@@ -100,15 +103,5 @@ Ext.define('AI.view.layouts.tab.BoxLayoutsController', {
             record = this.getViewModel().get('selected');
 
         main.fireEvent('revealcmp', record, main);
-    },
-
-    /**
-     * localize
-     */
-    localize: function() {
-        var view = this.getView(),
-            msg = AI.util.i18n.getMessage;
-
-        view.setTitle(msg(view.title));
     }
 });

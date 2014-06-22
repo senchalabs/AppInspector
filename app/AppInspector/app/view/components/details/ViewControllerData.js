@@ -10,6 +10,10 @@ Ext.define('AI.view.components.details.ViewControllerData', {
         'Ext.tree.Column'
     ],
 
+    mixins: [
+        'AI.mixin.Localize'
+    ],
+
     title: 'MVVM ViewController',
     cls: 'treegrid highlight',
     itemId: 'viewcontrollerdata',

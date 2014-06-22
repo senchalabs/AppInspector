@@ -9,8 +9,11 @@ Ext.define('AI.view.layouts.tab.OvernestingController', {
         'AI.model.layouts.Layout',
         'AI.util.extjs.Profile',
         'AI.util.touch.Profile',
-        'AI.util.InspectedWindow',
-        'AI.util.i18n'
+        'AI.util.InspectedWindow'
+    ],
+
+    mixins: [
+        'AI.mixin.Localize'
     ],
 
     /**
@@ -34,11 +37,11 @@ Ext.define('AI.view.layouts.tab.OvernestingController', {
      */
     onRefreshClick: function(btn) {
         var grid = btn.up('overnesting'),
-            store = grid.getStore(),
+            store = this.getStore('overnesting'),
             util;
 
         store.removeAll();
-        grid.setLoading('Profiling for overnested components ...');
+        grid.setLoading('Profiling for overnested components...');
 
         this.getViewModel().set('selected', false);
 
@@ -98,15 +101,5 @@ Ext.define('AI.view.layouts.tab.OvernestingController', {
             record = this.getViewModel().get('selected');
 
         main.fireEvent('revealcmp', record, main);
-    },
-
-    /**
-     * localize
-     */
-    localize: function() {
-        var view = this.getView(),
-            msg = AI.util.i18n.getMessage;
-
-        view.setTitle(msg(view.title));
     }
 });
