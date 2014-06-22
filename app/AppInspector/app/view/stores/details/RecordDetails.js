@@ -10,17 +10,19 @@ Ext.define('AI.view.stores.details.RecordDetails', {
         'Ext.grid.Column'
     ],
 
-    // controller: 'recorddetails',
-    // viewModel: {
-    //     type: 'recorddetails'
-    // },
+    controller: 'recorddetails',
+    viewModel: {
+        type: 'recorddetails'
+    },
+    bind: {
+        store: '{recordDetails}'
+    },
 
     title: 'Record Details',
-    cls: 'treegrid',
+    cls: 'highlight',
     columnLines: false,
     hideHeaders: true,
     rowLines: true,
-    useArrows: true,
 
     viewConfig: {
         markDirty: false,
@@ -30,7 +32,7 @@ Ext.define('AI.view.stores.details.RecordDetails', {
         xtype: 'gridcolumn',
         dataIndex: 'text',
         text: 'Name',
-        flex: 1
+        flex: 2
     }, {
         xtype: 'gridcolumn',
         renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
@@ -48,6 +50,11 @@ Ext.define('AI.view.stores.details.RecordDetails', {
         },
         dataIndex: 'value',
         text: 'Value',
-        flex: 2
-    }]
+        flex: 3
+    }],
+
+    listeners: {
+        showdetails: 'showDetails',
+        scope: 'controller'
+    }
 });

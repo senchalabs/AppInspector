@@ -36,33 +36,28 @@ Ext.define('AI.view.stores.Stores', {
         flex: 1
     }, {
         xtype: 'container',
-        reference: 'storedetails',
         flex: 1,
-        resizable: true,
-        resizeHandles: 'n',
         layout: {
             type: 'hbox',
             align: 'stretch'
         },
         items: [{
             xtype: 'container',
-            reference: 'records',
+            itemId: 'records',
             flex: 1,
             layout: 'card',
             activeItem: 0,
             items: [{
                 xtype: 'recordslist',
-                reference: 'recordslist'
+                itemId: 'recordslist'
             }, {
                 xtype: 'recordslisttree',
-                reference: 'recordslisttree'
+                itemId: 'recordslisttree'
             }]
         }, {
             xtype: 'recorddetails',
-            reference: 'recorddetails',
-            width: 300,
-            resizable: true,
-            resizeHandles: 'w'
+            itemId: 'recorddetails',
+            flex: 1
         }]
     }],
 

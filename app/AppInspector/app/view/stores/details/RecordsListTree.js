@@ -34,7 +34,11 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
         xtype: 'gridcolumn',
         hidden: true,
         dataIndex: 'id',
-        text: 'ID',
+        text: 'Record ID',
         flex: 1
-    }]
+    }],
+
+    listeners: {
+        loadrecords: function (tree, record) { debugger; }
+    }
 });

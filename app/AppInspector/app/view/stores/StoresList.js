@@ -14,10 +14,18 @@ Ext.define('AI.view.stores.StoresList', {
         'AI.view.field.Filter'
     ],
 
-    // controller: 'storeslist',
-    // viewModel: {
-    //     type: 'storeslist'
-    // },
+    config: {
+        initialLoad: false
+    },
+
+    controller: 'storeslist',
+    viewModel: {
+        type: 'storeslist'
+    },
+
+    bind: {
+        store: '{storesList}'
+    },
 
     viewConfig: {
         markDirty: false,
@@ -42,7 +50,7 @@ Ext.define('AI.view.stores.StoresList', {
             xtype: 'button',
             text: 'Refresh',
             glyph: 'xf021@fontawesome',
-            // handler: 'onRefreshClick'
+            handler: 'onRefreshClick'
         }, {
             xtype: 'tbfill'
         }, {
@@ -51,5 +59,11 @@ Ext.define('AI.view.stores.StoresList', {
                 // applyfilter: 'onApplyFilter'
             }
         }]
-    }]
+    }],
+
+    listeners: {
+        activate: 'onActivate',
+        select: 'onSelect',
+        scope: 'controller'
+    }
 });

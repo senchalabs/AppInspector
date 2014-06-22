@@ -49,7 +49,9 @@ Ext.define('AI.util.Store', {
             records.push({
                 id: record.id || record.get('id'),
                 modelData: Ext.JSON.encode(record.data),
-                rawData: Ext.JSON.encode(record.raw) // TODO: "raw" doesn't exist in Ext 5!
+                // "raw" doesn't exist in Ext JS 5,
+                // modelData will hold all information instead
+                rawData: (record.raw ? Ext.JSON.encode(record.raw) : null)
             });
         });
 

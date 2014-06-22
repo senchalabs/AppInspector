@@ -5,16 +5,20 @@ Ext.define('AI.view.stores.details.RecordsList', {
     extend: 'Ext.grid.Panel',
     xtype: 'recordslist',
 
-    requires: ['Ext.grid.View',
-
+    requires: [
+        'Ext.grid.View',
         'Ext.grid.column.Column',
         'Ext.toolbar.Paging'
     ],
 
-    // controller: 'recordslist',
-    // viewModel: {
-    //     type: 'recordslist'
-    // },
+    controller: 'recordslist',
+    viewModel: {
+        type: 'recordslist'
+    },
+
+    bind: {
+        store: '{recordlist}'
+    },
 
     title: 'Store Records',
     hideHeaders: true,
@@ -34,6 +38,15 @@ Ext.define('AI.view.stores.details.RecordsList', {
         xtype: 'pagingtoolbar',
         dock: 'bottom',
         reference: 'recordslistpagingtoolbar',
-        displayInfo: true
-    }]
+        displayInfo: true,
+        bind: {
+            store: '{recordlist}'
+        }
+    }],
+
+    listeners: {
+        loadrecords: 'loadStoreRecords',
+        select: 'onSelect',
+        scope: 'controller'
+    }
 });
