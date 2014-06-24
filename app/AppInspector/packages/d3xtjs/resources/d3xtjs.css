@@ -18,6 +18,7 @@
 
 .node text {
     font : 12px sans-serif;
+    /*font-weight: bold;*/
 }
 
 .link {

@@ -157,7 +157,6 @@ Ext.define('d3xtjs.CollapsibleTree', {
 
         root.x0 = height / 2;
         root.y0 = 0;
-//        root.children.forEach(collapseAll);
 
         me.updateTree(root);
     },
@@ -208,6 +207,8 @@ Ext.define('d3xtjs.CollapsibleTree', {
                 return d._children ? "lightsteelblue" : "#fff";
             });
 
+
+
         nodeEnter.append("svg:text")
             .attr("x", function(d) {
                 return d.children || d._children ? -10 : 10;
@@ -225,7 +226,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
             .text(function(d) {
                 return d.name;
             })
-            .style("fill-opacity", 1e-6);
+            .style("fill-opacity", 1e-6)
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
@@ -240,8 +241,18 @@ Ext.define('d3xtjs.CollapsibleTree', {
                 return d._children ? "lightsteelblue" : "#fff";
             });
 
+
+        var nodeColorMatrix = {
+            class      : '#000',
+            superclass : '#3b8ede',
+            mixin      : '#ff9016'
+        };
         nodeUpdate.select("text")
-            .style("fill-opacity", 1);
+            .style("fill-opacity", 1)
+            .style('fill', function(d) {
+//                console.log(d.name, d.type);
+                return nodeColorMatrix[d.type];
+            });
 
         // Transition exiting nodes to the parent's new position.
         var nodeExit = node.exit().transition()
