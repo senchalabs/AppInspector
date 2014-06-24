@@ -31,8 +31,9 @@
      *          "sencha-charts"
      *      ]
      */
-    "requires" : [
-        "AppInspectorTheme"
+    "requires": [
+        "AppInspectorTheme",
+        "d3xtjs"
     ],
 
     /**
@@ -117,6 +118,10 @@
             "bundle"          : false,
             "includeInBundle" : false,
             "bootstrap"       : true
+        },
+        {
+            "path"            : "packages/d3xtjs/resources/d3.v3.min.js",
+            "includeInBundle" : false
         }
     ],
 
@@ -148,6 +153,10 @@
     "css" : [
         {
             "path"      : "bootstrap.css",
+            "bootstrap" : true
+        },
+        {
+            "path"      : "packages/d3xtjs/resources/d3xtjs.css",
             "bootstrap" : true
         }
     ],
