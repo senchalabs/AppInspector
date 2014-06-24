@@ -251,8 +251,8 @@ Ext.define('AI.util.Component', {
                     // No inherited mixins
                     hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
 
-                    superclassData = superclass        ? getSuperClasses(superclass) : [];
-                    mixins         = hasDefinedMixins  ? getMixinData(clsMixins)     : [];
+                    superclassData = superclass       ? getSuperClasses(superclass, 1) : [];
+                    mixins         = hasDefinedMixins ? getMixinData(clsMixins)        : [];
 
                     returnArray.push({
                         type     : 'mixin',
@@ -265,7 +265,7 @@ Ext.define('AI.util.Component', {
             };
 
             // Resuable Fn to get superclass data
-            var getSuperClasses = function(cls) {
+            var getSuperClasses = function(cls, isSuperclass) {
                 var supers = [],
                     superclass,
                     clsMixins,
@@ -280,11 +280,12 @@ Ext.define('AI.util.Component', {
                     // No inherited mixins
                     hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
 
-                    superclassData = superclass        ? getSuperClasses(superclass) : [];
-                    mixins         = hasDefinedMixins  ? getMixinData(clsMixins)     : [];
+                    superclassData = superclass       ? getSuperClasses(superclass, 1) : [];
+                    mixins         = hasDefinedMixins ? getMixinData(clsMixins)        : [];
 
                     supers.push({
                         name     : cls.$className,
+                        type     : isSuperclass ? 'superclass' : '',
                         children : superclassData.concat(mixins)
                     });
                 }
@@ -294,8 +295,8 @@ Ext.define('AI.util.Component', {
 
 
             data.inheritance = getSuperClasses(cmp)[0];
+            data.inheritance.type = 'class';
 
-            console.log(data.inheritance);
         }
 
         return data;
