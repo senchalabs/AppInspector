@@ -225,6 +225,77 @@ Ext.define('AI.util.Component', {
                     data.mvvm.controller.id = viewController.getId();
                 }
             }
+
+
+
+            //Build the D3JS Dependency Graph data  ::
+
+
+            // Reusable Fn to gather mixin data
+            var getMixinData = function(mixinObj) {
+                var returnArray = [],
+                    keys        = Object.keys(mixinObj),
+                    superclass,
+                    clsMixins,
+                    superclassData,
+                    mixins,
+                    hasDefinedMixins,  // Mixins that are NOT inherited
+                    mixin;
+
+                Ext.each(keys, function(mixinName) {
+                    mixin = mixinObj[mixinName];
+
+                    superclass = mixin.superclass;
+                    clsMixins  = mixin.mixins;
+
+                    // No inherited mixins
+                    hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
+
+                    superclassData = superclass        ? getSuperClasses(superclass) : [];
+                    mixins         = hasDefinedMixins  ? getMixinData(clsMixins)     : [];
+
+                    returnArray.push({
+                        type     : 'mixin',
+                        name     : mixin.$className,
+                        children : superclassData.concat(mixins)
+                    });
+                });
+
+                return returnArray;
+            };
+
+            // Resuable Fn to get superclass data
+            var getSuperClasses = function(cls) {
+                var supers = [],
+                    superclass,
+                    clsMixins,
+                    superclassData,
+                    mixins,
+                    hasDefinedMixins; // Mixins that are NOT inherited
+
+                if (cls)  {
+                    superclass = cls.superclass;
+                    clsMixins = cls.mixins;
+
+                    // No inherited mixins
+                    hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
+
+                    superclassData = superclass        ? getSuperClasses(superclass) : [];
+                    mixins         = hasDefinedMixins  ? getMixinData(clsMixins)     : [];
+
+                    supers.push({
+                        name     : cls.$className,
+                        children : superclassData.concat(mixins)
+                    });
+                }
+
+                return supers;
+            };
+
+
+            data.inheritance = getSuperClasses(cmp)[0];
+
+            console.log(data.inheritance);
         }
 
         return data;

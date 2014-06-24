@@ -205,7 +205,7 @@ Ext.define('AI.view.Layouts', {
             }
         });
 
-        me.callParent(arguments);
+        me.callParent();
     },
 
     onLayoutInspectorBeforeAdd : function (container, component, index, eOpts) {

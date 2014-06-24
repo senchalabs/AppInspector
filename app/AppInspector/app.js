@@ -1,6 +1,9 @@
 // @require @packageOverrides
 Ext.Loader.setConfig({
-    enabled: true
+    enabled: true,
+    paths : {
+        d3xtjs : 'packages/d3xtjs/src/'
+    }
 });
 
 Ext.application({
