@@ -32,7 +32,8 @@
      *      ]
      */
     "requires": [
-        "AppInspectorTheme"
+        "AppInspectorTheme",
+        "d3xtjs"
     ],
 
     /**
@@ -114,6 +115,10 @@
         },
         {
             "path": "mocks.js",
+            "includeInBundle": true
+        },
+        {
+            "path": "packages/d3xtjs/resources/d3.v3.min.js",
             "includeInBundle": false
         }
     ],
@@ -146,6 +151,10 @@
     "css": [
         {
             "path": "bootstrap.css",
+            "bootstrap": true
+        },
+        {
+            "path": "packages/d3xtjs/resources/d3xtjs.css",
             "bootstrap": true
         }
     ],

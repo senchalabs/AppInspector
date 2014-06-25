@@ -1,0 +1,28 @@
+
+.explorer-svg {
+    background       : #FFF;
+    background-image : linear-gradient(#dedede, #FFF);
+
+    cursor           : move;
+}
+
+.node {
+    cursor : pointer;
+}
+
+.node circle {
+    fill         : #fff;
+    stroke       : steelblue;
+    stroke-width : 1.5px;
+}
+
+.node text {
+    font : 12px sans-serif;
+    /*font-weight: bold;*/
+}
+
+.link {
+    fill         : none;
+    stroke       : #ccc;
+    stroke-width : 1.5px;
+}

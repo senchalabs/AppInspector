@@ -56,6 +56,9 @@ Ext.define('AI.view.Components', {
                         },
                         {
                             xtype : 'ai-components-viewmodels'
+                        },
+                        {
+                            xtype : 'ai-components-inheritancemodel'
                         }
                     ],
 
@@ -68,7 +71,7 @@ Ext.define('AI.view.Components', {
                             items  : [
                                 {
                                     xtype : 'tbfill',
-                                    flex  : 2
+                                    flex  : 1
                                 },
                                 {
                                     xtype    : 'tbtext',
@@ -91,6 +94,21 @@ Ext.define('AI.view.Components', {
                                     cls      : 'tip-override',
                                     hidden   : true,
                                     text     : 'Override'
+                                },
+                                // Inheritance model view
+                                {
+                                    xtype    : 'tbtext',
+                                    tipGroup : 'superclass',
+                                    flex     : 1,
+                                    cls      : 'tip-changed',
+                                    text     : 'Superclass'
+                                },
+                                {
+                                    xtype    : 'tbtext',
+                                    tipGroup : 'mixin',
+                                    flex     : 1,
+                                    cls      : 'tip-override',
+                                    text     : 'Mixin'
                                 }
                             ]
                         }
