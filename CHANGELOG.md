@@ -36,7 +36,7 @@
 - Fix for issue #52
 - Release checklist per issue #55
 - Fix for issue #50.
-- load-grunt-tasks module updateed
+- load-grunt-tasks module updated
 - minor changes
 - CONTRIBUTING added
 - CHEANGELOG added
