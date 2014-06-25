@@ -28,25 +28,27 @@ Ext.define('AI.controller.Main', {
             }
         });
 
-//
-//        // TODO: Remove (After feature is 100% Complete)
-//        // Author: JGarcia
-//        // Purpose: Auto select an item on app bootup
-//        Ext.Function.defer(function() {
-//            var componentsView = Ext.ComponentQuery.query('#ComponentInspector')[0],
-//                componentsTree = componentsView.child('#ComponentTree'),
-//                store          = componentsTree.getStore();
-//
-//            componentsView.ownerCt.setActiveItem(componentsView);
-//
-//            componentsTree.getSelectionModel().select(store.getAt(0));
-//            componentsTree.fireEvent('itemclick', componentsTree, store.getAt(0));
-//
-//            Ext.Function.defer(function() {
-//                var im = Ext.ComponentQuery.query('ai-components-inheritancemodel')[0];
-//                im.ownerCt.setActiveItem(im);
-//            }, 150)
-//        }, 500);
+
+        // TODO: Remove (After feature is 100% Complete)
+        // Author: JGarcia
+        // Purpose: Auto select an item on app bootup
+        if (window.location.href == 'http://appi/')  {
+            Ext.Function.defer(function() {
+                var componentsView = Ext.ComponentQuery.query('#ComponentInspector')[0],
+                    componentsTree = componentsView.child('#ComponentTree'),
+                    store          = componentsTree.getStore();
+
+                componentsView.ownerCt.setActiveItem(componentsView);
+
+                componentsTree.getSelectionModel().select(store.getAt(0));
+                componentsTree.fireEvent('itemclick', componentsTree, store.getAt(0));
+
+                Ext.Function.defer(function() {
+                    var im = Ext.ComponentQuery.query('ai-components-inheritancemodel')[0];
+                    im.ownerCt.setActiveItem(im);
+                }, 150)
+            }, 500);
+        }
     },
 
     onAppRender : function () {
