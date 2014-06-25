@@ -6,3 +6,4 @@
 * [KAWANO Shinobu](https://github.com/kawanoshinobu) [http://kawanoshinobu.com](http://kawanoshinobu.com)
 * [Mitchell Simoens](https://github.com/mitchellsimoens) [http://www.mitchellsimoens.com](http://www.mitchellsimoens.com)
 * [Ramin Bakhshpour](https://github.com/raminbp) [https://github.com/raminbp](https://github.com/raminbp)
+* [Jay Garcia](https://github.com/moduscreateorg) [https://www.moduscreate.com](https://moduscreate.com)
