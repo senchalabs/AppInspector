@@ -21,7 +21,7 @@ Ext.define('AI.view.components.tree.Tree', {
         type: 'componentstree'
     },
     bind: {
-        store: '{componentsTree}'
+        store: '{Components}'
     },
 
     config: {
@@ -30,7 +30,6 @@ Ext.define('AI.view.components.tree.Tree', {
 
     autoScroll: true,
     animate: false,
-    rootVisible: false,
     // allowDeselect: true,
 
     viewConfig: {

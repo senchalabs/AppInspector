@@ -37,25 +37,43 @@ Ext.define('AI.view.components.tree.TreeController', {
      *
      */
     onComponentTreeActivate: function(tree) {
-        var nodes = [],
-            root = tree.getRootNode();
-
         tree.setLoading('Loading components...');
-        root.removeAll();
 
         AI.util.InspectedWindow.eval(
             AI.util.Component.loadComponentTree,
             null,
-            function(components, isException) {
-                tree.getStore().setRootNode({
-                    expanded: true,
-                    children: components
+            Ext.Function.bind(this.buildComponentsTree, this, [tree], true)
+        );
+    },
+
+    /**
+     *
+     */
+    buildComponentsTree: function(components, isException, tree, parent) {
+        var store = this.getStore('Components'),
+            root = parent || store.getRoot();
+
+        Ext.each(components, function(cmp) {
+            var children = cmp.children,
+                node = root.appendChild({
+                    text: cmp.text,
+                    cmpId: cmp.cmpId,
+                    itemId: cmp.itemId,
+                    xtype: cmp.xtype,
+                    leaf: !children,
+                    children: children
                 });
 
-                tree.setLoading(false);
-                tree.fireEvent('cmpsloaded', tree);
+            // recursion...
+            if (children.length > 0) {
+                this.buildComponentsTree(children, null, null, node)
             }
-        );
+        }, this);
+
+        if (tree) {
+            tree.setLoading(false);
+            tree.fireEvent('cmpsloaded', tree);
+        }
     },
 
     /**

@@ -1,5 +1,16 @@
+/**
+ *
+ */
 Ext.define('AI.view.stores.details.RecordsListTreeController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.stores-details-recordslisttree'
-    
+    alias: 'controller.recordslisttree',
+
+    /**
+     *
+     */
+    loadTreeStoreRecords: function(tree, record) {
+        var store = Ext.getStore(record.get('id'));
+
+        debugger;
+    }
 });

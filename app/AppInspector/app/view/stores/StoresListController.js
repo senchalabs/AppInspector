@@ -77,7 +77,7 @@ Ext.define('AI.view.stores.StoresListController', {
 
         // delegate to the accociated view
         if (isTree) {
-            recordslisttree.fireEvent('loadrecords', recordslisttree, record);
+            recordslisttree.fireEvent('loadtreerecords', recordslisttree, record);
         } else {
             recordslist.fireEvent('loadrecords', recordslist, record);
         }

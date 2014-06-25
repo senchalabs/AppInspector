@@ -11,14 +11,15 @@ Ext.define('AI.view.components.tree.TreeModel', {
         'AI.model.components.Component'
     ],
 
-    store: {
-        componentsTree: {
+    stores: {
+        Components: {
             type: 'tree',
-            storeId: 'componentsTree',
+            storeId: 'Components',
             model: 'AI.model.components.Component',
             proxy: {
                 type: 'memory'
             },
+            rootVisible: false,
             root: {
                 text: '_COMPONENTS_',
                 expanded: true,

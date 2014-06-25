@@ -11,7 +11,7 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
         'Ext.grid.column.Column'
     ],
 
-    // controller: 'recordslisttree',
+    controller: 'recordslisttree',
     // viewModel: {
     //     type: 'recordslisttree'
     // },
@@ -39,6 +39,7 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
     }],
 
     listeners: {
-        loadrecords: function (tree, record) { debugger; }
+        loadtreerecords: 'loadTreeStoreRecords',
+        scope: 'controller'
     }
 });

@@ -26,7 +26,7 @@ Ext.define('AI.view.main.Main', {
     items: [{
         xtype: 'tabpanel',
         itemId: 'navigation',
-        activeTab: 2,
+        activeTab: 0,
         items: [{
             xtype: 'about'
         }, {
