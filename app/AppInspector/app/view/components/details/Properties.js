@@ -29,7 +29,7 @@ Ext.define('AI.view.components.details.Properties', {
         type: 'properties'
     },
     bind: {
-        store: '{propstore}'
+        store: '{Properties}'
     },
 
     viewConfig: {

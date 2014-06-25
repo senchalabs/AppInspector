@@ -29,7 +29,7 @@ Ext.define('AI.view.components.tree.Tree', {
     },
 
     autoScroll: true,
-    animate: false,
+    animate: true,
     // allowDeselect: true,
 
     viewConfig: {

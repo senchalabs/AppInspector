@@ -29,7 +29,7 @@ Ext.define('AI.view.stores.StoresListController', {
      *
      */
     onStoreGridActivate: function(grid) {
-        var gridstore = this.getStore('storesList');
+        var gridstore = this.getStore('Stores');
 
         gridstore.removeAll();
 

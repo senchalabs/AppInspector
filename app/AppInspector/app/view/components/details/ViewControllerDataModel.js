@@ -12,9 +12,9 @@ Ext.define('AI.view.componets.details.ViewControllerDataModel', {
     ],
 
     stores: {
-        viewcontrollerdata: {
+        ViewController: {
             type: 'tree',
-            storeId: 'viewcontrollerDetails',
+            storeId: 'ViewControllers',
             fields: [
                 'text', 'leaf'
             ],

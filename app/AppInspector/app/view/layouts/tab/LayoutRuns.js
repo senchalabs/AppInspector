@@ -19,15 +19,13 @@ Ext.define('AI.view.layouts.tab.LayoutRuns', {
         type: 'layoutruns'
     },
     bind: {
-        store: '{layoutruns}'
+        store: '{LayoutRuns}'
     },
 
     title: 'Layout Runs',
 
     autoScroll: true,
-    animate: false,
-    rootVisible: false,
-    allowDeselect: true,
+    animate: true,
 
     viewConfig: {
         markDirty: false,

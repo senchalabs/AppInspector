@@ -11,6 +11,7 @@ Ext.define('AI.view.stores.details.RecordsListTreeController', {
     loadTreeStoreRecords: function(tree, record) {
         var store = Ext.getStore(record.get('id'));
 
-        debugger;
+        // TODO
+        // debugger;
     }
 });

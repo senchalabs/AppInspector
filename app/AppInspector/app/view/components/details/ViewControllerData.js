@@ -23,7 +23,7 @@ Ext.define('AI.view.components.details.ViewControllerData', {
         type: 'viewcontrollerdata'
     },
     bind: {
-        store: '{viewcontrollerDetails}'
+        store: '{ViewControllers}'
     },
 
     config: {
@@ -31,7 +31,7 @@ Ext.define('AI.view.components.details.ViewControllerData', {
     },
 
     autoScroll: true,
-    animate: false,
+    animate: true,
     allowDeselect: true,
     useArrows: true,
     lines: false,

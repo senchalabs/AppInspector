@@ -24,7 +24,7 @@ Ext.define('AI.view.stores.StoresList', {
     },
 
     bind: {
-        store: '{storesList}'
+        store: '{Stores}'
     },
 
     viewConfig: {

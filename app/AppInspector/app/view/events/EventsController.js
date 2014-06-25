@@ -59,7 +59,7 @@ Ext.define('AI.view.events.EventsController', {
     onRecordEventsClick: function(btn) {
         var me = this,
             vm = me.getViewModel(),
-            store = vm.getStore('events'),
+            store = vm.getStore('Events'),
             util,
             getEvents;
 

@@ -12,8 +12,8 @@ Ext.define('AI.view.stores.StoresListModel', {
     ],
 
     stores: {
-        storesList: {
-            storeId: 'storesList',
+        Stores: {
+            storeId: 'Stores',
             fields: ['id', 'count', 'model', {
                 name: 'isTree',
                 type: 'boolean',

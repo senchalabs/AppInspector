@@ -15,7 +15,7 @@ Ext.define('AI.view.stores.details.RecordDetails', {
         type: 'recorddetails'
     },
     bind: {
-        store: '{recordDetails}'
+        store: '{RecordDetails}'
     },
 
     title: 'Record Details',

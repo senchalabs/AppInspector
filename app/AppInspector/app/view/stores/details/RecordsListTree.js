@@ -18,11 +18,12 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
 
     title: 'Store Records (Tree)',
     hideHeaders: true,
-    rowLines: true,
+    autoScroll: true,
+    animate: true,
 
     viewConfig: {
-        stripeRows: true,
-        rootVisible: false
+        markDirty: false,
+        stripeRows: true
     },
     columns: [{
         xtype: 'treecolumn',

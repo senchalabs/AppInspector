@@ -28,7 +28,7 @@ Ext.define('AI.view.components.details.Bindings', {
         type: 'bindings'
     },
     bind: {
-        store: '{bindingsstore}'
+        store: '{Bindings}'
     },
 
     viewConfig: {

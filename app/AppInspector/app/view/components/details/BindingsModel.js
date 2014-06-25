@@ -12,8 +12,8 @@ Ext.define('AI.view.componets.details.BindingsModel', {
     ],
 
     stores: {
-        bindingsstore: {
-            storeId: 'bindingsDetails',
+        Bindings: {
+            storeId: 'Bindings',
             fields: ['key', 'value', 'boundTo', {
                 defaultValue: null,
                 name: 'isValid',

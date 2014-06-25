@@ -16,8 +16,8 @@ Ext.define('AI.view.stores.details.RecordDetailsModel', {
     },
 
     stores: {
-        recordDetails: {
-            storeId: 'recordDetails',
+        RecordDetails: {
+            storeId: 'RecordDetails',
             fields: ['text', 'value', {
                 name: 'type',
                 convert: function(v, rec) {

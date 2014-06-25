@@ -12,8 +12,8 @@ Ext.define('AI.view.componets.details.MethodsModel', {
     ],
 
     stores: {
-        methodstore: {
-            storeId: 'methodDetails',
+        Methods: {
+            storeId: 'Methods',
             fields: ['name', 'value', {
                 defaultValue: null,
                 name: 'isOverride',

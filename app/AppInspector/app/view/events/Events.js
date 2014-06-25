@@ -21,7 +21,7 @@ Ext.define('AI.view.events.Events', {
     },
 
     bind: {
-        store: '{events}'
+        store: '{Events}'
     },
 
     title: 'Events',

@@ -28,7 +28,7 @@ Ext.define('AI.view.components.details.Methods', {
         type: 'methods'
     },
     bind: {
-        store: '{methodstore}'
+        store: '{Methods}'
     },
 
     viewConfig: {

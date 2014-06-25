@@ -12,8 +12,8 @@ Ext.define('AI.view.componets.details.PropertiesModel', {
     ],
 
     stores: {
-        propstore: {
-            storeId: 'propertyDetails',
+        Properties: {
+            storeId: 'Properties',
             fields: ['name', 'value', {
                 defaultValue: null,
                 name: 'isChanged',

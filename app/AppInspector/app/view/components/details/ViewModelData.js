@@ -24,7 +24,7 @@ Ext.define('AI.view.components.details.ViewModelData', {
         type: 'viewmodeldata'
     },
     bind: {
-        store: '{viewmodelDetails}'
+        store: '{ViewModels}'
     },
 
     config: {
@@ -32,19 +32,7 @@ Ext.define('AI.view.components.details.ViewModelData', {
     },
 
     autoScroll: true,
-    animate: false,
-    allowDeselect: true,
-    useArrows: true,
-    lines: false,
-
-    root: {
-        text: '_VIEWMODEL_',
-        expanded: true,
-        value: '',
-        cls: 'root',
-        iconCls: 'no-icon',
-        children: []
-    },
+    animate: true,
 
     viewConfig: {
         markDirty: false,

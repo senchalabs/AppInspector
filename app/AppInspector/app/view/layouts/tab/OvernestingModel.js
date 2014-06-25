@@ -16,8 +16,8 @@ Ext.define('AI.view.layouts.tab.OvernestingModel', {
     },
 
     stores: {
-        overnesting: {
-            storeId: 'overnesting',
+        Overnestings: {
+            storeId: 'Overnestings',
             model: 'AI.model.layouts.Layout',
             sorters: 'cmpId',
             proxy: {

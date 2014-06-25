@@ -10,8 +10,8 @@ Ext.define('AI.view.events.EventsModel', {
     },
 
     stores: {
-        events: {
-            storeId: 'events',
+        Events: {
+            storeId: 'Events',
             fields: ['eventName', 'xtype', 'source', 'cmpId'],
             proxy: {
                 type: 'memory'

@@ -6,8 +6,9 @@ Ext.define('AI.view.layouts.tab.LayoutRunsModel', {
     alias: 'viewmodel.layoutruns',
 
     requires: [
+        'Ext.data.Field',
         'Ext.data.proxy.Memory',
-        'AI.model.components.Component'
+        'Ext.util.Sorter'
     ],
 
     data: {
@@ -17,17 +18,17 @@ Ext.define('AI.view.layouts.tab.LayoutRunsModel', {
     },
 
     stores: {
-        layoutruns: {
+        LayoutRuns: {
             type: 'tree',
-            storeId: 'layoutruns',
-            model: 'AI.model.components.Component',
-            proxy: {
-                type: 'memory'
-            },
+            storeId: 'LayoutRuns',
+            fields: ['text', 'xtype'],
+            rootVisible: true,
             root: {
-                text: '_LAYOUTRUNS_',
                 expanded: true,
                 children: []
+            },
+            proxy: {
+                type: 'memory'
             }
         }
     }

@@ -37,7 +37,7 @@ Ext.define('AI.view.layouts.tab.OvernestingController', {
      */
     onRefreshClick: function(btn) {
         var grid = btn.up('overnesting'),
-            store = this.getStore('overnesting'),
+            store = this.getStore('Overnestings'),
             util;
 
         store.removeAll();

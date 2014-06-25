@@ -8,25 +8,22 @@ Ext.define('AI.view.componets.details.ViewModelDataModel', {
 
     requires: [
         'Ext.data.Field',
-        'Ext.util.Sorter',
-        'AI.model.components.Component'
+        'Ext.data.proxy.Memory',
+        'Ext.util.Sorter'
     ],
 
     stores: {
-        viewmodeldata: {
+        ViewModels: {
             type: 'tree',
-            storeId: 'viewmodelDetails',
-            model: 'AI.model.components.Component',
-            // fields: [
-            //     'text', 'value'
-            // ],
+            storeId: 'ViewModels',
+            fields: ['text', 'value'],
+            rootVisible: true,
             root: {
-                text: '_VIEWMODEL_',
                 expanded: true,
-                value: '',
-                cls: 'root',
-                iconCls: 'no-icon',
                 children: []
+            },
+            proxy: {
+                type: 'memory'
             },
             sorters: 'text'
         }

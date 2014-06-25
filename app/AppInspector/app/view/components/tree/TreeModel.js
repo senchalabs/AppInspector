@@ -7,15 +7,15 @@ Ext.define('AI.view.components.tree.TreeModel', {
     alias: 'viewmodel.componentstree',
 
     requires: [
-        'Ext.data.proxy.Memory',
-        'AI.model.components.Component'
+        'Ext.data.Field',
+        'Ext.util.Sorter'
     ],
 
     stores: {
         Components: {
             type: 'tree',
             storeId: 'Components',
-            model: 'AI.model.components.Component',
+            fields: ['text', 'cmpId', 'itemId', 'xtype', 'children'],
             proxy: {
                 type: 'memory'
             },
@@ -24,7 +24,8 @@ Ext.define('AI.view.components.tree.TreeModel', {
                 text: '_COMPONENTS_',
                 expanded: true,
                 children: []
-            }
+            },
+            sorters: 'text'
         }
 
     }

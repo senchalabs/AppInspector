@@ -22,7 +22,7 @@ Ext.define('AI.view.layouts.tab.BoxLayouts', {
         type: 'boxlayouts'
     },
     bind: {
-        store: '{boxlayouts}'
+        store: '{BoxLayouts}'
     },
 
     title: 'Box Layouts',

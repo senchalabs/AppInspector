@@ -22,7 +22,7 @@ Ext.define('AI.view.layouts.tab.Overnesting', {
         type: 'overnesting'
     },
     bind: {
-        store: '{overnesting}'
+        store: '{Overnestings}'
     },
 
     title: 'Overnesting',

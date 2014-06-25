@@ -12,8 +12,8 @@ Ext.define('AI.view.stores.details.RecordsListModel', {
     ],
 
     stores: {
-        recordlist: {
-            storeId: 'recordList',
+        Records: {
+            storeId: 'Records',
             fields: ['id', 'modelData', 'rawData'],
             sorters: 'id',
             pageSize: 50,

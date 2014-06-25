@@ -16,8 +16,8 @@ Ext.define('AI.view.layouts.tab.BoxLayoutsModel', {
     },
 
     stores: {
-        boxlayouts: {
-            storeId: 'boxlayouts',
+        BoxLayouts: {
+            storeId: 'BoxLayouts',
             model: 'AI.model.layouts.Layout',
             sorters: 'cmpId',
             proxy: {

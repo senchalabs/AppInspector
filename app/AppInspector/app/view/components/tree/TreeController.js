@@ -53,6 +53,10 @@ Ext.define('AI.view.components.tree.TreeController', {
         var store = this.getStore('Components'),
             root = parent || store.getRoot();
 
+        if (tree && root) {
+            root.removeAll();
+        }
+
         Ext.each(components, function(cmp) {
             var children = cmp.children,
                 node = root.appendChild({
