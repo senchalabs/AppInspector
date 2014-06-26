@@ -62,7 +62,10 @@ Ext.define('AI.view.stores.StoresList', {
     }],
 
     listeners: {
-        activate: 'onActivate',
+        activate: {
+            fn: 'onActivate',
+            single: true
+        },
         select: 'onSelect',
         scope: 'controller'
     }

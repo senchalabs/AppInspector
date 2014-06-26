@@ -1288,6 +1288,7 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "AI.Application": [],
+  "AI.mixin.Localize": [],
   "AI.model.components.Component": [],
   "AI.model.components.Detail": [],
   "AI.model.layouts.Layout": [],
@@ -1310,6 +1311,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.components.ComponentsController": [],
   "AI.view.components.ComponentsModel": [],
   "AI.view.components.details.Bindings": [],
+  "AI.view.components.details.InheritanceModel": [],
+  "AI.view.components.details.InheritanceModelController": [],
+  "AI.view.components.details.InheritanceModelModel": [],
   "AI.view.components.details.Methods": [],
   "AI.view.components.details.Properties": [],
   "AI.view.components.details.ViewControllerData": [],
@@ -1344,8 +1348,18 @@ Ext.ClassManager.addNameAlternateMappings({
   "AI.view.mvc.MVCController": [],
   "AI.view.mvc.MVCModel": [],
   "AI.view.stores.Stores": [],
-  "AI.view.stores.StoresController": [],
-  "AI.view.stores.StoresModel": [],
+  "AI.view.stores.StoresList": [],
+  "AI.view.stores.StoresListController": [],
+  "AI.view.stores.StoresListModel": [],
+  "AI.view.stores.details.RecordDetails": [],
+  "AI.view.stores.details.RecordDetailsController": [],
+  "AI.view.stores.details.RecordDetailsModel": [],
+  "AI.view.stores.details.RecordsList": [],
+  "AI.view.stores.details.RecordsListController": [],
+  "AI.view.stores.details.RecordsListModel": [],
+  "AI.view.stores.details.RecordsListTree": [],
+  "AI.view.stores.details.RecordsListTreeController": [],
+  "AI.view.stores.details.RecordsListTreeModel": [],
   "Ext.AbstractManager": [],
   "Ext.Action": [],
   "Ext.Ajax": [],
@@ -2383,6 +2397,7 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "AI.Application": [],
+  "AI.mixin.Localize": [],
   "AI.model.components.Component": [],
   "AI.model.components.Detail": [],
   "AI.model.layouts.Layout": [],
@@ -2416,6 +2431,15 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "AI.view.components.details.Bindings": [
     "widget.bindings"
+  ],
+  "AI.view.components.details.InheritanceModel": [
+    "widget.inheritancemodel"
+  ],
+  "AI.view.components.details.InheritanceModelController": [
+    "controller.inheritancemodel"
+  ],
+  "AI.view.components.details.InheritanceModelModel": [
+    "viewmodel.inheritancemodel"
   ],
   "AI.view.components.details.Methods": [
     "widget.methods"
@@ -2519,11 +2543,41 @@ Ext.ClassManager.addNameAliasMappings({
   "AI.view.stores.Stores": [
     "widget.stores"
   ],
-  "AI.view.stores.StoresController": [
-    "controller.stores"
+  "AI.view.stores.StoresList": [
+    "widget.storeslist"
   ],
-  "AI.view.stores.StoresModel": [
-    "viewmodel.stores"
+  "AI.view.stores.StoresListController": [
+    "controller.storeslist"
+  ],
+  "AI.view.stores.StoresListModel": [
+    "viewmodel.storeslist"
+  ],
+  "AI.view.stores.details.RecordDetails": [
+    "widget.recorddetails"
+  ],
+  "AI.view.stores.details.RecordDetailsController": [
+    "controller.recorddetails"
+  ],
+  "AI.view.stores.details.RecordDetailsModel": [
+    "viewmodel.recorddetails"
+  ],
+  "AI.view.stores.details.RecordsList": [
+    "widget.recordslist"
+  ],
+  "AI.view.stores.details.RecordsListController": [
+    "controller.recordslist"
+  ],
+  "AI.view.stores.details.RecordsListModel": [
+    "viewmodel.recordslist"
+  ],
+  "AI.view.stores.details.RecordsListTree": [
+    "widget.recordslisttree"
+  ],
+  "AI.view.stores.details.RecordsListTreeController": [
+    "controller.recordslisttree"
+  ],
+  "AI.view.stores.details.RecordsListTreeModel": [
+    "viewmodel.recordslisttree"
   ],
   "Ext.AbstractManager": [],
   "Ext.Action": [],

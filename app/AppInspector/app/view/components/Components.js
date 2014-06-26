@@ -16,7 +16,8 @@ Ext.define('AI.view.components.Components', {
         'AI.view.components.details.Methods',
         'AI.view.components.details.Bindings',
         'AI.view.components.details.ViewModelData',
-        'AI.view.components.details.ViewControllerData'
+        // 'AI.view.components.details.ViewControllerData',
+        'AI.view.components.details.InheritanceModel'
     ],
 
     config: {
@@ -74,12 +75,15 @@ Ext.define('AI.view.components.Components', {
             bind: {
                 disabled: '{!tabs.viewmodeldata}'
             }
-            // }, {
-            //     xtype: 'viewcontrollerdata',
-            //     reference: 'vc',
-            //     bind: {
-            //         disabled: '{!tabs.viewcontrollerdata}'
-            //     }
+        // }, {
+        //     xtype: 'viewcontrollerdata',
+        //     reference: 'vc',
+        //     bind: {
+        //         disabled: '{!tabs.viewcontrollerdata}'
+        //     }
+        }, {
+            xtype: 'inheritancemodel',
+            reference: 'inheritancemodel'
         }],
         dockedItems: [{
             xtype: 'toolbar',
@@ -131,7 +135,10 @@ Ext.define('AI.view.components.Components', {
     }],
 
     listeners: {
-        activate: 'onActivate',
+        activate: {
+            fn: 'onActivate',
+            single: true
+        },
         beforeadd: {
             fn: 'localize',
             single: true

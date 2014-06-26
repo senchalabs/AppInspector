@@ -66,7 +66,10 @@ Ext.define('AI.view.stores.Stores', {
             fn: 'localize',
             single: true
         },
-        activate: 'onActivate',
+        activate: {
+            fn: 'onActivate',
+            single: true
+        },
         scope: 'this'
     },
 
