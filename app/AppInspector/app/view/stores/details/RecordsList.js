@@ -40,7 +40,7 @@ Ext.define('AI.view.stores.details.RecordsList', {
         reference: 'recordslistpagingtoolbar',
         displayInfo: true,
         bind: {
-            store: '{recordlist}'
+            store: '{Records}'
         }
     }],
 
