@@ -15,6 +15,9 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
     // viewModel: {
     //     type: 'recordslisttree'
     // },
+    // bind: {
+    //     store: '{TreeRecords}'
+    // },
 
     title: 'Store Records (Tree)',
     hideHeaders: true,
@@ -41,6 +44,7 @@ Ext.define('AI.view.stores.details.RecordsListTree', {
 
     listeners: {
         loadtreerecords: 'loadTreeStoreRecords',
+        select: 'onSelect',
         scope: 'controller'
     }
 });

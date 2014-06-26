@@ -7,10 +7,6 @@
 Ext.define('AI.util.TreeStore', {
     singleton: true,
 
-    // <debug>
-    // require: ['AI.mockup.TreeStore'],
-    // </debug>
-
     /**
      * @param  {String} storeId
      */
@@ -22,14 +18,13 @@ Ext.define('AI.util.TreeStore', {
             return {};
         }
 
-        // <debug>
-        // store = Ext.create('AI.mockup.TreeStore', {});
-        // </debug>
-
         // Ext JS 5 changed to {Ext.data.TreeModel}
         if (store.getRoot) {
-            // TODO
-            return {};
+            // <debug>
+            console.log('TODO');
+            // </debug>
+
+            return store.getRoot().childNodes;
         } else {
             root = store.getRootNode();
 

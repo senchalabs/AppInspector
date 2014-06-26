@@ -27,6 +27,5 @@ Ext.define('AI.view.components.tree.TreeModel', {
             },
             sorters: 'text'
         }
-
     }
 });

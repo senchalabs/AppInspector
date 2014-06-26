@@ -7,7 +7,6 @@ Ext.define('AI.view.stores.details.RecordsListTreeModel', {
 
     requires: [
         'Ext.data.Field',
-        'Ext.data.proxy.Memory',
         'Ext.util.Sorter'
     ],
 
@@ -16,14 +15,16 @@ Ext.define('AI.view.stores.details.RecordsListTreeModel', {
             type: 'tree',
             storeId: 'TreeRecords',
             fields: ['id', 'text'],
-            rootVisible: true,
+            proxy: {
+                type: 'memory'
+            },
+            rootVisible: false,
             root: {
+                text: '_TREERECORDS_',
                 expanded: true,
                 children: []
             },
-            proxy: {
-                type: 'memory'
-            }
+            sorters: 'text'
         }
     }
 });

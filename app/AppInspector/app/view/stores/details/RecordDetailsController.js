@@ -18,7 +18,8 @@ Ext.define('AI.view.stores.details.RecordDetailsController', {
         Ext.Object.each(details, function(key, value) {
             store.add({
                 text: key,
-                value: value
+                value: value,
+                type: (typeof value)
             });
         });
     }
