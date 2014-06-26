@@ -4,7 +4,6 @@ Ext.define('d3xtjs.CollapsibleTree', {
 
     alias : 'widget.d3xtjs_collapsibletree',
 
-//    controller : 'd3xtjs_collapsibletree',
 
 
     // Used for targeting the element to inject the SVG element into.
@@ -80,7 +79,6 @@ Ext.define('d3xtjs.CollapsibleTree', {
                     translate = d3.event.translate,
                     originalTranslate = me.getTranslate();
 
-
                 me.setScale(scale);
 
                 translate[0] = originalTranslate[0] + translate[0];
@@ -109,8 +107,6 @@ Ext.define('d3xtjs.CollapsibleTree', {
     },
 
     renderDiagram : function(root) {
-//        debugger;
-
         var me = this,
             targetEl = me.targetElement;
 
@@ -173,12 +169,19 @@ Ext.define('d3xtjs.CollapsibleTree', {
             matchRegex = me.ellipsisRegex;
 
 
+        var nodeColorMatrix = {
+            class      : '#000',
+            superclass : '#3b8ede',
+            mixin      : '#ff9016'
+        };
+
         // Compute the new tree layout.
         var nodes = tree.nodes(root).reverse();
 
         // Normalize for fixed-depth. (horizontal distance)
+        // TODO: See if we can calculate the total depth via some Text width metrics
         nodes.forEach(function(d) {
-            d.y = d.depth * 130;
+            d.y = d.depth * 200;
         });
 
         // Update the nodes…
@@ -198,13 +201,11 @@ Ext.define('d3xtjs.CollapsibleTree', {
             });
 //            .on('contextmenu', Ext.Function.bind(me.onD3ContextMenu, me));
 
-
-
-
         nodeEnter.append("svg:circle")
             .attr("r", 1e-6)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+                return nodeColorMatrix[d.type];
+//                return d._children ? "lightsteelblue" : "#fff";
             });
 
 
@@ -226,7 +227,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
             .text(function(d) {
                 return d.name;
             })
-            .style("fill-opacity", 1e-6)
+            .style("fill-opacity", 1e-6);
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
@@ -238,15 +239,16 @@ Ext.define('d3xtjs.CollapsibleTree', {
         nodeUpdate.select("circle")
             .attr("r", 4.5)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+
+                return d._children ? nodeColorMatrix[d.type] : "#fff";
+            })
+            .style("stroke", function(d) {
+
+                return nodeColorMatrix[d.type];
             });
 
 
-        var nodeColorMatrix = {
-            class      : '#000',
-            superclass : '#3b8ede',
-            mixin      : '#ff9016'
-        };
+
         nodeUpdate.select("text")
             .style("fill-opacity", 1)
             .style('fill', function(d) {
@@ -281,9 +283,14 @@ Ext.define('d3xtjs.CollapsibleTree', {
                 var o = {x : source.x0, y : source.y0};
                 return diagonal({source : o, target : o});
             })
+            .style("stroke", function(d) {
+
+                return nodeColorMatrix[d.type];
+            })
             .transition()
             .duration(duration)
-            .attr("d", diagonal);
+            .attr("d", diagonal)
+            ;
 
         // Transition links to their new position.
         link.transition()
