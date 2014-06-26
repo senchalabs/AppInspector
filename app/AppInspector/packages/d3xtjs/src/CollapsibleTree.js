@@ -1,4 +1,3 @@
-
 Ext.define('d3xtjs.CollapsibleTree', {
     extend : 'Ext.Panel',
 
@@ -87,7 +86,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
 
             vis = me.vis = d3.select('#' + body.id)
                 .append('svg')
-                .attr("class", "Vizlorer-svg")
+//                .attr("class", "explorer-svg")
                 .attr('width', w)
                 .attr('height', h)
                 .call(zoomConfig)
@@ -95,7 +94,19 @@ Ext.define('d3xtjs.CollapsibleTree', {
                 .append('g')
                 .attr('transform', 'translate(' + me.getTranslate()[0] + ',' + 0 + ')');
 
-//            me.setTranslate([radius, radius])
+
+
+            // Per-type markers, as they don't inherit styles.
+            vis.append("defs").append("marker")
+                .attr("id", "arrowhead")
+                .attr("refX", 5)/*must be smarter way to calculate shift*/
+                .attr("refY", 1.5)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 4)
+                .attr("fill", '#D6D6D6')
+                .attr("orient", "-180")
+                .append("path")
+                .attr("d", "M 0,0 V 3 L4.5, 1.5 Z");
         }
         else {
             me.vis.empty();
@@ -166,7 +177,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
             tree = me.tree,
             root = me.root,
             duration = 750,
-            matchRegex = me.ellipsisRegex;
+            textNodeString = 'text-node-';
 
 
         var nodeColorMatrix = {
@@ -175,19 +186,14 @@ Ext.define('d3xtjs.CollapsibleTree', {
             mixin      : '#ff9016'
         };
 
-        // Compute the new tree layout.
-        var nodes = tree.nodes(root).reverse();
 
-        // Normalize for fixed-depth. (horizontal distance)
-        // TODO: See if we can calculate the total depth via some Text width metrics
-        nodes.forEach(function(d) {
-            d.y = d.depth * 200;
-        });
+        // Compute the new tree layout.
+        var nodes = tree.nodes(root);
 
         // Update the nodes…
         var node = vis.selectAll("g.node")
             .data(nodes, function(d) {
-                return d.id || (d.id = ++me.i);
+                return d.id || (d.id = textNodeString  + ++me.i);
             });
 
         // Enter any new nodes at the parent's previous position.
@@ -205,29 +211,63 @@ Ext.define('d3xtjs.CollapsibleTree', {
             .attr("r", 1e-6)
             .style("fill", function(d) {
                 return nodeColorMatrix[d.type];
-//                return d._children ? "lightsteelblue" : "#fff";
             });
 
-
-
+        var end = 'end';
         nodeEnter.append("svg:text")
             .attr("x", function(d) {
-                return d.children || d._children ? -10 : 10;
-            })
-            .attr("data-qtip", function(d) {
-                if (d.name.match(matchRegex)) {
-//                    console.log('MATCH >> ', d.name);
-                    return d.fullName;
-                }
+                return -10;
+//                return d.children || d._children ? -10 : 10;
             })
             .attr("dy", ".35em")
             .attr("text-anchor", function(d) {
-                return d.children || d._children ? "end" : "start";
+                return end;
+//                return d.children || d._children ? "end" : "start";
             })
             .text(function(d) {
+//                debugger;
                 return d.name;
             })
+            .attr('id', function(d) {
+                //These are useful for determining widths
+                d.textNode = this;
+                d.nodeWidth = Ext.fly(this).getWidth();
+                return d.id;
+            })
             .style("fill-opacity", 1e-6);
+
+
+
+
+        var baseBuffer = 200,
+            widestElement = 0;
+
+        // Resuable Fn to traverse the tree, allowing us to calculate automatic segment widths based on text node width
+        var parseWidths = function(myNode) {
+                var children = myNode.children;
+
+            if (Ext.isArray(children) && children.length > 1) {
+                Ext.each(children, function(child) {
+                    widestElement = (child.nodeWidth > widestElement) ? child.nodeWidth : widestElement;
+                });
+
+                Ext.each(children, function(child) {
+                    parseWidths(child);
+                });
+            }
+
+        };
+
+
+        if (! source.widthBuffer) {
+            source.widthBuffer = source.nodeWidth;
+            parseWidths(source);
+        }
+
+        // Normalize for fixed-depth. (horizontal distance)
+        nodes.forEach(function(d) {
+            d.y = (d.depth * (baseBuffer + widestElement));
+        });
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
@@ -239,20 +279,16 @@ Ext.define('d3xtjs.CollapsibleTree', {
         nodeUpdate.select("circle")
             .attr("r", 4.5)
             .style("fill", function(d) {
-
                 return d._children ? nodeColorMatrix[d.type] : "#fff";
             })
             .style("stroke", function(d) {
-
                 return nodeColorMatrix[d.type];
             });
-
 
 
         nodeUpdate.select("text")
             .style("fill-opacity", 1)
             .style('fill', function(d) {
-//                console.log(d.name, d.type);
                 return nodeColorMatrix[d.type];
             });
 
@@ -279,6 +315,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
         // Enter any new links at the parent's previous position.
         link.enter().insert("svg:path", "g")
             .attr("class", "link")
+            .attr("marker-start", "url(#arrowhead)")
             .attr("d", function(d) {
                 var o = {x : source.x0, y : source.y0};
                 return diagonal({source : o, target : o});
@@ -289,8 +326,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
             })
             .transition()
             .duration(duration)
-            .attr("d", diagonal)
-            ;
+            .attr("d", diagonal);
 
         // Transition links to their new position.
         link.transition()
