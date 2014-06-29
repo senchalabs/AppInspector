@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+/*=======================================================================================================================================================================================================================
+    Panel with test iframe
+*/
+
+.tr-container {
+    visibility : visible !important;
+}
+
+.x-ie9 .tr-container {
+    z-index : 1;
+}
+
+.tr-container .x-panel-collapsed {
+    display    : block !important;
+    visibility : hidden !important;
+    z-index    : -1 !important;
+}
+
+td.tr-td-vertical-align {
+    vertical-align : middle;
+}
+
+.tr-iframe-wrapper {
+    position : absolute;
+    left     : -10000px;
+    top      : -10000px;
+    overflow : auto;
+    z-index  : 6; /* Without this, the dom container Ext panel will be on top of the iframe (in IE10)*/
+}
+
+.tr-iframe-forced {
+    z-index               : 100000 !important;
+    border                : 5px solid;
+    border-color          : #d5e7f0;
+    -moz-border-radius    : 14px;
+    -webkit-border-radius : 14px;
+    border-radius         : 14px;
+    background-color      : white;
+}
+
+.tr-iframe-hidden {
+    left : -10000px !important;
+    top  : -10000px !important;
+}
+
+.siesta-domcontainer {
+    background    : #fff url(../images/domcontainer-bg.png) repeat;
+    box-shadow    : inset 3px 3px 4px #dfdfdf;
+}
+
+.siesta-domcontainer .x-panel-body {
+    background : transparent;
+    border     : 0 none;
+}
+
+.domcontainer-console {
+    z-index    : 5;
+}
+
+.domcontainer-console input {
+    color           : #666;
+    height          : 24px;
+    width           : 100%;
+    padding         : 2px 2px 2px 20px;
+    background      : #fff url(../images/prompt.png) no-repeat 4px center;
+    font            : 14px &quot;Consolas&quot;;
+    background-size : 12px;
+    line-height     : 19px;
+    border          : 1px solid #ccc;
+    box-shadow      : 0 1px 3px 0 rgba(150, 150, 150, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+</pre>
+</body>
+</html>

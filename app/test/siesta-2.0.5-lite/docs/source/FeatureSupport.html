@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Singleton('Siesta.Harness.Browser.FeatureSupport', {
+    
+    has     : {
+        supports    : Joose.I.Object,
+        
+        tests       : {
+            init        : [
+                {
+                    id : &quot;mouseEnterLeave&quot;,
+                    fn : function() {
+                        var el = document.createElement(&quot;div&quot;);
+                        return 'onmouseenter' in el &amp;&amp; 'onmouseleave' in el;
+                    }
+                },
+        
+                {
+                    id : &quot;enterOnAnchorTriggersClick&quot;,
+                    fn : function() {
+                        var sim     = this.simulator,
+                            E       = Siesta.Test.Simulate.KeyCodes().keys.ENTER,
+                            result  = false;
+                            
+                        var anchor = $('&lt;a href=&quot;foo&quot; style=&quot;display:none&quot;&gt;test me&lt;/a&gt;');
+                        $('body').append(anchor);
+        
+                        anchor.focus();
+                        anchor.click(function(e) {
+                            result = true;
+                            return false;
+                        });
+                
+                        sim.simulateEvent(anchor, 'keypress', { keyCode : E, charCode : 0 }, true);
+                 
+                        anchor.remove();
+                        return result;
+                    }
+                },
+        
+                {
+                    id : &quot;canSimulateKeyCharacters&quot;,
+                    fn : function() {
+                        var sim     = this.simulator;
+                        
+                        var input   = $('&lt;input class=&quot;siesta-hidden&quot; type=&quot;text&quot; /&gt;'),
+                            A       = Siesta.Test.Simulate.KeyCodes().keys.A;
+                            
+                        $('body').append(input);
+                        
+                        input.focus();
+                        sim.simulateEvent(input, 'keypress', { keyCode : A, charCode : A }, true);
+                        sim.simulateEvent(input, 'textInput', { text : &quot;A&quot; }, true);
+                
+                        var result  = input.val() === 'A';
+                        
+                        input.remove();
+                        
+                        return result;
+                    }
+                },
+        
+                {
+                    id : &quot;canSimulateBackspace&quot;,
+                    fn : function() {
+                        var sim     = this.simulator;
+                        
+                        var input   = $('&lt;input class=&quot;siesta-hidden&quot; type=&quot;text&quot; /&gt;'),
+                            BS      = Siesta.Test.Simulate.KeyCodes().keys.BACKSPACE,
+                            A       = Siesta.Test.Simulate.KeyCodes().keys.A;
+                            
+                        $('body').append(input);
+                        
+                        input.focus();
+                        sim.simulateEvent(input, 'keypress', { keyCode : A, charCode : A }, true);
+                        sim.simulateEvent(input, 'keypress', { keyCode : A, charCode : A }, true);
+                        sim.simulateEvent(input, 'keypress', { keyCode : BS, charCode : BS }, true);
+                        
+                        var result  = input.val() === 'A';
+                 
+                        input.remove();
+                        
+                        return result;
+                    }
+                },
+
+                {
+                    id : &quot;enterSubmitsForm&quot;,
+                    fn : function() {
+                        var sim     = this.simulator,
+                            E       = Siesta.Test.Simulate.KeyCodes().keys.ENTER,
+                            result  = false;
+
+                        var form = $('&lt;form method=&quot;post&quot;&gt;&lt;input type=&quot;text&quot;/&gt;&lt;/form&gt;');
+                        var input = $(form).find('input');
+                        $('body').append(form);
+
+                        form[0].onsubmit = function(e) {
+                            result = true;
+                            return false;
+                        };
+
+                        input.focus();
+                        sim.simulateEvent(input, 'keypress', { keyCode : E, charCode : 0 }, true);
+
+                        form.remove();
+                        return result;
+                    }
+                }
+            ]
+        }
+        
+    },
+    
+    methods     : {
+        
+        initialize : function() {
+            var emptyFn = function() {},
+                foo = Class({
+                    does    : [
+                        Siesta.Test.Simulate.Event,
+                        Siesta.Test.Simulate.Mouse,
+                        Siesta.Test.Simulate.Keyboard
+                    ],
+                
+                    has     : {
+                        global      : null
+                    },
+                
+                    methods : {
+                        focusOnClick        : emptyFn,
+                        getElementAtCursor  : emptyFn,
+                        fireEvent           : emptyFn,
+                        addResult           : emptyFn,
+                        normalizeElement    : function(a) { return a[0]; },
+                        findCenter          : function() { return [0,0]; },
+                        valueIsArray        : function(arr) { return 'length' in arr; }
+                    }
+                });
+            
+            this.simulator = new foo({ global : window });
+    
+            for (var i = 0; i &lt; this.tests.length; i++) {
+                var test            = this.tests[i];
+                var testId          = test.id;
+                var detectorFn      = test.fn;
+                
+                // also save the results to &quot;results&quot; property - we'll use this in out own test suite
+                // where we copy the feature testing results from the outer scope to inner
+                this.supports[ testId ] = detectorFn.call(this);
+            }
+        }
+    }
+})
+</pre>
+</body>
+</html>

@@ -1,0 +1,119 @@
+:focus {
+    outline : none;
+}
+
+@font-face {
+    font-family: 'fontawesome';
+    src: url('../resources/fonts/fontawesome-webfont.eot');
+    src: url('../resources/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../resources/fonts/fontawesome-webfont.woff') format('woff'),
+         url('../resources/fonts/fontawesome-webfont.ttf') format('truetype'),
+         url('../resources/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+    //src: url('../resources/fonts/FontAwesome.otf') format('opentype'); // used when developing fonts
+    font-weight: normal;
+    font-style: normal;
+}
+
+$loadmask-msg-border-radius : 0;
+
+.x-body.x-masked {
+    div.x-panel {
+        @include filter(blur(2px));
+    }
+}
+
+.x-mask-msg {
+    &.no-framework-mask {
+        border : 1px solid $loadmask-msg-inner-color;
+
+        .x-mask-inner {
+        }
+
+        .x-mask-msg-text {
+            padding    : 24px;
+            margin     : 0;
+            background : none;
+            font-size  : 2em;
+        }
+    }
+
+    @include box-shadow(rgba($loadmask-msg-inner-color, 0.5) 2px 2px 10px);
+}
+
+.about-details {
+    img {
+        border : 2px solid $green;
+    }
+
+    .description, .contributors, .social {
+        a {
+            color           : $green;
+            text-decoration : none;
+
+            &:focus, &:hover {
+                text-decoration : underline;
+            }
+        }
+    }
+}
+
+.components-toolbar {
+    &.top {
+        border-top-width    : 1px;
+        border-bottom-width : 1px !important;
+        padding             : 2px 0;
+    }
+}
+
+.components-tips {
+    border-top : 1px solid $base-color !important;
+    //border-left: 5px solid $grid-row-cell-border-color !important;
+
+    .tip {
+        font-weight : bold;
+
+        &:before {
+            content       : "";
+            padding-right : 8px;
+            margin-right  : 4px;
+        }
+    }
+
+    .tip-changed, .tip-custom {
+        @extend .tip;
+
+        &:before {
+            background-color : $blue-light;
+        }
+    }
+
+    .tip-custom {
+        color : $green;
+    }
+
+    .tip-override {
+        @extend .tip;
+
+        color : $orange;
+
+        &:before {
+            background-color : $orange;
+        }
+    }
+
+    .tip-binding {
+        @extend .tip;
+
+        &:before {
+            background-color : transparent;
+        }
+
+        &.error {
+            color : $red;
+
+            &:before {
+                background-color : $red;
+            }
+        }
+    }
+}

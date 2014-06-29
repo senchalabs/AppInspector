@@ -18,7 +18,7 @@
  *      }
  */
 Ext.define('Ext.ux.CellDragDrop', {
-    extend: 'Ext.AbstractPlugin',
+    extend: 'Ext.plugin.Abstract',
     alias: 'plugin.celldragdrop',
 
     uses: ['Ext.view.DragZone'],
@@ -160,19 +160,20 @@ Ext.define('Ext.ux.CellDragDrop', {
                     var view = this.view,
                         item = e.getTarget(view.getItemSelector()),
                         record = view.getRecord(item),
-                        clickedEl = e.getTarget(view.getCellSelector()),
-                        dragEl;
+                        cell = e.getTarget(view.getCellSelector()),
+                        dragEl, header;
 
                     if (item) {
                         dragEl = document.createElement('div');
                         dragEl.className = 'x-form-text';
-                        dragEl.appendChild(document.createTextNode(clickedEl.textContent || clickedEl.innerText));
+                        dragEl.appendChild(document.createTextNode(cell.textContent || cell.innerText));
 
+                        header = view.getHeaderByCell(cell);
                         return {
                             event: new Ext.EventObjectImpl(e),
                             ddel: dragEl,
                             item: e.target,
-                            columnName: view.getGridColumns()[clickedEl.cellIndex].dataIndex,
+                            columnName: header.dataIndex,
                             record: record
                         };
                     }
@@ -208,20 +209,20 @@ Ext.define('Ext.ux.CellDragDrop', {
 
                 getTargetFromEvent: function (e) {
                     var self = this,
-                        v = self.view,
-                        cell = e.getTarget(v.cellSelector),
-                        row, columnIndex;
+                        view = self.view,
+                        cell = e.getTarget(view.cellSelector),
+                        row, header;
 
                     // Ascertain whether the mousemove is within a grid cell.
                     if (cell) {
-                        row = v.findItemByChild(cell);
-                        columnIndex = cell.cellIndex;
+                        row = view.findItemByChild(cell);
+                        header = view.getHeaderByCell(cell);
 
-                        if (row && Ext.isDefined(columnIndex)) {
+                        if (row && header) {
                             return {
                                 node: cell,
-                                record: v.getRecord(row),
-                                columnName: self.view.up('grid').columns[columnIndex].dataIndex
+                                record: view.getRecord(row),
+                                columnName: header.dataIndex
                             };
                         }
                     }
@@ -230,8 +231,8 @@ Ext.define('Ext.ux.CellDragDrop', {
                 // On Node enter, see if it is valid for us to drop the field on that type of column.
                 onNodeEnter: function (target, dd, e, dragData) {
                     var self = this,
-                        destType = target.record.fields.get(target.columnName).type.type.toUpperCase(),
-                        sourceType = dragData.record.fields.get(dragData.columnName).type.type.toUpperCase();
+                        destType = target.record.getField(target.columnName).type.toUpperCase(),
+                        sourceType = dragData.record.getField(dragData.columnName).type.toUpperCase();
 
                     delete self.dropOK;
 
@@ -254,7 +255,7 @@ Ext.define('Ext.ux.CellDragDrop', {
                             });
                         }
 
-                        return;
+                        return false;
                     }
 
                     self.dropOK = true;

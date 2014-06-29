@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Test-Action-Eval'>/**
+</span>
+@class Siesta.Test.Action.Eval
+@extends Siesta.Test.Action
+
+This action can be included in the `t.chain` steps only with a plain string. Siesta will examine the passed string,
+and call an apropriate method of the test class. String should have the following format: 
+    
+    methodName(params) 
+
+Method name is anything until the first parenthes. Method name may have an optional prefix `t.`. 
+Everything in between of outermost parentheses will be treated as parameters for method call. For example:
+
+    t.chain(
+        // string should look like a usual method call, 
+        // but arguments can't reference any variables
+        // strings should be quoted, to include quoting symbol in string use double slash: \\
+        't.click(&quot;combo[type=some\\&quot;Type] =&gt; .x-form-trigger&quot;)',
+        
+        // leading &quot;t.&quot; is optional, but quoting is not
+        'waitForComponent(&quot;combo[type=someType]&quot;)',
+        
+        // JSON objects are ok, but they should be a valid JSON - ie object properties should be quoted
+        'myClick([ 10, 10 ], { &quot;foo&quot; : &quot;bar&quot; })',
+    )
+    
+* **Note** You can pass the JSON objects as arguments, but they should be serialized as valid JSON - ie object properties should be quoted.
+    
+* **Note** A callback for next step in chain will be always appended to provided parameters. Make sure it is placed in a correct spot!
+For example if method signature is `t.someMethod(param1, param2, callback)` and you are calling this method as:
+    
+    t.chain(
+        `t.someMethod(&quot;text&quot;)`
+    )
+it will fail - callback will be provided in place of `param2`. Instead call it as: 
+    
+    t.chain(
+        `t.someMethod(&quot;text&quot;, null)`
+    )
+
+This action may save you few keystrokes, when you need to perform some action with static arguments (known prior the action).
+
+*/
+Class('Siesta.Test.Action.Eval', {
+    
+    isa         : Siesta.Test.Action,
+    
+    has : {
+<span id='Siesta-Test-Action-Eval-cfg-options'>        /**
+</span>         * @cfg {Object} options
+         *
+         * Any options that will be used when simulating the event. For information about possible
+         * config options, please see: &lt;https://developer.mozilla.org/en-US/docs/DOM/event.initMouseEvent&gt;
+         */
+        actionString        : null
+    },
+
+    
+    methods : {
+        
+        process : function () {
+            var test            = this.test
+            var parsed          = this.parseActionString(this.actionString)
+            
+            if (parsed.error) {
+                test.fail(parsed.error)
+                this.next()
+                return
+            }
+            
+            var methodName      = parsed.methodName
+            
+            if (!methodName || test.typeOf(test[ methodName ]) != 'Function') {
+                test.fail(&quot;Invalid method name: &quot; + methodName)
+                this.next()
+                return
+            }
+            
+            parsed.params.push(this.next)
+            
+            test[ methodName ].apply(test, parsed.params)
+        },
+        
+        
+        parseActionString : function (actionString) {
+            var match           = /^\s*(.+?)\(\s*(.*)\s*\)\s*$/.exec(actionString)
+            
+            if (!match) return {
+                error       : &quot;Wrong format of the action string: &quot; + actionString
+            }
+            
+            var methodName      = match[ 1 ].replace(/^t\./, '')
+            
+            try {
+                var params      = JSON.parse('[' + match[ 2 ] + ']')
+            } catch (e) {
+                return {
+                    error       : &quot;Can't parse arguments: &quot; + match[ 2 ]
+                }
+            }
+            
+            return {
+                methodName      : methodName,
+                params          : params
+            }
+        }
+    }
+});
+</pre>
+</body>
+</html>

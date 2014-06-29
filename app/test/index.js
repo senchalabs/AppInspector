@@ -51,7 +51,7 @@ Harness.start(
             'AI' : '../AppInspector/app'
         },
 
-        hostPageUrl : '../../../_ext/ext5-qa/examples/kitchensink/#basic-panels',
+        hostPageUrl : '../../../_ext/ext-5.0.0.970/examples/kitchensink/#basic-panels',
 
         items : [
             'specs/ext5/InspectedWindow.js',

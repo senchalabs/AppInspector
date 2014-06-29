@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Recorder-RecordedEvent'>/**
+</span> * This is a model class containing information about recorded user actions
+ */
+Ext.define('Siesta.Recorder.RecordedEvent', {
+    extend : 'Ext.data.Model',
+
+<span id='Siesta-Recorder-RecordedEvent-property-fields'>    fields : [
+</span>        // just a number so we can keep track of the unique events
+        'id',
+
+        { name : 'index', type : 'int' },
+
+        // event type
+        'type',
+
+        // event types
+        'csq',
+        'cq',
+        'css',
+        'domId',
+
+        // EOF event types
+
+        // timestamp
+        'ts',
+
+        // Alt, ctrl, meta, shift keys
+        'options',
+
+        'text',
+
+        // The offset relative to the target DOM node
+        'offset',
+
+        // The offset for a drag target
+        'toOffset',
+
+        // the target initially proposed by Siesta, which user can later override
+        'actionTarget',
+
+        'xy',
+
+        // the target initially proposed by Siesta, which user can later override
+        'target',
+
+        /*
+         * The type of target, possible options:
+         *
+         *   - 'id'      DOM node id
+         *   - 'css'     css selector
+         *   - 'cq'      component query
+         *   - 'csq'     composite query
+         *   - 'xy'      XY coordinates
+         *
+         * */
+        'targetType',
+
+        // Queue refs
+        'start',
+        'tail',
+
+        // drag refs
+        'by',
+        'to'
+    ],
+
+<span id='Siesta-Recorder-RecordedEvent-method-resetValues'>    resetValues : function () {
+</span>        this.set({
+            'csq'          : null,
+            'cq'           : null,
+            'css'          : null,
+            'domId'        : null,
+            'options'      : null,
+            'text'         : null,
+            'offset'       : null,
+            'actionTarget' : null,
+            'targetType'   : null
+        })
+    },
+
+<span id='Siesta-Recorder-RecordedEvent-method-parseOffset'>    parseOffset : function (offsetString) {
+</span>
+        var vals = offsetString.split(',');
+
+        if (vals.length &lt; 2) {
+            return;
+        }
+
+        if (!vals[0].match('%')) {
+            vals[0] = parseInt(vals[0], 10);
+
+            if (isNaN(vals[0])) {
+                return;
+            }
+        }
+
+        if (!vals[1].match('%')) {
+            vals[1] = parseInt(vals[1], 10);
+
+            if (isNaN(vals[1])) {
+                return;
+            }
+        }
+
+        return vals;
+    },
+
+<span id='Siesta-Recorder-RecordedEvent-method-isMouseInputEvent'>    isMouseInputEvent : function () {
+</span>        var type = this.data.type;
+
+        return type in {
+            click        : 1,
+            contextmenu  : 1,
+            dblclick     : 1,
+            drag         : 1,
+            moveCursorBy : 1,
+            moveCursorTo : 1
+        };
+    }
+});
+</pre>
+</body>
+</html>

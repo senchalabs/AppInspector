@@ -1,0 +1,12 @@
+{
+    "name": "d3xtjs",
+    "type": "code",
+    "creator": "jay@moduscreate.com",
+    "summary": "A prototype example of wrapping D3JS with Ext JS",
+    "detailedDescription": "A prototype example of wrapping D3JS with Ext JS",
+    "version": "0.0.1",
+    "compatVersion": "0.0.1",
+    "format": "1",
+    "local": true,
+    "requires": []
+}

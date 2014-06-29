@@ -1,28 +1,21 @@
-# *** folders
-dist/
-docs/
-node_modules/
-package/
+## folders
+.idea/
+/dist/
+/docs/
+/node_modules/
+/package/
 testdata/
 
-# *** files
+
+## files
+*.iml
 .DS_Store
 Thumbs.db
 lint/error_log.txt
 
 
-# *** Sencha Architect
+## Ext JS
 .sass-cache/
-AppInspector/build/
-app/AppInspector/build/
-# app/AppInspector/ext/
-# app/AppInspector/touch/
+/app/AppInspector/build/
+/app/AppInspector/**/build/
 *.$old
-
-# see http://docs.sencha.com/architect/3/#!/guide/team_dev
-app/AppInspector/.architect
-app/AppInspector/.sencha/
-app/AppInspector/.sencha_backup/
-
-.idea/
-*.iml

@@ -1,6 +1,6 @@
 /*!
- * Ext JS Library 4.0
- * Copyright(c) 2006-2011 Sencha Inc.
+ * Ext JS Library
+ * Copyright(c) 2006-2014 Sencha Inc.
  * licensing@sencha.com
  * http://www.sencha.com/license
  */
@@ -27,11 +27,6 @@ Ext.define('Ext.ux.IFrame', {
         this.callParent();
 
         this.frameName = this.frameName || this.id + '-frame';
-
-        this.addEvents(
-            'beforeload',
-            'load'
-        );
 
         Ext.apply(this.renderSelectors, {
             iframeEl: 'iframe'

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Class('Siesta.Util.XMLNode', {
+    
+    has     : {
+        children        : Joose.I.Array,
+        
+        tag             : { required : true },
+        attributes      : Joose.I.Object,
+        
+        textContent     : null,
+        
+        escapeTable     : {
+            
+            init    : {
+                '&amp;'     : '&amp;amp;', 
+                '&lt;'     : '&amp;lt;', 
+                '&gt;'     : '&amp;gt;', 
+                '&quot;'     : '&amp;quot;'
+            }
+        }
+        
+    },
+    
+    
+    methods : {
+        
+        escapeXml : function (s) {
+            var me = this
+            
+            return typeof s != 'string' ? s : s.replace(/[&amp;&lt;&gt;&quot;]/g, function (match) {
+                return me.escapeTable[ match ]
+            })
+        },
+        
+        
+        toString : function () {
+            var me                  = this
+            var childrenContent     = []
+            
+            Joose.A.each(this.children, function (child) {
+                childrenContent.push(child.toString())
+            })
+            
+            var attributesContent       = []
+            
+            Joose.O.each(this.attributes, function (value, name) {
+                attributesContent.push(name + '=&quot;' + me.escapeXml(value) + '&quot;')
+            })
+            
+            // to have predictable order of attributes in tests
+            attributesContent.sort()
+            
+            attributesContent.unshift(this.tag)
+            
+            
+            return '&lt;' + attributesContent.join(' ') + '&gt;' + (this.textContent != null ? this.escapeXml(this.textContent) : '') + childrenContent.join('') + '&lt;/' + this.tag + '&gt;' 
+        },
+        
+        
+        appendChild : function (child) {
+            if (child instanceof Siesta.Util.XMLNode)
+                child.parent    = this
+            else
+                child           = new Siesta.Util.XMLNode(Joose.O.extend(child, { parent : this }))
+                
+            this.children.push(child)
+            
+            return child
+        },
+        
+        
+        setAttribute : function (name, value) {
+            this.attributes[ name ] = value
+        }
+    }
+})
+</pre>
+</body>
+</html>

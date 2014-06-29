@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Test-Action-MouseUp'>/**
+</span>
+@class Siesta.Test.Action.MouseUp
+@extends Siesta.Test.Action
+@mixin Siesta.Test.Action.Role.HasTarget
+
+This action can be included in a `t.chain` call with &quot;mouseUp&quot; shortcut:
+
+    t.chain(
+        {
+            action      : 'mouseUp',
+            target      : someDOMElement,
+            options     : { shiftKey : true } // Optionally hold shiftkey
+        },
+        // or
+        {
+            mouseup     : someDOMElement,
+            options     : { shiftKey : true } // Optionally hold shiftkey
+        }
+    )
+
+This action will perform a {@link Siesta.Test.Browser#mouseUp mouseUp} on the provided {@link #target}. 
+
+*/
+Class('Siesta.Test.Action.MouseUp', {
+    
+    isa         : Siesta.Test.Action,
+    
+    does        : Siesta.Test.Action.Role.HasTarget,
+        
+    has : {
+        requiredTestMethod  : 'mouseUp'
+    },
+
+    
+    methods : {
+        
+        process : function () {
+            // This method is synchronous
+            this.test.mouseUp(this.getTarget(), this.options, this.offset);
+
+            setTimeout(this.next, 100);
+        }
+    }
+});
+
+
+Siesta.Test.ActionRegistry().registerAction('mouseUp', Siesta.Test.Action.MouseUp)
+Siesta.Test.ActionRegistry().registerAction('fingerUp', Siesta.Test.Action.MouseUp)
+</pre>
+</body>
+</html>

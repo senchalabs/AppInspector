@@ -52,19 +52,17 @@ Ext.define('Ext.ux.TreePicker', {
    
     editable: false,
 
+    /**
+     * @event select
+     * Fires when a tree node is selected
+     * @param {Ext.ux.TreePicker} picker        This tree picker
+     * @param {Ext.data.Model} record           The selected record
+     */
+
     initComponent: function() {
         var me = this;
-        me.callParent(arguments);
 
-        me.addEvents(
-            /**
-             * @event select
-             * Fires when a tree node is selected
-             * @param {Ext.ux.TreePicker} picker        This tree picker
-             * @param {Ext.data.Model} record           The selected record
-             */
-            'select'
-        );
+        me.callParent(arguments);
 
         me.mon(me.store, {
             scope: me,
@@ -155,7 +153,7 @@ Ext.define('Ext.ux.TreePicker', {
      * @param {Ext.data.Model} record
      * @param {HTMLElement} node
      * @param {Number} rowIndex
-     * @param {Ext.EventObject} e
+     * @param {Ext.event.Event} e
      */
     onItemClick: function(view, record, node, rowIndex, e) {
         this.selectItem(record);
@@ -164,7 +162,7 @@ Ext.define('Ext.ux.TreePicker', {
     /**
      * Handles a keypress event on the picker element
      * @private
-     * @param {Ext.EventObject} e
+     * @param {Ext.event.Event} e
      * @param {HTMLElement} el
      */
     onPickerKeypress: function(e, el) {
@@ -207,7 +205,7 @@ Ext.define('Ext.ux.TreePicker', {
         }
         
         if (!node) {
-            node = store.getRootNode();
+            node = store.getRoot();
         }
         
         picker.selectPath(node.getPath());
@@ -234,9 +232,9 @@ Ext.define('Ext.ux.TreePicker', {
         }
             
         // try to find a record in the store that matches the value
-        record = value ? me.store.getNodeById(value) : me.store.getRootNode();
+        record = value ? me.store.getNodeById(value) : me.store.getRoot();
         if (value === undefined) {
-            record = me.store.getRootNode();
+            record = me.store.getRoot();
             me.value = record.getId();
         } else {
             record = me.store.getNodeById(value);

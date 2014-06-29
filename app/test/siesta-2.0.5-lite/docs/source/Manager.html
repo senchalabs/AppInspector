@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Class('Siesta.Content.Manager', {
+    
+    has : {
+        disabled        : false,
+        
+        presets         : {
+            required    : true
+        },
+        
+        urls            : Joose.I.Object,
+        
+        maxLoads        : 5,
+        
+        harness         : null
+    },
+    
+    
+    methods : {
+        
+        cache : function (callback, errback, ignoreErrors) {
+            if (this.disabled) {
+                callback &amp;&amp; callback()
+                
+                return
+            }
+            
+            var urls    = this.urls
+            var me      = this
+            
+            Joose.A.each(this.presets, function (preset) {
+                preset.eachResource(function (resource) {
+                    if (resource.url) urls[ resource.url ] = null
+                })
+            })
+            
+            var loadCount   = 0
+            var errorCount  = 0
+            
+            var urlsArray   = []
+            
+            Joose.O.each(urls, function (value, url) {
+                // if some content has been already provided - skip it from caching
+                if (!me.hasContentOf(url)) urlsArray.push(url) 
+            })
+            
+            var total       = urlsArray.length
+            
+            if (total) {
+                
+                var loadSingle = function () {
+                    if (!urlsArray.length) return
+                    
+                    var url     = urlsArray.shift()
+                    
+                    me.load(url, function (content) {
+                        if (errorCount) return
+                        
+                        urls[ url ] = content
+                        
+                        if (++loadCount == total) 
+                            callback &amp;&amp; callback()
+                        else
+                            loadSingle()
+                    
+                    }, ignoreErrors ? function () {
+                        
+                        if (++loadCount == total) 
+                            callback &amp;&amp; callback()
+                        else
+                            loadSingle()
+                        
+                    } : function () {
+                        errorCount++
+                        
+                        errback &amp;&amp; errback(url)
+                    })
+                }
+                
+                // running only `maxLoads` &quot;loading threads&quot; at the same time
+                for (var i = 0; i &lt; this.maxLoads; i++) loadSingle()
+                
+            } else
+                callback &amp;&amp; callback()
+        },
+        
+        
+        load : function (url, callback, errback) {
+            throw &quot;abstract method `load` called&quot;
+        },
+        
+        
+        addContent : function (url, content) {
+            this.urls[ url ]    = content
+        },
+        
+        
+        hasContentOf : function (url) {
+            if (url instanceof Siesta.Content.Resource) url = url.url
+            
+            return typeof this.urls[ url ] == 'string'
+        },
+        
+        
+        getContentOf : function (url) {
+            if (url instanceof Siesta.Content.Resource) url = url.url
+            
+            return this.urls[ url ]
+        }
+    }
+})
+
+</pre>
+</body>
+</html>

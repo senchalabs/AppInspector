@@ -2,8 +2,8 @@
 * Allows GroupTab to render a table structure.
 */
 Ext.define('Ext.ux.GroupTabRenderer', {
+    extend: 'Ext.plugin.Abstract',
     alias: 'plugin.grouptabrenderer',
-    extend: 'Ext.AbstractPlugin',
 
     tableTpl: new Ext.XTemplate(
         '<div id="{view.id}-body" class="' + Ext.baseCSSPrefix + '{view.id}-table ' + Ext.baseCSSPrefix + 'grid-table-resizer" style="{tableStyle}">',
@@ -29,7 +29,7 @@ Ext.define('Ext.ux.GroupTabRenderer', {
             '{rowAttr:attributes}>',
             '<tpl for="columns">' +
                 '{%',
-                    'parent.view.renderCell(values, parent.record, parent.recordIndex, xindex - 1, out, parent)',
+                    'parent.view.renderCell(values, parent.record, parent.recordIndex, parent.rowIndex, xindex - 1, out, parent)',
                  '%}',
             '</tpl>',
         '</div>',
@@ -61,17 +61,13 @@ Ext.define('Ext.ux.GroupTabRenderer', {
         itemSelector: 'div.' + Ext.baseCSSPrefix + 'grouptab-row',
 
         // row which contains cells as opposed to wrapping rows
-        dataRowSelector: 'div.' + Ext.baseCSSPrefix + 'grouptab-row',
+        rowSelector: 'div.' + Ext.baseCSSPrefix + 'grouptab-row',
 
         // cell
         cellSelector: 'div.' + Ext.baseCSSPrefix + 'grouptab-cell', 
 
         getCellSelector: function(header) {
-            var result = 'div.' + Ext.baseCSSPrefix + 'grid-cell';
-            if (header) {
-                result += '-' + header.getItemId();
-            }
-            return result;
+            return header ? header.getCellSelector() : this.cellSelector; 
         }
 
     },
@@ -79,7 +75,7 @@ Ext.define('Ext.ux.GroupTabRenderer', {
     init: function(grid) {
         var view = grid.getView(), 
             me = this;
-        view.addTableTpl(me.tableTpl);
+        view.addTpl(me.tableTpl);
         view.addRowTpl(me.rowTpl);
         view.addCellTpl(me.cellTpl);
         Ext.apply(view, me.selectors);

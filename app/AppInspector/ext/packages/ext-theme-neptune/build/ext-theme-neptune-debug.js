@@ -1,23 +1,3 @@
-/*
-This file is part of Ext JS 4.2
-
-Copyright (c) 2011-2013 Sencha Inc
-
-Contact:  http://www.sencha.com/contact
-
-GNU General Public License Usage
-This file may be used under the terms of the GNU General Public License version 3.0 as
-published by the Free Software Foundation and appearing in the file LICENSE included in the
-packaging of this file.
-
-Please review the following information to ensure the GNU General Public License version 3.0
-requirements will be met: http://www.gnu.org/copyleft/gpl.html.
-
-If you are unsure which license is appropriate for your use, please contact the sales department
-at http://www.sencha.com/contact.
-
-Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
-*/
 Ext.define('ExtThemeNeptune.Component', {
     override: 'Ext.Component',
 
@@ -29,36 +9,32 @@ Ext.define('ExtThemeNeptune.Component', {
         }
     },
 
-    initStyles: function() {
-        var me = this,
-            border = me.border;
+    privates: {
+        initStyles: function () {
+            var me = this,
+                hasOwnBorder = me.hasOwnProperty('border'),
+                border = me.border;
 
-        if (me.dock) {
-            // prevent the superclass method from setting the border style.  We want to
-            // allow dock layout to decide which borders to suppress.
-            me.border = null;
+            if (me.dock) {
+                // prevent the superclass method from setting the border style.  We want to
+                // allow dock layout to decide which borders to suppress.
+                me.border = null;
+            }
+            me.callParent(arguments);
+
+            if (hasOwnBorder) {
+                me.border = border;
+            } else {
+                delete me.border;
+            }
         }
-        me.callParent(arguments);
-        me.border = border;
     }
 });
 
-Ext.define('ExtThemeNeptune.panel.Panel', {
-    override: 'Ext.panel.Panel',
-    border: false,
-    bodyBorder: false,
-
-    initBorderProps: Ext.emptyFn,
-
-    initBodyBorder: function() {
-        // The superclass method converts a truthy bodyBorder into a number and sets
-        // an inline border-width style on the body element.  This prevents that from
-        // happening if borderBody === true so that the body will get its border-width
-        // the stylesheet.
-        if (this.bodyBorder !== true) {
-            this.callParent();
-        }
-    }
+Ext.define('ExtThemeNeptune.toolbar.Toolbar', {
+    override: 'Ext.toolbar.Toolbar',
+    usePlainButtons: false,
+    border: false
 });
 
 Ext.define('ExtThemeNeptune.layout.component.Dock', {
@@ -330,10 +306,41 @@ Ext.define('ExtThemeNeptune.layout.component.Dock', {
     }
 });
 
-Ext.define('ExtThemeNeptune.toolbar.Toolbar', {
-    override: 'Ext.toolbar.Toolbar',
-    usePlainButtons: false,
-    border: false
+Ext.define('ExtThemeNeptune.panel.Panel', {
+    override: 'Ext.panel.Panel',
+    border: false,
+    bodyBorder: false,
+
+    initBorderProps: Ext.emptyFn,
+
+    initBodyBorder: function() {
+        // The superclass method converts a truthy bodyBorder into a number and sets
+        // an inline border-width style on the body element.  This prevents that from
+        // happening if borderBody === true so that the body will get its border-width
+        // the stylesheet.
+        if (this.bodyBorder !== true) {
+            this.callParent();
+        }
+    }
+});
+
+Ext.define('ExtThemeNeptune.panel.Table', {
+    override: 'Ext.panel.Table',
+
+    initComponent: function() {
+        var me = this;
+
+        if (!me.hasOwnProperty('bodyBorder') && !me.hideHeaders) {
+            me.bodyBorder = true;
+        }
+
+        me.callParent();
+    }
+});
+
+Ext.define('ExtThemeNeptune.resizer.Splitter', {
+    override: 'Ext.resizer.Splitter',
+    size: 8
 });
 
 Ext.define('ExtThemeNeptune.container.ButtonGroup', {
@@ -368,11 +375,6 @@ Ext.define('ExtThemeNeptune.form.field.HtmlEditor', {
     defaultButtonUI: 'plain-toolbar'
 });
 
-Ext.define('ExtThemeNeptune.panel.Table', {
-    override: 'Ext.panel.Table',
-    bodyBorder: true
-});
-
 Ext.define('ExtThemeNeptune.grid.RowEditor', {
     override: 'Ext.grid.RowEditor',
     buttonUI: 'default-toolbar'
@@ -384,30 +386,15 @@ Ext.define('ExtThemeNeptune.grid.column.RowNumberer', {
     width: 25
 });
 
-Ext.define('ExtThemeNeptune.resizer.Splitter', {
-    override: 'Ext.resizer.Splitter',
-    size: 8
-});
-
-Ext.define('ExtThemeNeptune.menu.Menu', {
-    override: 'Ext.menu.Menu',
-    showSeparator: false
-});
-
 Ext.define('ExtThemeNeptune.menu.Separator', {
     override: 'Ext.menu.Separator',
     border: true
 });
     
 
-Ext.define('ExtThemeNeptune.panel.Tool', {
-    override: 'Ext.panel.Tool',
-    height: 16,
-    width: 16
+Ext.define('ExtThemeNeptune.menu.Menu', {
+    override: 'Ext.menu.Menu',
+    showSeparator: false
 });
 
-Ext.define('ExtThemeNeptune.tab.Tab', {
-    override: 'Ext.tab.Tab',
-    border: false
-});
 

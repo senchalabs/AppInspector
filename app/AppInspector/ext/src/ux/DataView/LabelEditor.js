@@ -34,7 +34,7 @@ Ext.define('Ext.ux.DataView.LabelEditor', {
 
     init: function(view) {
         this.view = view;
-        this.mon(view, 'render', this.bindEvents, this);
+        this.mon(view, 'afterrender', this.bindEvents, this);
         this.on('complete', this.onSave, this);
     },
 

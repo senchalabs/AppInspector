@@ -13,9 +13,11 @@
  6. Use JShint on your code, either with `.jshintrc` or `grunt jshint`.
     The `grunt` task is automatically run on `grunt`, `grunt build`, `grunt dev`, `grunt watch` and of course as a pre-commit-hook.
 
- 7. Push to your fork and submit a pull request.
+ 7. Run the unit Siesta tests locally and be sure they pass! `~/app/test/index.html`
 
- 8. Please give us some time to review your pull request.
+ 8. Push to your fork and submit a pull request.
+
+ 9. Please give us some time to review your pull request.
 
 
 ### Syntax

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Test-jQuery'>/**
+</span> * 
+@class Siesta.Test.jQuery
+@extends Siesta.Test.Browser
+
+A base class for testing jQuery applications. It inherit from {@link Siesta.Test.Browser} and adds various jQuery specific assertions.
+
+This file is a reference only, for a getting start guide and manual, please refer to &lt;a href=&quot;#!/guide/siesta_getting_started&quot;&gt;Getting Started Guide&lt;/a&gt;.
+
+*/
+Class('Siesta.Test.jQuery', {
+    
+    isa         : Siesta.Test.Browser,
+        
+    methods : {
+        
+        initialize : function() {
+            // Since this test is preloading jQuery, we should let Siesta know what to 'expect'
+            this.expectGlobals('$', 'jQuery');
+            this.SUPER();
+        },
+     
+
+<span id='Siesta-Test-jQuery-method-getS-'>        /**
+</span>         * This method returns the jQuery object from the scope of the test. When creating your own assertions for jQuery code, you need
+         * to make sure you are using this method to get the `jQuery` instance. 
+         * @return {Object} The `$` object from the scope of test
+         */
+        get$ : function () {
+            return this.global.$;
+        },
+
+        normalizeElement : function(el) {
+            return el.jquery ? el.get(0) : this.SUPER(el);
+        }
+    }
+})
+</pre>
+</body>
+</html>

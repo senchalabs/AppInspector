@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Recorder-TargetExtractor-ExtJS'>/**
+</span> @class Siesta.Recorder.TargetExtractor.ExtJS
+
+ * To resolve a component, this is done in the following prio list
+ *
+ * 1. Custom (non-auto-gen Id, client provided)
+ * 2. Custom field property (see componentIdentifier). User provides button with &quot;foo : 'savebutton'&quot;, possibly add CSS selector
+ * 3. Custom xtype, user provides subclassed button for example, possibly combined with CSS selector (composite query)
+ * 3. For components, add some intelligence, user generated CSS properties win over Ext CSS properties
+ * 3a. Buttons could look for iconCls, text etc
+ * 3b. Menuitems same thing
+ * 3c. Grids and lists provide nth-child to know which position in the list
+ * 3d. Find extra non Ext classes (they start with &quot;x-&quot;), which of course have been put there by client
+ * 4. CSS selector (class names, nodeName DIV etc)
+ * 5. Coordinates
+ *
+ *
+ *
+ *
+ **/
+Class('Siesta.Recorder.TargetExtractor.ExtJS', {
+    isa : Siesta.Recorder.TargetExtractor,
+
+
+    has : {
+        // An accessor method to get the test Ext JS object
+        Ext                : null,
+
+        // Ext 4 vs  Ext 3
+        autoGenIdRe        : 'ext-gen|ext-comp',
+
+        // using node name as a CSS selector is bound to go wrong
+        skipNodeNameForCSS : true,
+
+        maxSuggestions       : 3,
+
+        // Tell Siesta how components can be identified uniquely,
+        // to make sure generated selectors target only a single place in the DOM
+        // (sorted in order of relevance)
+        componentIdentifiers : function () {
+            return [
+                'id',
+                'itemId',
+                'text',         // menu items, buttons
+                'dataIndex',    // Column component
+                'iconCls',      // button/menuitem
+                'type',         // Panel header tools
+                'name',         // form fields
+                'title'         // identifying panels, tab panels headers
+//                'cls',        // Cmp, TODO discuss
+            ];
+        },
+
+        /* Ignore all generic classes which will generate unstable selectors */
+        ignoreClasses        : function () {
+            return [
+                '-focus$',
+                '-over$',               // never use hover-specific CSS classes
+                '-selected$',
+                '-active$',
+
+                'x-body',
+                'x-box-item',
+                'x-btn-wrap',
+                'x-component',      // too generic
+                'x-datepicker-cell',
+                'x-fit-item',
+                'x-form-field',     // too generic
+                'x-form-empty-field',
+                'x-form-required-field',
+                'x-grid-cell-inner',  // we prefer &quot;x-grid-cell&quot;
+                'x-grid-view',
+                'x-grid-row-focused',
+                'x-grid-resize-marker',
+                'x-layout',
+                'x-menu-item-link',
+                'x-noicon',
+                'x-resizable-overlay',
+                'x-tab-noicon',
+                'x-tab-default-noicon',
+                'x-tab-default',
+                'x-tree-icon',
+                'x-trigger-index-',
+                'x-unselectable',
+
+                // Bryntum generic selectors
+                'sch-gantt-terminal$',
+                'sch-gantt-task-handle$',
+                'sch-gantt-item',
+                'sch-resizable-handle$',
+
+                // In case someone left garbage in the DOM
+                'null',
+                'undefined'
+            ];
+        },
+
+        // Table view is always in panel which seems more 'relevant'
+        // headerContainer is rarely useful (remember though, a grid column is also a headercontainer)
+        ignoreXTypes         : function () {
+            return ['tableview', 'headercontainer[dataIndex=undefined]'];
+        },
+
+        // These recognizer methods understand a bit about the Ext JS component implementation and can provide the most
+        // stable CSS selectors for certain complex components, such as grid, menu, dataview etc.
+        // Each method returns either nothing or an array of arrays containing CSS classes (on multiple levels in the DOM tree)
+        recognizers          : Joose.I.Object
+    },
+
+    methods : {
+
+        initialize : function () {
+            var REC = Siesta.Recorder.TargetExtractor.Recognizer;
+
+            this.my.addRecognizer(new REC.Grid())
+            this.my.addRecognizer(new REC.View())
+            this.my.addRecognizer(new REC.BoundList())
+            this.my.addRecognizer(new REC.DatePicker())
+            this.my.addRecognizer(new REC.NumberField())
+
+            this.SUPERARG(arguments);
+        },
+
+        hasAutoGeneratedId      : function (component) {
+            if (component.id.match(this.autoGenIdRe)) {
+                return true;
+            }
+
+            // If this is not to be trusted, uses some regex like xtype-%counter%-morestrings.
+            return component.autoGenId || this.propertyIsAutoGenerated(component, 'id');
+        },
+
+        // Ext JS 4+: Form fields sometimes get their 'name' generated based on a parent id
+        propertyIsAutoGenerated : function (cmp, prop) {
+            // Not relevant for Ext &lt; 4
+            if (!cmp.up) return false;
+
+            if (cmp.autoGenId &amp;&amp; cmp[prop].match(cmp.id)) {
+                return true;
+            }
+
+            var parentWithAutoId = cmp.up('[autoGenId=true]');
+            return parentWithAutoId &amp;&amp; Boolean(cmp[prop].match(parentWithAutoId.id));
+        },
+
+        isNonExtCssClass : function (cls) {
+            return !(/^x\-/).test(cls);
+        },
+
+        pluckCssClasses   : function (classes) {
+            var filtered = classes.filter(this.isNonExtCssClass, this);
+
+            if (filtered.length === 0) {
+                return classes;
+            }
+
+            return filtered;
+        },
+
+        // Differentiate between simple components, like textfield, button, menuitem, column
+        // from higher order widgets made up of several child
+//        isCompositeWidget : function (cmp) {
+//            return cmp.isContainer;
+//        },
+
+        /*
+         * Some component rarely offer extra specificity, like grid view which always sits inside a more
+         * 'public' grid panel
+         *
+         */
+        ignoreComponent   : function (cmp) {
+            var ignore = false;
+
+            // A component is too generic to use as an xtype, it should be decorated with
+            // some queryable attribute or have CSS classes
+            if (cmp.xtype === 'component' &amp;&amp; this.getOptimalCQForComponent(cmp) === 'component') {
+                return true;
+            }
+
+            // A container is too generic to use as an xtype
+            if (cmp.xtype === 'container' &amp;&amp; this.getOptimalCQForComponent(cmp) === 'container') {
+                return true;
+            }
+
+            // A toolbar is too generic to use as an xtype
+            if (cmp.xtype === 'toolbar' &amp;&amp; this.getOptimalCQForComponent(cmp) === 'toolbar') {
+                return true;
+            }
+
+            this.ignoreXTypes.forEach(function (xtype) {
+                if (cmp.is(xtype)) {
+                    ignore = true;
+                    return false;
+                }
+            });
+
+            return ignore;
+        },
+
+        getTargetOptions : function (event) {
+            var best, bestType, offset;
+            var target = event.target;
+            var targetDoc = target.ownerDocument;
+            var Ext = this.Ext(target);
+            var me = this;
+            var options = {
+                domId  : [],
+                css    : [],
+                cq     : [],
+                csq    : [],
+                xy     : [event.pageX, event.pageY],
+                offset : null
+            };
+
+            if (event.type === 'click') {
+                return options;
+            }
+
+            // Now, try to find some CSS selectors
+            var selectors = this.getCssSelectors(target);
+
+            if (selectors.length &gt; 0) {
+                // Flatten
+                options.css = Array.prototype.concat.apply([], selectors)[0];
+
+                var jqOff = ($(target).is(options.css) ? $(target) : $(target).closest(options.css)).offset();
+
+                jqOff.left = Math.round(jqOff.left);
+                jqOff.top = Math.round(jqOff.top);
+                bestType = 'css';
+                best = options.css;
+                offset = jqOff &amp;&amp; [ options.xy[0] - jqOff.left, options.xy[1] - jqOff.top]
+            }
+
+            // Now, try to find components
+            var components = this.getComponents(target);
+
+            if (components.length &gt; 0) {
+                options.cq = me.getOptimalCQForComponent(components[0]);
+
+                // If the match isn't an id, try to add another level of scope
+                if (!options.cq.match('#') &amp;&amp; components.length &gt; 1) {
+                    var parentCQ = me.getOptimalParentCQ(components);
+
+                    // If id wasn't found, check one more level up
+                    // TODO might be a good idea
+//                    if (!parentCQ.match('#') &amp;&amp; components[2]) {
+//                        var parent2CQ = me.getOptimalCQForComponent(components[2]);
+//
+//                        if (parent2CQ.match('#')) {
+//                            parentCQ = parent2CQ;
+//                        }
+//                    }
+
+                    if (parentCQ) {
+                        options.cq = parentCQ + ' ' + options.cq;
+                    }
+                }
+
+                // Suggest a composite query
+                if (options.css &amp;&amp; !components[0].el.is(best) &amp;&amp; components[0].el.down(options.css)) {
+                    options.csq = options.cq + ' =&gt; ' + options.css;
+
+                    best = options.csq;
+                    bestType = 'csq';
+                } else {
+
+                    best = '&gt;&gt;' + options.cq;
+                    bestType = 'cq';
+                    offset = [ options.xy[0] - components[0].el.getX() , options.xy[1] - components[0].el.getY()]
+                }
+            }
+
+            var id = this.locateId(target);
+
+            // Checkbox configured with inputId : 'foo'
+            var containsStableId = components.length &gt; 0 &amp;&amp; Boolean(components[0].el.down('#' + id));
+
+            // If we're already using an Id, no point in looking for it. We already have a stable target option
+            // Also check if there is an id that's not a component on a closer level in the tree than the current best match
+            if (!best || !best.match('#') || containsStableId) {
+                // Try to find a stable id
+
+                if (id) {
+                    var cmp = Ext.getCmp(id);
+                    options.domId = '#' + id;
+
+                    // If the id match is a parent of the CQ result, add another level of scoping
+                    if (bestType === &quot;cq&quot; &amp;&amp; cmp &amp;&amp; cmp !== components[0] &amp;&amp; cmp.el.contains(components[0].el)) {
+                        options.cq = options.domId + ' ' + options.cq;
+
+                        if (best === options.cq) {
+                            best = '&gt;&gt;' + options.cq;
+                        }
+                    } else if (containsStableId || bestType !== 'csq') {
+                        var found;
+
+                        // If the best we have is an #id, try to zoom in closer using the CSS context
+                        if (selectors[0].length &gt; 0) {
+                            var targetNodeSelectors = selectors[0];
+
+                            for (var i = 0; i &lt; targetNodeSelectors.length; i++) {
+
+                                // If found id contains the matched CSS, just append it
+                                if ($('#' + id, targetDoc).find(targetNodeSelectors[i]).length &gt; 0) {
+                                    options.css = best = '#' + id + ' ' + targetNodeSelectors[i];
+                                    found = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!found) {
+                            bestType = 'id';
+                            best = options.domId;
+                        }
+
+                        var jqOff = $(best, targetDoc).offset();
+                        jqOff.left = Math.round(jqOff.left);
+                        jqOff.top = Math.round(jqOff.top);
+
+                        offset = [ options.xy[0] - jqOff.left, options.xy[1] - jqOff.top]
+                    }
+
+                    // Should never hit this breakpoint
+                    if (id.match('ext-gen')) {
+                        debugger;
+                    }
+                }
+            }
+
+
+            options.actionTarget = best;
+            options.targetType = bestType;
+
+            if (!event.type.match('key')) {
+                options.offset = offset;
+            }
+
+            return options;
+        },
+
+        getOptimalParentCQ       : function (hierarchy) {
+            var parent = hierarchy[1];
+
+            // Skip tabbar, adds no relevance
+            if (parent &amp;&amp; parent.xtype !== 'tabbar') {
+                return this.getOptimalCQForComponent(parent);
+            }
+
+            // TODO should walk up to find another possible parent on 2nd level or up
+
+            return null;
+        },
+
+        // Based on the componentIdentifiers, try to give the user unique components based
+        // on those attributes
+        getOptimalCQForComponent : function (cmp) {
+            var attr, append = '';
+            var me = this;
+
+            // Figure out how best to identify this component, combobox lists, grid menus etc all need special treatment
+            if (cmp.pickerField &amp;&amp; cmp.pickerField.getPicker) {
+                // Instead try to identify the owner picker field
+                cmp = cmp.pickerField;
+                append = '.getPicker()';
+            }
+
+            if (cmp.is('menu')) {
+                // We only care about visible menus
+                append = '{isVisible()}';
+            }
+
+            var query = cmp.xtype || cmp.xtypes[0];
+
+            for (var i = 0; i &lt; this.componentIdentifiers.length; i++) {
+                attr = this.componentIdentifiers[i];
+
+                if (
+                    cmp[attr] &amp;&amp;
+                        (attr !== 'id' || !me.hasAutoGeneratedId(cmp)) &amp;&amp;
+
+                        // Some Ext Components have an empty title
+                        (attr !== 'title' || cmp.title !== '&amp;#160;') &amp;&amp;
+
+                        // Form fields can get a 'name' property auto generated, based on its own (or 2 lvls of parents) auto-gen id - ignore if true
+                        (attr !== 'name' || !me.propertyIsAutoGenerated(cmp, 'name'))
+                    ) {
+                    if (attr === 'id' || attr === 'itemId') {
+                        // Easier to read and xtype is irrelevant
+                        query = '#' + cmp[attr];
+                    } else {
+                        query += '[' + attr + '=' + cmp[attr] + ']';
+                    }
+                    break;
+                }
+            }
+
+            return query + append;
+        },
+
+        locateId      : function (node) {
+            var Ext = this.Ext(node);
+
+            // Bubble up parent tree to find id a stable id provided by implementer, ignoring Component id's that are auto generated
+            while (node &amp;&amp; node.nodeName.toUpperCase() !== this.lookUpUntil) {
+                if (node.id) {
+
+                    if (!Ext) return node.id;
+
+                    var cmp = Ext.getCmp(node.id);
+
+                    if (cmp &amp;&amp; !this.hasAutoGeneratedId(cmp)) {
+                        return node.id;
+                    }
+
+                    // if we find an id, which is not a cmp - we'll need to first go up the DOM tree to see if there is a CMP with autogen id
+                    // which matches this id - not until then can we know if it's autogen
+                    if (!cmp &amp;&amp; !node.id.match(this.autoGenIdRe)) {
+                        var p = node;
+                        var c;
+
+                        for (var i = 0; p &amp;&amp; i &lt; 10; i++) {
+                            p = p.parentNode;
+                            c = p &amp;&amp; Ext.getCmp(p.id);
+
+                            if (c) {
+                                var hasAuto = this.hasAutoGeneratedId(c);
+
+                                if (!hasAuto) {
+                                    return node.id;
+                                }
+
+                                if (hasAuto &amp;&amp; node.id.match(c.id)) {
+                                    return null;
+                                }
+                            }
+                        }
+
+                        // All is well
+                        return node.id;
+                    }
+                }
+                node = node.parentNode;
+            }
+        },
+
+        /*
+         * Looks for components registered with the ComponentManager
+         * */
+        getComponents : function (node) {
+            var Ext = this.Ext(node);
+            var components = [];
+
+            if (Ext &amp;&amp; Ext.ComponentQuery) {
+                // Bubble up parent tree to find parent components
+                while (node &amp;&amp; components.length &lt; this.maxSuggestions &amp;&amp; node.nodeName.toUpperCase() !== this.lookUpUntil) {
+                    if (node.id) {
+                        var cmp = Ext.getCmp(node.id);
+
+                        if (cmp &amp;&amp; !this.ignoreComponent(cmp)) {
+                            components.push(cmp);
+                        }
+                    }
+                    node = node.parentNode;
+                }
+            }
+
+            return components;
+        },
+
+        getCssSelectors : function (node) {
+            var R = this.my.recognizers;
+
+            for (var proc in R) {
+                var target = R[proc].call(this, node);
+
+                if (target) {
+                    return target;
+                }
+            }
+
+            // TODO we should prioritize and pick CSS class not matching Ext.baseCssPrefix (user CSS classes)
+
+            return this.SUPERARG(arguments);
+        },
+
+        getNthPosition : function (node, cls) {
+            var itemInList = node.className.match(new RegExp('\b' + this.regExpEscape(cls) + '\b')) ? node : $(node).closest('.' + cls)[0];
+
+            var arr = Array.prototype.slice.apply(itemInList.parentNode.childNodes);
+            return arr.indexOf(itemInList);
+        },
+
+        getCustomCssClass : function (node) {
+            var prefix = this.Ext(node).baseCSSPrefix;
+            var cls;
+
+            node.className.split(' ').forEach(function (c) {
+                if (!c.match(prefix)) {
+                    cls = c;
+                    return false;
+                }
+            });
+
+            return cls;
+        }
+    },
+
+
+    my : {
+        has : {
+            recognizers : Joose.I.Object
+        },
+
+        methods : {
+
+            addRecognizer : function (recognizer) {
+                this.recognizers[recognizer.meta.name] = recognizer.recognize;
+            }
+        }
+    }
+});
+</pre>
+</body>
+</html>

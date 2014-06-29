@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Ext.define('Siesta.Harness.Browser.Model.AssertionTreeStore', {
+    extend          : 'Ext.data.TreeStore',
+
+    model   : 'Siesta.Harness.Browser.Model.Assertion',
+
+    mixins          : [
+        'Sch.data.mixin.FilterableTreeStore'
+    ],
+
+    constructor     : function () {
+        this.callParent(arguments)
+        
+        this.initTreeFiltering()
+        
+        this.nodeStore.setNode(this.getRootNode())
+    },
+    
+    
+    removeAll : function () {
+//        slow
+//        this.getRootNode().removeAll()
+        
+        var newRoot = this.setRootNode({
+            id              : '__ROOT__',
+            expanded        : true,
+            loaded          : true
+        })
+        
+        this.nodeStore.setNode(newRoot)
+    },
+    
+    
+    add : function (record) {
+        this.getRootNode().appendChild(record)
+    }
+})</pre>
+</body>
+</html>

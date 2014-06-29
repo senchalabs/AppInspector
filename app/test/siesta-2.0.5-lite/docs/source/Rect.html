@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Class('Siesta.Util.Rect', {
+    
+    has     : {
+        left            : null,
+        top             : null,
+        width           : null,
+        height          : null,
+        
+        right           : null,
+        bottom          : null
+    },
+    
+    
+    methods : {
+        
+        initialize : function () {
+            var left        = this.left
+            var width       = this.width
+            var right       = this.right
+            
+            if (right == null &amp;&amp; left != null &amp;&amp; width != null) this.right = left + width - 1
+            
+            if (width == null &amp;&amp; left != null &amp;&amp; right != null) this.width = right - left + 1
+            
+            var top         = this.top
+            var height      = this.height
+            var bottom      = this.bottom
+            
+            if (bottom == null &amp;&amp; top != null &amp;&amp; height != null) this.bottom = top + height - 1
+            
+            if (height == null &amp;&amp; top != null &amp;&amp; bottom != null) this.height = bottom - top + 1
+        },
+        
+        
+        isEmpty : function () {
+            return this.left == null
+        },
+        
+        
+        intersect : function (rect) {
+            if (
+                rect.isEmpty() || this.isEmpty()
+                    ||
+                rect.left &gt; this.right || rect.right &lt; this.left
+                    ||
+                rect.top &gt; this.bottom || rect.bottom &lt; this.top
+            ) return this.my.getEmpty()
+            
+            return new this.constructor({
+                left        : Math.max(this.left, rect.left),
+                right       : Math.min(this.right, rect.right),
+                top         : Math.max(this.top, rect.top),
+                bottom      : Math.min(this.bottom, rect.bottom)
+            })
+        },
+        
+        
+        contains : function (left, top) {
+            return this.left &lt;= left &amp;&amp; left &lt;= this.right 
+                    &amp;&amp; 
+                this.top &lt;= top &amp;&amp; top &lt;= this.bottom
+        },
+        
+        
+        cropLeftRight : function (rect) {
+            return this.intersect(new this.constructor({
+                left        : rect.left,
+                right       : rect.right,
+                top         : this.top,
+                bottom      : this.bottom
+            }))
+        },
+        
+        
+        cropTopBottom : function (rect) {
+            return this.intersect(new this.constructor({
+                left        : this.left,
+                right       : this.right,
+                top         : rect.top,
+                bottom      : rect.bottom
+            }))
+        },
+        
+        
+        equalsTo : function (rect) {
+            return this.left == rect.left &amp;&amp; this.right == rect.right &amp;&amp; this.top == rect.top &amp;&amp; this.bottom == rect.bottom
+        }
+    },
+    
+    
+    // static methods/props
+    my : {
+        has : {
+            HOST        : null
+        }, 
+        
+        methods : {
+            
+            getEmpty : function () {
+                return new this.HOST()
+            }
+        }
+    }
+})
+</pre>
+</body>
+</html>

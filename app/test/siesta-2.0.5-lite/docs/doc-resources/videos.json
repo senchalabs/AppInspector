@@ -1,0 +1,25 @@
+[
+    {
+        "title": "Siesta",
+        "items": [
+            {
+                "id"            : "32559451",
+                "title"         : "Siesta introduction",
+                "description"   : "In this video we introduce Siesta - stress-free JavaScript unit testing tool",
+                "thumb"         : "http://b.vimeocdn.com/ts/220/365/220365225_640.jpg"
+            },
+            {
+                "id"            : "32559505",
+                "title"         : "Siesta basics",
+                "description"   : "In this video we will show how to do a basic ExtJS UI test with Siesta",
+                "thumb"         : "http://b.vimeocdn.com/ts/220/366/220366017_640.jpg"
+            },
+            {
+                "id"            : "32559560",
+                "title"         : "Siesta automation",
+                "description"   : "In this video we will show how to automate your test suite using PhantomJS or Selenium",
+                "thumb"         : "http://b.vimeocdn.com/ts/220/366/220366525_640.jpg"
+            }
+        ]
+    }
+]

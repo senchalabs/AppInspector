@@ -1,32 +1,34 @@
 /**
- * @class AI.ux.data.proxy.InspectedWindow
- * @author Arthur Kay (@arthurakay)
+ * @class   AI.ux.data.proxy.InspectedWindow
+ * @extends Ext.data.proxy.Proxy
+ *
+ * @author  Arthur Kay (@arthurakay)
  */
 Ext.define('AI.ux.data.proxy.InspectedWindow', {
-    extend : 'Ext.data.proxy.Proxy',
-    alias  : 'proxy.inspectedwindow',
+    extend: 'Ext.data.proxy.Proxy',
+    alias: 'proxy.inspectedwindow',
 
-    requires : [
+    requires: [
         'AI.util.InspectedWindow',
         'AI.util.Store'
     ],
 
-    /**
-     * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
-     */
-    evalFn : null,
-    /**
-     * @cfg {String} inspectedStoreId The storeId of the store.
-     */
-    inspectedStoreId : null,
+    config: {
+        /**
+         * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
+         */
+        evalFn: null,
 
-    read : function (operation, callback, scope) {
+        /**
+         * @cfg {String} inspectedStoreId The storeId of the store.
+         */
+        inspectedStoreId: null
+    },
+
+    read: function(operation, callback, scope) {
         scope = scope || this;
 
-        var records = [],
-            evalFn  = this.evalFn,
-            reader  = this.getReader(),
-            model   = reader.model;
+        var evalFn = this.evalFn;
 
         if (Ext.isString(evalFn)) {
             //can resolve better, split by . and resolve each part
@@ -34,26 +36,14 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
         }
 
         AI.util.InspectedWindow.eval(
-            evalFn,
-            [ this.inspectedStoreId, operation.start ],
-            function (result) {
-                Ext.each(result.records, function (record) {
-                    records.push(Ext.create(model, record));
-                });
+            evalFn, [this.inspectedStoreId, operation.getStart()],
+            function(result) {
+                var resultSet = scope.getReader().read(result.records);
 
-                Ext.apply(operation, {
-                    resultSet : {
-                        records      : records,
-                        count        : records.length,
-                        totalRecords : result.totalCount,
-                        total        : result.totalCount
-                    }
-                });
+                resultSet.setTotal(result.totalCount);
+                operation.process(resultSet, null, null, true);
 
-                operation.setCompleted();
-                operation.setSuccessful();
-
-                Ext.Function.defer(function () {
+                Ext.Function.defer(function() {
                     Ext.callback(callback, scope, [operation]);
                 }, 10);
             }

@@ -56,7 +56,7 @@ Ext.define('Ext.ux.dd.CellFieldDropZone', {
                 return {
                     node: cell,
                     record: v.getRecord(row),
-                    fieldName: me.grid.columns[columnIndex].dataIndex
+                    fieldName: me.grid.getVisibleColumnManager().getColumns()[columnIndex].dataIndex
                 };
             }
         }
@@ -77,24 +77,21 @@ Ext.define('Ext.ux.dd.CellFieldDropZone', {
 
 //      Check whether the data type of the column being dropped on accepts the
 //      dragged field type. If so, set dropOK flag, and highlight the target node.
-        var type = target.record.fields.get(target.fieldName).type,
-            types = Ext.data.Types;
-        switch(type){
-            case types.FLOAT:
-            case types.INT:
-                if (!f.isXType('numberfield')) {
-                    return;
-                }
-                break;
-            case types.DATE:
-                if (!f.isXType('datefield')) {
-                    return;
-                }
-                break;
-            case types.BOOL:
-                if (!f.isXType('checkbox')) {
-                    return;
-                }
+        var field = target.record.fieldsMap[target.fieldName];
+        if (field.isNumeric) {
+            if (!f.isXType('numberfield')) {
+                return;
+            }
+        }
+        else if (field.isDateField) {
+            if (!f.isXType('datefield')) {
+                return;
+            }
+        }
+        else if (field.isBooleanField) {
+            if (!f.isXType('checkbox')) {
+                return;
+            }
         }
         this.dropOK = true;
         Ext.fly(target.node).addCls('x-drop-target-active');

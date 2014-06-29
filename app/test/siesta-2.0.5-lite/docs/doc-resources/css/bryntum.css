@@ -1,0 +1,47 @@
+#north-region {
+    background: none;
+    
+    background-image   : url(../images/headBG.png);
+}
+
+#header-content {
+    background         : url(../images/bryntum-logo-16.jpg) no-repeat;
+    
+    color               : #0085bc;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 16px;
+    padding-left: 25px;
+}
+
+.notice {
+	float                  : left;
+	background-color       : transparent;
+}
+
+.notice p {
+     
+}
+
+.notice ul {
+	font-weight             : normal;
+    list-style-type         : disc;
+    text-align              : left;  
+}
+
+.notice ul li {
+    list-style              : disc inside;
+}
+
+
+
+#loading .title
+{
+    display:none;
+}
+
+.guide-container img
+{
+    max-width   : 80%;
+    height      : auto !important;
+}

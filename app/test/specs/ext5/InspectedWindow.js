@@ -22,7 +22,7 @@ StartTest({
             test.isNot(Ext.ux.AppInspector, undefined, 'Ext.ux.AppInspector is defined.');
 
             test.isNot(data.versions.extjs, undefined, 'Framework is Ext JS');
-            test.is(data.versions.extjs, '5.0.0.700', 'Ext JS version is 5.0.0.700');
+            test.is(data.versions.extjs, '5.0.0.970', 'Ext JS version is 5.0.0.970');
         }
     );
 });

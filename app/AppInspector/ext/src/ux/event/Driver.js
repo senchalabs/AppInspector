@@ -2,31 +2,54 @@
  * This is the base class for {@link Ext.ux.event.Recorder} and {@link Ext.ux.event.Player}.
  */
 Ext.define('Ext.ux.event.Driver', {
+    extend: 'Ext.util.Observable',
+
     active: null,
-    mixins: {
-        observable: 'Ext.util.Observable'
+
+    specialKeysByName: {
+        PGUP:  33,
+        PGDN:  34,
+        END:   35,
+        HOME:  36,
+        LEFT:  37,
+        UP:    38,
+        RIGHT: 39,
+        DOWN:  40
     },
 
-    constructor: function (config) {
-        var me = this;
+    specialKeysByCode: {
+    },
 
-        me.mixins.observable.constructor.apply(this, arguments);
+    /**
+     * @event start
+     * Fires when this object is started.
+     * @param {Ext.ux.event.Driver} this
+     */
 
-        me.addEvents(
-            /**
-             * @event start
-             * Fires when this object is started.
-             * @param {Ext.ux.event.Driver} this
-             */
-            'start',
+    /**
+     * @event stop
+     * Fires when this object is stopped.
+     * @param {Ext.ux.event.Driver} this
+     */
 
-            /**
-             * @event stop
-             * Fires when this object is stopped.
-             * @param {Ext.ux.event.Driver} this
-             */
-            'stop'
-        );
+    getTextSelection: function (el) {
+        // See https://code.google.com/p/rangyinputs/source/browse/trunk/rangyinputs_jquery.js
+        var doc = el.ownerDocument,
+            range, range2, start, end;
+
+        if (typeof el.selectionStart === "number") {
+            start = el.selectionStart;
+            end = el.selectionEnd;
+        } else if (doc.selection) {
+            range = doc.selection.createRange();
+            range2 = el.createTextRange();
+            range2.setEndPoint('EndToStart', range);
+
+            start = range2.text.length;
+            end = start + range.text.length;
+        }
+
+        return [ start, end ];
     },
 
     getTime: function () {
@@ -71,4 +94,11 @@ Ext.define('Ext.ux.event.Driver', {
             me.fireEvent('stop', me);
         }
     }
+},
+function () {
+    var proto = this.prototype;
+
+    Ext.Object.each(proto.specialKeysByName, function (name, value) {
+        proto.specialKeysByCode[value] = name;
+    });
 });

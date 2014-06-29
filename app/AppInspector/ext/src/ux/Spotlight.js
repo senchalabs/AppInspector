@@ -78,7 +78,7 @@ Ext.define('Ext.ux.Spotlight', {
             //if the spotlight is not active, show it
             me.all.setDisplayed('');
             me.active = true;
-            Ext.EventManager.onWindowResize(me.syncSize, me);
+            Ext.on('resize', me.syncSize, me);
             me.applyBounds(me.animate, false);
         } else {
             //if the spotlight is currently active, just move it
@@ -92,7 +92,7 @@ Ext.define('Ext.ux.Spotlight', {
     hide: function(callback, scope) {
         var me = this;
         
-        Ext.EventManager.removeResizeListener(me.syncSize, me);
+        Ext.un('resize', me.syncSize, me);
 
         me.applyBounds(me.animate, true);
     },
@@ -113,8 +113,8 @@ Ext.define('Ext.ux.Spotlight', {
         var me = this,
             box = me.el.getBox(),
             //get the current view width and height
-            viewWidth = Ext.Element.getViewWidth(true),
-            viewHeight = Ext.Element.getViewHeight(true),
+            viewWidth = Ext.Element.getViewportWidth(),
+            viewHeight = Ext.Element.getViewportHeight(),
             i = 0,
             config = false,
             from, to, clone;

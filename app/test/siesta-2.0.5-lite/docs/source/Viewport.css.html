@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+/*
+
+Play icons from:
+Author :	Sekkyumu
+HomePage :	http://sekkyumu.deviantart.com/
+License :	Creative Commons Attribution 3.0 License
+
+*/
+
+body {
+    padding-top : 57px !important;
+}
+
+body,
+.x-border-layout-ct {
+    background-color : rgb(105, 191, 210) !important;
+}
+
+body &gt; .x-splitter {
+    background : transparent;
+}
+
+.x-panel .x-toolbar, .x-panel-header {
+    background-color : #eaeaea;
+    background-image : -moz-linear-gradient(top, #f8f8f8, #eaeaea);
+    background-image : -webkit-gradient(linear, 0 0, 0 100%, from(#f8f8f8), to(#eaeaea));
+    background-image : -webkit-linear-gradient(top, #f8f8f8, #eaeaea);
+    background-image : -o-linear-gradient(top, #f8f8f8, #eaeaea);
+    background-image : linear-gradient(to bottom, #f8f8f8, #eaeaea);
+}
+
+.x-nlg .x-toolbar, .x-panel-header {
+    background-image : none !important;
+}
+
+.x-column-header, .x-column-header-over {
+    background : #eaeaea;
+}
+
+a.logo-link {
+    position : absolute;
+    top      : 5px;
+    left     : 8px;
+    z-index  : 2;
+}
+
+a.logo-link {
+    height          : 47px;
+    width           : 96px;
+    background      : transparent url(../images/logo_small2.png) no-repeat 0 0;
+    background-size : contain;
+}
+
+.x-ie a.logo-link img {
+    background : transparent url(../images/logo_small3.png) no-repeat 0 0;
+}
+
+.tr-version-indicator {
+    position  : absolute;
+    color     : #eee;
+    font-size : 10px;
+    right     : 0 !important;
+    bottom    : -1px !important;
+    font-size : 9px;
+}
+
+.x-ie9p .tr-version-indicator {
+    bottom : -2px !important;
+}
+
+.meta-info {
+    float           : right;
+    color           : #fff;
+    text-decoration : none;
+    margin-right    : 4px;
+    margin-top      : 4px;
+    position        : relative;
+    z-index         : 5;
+    font-size       : 11px;
+}
+
+#update-ct {
+    position : absolute;
+    top      : 30px;
+    right    : 5px;
+    z-index  : 5;
+}
+
+/*=======================================================================================================================================================================================================================
+    Test suite status
+*/
+
+.tr-status-allgreen {
+    background-image : url(../images/checkmark32.png) !important;
+}
+
+.tr-status-bugs {
+    background-image : url(../images/bug32.png) !important;
+}
+
+.tr-status-running {
+    background-image : url(../images/lightning32.png) !important;
+}
+
+.tr-status-allgreen-small {
+    background-image : url(../images/ok.png) !important;
+}
+
+.tr-status-bugs-small {
+    background-image : url(../images/bug.png) !important;
+}
+
+.tr-status-running-small {
+    background-image : url(../images/lightning.png) !important;
+}
+
+.tr-status-neutral-small {
+    background-image : url(../images/to_do_list_small.png) !important;
+}
+
+/*=======================================================================================================================================================================================================================
+    Vertically aligned content
+*/
+
+.tr-vertical-align-helper-content {
+    display        : -moz-inline-box;
+    display        : inline-block;
+    vertical-align : middle;
+    zoom           : 1;
+}
+
+.tr-vertical-align-helper {
+    display        : -moz-inline-box;
+    display        : inline-block;
+    vertical-align : middle;
+    height         : 100%;
+    width          : 0px;
+    zoom           : 1;
+}
+
+.tr-rounded-box {
+    background            : #FFFFFF;
+    color                 : black;
+    font-size             : larger;
+    border                : 3px solid #d5e7f0;
+    padding               : 30px;
+    -moz-border-radius    : 24px;
+    -webkit-border-radius : 24px;
+    border-radius         : 24px;
+}
+
+.tr-main-area-centered {
+    text-align : center;
+}
+
+/* Ext 4.0.7+ defines this as white*/
+.x-grid-row .x-grid-cell {
+    background-color : transparent;
+}
+
+.tr-progress-indicator {
+    display     : inline-block;
+    height      : 6px;
+    width       : 30px;
+    background  : transparent url(../images/loading2.gif) no-repeat right center;
+    margin-left : 10px;
+    position    : absolute;
+    bottom      : 2px;
+    transition  : opacity 0.5s;
+    opacity     : 0;
+}
+
+.testsuite-running .tr-progress-indicator {
+    opacity : 1;
+}
+
+.right-top-area {
+    position   : absolute;
+    top        : 3px;
+    right      : 3px;
+    padding    : 0;
+    margin     : 0;
+    list-style : none;
+    z-index    : 5;
+}
+
+.right-top-area li {
+    text-align : right;
+    height     : 14px;
+}
+
+.right-top-area li a {
+    color           : #fff;
+    font-size       : 10px;
+    text-decoration : none;
+}
+
+.right-top-area li a:hover {
+    text-decoration : underline;
+}
+
+#bryntum-logo {
+    background      : transparent url(../images/logo.png) no-repeat right top;
+    background-size : contain;
+    width           : 81px;
+    height          : 19px;
+    opacity         : 0.6;
+    transition      : opacity 0.7s;
+    display         : block;
+}
+
+#bryntum-logo:hover {
+    opacity : 1;
+}
+
+.x-linux .x-btn-icon-el {
+    margin-top : 2px;
+}
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 2.0.5
+Copyright(c) 2009-2013 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+<span id='Siesta-Test-ExtJS-FormField'>/**
+</span>@class Siesta.Test.ExtJS.FormField
+
+This is a mixin, with helper methods for testing functionality relating to Ext.form.Field class. This mixin is being consumed by {@link Siesta.Test.ExtJS}
+
+*/
+Role('Siesta.Test.ExtJS.FormField', {
+    
+    methods : {
+<span id='Siesta-Test-ExtJS-FormField-method-fieldHasValue'>        /**
+</span>         * Passes if the passed Field has the expected value.
+         * 
+         * @param {Ext.form.field.Field/String} field A form field or a ComponentQuery
+         * @param {Mixed} value The value to compare to.
+         * @param {String} [description] The description of the assertion
+         */
+        fieldHasValue : function(field, value, description) {
+            field = this.normalizeComponent(field);
+            this.is(field.getValue(), value, description);
+        },
+
+        /*
+         * @deprecated Use fieldHasValue instead.
+         */
+        hasValue : function() { this.fieldHasValue.apply(this, arguments); },
+
+<span id='Siesta-Test-ExtJS-FormField-method-isFieldEmpty'>        /**
+</span>         * Passes if the passed Field has no value (&quot;&quot; or null).
+         * 
+         * @param {Ext.form.field.Field/String} field A form field or a ComponentQuery
+         * @param {String} [description] The description of the assertion
+         */
+        isFieldEmpty : function(field, description) {
+            field = this.normalizeComponent(field);
+            var val = field.getValue();
+            this.ok(val === null || val === &quot;&quot;, description);
+        },
+
+        /*
+         * @deprecated Use isFieldEmpty instead.
+        */
+        isEmpty : function() { this.isFieldEmpty.apply(this, arguments); }
+    }
+});
+</pre>
+</body>
+</html>

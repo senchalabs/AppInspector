@@ -1,7 +1,11 @@
+/**
+ * @class   AI.util.extjs.MVC
+ * @singleton
+ */
 Ext.define('AI.util.extjs.MVC', {
-    singleton : true,
+    singleton: true,
 
-    getApplication : function() {
+    getApplication: function() {
         var children = [];
 
         if (!Ext.app || !Ext.app.Application) {
@@ -26,8 +30,8 @@ Ext.define('AI.util.extjs.MVC', {
         }
 
         function getControllerListeners(cls) {
-            var EventBus       = Ext.app.EventBus,
-                domains        = EventBus.domains,
+            var EventBus = Ext.app.EventBus,
+                domains = EventBus.domains,
                 busControllers = [],
                 domain, bus,
                 event, events,
@@ -54,17 +58,17 @@ Ext.define('AI.util.extjs.MVC', {
                                 controller = controller.list;
                             }
 
-                            i      = 0;
+                            i = 0;
                             length = controller.length;
 
                             for (; i < length; i++) {
                                 masterListenerObj = controller[i];
-                                listeners         = masterListenerObj.listeners;
-                                x                 = 0;
-                                len               = listeners.length;
+                                listeners = masterListenerObj.listeners;
+                                x = 0;
+                                len = listeners.length;
 
                                 for (; x < len; x++) {
-                                    listenerObj  = listeners[x];
+                                    listenerObj = listeners[x];
                                     observableId = masterListenerObj.observable.$className;
 
                                     if (observableId !== cls) {
@@ -79,10 +83,10 @@ Ext.define('AI.util.extjs.MVC', {
                                     }
 
                                     busControllers.push({
-                                        domain   : domain,
-                                        event    : event,
-                                        selector : selector,
-                                        method   : method
+                                        domain: domain,
+                                        event: event,
+                                        selector: selector,
+                                        method: method
                                     });
                                 }
                             }
@@ -95,31 +99,30 @@ Ext.define('AI.util.extjs.MVC', {
         }
 
         var appControllers = instance.controllers || [],
-            appStores      = instance.stores || [],
-            i              = 0,
-            length         = appControllers.length,
-            controllers    = [],
-            stores         = [],
-            controller, listeners, id,
+            appStores = instance.stores || [],
+            i = 0,
+            length = appControllers.length,
+            controllers = [],
+            stores = [],
+            controller, listeners, controllerName,
             store, getter;
 
         for (; i < length; i++) {
             controller = appControllers.getAt(i);
-            listeners  = getControllerListeners(controller.$className);
-            id         = controller.id || controller.getId();
+            listeners = getControllerListeners(controller.$className);
+            controllerName = controller.$className;
 
             controllers.push({
-                text     : id,
-                qtip     : controller.$className,
-                type     : 'controller',
-                id       : id,
-                count    : listeners.length,
-                eventbus : listeners,
-                leaf     : true
+                text: controllerName,
+                qtip: controller.$className,
+                type: 'controller',
+                count: listeners.length,
+                eventbus: listeners,
+                leaf: true
             });
         }
 
-        i      = 0;
+        i = 0;
         length = appStores.length;
 
         for (; i < length; i++) {
@@ -127,47 +130,40 @@ Ext.define('AI.util.extjs.MVC', {
 
             if (Ext.isString(store)) {
                 getter = Ext.app.Controller.getGetterName(store, 'Store');
-                store  = instance[getter]();
+                store = instance[getter]();
             }
 
             stores.push({
-                text  : store.storeId,
-                qtip  : store.$className,
-                type  : 'store',
-                count : (store.root) ? 'TreeStore' : store.getCount(),
-                id    : store.storeId,
-                leaf  : true
+                text: store.storeId,
+                qtip: store.$className,
+                type: 'store',
+                count: (store.root) ? 'TreeStore' : store.getCount(),
+                id: store.storeId,
+                leaf: true
             });
         }
 
         children.push({
-            text     : 'Application instance',
-            expanded : true,
-            children : [
-                {
-                    text : 'name: ' + (instance.getName ? instance.getName() : instance.name),
-                    leaf : true
-                },
-                {
-                    text : 'namespace: ' + instance.$namespace,
-                    leaf : true
-                },
-                {
-                    text : 'class name: ' + instance.$className,
-                    leaf : true
-                },
-                {
-                    text     : 'Controllers (' + controllers.length + ')',
-                    children : controllers
-                },
-                {
-                    text     : 'Stores (' + stores.length + ')',
-                    children : stores
-                }
-            ]
+            text: 'Application instance',
+            expanded: true,
+            children: [{
+                text: 'name: ' + (instance.getName ? instance.getName() : instance.name),
+                leaf: true
+            }, {
+                text: 'namespace: ' + instance.$namespace,
+                leaf: true
+            }, {
+                text: 'class name: ' + instance.$className,
+                leaf: true
+            }, {
+                text: 'Controllers (' + controllers.length + ')',
+                children: controllers
+            }, {
+                text: 'Stores (' + stores.length + ')',
+                children: stores
+            }]
         });
 
         return children;
     }
 });
-

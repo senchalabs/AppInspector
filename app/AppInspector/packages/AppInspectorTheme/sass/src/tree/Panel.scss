@@ -1,0 +1,34 @@
+.filtered {
+    display : none !important;
+}
+
+.treegrid {
+    .x-grid-row:first-child .root .x-grid-cell-inner {
+        font-weight : bold !important;
+    }
+
+    img {
+        &.x-tree-elbow-img:first-child, &.no-icon {
+            display : none;
+        }
+    }
+  
+    span {
+        &.boolean {
+            font-family : monospace;
+
+            &.true {
+                color : $green;
+            }
+
+            &.false {
+                color : $red;
+            }
+        }
+
+        &.null, &.undefined, &.NaN {
+            font-family : monospace;
+            color       : lighten($grey, 50%);
+        }
+    }
+}
