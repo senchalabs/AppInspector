@@ -24,7 +24,7 @@ Ext.define('AI.util.TreeStore', {
             console.log('TODO');
             // </debug>
 
-            return store.getRoot().childNodes;
+            return [];
         } else {
             root = store.getRootNode();
 

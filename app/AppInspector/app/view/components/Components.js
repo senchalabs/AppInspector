@@ -162,10 +162,7 @@ Ext.define('AI.view.components.Components', {
     ],
 
     listeners: {
-        activate: {
-            fn: 'onActivate',
-            single: true
-        },
+        activate: 'onActivate',
         beforeadd: {
             fn: 'localize',
             single: true

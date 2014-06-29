@@ -22,7 +22,7 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsModel', {
             type: 'tree',
             storeId: 'LayoutRuns',
             fields: ['text', 'xtype'],
-            rootVisible: true,
+            rootVisible: false,
             root: {
                 text: '_LAYOUTRUNS_',
                 expanded: true,

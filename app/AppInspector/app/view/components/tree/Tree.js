@@ -79,12 +79,9 @@ Ext.define('AI.view.components.tree.Tree', {
     ],
 
     listeners: {
-        activate: {
-            fn: 'onActivate',
-            single: true
-        },
+        activate: 'onActivate',
         select: 'onSelectComponent',
-        deselect: 'onDeselectComponent',
+//        deselect: 'onDeselectComponent',
         scope: 'controller'
     }
 });
