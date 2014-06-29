@@ -98,7 +98,7 @@ Ext.define('AI.view.mvc.tree.TreeController', {
                 store.removeAll();
                 property.setSource({});
 
-                store.getProxy().inspectedStoreId = record.get('id');
+                store.getProxy().setInspectedStoreId(record.get('id'));
 
                 store.load({
                     callback: function () {

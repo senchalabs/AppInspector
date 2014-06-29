@@ -21,7 +21,6 @@ Ext.define('AI.view.mvc.tree.Tree', {
         initialLoad: false
     },
 
-    title     : 'Application Instance Details',
     autoScroll: true,
     animate   : true,
 

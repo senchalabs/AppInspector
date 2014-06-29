@@ -19,7 +19,6 @@ Ext.define('AI.view.mvc.listeners.Listeners', {
         store: '{Listeners}'
     },
 
-    title: 'Controller Listeners',
     cls  : 'highlight',
 
     viewConfig: {

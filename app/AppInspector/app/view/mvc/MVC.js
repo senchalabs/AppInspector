@@ -8,7 +8,7 @@ Ext.define('AI.view.mvc.MVC', {
     requires: [
         'AI.view.mvc.tree.Tree',
         'AI.view.mvc.listeners.Listeners',
-//        'AI.view.mvc.records.Records'
+        'AI.view.mvc.records.Records'
     ],
 
     controller: 'mvc',
@@ -20,7 +20,7 @@ Ext.define('AI.view.mvc.MVC', {
     glyph: 'xf1e0@fontawesome',
 
     layout: {
-        type : 'hbox',
+        type : 'vbox',
         align: 'stretch'
     },
 
@@ -37,9 +37,9 @@ Ext.define('AI.view.mvc.MVC', {
         {
             xtype: 'mvclisteners'
         },
-//        {
-//            xtype: 'mvcrecords'
-//        }
+        {
+            xtype: 'mvcrecords'
+        }
     ],
 
     listeners: {
