@@ -268,7 +268,7 @@ Ext.define('AI.util.Component', {
                     clsMixins  = mixin.mixins;
 
                     // No inherited mixins
-                    hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
+                    hasDefinedMixins = (superclass && clsMixins && (clsMixins !== superclass.mixins));
 
                     superclassData = superclass       ? getSuperClasses(superclass, 1) : [];
                     mixins         = hasDefinedMixins ? getMixinData(clsMixins)        : [];
@@ -297,7 +297,7 @@ Ext.define('AI.util.Component', {
                     clsMixins = cls.mixins;
 
                     // No inherited mixins
-                    hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
+                    hasDefinedMixins = (superclass && clsMixins && (clsMixins !== superclass.mixins));
 
                     superclassData = superclass       ? getSuperClasses(superclass, 1) : [];
                     mixins         = hasDefinedMixins ? getMixinData(clsMixins)        : [];

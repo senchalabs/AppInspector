@@ -32,7 +32,6 @@ Ext.define('AI.view.components.viewcontrollerdata.ViewControllerData', {
 
     autoScroll: true,
     animate: true,
-    allowDeselect: true,
     useArrows: true,
     lines: false,
 

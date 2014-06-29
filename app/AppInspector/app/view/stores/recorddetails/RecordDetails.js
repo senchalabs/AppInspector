@@ -48,7 +48,7 @@ Ext.define('AI.view.stores.recorddetails.RecordDetails', {
                     v = 'undefined';
                 }
 
-                return '<span class="' + record.get('type') + ' ' + v + '">' + v + '</span>';
+                return '<span class="highlight ' + record.get('type') + ' ' + v + '">' + v + '</span>';
             },
             dataIndex: 'value',
             text: 'Value',

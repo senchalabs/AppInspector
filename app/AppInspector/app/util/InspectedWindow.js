@@ -12,7 +12,7 @@ Ext.define('AI.util.InspectedWindow', {
     /**
      * @param {String} id
      */
-    highlight: function(id) {
+    highlight: function (id) {
         var cmp = Ext.getCmp(id),
             el = document.getElementById('_AppInspector'),
             box, cmpDom;
@@ -32,13 +32,13 @@ Ext.define('AI.util.InspectedWindow', {
 
             Ext.apply(el.style, {
                 height: box.height + 'px',
-                width: box.width + 'px',
+                width : box.width + 'px',
 
                 visibility: '',
-                zIndex: 99999
+                zIndex    : 99999
             });
 
-            var getPosition = function(element) {
+            var getPosition = function (element) {
                 var xPosition = 0;
                 var yPosition = 0;
 
@@ -49,13 +49,13 @@ Ext.define('AI.util.InspectedWindow', {
                 }
                 return {
                     left: xPosition + 'px',
-                    top: yPosition + 'px'
+                    top : yPosition + 'px'
                 };
             };
 
             Ext.apply(el.style, getPosition(cmpDom));
 
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 var el = document.getElementById('_AppInspector');
 
                 el.style.visibility = 'hidden';
@@ -72,11 +72,11 @@ Ext.define('AI.util.InspectedWindow', {
      *
      * - isException {Boolean}: whether-or-not the closure function encountered an exception
      */
-    eval: function(closure, argString, callback) {
+    eval: function (closure, argString, callback) {
         var callbackFn = callback,
             args = '';
 
-        var encodeArg = function(arg) {
+        var encodeArg = function (arg) {
             switch (typeof arg) {
                 case 'string':
                     return '"' + arg + '"';
@@ -93,7 +93,7 @@ Ext.define('AI.util.InspectedWindow', {
         if (argString && typeof argString !== 'object') {
             args = encodeArg(argString);
         } else if (argString) {
-            Ext.Array.each(argString, function(x) {
+            Ext.Array.each(argString, function (x) {
                 if (args !== '') {
                     args += ', ';
                 }
@@ -104,7 +104,7 @@ Ext.define('AI.util.InspectedWindow', {
 
         chrome.devtools.inspectedWindow.eval(
             '(' + closure + ')(' + args + ')',
-            function(result, isException) {
+            function (result, isException) {
                 if (isException) {
                     AI.util.Error.parseException(isException);
                     return;
@@ -118,27 +118,27 @@ Ext.define('AI.util.InspectedWindow', {
     /**
      * Function to get details about the application and framework including version.
      */
-    getAppDetails: function() {
+    getAppDetails: function () {
         if (!window.Ext) {
             return false;
         }
 
         //helper class
         Ext.define('Ext.ux.AppInspector', {
-            singleton: true,
+            singleton       : true,
 
             //for the Event Monitor
-            eventCache: null,
-            eventCaptureFn: null,
+            eventCache      : null,
+            eventCaptureFn  : null,
 
             //for the Layout Run monitor
-            layoutRunTotal: null,
+            layoutRunTotal  : null,
             layoutCollection: null,
-            layoutCaptureFn: null,
+            layoutCaptureFn : null,
 
             //for the right-click menu
-            contextRef: null,
-            contextFn: function(evt, target) {
+            contextRef      : null,
+            contextFn       : function (evt, target) {
                 var cmp = Ext.getCmp(target.id);
 
                 if (cmp) {
@@ -173,9 +173,9 @@ Ext.define('AI.util.InspectedWindow', {
         }
 
         var data = {
-            isMVC: false,
-            versions: {}
-        },
+                isMVC   : false,
+                versions: {}
+            },
             versions = Ext.versions,
             key;
 
@@ -191,7 +191,8 @@ Ext.define('AI.util.InspectedWindow', {
             if (!instance) {
                 for (key in window) {
                     if (window.hasOwnProperty(key) && window[key] && window[key].app && window[key].app.$className) {
-                        //get app instance, save on Ext.app.Application.instance like Ext JS 4+ does since it couldn't find it before
+                        // get app instance,
+                        // save on Ext.app.Application.instance like Ext JS 4+ does since it couldn't find it before
                         instance = Ext.app.Application.instance = window[key].app;
                         break;
                     }
@@ -199,10 +200,10 @@ Ext.define('AI.util.InspectedWindow', {
             }
 
             if (instance && instance instanceof Ext.app.Application) {
-                //flag that it is an MVC app
+                // flag that it is an MVC app
                 data.isMVC = true;
 
-                //get app name
+                // get app name
                 data.name = instance.getName ? instance.getName() : instance.name;
             }
         }

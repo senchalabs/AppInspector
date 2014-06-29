@@ -1,60 +1,58 @@
-$grid-row-cell-selected-background-color : rgba($green, 0.2);
+$grid-row-cell-selected-background-color: rgba($green, 0.2);
 
 .highlight .x-grid-row {
     .indicator {
-        background-color : $grid-row-cell-border-color;
+        background-color: $grid-row-cell-border-color;
     }
 
     &.isChanged, &.isOwn {
         .indicator {
-            background-color : $blue-light !important;
+            background-color: $blue-light !important;
         }
     }
 
     &.isOwn {
-        color : $green !important;
+        color: $green !important;
     }
 
     &.isOverride {
-        color : $orange !important;
+        color: $orange !important;
 
         .indicator {
-            background-color : $orange !important;
+            background-color: $orange !important;
         }
     }
 
     &.isInvalidBinding {
-        color : $red !important;
+        color: $red !important;
 
         .indicator {
-            background-color : $red !important;
+            background-color: $red !important;
         }
     }
 
-    span {
-        &.boolean {
-            font-family : monospace;
+    span.highlight {
+        font-family: monospace;
 
+        &.boolean {
             &.true {
-                color : $green;
+                color: $green;
             }
 
             &.false {
-                color : $red;
+                color: $red;
             }
         }
 
         &.null, &.undefined, &.NaN {
-            font-family : monospace;
-            color       : lighten($grey, 23%);
+            color: lighten($grey, 23%);
         }
 
         &.number {
-            color       : mix($red, $blue);
+            color: mix($red, $blue);
         }
 
         &.object {
-            font-family : monospace;
         }
     }
 }

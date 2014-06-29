@@ -15,7 +15,7 @@ Ext.define('AI.view.components.ComponentsController', {
      *
      * @param {AI.view.components.Components}   panel
      *
-     * @fire  cmpactivate
+     * @fire  activate
      */
     onActivate: function (panel) {
         var tree = panel.down('treepanel');

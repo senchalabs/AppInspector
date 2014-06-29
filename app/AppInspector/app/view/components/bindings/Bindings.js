@@ -76,7 +76,7 @@ Ext.define('AI.view.components.bindings.Bindings', {
                 dataIndex: 'boundTo',
                 text: 'Bound To',
                 flex: 1,
-                tpl: '\{{boundTo}\}'
+                tpl: '\\{{boundTo}\\}'
             },
             {
                 xtype: 'gridcolumn',
@@ -94,7 +94,7 @@ Ext.define('AI.view.components.bindings.Bindings', {
                         v = 'undefined';
                     }
 
-                    return '<span class="' + record.get('type') + ' ' + v + '">' + v + '</span>';
+                    return '<span class="highlight ' + record.get('type') + ' ' + v + '">' + v + '</span>';
                 }
             }
         ]
