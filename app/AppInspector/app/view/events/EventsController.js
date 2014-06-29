@@ -50,7 +50,7 @@ Ext.define('AI.view.events.EventsController', {
     onClearEventsClick: function(btn) {
         var vm = this.getViewModel();
 
-        vm.getStore('events').removeAll();
+        vm.getStore('Events').removeAll();
     },
 
     /**

@@ -13,7 +13,7 @@ Ext.define('AI.view.field.FilterController', {
      *
      * @fires  applyfilter
      */
-    onFilterfieldChange: function(field, newValue, oldValue, eOpts) {
+    onFilterfieldChange: function (field, newValue, oldValue, eOpts) {
         if (field.getForceEnter()) {
             return; // cancel
         }
@@ -32,7 +32,7 @@ Ext.define('AI.view.field.FilterController', {
      *
      * @fires  applyfilter
      */
-    onFilterfieldKeypress: function(field, e, eOpts) {
+    onFilterfieldKeypress: function (field, e, eOpts) {
         if (field.getForceEnter() && e.getKey() === Ext.EventObject.ENTER) {
             // <debug>
             console.log('onFilterfieldKeypress', field.getValue() || '-empty-');
@@ -46,7 +46,7 @@ Ext.define('AI.view.field.FilterController', {
      * @param  {AI.view.field.Filter}   field
      * @param  {Object}                 eOpts
      */
-    onFilterfieldBeforeRender: function(field, eOpts) {
+    onFilterfieldBeforeRender: function (field, eOpts) {
         // TODO - figure out i18n
         // field.emptyText = AI.util.i18n.getMessage(field.emptyText);
     }

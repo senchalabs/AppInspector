@@ -14,10 +14,33 @@ Ext.define('AI.view.main.MainController', {
         'AI.mixin.Localize'
     ],
 
+    init: function () {
+        // TODO: Remove (After feature is 100% Complete)
+        // Author: JGarcia
+        // Purpose: Auto select an item on app bootup
+        if (window.location.href === 'http://appi/') {
+            Ext.Function.defer(function () {
+                var componentsView = this.getView().down('components'),
+                    componentsTree = componentsView.child('componentstree'),
+                    store = componentsTree.getStore(),
+                    record = store.getAt(0);
+
+                if (!record) {
+                    return;
+                }
+
+                componentsView.ownerCt.setActiveItem(componentsView);
+
+                componentsTree.getSelectionModel().select(record);
+                componentsTree.fireEvent('itemclick', componentsTree, record);
+            }, 500, this);
+        }
+    },
+
     /**
      *
      */
-    onAppRender: function(main, eOpts) {
+    onAppRender: function (main, eOpts) {
         var me = this,
             args = Ext.Array.slice(arguments),
             app = AI.getApplication(),
@@ -28,11 +51,11 @@ Ext.define('AI.view.main.MainController', {
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.getAppDetails,
             null,
-            function(data) {
+            function (data) {
                 if (data) {
                     if (data.isLoading || !data.versions) {
                         // Need to wait till app has loaded so we can get any info we want
-                        setTimeout(function() {
+                        setTimeout(function () {
                             me.onAppRender.apply(me, args);
                         }, 75);
                     } else {
@@ -67,13 +90,13 @@ Ext.define('AI.view.main.MainController', {
     /**
      *
      */
-    onRevealCmp: function(record, main) {
+    onRevealCmp: function (record, main) {
         var tabs = main.down('#navigation'),
             cmps = tabs.down('components'),
             tree = cmps.down('componentstree'),
             store = tree.getStore();
 
-        tree.on('cmpsloaded', function(tree, components) {
+        tree.on('cmpsloaded', function (tree, components) {
             var found = store.getRootNode().findChild('cmpId', record.get('cmpId'), true);
 
             if (found) {

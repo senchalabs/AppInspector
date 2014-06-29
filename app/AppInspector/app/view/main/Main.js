@@ -23,24 +23,33 @@ Ext.define('AI.view.main.Main', {
 
     reference: 'main',
 
-    items: [{
-        xtype: 'tabpanel',
-        itemId: 'navigation',
-        activeTab: 0,
-        items: [{
-            xtype: 'about'
-        }, {
-            xtype: 'components'
-        }, {
-            xtype: 'stores'
-        }, {
-            xtype: 'layouts'
-        }, {
-            xtype: 'events'
-        }, {
-            xtype: 'mvc'
-        }]
-    }],
+    items: [
+        {
+            xtype: 'tabpanel',
+            itemId: 'navigation',
+            activeTab: 0,
+            items: [
+                {
+                    xtype: 'about'
+                },
+                {
+                    xtype: 'components'
+                },
+                {
+                    xtype: 'stores'
+                },
+                {
+                    xtype: 'layouts'
+                },
+                {
+                    xtype: 'events'
+                },
+                {
+                    xtype: 'mvc'
+                }
+            ]
+        }
+    ],
 
     listeners: {
         afterrender: 'onAppRender',

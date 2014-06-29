@@ -17,7 +17,7 @@ Ext.define('AI.view.components.ComponentsController', {
      *
      * @fire  cmpactivate
      */
-    onActivate: function(panel) {
+    onActivate: function (panel) {
         var tree = panel.down('treepanel');
 
         tree.fireEvent('activate', tree, panel);
@@ -26,9 +26,9 @@ Ext.define('AI.view.components.ComponentsController', {
     /**
      * toggle components details tooltp visibility
      *
-     * @param {AI.view.components.details.Properties|AI.view.components.details.Methods}    ct
+     * @param {AI.view.components.*}    ct
      */
-    toggleDetailsTips: function(ct) {
+    toggleDetailsTips: function (ct) {
         var vm = ct.up('components').getViewModel();
 
         vm.set('currentTab', ct.xtype);
@@ -38,26 +38,28 @@ Ext.define('AI.view.components.ComponentsController', {
      * @param  {AI.view.field.Filter}   field
      * @param  {String}                 value
      */
-    onFilterComponentDetails: function(field, value) {
+    onFilterComponentDetails: function (field, value) {
         var grid = field.up('gridpanel'),
             store = grid.getStore();
 
         store.clearFilter();
 
         if (value !== '') {
-            store.filter([{
-                anyMatch: true,
-                caseSensitive: false,
-                property: 'name',
-                value: value
-            }]);
+            store.filter([
+                {
+                    anyMatch: true,
+                    caseSensitive: false,
+                    property: 'name',
+                    value: value
+                }
+            ]);
         }
     },
 
     /**
      * cancel edit to reset original value
      */
-    onDetailValueEdit: function() {
+    onDetailValueEdit: function () {
         return false;
     }
 });

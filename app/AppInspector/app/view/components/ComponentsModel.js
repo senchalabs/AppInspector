@@ -3,23 +3,26 @@ Ext.define('AI.view.components.ComponentsModel', {
     alias: 'viewmodel.components',
 
     formulas: {
-        propertiesTip: function(get) {
+        isPropertiesTip: function (get) {
             return get('currentTab') === 'properties';
         },
-        methodsTip: function(get) {
+        isMethodsTip: function (get) {
             return get('currentTab') === 'methods';
         },
-        propertiesOrMethodsTip: function(get) {
+        isPropertiesOrMethodsTip: function (get) {
             return get('currentTab') === 'properties' || get('currentTab') === 'methods';
         },
-        bindingsTip: function(get) {
+        isBindingsTip: function (get) {
             return get('currentTab') === 'bindings';
         },
-        vmTip: function(get) {
+        isViewModelTip: function (get) {
             return get('currentTab') === 'viewmodeldata';
         },
-        vcTip: function(get) {
+        isViewControllerTip: function (get) {
             return get('currentTab') === 'viewcontrollerdata';
+        },
+        isInheritanceModelTip: function (get) {
+            return get('currentTab') === 'inheritancemodel';
         }
     },
 
@@ -31,7 +34,8 @@ Ext.define('AI.view.components.ComponentsModel', {
             methods: false,
             bindings: false,
             viewmodeldata: false,
-            viewcontrollerdata: false
+            viewcontrollerdata: false,
+            inheritancemodel: false
         }
     }
 });

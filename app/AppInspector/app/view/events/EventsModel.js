@@ -16,7 +16,7 @@ Ext.define('AI.view.events.EventsModel', {
             proxy: {
                 type: 'memory'
             },
-            findAll: function(property, value, anyMatch, caseSensitive) {
+            findAll: function (property, value, anyMatch, caseSensitive) {
                 var me = this,
                     data = Ext.clone(me.data),
 
@@ -30,7 +30,7 @@ Ext.define('AI.view.events.EventsModel', {
                     filteredData = data.createFiltered(filter),
                     indices = [];
 
-                Ext.each(filteredData.getRange(), function(record) {
+                Ext.each(filteredData.getRange(), function (record) {
                     var index = me.indexOf(record);
                     indices.push(index);
                 });

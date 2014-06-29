@@ -6,9 +6,9 @@ Ext.define('AI.view.layouts.Layouts', {
     xtype: 'layouts',
 
     requires: [
-        'AI.view.layouts.tab.BoxLayouts',
-        'AI.view.layouts.tab.Overnesting',
-        'AI.view.layouts.tab.LayoutRuns'
+        'AI.view.layouts.boxlayouts.BoxLayouts',
+        'AI.view.layouts.overnesting.Overnesting',
+        'AI.view.layouts.layoutruns.LayoutRuns'
     ],
 
     controller: 'layouts',

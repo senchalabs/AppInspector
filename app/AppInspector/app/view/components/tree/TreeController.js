@@ -6,7 +6,6 @@ Ext.define('AI.view.components.tree.TreeController', {
     alias: 'controller.componentstree',
 
     requires: [
-        'AI.model.components.Component',
         'AI.model.components.Detail',
         'AI.util.Component',
         'AI.util.InspectedWindow'
@@ -19,7 +18,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onActivate: function(tree, parent) {
+    onActivate: function (tree, parent) {
         // load the "Components" upfront ...
         var initialLoad = tree.getInitialLoad();
 
@@ -36,7 +35,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onComponentTreeActivate: function(tree) {
+    onComponentTreeActivate: function (tree) {
         tree.setLoading('Loading components...');
 
         AI.util.InspectedWindow.eval(
@@ -49,7 +48,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    buildComponentsTree: function(components, isException, tree, parent) {
+    buildComponentsTree: function (components, isException, tree, parent) {
         var store = this.getStore('Components'),
             root = parent || store.getRoot();
 
@@ -57,20 +56,21 @@ Ext.define('AI.view.components.tree.TreeController', {
             root.removeAll();
         }
 
-        Ext.each(components, function(cmp) {
+        Ext.each(components, function (cmp) {
             var children = cmp.children,
+                len = children.length,
                 node = root.appendChild({
                     text: cmp.text,
                     cmpId: cmp.cmpId,
                     itemId: cmp.itemId,
                     xtype: cmp.xtype,
-                    leaf: !children,
-                    children: children
+                    leaf: (!len),
+                    children: (len ? children : null)
                 });
 
             // recursion...
             if (children.length > 0) {
-                this.buildComponentsTree(children, null, null, node)
+                this.buildComponentsTree(children, null, null, node);
             }
         }, this);
 
@@ -83,7 +83,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onRefreshClick: function(btn) {
+    onRefreshClick: function (btn) {
         var me = this,
             tree = me.getView(),
             treeFilter = tree.down('filterfield'),
@@ -99,20 +99,20 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onApplyFilter: function(field, value) {
+    onApplyFilter: function (field, value) {
         var tree = field.up('componentstree'),
             store = tree.getStore();
 
         store.clearFilter();
 
         if (value !== '') {
-            store.filterBy(function(record, id) {
+            store.filterBy(function (record, id) {
                 var data = record.data,
-                    // fuzzy search
+                // fuzzy search
                     re = new RegExp(value, 'i'),
                     reText = re.test(data.text),
-                    // reCmpId = re.test(data.cmpId),
-                    // reItemId = re.test(data.itemId),
+                // reCmpId = re.test(data.cmpId),
+                // reItemId = re.test(data.itemId),
                     reXType = re.test(data.xtype);
 
                 return reText || reXType;
@@ -124,32 +124,32 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onSelectComponent: function(selModel, record) {
-        var me = this;
+    onSelectComponent: function (selModel, record) {
+        var me = this,
+            cmpId = record.get('cmpId');
 
         AI.util.InspectedWindow.eval(
             AI.util.Component.getInspectedComponent,
-            record.get('cmpId'),
+            cmpId,
             Ext.Function.bind(me.setComponentsDetails, me, [record], true)
         );
 
         AI.util.InspectedWindow.eval(
             AI.util.InspectedWindow.highlight,
-            record.get('cmpId'),
+            cmpId,
             Ext.emptyFn
         );
     },
 
-    setComponentsDetails: function(result, isException, record) {
+    setComponentsDetails: function (result, isException, record) {
         var me = this,
             tree = me.getView(),
             components = tree.up('components'),
             tabpanel = components.down('tabpanel'),
-            properties, methods, bindings, vm, vc;
+            properties, methods, bindings, vm, vc, inheritanceModel;
 
         if (isException || !result) {
-            // tree.fireEvent('deselect', me);
-            components.getViewModel().set('selection', false);
+            tree.fireEvent('deselect', me, tree, components, tabpanel);
             return;
         }
 
@@ -159,7 +159,7 @@ Ext.define('AI.view.components.tree.TreeController', {
         if (result.mvvm) {
             bindings = result.mvvm.bindings || {};
             vm = result.mvvm.viewModel || {};
-            vc = result.mvvm.controller || {};
+//            vc = result.mvvm.controller || {};
         }
 
         // set grid data
@@ -171,6 +171,14 @@ Ext.define('AI.view.components.tree.TreeController', {
         me.setComponentsDetailsTree(vm, tabpanel.down('viewmodeldata'), record, components);
         // me.setComponentsDetailsTree(vc, tabpanel.down('viewcontrollerdata'), record, components);
 
+        // set the inheritance model
+        if (result.inheritance) {
+            inheritanceModel = tabpanel.down('inheritancemodel');
+
+            inheritanceModel.enable();
+            inheritanceModel.renderDiagram(result.inheritance);
+        }
+
         components.getViewModel().set('selection', true);
     },
 
@@ -180,7 +188,7 @@ Ext.define('AI.view.components.tree.TreeController', {
      * @param {Ext.data.Model}  record
      * @param {Ext.Component}   parent
      */
-    setComponentsDetailsGrid: function(details, view, record, parent) {
+    setComponentsDetailsGrid: function (details, view, record, parent) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
             store = view.getStore(),
@@ -189,7 +197,7 @@ Ext.define('AI.view.components.tree.TreeController', {
         store.removeAll();
 
         if (Ext.Object.getSize(details) > 0) {
-            Ext.each(details, function(property) {
+            Ext.each(details, function (property) {
                 data.push(Ext.create('AI.model.components.Detail', property));
             });
         }
@@ -197,7 +205,7 @@ Ext.define('AI.view.components.tree.TreeController', {
         store.loadData(data);
 
         // en-/disable
-        parentVM.set('tabs.' + view.xtype, !! data.length);
+        parentVM.set('tabs.' + view.xtype, !!data.length);
     },
 
     /**
@@ -206,7 +214,7 @@ Ext.define('AI.view.components.tree.TreeController', {
      * @param {Ext.data.Model}  record
      * @param {Ext.Component}   parent
      */
-    setComponentsDetailsTree: function(data, view, record, parent) {
+    setComponentsDetailsTree: function (data, view, record, parent) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
             root = view.getRootNode(),
@@ -234,16 +242,7 @@ Ext.define('AI.view.components.tree.TreeController', {
 
         switch (view.xtype) {
             case 'viewmodeldata':
-                if (data.text && data.children) {
-                    root.set({
-                        text: data.text,
-                        value: data.value,
-                        expanded: true,
-                        expandable: false
-                    });
-
-                    // TODO - children
-                }
+                // TODO
                 break;
 
             case 'viewcontrollerdata':
@@ -260,8 +259,11 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onDeselectComponent: function(selModel) {
-        // TODO - reset details pan
-        this.getViewModel().getParent().set('selection', false);
+    onDeselectComponent: function (tree, record, index, eOpts) {
+        var me = this;
+
+        // TODO - reset details panel
+
+        me.getViewModel().getParent().set('selection', false);
     }
 });

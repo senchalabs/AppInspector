@@ -1,36 +1,31 @@
 /**
- * @class   AI.view.components.tree.Tree
- * @extends Ext.tree.Panel
+ *
  */
-Ext.define('AI.view.components.tree.Tree', {
-    extend: 'Ext.tree.Panel',
-    xtype: 'componentstree',
+Ext.define('AI.view.stores.storeslist.StoresList', {
+    extend: 'Ext.grid.Panel',
+    xtype: 'storeslist',
 
     requires: [
         'Ext.toolbar.Toolbar',
         'Ext.button.Button',
         'Ext.toolbar.Fill',
-        'Ext.tree.View',
-        'Ext.tree.Column',
+        'Ext.grid.View',
         'Ext.grid.column.Column',
         'AI.view.field.Filter'
     ],
-
-    controller: 'componentstree',
-    viewModel: {
-        type: 'componentstree'
-    },
-    bind: {
-        store: '{Components}'
-    },
 
     config: {
         initialLoad: false
     },
 
-    autoScroll: true,
-    animate: true,
-    // allowDeselect: true,
+    controller: 'storeslist',
+    viewModel: {
+        type: 'storeslist'
+    },
+
+    bind: {
+        store: '{Stores}'
+    },
 
     viewConfig: {
         markDirty: false,
@@ -38,20 +33,16 @@ Ext.define('AI.view.components.tree.Tree', {
     },
     columns: [
         {
-            xtype: 'treecolumn',
-            dataIndex: 'text',
-            text: 'Component ID',
-            flex: 2,
-            menuDisabled: true,
-            draggable: false
+            xtype: 'gridcolumn',
+            dataIndex: 'id',
+            text: 'Store ID',
+            flex: 3
         },
         {
             xtype: 'gridcolumn',
-            dataIndex: 'xtype',
-            text: 'XType',
-            flex: 1,
-            menuDisabled: true,
-            draggable: false
+            dataIndex: 'count',
+            text: 'Record Count',
+            flex: 1
         }
     ],
 
@@ -72,7 +63,7 @@ Ext.define('AI.view.components.tree.Tree', {
                 {
                     xtype: 'filterfield',
                     listeners: {
-                        applyfilter: 'onApplyFilter'
+                        // applyfilter: 'onApplyFilter'
                     }
                 }
             ]
@@ -84,8 +75,7 @@ Ext.define('AI.view.components.tree.Tree', {
             fn: 'onActivate',
             single: true
         },
-        select: 'onSelectComponent',
-        deselect: 'onDeselectComponent',
+        select: 'onSelect',
         scope: 'controller'
     }
 });

@@ -10,10 +10,10 @@ Ext.define('AI.view.stores.Stores', {
         'Ext.layout.container.VBox',
         'Ext.layout.container.HBox',
         'Ext.layout.container.Card',
-        'AI.view.stores.StoresList',
-        'AI.view.stores.details.RecordsList',
-        'AI.view.stores.details.RecordsListTree',
-        'AI.view.stores.details.RecordDetails'
+        'AI.view.stores.storeslist.StoresList',
+        'AI.view.stores.recordslist.RecordsList',
+        'AI.view.stores.recordslisttree.RecordsListTree',
+        'AI.view.stores.recorddetails.RecordDetails'
     ],
 
     mixins: [
@@ -32,35 +32,44 @@ Ext.define('AI.view.stores.Stores', {
         align: 'stretch'
     },
 
-    items: [{
-        xtype: 'storeslist',
-        flex: 1
-    }, {
-        xtype: 'container',
-        flex: 1,
-        layout: {
-            type: 'hbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'container',
-            itemId: 'records',
-            flex: 1,
-            layout: 'card',
-            activeItem: 0,
-            items: [{
-                xtype: 'recordslist',
-                itemId: 'recordslist'
-            }, {
-                xtype: 'recordslisttree',
-                itemId: 'recordslisttree'
-            }]
-        }, {
-            xtype: 'recorddetails',
-            itemId: 'recorddetails',
+    items: [
+        {
+            xtype: 'storeslist',
             flex: 1
-        }]
-    }],
+        },
+        {
+            xtype: 'container',
+            flex: 1,
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            items: [
+                {
+                    xtype: 'container',
+                    itemId: 'records',
+                    flex: 1,
+                    layout: 'card',
+                    activeItem: 0,
+                    items: [
+                        {
+                            xtype: 'recordslist',
+                            itemId: 'recordslist'
+                        },
+                        {
+                            xtype: 'recordslisttree',
+                            itemId: 'recordslisttree'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'recorddetails',
+                    itemId: 'recorddetails',
+                    flex: 1
+                }
+            ]
+        }
+    ],
 
     listeners: {
         beforeadd: {
@@ -77,7 +86,7 @@ Ext.define('AI.view.stores.Stores', {
     /**
      * delegate
      */
-    onActivate: function() {
+    onActivate: function () {
         var storeslist = this.down('storeslist');
 
         storeslist.fireEvent('activate', storeslist);
