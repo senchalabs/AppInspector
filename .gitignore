@@ -1,4 +1,4 @@
-# *** folders
+## folders
 .idea/
 /dist/
 /docs/
@@ -6,14 +6,15 @@
 /package/
 testdata/
 
-# *** files
+
+## files
 *.iml
 .DS_Store
 Thumbs.db
 lint/error_log.txt
 
 
-# *** Ext JS
+## Ext JS
 .sass-cache/
 /app/AppInspector/build/
 /app/AppInspector/**/build/

@@ -5,22 +5,22 @@
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.Component', {
-    singleton : true,
+    singleton: true,
 
     /**
      * @returns {*}
      */
-    loadComponentTree : function () {
-        var getComponentTreeNodes = function (comps) {
+    loadComponentTree: function() {
+        var getComponentTreeNodes = function(comps) {
             var compNodes = [];
 
-            var getCompNodeForComp = function (comp) {
+            var getCompNodeForComp = function(comp) {
                 return {
-                    text     : comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
-                    cmpId    : comp.id || '',
-                    itemId   : comp.itemId || '',
-                    xtype    : comp.xtype,
-                    children : []
+                    text: comp.id + (comp.itemId ? ' (' + comp.itemId + ')' : ''),
+                    cmpId: comp.id || '',
+                    itemId: comp.itemId || '',
+                    xtype: comp.xtype,
+                    children: []
                 };
             };
 
@@ -32,22 +32,22 @@ Ext.define('AI.util.Component', {
                 comps = [comps];
             }
 
-            Ext.each(comps, function (comp) {
+            Ext.each(comps, function(comp) {
                 var node = getCompNodeForComp(comp),
                     items = {
-                        text     : 'items',
-                        children : []
+                        text: 'items',
+                        children: []
                     },
                     dockedItems = {
-                        text     : 'dockedItems',
-                        children : []
+                        text: 'dockedItems',
+                        children: []
                     },
                     children;
 
                 if (comp.items && comp.items.items && comp.items.items.length) {
                     children = getComponentTreeNodes(comp.items.items); //recursion...
 
-                    Ext.each(children, function (child) {
+                    Ext.each(children, function(child) {
                         items.children.push(child);
                     });
 
@@ -57,7 +57,7 @@ Ext.define('AI.util.Component', {
                 if (comp.dockedItems && comp.dockedItems.items && comp.dockedItems.items.length) {
                     children = getComponentTreeNodes(comp.dockedItems.items); //recursion...
 
-                    Ext.each(children, function (child) {
+                    Ext.each(children, function(child) {
                         dockedItems.children.push(child);
                     });
 
@@ -77,12 +77,11 @@ Ext.define('AI.util.Component', {
         // Ext JS 5 breaks the older ComponentManager API
         if (Ext.versions.extjs && Ext.versions.extjs.major > 4) {
             all = Ext.ComponentManager.getAll();
-        }
-        else {
+        } else {
             all = Ext.ComponentManager.all.getArray();
         }
 
-        Ext.each(all, function (comp) {
+        Ext.each(all, function(comp) {
             if (!comp.ownerCt && !comp.parent) {
                 top.push(comp);
             }
@@ -96,7 +95,7 @@ Ext.define('AI.util.Component', {
     /**
      * @returns {Object/undefined}
      */
-    getInspectedComponent : function (id) {
+    getInspectedComponent: function(id) {
         var cmp, key, data, parent,
             isChanged, isOwn;
 
@@ -116,28 +115,27 @@ Ext.define('AI.util.Component', {
 
                 if (typeof cmp[key] === 'function') {
                     data.methods.push({
-                        name       : key,
-                        value      : 'METHOD',
-                        isOwn      : isOwn,
-                        isOverride : isChanged
+                        name: key,
+                        value: key + '()',
+                        isOwn: isOwn,
+                        isOverride: isChanged
                     });
-                }
-                else if (typeof cmp[key] !== 'object') {
+                } else if (typeof cmp[key] !== 'object') {
                     data.properties.push({
-                        name      : key,
-                        value     : cmp[key],
-                        isChanged : (isChanged || isOwn),
-                        isOwn     : isOwn
+                        name: key,
+                        value: cmp[key],
+                        isChanged: (isChanged || isOwn),
+                        isOwn: isOwn
                     });
                 }
             }
 
             data.properties.push({
-                name  : '$parent',
-                value : parent.$className
+                name: '$parent',
+                value: parent.$className
             });
 
-            //for components with Ext.mixin.Bindable (Ext JS 5)
+            // for components with Ext.mixin.Bindable (Ext JS 5)
             if (Ext.getVersion().major >= 5 && cmp.mixins && cmp.mixins.bindable) {
                 data.mvvm = Object.create(null); //which sets __proto__ to undefined
 
@@ -149,44 +147,54 @@ Ext.define('AI.util.Component', {
                 if (bindings) {
                     data.mvvm.bindings = [];
 
-                    var recursiveFetchBindChain = function (item) {
-                        var parent = item.parent,
+                    var recursiveFetchBindChain = function(item) {
+                        var parent = (item && item.parent) ? item.parent : null,
                             chain = '';
 
                         if (parent && parent.name) {
                             chain = recursiveFetchBindChain(parent) + '.';
                         }
 
-                        return chain + item.name;
+                        return chain + (item.name || '');
 
                     };
 
                     for (key in bindings) {
                         boundItem = bindings[key];
-                        ownerData = boundItem.owner.getData();
-                        boundPath = recursiveFetchBindChain(boundItem.stub);
 
-                        data.mvvm.bindings.push({
-                            key     : key,
-                            value   : boundItem.getValue(),
-                            boundTo : boundPath,
+                        if (boundItem) {
+                            ownerData = boundItem.owner.getData();
+                            boundPath = recursiveFetchBindChain(boundItem.stub);
+                            value = boundItem.getValue();
 
-                            isValid : (boundItem.getValue()) ? true :
-                                      eval('ownerData.' + boundPath) ? true : false
-                        });
+                            data.mvvm.bindings.push({
+                                key: key,
+                                boundTo: boundPath,
+                                // check for object type - else it will crash for complex objects like Ext JS classes
+                                // we use the $className (e.g. Ext.data.Store) if it's an Ext JS class
+                                value: (Ext.isObject(value) ? (value.$className || '[object]') : value),
+                                // check via hasOwnProperty()
+                                // else e.g. a 'false' value won't be noticed as valid
+                                isValid: ownerData.hasOwnProperty(boundPath),
+                                type: (typeof value)
+                            });
+                        }
                     }
                 }
 
                 if (viewModel) {
                     boundData = viewModel.getData();
 
-                    var recursiveFetchData = function (item, name) {
+                    var recursiveFetchData = function(item, name) {
                         var node = Object.create(null), //which sets __proto__ to undefined
                             text = name || 'data',
                             children = [],
                             key;
 
-                        //TODO: do we need to worry about other special types? Stores, etc...
+                        // FIXME - recursion runs into an infinit loop crashing the devtools
+                        return node;
+
+                        // TODO: do we need to worry about other special types? Stores, etc...
                         if (item.isModel) {
                             return recursiveFetchData(item.data, item.$className);
                         }
@@ -196,12 +204,11 @@ Ext.define('AI.util.Component', {
 
                             if (Ext.isObject(value)) {
                                 children.push(recursiveFetchData(value, key));
-                            }
-                            else {
+                            } else {
                                 children.push({
-                                    text  : key,
-                                    value : value,
-                                    leaf  : true
+                                    text: key,
+                                    value: value,
+                                    leaf: true
                                 });
                             }
                         }
@@ -218,12 +225,24 @@ Ext.define('AI.util.Component', {
                     data.mvvm.viewModel.children = recursiveFetchData(boundData);
                 }
 
+                /*
                 if (viewController) {
                     data.mvvm.controller = Object.create(null); //which sets __proto__ to undefined
+                    data.mvvm.controller.functions = [];
+
+                    for (key in viewController) {
+                        if (typeof viewController[key] === 'function') {
+                            data.mvvm.controller.functions.push({
+                                text: key,
+                                leaf: true
+                            });
+                        }
+                    }
 
                     data.mvvm.controller.className = viewController.$className;
                     data.mvvm.controller.id = viewController.getId();
                 }
+*/
             }
 
 
@@ -249,7 +268,7 @@ Ext.define('AI.util.Component', {
                     clsMixins  = mixin.mixins;
 
                     // No inherited mixins
-                    hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
+                    hasDefinedMixins = (superclass && clsMixins && (clsMixins !== superclass.mixins));
 
                     superclassData = superclass       ? getSuperClasses(superclass, 1) : [];
                     mixins         = hasDefinedMixins ? getMixinData(clsMixins)        : [];
@@ -278,7 +297,7 @@ Ext.define('AI.util.Component', {
                     clsMixins = cls.mixins;
 
                     // No inherited mixins
-                    hasDefinedMixins = (superclass && clsMixins && ! (clsMixins === superclass.mixins));
+                    hasDefinedMixins = (superclass && clsMixins && (clsMixins !== superclass.mixins));
 
                     superclassData = superclass       ? getSuperClasses(superclass, 1) : [];
                     mixins         = hasDefinedMixins ? getMixinData(clsMixins)        : [];

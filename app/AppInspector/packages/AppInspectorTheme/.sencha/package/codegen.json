@@ -32,7 +32,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -43,7 +43,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -54,7 +54,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -65,7 +65,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -76,7 +76,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -87,7 +87,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -98,7 +98,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }
@@ -109,7 +109,7 @@
       "parameters": {
         "pkgName": "AppInspectorTheme",
         "senchadir": ".sencha",
-        "touchRelPath": "../../touch",
+        "touchRelPath": "../../${touch.dir}",
         "extRelPath": "../../ext",
         "pkgType": "theme"
       }

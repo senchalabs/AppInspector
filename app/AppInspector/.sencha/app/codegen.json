@@ -3,6 +3,9 @@
     "build.properties.merge": {
       "d4613dc19be3ddb60e7ff5716e28c8b15d954f3a": "eJytUstOw0AMvPMVI/WGoB+AxAFx4sBD0B9ws05idbOOdp2E/j1OH6pEEKfuzR57POP1Co/XfDcrbFopqCUy+qyjBC6gBB05Zw/QqyRDrRmBaxqiYaQstI1e5xlJHCAJ1nJhZ4s6cXYm0Sy2P/CWh5uVI8A9+NvWPqXnbMLllLxdn5jLEvsTmUXrRSHhBO6xpeJyNGE7SAxrTqNkTR27A0nFmAIoBFzIYOpsmhhaHz2glab9x4L3hqEy0bRUa1xMUrMEEpmMvMz3VO2o4d/uXl4/3j83T28bL/niVLWE5y5gkhjRcW4Yex0yPJ8a9zCJtRAr0CkhDNklYOibTP6X6+OyaFRx32q+CqEzS6WpjlJ55xHvaDf3RnLwDmVi7uf4POewKzufy8x83Vv8AQy16fs\u003d"
     },
+    "development.properties.merge": {
+      "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6": "eJytkUuOAjEMBfec4one9w24wyy4QFDc0xbBjhyTEbcfp0F89mRny6l6liccvvl2E44rNyxcCNW0c6aGJNBOZlGgKotjUUOmJV2LoyfjdCoxFx0WymBBgJyas/zOj7k2B6+SOVObw0JtMzw6SEZQKTfwpap5UP5WEpyuXHJQgjecvhL2mToVrRcS34Oks6mMYt5NMfbzYr7l8edWns5DzGrst22vu+QtXjR8BAraFqloyoEZAT7l28cW3i9f4R+b7pUs"
+    },
     "native.properties.merge": {
       "2c8c063f9588eecff09624782d7369a8a000d61c": "eJytkEsOwjAMRPecYkT3vQF3YMEFguJSi2BXjgni9rgfFQ5AdrEm743T4fTPc+hwGbli4EKYTBtnqkgCbWQWF0zK4hjUkGlIz+JoyThdS+RiwkIZLAiQJOdG/RarfeAmMmeqfUioLoJtgmQElfIGPyY1D8hrJMH1ySWz3AI3K30kHFfuESSNTeVB4v2hi8T5i/tp4vs+nu6zk9XY38tGK/+nWQx87hK0pU3RlAMzu3fv8qaG8s9f/wFV3ZB9"
     },
@@ -36,8 +39,8 @@
     "{controllerFileName}.js.tpl.merge": {
       "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188": "eJxzrSjRS0lNy8xL1VCvTs7PKynKz8lJLfJLzE0tLkhMTq3VQxOtVddRqOZSAILUipLUvBQrBXVXoBmJBQV6znCF6ly1mtZcACwSIF0\u003d"
     },
-    "development.properties.merge": {
-      "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6": "eJytkUuOAjEMBfec4one9w24wyy4QFDc0xbBjhyTEbcfp0F89mRny6l6liccvvl2E44rNyxcCNW0c6aGJNBOZlGgKotjUUOmJV2LoyfjdCoxFx0WymBBgJyas/zOj7k2B6+SOVObw0JtMzw6SEZQKTfwpap5UP5WEpyuXHJQgjecvhL2mToVrRcS34Oks6mMYt5NMfbzYr7l8edWns5DzGrst22vu+QtXjR8BAraFqloyoEZAT7l28cW3i9f4R+b7pUs"
+    "{modelFileName}.js.tpl.merge": {
+      "31d5356142a167c72422f7902f19df3c583f3249": "eJxlUcFugzAMvfMVVqUq0CLorlC6w7TrfgBxSMG00dKAktAxRfn3GWg7rfMhdvKeX16c99EmDbZCYcjcpWtQfvALmp7X6BOnqPYsBhcABY4WVZMBc0du8E1yYwicoXlpBcrGZFC69byf4srlgCZZICggbAdVW9Epquaz6CZ+j7bTEF65Bo2W+GUVQ8+1nXqXhsT0UtiQxSyKQdDxLqe0X1iJRHWy5xy2W/GsvNjR0FLPTC5FdRfLWJT/I5ODpB/MOXQwDSKDttyRHfvdz/VLBf6pywfBk8Cg1ZTyX8BH4Z+h3CTWfm97OT2/WC3A6vDouRtgjx9ZTDA3Zc/AuxLCUagGRygKGOtuUDaCV2AMiBYzqPw+pQsOgVtDuoGj5OoTJP072I4cNkONcEF9Qqg71UpR08i/0sGgBmwEbTYpeZwdVcH07h/XJaFF"
     }
   },
   "targets": {
@@ -54,7 +57,33 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
+        "appName": "AI",
+        "modelNamespace": "AI.model",
+        "controllerName": "Main",
+        "viewName": "Main",
+        "themeName": "default",
+        "packagesRelPath": "ext/packages",
+        "name": "AI",
+        "controllerNamespace": "AI.controller",
+        "library": "all",
+        "appStores": ""
+      }
+    },
+    ".sencha/app/development.properties": {
+      "source": "development.properties.merge",
+      "version": "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6",
+      "parameters": {
+        "viewNamespace": "AI.view",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "senchadir": ".sencha",
+        "controllerFileName": "Main",
+        "appModels": "",
+        "viewFileName": "Main",
+        "appControllers": "",
+        "appViews": "",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -80,7 +109,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -106,7 +135,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -132,7 +161,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -158,7 +187,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -184,7 +213,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -210,7 +239,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -236,7 +265,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -262,7 +291,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -288,7 +317,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -314,7 +343,7 @@
         "viewFileName": "Main",
         "appControllers": "",
         "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
+        "uniqueId": "5ed01a6c-1dba-44d0-b9b1-bb863f37e165",
         "appName": "AI",
         "modelNamespace": "AI.model",
         "controllerName": "Main",
@@ -339,30 +368,28 @@
         "library": "all"
       }
     },
-    ".sencha/app/development.properties": {
-      "source": "development.properties.merge",
-      "version": "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6",
+    "app/model/Component.js": {
+      "source": "{modelFileName}.js.tpl.merge",
+      "version": "31d5356142a167c72422f7902f19df3c583f3249",
       "parameters": {
-        "viewNamespace": "AI.view",
-        "frameworkName": "ext",
-        "frameworkPath": "ext",
-        "senchadir": ".sencha",
-        "controllerFileName": "Main",
-        "appModels": "",
-        "viewFileName": "Main",
-        "appControllers": "",
-        "appViews": "",
-        "uniqueId": "f951f321-a118-4a68-884e-9a261774ee35",
         "appName": "AI",
         "modelNamespace": "AI.model",
-        "controllerName": "Main",
-        "viewName": "Main",
-        "themeName": "default",
-        "packagesRelPath": "ext/packages",
-        "name": "AI",
-        "controllerNamespace": "AI.controller",
-        "library": "all",
-        "appStores": ""
+        "baseClass": "Ext.data.TreeModel",
+        "modelFileName": "Component",
+        "name": "Component",
+        "fields": "xclass:auto:null,xtype:auto:null,cmpId:auto:null,itemId:auto:null,name:auto:null"
+      }
+    },
+    "app/model/layouts/Overnested.js": {
+      "source": "{modelFileName}.js.tpl.merge",
+      "version": "31d5356142a167c72422f7902f19df3c583f3249",
+      "parameters": {
+        "appName": "AI",
+        "modelNamespace": "AI.model",
+        "baseClass": "Ext.data.Model",
+        "modelFileName": "layouts/Overnested",
+        "name": "layouts.Overnested",
+        "fields": "cmpId:auto:null,xtype:auto:null"
       }
     }
   }

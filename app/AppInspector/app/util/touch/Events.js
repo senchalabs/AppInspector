@@ -5,28 +5,28 @@
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.touch.Events', {
-    singleton : true,
+    singleton: true,
 
     /**
      *
      */
-    recordEvents : function () {
+    recordEvents: function() {
         var o = Ext.event.Dispatcher.prototype;
 
         if (Ext.ux.AppInspector.eventCache === null) {
             Ext.ux.AppInspector.eventCaptureFn = o.dispatchEvent; //set reference to restore later
             Ext.ux.AppInspector.eventCache = [];
 
-            o.dispatchEvent = function (targetType, target, eventName) {
+            o.dispatchEvent = function(targetType, target, eventName) {
                 Ext.ux.AppInspector.eventCaptureFn.apply(this, arguments);
 
                 var isComponent = (targetType === 'component');
 
                 var x = {
-                    eventName : eventName,
-                    source    : (isComponent) ? arguments[3][0].$className : targetType,
-                    xtype     : (isComponent) ? arguments[3][0].xtype : '',
-                    cmpId     : target
+                    eventName: eventName,
+                    source: (isComponent) ? arguments[3][0].$className : targetType,
+                    xtype: (isComponent) ? arguments[3][0].xtype : '',
+                    cmpId: target
                 };
 
                 Ext.ux.AppInspector.eventCache.push(x);
@@ -44,7 +44,7 @@ Ext.define('AI.util.touch.Events', {
     /**
      *
      */
-    stopEvents : function () {
+    stopEvents: function() {
         var o = Ext.event.Dispatcher.prototype;
 
         if (Ext.ux.AppInspector.eventCache !== null) {

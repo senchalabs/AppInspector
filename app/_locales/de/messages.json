@@ -1,6 +1,6 @@
 {
     "appDescription": {
-	"message": "Google Chrome™ Dev Tools Erweiterung für das Debuggen von Sencha™ Anwendungen.",
+        "message": "Google Chrome™ Dev Tools Erweiterung für das Debuggen von Sencha™ Anwendungen.",
         "description": "The description of the application"
     }
 }

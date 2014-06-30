@@ -3,136 +3,92 @@
  * @extends Ext.panel.Panel
  */
 Ext.define('AI.view.stores.Stores', {
-    extend : 'Ext.panel.Panel',
-    alias  : 'widget.stores',
+    extend: 'Ext.panel.Panel',
+    xtype: 'stores',
 
-    requires : [
-        'AI.view.FilterField',
-        'AI.view.stores.RecordList',
-        'AI.view.stores.RecordListTree',
-        'AI.view.stores.RecordDetails',
-        'Ext.grid.Panel',
-        'Ext.toolbar.Toolbar',
-        'Ext.button.Button',
-        'Ext.toolbar.Fill',
-        'Ext.form.field.Text',
-        'Ext.grid.column.Column',
-        'Ext.grid.View',
-        'Ext.tree.Panel',
-        'Ext.grid.property.Grid'
+    requires: [
+        'Ext.layout.container.VBox',
+        'Ext.layout.container.HBox',
+        'Ext.layout.container.Card',
+        'AI.view.stores.storeslist.StoresList',
+        'AI.view.stores.recordslist.RecordsList',
+        'AI.view.stores.recordslisttree.RecordsListTree',
+        'AI.view.stores.recorddetails.RecordDetails'
     ],
 
-    initialLoad : false,
-    itemId      : 'StoreInspector',
-    iconCls     : 'icn-stores',
-    title       : 'Stores',
+    mixins: [
+        'AI.mixin.Localize'
+    ],
 
-    layout : {
-        type  : 'vbox',
-        align : 'stretch'
+    config: {
+        initialLoad: false
     },
 
-    initComponent : function () {
-        var me = this;
+    title: 'Stores',
+    glyph: 'xf1c0@fontawesome',
 
-        Ext.applyIf(me, {
-            items     : [
+    layout: {
+        type: 'vbox',
+        align: 'stretch'
+    },
+
+    items: [
+        {
+            xtype: 'storeslist',
+            flex: 1
+        },
+        {
+            xtype: 'container',
+            flex: 1,
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            items: [
                 {
-                    xtype       : 'gridpanel',
-                    flex        : 1,
-                    height      : 300,
-                    itemId      : 'StoreList',
-                    store       : 'stores.Stores',
-                    dockedItems : [
+                    xtype: 'container',
+                    itemId: 'records',
+                    flex: 1,
+                    layout: 'card',
+                    activeItem: 0,
+                    items: [
                         {
-                            xtype : 'toolbar',
-                            dock  : 'top',
-                            items : [
-                                {
-                                    xtype   : 'button',
-                                    itemId  : 'RefreshStores',
-                                    iconCls : 'icn-refresh',
-                                    text    : 'Refresh'
-                                },
-                                {
-                                    xtype : 'tbfill'
-                                },
-                                {
-                                    xtype  : 'filterfield',
-                                    itemId : 'FilterStoresList'
-                                }
-                            ]
-                        }
-                    ],
-                    columns     : [
-                        {
-                            xtype     : 'gridcolumn',
-                            dataIndex : 'id',
-                            text      : 'Store ID',
-                            flex      : 3
+                            xtype: 'recordslist',
+                            itemId: 'recordslist'
                         },
                         {
-                            xtype     : 'gridcolumn',
-                            dataIndex : 'count',
-                            text      : 'Record Count',
-                            flex      : 1
-                        }
-                    ],
-                    viewConfig  : {
-                        markDirty : false
-                    }
-                },
-                {
-                    xtype         : 'container',
-                    flex          : 1,
-                    itemId        : 'StoreDetails',
-                    resizable     : true,
-                    resizeHandles : 'n',
-                    layout        : {
-                        type  : 'hbox',
-                        align : 'stretch'
-                    },
-                    items         : [
-                        {
-                            xtype  : 'container',
-                            flex   : 1,
-                            itemId : 'StoreRecordsContainer',
-                            layout : 'card',
-                            items  : [
-                                {
-                                    xtype  : 'recordliststore',
-                                    itemId : 'RecordListStore'
-                                },
-                                {
-                                    xtype  : 'recordlisttreestore',
-                                    itemId : 'RecordListTreeStore'
-                                }
-                            ]
-                        },
-                        {
-                            xtype         : 'recorddetails',
-                            itemId        : 'RecordDetail',
-                            width         : 300,
-                            resizable     : true,
-                            resizeHandles : 'w'
+                            xtype: 'recordslisttree',
+                            itemId: 'recordslisttree'
                         }
                     ]
+                },
+                {
+                    xtype: 'recorddetails',
+                    itemId: 'recorddetails',
+                    flex: 1
                 }
-            ],
-            listeners : {
-                beforeadd : {
-                    fn    : me.onStoreInspectorBeforeAdd,
-                    scope : me
-                }
-            }
-        });
+            ]
+        }
+    ],
 
-        me.callParent(arguments);
+    listeners: {
+        beforeadd: {
+            fn: 'localize',
+            single: true
+        },
+        activate: {
+            fn: 'onActivate',
+            single: true
+        },
+        scope: 'this'
     },
 
-    onStoreInspectorBeforeAdd : function (container, component, index, eOpts) {
-        this.setTitle(AI.util.i18n.getMessage(this.title));
+    /**
+     * delegate
+     */
+    onActivate: function () {
+        var storeslist = this.down('storeslist');
 
+        storeslist.fireEvent('activate', storeslist);
     }
-
 });

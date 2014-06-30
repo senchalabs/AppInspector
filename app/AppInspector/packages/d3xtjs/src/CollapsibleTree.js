@@ -324,9 +324,14 @@ Ext.define('d3xtjs.CollapsibleTree', {
 
                 return nodeColorMatrix[d.type];
             })
+            .style("stroke", function(d) {
+
+                return nodeColorMatrix[d.type];
+            })
             .transition()
             .duration(duration)
-            .attr("d", diagonal);
+            .attr("d", diagonal)
+            ;
 
         // Transition links to their new position.
         link.transition()
