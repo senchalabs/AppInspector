@@ -37,8 +37,10 @@ Ext.define('AI.view.layouts.boxlayouts.BoxLayoutsController', {
      */
     onRefreshClick: function(btn) {
         var grid = btn.up('boxlayouts'),
-            store = grid.getStore(),
+            store = this.getStore('BoxLayouts'),
             util;
+
+        store.removeAll();
         grid.setLoading('Profiling for overnested box layouts...');
 
         this.getViewModel().set('selected', false);
@@ -55,17 +57,12 @@ Ext.define('AI.view.layouts.boxlayouts.BoxLayoutsController', {
             function(components) {
                 var cmps = [];
 
-                store.removeAll();
-
                 Ext.each(components, function(component) {
                     cmps.push(Ext.create('AI.model.layouts.Layout', component));
                 });
 
                 store.setData(cmps);
                 grid.setLoading(false);
-
-                // FIXME    - here is a strange situation
-                // on the first load nothing shows up
             }
         );
     },

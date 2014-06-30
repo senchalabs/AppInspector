@@ -2,23 +2,23 @@
  *
  */
 Ext.define('AI.view.components.tree.TreeController', {
-    extend: 'Ext.app.ViewController',
-    alias: 'controller.componentstree',
+    extend : 'Ext.app.ViewController',
+    alias  : 'controller.componentstree',
 
-    requires: [
+    requires : [
         'AI.model.components.Detail',
         'AI.util.Component',
         'AI.util.InspectedWindow'
     ],
 
-    mixins: [
+    mixins : [
         'AI.mixin.Localize'
     ],
 
     /**
      *
      */
-    onActivate: function (tree, parent) {
+    onActivate : function (tree, parent) {
         // load the "Components" upfront ...
         var initialLoad = tree.getInitialLoad();
 
@@ -27,7 +27,8 @@ Ext.define('AI.view.components.tree.TreeController', {
             tree.setInitialLoad(true);
 
             this.onComponentTreeActivate(tree);
-        } else {
+        }
+        else {
             tree.fireEvent('cmpsloaded', tree);
         }
     },
@@ -35,7 +36,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onComponentTreeActivate: function (tree) {
+    onComponentTreeActivate : function (tree) {
         tree.setLoading('Loading components...');
 
         AI.util.InspectedWindow.eval(
@@ -48,7 +49,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    buildComponentsTree: function (components, isException, tree, parent) {
+    buildComponentsTree : function (components, isException, tree, parent) {
         var store = this.getStore('Components'),
             root = parent || store.getRoot();
 
@@ -60,12 +61,12 @@ Ext.define('AI.view.components.tree.TreeController', {
             var children = cmp.children,
                 len = children.length,
                 node = root.appendChild({
-                    text: cmp.text,
-                    cmpId: cmp.cmpId,
-                    itemId: cmp.itemId,
-                    xtype: cmp.xtype,
-                    leaf: (!len),
-                    children: (len ? children : null)
+                    text     : cmp.text,
+                    cmpId    : cmp.cmpId,
+                    itemId   : cmp.itemId,
+                    xtype    : cmp.xtype,
+                    leaf     : (!len),
+                    children : (len ? children : null)
                 });
 
             // recursion...
@@ -83,7 +84,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onRefreshClick: function (btn) {
+    onRefreshClick : function (btn) {
         var me = this,
             tree = me.getView(),
             treeFilter = tree.down('filterfield'),
@@ -99,7 +100,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onApplyFilter: function (field, value) {
+    onApplyFilter : function (field, value) {
         var tree = field.up('componentstree'),
             store = tree.getStore();
 
@@ -124,7 +125,7 @@ Ext.define('AI.view.components.tree.TreeController', {
     /**
      *
      */
-    onSelectComponent: function (selModel, record) {
+    onSelectComponent : function (selModel, record) {
         var me = this,
             cmpId = record.get('cmpId');
 
@@ -141,7 +142,7 @@ Ext.define('AI.view.components.tree.TreeController', {
         );
     },
 
-    setComponentsDetails: function (result, isException, record) {
+    setComponentsDetails : function (result, isException, record) {
         var me = this,
             tree = me.getView(),
             components = tree.up('components'),
@@ -188,7 +189,7 @@ Ext.define('AI.view.components.tree.TreeController', {
      * @param {Ext.data.Model}  record
      * @param {Ext.Component}   parent
      */
-    setComponentsDetailsGrid: function (details, view, record, parent) {
+    setComponentsDetailsGrid : function (details, view, record, parent) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
             store = view.getStore(),
@@ -214,52 +215,42 @@ Ext.define('AI.view.components.tree.TreeController', {
      * @param {Ext.data.Model}  record
      * @param {Ext.Component}   parent
      */
-    setComponentsDetailsTree: function (data, view, record, parent) {
+    setComponentsDetailsTree : function (data, view, record, parent) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
-            root = view.getRootNode(),
-            store = view.getStore(),
-            children = [];
+            isTreeNode = (data.children) ? true : false;
 
-        // reset
-        root.removeAll();
-        root.set({
-            text: '',
-            value: '',
-            children: []
-        });
-
-        // <debug>
-        console.groupCollapsed('setComponentsDetailsTree(', view.$className, ')');
-        console.log('scope', me);
-        console.log('view', view);
-        console.log('root', root);
-        console.log('store', store);
-        console.log('arguments', arguments);
-        console.log(data);
-        console.groupEnd();
-        // </debug>
-
-        switch (view.xtype) {
-            case 'viewmodeldata':
-                // TODO
-                break;
-
-            case 'viewcontrollerdata':
-                // TODO
-                break;
+        if (isTreeNode) {
+            view.getStore().setRootNode({
+                expanded : true,
+                children : data
+            });
+        }
+        else {
+            view.getStore().setRootNode({
+                expanded : true,
+                children : []
+            });
         }
 
-        root.appendChild(children);
+//        switch (view.xtype) {
+//            case 'viewmodeldata':
+//                // TODO
+//                break;
+//
+//            case 'viewcontrollerdata':
+//                // TODO
+//                break;
+//        }
 
         // en-/disable
-        parentVM.set('tabs.' + view.xtype, children.length > 0);
+        parentVM.set('tabs.' + view.xtype, isTreeNode);
     },
 
     /**
      *
      */
-    onDeselectComponent: function (tree, record, index, eOpts) {
+    onDeselectComponent : function (tree, record, index, eOpts) {
         var me = this;
 
         // TODO - reset details panel
