@@ -97,7 +97,13 @@ Ext.define('AI.view.events.EventsController', {
      */
     onStopRecordingClick: function(btn) {
         var vm = this.getViewModel(),
-            util = AI.util.extjs.Profile.stopLayouts;
+            util;
+
+        if (AI.getApplication().info.framework === 'ext') {
+            util = AI.util.extjs.Events.stopEvents;
+        } else {
+            util = AI.util.touch.Events.stopEvents;
+        }
 
         AI.util.InspectedWindow.eval(
             util,
