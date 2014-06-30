@@ -314,7 +314,7 @@ Ext.define('AI.util.Component', {
 
 
             data.inheritance = getSuperClasses(cmp)[0];
-            data.inheritance.type = 'class';
+            data.inheritance.type = 'cls';
 
         }
 
