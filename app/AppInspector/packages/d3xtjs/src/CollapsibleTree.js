@@ -181,7 +181,7 @@ Ext.define('d3xtjs.CollapsibleTree', {
 
 
         var nodeColorMatrix = {
-            class      : '#000',
+            cls        : '#000',
             superclass : '#3b8ede',
             mixin      : '#ff9016'
         };
