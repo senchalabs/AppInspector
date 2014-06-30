@@ -5,27 +5,27 @@
  * @author  Arthur Kay (@arthurakay)
  */
 Ext.define('AI.ux.data.proxy.InspectedWindow', {
-    extend : 'Ext.data.proxy.Proxy',
-    alias  : 'proxy.inspectedwindow',
+    extend: 'Ext.data.proxy.Proxy',
+    alias: 'proxy.inspectedwindow',
 
-    requires : [
+    requires: [
         'AI.util.InspectedWindow',
         'AI.util.Store'
     ],
 
-    config : {
+    config: {
         /**
          * @cfg {String/Function} evalFn The function to evaluate in the inspected window.
          */
-        evalFn : null,
+        evalFn: null,
 
         /**
          * @cfg {String} inspectedStoreId The storeId of the store.
          */
-        inspectedStoreId : null
+        inspectedStoreId: null
     },
 
-    read : function (operation, callback, scope) {
+    read: function(operation, callback, scope) {
         scope = scope || this;
 
         var evalFn = this.evalFn;
@@ -36,15 +36,14 @@ Ext.define('AI.ux.data.proxy.InspectedWindow', {
         }
 
         AI.util.InspectedWindow.eval(
-            evalFn,
-            [ this.inspectedStoreId, operation.getStart() ],
-            function (result) {
+            evalFn, [this.inspectedStoreId, operation.getStart()],
+            function(result) {
                 var resultSet = scope.getReader().read(result.records);
 
                 resultSet.setTotal(result.totalCount);
                 operation.process(resultSet, null, null, true);
 
-                Ext.Function.defer(function () {
+                Ext.Function.defer(function() {
                     Ext.callback(callback, scope, [operation]);
                 }, 10);
             }

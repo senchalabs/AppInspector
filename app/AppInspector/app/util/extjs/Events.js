@@ -5,18 +5,18 @@
  * Utility class containing methods which run in the context of the inspectedWindow
  */
 Ext.define('AI.util.extjs.Events', {
-    singleton : true,
+    singleton: true,
 
     /**
      *
      */
-    recordEvents : function () {
+    recordEvents: function() {
         var o = Ext.util.Observable.prototype;
 
         if (Ext.ux.AppInspector.eventCache === null) {
             Ext.ux.AppInspector.eventCache = [];
 
-            Ext.ux.AppInspector.eventCaptureFn = function () {
+            Ext.ux.AppInspector.eventCaptureFn = function() {
                 var eventName = arguments[0],
                     signature = arguments[1];
 
@@ -24,12 +24,10 @@ Ext.define('AI.util.extjs.Events', {
                     //only fires on on Ext.view.Table
                     eventName = arguments[1];
                     signature = arguments[2];
-                }
-                else if (eventName === 'beforequery') {
+                } else if (eventName === 'beforequery') {
                     //only fires on on Ext.form.field.ComboBox
                     signature = arguments[1].combo;
-                }
-                else if (signature.length && signature.length > 0) {
+                } else if (signature.length && signature.length > 0) {
                     //a bunch of events fire passing "arguments", which is like an Array but not really...
                     signature = signature[0];
                 }
@@ -42,19 +40,19 @@ Ext.define('AI.util.extjs.Events', {
                 // </debug>
 
                 Ext.ux.AppInspector.eventCache.push({
-                    eventName : eventName,
-                    source    : signature.$className,
-                    xtype     : signature.xtype,
-                    cmpId     : signature.id
+                    eventName: eventName,
+                    source: signature.$className,
+                    xtype: signature.xtype,
+                    cmpId: signature.id
                 });
             };
 
-            Ext.ComponentManager.each(function (key) {
+            Ext.ComponentManager.each(function(key) {
                 Ext.util.Observable.capture(Ext.getCmp(key), Ext.ux.AppInspector.eventCaptureFn);
             });
 
             //be sure we capture all new components added...
-            Ext.ComponentManager.register = Ext.Function.createSequence(Ext.ComponentManager.register, function (item) {
+            Ext.ComponentManager.register = Ext.Function.createSequence(Ext.ComponentManager.register, function(item) {
                 Ext.util.Observable.capture(item, Ext.ux.AppInspector.eventCaptureFn);
             });
         }
@@ -70,9 +68,9 @@ Ext.define('AI.util.extjs.Events', {
     /**
      *
      */
-    stopEvents : function () {
+    stopEvents: function() {
         if (Ext.ux.AppInspector.eventCache) {
-            Ext.ComponentManager.each(function (key) {
+            Ext.ComponentManager.each(function(key) {
                 Ext.util.Observable.releaseCapture(Ext.getCmp(key));
             });
 

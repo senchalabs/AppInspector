@@ -3,19 +3,28 @@
  * @singleton
  */
 Ext.define('AI.util.Error', {
-    singleton : true,
+    singleton: true,
+
+    requires: [
+        'Ext.MessageBox'
+    ],
 
     /**
      * @param {Object} exception
      */
-    parseException : function (exception) {
+    parseException: function(exception) {
         var msg = '';
+
         for (var key in exception) {
             if (exception.hasOwnProperty(key)) {
                 msg += key + ': ' + exception[key] + '\n';
             }
         }
 
-        Ext.Msg.alert('isException', msg);
+        // <debug>
+        console.debug(msg, exception);
+        // </debug>
+
+        Ext.MessageBox.alert('isException', msg);
     }
 });
