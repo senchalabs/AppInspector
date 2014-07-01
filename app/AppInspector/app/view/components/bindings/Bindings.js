@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.components.bindings.Bindings
+ * @extends Ext.grid.Panel
  */
 Ext.define('AI.view.components.bindings.Bindings', {
     extend: 'Ext.grid.Panel',
-    xtype: 'bindings',
+    xtype : 'bindings',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -19,22 +20,26 @@ Ext.define('AI.view.components.bindings.Bindings', {
         'AI.mixin.Localize'
     ],
 
-    title: 'MVVM Bindings',
-    cls: 'highlight',
+    title : 'MVVM Bindings',
+    cls   : 'highlight',
     itemId: 'bindings',
 
-    // controller: 'methods',
     viewModel: {
         type: 'bindings'
     },
-    bind: {
+    bind     : {
         store: '{Bindings}'
     },
 
     viewConfig: {
-        markDirty: false,
-        stripeRows: true,
-        getRowClass: function (record, rowIndex, rowParams, store) {
+        markDirty  : false,
+        stripeRows : true,
+        /**
+         * @param   {Ext.data.Model}    record
+         *
+         * @returns {String}
+         */
+        getRowClass: function (record) {
             var cls = [];
 
             if (!record.get('isValid')) {
@@ -44,46 +49,53 @@ Ext.define('AI.view.components.bindings.Bindings', {
             return cls.join(' ');
         }
     },
-    columns: {
+    columns   : {
         defaults: {
-            sortable: true,
+            sortable    : true,
             menuDisabled: true,
-            draggable: false
+            draggable   : false
         },
-        items: [
+        items   : [
             {
-                xtype: 'booleancolumn',
-                width: 5,
-                resizable: false,
+                xtype       : 'booleancolumn',
+                width       : 5,
+                resizable   : false,
                 defaultWidth: 5,
-                sortable: false,
-                dataIndex: 'isOwn',
-                groupable: false,
-                hideable: false,
-                lockable: false,
-                tdCls: 'indicator',
-                falseText: ' ',
-                trueText: ' '
+                sortable    : false,
+                dataIndex   : 'isOwn',
+                groupable   : false,
+                hideable    : false,
+                lockable    : false,
+                tdCls       : 'indicator',
+                falseText   : ' ',
+                trueText    : ' '
             },
             {
-                xtype: 'gridcolumn',
+                xtype    : 'gridcolumn',
                 dataIndex: 'key',
-                text: 'Binding Key',
-                flex: 1
+                text     : 'Binding Key',
+                flex     : 1
             },
             {
-                xtype: 'templatecolumn',
+                xtype    : 'templatecolumn',
                 dataIndex: 'boundTo',
-                text: 'Bound To',
-                flex: 1,
-                tpl: '\\{{boundTo}\\}'
+                text     : 'Bound To',
+                flex     : 1,
+                tpl      : '\\{{boundTo}\\}'
             },
             {
-                xtype: 'gridcolumn',
+                xtype    : 'gridcolumn',
                 dataIndex: 'value',
-                text: 'Value',
-                flex: 1,
-                renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
+                text     : 'Value',
+                flex     : 1,
+                /**
+                 * @param {Object}          value
+                 * @param {Object}          metaData
+                 * @param {Ext.data.Model}  record
+                 *
+                 * @returns {String}
+                 */
+                renderer : function (value, metaData, record) {
                     var v = value;
 
                     if (value === null) {
@@ -102,17 +114,18 @@ Ext.define('AI.view.components.bindings.Bindings', {
 
     dockedItems: [
         {
-            xtype: 'toolbar',
-            dock: 'top',
+            xtype : 'toolbar',
+            dock  : 'top',
             border: 1,
-            cls: 'components-toolbar top',
-            items: [
+            cls   : 'components-toolbar top',
+            items : [
                 {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'filterfield',
-                    listeners: {
+                    xtype     : 'filterfield',
+                    forceEnter: false,  // we can do this on {Ext.data.Store}
+                    listeners : {
                         applyfilter: 'onFilterComponentDetails'
                     }
                 }

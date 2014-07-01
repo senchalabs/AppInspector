@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.layouts.layoutruns.LayoutRuns
+ * @extends Ext.tree.Panel
  */
 Ext.define('AI.view.layouts.layoutruns.LayoutRuns', {
     extend: 'Ext.tree.Panel',
-    xtype: 'layoutruns',
+    xtype : 'layoutruns',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -15,88 +16,101 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRuns', {
     ],
 
     controller: 'layoutruns',
-    viewModel: {
+    viewModel : {
         type: 'layoutruns'
     },
-    bind: {
+    bind      : {
         store: '{LayoutRuns}'
     },
 
     title: 'Layout Runs',
 
     autoScroll: true,
-    animate: true,
+    animate   : true,
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [{
-        xtype: 'treecolumn',
-        dataIndex: 'text',
-        text: 'Component ID',
-        flex: 2
-    }, {
-        xtype: 'gridcolumn',
-        dataIndex: 'xtype',
-        text: 'XType',
-        flex: 1
-    }],
+    columns   : [
+        {
+            xtype    : 'treecolumn',
+            dataIndex: 'text',
+            text     : 'Component ID',
+            flex     : 2
+        },
+        {
+            xtype    : 'gridcolumn',
+            dataIndex: 'xtype',
+            text     : 'XType',
+            flex     : 1
+        }
+    ],
 
-    dockedItems: [{
-        xtype: 'toolbar',
-        dock: 'top',
-        items: [{
-            xtype: 'button',
-            text: 'Clear',
-            glyph: 'xf1b8@fontawesome',
-            reference: 'clear',
-            handler: 'onClearLayoutsClick'
-        }, {
-            xtype: 'button',
-            text: 'Record',
-            glyph: 'xf144@fontawesome',
-            reference: 'record',
-            bind: {
-                hidden: '{recording}',
-                disabled: '{recording}'
-            },
-            handler: 'onRecordLayoutsClick'
-        }, {
-            xtype: 'button',
-            text: 'Stop Recording',
-            glyph: 'xf04d@fontawesome',
-            cls: 'recording',
-            reference: 'stop',
-            bind: {
-                hidden: '{!recording}',
-                disabled: '{!recording}'
-            },
-            handler: 'onStopRecordingClick'
-        }, {
-            xtype: 'button',
-            text: 'Reveal',
-            tooltip: 'Reveal in »Components« tab',
-            reference: 'revealcmp',
-            glyph: 'xf0e8@fontawesome',
-            handler: 'onRevealClick',
-            bind: {
-                disabled: '{!selected}'
-            }
-        }, {
-            xtype: 'tbfill'
-        }, {
-            xtype: 'filterfield',
-            itemId: 'FilterComponentsTree'
-        }]
-    }],
+    dockedItems: [
+        {
+            xtype: 'toolbar',
+            dock : 'top',
+            items: [
+                {
+                    xtype    : 'button',
+                    text     : 'Clear',
+                    glyph    : 'xf1b8@fontawesome',
+                    reference: 'clear',
+                    handler  : 'onClearLayoutsClick'
+                },
+                {
+                    xtype    : 'button',
+                    text     : 'Record',
+                    glyph    : 'xf144@fontawesome',
+                    reference: 'record',
+                    bind     : {
+                        hidden  : '{recording}',
+                        disabled: '{recording}'
+                    },
+                    handler  : 'onRecordLayoutsClick'
+                },
+                {
+                    xtype    : 'button',
+                    text     : 'Stop Recording',
+                    glyph    : 'xf04d@fontawesome',
+                    cls      : 'recording',
+                    reference: 'stop',
+                    bind     : {
+                        hidden  : '{!recording}',
+                        disabled: '{!recording}'
+                    },
+                    handler  : 'onStopRecordingClick'
+                },
+                {
+                    xtype    : 'button',
+                    text     : 'Reveal',
+                    tooltip  : 'Reveal in »Components« tab',
+                    reference: 'revealcmp',
+                    glyph    : 'xf0e8@fontawesome',
+                    handler  : 'onRevealClick',
+                    bind     : {
+                        disabled: '{!selected}'
+                    }
+                },
+                {
+                    xtype: 'tbfill'
+                },
+                {
+                    xtype    : 'filterfield',
+                    emptyText: 'Filter Tree',
+                    itemId   : 'FilterComponentsTree'
+                }
+            ]
+        }
+    ],
 
     listeners: {
         beforeadd: {
-            fn: 'localize',
+            fn    : 'localize',
             single: true
         },
-        select: 'onSelectLayoutRunComponent',
-        scope: 'controller'
+        select   : 'onSelectLayoutRunComponent',
+        scope    : 'controller'
     }
 });

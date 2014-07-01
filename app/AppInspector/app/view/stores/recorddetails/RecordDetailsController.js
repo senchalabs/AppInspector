@@ -1,12 +1,14 @@
 /**
- *
+ * @class   AI.view.stores.recorddetails.RecordDetailsController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.stores.recorddetails.RecordDetailsController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.recorddetails',
+    alias : 'controller.recorddetails',
 
     /**
-     *
+     * @param   {AI.view.stores.recorddetails.RecordDetails}    grid
+     * @param   {Ext.data.Model}                                record
      */
     showDetails: function (grid, record) {
         var store = grid.getStore(),
@@ -23,9 +25,9 @@ Ext.define('AI.view.stores.recorddetails.RecordDetailsController', {
 
         Ext.Object.each(details, function (key, value) {
             store.add({
-                text: key,
+                text : key,
                 value: value,
-                type: (typeof value)
+                type : (typeof value)
             });
         });
     }

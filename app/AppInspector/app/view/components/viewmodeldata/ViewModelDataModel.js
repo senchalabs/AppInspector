@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.componets.details.viewmodeldata.ViewModelDataModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.viewmodeldata',
+    alias : 'viewmodel.viewmodeldata',
 
     requires: [
         'Ext.data.Field',
@@ -14,18 +14,18 @@ Ext.define('AI.view.componets.details.viewmodeldata.ViewModelDataModel', {
 
     stores: {
         ViewModels: {
-            type: 'tree',
-            storeId: 'ViewModels',
-            fields: ['text', 'value'],
+            type       : 'tree',
+            storeId    : 'ViewModels',
+            fields     : ['text', 'value'],
             rootVisible: true,
-            root: {
+            root       : {
                 expanded: true,
                 children: []
             },
-            proxy: {
+            proxy      : {
                 type: 'memory'
             },
-            sorters: 'text'
+            sorters    : 'text'
         }
     }
 });

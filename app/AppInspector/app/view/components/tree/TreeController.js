@@ -1,24 +1,25 @@
 /**
- *
+ * @class   AI.view.components.tree.TreeController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.components.tree.TreeController', {
-    extend : 'Ext.app.ViewController',
-    alias  : 'controller.componentstree',
+    extend: 'Ext.app.ViewController',
+    alias : 'controller.componentstree',
 
-    requires : [
-        'AI.model.components.Detail',
+    requires: [
+        'AI.model.Base',
         'AI.util.Component',
         'AI.util.InspectedWindow'
     ],
 
-    mixins : [
+    mixins: [
         'AI.mixin.Localize'
     ],
 
     /**
-     *
+     * @param {AI.view.components.tree.TreeController}  tree
      */
-    onActivate : function (tree, parent) {
+    onActivate: function (tree) {
         // load the "Components" upfront ...
         var initialLoad = tree.getInitialLoad();
 
@@ -34,9 +35,9 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     *
+     * @param {AI.view.components.tree.TreeController}  tree
      */
-    onComponentTreeActivate : function (tree) {
+    onComponentTreeActivate: function (tree) {
         tree.setLoading('Loading components...');
 
         AI.util.InspectedWindow.eval(
@@ -48,8 +49,12 @@ Ext.define('AI.view.components.tree.TreeController', {
 
     /**
      *
+     * @param {Object[]}                                components
+     * @param {Boolean}                                 isException
+     * @param {AI.view.components.tree.TreeController}  tree
+     * @param {Ext.data.TreeModel}                      [parent]    for recursion only
      */
-    buildComponentsTree : function (components, isException, tree, parent) {
+    buildComponentsTree: function (components, isException, tree, parent) {
         var store = this.getStore('Components'),
             root = parent || store.getRoot();
 
@@ -61,12 +66,12 @@ Ext.define('AI.view.components.tree.TreeController', {
             var children = cmp.children,
                 len = children.length,
                 node = root.appendChild({
-                    text     : cmp.text,
-                    cmpId    : cmp.cmpId,
-                    itemId   : cmp.itemId,
-                    xtype    : cmp.xtype,
-                    leaf     : (!len),
-                    children : (len ? children : null)
+                    text    : cmp.text,
+                    cmpId   : cmp.cmpId,
+                    itemId  : cmp.itemId,
+                    xtype   : cmp.xtype,
+                    leaf    : (!len),
+                    children: (len ? children : null)
                 });
 
             // recursion...
@@ -82,9 +87,9 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     *
+     * @param {Ext.button.Button}   [btn]
      */
-    onRefreshClick : function (btn) {
+    onRefreshClick: function (btn) {
         var me = this,
             tree = me.getView(),
             treeFilter = tree.down('filterfield'),
@@ -98,9 +103,10 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     *
+     * @param {AI.view.field.Filter}    field
+     * @param {String}                  value
      */
-    onApplyFilter : function (field, value) {
+    onApplyFilter: function (field, value) {
         var tree = field.up('componentstree'),
             store = tree.getStore();
 
@@ -123,9 +129,10 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     *
+     * @param   {Ext.selection.Model/Object}    selModel
+     * @param   {Ext.data.Model}                record
      */
-    onSelectComponent : function (selModel, record) {
+    onSelectComponent: function (selModel, record) {
         var me = this,
             cmpId = record.get('cmpId');
 
@@ -142,54 +149,63 @@ Ext.define('AI.view.components.tree.TreeController', {
         );
     },
 
-    setComponentsDetails : function (result, isException, record) {
+    /**
+     * @param {Object}          details
+     * @param {Object[]}        details.properties
+     * @param {Object[]}        details.methods
+     * @param {Object}          details.mvvm
+     * @param {Object[]}        details.mvvm.bindings
+     * @param {Object[]}        details.mvvm.viewModel
+     * @param {Object[]}        details.mvvm.viewController
+     * @param {Object}          details.inheritance
+     * @param {Boolean}         isException
+     */
+    setComponentsDetails: function (details, isException) {
         var me = this,
             tree = me.getView(),
             components = tree.up('components'),
             tabpanel = components.down('tabpanel'),
             properties, methods, bindings, vm, vc, inheritanceModel;
 
-        if (isException || !result) {
+        if (isException || !details) {
             tree.fireEvent('deselect', me, tree, components, tabpanel);
             return;
         }
 
-        properties = result.properties || {};
-        methods = result.methods || {};
+        properties = details.properties || {};
+        methods = details.methods || {};
 
-        if (result.mvvm) {
-            bindings = result.mvvm.bindings || {};
-            vm = result.mvvm.viewModel || {};
-//            vc = result.mvvm.controller || {};
+        if (details.mvvm) {
+            bindings = details.mvvm.bindings || {};
+            vm = details.mvvm.viewModel || {};
+//            vc = details.mvvm.controller || {};
         }
 
         // set grid data
-        me.setComponentsDetailsGrid(properties, tabpanel.down('properties'), record, components);
-        me.setComponentsDetailsGrid(methods, tabpanel.down('methods'), record, components);
-        me.setComponentsDetailsGrid(bindings, tabpanel.down('bindings'), record, components);
+        me.setComponentsDetailsGrid(properties, tabpanel.down('properties'));
+        me.setComponentsDetailsGrid(methods, tabpanel.down('methods'));
+        me.setComponentsDetailsGrid(bindings, tabpanel.down('bindings'));
 
         // set tree data
-        me.setComponentsDetailsTree(vm, tabpanel.down('viewmodeldata'), record, components);
-        // me.setComponentsDetailsTree(vc, tabpanel.down('viewcontrollerdata'), record, components);
+        me.setComponentsDetailsTree(vm, tabpanel.down('viewmodeldata'));
+        // me.setComponentsDetailsTree(vc, tabpanel.down('viewcontrollerdata'));
 
         // set the inheritance model
-        if (result.inheritance) {
+        if (details.inheritance) {
             inheritanceModel = tabpanel.down('inheritancemodel');
 
             inheritanceModel.enable();
-            inheritanceModel.renderDiagram(result.inheritance);
+            inheritanceModel.renderDiagram(details.inheritance);
         }
 
         components.getViewModel().set('selection', true);
     },
 
     /**
-     * @param {Object}          details
+     * @param {Object[]}        details
      * @param {Ext.Component}   view
-     * @param {Ext.data.Model}  record
-     * @param {Ext.Component}   parent
      */
-    setComponentsDetailsGrid : function (details, view, record, parent) {
+    setComponentsDetailsGrid: function (details, view) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
             store = view.getStore(),
@@ -199,7 +215,7 @@ Ext.define('AI.view.components.tree.TreeController', {
 
         if (Ext.Object.getSize(details) > 0) {
             Ext.each(details, function (property) {
-                data.push(Ext.create('AI.model.components.Detail', property));
+                data.push(Ext.create('AI.model.Base', property));
             });
         }
 
@@ -210,26 +226,24 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     * @param {Object}          data
+     * @param {Object[]}        details
      * @param {Ext.Component}   view
-     * @param {Ext.data.Model}  record
-     * @param {Ext.Component}   parent
      */
-    setComponentsDetailsTree : function (data, view, record, parent) {
+    setComponentsDetailsTree: function (details, view) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
-            isTreeNode = (data.children) ? true : false;
+            isTreeNode = (details.children) ? true : false;
 
         if (isTreeNode) {
             view.getStore().setRootNode({
-                expanded : true,
-                children : data
+                expanded: true,
+                children: details
             });
         }
         else {
             view.getStore().setRootNode({
-                expanded : true,
-                children : []
+                expanded: true,
+                children: []
             });
         }
 
@@ -248,9 +262,12 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     *
+     * @param {AI.view.components.tree.Tree}    tree
+     * @param {Ext.data.TreeModel}              record
+     * @param {Number}                          index
+     * @param {Object}                          eOpts
      */
-    onDeselectComponent : function (tree, record, index, eOpts) {
+    onDeselectComponent: function (tree, record, index, eOpts) {
         var me = this;
 
         // TODO - reset details panel

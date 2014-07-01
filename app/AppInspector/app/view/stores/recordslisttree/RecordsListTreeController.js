@@ -1,16 +1,18 @@
 /**
- *
+ * @class   AI.view.stores.recordslisttree.RecordsListTreeController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.stores.recordslisttree.RecordsListTreeController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.recordslisttree',
+    alias : 'controller.recordslisttree',
 
     requires: [
         'AI.util.TreeStore'
     ],
 
     /**
-     *
+     * @param   {AI.view.stores.recordslisttree.RecordsListTree}    tree
+     * @param   {Ext.data.TreeModel}                                record
      */
     loadTreeStoreRecords: function (tree, record) {
         var store = tree.getStore(),
@@ -29,9 +31,12 @@ Ext.define('AI.view.stores.recordslisttree.RecordsListTreeController', {
     },
 
     /**
+     * @param   {Ext.selection.Model}   selModel
+     * @param   {Ext.data.TreeModel}    record
      *
+     * @fires   showdetails
      */
-    onSelect: function (selModel, record, item, index, e, eOpts) {
+    onSelect: function (selModel, record) {
         var parent = this.getView().up('stores'),
             detail = parent.down('recorddetails');
 

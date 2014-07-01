@@ -12,9 +12,9 @@ Ext.define('AI.view.mvc.tree.TreeController', {
     ],
 
     /**
-     *
+     * @param   {AI.view.mvc.tree.Tree} tree
      */
-    onActivate: function (tree, parent) {
+    onActivate: function (tree) {
         // load the "Components" upfront ...
         var initialLoad = tree.getInitialLoad();
 
@@ -27,7 +27,7 @@ Ext.define('AI.view.mvc.tree.TreeController', {
     },
 
     /**
-     *
+     * @param   {AI.view.mvc.tree.Tree} tree
      */
     onTreeActivate: function (tree) {
         var treeStore = tree.getStore(),
@@ -57,7 +57,8 @@ Ext.define('AI.view.mvc.tree.TreeController', {
     },
 
     /**
-     *
+     * @param   {Ext.selection.Model}   rowmodel
+     * @param   {Ext.data.TreeModel}    record
      */
     onSelect: function (rowmodel, record) {
         var type = record.get('type'),

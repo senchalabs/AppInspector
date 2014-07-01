@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.recorddetails.RecordDetailsModel
+ * @extends Ext.app.ViewModel
  */
 Ext.define('AI.view.stores.recorddetails.RecordDetailsModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.recorddetails',
+    alias : 'viewmodel.recorddetails',
 
     requires: [
         'Ext.util.Sorter',
@@ -18,8 +19,8 @@ Ext.define('AI.view.stores.recorddetails.RecordDetailsModel', {
     stores: {
         RecordDetails: {
             storeId: 'RecordDetails',
-            fields: ['text', 'value', {
-                name: 'type',
+            fields : ['text', 'value', {
+                name   : 'type',
                 convert: function (v, rec) {
                     var value = rec.get('value');
 
@@ -40,7 +41,7 @@ Ext.define('AI.view.stores.recorddetails.RecordDetailsModel', {
                 }
             }],
             sorters: 'text',
-            proxy: {
+            proxy  : {
                 type: 'memory'
             }
         }

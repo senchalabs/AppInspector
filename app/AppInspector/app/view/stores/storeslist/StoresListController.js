@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.storeslist.StoresListController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.stores.storeslist.StoresListController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.storeslist',
+    alias : 'controller.storeslist',
 
     requires: [
         'AI.util.InspectedWindow',
@@ -11,7 +12,7 @@ Ext.define('AI.view.stores.storeslist.StoresListController', {
     ],
 
     /**
-     *
+     * @param   {AI.view.stores.storeslist.StoresList}  grid
      */
     onActivate: function (grid) {
         // load the "Components" upfront ...
@@ -26,7 +27,7 @@ Ext.define('AI.view.stores.storeslist.StoresListController', {
     },
 
     /**
-     *
+     * @param   {AI.view.stores.storeslist.StoresList}  grid
      */
     onStoreGridActivate: function (grid) {
         var gridstore = this.getStore('Stores');
@@ -49,7 +50,7 @@ Ext.define('AI.view.stores.storeslist.StoresListController', {
     },
 
     /**
-     *
+     * @param   {Ext.button.Button} btn
      */
     onRefreshClick: function (btn) {
         var view = btn.up('storeslist'),
@@ -60,9 +61,10 @@ Ext.define('AI.view.stores.storeslist.StoresListController', {
     },
 
     /**
-     *
+     * @param   {Ext.selection.Model}   selModel
+     * @param   {Ext.data.Model}        record
      */
-    onSelect: function (selModel, record, item, index, e, eOpts) {
+    onSelect: function (selModel, record) {
         var me = this,
             parent = me.getView().up('stores'),
             card = parent.down('#records'),

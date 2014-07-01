@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.components.tree.Tree', {
     extend: 'Ext.tree.Panel',
-    xtype: 'componentstree',
+    xtype : 'componentstree',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -17,10 +17,10 @@ Ext.define('AI.view.components.tree.Tree', {
     ],
 
     controller: 'componentstree',
-    viewModel: {
+    viewModel : {
         type: 'componentstree'
     },
-    bind: {
+    bind      : {
         store: '{Components}'
     },
 
@@ -29,47 +29,48 @@ Ext.define('AI.view.components.tree.Tree', {
     },
 
     autoScroll: true,
-    animate: true,
+    animate   : true,
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'treecolumn',
-            dataIndex: 'text',
-            text: 'Component ID',
-            flex: 2,
+            xtype       : 'treecolumn',
+            dataIndex   : 'text',
+            text        : 'Component ID',
+            flex        : 2,
             menuDisabled: true,
-            draggable: false
+            draggable   : false
         },
         {
-            xtype: 'gridcolumn',
-            dataIndex: 'xtype',
-            text: 'XType',
-            flex: 1,
+            xtype       : 'gridcolumn',
+            dataIndex   : 'xtype',
+            text        : 'XType',
+            flex        : 1,
             menuDisabled: true,
-            draggable: false
+            draggable   : false
         }
     ],
 
     dockedItems: [
         {
             xtype: 'toolbar',
-            dock: 'top',
+            dock : 'top',
             items: [
                 {
-                    xtype: 'button',
-                    text: 'Refresh',
-                    glyph: 'xf021@fontawesome',
+                    xtype  : 'button',
+                    text   : 'Refresh',
+                    glyph  : 'xf021@fontawesome',
                     handler: 'onRefreshClick'
                 },
                 {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'filterfield',
+                    xtype    : 'filterfield',
+                    emptyText: 'Filter Tree',
                     listeners: {
                         applyfilter: 'onApplyFilter'
                     }
@@ -80,8 +81,8 @@ Ext.define('AI.view.components.tree.Tree', {
 
     listeners: {
         activate: 'onActivate',
-        select: 'onSelectComponent',
+        select  : 'onSelectComponent',
 //        deselect: 'onDeselectComponent',
-        scope: 'controller'
+        scope   : 'controller'
     }
 });

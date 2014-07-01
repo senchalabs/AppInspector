@@ -1,41 +1,80 @@
+/**
+ * @class   AI.view.components.ComponentsModel
+ * @extends Ext.app.ViewModel
+ */
 Ext.define('AI.view.components.ComponentsModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.components',
+    alias : 'viewmodel.components',
 
     formulas: {
-        isPropertiesTip: function (get) {
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
+        isPropertiesTip         : function (get) {
             return get('currentTab') === 'properties';
         },
-        isMethodsTip: function (get) {
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
+        isMethodsTip            : function (get) {
             return get('currentTab') === 'methods';
         },
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
         isPropertiesOrMethodsTip: function (get) {
             return get('currentTab') === 'properties' || get('currentTab') === 'methods';
         },
-        isBindingsTip: function (get) {
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
+        isBindingsTip           : function (get) {
             return get('currentTab') === 'bindings';
         },
-        isViewModelTip: function (get) {
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
+        isViewModelTip          : function (get) {
             return get('currentTab') === 'viewmodeldata';
         },
-        isViewControllerTip: function (get) {
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
+        isViewControllerTip     : function (get) {
             return get('currentTab') === 'viewcontrollerdata';
         },
-        isInheritanceModelTip: function (get) {
+        /**
+         * @param   {Function}  get
+         *
+         * @returns {Boolean}
+         */
+        isInheritanceModelTip   : function (get) {
             return get('currentTab') === 'inheritancemodel';
         }
     },
 
     data: {
-        selection: false,
+        selection : false,
         currentTab: 'properties',
-        tabs: {
-            properties: false,
-            methods: false,
-            bindings: false,
-            viewmodeldata: false,
+        tabs      : {
+            properties        : false,
+            methods           : false,
+            bindings          : false,
+            viewmodeldata     : false,
             viewcontrollerdata: false,
-            inheritancemodel: false
+            inheritancemodel  : false
         }
     }
 });

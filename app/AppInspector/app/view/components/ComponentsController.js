@@ -4,18 +4,18 @@
  */
 Ext.define('AI.view.components.ComponentsController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.components',
+    alias : 'controller.components',
 
     mixins: [
         'AI.mixin.Localize'
     ],
 
     /**
-     * preload the componets tree by delegating it to {AI.view.components.tree.Tree}
-     *
      * @param {AI.view.components.Components}   panel
      *
      * @fire  activate
+     *
+     * preload the componets tree by delegating it to {AI.view.components.tree.Tree}
      */
     onActivate: function (panel) {
         var tree = panel.down('treepanel');
@@ -24,9 +24,9 @@ Ext.define('AI.view.components.ComponentsController', {
     },
 
     /**
-     * toggle components details tooltp visibility
-     *
      * @param {AI.view.components.*}    ct
+     *
+     * toggle components details tooltp visibility
      */
     toggleDetailsTips: function (ct) {
         var vm = ct.up('components').getViewModel();
@@ -47,10 +47,10 @@ Ext.define('AI.view.components.ComponentsController', {
         if (value !== '') {
             store.filter([
                 {
-                    anyMatch: true,
+                    anyMatch     : true,
                     caseSensitive: false,
-                    property: 'name',
-                    value: value
+                    property     : 'name',
+                    value        : value
                 }
             ]);
         }

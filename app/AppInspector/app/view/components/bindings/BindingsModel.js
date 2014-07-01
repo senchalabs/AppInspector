@@ -1,10 +1,10 @@
 /**
- * @class   AI.view.componets.details.BindingsModel
+ * @class   AI.view.componets.bindings.BindingsModel
  * @extends Ext.app.ViewModel
  */
-Ext.define('AI.view.componets.details.bindings.BindingsModel', {
+Ext.define('AI.view.componets.bindings.BindingsModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.bindings',
+    alias : 'viewmodel.bindings',
 
     requires: [
         'Ext.data.Field',
@@ -14,11 +14,11 @@ Ext.define('AI.view.componets.details.bindings.BindingsModel', {
     stores: {
         Bindings: {
             storeId: 'Bindings',
-            fields: ['key', 'value', 'boundTo', {
+            fields : ['key', 'value', 'boundTo', {
                 defaultValue: null,
-                name: 'isValid',
-                type: 'boolean',
-                useNull: true
+                name        : 'isValid',
+                type        : 'boolean',
+                useNull     : true
             }],
             sorters: 'key'
         }

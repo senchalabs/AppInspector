@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.events.Events
+ * @extends Ext.grid.Panel
  */
 Ext.define('AI.view.events.Events', {
     extend: 'Ext.grid.Panel',
-    xtype: 'events',
+    xtype : 'events',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -16,7 +17,7 @@ Ext.define('AI.view.events.Events', {
     ],
 
     controller: 'events',
-    viewModel: {
+    viewModel : {
         type: 'events'
     },
 
@@ -28,81 +29,82 @@ Ext.define('AI.view.events.Events', {
     glyph: 'xf0e7@fontawesome',
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'eventName',
-            text: 'Event Name'
+            text     : 'Event Name'
         },
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'source',
-            text: 'Event Source',
-            flex: 1
+            text     : 'Event Source',
+            flex     : 1
         },
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'xtype',
-            text: 'XType',
-            flex: 1
+            text     : 'XType',
+            flex     : 1
         },
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'cmpId',
-            text: 'Cmp ID',
-            flex: 1
+            text     : 'Cmp ID',
+            flex     : 1
         }
     ],
-    selModel: Ext.create('Ext.selection.RowModel', {
+    selModel  : Ext.create('Ext.selection.RowModel', {
         mode: 'MULTI'
     }),
 
     dockedItems: [
         {
             xtype: 'toolbar',
-            dock: 'top',
+            dock : 'top',
             items: [
                 {
-                    xtype: 'button',
-                    text: 'Clear',
-                    glyph: 'xf1b8@fontawesome',
+                    xtype    : 'button',
+                    text     : 'Clear',
+                    glyph    : 'xf1b8@fontawesome',
                     reference: 'clear',
-                    handler: 'onClearEventsClick'
+                    handler  : 'onClearEventsClick'
                 },
                 {
-                    xtype: 'button',
-                    text: 'Record',
-                    glyph: 'xf144@fontawesome',
+                    xtype    : 'button',
+                    text     : 'Record',
+                    glyph    : 'xf144@fontawesome',
                     reference: 'record',
-                    bind: {
-                        hidden: '{recording}',
+                    bind     : {
+                        hidden  : '{recording}',
                         disabled: '{recording}'
                     },
-                    handler: 'onRecordEventsClick'
+                    handler  : 'onRecordEventsClick'
                 },
                 {
-                    xtype: 'button',
-                    text: 'Stop Recording',
-                    glyph: 'xf04d@fontawesome',
-                    cls: 'recording',
+                    xtype    : 'button',
+                    text     : 'Stop Recording',
+                    glyph    : 'xf04d@fontawesome',
+                    cls      : 'recording',
                     reference: 'stop',
-                    bind: {
-                        hidden: '{!recording}',
+                    bind     : {
+                        hidden  : '{!recording}',
                         disabled: '{!recording}'
                     },
-                    handler: 'onStopRecordingClick'
+                    handler  : 'onStopRecordingClick'
                 },
                 {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'filterfield',
-                    itemId: 'FilterComponentsTree',
-                    listeners: {
-                        change: 'onFilterChange',
+                    xtype     : 'filterfield',
+                    forceEnter: false,  // we can do this on {Ext.data.Store}
+                    itemId    : 'FilterComponentsTree',
+                    listeners : {
+                        change     : 'onFilterChange',
                         applyfilter: 'onFilterEvents'
                     }
                 }
@@ -112,9 +114,9 @@ Ext.define('AI.view.events.Events', {
 
     listeners: {
         beforeadd: {
-            fn: 'localize',
+            fn    : 'localize',
             single: true
         },
-        scope: 'controller'
+        scope    : 'controller'
     }
 });
