@@ -9,17 +9,17 @@
  * @see https://github.com/rrharvey/grunt-file-blocks
  */
 module.exports = {
-    options    : {
-        removeAnchors : true,
-        cwd           : 'app/AppInspector',
-        template      : '<script src="${file}"></script>'
+    options: {
+        removeAnchors: true,
+        cwd          : '<%= ai %>/',
+        template     : '<script src="${file}"></script>'
     },
-    dist       : {
-        src    : 'tpl/index-dist.html.tpl',
-        dest   : 'dist/AppInspector/index.html',
-        blocks : {
-            'mocks' : {
-                src : 'mocks.js'
+    dist   : {
+        src   : 'tpl/index-dist.html.tpl',
+        dest  : '<%= dist %>/AppInspector/index.html',
+        blocks: {
+            'mocks': {
+                src: 'mocks.js'
             }
         }
     }

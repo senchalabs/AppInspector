@@ -7,24 +7,24 @@
  * @see https://www.npmjs.org/package/grunt-contrib-clean
  */
 module.exports = {
-    dist : {
-        files : [
+    dist: {
+        files: [
             {
-                dot : true,
-                src : [
+                dot: true,
+                src: [
                     '.tmp',
-                    '<%= yeoman.dist %>/*',
-                    '!<%= yeoman.dist %>/.git*',
+                    '<%= dist %>/*',
+                    '!<%= dist %>/.git*'
                     // 'package/*'
                 ]
             }
         ]
     },
-    docs : {
-        files : [
+    docs: {
+        files: [
             {
-                dot : true,
-                src : [
+                dot: true,
+                src: [
                     'docs/*',
                     '!docs/.gitkeep'
                 ]

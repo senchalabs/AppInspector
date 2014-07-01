@@ -12,6 +12,7 @@ testdata/
 .DS_Store
 Thumbs.db
 lint/error_log.txt
+npm-debug.log
 
 
 ## Ext JS

@@ -11,19 +11,19 @@ config.manifest = require('../app/manifest.json');
 config.package = require('../package.json');
 
 module.exports = {
-    dist : {
-        options : {
-            version   : config.manifest.version,
-            changelog : 'CHANGELOG.md',
-            template  : 'labeled'
+    dist: {
+        options: {
+            version  : config.manifest.version,
+            changelog: 'CHANGELOG.md',
+            template : 'labeled'
         }
     },
-    dev  : {
-        options : {
-            version   : config.manifest.version,
-            changelog : 'CHANGELOG.md',
-            template  : 'labeled',
-            write     : false
+    dev : {
+        options: {
+            version  : config.manifest.version,
+            changelog: 'CHANGELOG.md',
+            template : 'labeled',
+            write    : false
         }
     }
 };

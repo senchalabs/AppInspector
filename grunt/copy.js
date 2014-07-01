@@ -3,42 +3,42 @@
 var _ = require('lodash'),
     common = [
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>',
-            dest   : '<%= yeoman.dist %>',
-            src    : [
+            expand: true,
+            cwd   : '<%= app %>',
+            dest  : '<%= dist %>',
+            src   : [
                 '*.{html,js}', '_locales/**/*'
             ]
         },
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/..',
-            dest   : '<%= yeoman.dist %>',
-            src    : 'LICENSE'
+            expand: true,
+            cwd   : '<%= app %>/..',
+            dest  : '<%= dist %>',
+            src   : 'LICENSE'
         },
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/background',
-            dest   : '<%= yeoman.dist %>/background',
-            src    : [
+            expand: true,
+            cwd   : '<%= app %>/background',
+            dest  : '<%= dist %>/background',
+            src   : [
                 '*.{html,js}'
             ]
         },
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/devtools',
-            dest   : '<%= yeoman.dist %>/devtools',
-            src    : [
+            expand: true,
+            cwd   : '<%= app %>/devtools',
+            dest  : '<%= dist %>/devtools',
+            src   : [
                 '*.{html,js}'
             ]
         }
     ],
     dist = [
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/AppInspector/build/production/AI',
-            dest   : '<%= yeoman.dist %>/AppInspector',
-            src    : [
+            expand: true,
+            cwd   : '<%= ai %>/build/production/AI',
+            dest  : '<%= dist %>/AppInspector',
+            src   : [
                 '*.{html,js}',
                 'resources/*.css'
             ]
@@ -46,16 +46,16 @@ var _ = require('lodash'),
     ],
     dev = [
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/AppInspector',
-            dest   : '<%= yeoman.dist %>/AppInspector',
-            src    : 'mocks.js'
+            expand: true,
+            cwd   : '<%= ai %>',
+            dest  : '<%= dist %>/AppInspector',
+            src   : 'mocks.js'
         },
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/AppInspector/build/testing/AI',
-            dest   : '<%= yeoman.dist %>/AppInspector',
-            src    : [
+            expand: true,
+            cwd   : '<%= ai %>/build/testing/AI',
+            dest  : '<%= dist %>/AppInspector',
+            src   : [
                 '*.{html,js}',
                 'resources/*.css'
             ]
@@ -63,16 +63,16 @@ var _ = require('lodash'),
         // we copy images on dev build
         // on build|production this is done through 'imagemin'
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/images',
-            dest   : '<%= yeoman.dist %>/images',
-            src    : '{,*/}*.{png,jpg,jpeg}'
+            expand: true,
+            cwd   : '<%= app %>/images',
+            dest  : '<%= dist %>/images',
+            src   : '{,*/}*.{png,jpg,jpeg}'
         },
         {
-            expand : true,
-            cwd    : '<%= yeoman.app %>/AppInspector/build/testing/AI/resources/images',
-            dest   : '<%= yeoman.dist %>/AppInspector/resources/images',
-            src    : '{,*/}*.{png,jpg,jpeg}'
+            expand: true,
+            cwd   : '<%= ai %>/build/testing/AI/resources/images',
+            dest  : '<%= dist %>/AppInspector/resources/images',
+            src   : '{,*/}*.{png,jpg,jpeg}'
         }
     ];
 
@@ -84,10 +84,10 @@ var _ = require('lodash'),
  * @see https://www.npmjs.org/package/grunt-contrib-copy
  */
 module.exports = {
-    dist : {
-        files : _.union(common, dist)
+    dist: {
+        files: _.union(common, dist)
     },
-    dev  : {
-        files : _.union(common, dev)
+    dev : {
+        files: _.union(common, dev)
     }
 };

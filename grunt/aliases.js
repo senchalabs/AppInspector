@@ -3,11 +3,11 @@
  * @type {Object}
  */
 module.exports = {
-    docs    : [
+    docs   : [
         'clean:docs',
         'jsduck'
     ],
-    dev     : [
+    dev    : [
         'jshint',
         'clean:dist',
         'exec:dev',
@@ -16,10 +16,10 @@ module.exports = {
         'copy:dev',
         'fileblocks:dist'
     ],
-    test    : [
+    test   : [
         'connect'
     ],
-    build   : [
+    build  : [
         'jshint',
         'clean:dist',
         'imagemin:resources',
@@ -31,7 +31,7 @@ module.exports = {
         'compress',
         'docs'
     ],
-    default : [
+    default: [
         'build'
     ]
 };
