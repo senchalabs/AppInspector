@@ -23,11 +23,7 @@ module.exports = function (grunt) {
 
     // return task config
     return {
-        dev       : {
-            cwd    : '<%= ai %>/',
-            command: 'sencha -q -pl -n app build -e testing -c'
-        },
-        production: {
+        dist: {
             cwd    : '<%= ai %>/',
             command: 'sencha -q -pl -n app build -e production'
         }

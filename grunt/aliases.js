@@ -7,15 +7,6 @@ module.exports = {
         'clean:docs',
         'jsduck'
     ],
-    dev    : [
-        'jshint',
-        'clean:dist',
-        'exec:dev',
-        'chromeManifest:dev',
-        'changelog:dev',
-        'copy:dev',
-        'fileblocks:dist'
-    ],
     test   : [
         'connect'
     ],
@@ -23,7 +14,7 @@ module.exports = {
         'jshint',
         'clean:dist',
         'imagemin:resources',
-        'exec:production',
+        'exec:dist',
         'imagemin:sencha',
         'chromeManifest:dist',
         'changelog:dist',

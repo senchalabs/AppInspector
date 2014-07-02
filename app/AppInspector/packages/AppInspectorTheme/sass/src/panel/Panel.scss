@@ -1,10 +1,24 @@
 @include extjs-panel-ui($ui : 'about', $ui-body-background-color : null);
 
 .x-panel-about {
-    .fa.twitter {
-        &:before {
-            font-size : 1.2em;
-            content   : "\f099";
+    .powered {
+        font-weight : normal;
+        font-size   : 0.8em;
+    }
+
+    .fa {
+        font-family            : 'fontawesome';
+        display                : inline-block;
+        font-style             : normal;
+        font-weight            : normal;
+        line-height            : 1;
+        -webkit-font-smoothing : antialiased;
+
+        &.twitter {
+            &:before {
+                font-size : 1.2em;
+                content   : "\f099";
+            }
         }
     }
 }
