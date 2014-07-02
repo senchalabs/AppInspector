@@ -17,10 +17,10 @@ module.exports = {
         'exec:dist',
         'imagemin:sencha',
         'chromeManifest:dist',
-        'changelog:dist',
         'copy:dist',
         'compress',
-        'docs'
+        'docs',
+        'changelog:dist'
     ],
     default: [
         'build'
