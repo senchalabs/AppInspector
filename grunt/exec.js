@@ -23,13 +23,9 @@ module.exports = function (grunt) {
 
     // return task config
     return {
-        dev        : {
-            cwd     : '<%= yeoman.app %>/AppInspector/',
-            command : 'sencha -q -pl -n app build -e testing -c'
-        },
-        production : {
-            cwd     : '<%= yeoman.app %>/AppInspector/',
-            command : 'sencha -q -pl -n app build -e production'
+        dist: {
+            cwd    : '<%= ai %>/',
+            command: 'sencha -q -pl -n app build -e production'
         }
     };
 };

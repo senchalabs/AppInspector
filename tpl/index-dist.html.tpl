@@ -1,13 +1,17 @@
 <!DOCTYPE HTML>
-
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>AppInspector</title>
-    <link rel="stylesheet" href="resources/AI-all.css"/>
+
+    <title>AppInspector :: DEV</title>
+
+    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
+    <script id="microloader" type="text/javascript" src="bootstrap.js"></script>
+
     <!-- fileblock:js mocks --><!-- endfileblock -->
-    <script type="text/javascript" src="app.js"></script>
 </head>
-<body>
-</body>
+
+<body></body>
+
 </html>

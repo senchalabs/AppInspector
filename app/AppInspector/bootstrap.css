@@ -5,5 +5,5 @@
  * to the most recently built CSS file for the application to allow index.html
  * in the development directory to load properly (i.e., "dev mode").
  */
-@import 'build/development/AI/resources/AI-all.css';
+@import 'build/testing/AI/resources/AI-all.css';
 

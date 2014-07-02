@@ -7,18 +7,20 @@
  * @see https://www.npmjs.org/package/grunt-jsduck
  */
 module.exports = {
-    main : {
+    main: {
         // source paths with your code
-        src     : [
-            'app/AppInspector/app'
+        src    : [
+            //'<%= ai %>/ext/src',
+            '<%= ai %>/app'
         ],
 
         // docs output dir
-        dest    : 'docs',
+        dest   : 'docs',
 
         // extra options
-        options : {
-            'title' : 'App Inspector for Sencha'
+        options: {
+            'title'   : 'App Inspector for Sencha',
+            'warnings': ['-all']
         }
     }
 };

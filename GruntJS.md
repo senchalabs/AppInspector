@@ -105,8 +105,12 @@ Read more on:
 
 ![JShint](http://www.jshint.com/res/jshint.png)
 
-Lint `Gruntfile.js`, `app/AppInspector/app.js` and all `*.js files in `app/AppInspector/app/`.
-It uses the `.jshintrc` file containing the linting rules.
+Linting targets:
+ * `jshint:grunt` : `Gruntfile.js` and `grunt/**/*.js`
+ * `jshint:app` : `app/AppInspector/app.js` and `app/AppInspector/app/**/*.js`
+ * `jshint:package` : `app/AppInspector/packages/**/*.js`
+
+It uses the `.jshintrc` and `.jshintignore` file containing the linting rules.
 
 Read more on:
 * https://www.npmjs.org/package/grunt-contrib-jshint
@@ -120,4 +124,3 @@ The port number will be used in 8333, but if you have already used it, please ch
 
 Read more on:
 * https://www.npmjs.org/package/grunt-contrib-connect
-

@@ -6,11 +6,10 @@ module.exports = function (grunt) {
 
     // load grunt config
     require('load-grunt-config')(grunt, {
-        config : {
-            yeoman : {
-                app  : 'app',
-                dist : 'dist'
-            }
+        config: {
+            app: 'app',
+            dist: 'dist',
+            ai: 'app/AppInspector'
         }
     });
 };
