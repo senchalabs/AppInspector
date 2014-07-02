@@ -7,7 +7,10 @@ Ext.define('AI.view.about.About', {
 
     requires: [
         'Ext.layout.container.VBox',
-        'Ext.grid.property.Grid'
+        'Ext.grid.property.Grid',
+        'Ext.panel.Header',
+        'Ext.toolbar.Fill',
+        'Ext.toolbar.TextItem'
     ],
 
     mixins: [
@@ -68,6 +71,16 @@ Ext.define('AI.view.about.About', {
             collapsible: true,
             hideCollapseTool: true,
             title: 'About App Inspector for Sencha',
+            header: {
+                items: [
+                    { xtype: 'tbfill' },
+                    {
+                        xtype: 'tbtext',
+                        cls: 'powered',
+                        text: 'powerd by Ext JS ' + Ext.versions.extjs.version
+                    }
+                ]
+            },
             titleCollapse: true
         }
     ],
