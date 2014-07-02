@@ -78,7 +78,7 @@ Ext.define('AI.view.about.About', {
                     {
                         xtype: 'tbtext',
                         cls  : 'powered',
-                        text : 'powerd by Ext JS ' + Ext.versions.extjs.version
+                        text : 'powerd by Ext JS ' + Ext.getVersion().version
                     }
                 ]
             },
