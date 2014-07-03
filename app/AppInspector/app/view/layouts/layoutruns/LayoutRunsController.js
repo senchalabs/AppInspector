@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.layouts.layoutruns.LayoutRunsController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.layoutruns',
+    alias : 'controller.layoutruns',
 
     requires: [
         'AI.util.extjs.Profile',
@@ -15,7 +16,10 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
         'AI.mixin.Localize'
     ],
 
-    onClearLayoutsClick: function(btn) {
+    /**
+     * clear click event handler
+     */
+    onClearLayoutsClick: function () {
         var vm = this.getViewModel();
 
         vm.set('layoutPool', []);
@@ -23,12 +27,15 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
         vm.getStore('layoutruns').getRootNode().removeAll();
     },
 
-    onRecordLayoutsClick: function(btn) {
+    /**
+     * start recording click event handler
+     */
+    onRecordLayoutsClick: function () {
         var vm = this.getViewModel(),
             layoutPool = vm.get('layoutPool'),
             tree = this.getView(),
             util = AI.util.extjs.Profile.recordLayouts,
-            getLayouts = function() {
+            getLayouts = function () {
                 if (!vm.get('recording')) {
                     return;
                 }
@@ -36,7 +43,7 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
                 AI.util.InspectedWindow.eval(
                     util,
                     null,
-                    function(components, isException) {
+                    function (components, isException) {
                         if (components.length > 0) {
                             layoutPool = Ext.Array.merge(layoutPool, components);
 
@@ -56,7 +63,12 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
         requestAnimationFrame(getLayouts);
     },
 
-    onStopRecordingClick: function(btn) {
+    /**
+     * @param   {Ext.button.Button} btn
+     *
+     * stop recording click event handler
+     */
+    onStopRecordingClick: function (btn) {
         var vm = this.getViewModel(),
             util = AI.util.extjs.Profile.stopLayouts;
 
@@ -73,9 +85,10 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
     },
 
     /**
-     *
+     * @param   {AI.view.layouts.layoutruns.LayoutRuns} tree
+     * @param   {Ext.data.TreeModel}                    record
      */
-    onSelectLayoutRunComponent: function(tree, record, item, index, e, eOpts) {
+    onSelectLayoutRunComponent: function (tree, record) {
         var me = this,
             vm = me.getViewModel();
 
@@ -90,8 +103,10 @@ Ext.define('AI.view.layouts.layoutruns.LayoutRunsController', {
 
     /**
      * delegate to main view
+     *
+     * @fires   revealcmp
      */
-    onRevealClick: function(btn) {
+    onRevealClick: function () {
         var main = this.getView().up('main'),
             record = this.getViewModel().get('selected');
 

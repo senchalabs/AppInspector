@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.components.viewmodeldata.ViewModelData
+ * @extends Ext.tree.Panel
  */
 Ext.define('AI.view.components.viewmodeldata.ViewModelData', {
     extend: 'Ext.tree.Panel',
-    xtype: 'viewmodeldata',
+    xtype : 'viewmodeldata',
 
     requires: [
         'Ext.tree.View',
@@ -15,15 +16,14 @@ Ext.define('AI.view.components.viewmodeldata.ViewModelData', {
         'AI.mixin.Localize'
     ],
 
-    title: 'MVMM ViewModel',
-    cls: 'treegrid highlight',
+    title : 'MVMM ViewModel',
+    cls   : 'treegrid highlight',
     itemId: 'viewmodeldata',
 
-    // controller: 'viewmodeldata',
     viewModel: {
         type: 'viewmodeldata'
     },
-    bind: {
+    bind     : {
         store: '{ViewModels}'
     },
 
@@ -32,24 +32,24 @@ Ext.define('AI.view.components.viewmodeldata.ViewModelData', {
     },
 
     autoScroll: true,
-    animate: true,
+    animate   : true,
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'treecolumn',
+            xtype    : 'treecolumn',
             dataIndex: 'text',
-            text: 'Key',
-            flex: 3
+            text     : 'Key',
+            flex     : 3
         },
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'value',
-            text: 'value',
-            flex: 2
+            text     : 'value',
+            flex     : 2
         }
     ]
 });

@@ -1,5 +1,6 @@
 /**
- *
+ * @class   AI.view.mvc.MVC
+ * @extends Ext.panel.Panel
  */
 Ext.define('AI.view.mvc.MVC', {
     extend: 'Ext.panel.Panel',
@@ -12,9 +13,6 @@ Ext.define('AI.view.mvc.MVC', {
     ],
 
     controller: 'mvc',
-    // viewModel: {
-    //     type: 'mvc-mvc'
-    // },
 
     title: 'MVC',
     glyph: 'xf1e0@fontawesome',
@@ -43,14 +41,14 @@ Ext.define('AI.view.mvc.MVC', {
     ],
 
     listeners: {
-        activate: {
-            fn: 'onActivate',
+        activate : {
+            fn    : 'onActivate',
             single: true
         },
         beforeadd: {
-            fn: 'localize',
+            fn    : 'localize',
             single: true
         },
-        scope: 'controller'
+        scope    : 'controller'
     }
 });

@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.layouts.Layouts
+ * @extends Ext.tab.Panel
  */
 Ext.define('AI.view.layouts.Layouts', {
     extend: 'Ext.tab.Panel',
-    xtype: 'layouts',
+    xtype : 'layouts',
 
     requires: [
         'AI.view.layouts.boxlayouts.BoxLayouts',
@@ -12,32 +13,33 @@ Ext.define('AI.view.layouts.Layouts', {
     ],
 
     controller: 'layouts',
-    // viewModel: {
-    //     type: 'layouts'
-    // },
 
-    title: 'Layouts',
-    glyph: 'xf108@fontawesome',
-    activeTab: 0,
+    title      : 'Layouts',
+    glyph      : 'xf108@fontawesome',
+    activeTab  : 0,
     tabPosition: 'right',
 
-    items: [{
-        xtype: 'boxlayouts',
-        itemId: 'boxlayouts'
-    }, {
-        xtype: 'overnesting',
-        itemId: 'overnesting'
-    }, {
-        xtype: 'layoutruns',
-        itemId: 'layoutruns'
-    }],
+    items: [
+        {
+            xtype : 'boxlayouts',
+            itemId: 'boxlayouts'
+        },
+        {
+            xtype : 'overnesting',
+            itemId: 'overnesting'
+        },
+        {
+            xtype : 'layoutruns',
+            itemId: 'layoutruns'
+        }
+    ],
 
     listeners: {
-        beforeadd: {
-            fn: 'localize',
+        beforeadd   : {
+            fn    : 'localize',
             single: true
         },
         layoutselect: 'onLayoutSelect',
-        scope: 'controller'
+        scope       : 'controller'
     }
 });

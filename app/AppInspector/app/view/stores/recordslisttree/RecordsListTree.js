@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.recordslisttree.RecordsListTree
+ * @extends Ext.tree.Panel
  */
 Ext.define('AI.view.stores.recordslisttree.RecordsListTree', {
     extend: 'Ext.tree.Panel',
-    xtype: 'recordslisttree',
+    xtype : 'recordslisttree',
 
     requires: [
         'Ext.tree.View',
@@ -12,42 +13,36 @@ Ext.define('AI.view.stores.recordslisttree.RecordsListTree', {
     ],
 
     controller: 'recordslisttree',
-    // viewModel: {
-    //     type: 'recordslisttree'
-    // },
-    // bind: {
-    //     store: '{TreeRecords}'
-    // },
 
-    title: 'Store Records (Tree)',
+    title      : 'Store Records (Tree)',
     hideHeaders: true,
-    autoScroll: true,
-    animate: true,
+    autoScroll : true,
+    animate    : true,
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'treecolumn',
-            dataIndex: 'text',
+            xtype        : 'treecolumn',
+            dataIndex    : 'text',
             emptyCellText: 'node text missing...',
-            text: 'Text',
-            flex: 3
+            text         : 'Text',
+            flex         : 3
         },
         {
-            xtype: 'gridcolumn',
-            hidden: true,
+            xtype    : 'gridcolumn',
+            hidden   : true,
             dataIndex: 'id',
-            text: 'Record ID',
-            flex: 1
+            text     : 'Record ID',
+            flex     : 1
         }
     ],
 
     listeners: {
         loadtreerecords: 'loadTreeStoreRecords',
-        select: 'onSelect',
-        scope: 'controller'
+        select         : 'onSelect',
+        scope          : 'controller'
     }
 });

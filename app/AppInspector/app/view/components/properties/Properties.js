@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.components.properties.Properties', {
     extend: 'Ext.grid.Panel',
-    xtype: 'properties',
+    xtype : 'properties',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -20,22 +20,30 @@ Ext.define('AI.view.components.properties.Properties', {
         'AI.mixin.Localize'
     ],
 
-    title: 'Properties',
-    cls: 'highlight',
+    plugins: [
+        Ext.create('Ext.grid.plugin.CellEditing', {})
+    ],
+
+    title : 'Properties',
+    cls   : 'highlight',
     itemId: 'properties',
 
-    // controller: 'properties',
     viewModel: {
         type: 'properties'
     },
-    bind: {
+    bind     : {
         store: '{Properties}'
     },
 
     viewConfig: {
-        markDirty: false,
-        stripeRows: true,
-        getRowClass: function (record, rowIndex, rowParams, store) {
+        markDirty  : false,
+        stripeRows : true,
+        /**
+         * @param   {Ext.data.Model}    record
+         *
+         * @returns {String}
+         */
+        getRowClass: function (record) {
             var cls = [];
 
             if (record.get('isChanged')) {
@@ -49,63 +57,60 @@ Ext.define('AI.view.components.properties.Properties', {
             return cls.join(' ');
         }
     },
-    columns: {
+    columns   : {
         defaults: {
-            sortable: true,
+            sortable    : true,
             menuDisabled: true,
-            draggable: false
+            draggable   : false
         },
-        items: [
+        items   : [
             {
-                xtype: 'booleancolumn',
-                width: 5,
-                resizable: false,
+                xtype       : 'booleancolumn',
+                width       : 5,
+                resizable   : false,
                 defaultWidth: 5,
-                sortable: false,
-                dataIndex: 'isOwn',
-                groupable: false,
-                hideable: false,
-                lockable: false,
-                tdCls: 'indicator',
-                falseText: ' ',
-                trueText: ' '
+                sortable    : false,
+                dataIndex   : 'isOwn',
+                groupable   : false,
+                hideable    : false,
+                lockable    : false,
+                tdCls       : 'indicator',
+                falseText   : ' ',
+                trueText    : ' '
             },
             {
-                xtype: 'gridcolumn',
+                xtype    : 'gridcolumn',
                 dataIndex: 'name',
-                text: 'Name',
-                flex: 3
+                text     : 'Name',
+                flex     : 3
             },
             {
-                xtype: 'gridcolumn',
+                xtype    : 'gridcolumn',
                 dataIndex: 'value',
-                text: 'Value',
-                flex: 2,
-                editor: {
-                    xtype: 'textfield',
+                text     : 'Value',
+                flex     : 2,
+                editor   : {
+                    xtype        : 'textfield',
                     selectOnFocus: true
                 }
             }
         ]
     },
 
-    plugins: [
-        Ext.create('Ext.grid.plugin.CellEditing', {})
-    ],
-
     dockedItems: [
         {
-            xtype: 'toolbar',
-            dock: 'top',
+            xtype : 'toolbar',
+            dock  : 'top',
             border: 1,
-            cls: 'components-toolbar top',
-            items: [
+            cls   : 'components-toolbar top',
+            items : [
                 {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'filterfield',
-                    listeners: {
+                    xtype     : 'filterfield',
+                    forceEnter: false,  // we can do this on {Ext.data.Store}
+                    listeners : {
                         applyfilter: 'onFilterComponentDetails'
                     }
                 }

@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.mvc.records.RecordsModel
+ * @extends Ext.app.ViewModel
  */
 Ext.define('AI.view.mvc.records.RecordsModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.mvcrecords',
+    alias : 'viewmodel.mvcrecords',
 
     requires: [
         'Ext.data.reader.Json',
@@ -13,12 +14,12 @@ Ext.define('AI.view.mvc.records.RecordsModel', {
 
     stores: {
         Records: {
-            storeId: 'Records',
-            fields: ['id', 'modelData', 'rawData'],
-            sorters: 'id',
+            storeId : 'Records',
+            fields  : ['id', 'modelData', 'rawData'],
+            sorters : 'id',
             pageSize: 50,
-            proxy: {
-                type: 'inspectedwindow',
+            proxy   : {
+                type  : 'inspectedwindow',
                 evalFn: 'AI.util.Store.getRecords',
                 reader: {
                     type: 'json'

@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.recorddetails.RecordDetails
+ * @extends Ext.grid.Panel
  */
 Ext.define('AI.view.stores.recorddetails.RecordDetails', {
     extend: 'Ext.grid.Panel',
-    xtype: 'recorddetails',
+    xtype : 'recorddetails',
 
     requires: [
         'Ext.grid.View',
@@ -11,33 +12,40 @@ Ext.define('AI.view.stores.recorddetails.RecordDetails', {
     ],
 
     controller: 'recorddetails',
-    viewModel: {
+    viewModel : {
         type: 'recorddetails'
     },
-    bind: {
+    bind      : {
         store: '{RecordDetails}'
     },
 
-    title: 'Record Details',
-    cls: 'highlight',
+    title      : 'Record Details',
+    cls        : 'highlight',
     columnLines: false,
     hideHeaders: true,
-    rowLines: true,
+    rowLines   : true,
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'text',
-            text: 'Name',
-            flex: 2
+            text     : 'Name',
+            flex     : 2
         },
         {
-            xtype: 'gridcolumn',
-            renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
+            xtype    : 'gridcolumn',
+            /**
+             * @param {Object}          value
+             * @param {Object}          metaData
+             * @param {Ext.data.Model}  record
+             *
+             * @returns {String}
+             */
+            renderer : function (value, metaData, record) {
                 var v = value;
 
                 if (value === null) {
@@ -51,13 +59,13 @@ Ext.define('AI.view.stores.recorddetails.RecordDetails', {
                 return '<span class="highlight ' + record.get('type') + ' ' + v + '">' + v + '</span>';
             },
             dataIndex: 'value',
-            text: 'Value',
-            flex: 3
+            text     : 'Value',
+            flex     : 3
         }
     ],
 
     listeners: {
         showdetails: 'showDetails',
-        scope: 'controller'
+        scope      : 'controller'
     }
 });

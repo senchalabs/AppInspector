@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.components.methods.Methods', {
     extend: 'Ext.grid.Panel',
-    xtype: 'methods',
+    xtype : 'methods',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -19,22 +19,26 @@ Ext.define('AI.view.components.methods.Methods', {
         'AI.mixin.Localize'
     ],
 
-    title: 'Methods',
-    cls: 'highlight',
+    title : 'Methods',
+    cls   : 'highlight',
     itemId: 'methods',
 
-    // controller: 'methods',
     viewModel: {
         type: 'methods'
     },
-    bind: {
+    bind     : {
         store: '{Methods}'
     },
 
     viewConfig: {
-        markDirty: false,
-        stripeRows: true,
-        getRowClass: function (record, rowIndex, rowParams, store) {
+        markDirty  : false,
+        stripeRows : true,
+        /**
+         * @param   {Ext.data.Model}    record
+         *
+         * @returns {String}
+         */
+        getRowClass: function (record) {
             var cls = [];
 
             if (record.get('isOverride')) {
@@ -48,56 +52,57 @@ Ext.define('AI.view.components.methods.Methods', {
             return cls.join(' ');
         }
     },
-    columns: {
+    columns   : {
         defaults: {
-            sortable: true,
+            sortable    : true,
             menuDisabled: true,
-            draggable: false
+            draggable   : false
         },
-        items: [
+        items   : [
             {
-                xtype: 'booleancolumn',
-                width: 5,
-                resizable: false,
+                xtype       : 'booleancolumn',
+                width       : 5,
+                resizable   : false,
                 defaultWidth: 5,
-                sortable: false,
-                dataIndex: 'isOwn',
-                groupable: false,
-                hideable: false,
-                lockable: false,
-                tdCls: 'indicator',
-                falseText: ' ',
-                trueText: ' '
+                sortable    : false,
+                dataIndex   : 'isOwn',
+                groupable   : false,
+                hideable    : false,
+                lockable    : false,
+                tdCls       : 'indicator',
+                falseText   : ' ',
+                trueText    : ' '
             },
             {
-                xtype: 'gridcolumn',
+                xtype    : 'gridcolumn',
                 dataIndex: 'name',
-                text: 'Name',
-                flex: 1
+                text     : 'Name',
+                flex     : 1
             },
             {
-                xtype: 'gridcolumn',
+                xtype    : 'gridcolumn',
                 dataIndex: 'value',
-                text: 'Function',
-                flex: 2,
-                hidden: true
+                text     : 'Function',
+                flex     : 2,
+                hidden   : true
             }
         ]
     },
 
     dockedItems: [
         {
-            xtype: 'toolbar',
-            dock: 'top',
+            xtype : 'toolbar',
+            dock  : 'top',
             border: 1,
-            cls: 'components-toolbar top',
-            items: [
+            cls   : 'components-toolbar top',
+            items : [
                 {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'filterfield',
-                    listeners: {
+                    xtype     : 'filterfield',
+                    forceEnter: false,  // we can do this on {Ext.data.Store}
+                    listeners : {
                         applyfilter: 'onFilterComponentDetails'
                     }
                 }

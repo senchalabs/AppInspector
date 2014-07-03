@@ -1,14 +1,15 @@
 /**
- *
+ * @class   AI.view.layouts.overnesting.OvernestingModel
+ * @extends Ext.app.ViewModel
  */
 Ext.define('AI.view.layouts.overnesting.OvernestingModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.overnesting',
+    alias : 'viewmodel.overnesting',
 
     requires: [
         'Ext.util.Sorter',
         'Ext.data.proxy.Memory',
-        'AI.model.layouts.Layout'
+        'AI.model.Base'
     ],
 
     data: {
@@ -18,9 +19,9 @@ Ext.define('AI.view.layouts.overnesting.OvernestingModel', {
     stores: {
         Overnestings: {
             storeId: 'Overnestings',
-            model: 'AI.model.layouts.Layout',
+            model  : 'AI.model.Base',
             sorters: 'cmpId',
-            proxy: {
+            proxy  : {
                 type: 'memory'
             }
         }

@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.storeslist.StoresListModel
+ * @extends Ext.app.ViewModel
  */
 Ext.define('AI.view.stores.storeslist.StoresListModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.storeslist',
+    alias : 'viewmodel.storeslist',
 
     requires: [
         'Ext.util.Sorter',
@@ -14,17 +15,17 @@ Ext.define('AI.view.stores.storeslist.StoresListModel', {
     stores: {
         Stores: {
             storeId: 'Stores',
-            fields: ['id', 'count', 'model', {
-                name: 'isTree',
-                type: 'boolean',
+            fields : ['id', 'count', 'model', {
+                name        : 'isTree',
+                type        : 'boolean',
                 defaultValue: false
             }, {
-                name: 'leaf',
-                type: 'boolean',
+                name        : 'leaf',
+                type        : 'boolean',
                 defaultValue: false
             }],
             sorters: 'id',
-            proxy: {
+            proxy  : {
                 type: 'memory'
             }
         }

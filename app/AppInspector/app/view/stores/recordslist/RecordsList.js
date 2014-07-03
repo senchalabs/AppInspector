@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.recordslist.RecordsList
+ * @extends Ext.grid.Panel
  */
 Ext.define('AI.view.stores.recordslist.RecordsList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'recordslist',
+    xtype : 'recordslist',
 
     requires: [
         'Ext.grid.View',
@@ -12,7 +13,7 @@ Ext.define('AI.view.stores.recordslist.RecordsList', {
     ],
 
     controller: 'recordslist',
-    viewModel: {
+    viewModel : {
         type: 'recordslist'
     },
 
@@ -20,29 +21,29 @@ Ext.define('AI.view.stores.recordslist.RecordsList', {
         store: '{Records}'
     },
 
-    title: 'Store Records',
+    title      : 'Store Records',
     hideHeaders: true,
 
     viewConfig: {
         markDirty: false
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             resizable: false,
             dataIndex: 'id',
-            text: 'Record ID',
-            flex: 1
+            text     : 'Record ID',
+            flex     : 1
         }
     ],
 
     dockedItems: [
         {
-            xtype: 'pagingtoolbar',
-            dock: 'bottom',
-            reference: 'recordslistpagingtoolbar',
+            xtype      : 'pagingtoolbar',
+            dock       : 'bottom',
+            reference  : 'recordslistpagingtoolbar',
             displayInfo: true,
-            bind: {
+            bind       : {
                 store: '{Records}'
             }
         }
@@ -50,7 +51,7 @@ Ext.define('AI.view.stores.recordslist.RecordsList', {
 
     listeners: {
         loadrecords: 'loadStoreRecords',
-        select: 'onSelect',
-        scope: 'controller'
+        select     : 'onSelect',
+        scope      : 'controller'
     }
 });

@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.stores.storeslist.StoresList
+ * @extends Ext.grid.Panel
  */
 Ext.define('AI.view.stores.storeslist.StoresList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'storeslist',
+    xtype : 'storeslist',
 
     requires: [
         'Ext.toolbar.Toolbar',
@@ -15,11 +16,14 @@ Ext.define('AI.view.stores.storeslist.StoresList', {
     ],
 
     config: {
+        /**
+         * @cfg {Boolean}   [initialLoad=false]
+         */
         initialLoad: false
     },
 
     controller: 'storeslist',
-    viewModel: {
+    viewModel : {
         type: 'storeslist'
     },
 
@@ -28,40 +32,40 @@ Ext.define('AI.view.stores.storeslist.StoresList', {
     },
 
     viewConfig: {
-        markDirty: false,
+        markDirty : false,
         stripeRows: true
     },
-    columns: [
+    columns   : [
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'id',
-            text: 'Store ID',
-            flex: 3
+            text     : 'Store ID',
+            flex     : 3
         },
         {
-            xtype: 'gridcolumn',
+            xtype    : 'gridcolumn',
             dataIndex: 'count',
-            text: 'Record Count',
-            flex: 1
+            text     : 'Record Count',
+            flex     : 1
         }
     ],
 
     dockedItems: [
         {
             xtype: 'toolbar',
-            dock: 'top',
+            dock : 'top',
             items: [
                 {
-                    xtype: 'button',
-                    text: 'Refresh',
-                    glyph: 'xf021@fontawesome',
+                    xtype  : 'button',
+                    text   : 'Refresh',
+                    glyph  : 'xf021@fontawesome',
                     handler: 'onRefreshClick'
                 },
                 {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype: 'filterfield',
+                    xtype    : 'filterfield',
                     listeners: {
                         // applyfilter: 'onApplyFilter'
                     }
@@ -72,10 +76,10 @@ Ext.define('AI.view.stores.storeslist.StoresList', {
 
     listeners: {
         activate: {
-            fn: 'onActivate',
+            fn    : 'onActivate',
             single: true
         },
-        select: 'onSelect',
-        scope: 'controller'
+        select  : 'onSelect',
+        scope   : 'controller'
     }
 });

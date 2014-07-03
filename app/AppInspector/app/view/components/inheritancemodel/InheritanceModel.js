@@ -6,7 +6,7 @@
  */
 Ext.define('AI.view.components.inheritancemodel.InheritanceModel', {
     extend: 'd3xtjs.CollapsibleTree',
-    xtype: 'inheritancemodel',
+    xtype : 'inheritancemodel',
 
     requires: [],
 
@@ -14,11 +14,6 @@ Ext.define('AI.view.components.inheritancemodel.InheritanceModel', {
         'AI.mixin.Localize'
     ],
 
-//    controller: 'inheritancemodel',
-//    viewModel: {
-//        type: 'inheritancemodel'
-//    },
-
-    title: 'Inheritance Model',
+    title : 'Inheritance Model',
     itemId: 'inheritancemodel'
 });

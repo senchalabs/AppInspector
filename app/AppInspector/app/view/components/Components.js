@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.components.Components', {
     extend: 'Ext.panel.Panel',
-    xtype: 'components',
+    xtype : 'components',
 
     requires: [
         'Ext.layout.container.Border',
@@ -21,64 +21,67 @@ Ext.define('AI.view.components.Components', {
     ],
 
     config: {
+        /**
+         * @cfg {Boolean}   [initialLoad=false]
+         */
         initialLoad: false
     },
 
     controller: 'components',
-    viewModel: {
+    viewModel : {
         type: 'components'
     },
 
-    title: 'Components',
-    glyph: 'xf0e8@fontawesome',
+    title : 'Components',
+    glyph : 'xf0e8@fontawesome',
     layout: {
         type: 'border'
     },
 
     items: [
         {
-            region: 'center',
-            xtype: 'componentstree',
+            region   : 'center',
+            xtype    : 'componentstree',
             reference: 'componentstree',
-            flex: 1
+            flex     : 1
         },
         {
-            region: 'east',
-            xtype: 'tabpanel',
-            flex: 1,
-            split: true,
-            minWidth: 100,
-            activeTab: 0,
+            region     : 'east',
+            xtype      : 'tabpanel',
+            flex       : 1,
+            split      : true,
+            minWidth   : 100,
+            activeTab  : 0,
             minTabWidth: 45,
-            defaults: {
+            defaults   : {
                 listeners: {
-                    activate: 'toggleDetailsTips',
+                    activate    : 'toggleDetailsTips',
                     validateedit: 'onDetailValueEdit'
                 }
             },
-            bind: {
+            bind       : {
                 disabled: '{!selection}'
             },
-            items: [
+            items      : [
                 {
-                    xtype: 'properties',
+                    xtype    : 'properties',
                     reference: 'properties'
                 },
                 {
-                    xtype: 'methods',
+                    xtype    : 'methods',
                     reference: 'methods'
                 },
                 {
-                    xtype: 'bindings',
+                    xtype    : 'bindings',
                     reference: 'bindings',
-                    bind: {
+                    bind     : {
                         disabled: '{!tabs.bindings}'
                     }
                 },
                 {
-                    xtype: 'viewmodeldata',
+                    xtype    : 'viewmodeldata',
                     reference: 'vm',
-                    bind: {
+                    bind     : {
                         disabled: '{!tabs.viewmodeldata}'
                     }
                     // }, {
@@ -89,71 +92,71 @@ Ext.define('AI.view.components.Components', {
                     //     }
                 },
                 {
-                    xtype: 'inheritancemodel',
+                    xtype    : 'inheritancemodel',
                     reference: 'inheritancemodel',
-                    bind: {
+                    bind     : {
                         disabled: '{!tabs.inheritancemodel}'
                     }
                 }
             ],
             dockedItems: [
                 {
-                    xtype: 'toolbar',
-                    dock: 'bottom',
-                    cls: 'components-tips',
+                    xtype    : 'toolbar',
+                    dock     : 'bottom',
+                    cls      : 'components-tips',
                     reference: 'componentstips',
-                    defaults: {
-                        xtype: 'tbtext',
-                        flex: 1,
+                    defaults : {
+                        xtype   : 'tbtext',
+                        flex    : 1,
                         maxWidth: 125
                     },
-                    items: [
+                    items    : [
                         {
-                            cls: 'tip-changed',
+                            cls : 'tip-changed',
                             text: 'Changed ',
                             bind: {
                                 hidden: '{!isPropertiesTip}'
                             }
                         },
                         {
-                            cls: 'tip-override',
+                            cls : 'tip-override',
                             text: 'Override',
                             bind: {
                                 hidden: '{!isMethodsTip}'
                             }
                         },
                         {
-                            cls: 'tip-custom',
+                            cls : 'tip-custom',
                             text: 'Custom ',
                             bind: {
                                 hidden: '{!isPropertiesOrMethodsTip}'
                             }
                         },
                         {
-                            cls: 'tip-binding error',
+                            cls : 'tip-binding error',
                             text: 'Binding Error',
                             bind: {
                                 hidden: '{!isBindingsTip}'
                             }
                         },
                         {
-                            cls: 'tip-changed',
+                            cls : 'tip-changed',
                             text: 'Superclass',
                             bind: {
                                 hidden: '{!isInheritanceModelTip}'
                             }
                         },
                         {
-                            cls: 'tip-override',
+                            cls : 'tip-override',
                             text: 'Mixin',
                             bind: {
                                 hidden: '{!isInheritanceModelTip}'
                             }
                         },
                         {
-                            xtype: 'tbtext',
+                            xtype   : 'tbtext',
                             maxWidth: 1,
-                            text: '&nbsp;'
+                            text    : '&nbsp;'
                         }
                     ]
                 }
@@ -162,11 +165,11 @@ Ext.define('AI.view.components.Components', {
     ],
 
     listeners: {
-        activate: 'onActivate',
+        activate : 'onActivate',
         beforeadd: {
-            fn: 'localize',
+            fn    : 'localize',
             single: true
         },
-        scope: 'controller'
+        scope    : 'controller'
     }
 });

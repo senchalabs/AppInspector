@@ -6,7 +6,7 @@ Ext.define('AI.view.mvc.records.Records', {
     extend: 'Ext.container.Container',
     xtype : 'mvcrecords',
 
-    requires : [
+    requires: [
         'Ext.grid.Panel',
         'Ext.grid.View',
         'Ext.grid.column.Column',
@@ -15,7 +15,7 @@ Ext.define('AI.view.mvc.records.Records', {
     ],
 
     controller: 'mvcrecords',
-    viewModel: {
+    viewModel : {
         type: 'mvcrecords'
     },
 
@@ -55,7 +55,7 @@ Ext.define('AI.view.mvc.records.Records', {
                     }
                 }
             ],
-            listeners: {
+            listeners  : {
                 select: 'onRecordSelect'
             }
         },

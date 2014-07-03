@@ -11,11 +11,11 @@ Ext.define('AI.view.mvc.MVCController', {
     ],
 
     /**
-     * preload the mvc tree by delegating it to {AI.view.mvc.tree.Tree}
-     *
      * @param {AI.view.components.Components}   panel
      *
      * @fire  activate
+     *
+     * preload the mvc tree by delegating it to {AI.view.mvc.tree.Tree}
      */
     onActivate: function (panel) {
         var tree = panel.down('treepanel');

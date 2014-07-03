@@ -13,11 +13,11 @@ Ext.define('AI.view.mvc.tree.Tree', {
     ],
 
     controller: 'mvctree',
-//    viewModel: {
-//        type: 'mvctree'
-//    },
 
     config: {
+        /**
+         * @cfg {Boolean}   [initialLoad=false]
+         */
         initialLoad: false
     },
 

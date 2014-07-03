@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.componets.details.methods.MethodsModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.methods',
+    alias : 'viewmodel.methods',
 
     requires: [
         'Ext.data.Field',
@@ -14,16 +14,16 @@ Ext.define('AI.view.componets.details.methods.MethodsModel', {
     stores: {
         Methods: {
             storeId: 'Methods',
-            fields: ['name', 'value', {
+            fields : ['name', 'value', {
                 defaultValue: null,
-                name: 'isOverride',
-                type: 'boolean',
-                useNull: true
+                name        : 'isOverride',
+                type        : 'boolean',
+                useNull     : true
             }, {
                 defaultValue: null,
-                name: 'isOwn',
-                type: 'boolean',
-                useNull: true
+                name        : 'isOwn',
+                type        : 'boolean',
+                useNull     : true
             }],
             sorters: 'name'
         }

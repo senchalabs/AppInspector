@@ -1,12 +1,13 @@
 /**
- *
+ * @class   AI.view.layouts.overnesting.OvernestingController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.layouts.overnesting.OvernestingController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.overnesting',
+    alias : 'controller.overnesting',
 
     requires: [
-        'AI.model.layouts.Layout',
+        'AI.model.Base',
         'AI.util.extjs.Profile',
         'AI.util.touch.Profile',
         'AI.util.InspectedWindow'
@@ -17,9 +18,9 @@ Ext.define('AI.view.layouts.overnesting.OvernestingController', {
     ],
 
     /**
-     *
+     * @param   {AI.view.layouts.overnesting.Overnesting}   grid
      */
-    onActivate: function(grid) {
+    onActivate: function (grid) {
         // load the "Components" upfront ...
         var initialLoad = grid.getInitialLoad(),
             btn = grid.lookupReference('profile');
@@ -33,9 +34,9 @@ Ext.define('AI.view.layouts.overnesting.OvernestingController', {
     },
 
     /**
-     *
+     * @param   {Ext.button.Button} btn
      */
-    onRefreshClick: function(btn) {
+    onRefreshClick: function (btn) {
         var grid = btn.up('overnesting'),
             store = this.getStore('Overnestings'),
             util;
@@ -54,11 +55,11 @@ Ext.define('AI.view.layouts.overnesting.OvernestingController', {
         AI.util.InspectedWindow.eval(
             util,
             null,
-            function(components) {
+            function (components) {
                 var cmps = [];
 
-                Ext.each(components, function(component) {
-                    cmps.push(Ext.create('AI.model.layouts.Layout', component));
+                Ext.each(components, function (component) {
+                    cmps.push(Ext.create('AI.model.Base', component));
                 });
 
                 store.setData(cmps);
@@ -68,9 +69,9 @@ Ext.define('AI.view.layouts.overnesting.OvernestingController', {
     },
 
     /**
-     *
+     * help click event handler
      */
-    onHelpClick: function(button, e) {
+    onHelpClick: function () {
         var msg = AI.util.i18n.getMessage;
 
         Ext.Msg.alert(
@@ -83,9 +84,12 @@ Ext.define('AI.view.layouts.overnesting.OvernestingController', {
     },
 
     /**
-     * we delegate to parent
+     * @param   {Ext.selection.Model}   selModel
+     * @param   {Ext.data.Model}        record
+     *
+     * @fires   layoutselect
      */
-    onSelect: function(selModel, record, index, eOpts) {
+    onSelect: function (selModel, record) {
         var layouts = this.getView().up('tabpanel');
 
         this.getViewModel().set('selected', record);
@@ -95,8 +99,10 @@ Ext.define('AI.view.layouts.overnesting.OvernestingController', {
 
     /**
      * delegate to main view
+     *
+     * @fires   revealcmp
      */
-    onRevealClick: function(btn) {
+    onRevealClick: function () {
         var main = this.getView().up('main'),
             record = this.getViewModel().get('selected');
 

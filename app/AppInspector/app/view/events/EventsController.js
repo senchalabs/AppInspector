@@ -1,9 +1,10 @@
 /**
- *
+ * @class   AI.view.events.EventsController
+ * @extends Ext.app.ViewController
  */
 Ext.define('AI.view.events.EventsController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.events',
+    alias : 'controller.events',
 
     requires: [
         'Ext.util.DelayedTask',
@@ -17,13 +18,16 @@ Ext.define('AI.view.events.EventsController', {
     ],
 
     config: {
+        /**
+         * @cfg {Ext.util.DelayedTask}  [task=null]
+         */
         task: null
     },
 
     /**
-     *
+     * initialize {beforeInit} when view is created
      */
-    beforeInit: function(view) {
+    beforeInit: function () {
         var me = this;
 
         if (me.getTask() === null) {
@@ -34,9 +38,9 @@ Ext.define('AI.view.events.EventsController', {
     },
 
     /**
-     *
+     * cleanup task property on destroy
      */
-    destroy: function() {
+    destroy: function () {
         var me = this;
 
         me.setTask(null);
@@ -45,18 +49,18 @@ Ext.define('AI.view.events.EventsController', {
     },
 
     /**
-     *
+     * clear click handler
      */
-    onClearEventsClick: function(btn) {
+    onClearEventsClick: function () {
         var vm = this.getViewModel();
 
         vm.getStore('Events').removeAll();
     },
 
     /**
-     *
+     * start recording click event handler
      */
-    onRecordEventsClick: function(btn) {
+    onRecordEventsClick: function () {
         var me = this,
             vm = me.getViewModel(),
             store = vm.getStore('Events'),
@@ -69,10 +73,7 @@ Ext.define('AI.view.events.EventsController', {
             util = AI.util.touch.Events.recordEvents;
         }
 
-        /**
-         *
-         */
-        getEvents = function() {
+        getEvents = function () {
             if (!vm.get('recording')) {
                 return;
             }
@@ -80,7 +81,7 @@ Ext.define('AI.view.events.EventsController', {
             AI.util.InspectedWindow.eval(
                 util,
                 null,
-                function(events) {
+                function (events) {
                     store.add(events);
 
                     requestAnimationFrame(getEvents);
@@ -93,9 +94,9 @@ Ext.define('AI.view.events.EventsController', {
     },
 
     /**
-     *
+     * stop recording click event handler
      */
-    onStopRecordingClick: function(btn) {
+    onStopRecordingClick: function () {
         var vm = this.getViewModel(),
             util;
 
@@ -115,28 +116,33 @@ Ext.define('AI.view.events.EventsController', {
     },
 
     /**
-     *
+     * @param {AI.view.field.Filter}    field
+     * @param {String}                  value
      */
-    onFilterEvents: function(field, value) {
+    onFilterEvents: function (field, value) {
         var grid = this.getView(),
             store = grid.getStore();
 
         store.clearFilter();
 
         if (value !== '') {
-            store.filter([{
-                anyMatch: true,
-                caseSensitive: false,
-                property: 'eventName',
-                value: value
-            }]);
+            store.filter([
+                {
+                    anyMatch     : true,
+                    caseSensitive: false,
+                    property     : 'eventName',
+                    value        : value
+                }
+            ]);
         }
     },
 
     /**
-     *
+     * @param {AI.view.field.Filter}    field
+     * @param {String}                  value
+     * @param {AI.view.events.Events}   grid
      */
-    highlightFilteredRecords: function(field, value, grid) {
+    highlightFilteredRecords: function (field, value, grid) {
         var selModel = grid.getSelectionModel(),
             store = grid.getStore(),
             indices;
@@ -149,15 +155,16 @@ Ext.define('AI.view.events.EventsController', {
 
         indices = store.findAll('eventName', value, true);
 
-        Ext.each(indices, function(index) {
+        Ext.each(indices, function (index) {
             selModel.select(index, true, true);
         });
     },
 
     /**
-     *
+     * @param {AI.view.field.Filter}    field
+     * @param {String}                  newValue
      */
-    onFilterChange: function(field, newValue, oldValue, eOpts) {
+    onFilterChange: function (field, newValue) {
         var me = this;
 
         me.getTask().delay(

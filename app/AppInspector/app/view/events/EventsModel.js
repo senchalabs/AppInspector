@@ -1,9 +1,10 @@
 /**
- *
+ * @class
+ * @extends
  */
 Ext.define('AI.view.events.EventsModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.events',
+    alias : 'viewmodel.events',
 
     data: {
         recording: false
@@ -12,8 +13,8 @@ Ext.define('AI.view.events.EventsModel', {
     stores: {
         Events: {
             storeId: 'Events',
-            fields: ['eventName', 'xtype', 'source', 'cmpId'],
-            proxy: {
+            fields : ['eventName', 'xtype', 'source', 'cmpId'],
+            proxy  : {
                 type: 'memory'
             },
             findAll: function (property, value, anyMatch, caseSensitive) {
@@ -21,9 +22,9 @@ Ext.define('AI.view.events.EventsModel', {
                     data = Ext.clone(me.data),
 
                     filter = new Ext.util.Filter({
-                        property: property,
-                        value: value,
-                        anyMatch: anyMatch,
+                        property     : property,
+                        value        : value,
+                        anyMatch     : anyMatch,
                         caseSensitive: caseSensitive
                     }),
 

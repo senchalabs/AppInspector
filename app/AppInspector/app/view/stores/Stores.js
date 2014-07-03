@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.stores.Stores', {
     extend: 'Ext.panel.Panel',
-    xtype: 'stores',
+    xtype : 'stores',
 
     requires: [
         'Ext.layout.container.VBox',
@@ -21,6 +21,9 @@ Ext.define('AI.view.stores.Stores', {
     ],
 
     config: {
+        /**
+         * @cfg {Boolean}   [initialLoad=false]
+         */
         initialLoad: false
     },
 
@@ -28,44 +31,44 @@ Ext.define('AI.view.stores.Stores', {
     glyph: 'xf1c0@fontawesome',
 
     layout: {
-        type: 'vbox',
+        type : 'vbox',
         align: 'stretch'
     },
 
     items: [
         {
             xtype: 'storeslist',
-            flex: 1
+            flex : 1
         },
         {
-            xtype: 'container',
-            flex: 1,
+            xtype : 'container',
+            flex  : 1,
             layout: {
-                type: 'hbox',
+                type : 'hbox',
                 align: 'stretch'
             },
-            items: [
+            items : [
                 {
-                    xtype: 'container',
-                    itemId: 'records',
-                    flex: 1,
-                    layout: 'card',
+                    xtype     : 'container',
+                    itemId    : 'records',
+                    flex      : 1,
+                    layout    : 'card',
                     activeItem: 0,
-                    items: [
+                    items     : [
                         {
-                            xtype: 'recordslist',
+                            xtype : 'recordslist',
                             itemId: 'recordslist'
                         },
                         {
-                            xtype: 'recordslisttree',
+                            xtype : 'recordslisttree',
                             itemId: 'recordslisttree'
                         }
                     ]
                 },
                 {
-                    xtype: 'recorddetails',
+                    xtype : 'recorddetails',
                     itemId: 'recorddetails',
-                    flex: 1
+                    flex  : 1
                 }
             ]
         }
@@ -73,14 +76,14 @@ Ext.define('AI.view.stores.Stores', {
 
     listeners: {
         beforeadd: {
-            fn: 'localize',
+            fn    : 'localize',
             single: true
         },
-        activate: {
-            fn: 'onActivate',
+        activate : {
+            fn    : 'onActivate',
             single: true
         },
-        scope: 'this'
+        scope    : 'this'
     },
 
     /**

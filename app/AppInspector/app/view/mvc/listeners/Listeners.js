@@ -1,17 +1,17 @@
 /**
- *
+ * @class   AI.view.mvc.listeners.Listeners
+ * @extends Ext.grid.Panel
  */
 Ext.define('AI.view.mvc.listeners.Listeners', {
     extend: 'Ext.grid.Panel',
     xtype : 'mvclisteners',
 
-    requires : [
+    requires: [
         'Ext.grid.column.Column',
         'Ext.grid.View',
         'Ext.grid.feature.Grouping'
     ],
 
-//    controller: 'mvclisteners',
     viewModel: {
         type: 'mvclisteners'
     },
@@ -19,7 +19,7 @@ Ext.define('AI.view.mvc.listeners.Listeners', {
         store: '{Listeners}'
     },
 
-    cls  : 'highlight',
+    cls: 'highlight',
 
     viewConfig: {
         markDirty : false,
@@ -49,9 +49,9 @@ Ext.define('AI.view.mvc.listeners.Listeners', {
 
     features: [
         {
-            ftype: 'grouping',
+            ftype             : 'grouping',
             enableGroupingMenu: false,
-            enableNoGroups: false
+            enableNoGroups    : false
         }
     ]
 });

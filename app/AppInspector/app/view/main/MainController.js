@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.main.MainController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.main',
+    alias : 'controller.main',
 
     requires: [
         'AI.util.InspectedWindow'
@@ -38,7 +38,8 @@ Ext.define('AI.view.main.MainController', {
     },
 
     /**
-     *
+     * @param   {AI.view.main.Main} main
+     * @param   {Object}            eOpts
      */
     onAppRender: function (main, eOpts) {
         var me = this,
@@ -65,9 +66,9 @@ Ext.define('AI.view.main.MainController', {
                             }, versions);
 
                         app.info = {
-                            isMVC: data.isMVC,
+                            isMVC    : data.isMVC,
                             framework: versions.extjs ? 'ext' : 'touch',
-                            version: versions.extjs ? versions.extjs : data.touch
+                            version  : versions.extjs ? versions.extjs : data.touch
                         };
 
                         tabpanel.down('#appdetails').setSource(source);
@@ -88,7 +89,8 @@ Ext.define('AI.view.main.MainController', {
     },
 
     /**
-     *
+     * @param   {Ext.data.Model}    record
+     * @param   {AI.view.main.Main} main
      */
     onRevealCmp: function (record, main) {
         var tabs = main.down('#navigation'),
@@ -107,8 +109,8 @@ Ext.define('AI.view.main.MainController', {
                 tree.selectPath(found.getPath());
             }
         }, tree, {
-            order: 'after',
-            delay: 200,
+            order : 'after',
+            delay : 200,
             single: true
         });
 

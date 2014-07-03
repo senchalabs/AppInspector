@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.componets.details.viewcontrollerdata.ViewControllerDataModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.viewcontrollerdata',
+    alias : 'viewmodel.viewcontrollerdata',
 
     requires: [
         'Ext.data.Field',
@@ -13,17 +13,17 @@ Ext.define('AI.view.componets.details.viewcontrollerdata.ViewControllerDataModel
 
     stores: {
         ViewController: {
-            type: 'tree',
+            type   : 'tree',
             storeId: 'ViewControllers',
-            fields: [
+            fields : [
                 'text', 'leaf'
             ],
-            root: {
-                text: '_VIEWCONTROLLER_',
+            root   : {
+                text    : '_VIEWCONTROLLER_',
                 expanded: true,
-                value: '',
-                cls: 'root',
-                iconCls: 'no-icon',
+                value   : '',
+                cls     : 'root',
+                iconCls : 'no-icon',
                 children: []
             }
         }

@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.main.Main', {
     extend: 'Ext.container.Container',
-    xtype: 'main',
+    xtype : 'main',
 
     requires: [
         'AI.view.about.About',
@@ -25,10 +25,10 @@ Ext.define('AI.view.main.Main', {
 
     items: [
         {
-            xtype: 'tabpanel',
-            itemId: 'navigation',
+            xtype    : 'tabpanel',
+            itemId   : 'navigation',
             activeTab: 0,
-            items: [
+            items    : [
                 {
                     xtype: 'about'
                 },
@@ -53,7 +53,7 @@ Ext.define('AI.view.main.Main', {
 
     listeners: {
         afterrender: 'onAppRender',
-        revealcmp: 'onRevealCmp',
-        scope: 'controller'
+        revealcmp  : 'onRevealCmp',
+        scope      : 'controller'
     }
 });

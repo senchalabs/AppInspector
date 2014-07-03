@@ -4,7 +4,7 @@
  */
 Ext.define('AI.view.componets.details.properties.PropertiesModel', {
     extend: 'Ext.app.ViewModel',
-    alias: 'viewmodel.properties',
+    alias : 'viewmodel.properties',
 
     requires: [
         'Ext.data.Field',
@@ -14,16 +14,16 @@ Ext.define('AI.view.componets.details.properties.PropertiesModel', {
     stores: {
         Properties: {
             storeId: 'Properties',
-            fields: ['name', 'value', {
+            fields : ['name', 'value', {
                 defaultValue: null,
-                name: 'isChanged',
-                type: 'boolean',
-                useNull: true
+                name        : 'isChanged',
+                type        : 'boolean',
+                useNull     : true
             }, {
                 defaultValue: null,
-                name: 'isOwn',
-                type: 'boolean',
-                useNull: true
+                name        : 'isOwn',
+                type        : 'boolean',
+                useNull     : true
             }],
             sorters: 'name'
         }

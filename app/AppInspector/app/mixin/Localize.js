@@ -1,6 +1,6 @@
 /**
  * @class   AI.mixin.Localize
- * @extenda Ext.Mixin
+ * @extends Ext.Mixin
  */
 Ext.define('AI.mixin.Localize', {
     extend: 'Ext.Mixin',
@@ -17,6 +17,8 @@ Ext.define('AI.mixin.Localize', {
 
     /**
      * @param  {Ext.Component}  view
+     *
+     * localize view title
      */
     localize: function(view) {
         var title = view.getTitle(),
