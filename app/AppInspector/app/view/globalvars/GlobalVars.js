@@ -28,6 +28,10 @@ Ext.define('AI.view.globalvars.GlobalVars', {
     cls            : 'highlight',
     nameColumnWidth: '50%',
     source         : {},
+    emptyText      : [
+        '<strong>Good!</strong>',
+        'No leaking global <span style="font-family: monospace">var</span> detected...'
+    ].join('<br/>'),
 
     dockedItems: [
         {
@@ -45,7 +49,7 @@ Ext.define('AI.view.globalvars.GlobalVars', {
                     xtype: 'tbfill'
                 },
                 {
-                    xtype    : 'filterfield',
+                    xtype     : 'filterfield',
                     forceEnter: false,  // we can do this on {Ext.grid.property.Store}
                     listeners : {
                         applyfilter: 'onFilterVars'
@@ -61,5 +65,41 @@ Ext.define('AI.view.globalvars.GlobalVars', {
             single: true
         },
         scope   : 'controller'
+    },
+
+    /**
+     * @override
+     * @param   {Object}    source
+     */
+    setSource: function (source) {
+        var me = this,
+            renderer = me.valueRenderer,
+            src = {},
+            config = {};
+
+        Ext.Object.each(source, function (key, val) {
+            var value = val.value,
+                type = (typeof value);
+
+            src[key] = value;
+
+            if (Ext.isObject(value)) {
+                type = 'string';
+                src[key] = '[object]';
+            }
+
+            if (Ext.isFunction(value)) {
+                type = 'string';
+                src[key] = key + '()';
+            }
+
+            config[key] = {
+                editor  : null,
+                type    : type,
+                renderer: renderer
+            };
+        });
+
+        me.callParent([src, config]);
     }
 });

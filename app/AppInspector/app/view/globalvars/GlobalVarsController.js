@@ -51,20 +51,93 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
         var me = this,
             view = me.getView(),
             filter = view.down('filterfield'),
-            window = view.getInitialLoadWindow();
+            win = view.getInitialLoadWindow(),
+            src;
 
-        if (window && btn.action === 'initial') {
+        if (win && btn.action === 'initial') {
             view.getEl().unmask();
-            window.close();
+            win.close();
         }
 
         filter.reset();
 
-        // <debug>
-        view.setSource(Ext);
-        // </debug>
+        // get global vars and display
+        src = me.analyze();
+        view.setSource(src);
+    },
 
-        // TODO
+    /**
+     * @private
+     *
+     * @returns {Object}
+     */
+    analyze: function () {
+        var me = this,
+            global = (function () {
+                return this;
+            })(),
+            // globalvarcheck is the hidden iframe's id so we grab it
+            cleanWindow = Ext.getDom('globalvarcheck').contentWindow,
+            globalProps = me.getPropertyDescriptors(global),
+            excludes = me.getExcluds(),
+            prop;
+
+        // exclude default globals
+        for (prop in cleanWindow) {
+            if (globalProps[prop]) {
+                delete globalProps[prop];
+            }
+        }
+
+        // exclude app globals
+        for (prop in globalProps) {
+            if (Ext.Array.contains(excludes, prop)) {
+                delete globalProps[prop];
+            }
+        }
+
+        return globalProps;
+    },
+
+    /**
+     * @private
+     *
+     * @param   {Object}    object
+     *
+     * @returns {Object}
+     */
+    getPropertyDescriptors: function (object) {
+        var props = {},
+            prop;
+
+        for (prop in object) {
+            props[prop] = {
+                type : typeof object[prop],
+                value: object[prop]
+            };
+        }
+
+        return props;
+    },
+
+    /**
+     * @private
+     *
+     * @returns {String[]}
+     */
+    getExcluds: function () {
+        var items = this.getView().up('main').down('about propertygrid').getStore().getData().items,
+            instance = (Ext.app && Ext.app.Application && Ext.app.Application.instance),
+            excludes = [
+                'Ext',
+                (instance.getName ? instance.getName() : instance.name)
+            ];
+
+        Ext.each(items, function (item) {
+            excludes.push(item.data.name);
+        });
+
+        return excludes;
     },
 
     /**

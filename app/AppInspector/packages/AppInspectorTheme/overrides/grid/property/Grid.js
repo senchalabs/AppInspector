@@ -47,5 +47,4 @@ Ext.define('AI.grid.property.Grid', {
 
         me.callParent([source, config]);
     }
-})
-;
+});

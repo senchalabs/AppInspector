@@ -7,6 +7,7 @@ Ext.define('AI.view.components.properties.Properties', {
     xtype : 'properties',
 
     requires: [
+        'Ext.grid.plugin.CellEditing',
         'Ext.toolbar.Toolbar',
         'Ext.toolbar.Fill',
         'Ext.grid.View',
