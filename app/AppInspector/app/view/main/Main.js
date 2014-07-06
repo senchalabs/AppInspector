@@ -12,7 +12,8 @@ Ext.define('AI.view.main.Main', {
         'AI.view.stores.Stores',
         'AI.view.layouts.Layouts',
         'AI.view.events.Events',
-        'AI.view.mvc.MVC'
+        'AI.view.mvc.MVC',
+        'AI.view.globalvars.GlobalVars'
     ],
 
     controller: 'main',
@@ -46,6 +47,9 @@ Ext.define('AI.view.main.Main', {
                 },
                 {
                     xtype: 'mvc'
+                },
+                {
+                    xtype: 'globalvars'
                 }
             ]
         }
