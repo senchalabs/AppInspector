@@ -8,7 +8,6 @@ Ext.define('AI.view.globalvars.GlobalVars', {
 
     requires: [
         'Ext.toolbar.Toolbar',
-        'Ext.button.Button',
         'Ext.toolbar.Fill',
         'AI.view.field.Filter'
     ],
@@ -38,13 +37,6 @@ Ext.define('AI.view.globalvars.GlobalVars', {
             xtype: 'toolbar',
             dock : 'top',
             items: [
-                {
-                    xtype  : 'button',
-                    text   : 'Refresh',
-                    action : 'refresh',
-                    glyph  : 'xf021@fontawesome',
-                    handler: 'onRefreshClick'
-                },
                 {
                     xtype: 'tbfill'
                 },

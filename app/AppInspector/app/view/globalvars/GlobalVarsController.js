@@ -27,8 +27,7 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
                 buttons    : [
                     {
                         text   : 'check',
-                        action : 'initial',
-                        handler: me.onRefreshClick,
+                        handler: me.onInspectClick,
                         scope  : me
                     }
                 ],
@@ -49,15 +48,16 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
     },
 
     /**
-     * @param   {Ext.button.Button} btn
+     * @private
+     * inspect click callback handler
      */
-    onRefreshClick: function (btn) {
+    onInspectClick: function () {
         var me = this,
             view = me.getView(),
             win = view.getInitialLoadWindow(),
             filter = view.down('filterfield');
 
-        if (win && btn.action === 'initial') {
+        if (win) {
             view.getEl().unmask();
             win.close();
         }
@@ -165,7 +165,7 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
         var items = this.getView().up('main').down('about propertygrid').getStore().getData().items,
             instance = (Ext.app && Ext.app.Application && Ext.app.Application.instance),
             excludes = [
-                'Ext', '__commandLineAPI',
+                'Ext', '__commandLineAPI', '__gaUserPrefs',
                 (instance.getName ? instance.getName() : instance.name)
             ];
 
