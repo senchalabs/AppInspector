@@ -58,6 +58,8 @@ Ext.define('AI.view.components.ComponentsController', {
 
     /**
      * cancel edit to reset original value
+     *
+     * @returns {Boolean}
      */
     onDetailValueEdit: function () {
         return false;
