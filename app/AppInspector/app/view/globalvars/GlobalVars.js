@@ -64,6 +64,7 @@ Ext.define('AI.view.globalvars.GlobalVars', {
             fn    : 'onActivate',
             single: true
         },
+        validateedit: 'onValueEdit',
         scope   : 'controller'
     },
 
@@ -74,32 +75,16 @@ Ext.define('AI.view.globalvars.GlobalVars', {
     setSource: function (source) {
         var me = this,
             renderer = me.valueRenderer,
-            src = {},
             config = {};
 
         Ext.Object.each(source, function (key, val) {
-            var value = val.value,
-                type = (typeof value);
-
-            src[key] = value;
-
-            if (Ext.isObject(value)) {
-                type = 'string';
-                src[key] = '[object]';
-            }
-
-            if (Ext.isFunction(value)) {
-                type = 'string';
-                src[key] = key + '()';
-            }
-
             config[key] = {
                 editor  : null,
-                type    : type,
+                type    : (typeof val),
                 renderer: renderer
             };
         });
 
-        me.callParent([src, config]);
+        me.callParent([source, config]);
     }
 });

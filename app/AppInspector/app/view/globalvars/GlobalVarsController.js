@@ -6,6 +6,10 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
     extend: 'Ext.app.ViewController',
     alias : 'controller.globalvars',
 
+    require: [
+        'AI.util.InspectedWindow'
+    ],
+
     /**
      * activate callback handler
      */
@@ -50,9 +54,8 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
     onRefreshClick: function (btn) {
         var me = this,
             view = me.getView(),
-            filter = view.down('filterfield'),
             win = view.getInitialLoadWindow(),
-            src;
+            filter = view.down('filterfield');
 
         if (win && btn.action === 'initial') {
             view.getEl().unmask();
@@ -61,63 +64,96 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
 
         filter.reset();
 
-        // get global vars and display
-        src = me.analyze();
-        view.setSource(src);
+        AI.util.InspectedWindow.eval(
+            me.analyze,
+            [me.getExcluds().join(':::')],
+            Ext.Function.bind(function (result, isException, view) {
+                if (isException) {
+                    AI.util.Error.parseException(isException);
+                    return;
+                }
+
+                var src = result ? Ext.decode(result) : {};
+
+                view.setSource(src);
+            }, me, [view], true)
+        );
     },
 
     /**
      * @private
      *
      * @returns {Object}
+     *
+     * @see     https://github.com/kangax/detect-global
      */
-    analyze: function () {
-        var me = this,
-            global = (function () {
+    analyze: function (exclude) {
+        var global = (function () {
                 return this;
             })(),
-            // globalvarcheck is the hidden iframe's id so we grab it
-            cleanWindow = Ext.getDom('globalvarcheck').contentWindow,
-            globalProps = me.getPropertyDescriptors(global),
-            excludes = me.getExcluds(),
-            prop;
+            getGlobalProps = function (object) {
+                var props = {};
 
-        // exclude default globals
-        for (prop in cleanWindow) {
-            if (globalProps[prop]) {
-                delete globalProps[prop];
+                for (var prop in object) {
+                    props[prop] = {
+                        type : typeof object[prop],
+                        value: object[prop]
+                    };
+                }
+
+                return props;
+            },
+            globalProps = getGlobalProps(global),
+            iframe = document.getElementById('globalvarleaks'),
+            cleanWindow,
+            clean,
+            prop,
+            instance = (Ext.app && Ext.app.Application && Ext.app.Application.instance),
+            excludes = exclude ? exclude.split(':::') : [],
+            src = {};
+
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+
+            iframe.id = 'globalvarleaks';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            iframe.src = 'about:blank';
+        }
+
+        cleanWindow = iframe.contentWindow;
+
+        if (instance) {
+            excludes.push(instance.getName ? instance.getName() : instance.name);
+        }
+
+        for (clean in cleanWindow) {
+            if (globalProps[clean]) {
+                delete globalProps[clean];
             }
         }
 
-        // exclude app globals
         for (prop in globalProps) {
-            if (Ext.Array.contains(excludes, prop)) {
+            if (excludes.indexOf(prop) > -1) {
                 delete globalProps[prop];
             }
         }
 
-        return globalProps;
-    },
+        Ext.Object.each(globalProps, function (key, val) {
+            var value = val.value;
 
-    /**
-     * @private
-     *
-     * @param   {Object}    object
-     *
-     * @returns {Object}
-     */
-    getPropertyDescriptors: function (object) {
-        var props = {},
-            prop;
+            src[key] = value;
 
-        for (prop in object) {
-            props[prop] = {
-                type : typeof object[prop],
-                value: object[prop]
-            };
-        }
+            if (Ext.isFunction(value)) {
+                src[key] = key + '()';
+            } else if (Ext.isBoolean(value) || Ext.isString(value) || Ext.isNumber(value)) {
+                src[key] = value;
+            } else {
+                src[key] = '[object]';
+            }
+        });
 
-        return props;
+        return Ext.encode(src);
     },
 
     /**
@@ -129,10 +165,12 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
         var items = this.getView().up('main').down('about propertygrid').getStore().getData().items,
             instance = (Ext.app && Ext.app.Application && Ext.app.Application.instance),
             excludes = [
-                'Ext',
+                'Ext', '__commandLineAPI',
                 (instance.getName ? instance.getName() : instance.name)
             ];
 
+        // add app excludes
+        // these namespaces were gathered during AI.util.InspectedWindow.getAppDetails()
         Ext.each(items, function (item) {
             excludes.push(item.data.name);
         });
@@ -158,5 +196,14 @@ Ext.define('AI.view.globalvars.GlobalVarsController', {
                 return re.test(record.data.name);
             });
         }
+    },
+
+    /**
+     * cancel edit to reset original value
+     *
+     * @returns {Boolean}
+     */
+    onValueEdit: function () {
+        return false;
     }
 });
