@@ -48,6 +48,8 @@ Ext.define('AI.view.components.Components', {
         {
             region     : 'east',
             xtype      : 'tabpanel',
+            reference  : 'componentsdetails',
+            disabled   : true,
             flex       : 1,
             split      : true,
             minWidth   : 100,
@@ -58,9 +60,6 @@ Ext.define('AI.view.components.Components', {
                     activate    : 'toggleDetailsTips',
                     validateedit: 'onDetailValueEdit'
                 }
-            },
-            bind       : {
-                disabled: '{!selection}'
             },
             items      : [
                 {
