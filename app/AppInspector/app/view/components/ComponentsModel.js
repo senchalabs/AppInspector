@@ -66,7 +66,6 @@ Ext.define('AI.view.components.ComponentsModel', {
     },
 
     data: {
-        selection : false,
         currentTab: 'properties',
         tabs      : {
             properties        : false,

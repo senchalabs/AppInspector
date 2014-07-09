@@ -168,9 +168,11 @@ Ext.define('AI.view.components.tree.TreeController', {
             properties, methods, bindings, vm, vc, inheritanceModel;
 
         if (isException || !details) {
-            tree.fireEvent('deselect', me, tree, components, tabpanel);
+            me.deselectComponent(tree, components, tabpanel);
             return;
         }
+
+        tabpanel.setLoading('Loading details...');
 
         properties = details.properties || {};
         methods = details.methods || {};
@@ -178,7 +180,7 @@ Ext.define('AI.view.components.tree.TreeController', {
         if (details.mvvm) {
             bindings = details.mvvm.bindings || {};
             vm = details.mvvm.viewModel || {};
-//            vc = details.mvvm.controller || {};
+            vc = details.mvvm.controller || {};
         }
 
         // set grid data
@@ -198,7 +200,8 @@ Ext.define('AI.view.components.tree.TreeController', {
             inheritanceModel.renderDiagram(details.inheritance);
         }
 
-        components.getViewModel().set('selection', true);
+        tabpanel.enable();
+        tabpanel.setLoading(false);
     },
 
     /**
@@ -227,25 +230,19 @@ Ext.define('AI.view.components.tree.TreeController', {
 
     /**
      * @param {Object[]}        details
+     * @param {Object}          details.children
      * @param {Ext.Component}   view
      */
     setComponentsDetailsTree: function (details, view) {
         var me = this,
             parentVM = me.getViewModel().getParent(),
-            isTreeNode = (details.children) ? true : false;
+            isTreeNode = (details && details.children) ? true : false,
+            children = isTreeNode ? details : [];
 
-        if (isTreeNode) {
-            view.getStore().setRootNode({
-                expanded: true,
-                children: details
-            });
-        }
-        else {
-            view.getStore().setRootNode({
-                expanded: true,
-                children: []
-            });
-        }
+        view.getStore().setRootNode({
+            expanded: true,
+            children: children
+        });
 
 //        switch (view.xtype) {
 //            case 'viewmodeldata':
@@ -262,16 +259,13 @@ Ext.define('AI.view.components.tree.TreeController', {
     },
 
     /**
-     * @param {AI.view.components.tree.Tree}    tree
-     * @param {Ext.data.TreeModel}              record
-     * @param {Number}                          index
-     * @param {Object}                          eOpts
+     * @param   {AI.view.components.tree.Tree}  tree
+     * @param   {AI.view.components.Components} components
+     * @param   {Ext.tab.Panel}                 tabpanel
      */
-    onDeselectComponent: function (tree, record, index, eOpts) {
-        var me = this;
+    deselectComponent: function (tree, components, tabpanel) {
+        // TODO - clear details view, filter, etc.
 
-        // TODO - reset details panel
-
-        me.getViewModel().getParent().set('selection', false);
+        tabpanel.disable();
     }
 });
