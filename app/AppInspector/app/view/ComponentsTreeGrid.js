@@ -51,6 +51,10 @@ Ext.define('AI.view.ComponentsTreeGrid', {
                             text: 'Refresh'
                         },
                         {
+                            xtype: 'label',
+                            text: '(Dbl Click to eval)'
+                        },
+                        {
                             xtype: 'tbfill'
                         },
                         {

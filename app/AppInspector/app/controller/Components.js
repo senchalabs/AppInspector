@@ -34,7 +34,7 @@ Ext.define('AI.controller.Components', {
         'ComponentsTreeGrid'
     ],
 
-    init: function(application) {
+    init: function (application) {
         var me = this;
 
         me.control({
@@ -48,7 +48,8 @@ Ext.define('AI.controller.Components', {
                 'applyfilter': me.onFilterComponentTree
             },
             'componentstreegrid#ComponentTree': {
-                'itemclick': me.onSelectComponent
+                'itemclick': me.onSelectComponent,
+                'itemdblclick': me.onDblClickComponent,
             },
             // properties
             'gridpanel#ComponentProps': {
@@ -68,7 +69,22 @@ Ext.define('AI.controller.Components', {
         });
     },
 
-    onActivate: function(panel) {
+    onDblClickComponent: function (tree, record, item, index, e, eOpts) {
+        // Objetivo llevar este componente a la consola
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.highlight,
+            record.get('cmpId'),
+            Ext.emptyFn
+        );
+
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.setComponentAsGlobalVar,
+            record.get('cmpId'),
+            Ext.emptyFn
+        );
+    },
+
+    onActivate: function (panel) {
         // load the "Components" upfront ...
         var initialLoad = panel.initialLoad,
             tree = panel.down('#ComponentTree');
@@ -81,7 +97,7 @@ Ext.define('AI.controller.Components', {
         }
     },
 
-    onComponentTreeActivate: function(tree) {
+    onComponentTreeActivate: function (tree) {
         var nodes = [],
             root = tree.getRootNode();
 
@@ -107,7 +123,7 @@ Ext.define('AI.controller.Components', {
         );
     },
 
-    onRefreshComponentsClick: function(btn) {
+    onRefreshComponentsClick: function (btn) {
         var tree = btn.up('#ComponentTree'),
             filter = tree.down('#FilterComponentsTree');
 
@@ -115,7 +131,7 @@ Ext.define('AI.controller.Components', {
         this.onComponentTreeActivate(tree);
     },
 
-    onFilterComponentTree: function(field, value) {
+    onFilterComponentTree: function (field, value) {
         var tree = field.up('#ComponentTree');
 
         if (value === '') {
@@ -125,7 +141,7 @@ Ext.define('AI.controller.Components', {
         }
     },
 
-    onSelectComponent: function(tree, record, item, index, e, eOpts) {
+    onSelectComponent: function (tree, record, item, index, e, eOpts) {
         var parent = tree.up('components'),
             propsGrid = parent.down('#ComponentProps'),
             propsGridStore = propsGrid.getStore(),
@@ -141,7 +157,7 @@ Ext.define('AI.controller.Components', {
         AI.util.InspectedWindow.eval(
             AI.util.Component.getInspectedComponent,
             record.get('cmpId'),
-            function(result, isException) {
+            function (result, isException) {
                 if (result) {
                     propsGridStore.loadData(result.properties);
                     methodGridStore.loadData(result.methods);
@@ -153,23 +169,23 @@ Ext.define('AI.controller.Components', {
         );
     },
 
-    toggleComponentsDetailsTips: function(grid) {
+    toggleComponentsDetailsTips: function (grid) {
         var tips = grid.up('#ComponentInspector').down('toolbar[dock=bottom]'),
             isProps = grid.itemId === 'ComponentProps',
             props = tips.query('[tipGroup=props]'),
             methods = tips.query('[tipGroup=methods]'),
             i;
 
-        for(i = 0; i < props.length; i++) {
+        for (i = 0; i < props.length; i++) {
             props[i].setVisible(isProps);
         }
 
-        for(i = 0; i < methods.length; i++) {
+        for (i = 0; i < methods.length; i++) {
             methods[i].setVisible(!isProps);
         }
     },
 
-    onFilterComponentDetails: function(field, value) {
+    onFilterComponentDetails: function (field, value) {
         var grid = field.up('gridpanel'),
             store = grid.getStore();
 
@@ -185,7 +201,7 @@ Ext.define('AI.controller.Components', {
         }
     },
 
-    onDetailValueEdit: function() {
+    onDetailValueEdit: function () {
         // cancel edit to reset original value
         return false;
     }

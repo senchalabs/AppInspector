@@ -127,7 +127,12 @@ Ext.define('AI.util.extjs.MVC', {
 
             if (Ext.isString(store)) {
                 getter = Ext.app.Controller.getGetterName(store, 'Store');
-                store  = instance[getter]();
+                //FIXME This fails in ExtJs 6
+                try {
+                    store = instance[getter]();
+                } catch(e) {
+                    store = instance.getStore(store);
+                }
             }
 
             stores.push({

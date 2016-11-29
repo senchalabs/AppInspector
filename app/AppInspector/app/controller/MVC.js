@@ -42,7 +42,9 @@ Ext.define('AI.controller.MVC', {
                 activate: this.onActivate
             },
             'mvc treepanel': {
-                select: this.onMVCSelect
+                select: this.onMVCSelect,
+                'itemdblclick' : this.onDblClickComponent
+
             },
             'mvc_records gridpanel': {
                 itemclick: this.onRecordGridSelection
@@ -70,6 +72,16 @@ Ext.define('AI.controller.MVC', {
                     children : data
                 });
             }
+        );
+    },
+
+    
+    onDblClickComponent : function( tree, record, item, index, e, eOpts ) {
+        debugger;
+        AI.util.InspectedWindow.eval(
+            AI.util.InspectedWindow.setComponentAsGlobalVar,
+            record.get('id'),
+            Ext.emptyFn
         );
     },
 

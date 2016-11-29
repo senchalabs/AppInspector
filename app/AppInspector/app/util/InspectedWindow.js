@@ -62,6 +62,20 @@ Ext.define('AI.util.InspectedWindow', {
         }
     },
 
+    setComponentAsGlobalVar : function(cmpId) {
+        var cmp = Ext.getCmp(cmpId);
+        var globalVarName =  'x0';
+        window[globalVarName + ''] = cmp;
+        window.console.log('Component stored in window.' + globalVarName);
+    },
+
+
+    setVariableAsGlobalVar : function(value) {
+        var globalVarName =  'x0';
+        window[globalVarName + ''] = value;
+        window.console.log('Variable ' + value +  'stored in window.' + globalVarName);
+    },
+
     /**
      * @param {Function} closure
      * @param {String/Array} argString
@@ -211,4 +225,6 @@ Ext.define('AI.util.InspectedWindow', {
 
         return data;
     }
+
+  
 });

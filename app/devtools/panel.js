@@ -10,7 +10,7 @@ var AI = {
  * http://developer.chrome.com/extensions/devtools.html
  */
 chrome.devtools.panels.create(
-    'Sencha',
+    'Sencha/ExtJS',
     'resources/images/panel_icon.png',
     'AppInspector/index.html',
 

@@ -44,15 +44,18 @@ Ext.define('AI.view.MainView', {
                         {
                             xtype: 'about'
                         },
+                        // {
+                        //     xtype: 'query'
+                        // },
                         {
                             xtype: 'components'
                         },
                         {
                             xtype: 'stores'
                         },
-                        {
-                            xtype: 'layouts'
-                        },
+                        // {
+                        //      xtype: 'layouts'
+                        // },
                         {
                             xtype: 'eventgrid'
                         },

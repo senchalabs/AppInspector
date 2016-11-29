@@ -73,7 +73,8 @@ Ext.define('AI.controller.Main', {
 
                         tabpanel.down('#AppDetails').setSource(source);
                         tabpanel.child('mvc').setDisabled(!data.isMVC);
-                        tabpanel.down('#LayoutRuns').setDisabled(app.info.framework === 'touch');
+                        //tabpanel.down('#LayoutRuns').setDisabled(app.info.framework === 'touch');
+                        //tabpanel.down('#LayoutRuns').setDisabled(true);
 
                         main.setLoading(false);
                     }
